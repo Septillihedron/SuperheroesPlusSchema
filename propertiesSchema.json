@@ -2,7 +2,63 @@
 	"$schema": "http://json-schema.org/schema",
 	"type": "object",
 	"properties": {
-
+		"conditions": {
+			"type": "object",
+			"description": "The list of condition types and their properties that is in the skills library",
+			"patternProperties": {
+				"\\p{Upper}": {
+					"type": "object",
+					"description": "A condition type and it's properties",
+					"properties": {
+						"description": {
+							"type": "string",
+							"description": "The description of the condition"
+						},
+						"typeProperties": {
+							"type": "object",
+							"description": "The list of type specific properties that the condition has",
+							"patternProperties": {
+								"\\w*": {
+									"description": "The type specific property that the effect has",
+									"$ref": "#/definitions/property"
+								}
+							},
+							"additionalProperties": false
+						},
+						"avaiable": {
+							"type": "boolean",
+							"description": "Tells if this condition is available for use",
+							"default": true
+						},
+						"supportedModes": {
+							"type": "array",
+							"description": "The modes that this condition supports",
+							"items": {
+								"type": "string",
+								"enum": ["SELF", "OTHER", "LOCATION", "ITEM", "ALL"],
+								"description": "The supported modes"
+							}
+						},
+						"extends": {
+							"type": "string",
+							"description": "The condition that this condition is extending"
+						}
+					},
+					"required": ["description"],
+					"allOf": [
+						{
+							"if": {
+								"properties": { "available": {"const": false }}
+							},
+							"else": {
+								"required": ["supportedModes"]
+							}
+						}
+					]
+				}
+			},
+			"additionalProperties": false
+		}
 	},
 	"definitions": {
 		"property": {
