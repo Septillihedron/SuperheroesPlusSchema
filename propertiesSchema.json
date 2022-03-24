@@ -5,6 +5,29 @@
 
 	},
 	"definitions": {
-
+		"types": {
+			"anyOf": [
+				{
+					"enum": [
+						"array", "object", 
+						"string", "number", "integer", "boolean"
+					]
+				},
+				{
+					"$ref": "#/definitions/stringTypes"
+				}
+			]
+		},
+		"stringTypes": {
+			"enum": [
+				"string", 
+				"range", "comparison",
+				"entity", "block", "item", 
+				"enchantment",
+				"biome", "world", 
+				"equipmentSlot", 
+				"condition", "effect"
+			]
+		}
 	}
 }
