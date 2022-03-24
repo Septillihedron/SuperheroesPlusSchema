@@ -1,3 +1,398 @@
 {
-	"$schema": "propertiesSchema.json"
+	"$schema": "propertiesSchema.json",
+	"conditions": {
+		"HEALTH": {
+			"description": "Checks if the hp percentage of the player or entity is in the range",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"minimumHealthPercentage": {
+					"description": "The minimum hp percentage",
+					"required": false,
+					"type": "number",
+					"min": 0,
+					"max": 100,
+					"default": 0
+				},
+				"maximumHealthPercentage": {
+					"description": "The maximum hp percentage",
+					"required": false,
+					"type": "number",
+					"min": 0,
+					"max": 100,
+					"default": 100
+				}
+			}
+		},
+		"CHANCE": {
+			"description": "A chance for this condition to be true",
+			"supportedModes": ["ALL", "SELF"],
+			"typeProperties": {
+				"chance": {
+					"description": "The chance that is used",
+					"required": false,
+					"type": "number",
+					"min": 0,
+					"max": 1,
+					"default": 1
+				}
+			}
+		},
+		"COOLDOWN": {
+			"description": "Checks if the time since the get last effect triggered is after the cooldown",
+			"supportedModes": ["ALL", "SELF"],
+			"typeProperties": {
+				"cooldown": {
+					"description": "The cooldown time that is used in seconds",
+					"required": false,
+					"type": "number",
+					"default": 10
+				}
+			}
+		},
+		"ENTITY": {
+			"description": "Checks if the entity against this whitelist/blacklist",
+			"supportedModes": ["ALL", "OTHER"],
+			"typeProperties": {
+				"whitelist": {
+					"description": "If true, the entities property will whitelist. If false, the entities property will blacklist",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"entities": {
+					"description": "The list of entities to be whitelisted/blacklisted",
+					"required": false,
+					"type": "array",
+					"items": "entity",
+					"default": []
+				}
+			}
+		},
+		"SIZE": {
+			"description": "Checks if the size of the entity is in the range (for slimes, magma cubes, and phantoms)",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"minimumSize": {
+					"description": "The minimum size",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"maximumSize": {
+					"description": "The maximum size",
+					"required": false,
+					"type": "integer",
+					"default": 4
+				}
+			}
+		},
+		"NOT": {
+			"description": "Inverts the inside condition",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"condition": {
+					"description": "The condition to invert",
+					"required": true,
+					"type": "condition"
+				}
+			}
+		},
+		"SNEAK": {
+			"description": "Checks if the player or entity is shifting",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"sneak": {
+					"description": "If true, checks if the entity is shifting. If false, it checks the opposite",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"TIME": {
+			"description": "Checks the relative ingame time (time of day) of the world that the player is in against the range. Measured in milli-hours or hours*1000",
+			"supportedModes": ["ALL", "SELF"],
+			"typeProperties": {
+				"minimumTime": {
+					"description": "The minimum time",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"maximumTime": {
+					"description": "The maximum time",
+					"required": false,
+					"type": "integer",
+					"default": 24000
+				}
+			}
+		},
+		"ONGROUND": {
+			"description": "Checks if the player or entity is on the ground",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"grounded": {
+					"description": "If true, checks if the entity is on the ground. If false, it checks the opposite",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"GLIDING": {
+			"description": "Checks if the player gliding",
+			"supportedModes": ["ALL", "SELF"],
+			"typeProperties": {
+				"shouldGlide": {
+					"description": "If true, checks if the entity is gliding. If false, it checks the opposite",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"BIOME": {
+			"description": "Checks if the biome that the player, entity, or location is in is one of the listed biomes",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"typeProperties": {
+				"biomes": {
+					"description": "The list of biomes",
+					"required": false,
+					"type": "array",
+					"items": "biome",
+					"default": []
+				}
+			}
+		},
+		"COMPARISON": {
+			"description": "Compares a variable",
+			"available": false,
+			"typeProperties": {
+				"comparison": {
+					"description": "The comparison to use",
+					"required": false,
+					"type": "comparison",
+					"default": "EQUALS"
+				},
+				"value": {
+					"description": "The value to compare against",
+					"required": false,
+					"type": "number",
+					"default": 0
+				}
+			}
+		},
+		"METADATA": {
+			"description": "Compares a user defined variable",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "COMPARISON",
+			"typeProperties": {
+				"variable": {
+					"description": "The variable to compare",
+					"required": true,
+					"type": "string"
+				},
+				"comparison": {
+					"description": "The comparison to use",
+					"required": false,
+					"type": "comparison",
+					"default": "EQUALS"
+				},
+				"value": {
+					"description": "The value to compare against",
+					"required": false,
+					"type": "number",
+					"default": 0
+				}
+			}
+		},
+		"NPC": {
+			"description": "Checks if the player or entity is an npc",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"isNPC": {
+					"description": "If true, checks if the entity is an npc. If false, it checks the opposite",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"WEATHER": {
+			"description": "Checks if the world that the player is in has a storm",
+			"supportedModes": ["ALL", "SELF"]
+		},
+		"INBLOCK": {
+			"description": "Checks if the player or entity is in one of the listed blocks",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"blocks": {
+					"description": "The list of blocks",
+					"required": false,
+					"type": "array",
+					"items": "block",
+					"default": []
+				}
+			}
+		},
+		"WORLD": {
+			"description": "Checks if the world that the player, entity, or location is in is one of the listed worlds",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"typeProperties": {
+				"worlds": {
+					"description": "The list of worlds",
+					"required": false,
+					"type": "array",
+					"items": "world",
+					"default": []
+				}
+			}
+		},
+		"TAMED": {
+			"description": "Checks if the entity is tamed",
+			"supportedModes": ["ALL", "OTHER"],
+			"typeProperties": {
+				"checkOwner": {
+					"description": "If true, also checks if the player is the owner",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"FLYING": {
+			"description": "Checks if the player is flying",
+			"supportedModes": ["ALL", "SELF", "OTHER"]
+		},
+		"HEIGHT": {
+			"description": "Checks if the player or entity y location is in the range",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"height": {
+					"description": "The range in blocks",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				}
+			}
+		},
+		"BLOCK": {
+			"description": "Checks if the location has one of the listed blocks",
+			"supportedModes": ["ALL", "LOCATION"],
+			"typeProperties": {
+				"materials": {
+					"description": "The list of blocks",
+					"required": false,
+					"type": "array",
+					"items": "block",
+					"default": []
+				}
+			}
+		},
+		"ITEM": {
+			"description": "Checks if the declared slot against the declared item",
+			"supportedModes": ["ALL", "SELF", "OTHER", "ITEM"],
+			"typeProperties": {
+				"slot": {
+					"description": "The slot to check",
+					"required": false,
+					"type": ["equipmentSlot", "integer"],
+					"default": "HAND"
+				},
+				"item": {
+					"description": "The item to check against",
+					"required": true,
+					"type": "object",
+					"properties": {
+						"types": {
+							"description": "The list of item types",
+							"required": false,
+							"type": "array",
+							"items": "item",
+							"default": []
+						},
+						"amount": {
+							"description": "The range of item amount",
+							"required": false,
+							"type": "range",
+							"default": "-Infinity - Infinity"
+						},
+						"metadata": {
+							"description": "The metadata of the item",
+							"required": false,
+							"type": "object",
+							"default": {},
+							"properties": {
+								"displayName": {
+									"description": "A regex to match the display name against",
+									"required": false,
+									"type": "string", //regex type
+									"default": ".+"
+								},
+								"lore": {
+									"description": "A list of regex to match the lore against",
+									"required": false,
+									"type": "array",
+									"items": "string", //regex type
+									"default": ".+"
+								},
+								"enchants": {
+									"description": "The item to check against",
+									"required": false,
+									"type": "object",
+									"default": {},
+									"propertiesMap": [ // hard to understand?
+										{
+											"key": {
+												"description": "The enchantment name",
+												"type": "enchantment"
+											},
+											"value": {
+												"description": "The level of the enchantment",
+												"required": false,
+												"type": "range",
+												"default": "-Infinity - Infinity"
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"OR": {
+			"description": "ORs all the conditions inside",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"conditions": {
+					"description": "The conditions to OR",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						"\\w": {
+							"description": "A condition to OR",
+							"required": false,
+							"type": "condition",
+							"default": {}
+						}
+					}
+				}
+			}
+		},
+		"VISIBILITY": {
+			"description": "Checks if the player has a direct line of sight to the entity",
+			"supportedModes": ["ALL", "OTHER"],
+			"typeProperties": {
+				"maxDistance": {
+					"description": "The maximum distance to the entity",
+					"required": false,
+					"type": "number",
+					"default": 16
+				}
+			}
+		}
+	}
 }
