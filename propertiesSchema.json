@@ -25,7 +25,7 @@
 							},
 							"additionalProperties": false
 						},
-						"avaiable": {
+						"available": {
 							"type": "boolean",
 							"description": "Tells if this condition is available for use",
 							"default": true
@@ -82,7 +82,7 @@
 							},
 							"additionalProperties": false
 						},
-						"avaiable": {
+						"available": {
 							"type": "boolean",
 							"description": "Tells if this effect is available for use",
 							"default": true
