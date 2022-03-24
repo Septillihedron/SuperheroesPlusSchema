@@ -5,6 +5,159 @@
 
 	},
 	"definitions": {
+		"property": {
+			"type": "object",
+			"properties": {
+				"description": {
+					"type": "string",
+					"description": "The description of the property"
+				},
+				"default": {
+					"type": ["object","array", "string", "number", "integer", "boolean", "null"],
+					"description": "The default value that this property falls to if not provided"
+				},
+				"required": {
+					"type": "boolean",
+					"description": "Tells if the property is required or not"
+				},
+				"type": {
+					"type": ["string", "array"],
+					"items": {
+						"type": "string",
+						"$ref": "#/definitions/types"
+					},
+					"minItems": 1,
+					"description": "The type of value(s) the property can accept"
+				},
+				"min": {
+					"type": "number",
+					"description": "If the type is either a number of integer, it tells the minimum acceptable value"
+				},
+				"max": {
+					"type": "number",
+					"description": "If the type is either a number of integer, it tells the maximum acceptable value"
+				},
+				"items": {
+					"type": ["string", "array"],
+					"items": {
+						"type": "string",
+						"$ref": "#/definitions/types"
+					},
+					"minItems": 1,
+					"description": "For arrays, contains the types of items allowed"
+				},
+				"properties": {
+					"type": "object",
+					"patternProperties": {
+						"\\w*": {"$ref": "#/definitions/property"}
+					},
+					"description": "The properties that this property has"
+				},
+				"patternProperties": {
+					"type": "object",
+					"patternProperties": {
+						".*": {"$ref": "#/definitions/property"}
+					},
+					"description": "The properties (in form of regex) that this property has"
+				},
+				"propertiesMap": {
+					"type": "array",
+					"description": "The properties (in form of regex) that this property has",
+					"items": {
+						"type": "object",
+						"description": "",
+						"properties": {
+							"key": {
+								"type": "object",
+								"description": "Specify the type(s) that the key has",
+								"properties": {
+									"description": {
+										"type": "string",
+										"description": "The description of the key"
+									},
+									"type": {
+										"type": ["string", "array"],
+										"items": {
+											"type": "string",
+											"$ref": "#/definitions/stringTypes"
+										},
+										"minItems": 1,
+										"description": "The type of value(s) the key can be"
+									}
+								},
+								"if": {
+									"properties": { "items": { "type": "string" }}
+								},
+								"then": {
+									"properties": { "items": { "$ref": "#/definitions/stringTypes" }}
+								}
+							},
+							"value": {
+								"$ref": "#/definitions/property",
+								"description": "Specify the type(s) that the value has"
+							}
+						}
+					}
+				},
+				"ref": {
+					"type": "string",
+					"description": "Refrences a definition"
+				}
+			},
+			"required": ["description", "required", "type"],
+			"allOf": [
+				{
+					"if": {
+						"properties": { "required": { "const": true }}
+					},
+					"else": {
+						"required": ["default"]
+					}
+				},
+				{
+					"if": {
+						"properties": { "type": { "const": "array" }}
+					},
+					"then": {
+						"required": ["items"]
+					}
+				},
+				{
+					"if": {
+						"properties": { "type": { "const": "object" }}
+					},
+					"then": {
+						"anyOf": [
+							{
+								"required": ["properties"]
+							},
+							{
+								"required": ["patternProperties"]
+							},
+							{
+								"required": ["propertiesMap"]
+							}
+						]
+					}
+				},
+				{
+					"if": {
+						"properties": { "items": { "type": "string" }}
+					},
+					"then": {
+						"properties": { "items": { "$ref": "#/definitions/types" }}
+					}
+				},
+				{
+					"if": {
+						"properties": { "type": { "type": "string" }}
+					},
+					"then": {
+						"properties": { "type": { "$ref": "#/definitions/types" }}
+					}
+				}
+			]
+		},
 		"types": {
 			"anyOf": [
 				{
