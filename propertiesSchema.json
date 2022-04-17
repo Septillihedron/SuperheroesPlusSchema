@@ -199,10 +199,10 @@
 									}
 								},
 								"if": {
-									"properties": { "items": { "type": "string" }}
+									"properties": { "type": { "type": "string" }}
 								},
 								"then": {
-									"properties": { "items": { "$ref": "#/definitions/stringTypes" }}
+									"properties": { "type": { "$ref": "#/definitions/stringTypes" }}
 								}
 							},
 							"value": {
