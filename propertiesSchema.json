@@ -92,7 +92,7 @@
 							"description": "The modes that this effect supports",
 							"items": {
 								"type": "string",
-								"enum": ["SELF", "OTHER", "BLOCK", "ALL"],
+								"enum": ["SELF", "OTHER", "LOCATION", "ITEM", "ALL"],
 								"description": "The supported modes"
 							}
 						},
@@ -287,11 +287,13 @@
 		"stringTypes": {
 			"enum": [
 				"string", 
-				"range", "comparison",
+				"range", "comparison", "operation",
 				"entity", "block", "item", 
-				"enchantment",
+				"enchantment", "potion", 
 				"biome", "world", 
 				"equipmentSlot", 
+				"attribute",
+				"sound",
 				"condition", "effect"
 			]
 		}
