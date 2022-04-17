@@ -341,7 +341,7 @@
 									"required": false,
 									"type": "object",
 									"default": {},
-									"propertiesMap": [ // hard to understand?
+									"propertiesMap": [
 										{
 											"key": {
 												"description": "The enchantment name",
@@ -393,6 +393,917 @@
 					"default": 16
 				}
 			}
+		}
+	},
+	"effects": { // TODO: additional refuiew required for description including target, better writing required for wrapper conditions
+		"DAMAGE": {
+			"description": "Damages the player or an entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"damage": {
+					"description": "The damage that will be dealt",
+					"required": false,
+					"type": "number",
+					"default": 5
+				}
+			}
+		},
+		"WRAPPER": {
+			"description": "Excecutes all the inside effects if all the inside conditions are satisfied",
+			"available": false,
+			"typeProperties": {
+				"conditions": {
+					"description": "The list of conditions",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						"\\w": {
+							"description": "A condition",
+							"required": false,
+							"type": "condition",
+							"default": {}
+						}
+					}
+				},
+				"effects": {
+					"description": "The list of effects",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						"\\w": {
+							"description": "An effect",
+							"required": false,
+							"type": "effect",
+							"default": {}
+						}
+					}
+				}
+			}
+		},
+		"AOE": {
+			"description": "Excecutes all the inside effects if all the inside conditions are satisfied. ",
+			"supportedModes": ["ALL", "SELF"],
+			"extends": "WRAPPER",
+			"typeProperties": {
+				"radius": {
+					"description": "Half the side length of the box",
+					"required": false,
+					"type": "number",
+					"default": 5
+				},
+				"conditions": {
+					"description": "The list of conditions",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						"\\w": {
+							"description": "A condition",
+							"required": false,
+							"type": "condition",
+							"default": {}
+						}
+					}
+				},
+				"effects": {
+					"description": "The list of effects",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						"\\w": {
+							"description": "An effect",
+							"required": false,
+							"type": "effect",
+							"default": {}
+						}
+					}
+				}
+			}
+		},
+		"VELOCITY": {
+			"description": "Sets the Y component of the velocity vector of the user or entity. Same as FLING",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"velocity": {
+					"description": "The Y velocity to set to",
+					"required": false,
+					"type": "number",
+					"default": 1.0
+				}
+			}
+		},
+		"CANCEL": {
+			"description": "Cancels the event that triggered this effect",
+			"supportedModes": ["ALL", "SELF"]
+		},
+		"GLIDING": {
+			"description": "Sets the gliding mode of the player or entity (works even if an Elytra is not equipped)",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"glide": {
+					"description": "If true, makes the player or entity glide. Else if false, makes the player or entity stop gliding",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"WAIT": {
+			"description": "Waits a duration of time then excecutes all the inside effects if all the inside condition is satisfied",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"extends": "WRAPPER",
+			"typeProperties": {
+				"delay": {
+					"description": "The delay time in seconds (1 is 20 ticks)",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"conditions": {
+					"description": "The list of conditions",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						"\\w": {
+							"description": "A condition",
+							"required": false,
+							"type": "condition",
+							"default": {}
+						}
+					}
+				},
+				"effects": {
+					"description": "The list of effects",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						"\\w": {
+							"description": "An effect",
+							"required": false,
+							"type": "effect",
+							"default": {}
+						}
+					}
+				}
+			}
+		},
+		"POTION": {
+			"description": "Applies the potion effect to the player or entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"potion": {
+					"description": "The potion effect",
+					"required": false,
+					"type": "object",
+					"default": {
+						"type": "REGENERATION",
+						"potency": 1,
+						"duration": 10
+					},
+					"properties": {
+						"potency": {
+							"description": "The potency or amplifier of the potion",
+							"required": false,
+							"type": "integer",
+							"default": 1
+						},
+						"type": {
+							"description": "The type of the potion",
+							"required": true,
+							"type": "potion"
+						},
+						"duration": {
+							"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+							"required": false,
+							"type": "number",
+							"default": 10
+						}
+					}
+				}
+			}
+		},
+		"WEB": {
+			"description": "Change the block at the player or entity for a duration of time, then change it back. Exactly the same effect as the BLOCKENTITY effect",
+			"supportedModes": ["ALL", "OTHER"],
+			"typeProperties": {
+				"duration": {
+					"description": "The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back",
+					"required": false,
+					"type": "number",
+					"default": -1
+				},
+				"block": {
+					"description": "The block to change to",
+					"required": false,
+					"type": "block",
+					"default": "COBWEB"
+				}
+			}
+		},
+		"BLOCKENTITY": {
+			"description": "Change the block at the player or entity for a duration of time, then change it back. Exactly the same effect as the WEB effect",
+			"supportedModes": ["ALL", "OTHER"],
+			"typeProperties": {
+				"duration": {
+					"description": "The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back",
+					"required": false,
+					"type": "number",
+					"default": -1
+				},
+				"block": {
+					"description": "The block to change to",
+					"required": false,
+					"type": "block",
+					"default": "COBWEB"
+				}
+			}
+		},
+		"ARROW": {
+			"description": "Shoot an arrow to the location or the location of the user or target entity", 
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"typeProperties": {
+				"velocity": {
+					"description": "Used to determine the time that it takes to hit by (pythagoras distance)/velocity",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"entity": {
+					"description": "The entity to shoot",
+					"required": false,
+					"type": "entity",
+					"default": "arrow"
+				},
+				"damage": {
+					"description": "If projectile entity is an arrow, the damage that the arrow will do",
+					"if": {"entity": {"const": "arrow"}},
+					"required": false,
+					"type": "integer",
+					"default": 4
+				}
+			}
+		},
+		"MODIFY": {
+			"description": "Modifies a variable, either user defined or not",
+			"available": false,
+			"typeProperties": {
+				"operation": {
+					"description": "The operation to do",
+					"required": true,
+					"type": "operation"
+				},
+				"value": {
+					"description": "The number on the right side of the operation",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"ATTRIBUTE": {
+			"description": "Modifies an attribute owned by the user or entity",
+			"extends": "MODIFY",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"attribute": {
+					"description": "The attribute to modify. The name of the attribute should exclude the \"GENERIC_\" in the begining",
+					"required": true,
+					"type": "attribute"
+				},
+				"operation": {
+					"description": "The operation to do",
+					"required": true,
+					"type": "operation"
+				},
+				"value": {
+					"description": "The number on the right side of the operation",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"BREAKBLOCK": {
+			"description": "Not implemented yet",
+			"available": false
+		},
+		"LAUNCH": {
+			"description": "Launches an entity at the target",
+			"supportedModes": ["ALL", "OTHER"],
+			"typeProperties": {
+				"type": {
+					"description": "The entity to launch",
+					"required": false,
+					"type": "entity",
+					"default": "FIREBALL"
+				},
+				"velocity": {
+					"description": "The velocity to launch at",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"MESSAGE": {
+			"description": "Sends a chat message to the user or target player",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"message": {
+					"description": "The message to send. The first occurence of \"player\" will be replaced by the player name",
+					"required": true, 
+					"type": "string"
+				}
+			}
+		},
+		"PICKUP": {
+			"description": "Pick up the target entity and places it on the user's head", // ty Xemor
+			"supportedModes": ["ALL", "OTHER"]
+		},
+		"REPULSE": {
+			"description": "Repulse the target entity",
+			"supportedModes": ["ALL", "OTHER"],
+			"typeProperties": {
+				"velocity": {
+					"description": "The velocity to repulse the target entity. Positive value means into the user. Negative value means away from the user",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"RESIZE": {
+			"description": "Resizes the user or target entity (for slimes, magma cubes, and phantoms)",
+			"extends": "MODIFY",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"retainHealth": {
+					"description": "For slimes and magma cubes. If true, make it retain the previous health (if more than the new max health, it sets it to the max health)",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"operation": {
+					"description": "The operation to do",
+					"required": true,
+					"type": "operation"
+				},
+				"value": {
+					"description": "The number on the right side of the operation",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"SMITE": {
+			"description": "Smites the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"fake": {
+					"description": "If true, it only makes the effect of lightning, not summoning an actual lightning",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"FLING": {
+			"description": "Sets the Y component of the velocity vector of the player or entity. Same as VELOCITY",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"velocity": {
+					"description": "The Y velocity to set to",
+					"required": false,
+					"type": "number",
+					"default": 1.0
+				}
+			}
+		},
+		"METADATA": {
+			"description": "Modifies a user defined variable",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"variable": {
+					"description": "The name of the variable",
+					"required": true,
+					"type": "string"
+				},
+				"operation": {
+					"description": "The operation to do",
+					"required": true,
+					"type": "operation"
+				},
+				"value": {
+					"description": "The number on the right side of the operation",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"GIVEITEM": {
+			"description": "Gives the user or target entity an item",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"dropIfFull": {
+					"description": "If true, drops the items that did not fit into the inventory",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"item": {
+					"description": "The item to give",
+					"required": true,
+					"type": "object",
+					"properties": {
+						"type": {
+							"description": "The type of item",
+							"required": false,
+							"type": "item",
+							"default": "STONE"
+						},
+						"amount": {
+							"description": "The amount of item to give",
+							"required": false,
+							"type": "integer",
+							"default": 1
+						},
+						"metadata": {
+							"description": "The metadata of the item",
+							"required": false,
+							"type": "object",
+							"default": {},
+							"properties": {
+								"displayName": {
+									"description": "The display name of the item. Defaults to the normal item name",
+									"required": false,
+									"type": "string",
+									"default": ""
+								},
+								"lore": {
+									"description": "The lore of the item",
+									"required": false,
+									"type": "array",
+									"items": "string",
+									"default": []
+								},
+								"isUnbreakable": {
+									"description": "If true, makes the item unbreakable",
+									"required": false,
+									"type": "boolean",
+									"default": false
+								},
+								"durability": {
+									"description": "The durability of the item. 0 is normal durability",
+									"required": false,
+									"type": "integer",
+									"default": 0
+								},
+								"attributes": {
+									"description": "The enchantments",
+									"required": false,
+									"type": "object",
+									"default": {},
+									"propertiesMap": [
+										{
+											"key": {
+												"description": "The attribute name",
+												"type": "attribute"
+											},
+											"value": {
+												"description": "The attribute properties",
+												"required": false,
+												"type": "object",
+												"default": null,
+												"properties": {
+													"value": {
+														"description": "The value of the attribute to change to",
+														"required": false,
+														"type": "number",
+														"default": 0
+													},
+													"equipmentslot": {
+														"description": "The slot that this attribute will be active",
+														"required": false,
+														"type": "equipmentSlot",
+														"default": "HAND"
+													}
+												}
+											}
+										}
+									]
+								}, 
+								"enchants": {
+									"description": "The enchantments",
+									"required": false,
+									"type": "object",
+									"default": {},
+									"propertiesMap": [
+										{
+											"key": {
+												"description": "The enchantment name",
+												"type": "enchantment"
+											},
+											"value": {
+												"description": "The level of the enchantment",
+												"required": true,
+												"type": "integer"
+											}
+										}
+									]
+								}, 
+								"color": {
+									"description": "If type is a leather armour. This contains the color metadata of the item",
+									"if": {"item.type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
+									"required": false,
+									"type": "object",
+									"default": {},
+									"properties": {
+										"red": {
+											"description": "The red value",
+											"required": true,
+											"type": "integer",
+											"min": 0,
+											"max": 255
+										},
+										"green": {
+											"description": "The green value",
+											"required": true,
+											"type": "integer",
+											"min": 0,
+											"max": 255
+										},
+										"blue": {
+											"description": "The blue value",
+											"required": true,
+											"type": "integer",
+											"min": 0,
+											"max": 255
+										}
+									}
+								}, 
+								"potion": {
+									"description": "If type is a potion, splash potion, lingering potion, or tipped arrow. This contains the potion metadata of the item",
+									"if": {"item.type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
+									"required": false,
+									"type": "object",
+									"default": {},
+									"properties": {
+										"type": {
+											"description": "The type of potion",
+											"required": true,
+											"type": "potion"
+										},
+										"extended": {
+											"description": "Whether the potion is extended", 
+											"required": false,
+											"type": "boolean",
+											"default": false
+										},
+										"upgraded": {
+											"description": "Whether the potion is upgraded", 
+											"required": false,
+											"type": "boolean",
+											"default": false
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"SCRAMBLEINVENTORY": {
+			"description": "Scrambles the user or target entity's inventory",
+			"supportedModes": ["ALL", "SELF", "OTHER"]
+		},
+		"RANDOMTELEPORT": {
+			"description": "Teleports the user or target entity a random distance",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"minDistance": {
+					"description": "The minimum distance",
+					"required": false,
+					"type": "number",
+					"default": 5
+				},
+				"maxDistance": {
+					"description": "The maximum distance",
+					"required": false,
+					"type": "number",
+					"default": 5
+				}
+			}
+		},
+		"PROJECTILE": {
+			"description": "Shoots an entity from the user, if mode is SELF, shoots the entity in the direction that the user is looking",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"typeProperties": {
+				"entity": {
+					"description": "The entity to shoot",
+					"required": true,
+					"type": "object",
+					"properties": {
+						"type": {
+							"description": "The entity type",
+							"required": false, 
+							"type": "entity",
+							"default": "ZOMBIE"
+						},
+						"nametag": {
+							"description": "The nametag of the spawned entity. Defaults to no nametag",
+							"required": false,
+							"type": "string",
+							"default": ""
+						},
+						"shouldDespawn": {
+							"description": "If true, the entity can despawn",
+							"required": false,
+							"type": "boolean",
+							"default": true
+						},
+						"passenger": {
+							"description": "The passanger of the entity",
+							"required": false,
+							"type": "object",
+							"ref": "entity",
+							"properties": {},
+							"default": {}
+						}
+						// oh god, TODO
+					}
+				},
+				"velocity": {
+					"description": "The shooting velocity",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"SOUND": {
+			"description": "Plays a sound at a location or at the location of the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"typeProperties": {
+				"sound": {
+					"description": "The sound data",
+					"required": true,
+					"type": "object",
+					"properties": {
+						"sound": {
+							"description": "The sound to make",
+							"required": false,
+							"type": "sound",
+							"default": "ENTITY_GENERIC_EXPLODE"
+						},
+						"volume": {
+							"description": "The volume of the sound",
+							"required": false,
+							"type": "number",
+							"default": 1
+						},
+						"pitch": {
+							"description": "The pitch of the sound",
+							"required": false,
+							"type": "number",
+							"default": 1
+						}
+					}
+				}
+			}
+		},
+		"COMMAND": {
+			"description": "Excecutes a command",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"executor": {
+					"description": "The executor that will execute the command",
+					"required": false,
+					"type": "string",
+					"enum": ["CONSOLE", "PLAYER"],
+					"ignoreCase": true,
+					"default": "CONSOLE"
+				},
+				"command": {
+					"description": "The command to execute. \"%self_name%\" will be interpreted as the user if the user is a player. Otherwise, \"%target_name%\" will be interpreted as the target entity if the target entity is a player",
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"LUNGE": {
+			"description": "Applies an acceleration to the user or the target entity based on the direction the user is looking",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"horizontalVelocity": {
+					"description": "The scale to scale the horizontal components of the velocity vector",
+					"required": false,
+					"type": "number",
+					"default": 0
+				},
+				"verticalVelocity": {
+					"description": "The scale to scale the vertical components of the velocity vector",
+					"required": false,
+					"type": "number",
+					"default": 0
+				},
+				"overwrite": {
+					"description": "If true, sets the velocity vector. If false, adds to the velocity vector",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"NEAREST": {
+			"description": "Excecutes all the inside effects to the nearest player and entity in the box centered on the location or the location of the user or target entity if all the inside conditions are satisfied",
+			"extends": "WRAPPER",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"typeProperties": {
+				"radius": {
+					"description": "Half the side length of the box",
+					"required": false,
+					"type": "number",
+					"default": 5
+				},
+				"conditions": {
+					"description": "The list of conditions",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						"\\w": {
+							"description": "A condition",
+							"required": false,
+							"type": "condition",
+							"default": {}
+						}
+					}
+				},
+				"effects": {
+					"description": "The list of effects",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						"\\w": {
+							"description": "An effect",
+							"required": false,
+							"type": "effect",
+							"default": {}
+						}
+					}
+				}
+			}
+		},
+		"SHOOTER": {
+			"description": "Excecutes all the inside effects if all the inside conditions are satisfied. With the shooter of the original target entity as the new target entity", 
+			"extends": "WRAPPER",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"typeProperties": {
+				"onlyProjectiles": {
+					"description": "If true, only excecutes the inside effects if the original target entity is a projectile. If false, forwards the original target entity to the inside conditions and effects",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"KNOCKBACK": {
+			"description": "Applies a velocity to the target entity with the direction that the user is looking as the direction",
+			"supportedModes": ["ALL", "OTHER"],
+			"typeProperties": {
+				"multiplier": {
+					"description": "The velocity to apply",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}, 
+				"overwriteCurrentVelocity": {
+					"description": "If true, sets the target's velocity. If false, adds to the target's original velocity",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"IGNITE": {
+			"description": "Sets the user or target entity on fire",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"fireTicks": {
+					"description": "The amount of time the fire will last (in ticks)",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				}
+			}
+		},
+		"TARGET": {
+			"description": "If the user is a mob, sets the target of the user to the target entity",
+			"supportedModes": ["ALL", "OTHER"]
+		},
+		"SWAP": {
+			"description": "Swaps the position of the user and target entity",
+			"supportedModes": ["ALL", "OTHER"]
+		},
+		"LOCATIONCUBE": {//TODO
+			"description": "", 
+			"extends": "WRAPPER",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+		},
+		"PLACEBLOCK": {
+			"description": "Replaces a block at the location for an amount of time. Retains the original block data",
+			"supportedModes": ["ALL", "LOCATION"],
+			"typeProperties": {
+				"material": {
+					"description": "The block to replace to",
+					"required": false,
+					"type": "block",
+					"default": "STONE"
+				},
+				"updatePhysics": {
+					"description": "If false, does not update neighboring blocks",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"revertsAfter": {
+					"description": "Time before the block reverts to the original block in seconds (1 is 20 ticks). If less than or equal to 0, does not revert the original block",
+					"required": false,
+					"type": "number",
+					"default": -1 // not revert
+				}
+			}
+		},
+		"SPAWNENTITY": {//TODO
+			"description": "",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+		},
+		"REMOVEPOTION": {
+			"description": "Removes potion effects from the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"typeProperties": {
+				"types": {
+					"description": "The list of potion types. If empty, removes all potion effect",
+					"required": false,
+					"type": "array",
+					"items": "potion",
+					"default": []
+				}
+			}
+		},
+		"TELEPORT": {
+			"description": "Teleports the user to the location or the location of the target entity",
+			"supportedModes": ["ALL", "OTHER", "LOCATION"]
+		},
+		"RAYTRACE": {//TODO
+			"description": "",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+		},
+		"TIMER": {//TODO
+			"description": "",
+			"extends": "WRAPPER",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+		},
+		"REMOVEENTITY": {
+			"description": "Removes the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"]
+		},
+		"ITEMSTACK": {//TODO
+			"description": "",
+			"extends": "WRAPPER",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+		},
+		"ITEMAMOUNT": {
+			"description": "Modifies the item amount",
+			"extends": "MODIFY",
+			"supportedModes": ["ALL", "ITEM"],
+			"typeProperties": {
+				"operation": {
+					"description": "The operation to do",
+					"required": true,
+					"type": "operation"
+				},
+				"value": {
+					"description": "The number on the right side of the operation",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"SWITCHEROO": {//TODO
+			"description": "",
+			"extends": "WRAPPER",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
 		}
 	}
 }
