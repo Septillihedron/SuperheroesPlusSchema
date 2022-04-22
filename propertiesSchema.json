@@ -10,51 +10,22 @@
 					"type": "object",
 					"description": "A condition type and it's properties",
 					"properties": {
-						"description": {
-							"type": "string",
-							"description": "The description of the condition"
-						},
-						"typeProperties": {
-							"type": "object",
-							"description": "The list of type specific properties that the condition has",
-							"patternProperties": {
-								"\\w*": {
-									"description": "The type specific property that the effect has",
-									"$ref": "#/definitions/property"
-								}
-							},
-							"additionalProperties": false
-						},
-						"available": {
-							"type": "boolean",
-							"description": "Tells if this condition is available for use",
-							"default": true
-						},
 						"supportedModes": {
 							"type": "array",
-							"description": "The modes that this condition supports",
+							"description": "The list of supported modes",
 							"items": {
 								"type": "string",
 								"enum": ["SELF", "OTHER", "LOCATION", "ITEM", "ALL"],
-								"description": "The supported modes"
+								"description": "The supported mode"
 							}
 						},
-						"extends": {
-							"type": "string",
-							"description": "The condition that this condition is extending"
-						}
+						"description": true,
+						"typeProperties": true,
+						"available": true,
+						"extends": true
 					},
-					"required": ["description"],
-					"allOf": [
-						{
-							"if": {
-								"properties": { "available": {"const": false }}
-							},
-							"else": {
-								"required": ["supportedModes"]
-							}
-						}
-					]
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalProperties": false
 				}
 			},
 			"additionalProperties": false
@@ -67,57 +38,67 @@
 					"type": "object",
 					"description": "An effect type and it's properties",
 					"properties": {
-						"description": {
-							"type": "string",
-							"description": "The description of the effect"
-						},
-						"typeProperties": {
-							"type": "object",
-							"description": "The list of type specific properties that the effect has",
-							"patternProperties": {
-								"\\w*": {
-									"description": "The type specific property that the effect has",
-									"$ref": "#/definitions/property"
-								}
-							},
-							"additionalProperties": false
-						},
-						"available": {
-							"type": "boolean",
-							"description": "Tells if this effect is available for use",
-							"default": true
-						},
 						"supportedModes": {
 							"type": "array",
-							"description": "The modes that this effect supports",
+							"description": "The list of supported modes",
 							"items": {
 								"type": "string",
 								"enum": ["SELF", "OTHER", "LOCATION", "ITEM", "ALL"],
-								"description": "The supported modes"
+								"description": "The supported mode"
 							}
 						},
-						"extends": {
-							"type": "string",
-							"description": "The effect that this effect is extending"
-						}
+						"description": true,
+						"typeProperties": true,
+						"available": true,
+						"extends": true
 					},
-					"required": ["description"],
-					"allOf": [
-						{
-							"if": {
-								"properties": { "available": {"const": false }}
-							},
-							"else": {
-								"required": ["supportedModes"]
-							}
-						}
-					]
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalItems": false
 				}
 			},
 			"additionalProperties": false
 		}
 	},
 	"definitions": {
+		"type": {
+			"properties": {
+				"description": {
+					"type": "string",
+					"description": "The description of this type"
+				},
+				"typeProperties": {
+					"type": "object",
+					"description": "The list of properties",
+					"patternProperties": {
+						"\\w*": {
+							"description": "The property",
+							"$ref": "#/definitions/property"
+						}
+					},
+					"additionalProperties": false
+				},
+				"available": {
+					"type": "boolean",
+					"description": "If true, this is available for use",
+					"default": true
+				},
+				"extends": {
+					"type": "string",
+					"description": "The type that this type is extending"
+				}
+			},
+			"required": ["description"],
+			"allOf": [
+				{
+					"if": {
+						"properties": { "available": {"const": false }}
+					},
+					"else": {
+						"required": ["supportedModes"]
+					}
+				}
+			]
+		},
 		"property": {
 			"type": "object",
 			"properties": {
