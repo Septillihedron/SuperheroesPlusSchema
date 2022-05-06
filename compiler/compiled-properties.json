@@ -3,7 +3,11 @@
 	"conditions": {
 		"HEALTH": {
 			"description": "Checks if the hp percentage of the player or entity is in the range",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"minimumHealthPercentage": {
 					"description": "The minimum hp percentage",
@@ -25,7 +29,10 @@
 		},
 		"CHANCE": {
 			"description": "A chance for this condition to be true",
-			"supportedModes": ["ALL", "SELF"],
+			"supportedModes": [
+				"ALL",
+				"SELF"
+			],
 			"typeProperties": {
 				"chance": {
 					"description": "The chance that is used",
@@ -39,7 +46,10 @@
 		},
 		"COOLDOWN": {
 			"description": "Checks if the time since the get last effect triggered is after the cooldown",
-			"supportedModes": ["ALL", "SELF"],
+			"supportedModes": [
+				"ALL",
+				"SELF"
+			],
 			"typeProperties": {
 				"cooldown": {
 					"description": "The cooldown time that is used in seconds",
@@ -51,7 +61,10 @@
 		},
 		"ENTITY": {
 			"description": "Checks if the entity against this whitelist/blacklist",
-			"supportedModes": ["ALL", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			],
 			"typeProperties": {
 				"whitelist": {
 					"description": "If true, the entities property will whitelist. If false, the entities property will blacklist",
@@ -70,7 +83,11 @@
 		},
 		"SIZE": {
 			"description": "Checks if the size of the entity is in the range (for slimes, magma cubes, and phantoms)",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"minimumSize": {
 					"description": "The minimum size",
@@ -88,7 +105,11 @@
 		},
 		"NOT": {
 			"description": "Inverts the inside condition",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"condition": {
 					"description": "The condition to invert",
@@ -99,7 +120,11 @@
 		},
 		"SNEAK": {
 			"description": "Checks if the player or entity is shifting",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"sneak": {
 					"description": "If true, checks if the entity is shifting. If false, it checks the opposite",
@@ -111,7 +136,10 @@
 		},
 		"TIME": {
 			"description": "Checks the relative ingame time (time of day) of the world that the player is in against the range. Measured in milli-hours or hours*1000",
-			"supportedModes": ["ALL", "SELF"],
+			"supportedModes": [
+				"ALL",
+				"SELF"
+			],
 			"typeProperties": {
 				"minimumTime": {
 					"description": "The minimum time",
@@ -129,7 +157,11 @@
 		},
 		"ONGROUND": {
 			"description": "Checks if the player or entity is on the ground",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"grounded": {
 					"description": "If true, checks if the entity is on the ground. If false, it checks the opposite",
@@ -141,7 +173,10 @@
 		},
 		"GLIDING": {
 			"description": "Checks if the player gliding",
-			"supportedModes": ["ALL", "SELF"],
+			"supportedModes": [
+				"ALL",
+				"SELF"
+			],
 			"typeProperties": {
 				"shouldGlide": {
 					"description": "If true, checks if the entity is gliding. If false, it checks the opposite",
@@ -153,7 +188,12 @@
 		},
 		"BIOME": {
 			"description": "Checks if the biome that the player, entity, or location is in is one of the listed biomes",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			],
 			"typeProperties": {
 				"biomes": {
 					"description": "The list of biomes",
@@ -184,7 +224,11 @@
 		},
 		"METADATA": {
 			"description": "Compares a user defined variable",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"extends": "COMPARISON",
 			"typeProperties": {
 				"variable": {
@@ -208,7 +252,11 @@
 		},
 		"NPC": {
 			"description": "Checks if the player or entity is an npc",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"isNPC": {
 					"description": "If true, checks if the entity is an npc. If false, it checks the opposite",
@@ -220,11 +268,18 @@
 		},
 		"WEATHER": {
 			"description": "Checks if the world that the player is in has a storm",
-			"supportedModes": ["ALL", "SELF"]
+			"supportedModes": [
+				"ALL",
+				"SELF"
+			]
 		},
 		"INBLOCK": {
 			"description": "Checks if the player or entity is in one of the listed blocks",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"blocks": {
 					"description": "The list of blocks",
@@ -237,7 +292,12 @@
 		},
 		"WORLD": {
 			"description": "Checks if the world that the player, entity, or location is in is one of the listed worlds",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			],
 			"typeProperties": {
 				"worlds": {
 					"description": "The list of worlds",
@@ -250,7 +310,10 @@
 		},
 		"TAMED": {
 			"description": "Checks if the entity is tamed",
-			"supportedModes": ["ALL", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			],
 			"typeProperties": {
 				"checkOwner": {
 					"description": "If true, also checks if the player is the owner",
@@ -262,11 +325,19 @@
 		},
 		"FLYING": {
 			"description": "Checks if the player is flying",
-			"supportedModes": ["ALL", "SELF", "OTHER"]
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			]
 		},
 		"HEIGHT": {
 			"description": "Checks if the player or entity y location is in the range",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"height": {
 					"description": "The range in blocks",
@@ -278,7 +349,10 @@
 		},
 		"BLOCK": {
 			"description": "Checks if the location has one of the listed blocks",
-			"supportedModes": ["ALL", "LOCATION"],
+			"supportedModes": [
+				"ALL",
+				"LOCATION"
+			],
 			"typeProperties": {
 				"materials": {
 					"description": "The list of blocks",
@@ -291,12 +365,20 @@
 		},
 		"ITEM": {
 			"description": "Checks if the declared slot against the declared item",
-			"supportedModes": ["ALL", "SELF", "OTHER", "ITEM"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"ITEM"
+			],
 			"typeProperties": {
 				"slot": {
 					"description": "The slot to check",
 					"required": false,
-					"type": ["equipmentSlot", "integer"],
+					"type": [
+						"equipmentSlot",
+						"integer"
+					],
 					"default": "HAND"
 				},
 				"item": {
@@ -326,14 +408,14 @@
 								"displayName": {
 									"description": "A regex to match the display name against",
 									"required": false,
-									"type": "string", //regex type
+									"type": "string",
 									"default": ".+"
 								},
 								"lore": {
 									"description": "A list of regex to match the lore against",
 									"required": false,
 									"type": "array",
-									"items": "string", //regex type
+									"items": "string",
 									"default": ".+"
 								},
 								"enchants": {
@@ -364,7 +446,11 @@
 		},
 		"OR": {
 			"description": "ORs all the conditions inside",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"conditions": {
 					"description": "The conditions to OR",
@@ -384,7 +470,10 @@
 		},
 		"VISIBILITY": {
 			"description": "Checks if the player has a direct line of sight to the entity",
-			"supportedModes": ["ALL", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			],
 			"typeProperties": {
 				"maxDistance": {
 					"description": "The maximum distance to the entity",
@@ -395,10 +484,14 @@
 			}
 		}
 	},
-	"effects": { // TODO: additional refuiew required for description including target, better writing required for wrapper conditions
+	"effects": {
 		"DAMAGE": {
 			"description": "Damages the player or an entity",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"damage": {
 					"description": "The damage that will be dealt",
@@ -444,7 +537,10 @@
 		},
 		"AOE": {
 			"description": "Excecutes all the inside effects if all the inside conditions are satisfied. ",
-			"supportedModes": ["ALL", "SELF"],
+			"supportedModes": [
+				"ALL",
+				"SELF"
+			],
 			"extends": "WRAPPER",
 			"typeProperties": {
 				"radius": {
@@ -485,23 +581,34 @@
 		},
 		"VELOCITY": {
 			"description": "Sets the Y component of the velocity vector of the user or entity. Same as FLING",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"velocity": {
 					"description": "The Y velocity to set to",
 					"required": false,
 					"type": "number",
-					"default": 1.0
+					"default": 1
 				}
 			}
 		},
 		"CANCEL": {
 			"description": "Cancels the event that triggered this effect",
-			"supportedModes": ["ALL", "SELF"]
+			"supportedModes": [
+				"ALL",
+				"SELF"
+			]
 		},
 		"GLIDING": {
 			"description": "Sets the gliding mode of the player or entity (works even if an Elytra is not equipped)",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"glide": {
 					"description": "If true, makes the player or entity glide. Else if false, makes the player or entity stop gliding",
@@ -513,7 +620,12 @@
 		},
 		"WAIT": {
 			"description": "Waits a duration of time then excecutes all the inside effects if all the inside condition is satisfied",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			],
 			"extends": "WRAPPER",
 			"typeProperties": {
 				"delay": {
@@ -554,7 +666,11 @@
 		},
 		"POTION": {
 			"description": "Applies the potion effect to the player or entity",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"potion": {
 					"description": "The potion effect",
@@ -589,7 +705,10 @@
 		},
 		"WEB": {
 			"description": "Change the block at the player or entity for a duration of time, then change it back. Exactly the same effect as the BLOCKENTITY effect",
-			"supportedModes": ["ALL", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			],
 			"typeProperties": {
 				"duration": {
 					"description": "The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back",
@@ -607,7 +726,10 @@
 		},
 		"BLOCKENTITY": {
 			"description": "Change the block at the player or entity for a duration of time, then change it back. Exactly the same effect as the WEB effect",
-			"supportedModes": ["ALL", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			],
 			"typeProperties": {
 				"duration": {
 					"description": "The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back",
@@ -624,8 +746,13 @@
 			}
 		},
 		"ARROW": {
-			"description": "Shoot an arrow to the location or the location of the user or target entity", 
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"description": "Shoot an arrow to the location or the location of the user or target entity",
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			],
 			"typeProperties": {
 				"velocity": {
 					"description": "Used to determine the time that it takes to hit by (pythagoras distance)/velocity",
@@ -641,7 +768,11 @@
 				},
 				"damage": {
 					"description": "If projectile entity is an arrow, the damage that the arrow will do",
-					"if": {"entity": {"const": "arrow"}},
+					"if": {
+						"entity": {
+							"const": "arrow"
+						}
+					},
 					"required": false,
 					"type": "integer",
 					"default": 4
@@ -668,7 +799,11 @@
 		"ATTRIBUTE": {
 			"description": "Modifies an attribute owned by the user or entity",
 			"extends": "MODIFY",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"attribute": {
 					"description": "The attribute to modify. The name of the attribute should exclude the \"GENERIC_\" in the begining",
@@ -694,7 +829,10 @@
 		},
 		"LAUNCH": {
 			"description": "Launches an entity at the target",
-			"supportedModes": ["ALL", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			],
 			"typeProperties": {
 				"type": {
 					"description": "The entity to launch",
@@ -712,22 +850,32 @@
 		},
 		"MESSAGE": {
 			"description": "Sends a chat message to the user or target player",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"message": {
 					"description": "The message to send. The first occurence of \"player\" will be replaced by the player name",
-					"required": true, 
+					"required": true,
 					"type": "string"
 				}
 			}
 		},
 		"PICKUP": {
-			"description": "Pick up the target entity and places it on the user's head", // ty Xemor
-			"supportedModes": ["ALL", "OTHER"]
+			"description": "Pick up the target entity and places it on the user's head",
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			]
 		},
 		"REPULSE": {
 			"description": "Repulse the target entity",
-			"supportedModes": ["ALL", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			],
 			"typeProperties": {
 				"velocity": {
 					"description": "The velocity to repulse the target entity. Positive value means into the user. Negative value means away from the user",
@@ -740,7 +888,11 @@
 		"RESIZE": {
 			"description": "Resizes the user or target entity (for slimes, magma cubes, and phantoms)",
 			"extends": "MODIFY",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"retainHealth": {
 					"description": "For slimes and magma cubes. If true, make it retain the previous health (if more than the new max health, it sets it to the max health)",
@@ -763,7 +915,11 @@
 		},
 		"SMITE": {
 			"description": "Smites the user or target entity",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"fake": {
 					"description": "If true, it only makes the effect of lightning, not summoning an actual lightning",
@@ -775,19 +931,27 @@
 		},
 		"FLING": {
 			"description": "Sets the Y component of the velocity vector of the player or entity. Same as VELOCITY",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"velocity": {
 					"description": "The Y velocity to set to",
 					"required": false,
 					"type": "number",
-					"default": 1.0
+					"default": 1
 				}
 			}
 		},
 		"METADATA": {
 			"description": "Modifies a user defined variable",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"variable": {
 					"description": "The name of the variable",
@@ -809,7 +973,11 @@
 		},
 		"GIVEITEM": {
 			"description": "Gives the user or target entity an item",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"dropIfFull": {
 					"description": "If true, drops the items that did not fit into the inventory",
@@ -898,7 +1066,7 @@
 											}
 										}
 									]
-								}, 
+								},
 								"enchants": {
 									"description": "The enchantments",
 									"required": false,
@@ -917,10 +1085,19 @@
 											}
 										}
 									]
-								}, 
+								},
 								"color": {
 									"description": "If type is a leather armour. This contains the color metadata of the item",
-									"if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
+									"if": {
+										"type": {
+											"const": [
+												"POTION",
+												"SPLASH_POTION",
+												"LINGERING_POTION",
+												"TIPPED_ARROW"
+											]
+										}
+									},
 									"required": false,
 									"type": "object",
 									"default": {},
@@ -947,10 +1124,19 @@
 											"max": 255
 										}
 									}
-								}, 
+								},
 								"potion": {
 									"description": "If type is a potion, splash potion, lingering potion, or tipped arrow. This contains the potion metadata of the item",
-									"if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
+									"if": {
+										"type": {
+											"const": [
+												"POTION",
+												"SPLASH_POTION",
+												"LINGERING_POTION",
+												"TIPPED_ARROW"
+											]
+										}
+									},
 									"required": false,
 									"type": "object",
 									"default": {},
@@ -961,13 +1147,13 @@
 											"type": "potion"
 										},
 										"extended": {
-											"description": "Whether the potion is extended", 
+											"description": "Whether the potion is extended",
 											"required": false,
 											"type": "boolean",
 											"default": false
 										},
 										"upgraded": {
-											"description": "Whether the potion is upgraded", 
+											"description": "Whether the potion is upgraded",
 											"required": false,
 											"type": "boolean",
 											"default": false
@@ -982,11 +1168,19 @@
 		},
 		"SCRAMBLEINVENTORY": {
 			"description": "Scrambles the user or target entity's inventory",
-			"supportedModes": ["ALL", "SELF", "OTHER"]
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			]
 		},
 		"RANDOMTELEPORT": {
 			"description": "Teleports the user or target entity a random distance",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"minDistance": {
 					"description": "The minimum distance",
@@ -1004,7 +1198,12 @@
 		},
 		"PROJECTILE": {
 			"description": "Shoots an entity from the user, if mode is SELF, shoots the entity in the direction that the user is looking",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			],
 			"typeProperties": {
 				"entity": {
 					"description": "The entity to shoot",
@@ -1013,7 +1212,7 @@
 					"properties": {
 						"type": {
 							"description": "The entity type",
-							"required": false, 
+							"required": false,
 							"type": "entity",
 							"default": "ZOMBIE"
 						},
@@ -1037,7 +1236,6 @@
 							"properties": {},
 							"default": {}
 						}
-						// oh god, TODO
 					}
 				},
 				"velocity": {
@@ -1050,7 +1248,12 @@
 		},
 		"SOUND": {
 			"description": "Plays a sound at a location or at the location of the user or target entity",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			],
 			"typeProperties": {
 				"sound": {
 					"description": "The sound data",
@@ -1081,13 +1284,20 @@
 		},
 		"COMMAND": {
 			"description": "Excecutes a command",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"executor": {
 					"description": "The executor that will execute the command",
 					"required": false,
 					"type": "string",
-					"enum": ["CONSOLE", "PLAYER"],
+					"enum": [
+						"CONSOLE",
+						"PLAYER"
+					],
 					"ignoreCase": true,
 					"default": "CONSOLE"
 				},
@@ -1100,7 +1310,11 @@
 		},
 		"LUNGE": {
 			"description": "Applies an acceleration to the user or the target entity based on the direction the user is looking",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"horizontalVelocity": {
 					"description": "The scale to scale the horizontal components of the velocity vector",
@@ -1125,7 +1339,12 @@
 		"NEAREST": {
 			"description": "Excecutes all the inside effects to the nearest player and entity in the box centered on the location or the location of the user or target entity if all the inside conditions are satisfied",
 			"extends": "WRAPPER",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			],
 			"typeProperties": {
 				"radius": {
 					"description": "Half the side length of the box",
@@ -1164,9 +1383,14 @@
 			}
 		},
 		"SHOOTER": {
-			"description": "Excecutes all the inside effects if all the inside conditions are satisfied. With the shooter of the original target entity as the new target entity", 
+			"description": "Excecutes all the inside effects if all the inside conditions are satisfied. With the shooter of the original target entity as the new target entity",
 			"extends": "WRAPPER",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			],
 			"typeProperties": {
 				"onlyProjectiles": {
 					"description": "If true, only excecutes the inside effects if the original target entity is a projectile. If false, forwards the original target entity to the inside conditions and effects",
@@ -1178,14 +1402,17 @@
 		},
 		"KNOCKBACK": {
 			"description": "Applies a velocity to the target entity with the direction that the user is looking as the direction",
-			"supportedModes": ["ALL", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			],
 			"typeProperties": {
 				"multiplier": {
 					"description": "The velocity to apply",
 					"required": false,
 					"type": "number",
 					"default": 1
-				}, 
+				},
 				"overwriteCurrentVelocity": {
 					"description": "If true, sets the target's velocity. If false, adds to the target's original velocity",
 					"required": false,
@@ -1196,7 +1423,11 @@
 		},
 		"IGNITE": {
 			"description": "Sets the user or target entity on fire",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"fireTicks": {
 					"description": "The amount of time the fire will last (in ticks)",
@@ -1208,20 +1439,34 @@
 		},
 		"TARGET": {
 			"description": "If the user is a mob, sets the target of the user to the target entity",
-			"supportedModes": ["ALL", "OTHER"]
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			]
 		},
 		"SWAP": {
 			"description": "Swaps the position of the user and target entity",
-			"supportedModes": ["ALL", "OTHER"]
+			"supportedModes": [
+				"ALL",
+				"OTHER"
+			]
 		},
-		"LOCATIONCUBE": {//TODO
-			"description": "", 
+		"LOCATIONCUBE": {
+			"description": "",
 			"extends": "WRAPPER",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			]
 		},
 		"PLACEBLOCK": {
 			"description": "Replaces a block at the location for an amount of time. Retains the original block data",
-			"supportedModes": ["ALL", "LOCATION"],
+			"supportedModes": [
+				"ALL",
+				"LOCATION"
+			],
 			"typeProperties": {
 				"material": {
 					"description": "The block to replace to",
@@ -1239,17 +1484,26 @@
 					"description": "Time before the block reverts to the original block in seconds (1 is 20 ticks). If less than or equal to 0, does not revert the original block",
 					"required": false,
 					"type": "number",
-					"default": -1 // not revert
+					"default": -1
 				}
 			}
 		},
-		"SPAWNENTITY": {//TODO
+		"SPAWNENTITY": {
 			"description": "",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			]
 		},
 		"REMOVEPOTION": {
 			"description": "Removes potion effects from the user or target entity",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			],
 			"typeProperties": {
 				"types": {
 					"description": "The list of potion types. If empty, removes all potion effect",
@@ -1262,30 +1516,56 @@
 		},
 		"TELEPORT": {
 			"description": "Teleports the user to the location or the location of the target entity",
-			"supportedModes": ["ALL", "OTHER", "LOCATION"]
+			"supportedModes": [
+				"ALL",
+				"OTHER",
+				"LOCATION"
+			]
 		},
-		"RAYTRACE": {//TODO
+		"RAYTRACE": {
 			"description": "",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			]
 		},
-		"TIMER": {//TODO
+		"TIMER": {
 			"description": "",
 			"extends": "WRAPPER",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			]
 		},
 		"REMOVEENTITY": {
 			"description": "Removes the user or target entity",
-			"supportedModes": ["ALL", "SELF", "OTHER"]
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER"
+			]
 		},
-		"ITEMSTACK": {//TODO
+		"ITEMSTACK": {
 			"description": "",
 			"extends": "WRAPPER",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			]
 		},
 		"ITEMAMOUNT": {
 			"description": "Modifies the item amount",
 			"extends": "MODIFY",
-			"supportedModes": ["ALL", "ITEM"],
+			"supportedModes": [
+				"ALL",
+				"ITEM"
+			],
 			"typeProperties": {
 				"operation": {
 					"description": "The operation to do",
@@ -1300,10 +1580,15 @@
 				}
 			}
 		},
-		"SWITCHEROO": {//TODO
+		"SWITCHEROO": {
 			"description": "",
 			"extends": "WRAPPER",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+			"supportedModes": [
+				"ALL",
+				"SELF",
+				"OTHER",
+				"LOCATION"
+			]
 		}
 	}
 }
