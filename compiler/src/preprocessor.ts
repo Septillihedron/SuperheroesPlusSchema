@@ -1,9 +1,9 @@
-import { Properties, PropertiesMapEntry, Property, PropertyMap, Type } from "./Properties"
+import { Schema, PropertiesMapEntry, Property, PropertyMap, Type } from "./PreprocessedSchema"
 import { objectPropertyMap } from "./utils"
 
-export function preprocess(unprocessed: any): Properties {
+export function preprocess(unprocessed: any): Schema {
 	delete unprocessed.$schema
-	unprocessed = unprocessed as Properties
+	unprocessed = unprocessed as Schema
 	objectPropertyMap(unprocessed).forEach((types: extendableMap) => {
 		resolveExtends(types)
 		objectPropertyMap(types).forEach((type: Type) => {

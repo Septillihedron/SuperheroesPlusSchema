@@ -1,6 +1,6 @@
 
 export {
-	Properties,
+	Schema,
 	Descriptable,  
 	PropertyMap, Type, ConditionModes, Condition, EffectModes, Effect, 
 	PropertyTypes, PropertyStringTypes, PropertyType, 
@@ -8,7 +8,7 @@ export {
 	IfPath
 }
 
-interface Properties {
+interface Schema {
 	conditions: {[key: string] : Condition}
 	effects: {[key: string] : Effect}
 }

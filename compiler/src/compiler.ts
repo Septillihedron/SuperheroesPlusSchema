@@ -1,5 +1,5 @@
-import { Properties } from "./Properties";
+import * as Preprocessed from "./PreprocessedSchema";
 
-export function compile(preprocessed: Properties): object {
+export function compile(preprocessed: Preprocessed.Schema): object {
 	return preprocessed;
 }
