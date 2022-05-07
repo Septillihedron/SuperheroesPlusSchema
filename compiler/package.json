@@ -4,7 +4,7 @@
   "description": "Compiles properties.json into a proper schema",
   "main": "out/index.js",
   "scripts": {
-    "run": "tsc && node ./out/index.js"
+    "run": "tsc && node ./out/index.js && pause && npm run run"
   },
   "author": "Sepdron",
   "license": "ISC",
