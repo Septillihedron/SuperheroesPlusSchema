@@ -7,4 +7,4 @@ import { Properties } from './Properties';
 var code : string = readFileSync('../properties.json', 'utf-8');
 var preprocessed: Properties = preprocess(JSON5.parse(code));
 var compiled: object = compile(preprocessed)
-writeFileSync('./compiled-properties.json', JSON.stringify(compiled), 'utf-8');
+writeFileSync('./compiled-properties.json', JSON.stringify(compiled, null, 4), 'utf-8');
