@@ -1,10 +1,11 @@
 import { Properties, PropertyMap, Type } from "./Properties"
+import { objectPropertyMap } from "./utils"
 
 export function preprocess(unprocessed: any): Properties {
 	delete unprocessed.$schema
 	unprocessed = unprocessed as Properties
-	Object.keys(unprocessed).forEach(key => {
-		resolveExtends(unprocessed[key])
+	objectPropertyMap(unprocessed).forEach((types: extendableMap) => {
+		resolveExtends(types)
 	})
 	return unprocessed
 }
@@ -12,8 +13,7 @@ export function preprocess(unprocessed: any): Properties {
 type extendableMap = {[key: string] : Type}
 
 function resolveExtends(extendableMap: extendableMap) : void {
-	Object.keys(extendableMap).forEach(name => {
-		var type = extendableMap[name]
+	objectPropertyMap(extendableMap).forEach((type, name) => {
 		var extendsVal = type.extends
 		if (!extendsVal) return
 		delete type.extends
@@ -27,3 +27,4 @@ function resolveExtends(extendableMap: extendableMap) : void {
 		})
 	})
 }
+
