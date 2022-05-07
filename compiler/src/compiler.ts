@@ -1,5 +1,5 @@
+import { Properties } from "./Properties";
 
-
-function compile(code : string) : string {
-	return code;
+export function compile(preprocessed: Properties): object {
+	return preprocessed;
 }

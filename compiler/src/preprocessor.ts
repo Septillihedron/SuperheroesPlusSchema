@@ -1,5 +1,5 @@
+import { Properties } from "./Properties"
 
-export function preprocess(content: object): UncompiledProperties {
-	
-	return content;
+export function preprocess(content: object): Properties {
+	return content as Properties;
 }
