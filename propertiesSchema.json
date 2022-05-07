@@ -107,7 +107,7 @@
 					"description": "The description of the property"
 				},
 				"default": {
-					"type": ["object","array", "string", "number", "integer", "boolean", "null"],
+					"type": ["object", "array", "string", "number", "integer", "boolean", "null"],
 					"description": "The default value that this property falls to if not provided"
 				},
 				"required": {
@@ -271,13 +271,13 @@
 		"stringTypes": {
 			"enum": [
 				"string", 
-				"range", "comparison", "operation",
+				"range", "comparison", "operation", 
 				"entity", "block", "item", 
 				"enchantment", "potion", 
 				"biome", "world", 
 				"equipmentSlot", 
-				"attribute",
-				"sound",
+				"attribute", 
+				"sound", 
 				"condition", "effect"
 			]
 		},
