@@ -6,3 +6,11 @@ export function objectPropertyMap(object: {[key: string]: any}): Map<string | nu
 	});
 	return map
 }
+
+export type ExcludeType<T, U> = {
+	[K in keyof T as T[K] extends U? never : K]: T[K]
+}
+
+export type ExcludeFunc<T> = ExcludeType<T, Function>
+
+
