@@ -20,7 +20,6 @@ function resolveExtends(extendableMap: extendableMap) : void {
 	objectPropertyMap(extendableMap).forEach((type, name) => {
 		var extendsVal = type.extends
 		if (!extendsVal) return
-		delete type.extends
 		var extendedProperties = extendableMap[extendsVal].typeProperties
 		if (!extendedProperties) return
 		var typeProperties = type.typeProperties
