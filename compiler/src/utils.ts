@@ -13,4 +13,4 @@ export type ExcludeType<T, U> = {
 
 export type ExcludeFunc<T> = ExcludeType<T, Function>
 
-
+export type MonoTypeObject<U> = { [key: string | number | symbol]: U };
