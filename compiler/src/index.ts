@@ -8,3 +8,4 @@ var code : string = readFileSync('../properties.json', 'utf-8');
 var preprocessed: Schema = preprocess(JSON5.parse(code));
 var compiled: object = compile(preprocessed)
 writeFileSync('./compiled-properties.json', JSON.stringify(compiled, null, 4), 'utf-8');
+writeFileSync('./compiled-properties-compressed.json', JSON.stringify(compiled), 'utf-8');
