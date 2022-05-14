@@ -5,7 +5,6 @@ import { objectPropertyMap } from "./utils"
 export function compile(preprocessed: Preprocessed.Schema): Compiled.Schema {
 	var schema = new Compiled.Schema()
 
-	addTypes(schema, preprocessed)
 	addCustomSkill(schema)
 	objectPropertyMap(preprocessed.conditions).forEach((condition: Preprocessed.Condition, name) => {
 		addCondition(schema, name as string, condition)
@@ -21,11 +20,8 @@ export function compile(preprocessed: Preprocessed.Schema): Compiled.Schema {
 	return schema
 }
 
-function addTypes({definitions}: Compiled.Schema, preprocessed: Preprocessed.Schema): void {
+function addCustomSkill({definitions, skills}: Compiled.Schema): void {
 	definitions.skill.addSkill("CUSTOM")
-}
-
-function addCustomSkill({skills}: Compiled.Schema): void {
 	var skill = new Compiled.SkillDefinition()
 	skill.addProperty("trigger", {$ref: "#/definitions/trigger"})
 	skill.addProperty("effects", {
