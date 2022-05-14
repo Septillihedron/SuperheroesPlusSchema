@@ -30,7 +30,7 @@ class Schema {
 	readonly skills: MonoTypeObject<SkillDefinition> = {}
 	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
 	readonly effects: MonoTypeObject<EffectDefinition> = {}
-
+	readonly types: MonoTypeObject<TypeDefinition> = {}
 }
 
 class Hero {
@@ -408,4 +408,18 @@ class EffectDefinition {
 		this.if = true
 		this.then = {$ref: `#/effects/${condition.toUpperCase()}`}
 	}
+}
+
+interface TypeDefinition extends Property {
+	type?: types | types[]
+	properties?: PropertyMap
+	patternProperties?: PropertyMap
+	$ref?: string
+	if?: IfPath
+	then?: Property
+	else?: Property
+	required?: string[]
+	enum?: any[]
+	allOf?: Property[]
+	anyOf?: Property[]
 }
