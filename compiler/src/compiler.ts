@@ -11,6 +11,10 @@ export function compile(preprocessed: Preprocessed.Schema): Compiled.Schema {
 		if (condition.available === false) return
 		addCondition(schema, name as string, condition)
 	})
+	objectPropertyMap(preprocessed.effects).forEach((effect: Preprocessed.Effect, name) => {
+		if (effect.available === false) return
+		addEffect(schema, name as string, effect)
+	})
 
 	return schema
 }
@@ -48,6 +52,20 @@ function addCondition({conditions}: Compiled.Schema, name: string, condition: Pr
 	}
 	
 	conditions[name] = compiledCondition
+}
+
+function addEffect({effects}: Compiled.Schema, name: string, effect: Preprocessed.Effect): void {
+	let compiledEffect = new Compiled.ConditionDefinition(effect.supportedModes!)
+	if (effect.typeProperties !== undefined) {
+		objectPropertyMap(effect.typeProperties)
+			.forEach((property, name) => {
+				let compiledProperty = compileProperty(property, 
+					new Compiled.PropertyClass(effects, name as string, `#/effects/${name}`))
+				compiledEffect.addProperty(name as string, compiledProperty, property.required)
+			})
+	}
+	
+	effects[name] = compiledEffect
 }
 
 type propertyPartsCompiler = {
