@@ -366,7 +366,8 @@ class ConditionDefinition {
 	}
 	required?: string[]
 	static readonly additionalProperties = false
-	$ref?: string
+	if?: true
+	then?: {$ref: string}
 	
 	constructor(modes: ConditionModes[]) {
 		this.properties = { type: true, mode: { enum: modes } }
@@ -380,7 +381,8 @@ class ConditionDefinition {
 		}
 	}
 	setExtension(condition: string) {
-		this.$ref = `#/conditions/${condition.toUpperCase()}`
+		this.if = true
+		this.then = {$ref: `#/conditions/${condition.toUpperCase()}`}
 	}
 }
 
