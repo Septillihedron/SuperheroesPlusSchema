@@ -58,6 +58,7 @@ interface Property extends Descriptable {
 	propertiesMap?: PropertiesMap
 	ref?: string
 	if?: IfPath
+	enum?: any[]
 }
 
 interface IfPath {
