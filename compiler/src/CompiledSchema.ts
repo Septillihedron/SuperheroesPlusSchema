@@ -1,11 +1,11 @@
-import { IfPath, EffectModes, ConditionModes } from "./PreprocessedSchema";
+import { IfPath, PropertyTypes, EffectModes, ConditionModes } from "./PreprocessedSchema";
 import { MonoTypeObject } from "./utils";
 
 export {
 	Schema, 
 	Hero, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
-	Property, PropertyMap, types, 
+	Path, Property, PropertyMap, types, 
 	SkillDefinition, ConditionDefinition, EffectDefinition
 }
 
@@ -165,6 +165,35 @@ class Effect {
 type types = "array" | "object" | "string" | "number" | "integer" | "boolean"
 
 type PropertyMap = MonoTypeObject<Property>
+
+class Path {
+
+	readonly parts: string[]
+
+	constructor(parts: string)
+	constructor(...parts: string[])
+	constructor(parts: string[] | string) {
+		if (parts instanceof Array) {
+			this.parts = parts
+			return
+		}
+		this.parts = parts.split("/")
+	}
+
+	asIf(content: IfPath): IfPath {
+		var originalPath: IfPath = {}
+		var path: IfPath = originalPath
+		this.parts.forEach((part: string) => {
+			path[part] = {}
+			path = path[part]
+		})
+		return originalPath
+	}
+	asString(): string {
+		return this.parts.join("/")
+	}
+
+}
 
 type Property = {
 	description?: string
