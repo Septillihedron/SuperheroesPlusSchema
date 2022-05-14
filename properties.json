@@ -788,6 +788,7 @@
 		"METADATA": {
 			"description": "Modifies a user defined variable",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "MODIFY",
 			"typeProperties": {
 				"variable": {
 					"description": "The name of the variable",
