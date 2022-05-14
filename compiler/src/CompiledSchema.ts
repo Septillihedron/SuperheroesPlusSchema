@@ -89,11 +89,12 @@ class Skill {
 	static readonly type = "object"
 	readonly properties = { skill: new Types("The type of the skill") }
 	static readonly required = ["skill"]
-	readonly allOf : IfThenRefrence[] = []
+	readonly if = {"properties": {"skill": {"const": null}}}
+	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
 	addSkill(name: string): void {
 		this.properties.skill.addType(name)
-		this.allOf.push(new IfThenRefrence("skill", name))
+		this.else.allOf.push(new IfThenRefrence("skill", name))
 	}
 }
 
@@ -135,11 +136,12 @@ class Condition {
 		}
 	}
 	static readonly required = ["type", "mode"]
-	readonly allOf: IfThenRefrence[] = []
+	readonly if = {"properties": {"type": {"const": null}}}
+	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
 	addType(name: string): void {
 		this.properties.type.addType(name)
-		this.allOf.push(new IfThenRefrence("condition", name))
+		this.else.allOf.push(new IfThenRefrence("condition", name))
 	}
 }
 
@@ -153,12 +155,12 @@ class Effect {
 			type: "string"
 		}
 	}
-	static readonly required = ["type", "mode"]
-	readonly allOf: IfThenRefrence[] = []
+	readonly if = {"properties": {"type": {"const": null}}}
+	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
 	addType(name: string): void {
 		this.properties.type.addType(name)
-		this.allOf.push(new IfThenRefrence("effect", name))
+		this.else.allOf.push(new IfThenRefrence("effect", name))
 	}
 }
 
