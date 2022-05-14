@@ -262,23 +262,25 @@ class PropertyClass implements Property {
 		this.default = defaultVal
 	}
 	addType(type: PropertyTypes): void {
+		let parsedType = this.parseType(type)
+		if (parsedType === undefined) return
+
 		if (this.type === undefined) {
-			this.type = this.parseType(type)
+			this.type = parsedType
 			return
 		}
 		if (this.type instanceof Array) {
-			this.type.push(this.parseType(type))
+			this.type.push(parsedType)
 			return
 		}
-		this.type = [this.type, this.parseType(type)]
+		this.type = [this.type, parsedType]
 	}
 	private static readonly typesArray = ["array", "object", "string", "number", "integer", "boolean"]
-	private parseType(type: PropertyTypes): types {
+	private parseType(type: PropertyTypes): types | undefined {
 		if (PropertyClass.typesArray.includes(type)) {
 			return type as types
 		} else {
-			// this.addAllOf({$ref: `#/types/${type}`})
-			return "string"
+			this.addAllOf({$ref: `#/types/${type}`})
 		}
 	}
 	setMin(min: number): void {
