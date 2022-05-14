@@ -1,2 +1,27 @@
-# yaml-language-server: $schema=compiled-target.json
+# yaml-language-server: $schema=compiled-properties-compressed.json
+sjd:
+  skills:
+    skil:
+      skill: CUSTOM
+      trigger:
+        type: LOOP
+        conditions:
+          sjd:
+            type: BIOME
+            mode: ALL
+            biomes:
+              - "agsd"
+      effects:
+        $schema:
+          type: AOE
+          mode: SELF
+          radius: 5
+        hsdg:
+          type: CANCEL
+          mode: ALL
+        sdh:
+          type: ATTRIBUTE
+          mode: ALL
+          attribute: "sda"
+
 
