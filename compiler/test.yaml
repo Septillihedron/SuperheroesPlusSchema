@@ -10,7 +10,15 @@ sjd:
             type: BIOME
             mode: ALL
             biomes:
-              - "agsd"
+              - BADLANDS
+          not:
+            type: NOT
+            mode: OTHER
+            condition: 
+              type: BIOME
+              mode: LOCATION
+              biomes:
+                - BAMBOO_JUNGLE
       effects:
         $schema:
           type: AOE
@@ -22,6 +30,11 @@ sjd:
         sdh:
           type: ATTRIBUTE
           mode: ALL
-          attribute: "sda"
+          attribute: LUCK
+          operation: DIVIDE
+          value: 12
+
+          
+
 
 
