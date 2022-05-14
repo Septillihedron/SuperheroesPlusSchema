@@ -57,6 +57,28 @@
 				}
 			},
 			"additionalProperties": false
+		},
+		"types": {
+			"type": "object",
+			"description": "The list of types and their definitions that is in the skills library",
+			"patternProperties": {
+				".*": {
+					"type": "object",
+					"description": "A type and definition",
+					"properties": {
+						"description": { "$ref": "#/definitions/property/properties/description" },
+						"type": { "$ref": "#/definitions/property/properties/type" },
+						"properties": { "$ref": "#/definitions/property/properties/properties" },
+						"patternProperties": { "$ref": "#/definitions/property/properties/patternProperties" },
+						"propertiesMap": { "$ref": "#/definitions/property/properties/propertiesMap" },
+						"ref": { "$ref": "#/definitions/property/properties/ref" },
+						"enum": { "$ref": "#/definitions/property/properties/enum" }
+					},
+					"required": ["description"],
+					"additionalItems": false
+				}
+			},
+			"additionalProperties": false
 		}
 	},
 	"definitions": {

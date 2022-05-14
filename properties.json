@@ -1304,5 +1304,11 @@
 			"extends": "WRAPPER",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
 		}
+	},
+	"types": {
+		"biome": {
+			"description": "The list valid of biome names"
+		}
+		
 	}
 }
