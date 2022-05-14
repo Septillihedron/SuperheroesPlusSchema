@@ -410,7 +410,7 @@ class EffectDefinition {
 	}
 }
 
-interface TypeDefinition extends Property {
+interface TypeDefinition {
 	type?: types | types[]
 	properties?: PropertyMap
 	patternProperties?: PropertyMap
