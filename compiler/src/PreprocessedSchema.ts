@@ -2,7 +2,7 @@
 export {
 	Schema,
 	Descriptable,  
-	PropertyMap, Type, ConditionModes, Condition, EffectModes, Effect, 
+	PropertyMap, Type, ConditionModes, Condition, EffectModes, Effect, TypeDefinition, 
 	PropertyTypes, PropertyStringTypes, PropertyType, 
 	PropertiesMap, PropertiesMapEntry, PropertiesMapKey, Property, 
 	IfPath

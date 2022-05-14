@@ -6,7 +6,7 @@ export {
 	Hero, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	SkillDefinition, ConditionDefinition, EffectDefinition
+	SkillDefinition, ConditionDefinition, EffectDefinition, TypeDefinition
 }
 
 class Schema {
