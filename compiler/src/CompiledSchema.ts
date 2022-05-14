@@ -420,6 +420,7 @@ interface TypeDefinition {
 	else?: Property
 	required?: string[]
 	enum?: any[]
+	pattern?: string
 	allOf?: Property[]
 	anyOf?: Property[]
 }
