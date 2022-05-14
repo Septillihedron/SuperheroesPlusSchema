@@ -50,6 +50,91 @@ function addCondition({conditions}: Compiled.Schema, name: string, condition: Pr
 	conditions[name] = compiledCondition
 }
 
+type propertyPartsCompiler = {
+	[Key in keyof Preprocessed.Property]-?: 
+		(property: Preprocessed.Property[Key], compilingProperty: Compiled.PropertyClass) => void
+}
+
+const PropertyPartsCompiler: propertyPartsCompiler = {
+	default: (defaultVal, compilingProperty) => {
+		compilingProperty.setDefault(defaultVal)
+	},
+	required: (required, compilingProperty) => {
+		if (!required) return
+		if (compilingProperty.parent instanceof Compiled.PropertyClass) {
+			compilingProperty.parent.addRequired(compilingProperty.name)
+		}
+	},
+	type: (type, compilingProperty) => {
+		if (type instanceof Array) {
+			type.forEach(type => compilingProperty.addType(type))
+		} else {
+			compilingProperty.addType(type)
+		}
+	},
+	min: (min, compilingProperty) => {
+		if (min !== undefined) compilingProperty.setMin(min)
+	},
+	max: (max, compilingProperty) => {
+		if (max !== undefined) compilingProperty.setMax(max)
+	},
+	items: (items, compilingProperty) => {
+		if (items === undefined) return
+		var itemsProperty = new Compiled.PropertyClass(compilingProperty, "items")
+		deletePropertyClassHelperProperties(itemsProperty)
+		PropertyPartsCompiler.type(items, itemsProperty)
+		compilingProperty.setItems(itemsProperty)
+	},
+	properties: (properties, compilingProperty) => {
+		if (properties === undefined) return
+		objectPropertyMap(properties).forEach((property, name) => {
+			let compiledProperty = compileProperty(property, 
+				new Compiled.PropertyClass(compilingProperty, name as string))
+			
+			compilingProperty.addProperty(name as string, compiledProperty)
+		})
+	},
+	patternProperties: (patternProperties, compilingProperty) => {
+		if (patternProperties === undefined) return
+		objectPropertyMap(patternProperties).forEach((property, name) => {
+			let compiledProperty = compileProperty(property, 
+				new Compiled.PropertyClass(compilingProperty, name as string))
+		
+			compilingProperty.addProperty(name as string, compiledProperty)
+		})
+	},
+	propertiesMap: (property, compilingProperty) => {
+		
+	},
+	ref: ($ref, compilingProperty) => {
+		
+	},
+	if: (property, compilingProperty) => {
+		
+	},
+	description: (description, compilingProperty) => {
+		compilingProperty.setDescription(description)
+	},
+	enum: (enumVal, compilingProperty) => {
+		if (enumVal === undefined) return
+		compilingProperty.setEnum(enumVal)
+	}
+}
+
 function compileProperty(property: Preprocessed.Property, compilingProperty: Compiled.Property): Compiled.Property {
-	return {}
+
+	Object.keys(property).forEach(key => {
+		(PropertyPartsCompiler as any)[key]((property as any)[key], compilingProperty)
+	})
+
+	deletePropertyClassHelperProperties(compilingProperty)
+
+	return compilingProperty
+}
+
+function deletePropertyClassHelperProperties(property: Compiled.Property): Compiled.Property {
+	Object.keys(property).forEach(key => {
+		if (["parent", "path", "name"].includes(key)) delete (property as any)[key]
+	})
+	return property
 }
