@@ -16,6 +16,10 @@ export function compile(preprocessed: Preprocessed.Schema): Compiled.Schema {
 		if (effect.available === false) return
 		schema.definitions.effect.addType(name as string)
 	})
+	objectPropertyMap(preprocessed.types).forEach((type: Preprocessed.TypeDefinition, name) => {
+		addType(schema, name as string, type)
+	})
+	addInternalTypes(schema);
 
 	return schema
 }
@@ -62,6 +66,48 @@ function addEffect({effects}: Compiled.Schema, name: string, effect: Preprocesse
 	}
 	
 	effects[name] = compiledEffect
+}
+
+function addType({types}: Compiled.Schema, name: string, type: Preprocessed.TypeDefinition): void {
+	if (["condition", "effect"].includes(name)) return
+
+	let compiledType: Compiled.TypeDefinition = {}
+
+	compiledType.type = type.type as Compiled.types
+	compiledType.enum = type.enum
+	compiledType.pattern = type.pattern
+	if (type.properties !== undefined) {
+		compiledType.properties = {}
+		objectPropertyMap(type.properties)
+			.forEach((property, name) => {
+				let compiledProperty = compileProperty(property, 
+					new Compiled.PropertyClass(types, name as string, `#/types/${name}`))
+				compiledType.properties![name] = compiledProperty
+			})
+	}
+	if (type.patternProperties !== undefined) {
+		compiledType.patternProperties = {}
+		objectPropertyMap(type.patternProperties)
+			.forEach((property, name) => {
+				let compiledProperty = compileProperty(property, 
+					new Compiled.PropertyClass(types, name as string, `#/types/${name}`))
+				compiledType.patternProperties![name] = compiledProperty
+			})
+	}
+	if (type.ref !== undefined) compiledType.$ref = `#/types/${type.ref}`
+
+	types[name] = compiledType
+}
+
+function addInternalTypes({types}: Compiled.Schema): void {
+	types["condition"] = {
+		type: "object",
+		$ref: "#/definitions/condition"
+	}
+	types["effect"] = {
+		type: "object",
+		$ref: "#/definitions/effect"
+	}
 }
 
 type propertyPartsCompiler = {
