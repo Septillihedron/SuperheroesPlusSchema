@@ -8,14 +8,14 @@ export function compile(preprocessed: Preprocessed.Schema): Compiled.Schema {
 	addTypes(schema, preprocessed)
 	addCustomSkill(schema)
 	objectPropertyMap(preprocessed.conditions).forEach((condition: Preprocessed.Condition, name) => {
+		addCondition(schema, name as string, condition)
 		if (condition.available === false) return
 		schema.definitions.condition.addType(name as string)
-		addCondition(schema, name as string, condition)
 	})
 	objectPropertyMap(preprocessed.effects).forEach((effect: Preprocessed.Effect, name) => {
+		addEffect(schema, name as string, effect)
 		if (effect.available === false) return
 		schema.definitions.effect.addType(name as string)
-		addEffect(schema, name as string, effect)
 	})
 
 	return schema
@@ -40,6 +40,7 @@ function addCustomSkill({skills}: Compiled.Schema): void {
 
 function addCondition({conditions}: Compiled.Schema, name: string, condition: Preprocessed.Condition): void {
 	let compiledCondition = new Compiled.ConditionDefinition(condition.supportedModes!)
+	if (condition.extends !== undefined) compiledCondition.setExtension(condition.extends)
 	if (condition.typeProperties !== undefined) {
 		objectPropertyMap(condition.typeProperties)
 			.forEach((property, name) => {
@@ -48,12 +49,13 @@ function addCondition({conditions}: Compiled.Schema, name: string, condition: Pr
 				compiledCondition.addProperty(name as string, compiledProperty, property.required)
 			})
 	}
-	
+
 	conditions[name] = compiledCondition
 }
 
 function addEffect({effects}: Compiled.Schema, name: string, effect: Preprocessed.Effect): void {
 	let compiledEffect = new Compiled.ConditionDefinition(effect.supportedModes!)
+	if (effect.extends !== undefined) compiledEffect.setExtension(effect.extends)
 	if (effect.typeProperties !== undefined) {
 		objectPropertyMap(effect.typeProperties)
 			.forEach((property, name) => {

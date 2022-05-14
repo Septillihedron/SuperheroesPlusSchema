@@ -364,6 +364,7 @@ class ConditionDefinition {
 	}
 	required?: string[]
 	static readonly additionalProperties = false
+	$ref?: string
 	
 	constructor(modes: ConditionModes[]) {
 		this.properties = { type: true, mode: { enum: modes } }
@@ -376,6 +377,9 @@ class ConditionDefinition {
 			this.required.push(name)
 		}
 	}
+	setExtension(condition: string) {
+		this.$ref = `#/conditions/${condition.toUpperCase()}`
+	}
 }
 
 class EffectDefinition {
@@ -386,6 +390,8 @@ class EffectDefinition {
 	}
 	required?: string[]
 	static readonly additionalProperties = false
+	if?: true
+	then?: {$ref: string}
 
 	constructor(modes: EffectModes[]) {
 		this.properties = { type: true, mode: { enum: modes } }
@@ -397,5 +403,9 @@ class EffectDefinition {
 			if (this.required === undefined) this.required = []
 			this.required.push(name)
 		}
+	}
+	setExtension(condition: string) {
+		this.if = true
+		this.then = {$ref: `#/effects/${condition.toUpperCase()}`}
 	}
 }
