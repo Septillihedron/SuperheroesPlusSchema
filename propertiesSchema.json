@@ -72,7 +72,8 @@
 						"patternProperties": { "$ref": "#/definitions/property/properties/patternProperties" },
 						"propertiesMap": { "$ref": "#/definitions/property/properties/propertiesMap" },
 						"ref": { "$ref": "#/definitions/property/properties/ref" },
-						"enum": { "$ref": "#/definitions/property/properties/enum" }
+						"enum": { "$ref": "#/definitions/property/properties/enum" },
+						"pattern": { "$ref": "#/definitions/property/properties/pattern" }
 					},
 					"required": ["description"],
 					"additionalItems": false
@@ -226,6 +227,10 @@
 					"type": "array",
 					"description": "List of available values",
 					"minItems": 1
+				},
+				"pattern": {
+					"type": "string",
+					"description": "A regex to match the string againt"
 				}
 			},
 			"required": ["description", "required", "type"],
