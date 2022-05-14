@@ -1,11 +1,11 @@
-import { EffectModes, ConditionModes } from "./PreprocessedSchema";
+import { IfPath, EffectModes, ConditionModes } from "./PreprocessedSchema";
 import { MonoTypeObject } from "./utils";
 
 export {
 	Schema, 
 	Hero, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
-	Property,
+	Property, PropertyMap, types, 
 	SkillDefinition, ConditionDefinition, EffectDefinition
 }
 
@@ -162,8 +162,27 @@ class Effect {
 	}
 }
 
+type types = "array" | "object" | "string" | "number" | "integer" | "boolean"
+
+type PropertyMap = MonoTypeObject<Property>
+
 type Property = {
-	
+	description?: string
+	default?: any
+	type?: types | types[]
+	minimum?: number
+	maximum?: number
+	items?: Property
+	properties?: PropertyMap
+	patternProperties?: PropertyMap
+	$ref?: string
+	if?: IfPath
+	then?: Property
+	else?: Property
+	required?: string[]
+	enum?: any[]
+	allOf?: Property[]
+	anyOf?: Property[]
 }
 
 class SkillDefinition {
