@@ -9,10 +9,12 @@ export function compile(preprocessed: Preprocessed.Schema): Compiled.Schema {
 	addCustomSkill(schema)
 	objectPropertyMap(preprocessed.conditions).forEach((condition: Preprocessed.Condition, name) => {
 		if (condition.available === false) return
+		schema.definitions.condition.addType(name as string)
 		addCondition(schema, name as string, condition)
 	})
 	objectPropertyMap(preprocessed.effects).forEach((effect: Preprocessed.Effect, name) => {
 		if (effect.available === false) return
+		schema.definitions.effect.addType(name as string)
 		addEffect(schema, name as string, effect)
 	})
 
@@ -21,10 +23,6 @@ export function compile(preprocessed: Preprocessed.Schema): Compiled.Schema {
 
 function addTypes({definitions}: Compiled.Schema, preprocessed: Preprocessed.Schema): void {
 	definitions.skill.addSkill("CUSTOM")
-	Object.keys(preprocessed.conditions)
-		.forEach(name => definitions.condition.addType(name))
-	Object.keys(preprocessed.effects)
-		.forEach(name => definitions.effect.addType(name))
 }
 
 function addCustomSkill({skills}: Compiled.Schema): void {
