@@ -73,10 +73,14 @@
 						"propertiesMap": { "$ref": "#/definitions/property/properties/propertiesMap" },
 						"ref": { "$ref": "#/definitions/property/properties/ref" },
 						"enum": { "$ref": "#/definitions/property/properties/enum" },
-						"pattern": { "$ref": "#/definitions/property/properties/pattern" }
+						"pattern": { "$ref": "#/definitions/property/properties/pattern" },
+						"internal": {
+							"type": "boolean",
+							"description": "If true, this type is managed internally"
+						}
 					},
-					"required": ["description"],
-					"additionalItems": false
+					"additionalItems": false,
+					"default": {}
 				}
 			},
 			"additionalProperties": false
