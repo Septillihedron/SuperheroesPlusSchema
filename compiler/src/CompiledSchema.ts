@@ -5,7 +5,7 @@ export {
 	Schema, 
 	Hero, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
-	Path, Property, PropertyMap, types, 
+	Path, Property, PropertyClass, PropertyMap, types, 
 	SkillDefinition, ConditionDefinition, EffectDefinition
 }
 
@@ -212,6 +212,123 @@ type Property = {
 	enum?: any[]
 	allOf?: Property[]
 	anyOf?: Property[]
+}
+
+class PropertyClass implements Property {
+	description?: string
+	default?: any
+	type?: types | types[]
+	minimum?: number
+	maximum?: number
+	items?: Property
+	properties?: PropertyMap
+	patternProperties?: PropertyMap
+	$ref?: string
+	if?: IfPath
+	then?: Property
+	else?: Property
+	required?: string[]
+	enum?: any[]
+	allOf?: Property[]
+	anyOf?: Property[]
+
+	name: string
+	path: Path
+	parent: object
+
+	constructor(parent: object, name: string, path: string)
+	constructor(parent: {path: Path}, name: string)
+	constructor(parent: {path: Path} | object, name: string, path?: string) {
+		this.name = name
+		this.parent = parent
+
+		if (path !== undefined) {
+			this.path = new Path(path)
+			return
+		}
+		if (!("path" in parent)) {// this if should never happen
+			this.path = new Path()
+			return
+		}
+		this.path = new Path(...parent.path.parts, name)
+	}
+
+	setDescription(description: string): void {
+		this.description = description
+	}
+	setDefault(defaultVal: any): void {
+		this.default = defaultVal
+	}
+	addType(type: PropertyTypes): void {
+		if (this.type === undefined) {
+			this.type = this.parseType(type)
+			return
+		}
+		if (this.type instanceof Array) {
+			this.type.push(this.parseType(type))
+			return
+		}
+		this.type = [this.type, this.parseType(type)]
+	}
+	private static readonly typesArray = ["array", "object", "string", "number", "integer", "boolean"]
+	private parseType(type: PropertyTypes): types {
+		if (PropertyClass.typesArray.includes(type)) {
+			return type as types
+		} else {
+			// this.addAllOf({$ref: `#/types/${type}`})
+			return "string"
+		}
+	}
+	setMin(min: number): void {
+		this.minimum = min
+	}
+	setMax(max: number): void {
+		this.maximum = max
+	}
+	setRange(min: number, max: number): void {
+		this.minimum = min
+		this.maximum = max
+	}
+	setItems(items: Property): void {
+		this.items = items
+	}
+	addProperty(name: string, property: Property): void {
+		if (this.properties == undefined) this.properties = {}
+		this.properties[name] = property
+	}
+	addPatternProperty(name: string, patternPropety: Property): void {
+		if (this.patternProperties == undefined) this.patternProperties = {}
+		this.patternProperties[name] = patternPropety
+	}
+	set$ref($ref: string): void {
+		this.$ref = $ref
+	}
+	setIf(ifVal: IfPath): void {
+		this.if = ifVal
+	}
+	setThen(then: Property): void {
+		this.then = then
+	}
+	setElse(elseVal: Property): void {
+		this.else = elseVal
+	}
+	setIfThenElse(ifVal: IfPath, then: Property, elseVal?: Property): void {
+		this.if = ifVal
+		this.then = then
+		if (elseVal !== undefined) this.else = elseVal
+	}
+	addRequired(required: string): void {
+		if (this.required === undefined) this.required = []
+		this.required.push(required)
+	}
+	setEnum(enumVal: any[]): void {
+		this.enum = enumVal
+	}
+	addAllOf(property: Property): void {
+		if (this.allOf === undefined) this.allOf = []
+		this.allOf.push(property)
+	}
+
 }
 
 class SkillDefinition {
