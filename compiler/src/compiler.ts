@@ -54,7 +54,7 @@ function addCondition({conditions}: Compiled.Schema, name: string, condition: Pr
 }
 
 function addEffect({effects}: Compiled.Schema, name: string, effect: Preprocessed.Effect): void {
-	let compiledEffect = new Compiled.ConditionDefinition(effect.supportedModes!)
+	let compiledEffect = new Compiled.EffectDefinition(effect.supportedModes!)
 	if (effect.extends !== undefined) compiledEffect.setExtension(effect.extends)
 	if (effect.typeProperties !== undefined) {
 		objectPropertyMap(effect.typeProperties)
