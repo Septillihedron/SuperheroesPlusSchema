@@ -59,13 +59,18 @@ class Hero {
 	}
 }
 
+type constDescription = {const: string, description: string}
+
+type Types_oneOf = [{ enum: string[], oneOf: constDescription[] }, {}]
+
 class Types {
 	readonly description: string
 	static readonly type = "string"
-	readonly enum: string[] = []
+	readonly oneOf: Types_oneOf = [{ enum: [], oneOf: [] }, {}]
 
-	addType(name: string): void {
-		this.enum.push(name)
+	addType(name: string, description: string): void {
+		this.oneOf[0].enum.push(name)
+		this.oneOf[0].oneOf.push({const: name, description: description})
 	}
 
 	constructor(description: string) {
@@ -92,8 +97,8 @@ class Skill {
 	readonly if = {"properties": {"skill": {"const": null}}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
-	addSkill(name: string): void {
-		this.properties.skill.addType(name)
+	addSkill(name: string, description: string): void {
+		this.properties.skill.addType(name, description)
 		this.else.allOf.push(new IfThenRefrence("skill", name))
 	}
 }
@@ -119,8 +124,8 @@ class Trigger {
 	}
 	static readonly required = ["type"]
 
-	// addType(name: string): void {
-	// 	this.properties.skill.addType(name)
+	// addType(name: string, description: string): void {
+	// 	this.properties.type.addType(name, description)
 	// 	this.allOf.push(new IfThenRefrence("skill", name))
 	// }
 }
@@ -139,8 +144,8 @@ class Condition {
 	readonly if = {"properties": {"type": {"const": null}}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
-	addType(name: string): void {
-		this.properties.type.addType(name)
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
 		this.else.allOf.push(new IfThenRefrence("condition", name))
 	}
 }
@@ -158,8 +163,8 @@ class Effect {
 	readonly if = {"properties": {"type": {"const": null}}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
-	addType(name: string): void {
-		this.properties.type.addType(name)
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
 		this.else.allOf.push(new IfThenRefrence("effect", name))
 	}
 }
