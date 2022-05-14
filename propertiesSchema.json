@@ -199,6 +199,11 @@
 				},
 				"if": {
 					"$ref": "#/definitions/if"
+				},
+				"enum": {
+					"type": "array",
+					"description": "List of available values",
+					"minItems": 1
 				}
 			},
 			"required": ["description", "required", "type"],
