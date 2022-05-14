@@ -11,6 +11,7 @@ export {
 interface Schema {
 	conditions: {[key: string] : Condition}
 	effects: {[key: string] : Effect}
+	types: {[key: string] : TypeDefinition}
 }
 
 interface Descriptable {
@@ -64,4 +65,15 @@ interface Property extends Descriptable {
 interface IfPath {
 	[key: string]: IfPath
 	const?: any
+}
+
+interface TypeDefinition {
+	type: PropertyType
+	properties?: PropertyMap
+	patternProperties?: PropertyMap
+	propertiesMap?: PropertiesMap
+	ref?: string
+	enum?: any[]
+	pattern?: string
+	internal?: boolean
 }
