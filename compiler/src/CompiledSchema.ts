@@ -1,8 +1,12 @@
+import { EffectModes, ConditionModes } from "./PreprocessedSchema";
+import { MonoTypeObject } from "./utils";
 
 export {
 	Schema, 
 	Hero, Skill, Trigger, Condition, Effect, 
-	Types, IfThenRefrence
+	Types, IfThenRefrence, 
+	Property,
+	SkillDefinition, ConditionDefinition, EffectDefinition
 }
 
 class Schema {
@@ -23,6 +27,9 @@ class Schema {
 		condition: new Condition(),
 		effect: new Effect()
 	}
+	readonly skills: MonoTypeObject<SkillDefinition> = {}
+	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
+	readonly effects: MonoTypeObject<EffectDefinition> = {}
 
 }
 
@@ -152,5 +159,76 @@ class Effect {
 	addType(name: string): void {
 		this.properties.type.addType(name)
 		this.allOf.push(new IfThenRefrence("effect", name))
+	}
+}
+
+type Property = {
+	
+}
+
+class SkillDefinition {
+	readonly properties: {
+		skill: true,
+		[key: string]: Property | boolean
+	}
+	required?: string[]
+	static readonly additionalProperties = true
+
+	constructor() {
+		this.properties = { skill: true }
+		this.required = []
+	}
+
+	addProperty(name: string, property: Property, required?: true): void {
+		this.properties[name] = property
+		if (required) {
+			if (this.required === undefined) this.required = []
+			this.required.push(name)
+		}
+	}
+
+}
+
+class ConditionDefinition {
+	readonly properties: {
+		type: true,
+		mode?: {enum: ConditionModes[]},
+		[key: string]: Property | boolean | undefined
+	}
+	required?: string[]
+	static readonly additionalProperties = false
+	
+	constructor(modes: ConditionModes[]) {
+		this.properties = { type: true, mode: { enum: modes } }
+	}
+
+	addProperty(name: string, property: Property, required?: true): void {
+		this.properties[name] = property
+		if (required) {
+			if (this.required === undefined) this.required = []
+			this.required.push(name)
+		}
+	}
+}
+
+class EffectDefinition {
+	readonly properties: {
+		type: true,
+		mode?: {enum: EffectModes[]},
+		[key: string]: Property | boolean | undefined
+	}
+	required?: string[]
+	static readonly additionalProperties = false
+
+	constructor(modes: EffectModes[]) {
+		this.properties = { type: true, mode: { enum: modes } }
+	}
+
+	addProperty(name: string, property: Property, required?: true): void {
+		this.properties[name] = property
+		if (required) {
+			if (this.required === undefined) this.required = []
+			this.required.push(name)
+		}
 	}
 }
