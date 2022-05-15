@@ -61,16 +61,15 @@ class Hero {
 
 type constDescription = {const: string, description: string}
 
-type Types_oneOf = [{ enum: string[], oneOf: constDescription[] }, {}]
+type Types_oneOf = ({ enum: string[], oneOf: constDescription[] }|{})[]
 
 class Types {
 	readonly description: string
 	static readonly type = "string"
-	readonly oneOf: Types_oneOf = [{ enum: [], oneOf: [] }, {}]
+	readonly oneOf: Types_oneOf = [{}]
 
 	addType(name: string, description: string): void {
-		this.oneOf[0].enum.push(name)
-		this.oneOf[0].oneOf.push({const: name, description: description})
+		this.oneOf.push({const: name, description: description})
 	}
 
 	constructor(description: string) {
