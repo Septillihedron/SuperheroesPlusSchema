@@ -65,7 +65,7 @@ type Types_oneOf = ({ enum: string[], oneOf: constDescription[] }|{})[]
 
 class Types {
 	readonly description: string
-	static readonly type = "string"
+	readonly type = "string"
 	readonly oneOf: Types_oneOf = [{}]
 
 	addType(name: string, description: string): void {
@@ -89,10 +89,10 @@ class IfThenRefrence {
 }
 
 class Skill {
-	static readonly description = "A skill"
-	static readonly type = "object"
+	readonly description = "A skill"
+	readonly type = "object"
 	readonly properties = { skill: new Types("The type of the skill") }
-	static readonly required = ["skill"]
+	readonly required = ["skill"]
 	readonly if = {"properties": {"skill": false}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
@@ -103,8 +103,8 @@ class Skill {
 }
 
 class Trigger {
-	static readonly description = "The skill trigger"
-	static readonly type = "object"
+	readonly description = "The skill trigger"
+	readonly type = "object"
 	readonly properties = {
 		// type: new Types("The type of trigger"),
 		type: {
@@ -121,7 +121,7 @@ class Trigger {
 			}
 		}
 	}
-	static readonly required = ["type"]
+	readonly required = ["type"]
 
 	// addType(name: string, description: string): void {
 	// 	this.properties.type.addType(name, description)
@@ -130,7 +130,7 @@ class Trigger {
 }
 
 class Condition {
-	static readonly type = "object"
+	readonly type = "object"
 	readonly properties = {
 		type: new Types("The type of the condition"),
 		mode: {
@@ -138,7 +138,7 @@ class Condition {
 			type: "string"
 		}
 	}
-	static readonly required = ["type", "mode"]
+	readonly required = ["type", "mode"]
 	readonly if = {"properties": {"type": false}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
@@ -149,7 +149,7 @@ class Condition {
 }
 
 class Effect {
-	static readonly type = "object"
+	readonly type = "object"
 	readonly properties = {
 		type: new Types("The type of the effect"),
 		mode: {
