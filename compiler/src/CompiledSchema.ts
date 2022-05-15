@@ -131,7 +131,6 @@ class Trigger {
 
 class Condition {
 	static readonly type = "object"
-	static readonly additionalProperties = true
 	readonly properties = {
 		type: new Types("The type of the condition"),
 		mode: {
@@ -151,7 +150,6 @@ class Condition {
 
 class Effect {
 	static readonly type = "object"
-	static readonly additionalProperties = true
 	readonly properties = {
 		type: new Types("The type of the effect"),
 		mode: {
@@ -345,7 +343,7 @@ class SkillDefinition {
 		[key: string]: Property | boolean
 	}
 	required?: string[]
-	static readonly additionalProperties = true
+	readonly additionalProperties = false
 
 	constructor() {
 		this.properties = { skill: true }
@@ -369,7 +367,7 @@ class ConditionDefinition {
 		[key: string]: Property | boolean | undefined
 	}
 	required?: string[]
-	static readonly additionalProperties = false
+	readonly additionalProperties = false
 	if?: true
 	then?: {$ref: string}
 	
@@ -397,7 +395,7 @@ class EffectDefinition {
 		[key: string]: Property | boolean | undefined
 	}
 	required?: string[]
-	static readonly additionalProperties = false
+	readonly additionalProperties = false
 	if?: true
 	then?: {$ref: string}
 
