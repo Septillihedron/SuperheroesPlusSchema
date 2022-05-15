@@ -94,7 +94,7 @@ class Skill {
 	static readonly type = "object"
 	readonly properties = { skill: new Types("The type of the skill") }
 	static readonly required = ["skill"]
-	readonly if = {"properties": {"skill": {"const": null}}}
+	readonly if = {"properties": {"skill": false}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
 	addSkill(name: string, description: string): void {
@@ -141,7 +141,7 @@ class Condition {
 		}
 	}
 	static readonly required = ["type", "mode"]
-	readonly if = {"properties": {"type": {"const": null}}}
+	readonly if = {"properties": {"type": false}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
 	addType(name: string, description: string): void {
@@ -160,7 +160,7 @@ class Effect {
 			type: "string"
 		}
 	}
-	readonly if = {"properties": {"type": {"const": null}}}
+	readonly if = {"properties": {"type": false}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
 	addType(name: string, description: string): void {
