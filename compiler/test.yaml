@@ -1,40 +1,20 @@
-# yaml-language-server: $schema=compiled-properties-compressed.json
-sjd:
+# yaml-language-server: $schema=compiled-properties.json
+heroName:
+  colouredName: ashd
+  description: A hero
   skills:
-    skil:
+    nasd:
       skill: CUSTOM
       trigger:
         type: LOOP
         conditions:
-          sjd:
+          help:
             type: BIOME
-            mode: ALL
+            mode: LOCATION
             biomes:
               - BADLANDS
-          not:
-            type: NOT
-            mode: OTHER
-            condition: 
-              type: BIOME
-              mode: LOCATION
-              biomes:
-                - BAMBOO_JUNGLE
       effects:
-        $schema:
-          type: AOE
-          mode: SELF
-          radius: 5
-        hsdg:
-          type: CANCEL
-          mode: ALL
-        sdh:
-          type: ATTRIBUTE
-          mode: ALL
-          attribute: LUCK
-          operation: DIVIDE
-          value: 12
-
-          
-
-
+        hs:
+          type: ARROW
+          mode: LOCATION
 

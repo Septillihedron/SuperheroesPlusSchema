@@ -35,19 +35,27 @@
             }
         },
         "skill": {
+            "description": "A skill",
+            "type": "object",
             "properties": {
                 "skill": {
-                    "enum": [
-                        "CUSTOM"
+                    "type": "string",
+                    "oneOf": [
+                        {},
+                        {
+                            "const": "CUSTOM",
+                            "description": "A custom skill, used in combination with the SkillsLibrary"
+                        }
                     ],
                     "description": "The type of the skill"
                 }
             },
+            "required": [
+                "skill"
+            ],
             "if": {
                 "properties": {
-                    "skill": {
-                        "const": null
-                    }
+                    "skill": false
                 }
             },
             "else": {
@@ -68,6 +76,8 @@
             }
         },
         "trigger": {
+            "description": "The skill trigger",
+            "type": "object",
             "properties": {
                 "type": {
                     "description": "The type of trigger",
@@ -82,35 +92,110 @@
                         }
                     }
                 }
-            }
+            },
+            "required": [
+                "type"
+            ]
         },
         "condition": {
+            "type": "object",
             "properties": {
                 "type": {
-                    "enum": [
-                        "HEALTH",
-                        "CHANCE",
-                        "COOLDOWN",
-                        "ENTITY",
-                        "SIZE",
-                        "NOT",
-                        "SNEAK",
-                        "TIME",
-                        "ONGROUND",
-                        "GLIDING",
-                        "BIOME",
-                        "METADATA",
-                        "NPC",
-                        "WEATHER",
-                        "INBLOCK",
-                        "WORLD",
-                        "TAMED",
-                        "FLYING",
-                        "HEIGHT",
-                        "BLOCK",
-                        "ITEM",
-                        "OR",
-                        "VISIBILITY"
+                    "type": "string",
+                    "oneOf": [
+                        {},
+                        {
+                            "const": "HEALTH",
+                            "description": "Checks if the hp percentage of the player or entity is in the range"
+                        },
+                        {
+                            "const": "CHANCE",
+                            "description": "A chance for this condition to be true"
+                        },
+                        {
+                            "const": "COOLDOWN",
+                            "description": "Checks if the time since the get last effect triggered is after the cooldown"
+                        },
+                        {
+                            "const": "ENTITY",
+                            "description": "Checks if the entity against this whitelist/blacklist"
+                        },
+                        {
+                            "const": "SIZE",
+                            "description": "Checks if the size of the entity is in the range (for slimes, magma cubes, and phantoms)"
+                        },
+                        {
+                            "const": "NOT",
+                            "description": "Inverts the inside condition"
+                        },
+                        {
+                            "const": "SNEAK",
+                            "description": "Checks if the player or entity is shifting"
+                        },
+                        {
+                            "const": "TIME",
+                            "description": "Checks the relative ingame time (time of day) of the world that the player is in against the range. Measured in milli-hours or hours*1000"
+                        },
+                        {
+                            "const": "ONGROUND",
+                            "description": "Checks if the player or entity is on the ground"
+                        },
+                        {
+                            "const": "GLIDING",
+                            "description": "Checks if the player gliding"
+                        },
+                        {
+                            "const": "BIOME",
+                            "description": "Checks if the biome that the player, entity, or location is in is one of the listed biomes"
+                        },
+                        {
+                            "const": "METADATA",
+                            "description": "Compares a user defined variable"
+                        },
+                        {
+                            "const": "NPC",
+                            "description": "Checks if the player or entity is an npc"
+                        },
+                        {
+                            "const": "WEATHER",
+                            "description": "Checks if the world that the player is in has a storm"
+                        },
+                        {
+                            "const": "INBLOCK",
+                            "description": "Checks if the player or entity is in one of the listed blocks"
+                        },
+                        {
+                            "const": "WORLD",
+                            "description": "Checks if the world that the player, entity, or location is in is one of the listed worlds"
+                        },
+                        {
+                            "const": "TAMED",
+                            "description": "Checks if the entity is tamed"
+                        },
+                        {
+                            "const": "FLYING",
+                            "description": "Checks if the player is flying"
+                        },
+                        {
+                            "const": "HEIGHT",
+                            "description": "Checks if the player or entity y location is in the range"
+                        },
+                        {
+                            "const": "BLOCK",
+                            "description": "Checks if the location has one of the listed blocks"
+                        },
+                        {
+                            "const": "ITEM",
+                            "description": "Checks if the declared slot against the declared item"
+                        },
+                        {
+                            "const": "OR",
+                            "description": "ORs all the conditions inside"
+                        },
+                        {
+                            "const": "VISIBILITY",
+                            "description": "Checks if the player has a direct line of sight to the entity"
+                        }
                     ],
                     "description": "The type of the condition"
                 },
@@ -119,11 +204,13 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "type",
+                "mode"
+            ],
             "if": {
                 "properties": {
-                    "type": {
-                        "const": null
-                    }
+                    "type": false
                 }
             },
             "else": {
@@ -408,52 +495,184 @@
             }
         },
         "effect": {
+            "type": "object",
             "properties": {
                 "type": {
-                    "enum": [
-                        "DAMAGE",
-                        "AOE",
-                        "VELOCITY",
-                        "CANCEL",
-                        "GLIDING",
-                        "WAIT",
-                        "POTION",
-                        "WEB",
-                        "BLOCKENTITY",
-                        "ARROW",
-                        "ATTRIBUTE",
-                        "LAUNCH",
-                        "MESSAGE",
-                        "PICKUP",
-                        "REPULSE",
-                        "RESIZE",
-                        "SMITE",
-                        "FLING",
-                        "METADATA",
-                        "GIVEITEM",
-                        "SCRAMBLEINVENTORY",
-                        "RANDOMTELEPORT",
-                        "PROJECTILE",
-                        "SOUND",
-                        "COMMAND",
-                        "LUNGE",
-                        "NEAREST",
-                        "SHOOTER",
-                        "KNOCKBACK",
-                        "IGNITE",
-                        "TARGET",
-                        "SWAP",
-                        "LOCATIONCUBE",
-                        "PLACEBLOCK",
-                        "SPAWNENTITY",
-                        "REMOVEPOTION",
-                        "TELEPORT",
-                        "RAYTRACE",
-                        "TIMER",
-                        "REMOVEENTITY",
-                        "ITEMSTACK",
-                        "ITEMAMOUNT",
-                        "SWITCHEROO"
+                    "type": "string",
+                    "oneOf": [
+                        {},
+                        {
+                            "const": "DAMAGE",
+                            "description": "Damages the player or an entity"
+                        },
+                        {
+                            "const": "AOE",
+                            "description": "Excecutes all the inside effects if all the inside conditions are satisfied. "
+                        },
+                        {
+                            "const": "VELOCITY",
+                            "description": "Sets the Y component of the velocity vector of the user or entity. Same as FLING"
+                        },
+                        {
+                            "const": "CANCEL",
+                            "description": "Cancels the event that triggered this effect"
+                        },
+                        {
+                            "const": "GLIDING",
+                            "description": "Sets the gliding mode of the player or entity (works even if an Elytra is not equipped)"
+                        },
+                        {
+                            "const": "WAIT",
+                            "description": "Waits a duration of time then excecutes all the inside effects if all the inside condition is satisfied"
+                        },
+                        {
+                            "const": "POTION",
+                            "description": "Applies the potion effect to the player or entity"
+                        },
+                        {
+                            "const": "WEB",
+                            "description": "Change the block at the player or entity for a duration of time, then change it back. Exactly the same effect as the BLOCKENTITY effect"
+                        },
+                        {
+                            "const": "BLOCKENTITY",
+                            "description": "Change the block at the player or entity for a duration of time, then change it back. Exactly the same effect as the WEB effect"
+                        },
+                        {
+                            "const": "ARROW",
+                            "description": "Shoot an arrow to the location or the location of the user or target entity"
+                        },
+                        {
+                            "const": "ATTRIBUTE",
+                            "description": "Modifies an attribute owned by the user or entity"
+                        },
+                        {
+                            "const": "LAUNCH",
+                            "description": "Launches an entity at the target"
+                        },
+                        {
+                            "const": "MESSAGE",
+                            "description": "Sends a chat message to the user or target player"
+                        },
+                        {
+                            "const": "PICKUP",
+                            "description": "Pick up the target entity and places it on the user's head"
+                        },
+                        {
+                            "const": "REPULSE",
+                            "description": "Repulse the target entity"
+                        },
+                        {
+                            "const": "RESIZE",
+                            "description": "Resizes the user or target entity (for slimes, magma cubes, and phantoms)"
+                        },
+                        {
+                            "const": "SMITE",
+                            "description": "Smites the user or target entity"
+                        },
+                        {
+                            "const": "FLING",
+                            "description": "Sets the Y component of the velocity vector of the player or entity. Same as VELOCITY"
+                        },
+                        {
+                            "const": "METADATA",
+                            "description": "Modifies a user defined variable"
+                        },
+                        {
+                            "const": "GIVEITEM",
+                            "description": "Gives the user or target entity an item"
+                        },
+                        {
+                            "const": "SCRAMBLEINVENTORY",
+                            "description": "Scrambles the user or target entity's inventory"
+                        },
+                        {
+                            "const": "RANDOMTELEPORT",
+                            "description": "Teleports the user or target entity a random distance"
+                        },
+                        {
+                            "const": "PROJECTILE",
+                            "description": "Shoots an entity from the user, if mode is SELF, shoots the entity in the direction that the user is looking"
+                        },
+                        {
+                            "const": "SOUND",
+                            "description": "Plays a sound at a location or at the location of the user or target entity"
+                        },
+                        {
+                            "const": "COMMAND",
+                            "description": "Excecutes a command"
+                        },
+                        {
+                            "const": "LUNGE",
+                            "description": "Applies an acceleration to the user or the target entity based on the direction the user is looking"
+                        },
+                        {
+                            "const": "NEAREST",
+                            "description": "Excecutes all the inside effects to the nearest player and entity in the box centered on the location or the location of the user or target entity if all the inside conditions are satisfied"
+                        },
+                        {
+                            "const": "SHOOTER",
+                            "description": "Excecutes all the inside effects if all the inside conditions are satisfied. With the shooter of the original target entity as the new target entity"
+                        },
+                        {
+                            "const": "KNOCKBACK",
+                            "description": "Applies a velocity to the target entity with the direction that the user is looking as the direction"
+                        },
+                        {
+                            "const": "IGNITE",
+                            "description": "Sets the user or target entity on fire"
+                        },
+                        {
+                            "const": "TARGET",
+                            "description": "If the user is a mob, sets the target of the user to the target entity"
+                        },
+                        {
+                            "const": "SWAP",
+                            "description": "Swaps the position of the user and target entity"
+                        },
+                        {
+                            "const": "LOCATIONCUBE",
+                            "description": ""
+                        },
+                        {
+                            "const": "PLACEBLOCK",
+                            "description": "Replaces a block at the location for an amount of time. Retains the original block data"
+                        },
+                        {
+                            "const": "SPAWNENTITY",
+                            "description": ""
+                        },
+                        {
+                            "const": "REMOVEPOTION",
+                            "description": "Removes potion effects from the user or target entity"
+                        },
+                        {
+                            "const": "TELEPORT",
+                            "description": "Teleports the user to the location or the location of the target entity"
+                        },
+                        {
+                            "const": "RAYTRACE",
+                            "description": ""
+                        },
+                        {
+                            "const": "TIMER",
+                            "description": ""
+                        },
+                        {
+                            "const": "REMOVEENTITY",
+                            "description": "Removes the user or target entity"
+                        },
+                        {
+                            "const": "ITEMSTACK",
+                            "description": ""
+                        },
+                        {
+                            "const": "ITEMAMOUNT",
+                            "description": "Modifies the item amount"
+                        },
+                        {
+                            "const": "SWITCHEROO",
+                            "description": ""
+                        }
                     ],
                     "description": "The type of the effect"
                 },
@@ -464,9 +683,7 @@
             },
             "if": {
                 "properties": {
-                    "type": {
-                        "const": null
-                    }
+                    "type": false
                 }
             },
             "else": {
@@ -993,6 +1210,7 @@
     },
     "skills": {
         "CUSTOM": {
+            "additionalProperties": false,
             "properties": {
                 "skill": true,
                 "trigger": {
@@ -1013,6 +1231,7 @@
     },
     "conditions": {
         "HEALTH": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1039,6 +1258,7 @@
             }
         },
         "CHANCE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1057,6 +1277,7 @@
             }
         },
         "COOLDOWN": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1073,6 +1294,7 @@
             }
         },
         "ENTITY": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1101,6 +1323,7 @@
             }
         },
         "SIZE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1123,6 +1346,7 @@
             }
         },
         "NOT": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1146,6 +1370,7 @@
             ]
         },
         "SNEAK": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1163,6 +1388,7 @@
             }
         },
         "TIME": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1184,6 +1410,7 @@
             }
         },
         "ONGROUND": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1201,6 +1428,7 @@
             }
         },
         "GLIDING": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1217,6 +1445,7 @@
             }
         },
         "BIOME": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1242,6 +1471,7 @@
             }
         },
         "COMPARISON": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {},
@@ -1262,6 +1492,7 @@
             }
         },
         "METADATA": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1276,12 +1507,16 @@
                     "type": "string"
                 }
             },
-            "$ref": "#/conditions/COMPARISON",
+            "if": true,
+            "then": {
+                "$ref": "#/conditions/COMPARISON"
+            },
             "required": [
                 "variable"
             ]
         },
         "NPC": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1299,6 +1534,7 @@
             }
         },
         "WEATHER": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1310,6 +1546,7 @@
             }
         },
         "INBLOCK": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1334,6 +1571,7 @@
             }
         },
         "WORLD": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1359,6 +1597,7 @@
             }
         },
         "TAMED": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1375,6 +1614,7 @@
             }
         },
         "FLYING": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1387,6 +1627,7 @@
             }
         },
         "HEIGHT": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1408,6 +1649,7 @@
             }
         },
         "BLOCK": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1431,6 +1673,7 @@
             }
         },
         "ITEM": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1509,6 +1752,7 @@
             ]
         },
         "OR": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1537,6 +1781,7 @@
             }
         },
         "VISIBILITY": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1555,6 +1800,7 @@
     },
     "effects": {
         "DAMAGE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1572,6 +1818,7 @@
             }
         },
         "WRAPPER": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {},
@@ -1610,6 +1857,7 @@
             }
         },
         "AOE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1630,6 +1878,7 @@
             }
         },
         "VELOCITY": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1647,6 +1896,7 @@
             }
         },
         "CANCEL": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1658,6 +1908,7 @@
             }
         },
         "GLIDING": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1675,6 +1926,7 @@
             }
         },
         "WAIT": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1697,6 +1949,7 @@
             }
         },
         "POTION": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1741,6 +1994,7 @@
             }
         },
         "WEB": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1766,6 +2020,7 @@
             }
         },
         "BLOCKENTITY": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1791,6 +2046,7 @@
             }
         },
         "ARROW": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1823,6 +2079,7 @@
             }
         },
         "MODIFY": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {},
@@ -1845,6 +2102,7 @@
             ]
         },
         "ATTRIBUTE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1872,12 +2130,14 @@
             ]
         },
         "BREAKBLOCK": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {}
             }
         },
         "LAUNCH": {
+            "additionalProperties": false,
             "properties": {
                 "type": {
                     "description": "The entity to launch. \nDefaults to FIREBALL",
@@ -1902,6 +2162,7 @@
             }
         },
         "MESSAGE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1921,6 +2182,7 @@
             ]
         },
         "PICKUP": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1932,6 +2194,7 @@
             }
         },
         "REPULSE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1948,6 +2211,7 @@
             }
         },
         "RESIZE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1969,6 +2233,7 @@
             }
         },
         "SMITE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -1986,6 +2251,7 @@
             }
         },
         "FLING": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2003,6 +2269,7 @@
             }
         },
         "METADATA": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2015,27 +2282,18 @@
                 "variable": {
                     "description": "The name of the variable",
                     "type": "string"
-                },
-                "operation": {
-                    "description": "The operation to do",
-                    "allOf": [
-                        {
-                            "$ref": "#/types/operation"
-                        }
-                    ]
-                },
-                "value": {
-                    "description": "The number on the right side of the operation. \nDefaults to 1",
-                    "type": "number",
-                    "default": 1
                 }
             },
+            "if": true,
+            "then": {
+                "$ref": "#/effects/MODIFY"
+            },
             "required": [
-                "variable",
-                "operation"
+                "variable"
             ]
         },
         "GIVEITEM": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2174,6 +2432,7 @@
             ]
         },
         "SCRAMBLEINVENTORY": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2186,6 +2445,7 @@
             }
         },
         "RANDOMTELEPORT": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2208,6 +2468,7 @@
             }
         },
         "PROJECTILE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2259,6 +2520,7 @@
             ]
         },
         "SOUND": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2300,6 +2562,7 @@
             ]
         },
         "COMMAND": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2328,6 +2591,7 @@
             ]
         },
         "LUNGE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2355,6 +2619,7 @@
             }
         },
         "NEAREST": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2377,6 +2642,7 @@
             }
         },
         "SHOOTER": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2399,6 +2665,7 @@
             }
         },
         "KNOCKBACK": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2420,6 +2687,7 @@
             }
         },
         "IGNITE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2437,6 +2705,7 @@
             }
         },
         "TARGET": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2448,6 +2717,7 @@
             }
         },
         "SWAP": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2459,6 +2729,7 @@
             }
         },
         "LOCATIONCUBE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2476,6 +2747,7 @@
             }
         },
         "PLACEBLOCK": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2506,6 +2778,7 @@
             }
         },
         "SPAWNENTITY": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2519,6 +2792,7 @@
             }
         },
         "REMOVEPOTION": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2543,6 +2817,7 @@
             }
         },
         "TELEPORT": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2555,6 +2830,7 @@
             }
         },
         "RAYTRACE": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2568,6 +2844,7 @@
             }
         },
         "TIMER": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2585,6 +2862,7 @@
             }
         },
         "REMOVEENTITY": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2597,6 +2875,7 @@
             }
         },
         "ITEMSTACK": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2614,6 +2893,7 @@
             }
         },
         "ITEMAMOUNT": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
@@ -2629,6 +2909,7 @@
             }
         },
         "SWITCHEROO": {
+            "additionalProperties": false,
             "properties": {
                 "type": true,
                 "mode": {
