@@ -115,7 +115,7 @@
 			"description": "Triggers when the user interacts with a block or air",
 			"typeProperties": {
 				"actions": {
-					"description": "The interactions that will trigger this trigger. ",
+					"description": "The interactions that will trigger this trigger",
 					"required": false,
 					"type": "array",
 					"items": "action",
