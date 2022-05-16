@@ -326,11 +326,11 @@
 				"range", "comparison", "operation", 
 				"entity", "block", "item", 
 				"enchantment", "potion", 
+				"damageCause", "action",
 				"biome", "world", 
 				"equipmentSlot", 
 				"attribute", 
 				"sound", 
-				"damageCause", "action",
 				"condition", "effect"
 			]
 		},
