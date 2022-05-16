@@ -157,6 +157,7 @@ class Effect {
 			type: "string"
 		}
 	}
+	readonly required = ["type", "mode"]
 	readonly if = {"properties": {"type": false}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
