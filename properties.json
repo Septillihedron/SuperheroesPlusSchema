@@ -124,10 +124,19 @@
 			}
 		},
 		"KILL": {
-			"description": ""
+			"description": "Triggers when the user kills an entity. \nThe target entity will be set as the killed entity"
 		},
 		"POTIONEFFECT": {
-			"description": ""
+			"description": "Triggers when a potion effect is applied to the user",
+			"typeProperties": {
+				"effects": {
+					"description": "The potion effects that will trigger this trigger",
+					"required": false,
+					"type": "array",
+					"items": "potion",
+					"default": []
+				}
+			}
 		},
 		"CONSUME": {
 			"description": ""
