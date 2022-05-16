@@ -2,6 +2,22 @@
 	"$schema": "http://json-schema.org/schema",
 	"type": "object",
 	"properties": {
+		"triggers": {
+			"type": "object",
+			"description": "The list of trigers and their properties",
+			"patternProperties": {
+				"\\p{Upper}": {
+					"type": "object",
+					"description": "A trigger and it's properties",
+					"properties": {
+						"description": true,
+						"typeProperties": true
+					},
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalProperties": false
+				}
+			}
+		},
 		"conditions": {
 			"type": "object",
 			"description": "The list of condition types and their properties that is in the skills library",
@@ -314,6 +330,7 @@
 				"equipmentSlot", 
 				"attribute", 
 				"sound", 
+				"damageCause", "action",
 				"condition", "effect"
 			]
 		},
