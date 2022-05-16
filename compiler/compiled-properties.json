@@ -181,15 +181,11 @@
                         },
                         {
                             "const": "KILL",
-                            "description": ""
+                            "description": "Triggers when the user kills an entity. \nThe target entity will be set as the killed entity"
                         },
                         {
                             "const": "POTIONEFFECT",
-                            "description": ""
-                        },
-                        {
-                            "const": "CONSUME",
-                            "description": ""
+                            "description": "Triggers when a potion effect is applied to the user"
                         }
                     ],
                     "description": "The type of trigger"
@@ -521,18 +517,6 @@
                         },
                         "then": {
                             "$ref": "#/triggers/POTIONEFFECT"
-                        }
-                    },
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
-                                    "const": "CONSUME"
-                                }
-                            }
-                        },
-                        "then": {
-                            "$ref": "#/triggers/CONSUME"
                         }
                     }
                 ]
@@ -1877,7 +1861,7 @@
                 "type": true,
                 "conditions": true,
                 "actions": {
-                    "description": "The interactions that will trigger this trigger. . \nDefaults to ",
+                    "description": "The interactions that will trigger this trigger. \nDefaults to ",
                     "type": "array",
                     "items": {
                         "allOf": [
@@ -1901,14 +1885,19 @@
             "additionalProperties": false,
             "properties": {
                 "type": true,
-                "conditions": true
-            }
-        },
-        "CONSUME": {
-            "additionalProperties": false,
-            "properties": {
-                "type": true,
-                "conditions": true
+                "conditions": true,
+                "effects": {
+                    "description": "The potion effects that will trigger this trigger. \nDefaults to ",
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "#/types/potion"
+                            }
+                        ]
+                    },
+                    "default": []
+                }
             }
         }
     },
