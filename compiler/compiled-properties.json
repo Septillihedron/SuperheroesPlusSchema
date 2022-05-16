@@ -80,8 +80,119 @@
             "type": "object",
             "properties": {
                 "type": {
-                    "description": "The type of trigger",
-                    "type": "string"
+                    "type": "string",
+                    "oneOf": [
+                        {},
+                        {
+                            "const": "DAMAGEDENTITY",
+                            "description": "Triggers when the user damage an entity. \nThe target entity will be set as the damaged entity"
+                        },
+                        {
+                            "const": "DAMAGEDBYENTITY",
+                            "description": "Triggers when an entity damages the user. \nThe target entity will be set as the damaging entity"
+                        },
+                        {
+                            "const": "DAMAGEDBYPROJECTILE",
+                            "description": "Triggers when an entity damages the user. \nIf the damaging entity is a projectile, the target entity will be set as the source of the projectile. \nOtherwise, The target entity will be set as the damaging entity"
+                        },
+                        {
+                            "const": "DAMAGEDENTITYWITHPROJECTILE",
+                            "description": "Triggers when the user damages an entity directly or with a projectile. \nThe target entity will be set as the damaged entity"
+                        },
+                        {
+                            "const": "LAUNCHPROJECTILE",
+                            "description": "Triggers when the user launched a projectile. \nThe target entity will be set as the launched projectile"
+                        },
+                        {
+                            "const": "PROJECTILEHIT",
+                            "description": "Triggers when a projectile shot by the user landed and/or hits an entity. \nThe target entity will be set as the projectile"
+                        },
+                        {
+                            "const": "DAMAGED",
+                            "description": "Triggers when the user gets damaged"
+                        },
+                        {
+                            "const": "SNEAK",
+                            "description": "Triggers when the user sneaks"
+                        },
+                        {
+                            "const": "TOGGLEGLIDE",
+                            "description": "Triggers when the user glides or unglides"
+                        },
+                        {
+                            "const": "PLAYERJUMP",
+                            "description": "Triggers when the user jumps"
+                        },
+                        {
+                            "const": "LOOP",
+                            "description": "Triggers periodically every couple of ticks"
+                        },
+                        {
+                            "const": "COMBAT",
+                            "description": "Triggers when the user damages an entity or gets damaged by an entity. \nThe target entity will be set as the damaged entity or the damaging entity respectively"
+                        },
+                        {
+                            "const": "DEATH",
+                            "description": "Triggers when the user is killed. \nThe target entity will be set as the killer if it exist"
+                        },
+                        {
+                            "const": "SPAWN",
+                            "description": "Triggers when the user spawns"
+                        },
+                        {
+                            "const": "TARGET",
+                            "description": "Triggers when the user targets an entity. \nThe target entity will be set as the target"
+                        },
+                        {
+                            "const": "VEHICLE",
+                            "description": "Deprecated, use ENTERVEHICLE instead. \nTriggers when the user enters a vehicle. \nThe target entity will be set as the vehicle"
+                        },
+                        {
+                            "const": "ENTERVEHICLE",
+                            "description": "Triggers when the user enters a vehicle. \nThe target entity will be set as the vehicle"
+                        },
+                        {
+                            "const": "BECOMEVEHICLE",
+                            "description": "Triggers when an entity enters the user, thus using the user as a vehicle. \nThe target entity will be set as the entering entity"
+                        },
+                        {
+                            "const": "EXITVEHICLE",
+                            "description": "Triggers when the user exits a vehicle. \nThe target entity will be set as the vehicle"
+                        },
+                        {
+                            "const": "PLAYERJOIN",
+                            "description": "Triggers when the user joins the server"
+                        },
+                        {
+                            "const": "PLAYERQUIT",
+                            "description": "Triggers when the user exits the server"
+                        },
+                        {
+                            "const": "PROJECTILECOMBAT",
+                            "description": "Acts like the DAMAGEDBYPROJECTILE and DAMAGEDENTITYWITHPROJECTILE triggers combined"
+                        },
+                        {
+                            "const": "TAME",
+                            "description": "Triggers when the user tames an entity. \nThe target entity will be set as the tamed entity"
+                        },
+                        {
+                            "const": "INTERACT",
+                            "description": "Triggers when the user interacts with a block or air"
+                        },
+                        {
+                            "const": "KILL",
+                            "description": ""
+                        },
+                        {
+                            "const": "POTIONEFFECT",
+                            "description": ""
+                        },
+                        {
+                            "const": "CONSUME",
+                            "description": ""
+                        }
+                    ],
+                    "description": "The type of trigger"
                 },
                 "conditions": {
                     "description": "The list of conditions",
@@ -92,6 +203,339 @@
                         }
                     }
                 }
+            },
+            "if": {
+                "properties": {
+                    "type": false
+                }
+            },
+            "else": {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DAMAGEDENTITY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/DAMAGEDENTITY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DAMAGEDBYENTITY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/DAMAGEDBYENTITY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DAMAGEDBYPROJECTILE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/DAMAGEDBYPROJECTILE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DAMAGEDENTITYWITHPROJECTILE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/DAMAGEDENTITYWITHPROJECTILE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "LAUNCHPROJECTILE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/LAUNCHPROJECTILE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PROJECTILEHIT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/PROJECTILEHIT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DAMAGED"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/DAMAGED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SNEAK"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/SNEAK"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TOGGLEGLIDE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/TOGGLEGLIDE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PLAYERJUMP"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/PLAYERJUMP"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "LOOP"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/LOOP"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "COMBAT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/COMBAT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DEATH"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/DEATH"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SPAWN"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/SPAWN"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TARGET"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/TARGET"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "VEHICLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/VEHICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ENTERVEHICLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/ENTERVEHICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "BECOMEVEHICLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/BECOMEVEHICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "EXITVEHICLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/EXITVEHICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PLAYERJOIN"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/PLAYERJOIN"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PLAYERQUIT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/PLAYERQUIT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PROJECTILECOMBAT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/PROJECTILECOMBAT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TAME"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/TAME"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "INTERACT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/INTERACT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "KILL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/KILL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "POTIONEFFECT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/POTIONEFFECT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CONSUME"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/CONSUME"
+                        }
+                    }
+                ]
             },
             "required": [
                 "type"
@@ -681,6 +1125,10 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "type",
+                "mode"
+            ],
             "if": {
                 "properties": {
                     "type": false
@@ -1227,6 +1675,241 @@
                 }
             },
             "required": []
+        }
+    },
+    "triggers": {
+        "DAMAGEDENTITY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "DAMAGEDBYENTITY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "DAMAGEDBYPROJECTILE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true,
+                "onlyProjectiles": {
+                    "description": "If true, will only trigger if the damaging entity is a projectile. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "DAMAGEDENTITYWITHPROJECTILE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true,
+                "onlyProjectiles": {
+                    "description": "If true, will only trigger if the damage is from a projectile. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "LAUNCHPROJECTILE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "PROJECTILEHIT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "DAMAGED": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true,
+                "causes": {
+                    "description": "The causes of damage. Defaults to all damage causes",
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "#/types/damageCause"
+                            }
+                        ]
+                    },
+                    "default": []
+                }
+            }
+        },
+        "SNEAK": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "TOGGLEGLIDE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "PLAYERJUMP": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "LOOP": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true,
+                "period": {
+                    "description": "The delay period in seconds (1 = 20 ticks). \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                }
+            }
+        },
+        "COMBAT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "DEATH": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "SPAWN": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "TARGET": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "VEHICLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "ENTERVEHICLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "BECOMEVEHICLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "EXITVEHICLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "PLAYERJOIN": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "PLAYERQUIT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "PROJECTILECOMBAT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true,
+                "onlyProjectiles": {
+                    "description": "If true, will only trigger if the damage is from a projectile. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "TAME": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "INTERACT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true,
+                "actions": {
+                    "description": "The interactions that will trigger this trigger. . \nDefaults to ",
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "#/types/action"
+                            }
+                        ]
+                    },
+                    "default": []
+                }
+            }
+        },
+        "KILL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "POTIONEFFECT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "CONSUME": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
         }
     },
     "conditions": {
@@ -2929,8 +3612,11 @@
     },
     "types": {
         "range": {
-            "type": "string",
-            "pattern": " *[0-9]+( *- +[0-9]+)? *"
+            "type": [
+                "string",
+                "number"
+            ],
+            "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$"
         },
         "comparison": {
             "type": "string",
@@ -3121,6 +3807,50 @@
                 "DOLPHINS_GRACE",
                 "BAD_OMEN",
                 "HERO_OF_THE_VILLAGE"
+            ]
+        },
+        "damageCause": {
+            "type": "string",
+            "enum": [
+                "CONTACT",
+                "ENTITY_ATTACK",
+                "ENTITY_SWEEP_ATTACK",
+                "PROJECTILE",
+                "SUFFOCATION",
+                "FALL",
+                "FIRE",
+                "FIRE_TICK",
+                "MELTING",
+                "LAVA",
+                "DROWNING",
+                "BLOCK_EXPLOSION",
+                "ENTITY_EXPLOSION",
+                "VOID",
+                "LIGHTNING",
+                "SUICIDE",
+                "STARVATION",
+                "POISON",
+                "MAGIC",
+                "WITHER",
+                "FALLING_BLOCK",
+                "THORNS",
+                "DRAGON_BREATH",
+                "CUSTOM",
+                "FLY_INTO_WALL",
+                "HOT_FLOOR",
+                "CRAMMING",
+                "DRYOUT",
+                "FREEZE"
+            ]
+        },
+        "action": {
+            "type": "string",
+            "enum": [
+                "LEFT_CLICK_AIR",
+                "LEFT_CLICK_BLOCK",
+                "PHYSICAL",
+                "RIGHT_CLICL_AIR",
+                "RIGHT_CLICK_BLOCK"
             ]
         },
         "biome": {

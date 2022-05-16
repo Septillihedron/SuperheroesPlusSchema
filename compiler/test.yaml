@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=compiled-properties.json
+# yaml-language-server: $schema=compiled-properties-compressed.json
 heroName:
   colouredName: ashd
   description: A hero
@@ -7,14 +7,12 @@ heroName:
       skill: CUSTOM
       trigger:
         type: LOOP
+        period: 120
         conditions:
-          help:
+          jsds:
             type: BIOME
             mode: LOCATION
             biomes:
-              - BADLANDS
-      effects:
-        hs:
-          type: ARROW
-          mode: LOCATION
+              - BEACH
+              - BASALT_DELTAS
 
