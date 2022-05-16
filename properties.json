@@ -137,9 +137,6 @@
 					"default": []
 				}
 			}
-		},
-		"CONSUME": {
-			"description": ""
 		}
 	},
 	"conditions": {
