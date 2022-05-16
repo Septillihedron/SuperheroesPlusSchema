@@ -2,13 +2,14 @@
 export {
 	Schema,
 	Descriptable,  
-	PropertyMap, Type, ConditionModes, Condition, EffectModes, Effect, TypeDefinition, 
+	PropertyMap, Type, Trigger, ConditionModes, Condition, EffectModes, Effect, TypeDefinition, 
 	PropertyTypes, PropertyStringTypes, PropertyType, 
 	PropertiesMap, PropertiesMapEntry, PropertiesMapKey, Property, 
 	IfPath
 }
 
 interface Schema {
+	triggers: {[key: string] : Trigger}
 	conditions: {[key: string] : Condition}
 	effects: {[key: string] : Effect}
 	types: {[key: string] : TypeDefinition}
@@ -25,6 +26,8 @@ interface Type extends Descriptable {
 	available?: boolean
 	extends?: string
 }
+
+interface Trigger extends Type {}
 
 type ConditionModes = "SELF" | "OTHER" | "LOCATION" | "ITEM" | "ALL"
 interface Condition extends Type {

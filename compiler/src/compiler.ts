@@ -6,6 +6,11 @@ export function compile(preprocessed: Preprocessed.Schema): Compiled.Schema {
 	var schema = new Compiled.Schema()
 
 	addCustomSkill(schema)
+	objectPropertyMap(preprocessed.triggers).forEach((trigger: Preprocessed.Trigger, name) => {
+		addTrigger(schema, name as string, trigger)
+		if (trigger.available === false) return
+		schema.definitions.trigger.addType(name as string, trigger.description)
+	})
 	objectPropertyMap(preprocessed.conditions).forEach((condition: Preprocessed.Condition, name) => {
 		addCondition(schema, name as string, condition)
 		if (condition.available === false) return
@@ -36,6 +41,21 @@ function addCustomSkill({definitions, skills}: Compiled.Schema): void {
 		description: "The list of effetcs"
 	})
 	skills["CUSTOM"] = skill
+}
+
+function addTrigger({triggers}: Compiled.Schema, name: string, trigger: Preprocessed.Condition): void {
+	let compiledTrigger = new Compiled.TriggerDefinition()
+	if (trigger.extends !== undefined) compiledTrigger.setExtension(trigger.extends)
+	if (trigger.typeProperties !== undefined) {
+		objectPropertyMap(trigger.typeProperties)
+			.forEach((property, name) => {
+				let compiledProperty = compileProperty(property, 
+					new Compiled.PropertyClass(triggers, name as string, `#/triggers/${name}`))
+				compiledTrigger.addProperty(name as string, compiledProperty, property.required)
+			})
+	}
+
+	triggers[name] = compiledTrigger
 }
 
 function addCondition({conditions}: Compiled.Schema, name: string, condition: Preprocessed.Condition): void {

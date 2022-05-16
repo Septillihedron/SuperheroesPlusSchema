@@ -6,7 +6,7 @@ export {
 	Hero, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	SkillDefinition, ConditionDefinition, EffectDefinition, TypeDefinition
+	SkillDefinition, TriggerDefinition, ConditionDefinition, EffectDefinition, TypeDefinition
 }
 
 class Schema {
@@ -28,6 +28,7 @@ class Schema {
 		effect: new Effect()
 	}
 	readonly skills: MonoTypeObject<SkillDefinition> = {}
+	readonly triggers: MonoTypeObject<TriggerDefinition> = {}
 	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
 	readonly effects: MonoTypeObject<EffectDefinition> = {}
 	readonly types: MonoTypeObject<TypeDefinition> = {}
@@ -106,11 +107,7 @@ class Trigger {
 	readonly description = "The skill trigger"
 	readonly type = "object"
 	readonly properties = {
-		// type: new Types("The type of trigger"),
-		type: {
-			description: "The type of trigger",
-			type: "string"
-		},
+		type: new Types("The type of trigger"),
 		conditions: {
 			description: "The list of conditions",
 			type: "object",
@@ -121,12 +118,14 @@ class Trigger {
 			}
 		}
 	}
+	readonly if = {"properties": {"type": false}}
+	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 	readonly required = ["type"]
 
-	// addType(name: string, description: string): void {
-	// 	this.properties.type.addType(name, description)
-	// 	this.allOf.push(new IfThenRefrence("skill", name))
-	// }
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
+		this.else.allOf.push(new IfThenRefrence("trigger", name))
+	}
 }
 
 class Condition {
@@ -359,6 +358,34 @@ class SkillDefinition {
 		}
 	}
 
+}
+
+class TriggerDefinition {
+	readonly properties: {
+		type: true,
+		conditions: true,
+		[key: string]: Property | boolean | undefined
+	}
+	required?: string[]
+	readonly additionalProperties = false
+	if?: true
+	then?: {$ref: string}
+
+	constructor() {
+		this.properties = { type: true, conditions: true }
+	}
+
+	addProperty(name: string, property: Property, required?: true): void {
+		this.properties[name] = property
+		if (required) {
+			if (this.required === undefined) this.required = []
+			this.required.push(name)
+		}
+	}
+	setExtension(condition: string) {
+		this.if = true
+		this.then = {$ref: `#/trigger/${condition.toUpperCase()}`}
+	}
 }
 
 class ConditionDefinition {
