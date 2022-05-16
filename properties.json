@@ -1,5 +1,138 @@
 {
 	"$schema": "propertiesSchema.json",
+	"triggers": {
+		"DAMAGEDENTITY": {
+			"description": "Triggers when the user damage an entity. \nThe target entity will be set as the damaged entity"
+		},
+		"DAMAGEDBYENTITY": {
+			"description": "Triggers when an entity damages the user. \nThe target entity will be set as the damaging entity"
+		},
+		"DAMAGEDBYPROJECTILE": {
+			"description": "Triggers when an entity damages the user. \nIf the damaging entity is a projectile, the target entity will be set as the source of the projectile. \nOtherwise, The target entity will be set as the damaging entity",
+			"typeProperties": {
+				"onlyProjectiles": {
+					"description": "If true, will only trigger if the damaging entity is a projectile",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"DAMAGEDENTITYWITHPROJECTILE": {
+			"description": "Triggers when the user damages an entity directly or with a projectile. \nThe target entity will be set as the damaged entity",
+			"typeProperties": {
+				"onlyProjectiles": {
+					"description": "If true, will only trigger if the damage is from a projectile",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"LAUNCHPROJECTILE": {
+			"description": "Triggers when the user launched a projectile. \nThe target entity will be set as the launched projectile"
+		},
+		"PROJECTILEHIT": {
+			"description": "Triggers when a projectile shot by the user landed and/or hits an entity. \nThe target entity will be set as the projectile"
+		},
+		"DAMAGED": {
+			"description": "Triggers when the user gets damaged",
+			"typeProperties": {
+				"causes": {
+					"description": "The causes of damage. Defaults to all damage causes",
+					"required": false,
+					"type": "array",
+					"items": "damageCause",
+					"default": []
+				}
+			}
+		},
+		"SNEAK": {
+			"description": "Triggers when the user sneaks"
+		},
+		"TOGGLEGLIDE": {
+			"description": "Triggers when the user glides or unglides"
+		},
+		"PLAYERJUMP": {
+			"description": "Triggers when the user jumps"
+		},
+		"LOOP": {
+			"description": "Triggers periodically every couple of ticks",
+			"typeProperties": {
+				"period": {
+					"description": "The delay period in seconds (1 = 20 ticks)",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"COMBAT": {
+			"description": "Triggers when the user damages an entity or gets damaged by an entity. \nThe target entity will be set as the damaged entity or the damaging entity respectively"
+		},
+		"DEATH": {
+			"description": "Triggers when the user is killed. \nThe target entity will be set as the killer if it exist"
+		},
+		"SPAWN": {
+			"description": "Triggers when the user spawns"
+		},
+		"TARGET": {
+			"description": "Triggers when the user targets an entity. \nThe target entity will be set as the target"
+		},
+		"VEHICLE": {
+			"description": "Deprecated, use ENTERVEHICLE instead. \nTriggers when the user enters a vehicle. \nThe target entity will be set as the vehicle"
+		},
+		"ENTERVEHICLE": {
+			"description": "Triggers when the user enters a vehicle. \nThe target entity will be set as the vehicle"
+		},
+		"BECOMEVEHICLE": {
+			"description": "Triggers when an entity enters the user, thus using the user as a vehicle. \nThe target entity will be set as the entering entity"
+		},
+		"EXITVEHICLE": {
+			"description": "Triggers when the user exits a vehicle. \nThe target entity will be set as the vehicle"
+		},
+		"PLAYERJOIN": {
+			"description": "Triggers when the user joins the server"
+		},
+		"PLAYERQUIT": {
+			"description": "Triggers when the user exits the server"
+		},
+		"PROJECTILECOMBAT": {
+			"description": "Acts like the DAMAGEDBYPROJECTILE and DAMAGEDENTITYWITHPROJECTILE triggers combined",
+			"typeProperties": {
+				"onlyProjectiles": {
+					"description": "If true, will only trigger if the damage is from a projectile",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"TAME": {
+			"description": "Triggers when the user tames an entity. \nThe target entity will be set as the tamed entity"
+		},
+		"INTERACT": {
+			"description": "Triggers when the user interacts with a block or air",
+			"typeProperties": {
+				"actions": {
+					"description": "The interactions that will trigger this trigger. ",
+					"required": false,
+					"type": "array",
+					"items": "action",
+					"default": []
+				}
+			}
+		},
+		"KILL": {
+			"description": ""
+		},
+		"POTIONEFFECT": {
+			"description": ""
+		},
+		"CONSUME": {
+			"description": ""
+		}
+	},
 	"conditions": {
 		"HEALTH": {
 			"description": "Checks if the hp percentage of the player or entity is in the range",
