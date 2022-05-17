@@ -1,5 +1,5 @@
 import { IfPath, PropertyTypes, EffectModes, ConditionModes } from "./PreprocessedSchema";
-import { MonoTypeObject } from "./utils";
+import { MonoTypeObject, objectPropertyMap } from "./utils";
 
 export {
 	Schema, 
@@ -337,42 +337,15 @@ class PropertyClass implements Property {
 
 }
 
-class SkillDefinition {
-	readonly properties: {
-		skill: true,
-		[key: string]: Property | boolean
-	}
-	required?: string[]
-	readonly additionalProperties = false
-
-	constructor() {
-		this.properties = { skill: true }
-		this.required = []
-	}
-
-	addProperty(name: string, property: Property, required?: true): void {
-		this.properties[name] = property
-		if (required) {
-			if (this.required === undefined) this.required = []
-			this.required.push(name)
-		}
-	}
-
-}
-
-class TriggerDefinition {
-	readonly properties: {
-		type: true,
-		conditions: true,
-		[key: string]: Property | boolean | undefined
-	}
+abstract class Definition {
+	readonly properties: MonoTypeObject<Property | boolean>
 	required?: string[]
 	readonly additionalProperties = false
 	if?: true
 	then?: {$ref: string}
 
-	constructor() {
-		this.properties = { type: true, conditions: true }
+	constructor(properties: MonoTypeObject<Property | boolean>) {
+		this.properties = properties
 	}
 
 	addProperty(name: string, property: Property, required?: true): void {
@@ -382,66 +355,59 @@ class TriggerDefinition {
 			this.required.push(name)
 		}
 	}
-	setExtension(condition: string) {
+	protected internalSetExtension(type: string, extension: string) {
 		this.if = true
-		this.then = {$ref: `#/trigger/${condition.toUpperCase()}`}
+		this.then = {$ref: `#/${type}s/${extension.toUpperCase()}`}
 	}
+
 }
 
-class ConditionDefinition {
-	readonly properties: {
-		type: true,
-		mode?: {enum: ConditionModes[]},
-		[key: string]: Property | boolean | undefined
+class SkillDefinition extends Definition {
+
+	constructor() {
+		super({ skill: true });
 	}
-	required?: string[]
-	readonly additionalProperties = false
-	if?: true
-	then?: {$ref: string}
+
+	setExtension(extension: string) {
+		this.internalSetExtension("skill", extension)
+	}
+
+}
+
+class TriggerDefinition extends Definition {
+
+	constructor() {
+		super({ type: true, conditions: true })
+	}
+
+	setExtension(extension: string) {
+		this.internalSetExtension("trigger", extension)
+	}
+
+}
+
+class ConditionDefinition extends Definition {
 	
 	constructor(modes: ConditionModes[]) {
-		this.properties = { type: true, mode: { enum: modes } }
+		super({ type: true, mode: { enum: modes } })
 	}
 
-	addProperty(name: string, property: Property, required?: true): void {
-		this.properties[name] = property
-		if (required) {
-			if (this.required === undefined) this.required = []
-			this.required.push(name)
-		}
+	setExtension(extension: string) {
+		this.internalSetExtension("condition", extension)
 	}
-	setExtension(condition: string) {
-		this.if = true
-		this.then = {$ref: `#/conditions/${condition.toUpperCase()}`}
-	}
+
 }
 
-class EffectDefinition {
-	readonly properties: {
-		type: true,
-		mode?: {enum: EffectModes[]},
-		[key: string]: Property | boolean | undefined
-	}
-	required?: string[]
-	readonly additionalProperties = false
-	if?: true
-	then?: {$ref: string}
+class EffectDefinition extends Definition {
 
 	constructor(modes: EffectModes[]) {
-		this.properties = { type: true, mode: { enum: modes } }
+		super({ type: true, mode: { enum: modes } })
 	}
 
-	addProperty(name: string, property: Property, required?: true): void {
-		this.properties[name] = property
-		if (required) {
-			if (this.required === undefined) this.required = []
-			this.required.push(name)
-		}
+	setExtension(extension: string) {
+		this.internalSetExtension("effect", extension)
 	}
-	setExtension(condition: string) {
-		this.if = true
-		this.then = {$ref: `#/effects/${condition.toUpperCase()}`}
-	}
+
 }
 
 interface TypeDefinition {
