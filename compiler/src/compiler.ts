@@ -46,7 +46,12 @@ function addCustomSkill({definitions, skills}: Compiled.Schema): void {
 
 function compileTrigger(trigger: Preprocessed.Trigger, triggers: MonoTypeObject<Preprocessed.Trigger>): Compiled.TriggerDefinition {
 	let compiledTrigger = new Compiled.TriggerDefinition()
-	if (trigger.extends !== undefined) compiledTrigger.setExtension(trigger.extends)
+	if (trigger.extends !== undefined) {
+		let extendedName = trigger.extends
+		let properties = triggers[extendedName].typeProperties;
+		if (properties === undefined) properties = {}
+		compiledTrigger.setExtension(extendedName, properties)
+	}
 	if (trigger.typeProperties === undefined) return compiledTrigger
 	objectPropertyMap(trigger.typeProperties)
 		.forEach((property, name) => {
@@ -60,7 +65,12 @@ function compileTrigger(trigger: Preprocessed.Trigger, triggers: MonoTypeObject<
 
 function compileCondition(condition: Preprocessed.Condition, conditions: MonoTypeObject<Preprocessed.Condition>): Compiled.ConditionDefinition {
 	let compiledCondition = new Compiled.ConditionDefinition(condition.supportedModes!)
-	if (condition.extends !== undefined) compiledCondition.setExtension(condition.extends)
+	if (condition.extends !== undefined) {
+		let extendedName = condition.extends
+		let properties = conditions[extendedName].typeProperties;
+		if (properties === undefined) properties = {}
+		compiledCondition.setExtension(extendedName, properties)
+	}
 	if (condition.typeProperties === undefined) return compiledCondition
 	objectPropertyMap(condition.typeProperties)
 		.forEach((property, name) => {
@@ -74,7 +84,12 @@ function compileCondition(condition: Preprocessed.Condition, conditions: MonoTyp
 
 function compileEffect(effect: Preprocessed.Effect, effects: MonoTypeObject<Preprocessed.Effect>): Compiled.EffectDefinition {
 	let compiledEffect = new Compiled.EffectDefinition(effect.supportedModes!)
-	if (effect.extends !== undefined) compiledEffect.setExtension(effect.extends)
+	if (effect.extends !== undefined) {
+		let extendedName = effect.extends
+		let properties = effects[extendedName].typeProperties;
+		if (properties === undefined) properties = {}
+		compiledEffect.setExtension(extendedName, properties)
+	}
 	if (effect.typeProperties === undefined) return compiledEffect
 	objectPropertyMap(effect.typeProperties)
 		.forEach((property, name) => {

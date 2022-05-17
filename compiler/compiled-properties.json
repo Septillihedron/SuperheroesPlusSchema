@@ -2173,6 +2173,8 @@
                         "OTHER"
                     ]
                 },
+                "comparison": true,
+                "value": true,
                 "variable": {
                     "description": "The variable to compare",
                     "type": "string"
@@ -2537,6 +2539,8 @@
                         "SELF"
                     ]
                 },
+                "conditions": true,
+                "effects": true,
                 "radius": {
                     "description": "Half the side length of the box. \nDefaults to 5",
                     "type": "number",
@@ -2608,6 +2612,8 @@
                         "LOCATION"
                     ]
                 },
+                "conditions": true,
+                "effects": true,
                 "delay": {
                     "description": "The delay time in seconds (1 is 20 ticks). \nDefaults to 1",
                     "type": "number",
@@ -2783,6 +2789,8 @@
                         "OTHER"
                     ]
                 },
+                "operation": true,
+                "value": true,
                 "attribute": {
                     "description": "The attribute to modify. The name of the attribute should exclude the \"GENERIC_\" in the begining",
                     "allOf": [
@@ -2892,6 +2900,8 @@
                         "OTHER"
                     ]
                 },
+                "operation": true,
+                "value": true,
                 "retainHealth": {
                     "description": "For slimes and magma cubes. If true, make the entity retain the previous health, if more than the new max health, it sets it to the new max health. \nDefaults to true",
                     "type": "boolean",
@@ -2950,6 +2960,8 @@
                         "OTHER"
                     ]
                 },
+                "operation": true,
+                "value": true,
                 "variable": {
                     "description": "The name of the variable",
                     "type": "string"
@@ -3301,6 +3313,8 @@
                         "LOCATION"
                     ]
                 },
+                "conditions": true,
+                "effects": true,
                 "radius": {
                     "description": "Half the side length of the box. \nDefaults to 5",
                     "type": "number",
@@ -3322,6 +3336,8 @@
                         "OTHER"
                     ]
                 },
+                "conditions": true,
+                "effects": true,
                 "onlyProjectiles": {
                     "description": "If true, only triggers if the original target entity is a projectile. If false, keep the target entity the same. \nDefaults to true",
                     "type": "boolean",
@@ -3409,6 +3425,8 @@
                         "LOCATION"
                     ]
                 },
+                "conditions": true,
+                "effects": true,
                 "verticalRadius": {
                     "description": "Half of the vertical side length of the cube. \nDefaults to 0",
                     "type": "integer",
@@ -3560,6 +3578,8 @@
                         "LOCATION"
                     ]
                 },
+                "conditions": true,
+                "effects": true,
                 "delay": {
                     "description": "The initial delay in seconds (1 is 20 ticks). \nDefaults to 1",
                     "type": "number",
@@ -3605,6 +3625,8 @@
                         "OTHER"
                     ]
                 },
+                "conditions": true,
+                "effects": true,
                 "slot": {
                     "description": "The slot of the item. \nDefaults to HAND",
                     "allOf": [
@@ -3630,7 +3652,9 @@
                         "ALL",
                         "ITEM"
                     ]
-                }
+                },
+                "operation": true,
+                "value": true
             },
             "if": true,
             "then": {
@@ -3646,7 +3670,9 @@
                         "ALL",
                         "OTHER"
                     ]
-                }
+                },
+                "conditions": true,
+                "effects": true
             },
             "if": true,
             "then": {

@@ -355,9 +355,10 @@ abstract class Definition {
 			this.required.push(name)
 		}
 	}
-	protected internalSetExtension(type: string, extension: string) {
+	protected internalSetExtension(type: string, extension: string, extendedProperties: MonoTypeObject<any>) {
 		this.if = true
 		this.then = {$ref: `#/${type}s/${extension.toUpperCase()}`}
+		Object.keys(extendedProperties).forEach(name => this.properties[name] = true)
 	}
 
 }
@@ -368,8 +369,8 @@ class SkillDefinition extends Definition {
 		super({ skill: true });
 	}
 
-	setExtension(extension: string) {
-		this.internalSetExtension("skill", extension)
+	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
+		this.internalSetExtension("skill", extension, extendedProperties)
 	}
 
 }
@@ -380,8 +381,8 @@ class TriggerDefinition extends Definition {
 		super({ type: true, conditions: true })
 	}
 
-	setExtension(extension: string) {
-		this.internalSetExtension("trigger", extension)
+	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
+		this.internalSetExtension("trigger", extension, extendedProperties)
 	}
 
 }
@@ -392,8 +393,8 @@ class ConditionDefinition extends Definition {
 		super({ type: true, mode: { enum: modes } })
 	}
 
-	setExtension(extension: string) {
-		this.internalSetExtension("condition", extension)
+	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
+		this.internalSetExtension("condition", extension, extendedProperties)
 	}
 
 }
@@ -404,8 +405,8 @@ class EffectDefinition extends Definition {
 		super({ type: true, mode: { enum: modes } })
 	}
 
-	setExtension(extension: string) {
-		this.internalSetExtension("effect", extension)
+	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
+		this.internalSetExtension("effect", extension, extendedProperties)
 	}
 
 }
