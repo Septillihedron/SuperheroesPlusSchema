@@ -267,22 +267,14 @@ class PropertyClass implements Property {
 		let parsedType = this.parseType(type)
 		if (parsedType === undefined) return
 
-		if (this.type === undefined) {
-			this.type = parsedType
-			return
-		}
-		if (this.type instanceof Array) {
-			this.type.push(parsedType)
-			return
-		}
-		this.type = [this.type, parsedType]
+		this.addAnyOf({ type: parsedType })
 	}
 	private static readonly typesArray = ["array", "object", "string", "number", "integer", "boolean"]
 	private parseType(type: PropertyTypes): types | undefined {
 		if (PropertyClass.typesArray.includes(type)) {
 			return type as types
 		} else {
-			this.addAllOf({$ref: `#/types/${type}`})
+			this.addAnyOf({$ref: `#/types/${type}`})
 		}
 	}
 	setMin(min: number): void {
@@ -333,6 +325,10 @@ class PropertyClass implements Property {
 	addAllOf(property: Property): void {
 		if (this.allOf === undefined) this.allOf = []
 		this.allOf.push(property)
+	}
+	addAnyOf(property: Property): void {
+		if (this.anyOf === undefined) this.anyOf = []
+		this.anyOf.push(property)
 	}
 
 }
