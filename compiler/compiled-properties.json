@@ -1657,8 +1657,7 @@
                     "type": "object",
                     "description": "The list of effetcs"
                 }
-            },
-            "required": []
+            }
         }
     },
     "triggers": {
@@ -2438,7 +2437,7 @@
                     "description": "The conditions to OR. \nDefaults to [object Object]",
                     "type": "object",
                     "default": {},
-                    "properties": {
+                    "patternProperties": {
                         "\\w": {
                             "description": "A condition to OR. \nDefaults to [object Object]",
                             "allOf": [
@@ -2498,7 +2497,7 @@
                     "description": "The list of conditions. \nDefaults to [object Object]",
                     "type": "object",
                     "default": {},
-                    "properties": {
+                    "patternProperties": {
                         "\\w": {
                             "description": "A condition. \nDefaults to [object Object]",
                             "allOf": [
@@ -2514,7 +2513,7 @@
                     "description": "The list of effects. \nDefaults to [object Object]",
                     "type": "object",
                     "default": {},
-                    "properties": {
+                    "patternProperties": {
                         "\\w": {
                             "description": "An effect. \nDefaults to [object Object]",
                             "allOf": [
