@@ -141,7 +141,7 @@
 	},
 	"conditions": {
 		"HEALTH": {
-			"description": "Checks if the hp percentage of the player or entity is in the range",
+			"description": "Checks if the hp percentage of the user or target entity is in the range",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"minimumHealthPercentage": {
@@ -189,7 +189,7 @@
 			}
 		},
 		"ENTITY": {
-			"description": "Checks if the entity against this whitelist/blacklist",
+			"description": "Checks the target entity against this whitelist/blacklist",
 			"supportedModes": ["ALL", "OTHER"],
 			"typeProperties": {
 				"whitelist": {
@@ -208,7 +208,7 @@
 			}
 		},
 		"SIZE": {
-			"description": "Checks if the size of the entity is in the range (for slimes, magma cubes, and phantoms)",
+			"description": "Checks if the size of the user or target entity is in the range (for slimes, magma cubes, and phantoms)",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"minimumSize": {
@@ -267,7 +267,7 @@
 			}
 		},
 		"ONGROUND": {
-			"description": "Checks if the player or entity is on the ground",
+			"description": "Checks if the user or target entity is on the ground",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"grounded": {
@@ -279,7 +279,7 @@
 			}
 		},
 		"GLIDING": {
-			"description": "Checks if the player gliding",
+			"description": "Checks if the user gliding",
 			"supportedModes": ["ALL", "SELF"],
 			"typeProperties": {
 				"shouldGlide": {
@@ -291,7 +291,7 @@
 			}
 		},
 		"BIOME": {
-			"description": "Checks if the biome that the player, entity, or location is in is one of the listed biomes",
+			"description": "Checks if the biome that the user, target entity, or location is in is one of the listed biomes",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
 			"typeProperties": {
 				"biomes": {
@@ -346,7 +346,7 @@
 			}
 		},
 		"NPC": {
-			"description": "Checks if the player or entity is an npc",
+			"description": "Checks if the user or target entity is an npc",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"isNPC": {
@@ -358,11 +358,11 @@
 			}
 		},
 		"WEATHER": {
-			"description": "Checks if the world that the player is in has a storm",
+			"description": "Checks if the world that the user is in has a storm",
 			"supportedModes": ["ALL", "SELF"]
 		},
 		"INBLOCK": {
-			"description": "Checks if the player or entity is in one of the listed blocks",
+			"description": "Checks if the user or target entity is in one of the listed blocks",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"blocks": {
@@ -375,7 +375,7 @@
 			}
 		},
 		"WORLD": {
-			"description": "Checks if the world that the player, entity, or location is in is one of the listed worlds",
+			"description": "Checks if the world that the user, target entity, or location is in is one of the listed worlds",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
 			"typeProperties": {
 				"worlds": {
@@ -388,11 +388,11 @@
 			}
 		},
 		"TAMED": {
-			"description": "Checks if the entity is tamed",
+			"description": "Checks if the target entity is tamed",
 			"supportedModes": ["ALL", "OTHER"],
 			"typeProperties": {
 				"checkOwner": {
-					"description": "If true, also checks if the player is the owner",
+					"description": "If true, also checks if the user is the owner",
 					"required": false,
 					"type": "boolean",
 					"default": true
@@ -400,11 +400,11 @@
 			}
 		},
 		"FLYING": {
-			"description": "Checks if the player is flying",
+			"description": "Checks if the user or target entity is flying",
 			"supportedModes": ["ALL", "SELF", "OTHER"]
 		},
 		"HEIGHT": {
-			"description": "Checks if the player or entity y location is in the range",
+			"description": "Checks if the user or target entity y coordinate is in the range",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"height": {
@@ -429,7 +429,7 @@
 			}
 		},
 		"ITEM": {
-			"description": "Checks if the declared slot against the declared item",
+			"description": "Checks the item or the item in the declared slot against the declared item",
 			"supportedModes": ["ALL", "SELF", "OTHER", "ITEM"],
 			"typeProperties": {
 				"slot": {
@@ -522,11 +522,11 @@
 			}
 		},
 		"VISIBILITY": {
-			"description": "Checks if the player has a direct line of sight to the entity",
+			"description": "Checks if the user has a direct line of sight to the target entity",
 			"supportedModes": ["ALL", "OTHER"],
 			"typeProperties": {
 				"maxDistance": {
-					"description": "The maximum distance to the entity",
+					"description": "The maximum distance to the target entity",
 					"required": false,
 					"type": "number",
 					"default": 16
@@ -534,13 +534,13 @@
 			}
 		}
 	},
-	"effects": { // TODO: additional refuiew required for description including target, better writing required for wrapper conditions
+	"effects": {
 		"DAMAGE": {
-			"description": "Damages the player or an entity",
+			"description": "Damages the user or the target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"damage": {
-					"description": "The damage that will be dealt",
+					"description": "The amount damage that will be dealt",
 					"required": false,
 					"type": "number",
 					"default": 5
@@ -548,7 +548,7 @@
 			}
 		},
 		"WRAPPER": {
-			"description": "Excecutes all the inside effects if all the inside conditions are satisfied",
+			"description": "Acts like a trigger",
 			"available": false,
 			"typeProperties": {
 				"conditions": {
@@ -582,7 +582,7 @@
 			}
 		},
 		"AOE": {
-			"description": "Excecutes all the inside effects if all the inside conditions are satisfied. ",
+			"description": "Acts like a trigger. \nTriggers for every entity in the range. \nThe target entity will be set to the entity this trigger triggers for",
 			"supportedModes": ["ALL", "SELF"],
 			"extends": "WRAPPER",
 			"typeProperties": {
@@ -623,7 +623,7 @@
 			}
 		},
 		"VELOCITY": {
-			"description": "Sets the Y component of the velocity vector of the user or entity. Same as FLING",
+			"description": "Sets the Y velocity of the user or target entity. Same as FLING",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"velocity": {
@@ -639,11 +639,11 @@
 			"supportedModes": ["ALL", "SELF"]
 		},
 		"GLIDING": {
-			"description": "Sets the gliding mode of the player or entity (works even if an Elytra is not equipped)",
+			"description": "Sets the gliding mode of the user or target entity (works even if an Elytra is not equipped)",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"glide": {
-					"description": "If true, makes the player or entity glide. Else if false, makes the player or entity stop gliding",
+					"description": "If true, makes the user or target entity glide. If false, makes the user or target entity stop gliding",
 					"required": false,
 					"type": "boolean",
 					"default": false
@@ -651,7 +651,7 @@
 			}
 		},
 		"WAIT": {
-			"description": "Waits a duration of time then excecutes all the inside effects if all the inside condition is satisfied",
+			"description": "Acts like a trigger. \nWaits a duration of time before it triggers",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
 			"extends": "WRAPPER",
 			"typeProperties": {
@@ -692,7 +692,7 @@
 			}
 		},
 		"POTION": {
-			"description": "Applies the potion effect to the player or entity",
+			"description": "Applies the potion effect to the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"potion": {
@@ -727,7 +727,7 @@
 			}
 		},
 		"WEB": {
-			"description": "Change the block at the player or entity for a duration of time, then change it back. Exactly the same effect as the BLOCKENTITY effect",
+			"description": "Change the block at the user or target entity for a duration of time, then change it back. Same as the BLOCKENTITY effect",
 			"supportedModes": ["ALL", "OTHER"],
 			"typeProperties": {
 				"duration": {
@@ -745,7 +745,7 @@
 			}
 		},
 		"BLOCKENTITY": {
-			"description": "Change the block at the player or entity for a duration of time, then change it back. Exactly the same effect as the WEB effect",
+			"description": "Change the block at the user or target entity for a duration of time, then change it back. Same as the WEB effect",
 			"supportedModes": ["ALL", "OTHER"],
 			"typeProperties": {
 				"duration": {
@@ -773,7 +773,7 @@
 					"default": 1
 				},
 				"entity": {
-					"description": "The entity to shoot",
+					"description": "The entity launch",
 					"required": false,
 					"type": "entity",
 					"default": "arrow"
@@ -805,7 +805,7 @@
 			}
 		},
 		"ATTRIBUTE": {
-			"description": "Modifies an attribute owned by the user or entity",
+			"description": "Modifies an attribute owned by the user or target entity",
 			"extends": "MODIFY",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
@@ -832,7 +832,7 @@
 			"available": false
 		},
 		"LAUNCH": {
-			"description": "Launches an entity at the target",
+			"description": "Launches an entity at the target entity",
 			"supportedModes": ["ALL", "OTHER"],
 			"typeProperties": {
 				"type": {
@@ -842,7 +842,7 @@
 					"default": "FIREBALL"
 				},
 				"velocity": {
-					"description": "The velocity to launch at",
+					"description": "The speed to launch at",
 					"required": false,
 					"type": "number",
 					"default": 1
@@ -869,7 +869,7 @@
 			"supportedModes": ["ALL", "OTHER"],
 			"typeProperties": {
 				"velocity": {
-					"description": "The velocity to repulse the target entity. Positive value means into the user. Negative value means away from the user",
+					"description": "The speed to repulse the target entity. Positive value means into the user. Negative value means away from the user",
 					"required": false,
 					"type": "number",
 					"default": 1
@@ -882,7 +882,7 @@
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"retainHealth": {
-					"description": "For slimes and magma cubes. If true, make it retain the previous health (if more than the new max health, it sets it to the max health)",
+					"description": "For slimes and magma cubes. If true, make the entity retain the previous health, if more than the new max health, it sets it to the new max health",
 					"required": false,
 					"type": "boolean",
 					"default": true
@@ -913,7 +913,7 @@
 			}
 		},
 		"FLING": {
-			"description": "Sets the Y component of the velocity vector of the player or entity. Same as VELOCITY",
+			"description": "Sets the Y velocity of the user or target entity. Same as VELOCITY",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
 				"velocity": {
@@ -1121,7 +1121,7 @@
 			}
 		},
 		"SCRAMBLEINVENTORY": {
-			"description": "Scrambles the user or target entity's inventory",
+			"description": "Scrambles the inventory of the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"]
 		},
 		"RANDOMTELEPORT": {
@@ -1143,7 +1143,7 @@
 			}
 		},
 		"PROJECTILE": {
-			"description": "Shoots an entity from the user, if mode is SELF, shoots the entity in the direction that the user is looking",
+			"description": "Shoots an entity from the user. if mode is SELF, shoots the entity in the direction that the user is looking",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
 			"typeProperties": {
 				"entity": {
@@ -1189,7 +1189,7 @@
 			}
 		},
 		"SOUND": {
-			"description": "Plays a sound at a location or at the location of the user or target entity",
+			"description": "Plays a sound at the location or at the location of the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
 			"typeProperties": {
 				"sound": {
@@ -1219,7 +1219,7 @@
 				}
 			}
 		},
-		"COMMAND": {
+		"COMMAND": { // Not usable in normal skills library as the time of writing
 			"description": "Excecutes a command",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"typeProperties": {
@@ -1262,7 +1262,7 @@
 			}
 		},
 		"NEAREST": {
-			"description": "Excecutes all the inside effects to the nearest player and entity in the box centered on the location or the location of the user or target entity if all the inside conditions are satisfied",
+			"description": "Acts like a trigger. \nTriggers for the nearest entity in the radius. \nThe target entity will be set as the nearest entity",
 			"extends": "WRAPPER",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
 			"typeProperties": {
@@ -1302,13 +1302,13 @@
 				}
 			}
 		},
-		"SHOOTER": {
-			"description": "Excecutes all the inside effects if all the inside conditions are satisfied. With the shooter of the original target entity as the new target entity", 
+		"SHOOTER": {// TODO: Fill
+			"description": "Acts like a trigger. \nTriggers for the target entity. \nThe new target entity will be set as the source of the projectile if the old target entity is a projectile, otherwise the target entity will remain the same",
 			"extends": "WRAPPER",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
 			"typeProperties": {
 				"onlyProjectiles": {
-					"description": "If true, only excecutes the inside effects if the original target entity is a projectile. If false, forwards the original target entity to the inside conditions and effects",
+					"description": "If true, only triggers if the original target entity is a projectile. If false, keep the target entity the same",
 					"required": false,
 					"type": "boolean",
 					"default": true
@@ -1316,7 +1316,7 @@
 			}
 		},
 		"KNOCKBACK": {
-			"description": "Applies a velocity to the target entity with the direction that the user is looking as the direction",
+			"description": "Applies a velocity to the target entity in the direction that the user is looking as the direction",
 			"supportedModes": ["ALL", "OTHER"],
 			"typeProperties": {
 				"multiplier": {
@@ -1326,7 +1326,7 @@
 					"default": 1
 				}, 
 				"overwriteCurrentVelocity": {
-					"description": "If true, sets the target's velocity. If false, adds to the target's original velocity",
+					"description": "If true, sets the velocity of the target entity. If false, adds to the original velocity of the target entity",
 					"required": false,
 					"type": "boolean",
 					"default": true
