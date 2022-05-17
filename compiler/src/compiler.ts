@@ -1,28 +1,29 @@
 import * as Preprocessed from "./PreprocessedSchema"
 import * as Compiled from "./CompiledSchema"
-import { objectPropertyMap } from "./utils"
+import { MonoTypeObject, objectPropertyMap } from "./utils"
 
 export function compile(preprocessed: Preprocessed.Schema): Compiled.Schema {
 	var schema = new Compiled.Schema()
 
 	addCustomSkill(schema)
 	objectPropertyMap(preprocessed.triggers).forEach((trigger: Preprocessed.Trigger, name) => {
-		addTrigger(schema, name as string, trigger)
+		schema.triggers[name] = compileTrigger(trigger, preprocessed.triggers)
 		if (trigger.available === false) return
 		schema.definitions.trigger.addType(name as string, trigger.description)
 	})
 	objectPropertyMap(preprocessed.conditions).forEach((condition: Preprocessed.Condition, name) => {
-		addCondition(schema, name as string, condition)
+		schema.conditions[name] = compileCondition(condition, preprocessed.conditions)
 		if (condition.available === false) return
 		schema.definitions.condition.addType(name as string, condition.description)
 	})
 	objectPropertyMap(preprocessed.effects).forEach((effect: Preprocessed.Effect, name) => {
-		addEffect(schema, name as string, effect)
+		schema.effects[name] = compileEffect(effect, preprocessed.effects)
 		if (effect.available === false) return
 		schema.definitions.effect.addType(name as string, effect.description)
 	})
 	objectPropertyMap(preprocessed.types).forEach((type: Preprocessed.TypeDefinition, name) => {
-		addType(schema, name as string, type)
+		if (["condition", "effect"].includes(name as string)) return
+		schema.types[name] = compileType(type, preprocessed.types)
 	})
 	addInternalTypes(schema);
 
@@ -43,53 +44,49 @@ function addCustomSkill({definitions, skills}: Compiled.Schema): void {
 	skills["CUSTOM"] = skill
 }
 
-function addTrigger({triggers}: Compiled.Schema, name: string, trigger: Preprocessed.Condition): void {
+function compileTrigger(trigger: Preprocessed.Trigger, triggers: MonoTypeObject<Preprocessed.Trigger>): Compiled.TriggerDefinition {
 	let compiledTrigger = new Compiled.TriggerDefinition()
 	if (trigger.extends !== undefined) compiledTrigger.setExtension(trigger.extends)
-	if (trigger.typeProperties !== undefined) {
-		objectPropertyMap(trigger.typeProperties)
-			.forEach((property, name) => {
-				let compiledProperty = compileProperty(property, 
-					new Compiled.PropertyClass(triggers, name as string, `#/triggers/${name}`))
-				compiledTrigger.addProperty(name as string, compiledProperty, property.required)
-			})
-	}
+	if (trigger.typeProperties === undefined) return compiledTrigger
+	objectPropertyMap(trigger.typeProperties)
+		.forEach((property, name) => {
+			let compiledProperty = compileProperty(property, 
+				new Compiled.PropertyClass(triggers, name as string, `#/triggers/${name}`))
+			compiledTrigger.addProperty(name as string, compiledProperty, property.required)
+		})
 
-	triggers[name] = compiledTrigger
+	return compiledTrigger
 }
 
-function addCondition({conditions}: Compiled.Schema, name: string, condition: Preprocessed.Condition): void {
+function compileCondition(condition: Preprocessed.Condition, conditions: MonoTypeObject<Preprocessed.Condition>): Compiled.ConditionDefinition {
 	let compiledCondition = new Compiled.ConditionDefinition(condition.supportedModes!)
 	if (condition.extends !== undefined) compiledCondition.setExtension(condition.extends)
-	if (condition.typeProperties !== undefined) {
-		objectPropertyMap(condition.typeProperties)
-			.forEach((property, name) => {
-				let compiledProperty = compileProperty(property, 
-					new Compiled.PropertyClass(conditions, name as string, `#/conditions/${name}`))
-				compiledCondition.addProperty(name as string, compiledProperty, property.required)
-			})
-	}
+	if (condition.typeProperties === undefined) return compiledCondition
+	objectPropertyMap(condition.typeProperties)
+		.forEach((property, name) => {
+			let compiledProperty = compileProperty(property, 
+				new Compiled.PropertyClass(conditions, name as string, `#/conditions/${name}`))
+			compiledCondition.addProperty(name as string, compiledProperty, property.required)
+		})
 
-	conditions[name] = compiledCondition
+	return compiledCondition
 }
 
-function addEffect({effects}: Compiled.Schema, name: string, effect: Preprocessed.Effect): void {
+function compileEffect(effect: Preprocessed.Effect, effects: MonoTypeObject<Preprocessed.Effect>): Compiled.EffectDefinition {
 	let compiledEffect = new Compiled.EffectDefinition(effect.supportedModes!)
 	if (effect.extends !== undefined) compiledEffect.setExtension(effect.extends)
-	if (effect.typeProperties !== undefined) {
-		objectPropertyMap(effect.typeProperties)
-			.forEach((property, name) => {
-				let compiledProperty = compileProperty(property, 
-					new Compiled.PropertyClass(effects, name as string, `#/effects/${name}`))
-				compiledEffect.addProperty(name as string, compiledProperty, property.required)
-			})
-	}
-	
-	effects[name] = compiledEffect
+	if (effect.typeProperties === undefined) return compiledEffect
+	objectPropertyMap(effect.typeProperties)
+		.forEach((property, name) => {
+			let compiledProperty = compileProperty(property, 
+				new Compiled.PropertyClass(effects, name as string, `#/effects/${name}`))
+			compiledEffect.addProperty(name as string, compiledProperty, property.required)
+		})
+
+	return compiledEffect
 }
 
-function addType({types}: Compiled.Schema, name: string, type: Preprocessed.TypeDefinition): void {
-	if (["condition", "effect"].includes(name)) return
+function compileType(type: Preprocessed.TypeDefinition, types: MonoTypeObject<Preprocessed.TypeDefinition>): Compiled.TypeDefinition {
 
 	let compiledType: Compiled.TypeDefinition = {}
 
@@ -116,7 +113,7 @@ function addType({types}: Compiled.Schema, name: string, type: Preprocessed.Type
 	}
 	if (type.ref !== undefined) compiledType.$ref = `#/types/${type.ref}`
 
-	types[name] = compiledType
+	return compiledType
 }
 
 function addInternalTypes({types}: Compiled.Schema): void {
