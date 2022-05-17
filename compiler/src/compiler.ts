@@ -179,8 +179,8 @@ const PropertyPartsCompiler: propertyPartsCompiler = {
 		objectPropertyMap(patternProperties).forEach((property, name) => {
 			let compiledProperty = compileProperty(property, 
 				new Compiled.PropertyClass(compilingProperty, name as string))
-		
-			compilingProperty.addProperty(name as string, compiledProperty)
+
+			compilingProperty.addPatternProperty(name as string, compiledProperty)
 		})
 	},
 	propertiesMap: (property, compilingProperty) => {
