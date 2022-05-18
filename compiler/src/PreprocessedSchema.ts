@@ -76,6 +76,7 @@ interface TypeDefinition {
 	patternProperties?: PropertyMap
 	propertiesMap?: PropertiesMap
 	ref?: string
+	extends?: string
 	enum?: any[]
 	pattern?: string
 	internal?: boolean

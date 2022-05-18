@@ -1701,11 +1701,11 @@
 		},
 		"block": {
 			"description": "A block",
-			"ref": "material"
+			"extends": "material"
 		},
 		"item": {
 			"description": "An item",
-			"ref": "material"
+			"extends": "material"
 		},
 		"enchantment": {
 			"description": "An enchantment",

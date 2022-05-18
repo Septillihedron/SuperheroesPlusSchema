@@ -126,7 +126,7 @@ function compileType(type: Preprocessed.TypeDefinition, types: MonoTypeObject<Pr
 				compiledType.patternProperties![name] = compiledProperty
 			})
 	}
-	if (type.ref !== undefined) compiledType.$ref = `#/types/${type.ref}`
+	if (type.extends !== undefined) compiledType.$ref = `#/types/${type.extends}`
 
 	return compiledType
 }

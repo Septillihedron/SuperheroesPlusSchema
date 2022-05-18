@@ -93,7 +93,8 @@
 						"internal": {
 							"type": "boolean",
 							"description": "If true, this type is managed internally"
-						}
+						},
+						"extends": { "$ref": "#/definitions/type/properties/extends" }
 					},
 					"additionalItems": false,
 					"default": {}
