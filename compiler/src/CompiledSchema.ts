@@ -338,7 +338,7 @@ abstract class Definition {
 	required?: string[]
 	readonly additionalProperties = false
 	if?: true
-	then?: {$ref: string}
+	then?: {$ref: string, additionalProperties: true}
 
 	constructor(properties: MonoTypeObject<Property | boolean>) {
 		this.properties = properties
@@ -353,7 +353,7 @@ abstract class Definition {
 	}
 	protected internalSetExtension(type: string, extension: string, extendedProperties: MonoTypeObject<any>) {
 		this.if = true
-		this.then = {$ref: `#/${type}s/${extension.toUpperCase()}`}
+		this.then = {$ref: `#/${type}s/${extension.toUpperCase()}`, additionalProperties: true}
 		Object.keys(extendedProperties).forEach(name => this.properties[name] = true)
 	}
 
