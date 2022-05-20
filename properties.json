@@ -1724,7 +1724,7 @@
 		"action": {
 			"description": "An interaction action",
 			"type": "string",
-			"enum": ["LEFT_CLICK_AIR", "LEFT_CLICK_BLOCK", "PHYSICAL", "RIGHT_CLICL_AIR", "RIGHT_CLICK_BLOCK"]
+			"enum": ["LEFT_CLICK_AIR", "LEFT_CLICK_BLOCK", "PHYSICAL", "RIGHT_CLICK_AIR", "RIGHT_CLICK_BLOCK"]
 		},
 		"biome": {
 			"description": "A biome",
