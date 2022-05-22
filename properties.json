@@ -633,63 +633,7 @@
 				"item": {
 					"description": "The item to check against",
 					"required": true,
-					"type": "object",
-					"properties": {
-						"types": {
-							"description": "The list of item types",
-							"required": false,
-							"type": "array",
-							"items": "item",
-							"default": []
-						},
-						"amount": {
-							"description": "The range of item amount",
-							"required": false,
-							"type": "range",
-							"default": "-Infinity - Infinity"
-						},
-						"metadata": {
-							"description": "The metadata of the item",
-							"required": false,
-							"type": "object",
-							"default": {},
-							"properties": {
-								"displayName": {
-									"description": "A regex to match the display name against",
-									"required": false,
-									"type": "string", //regex type
-									"default": ".+"
-								},
-								"lore": {
-									"description": "A list of regex to match the lore against",
-									"required": false,
-									"type": "array",
-									"items": "string", //regex type
-									"default": ".+"
-								},
-								"enchants": {
-									"description": "The item to check against",
-									"required": false,
-									"type": "object",
-									"default": {},
-									"propertiesMap": [
-										{
-											"key": {
-												"description": "The enchantment name",
-												"type": "enchantment"
-											},
-											"value": {
-												"description": "The level of the enchantment",
-												"required": false,
-												"type": "range",
-												"default": "-Infinity - Infinity"
-											}
-										}
-									]
-								}
-							}
-						}
-					}
+					"type": "ItemComparisonData"
 				}
 			}
 		},
@@ -890,30 +834,11 @@
 				"potion": {
 					"description": "The potion effect",
 					"required": false,
-					"type": "object",
+					"type": "PotionEffectData",
 					"default": {
 						"type": "REGENERATION",
 						"potency": 1,
 						"duration": 10
-					},
-					"properties": {
-						"potency": {
-							"description": "The potency or amplifier of the potion",
-							"required": false,
-							"type": "integer",
-							"default": 1
-						},
-						"type": {
-							"description": "The type of the potion",
-							"required": true,
-							"type": "potion"
-						},
-						"duration": {
-							"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
-							"required": false,
-							"type": "number",
-							"default": 10
-						}
 					}
 				}
 			}
@@ -1152,163 +1077,7 @@
 				"item": {
 					"description": "The item to give",
 					"required": true,
-					"type": "object",
-					"properties": {
-						"type": {
-							"description": "The type of item",
-							"required": false,
-							"type": "item",
-							"default": "STONE"
-						},
-						"amount": {
-							"description": "The amount of item to give",
-							"required": false,
-							"type": "integer",
-							"default": 1
-						},
-						"metadata": {
-							"description": "The metadata of the item",
-							"required": false,
-							"type": "object",
-							"default": {},
-							"properties": {
-								"displayName": {
-									"description": "The display name of the item. Defaults to the normal item name",
-									"required": false,
-									"type": "string",
-									"default": ""
-								},
-								"lore": {
-									"description": "The lore of the item",
-									"required": false,
-									"type": "array",
-									"items": "string",
-									"default": []
-								},
-								"isUnbreakable": {
-									"description": "If true, makes the item unbreakable",
-									"required": false,
-									"type": "boolean",
-									"default": false
-								},
-								"durability": {
-									"description": "The durability of the item. 0 is normal durability",
-									"required": false,
-									"type": "integer",
-									"default": 0
-								},
-								"attributes": {
-									"description": "The enchantments",
-									"required": false,
-									"type": "object",
-									"default": {},
-									"propertiesMap": [
-										{
-											"key": {
-												"description": "The attribute name",
-												"type": "attribute"
-											},
-											"value": {
-												"description": "The attribute properties",
-												"required": false,
-												"type": "object",
-												"default": null,
-												"properties": {
-													"value": {
-														"description": "The value of the attribute to change to",
-														"required": false,
-														"type": "number",
-														"default": 0
-													},
-													"equipmentslot": {
-														"description": "The slot that this attribute will be active",
-														"required": false,
-														"type": "equipmentSlot",
-														"default": "HAND"
-													}
-												}
-											}
-										}
-									]
-								}, 
-								"enchants": {
-									"description": "The enchantments",
-									"required": false,
-									"type": "object",
-									"default": {},
-									"propertiesMap": [
-										{
-											"key": {
-												"description": "The enchantment name",
-												"type": "enchantment"
-											},
-											"value": {
-												"description": "The level of the enchantment",
-												"required": true,
-												"type": "integer"
-											}
-										}
-									]
-								}, 
-								"color": {
-									"description": "If type is a leather armour. This contains the color metadata of the item",
-									"if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
-									"required": false,
-									"type": "object",
-									"default": {},
-									"properties": {
-										"red": {
-											"description": "The red value",
-											"required": true,
-											"type": "integer",
-											"min": 0,
-											"max": 255
-										},
-										"green": {
-											"description": "The green value",
-											"required": true,
-											"type": "integer",
-											"min": 0,
-											"max": 255
-										},
-										"blue": {
-											"description": "The blue value",
-											"required": true,
-											"type": "integer",
-											"min": 0,
-											"max": 255
-										}
-									}
-								}, 
-								"potion": {
-									"description": "If type is a potion, splash potion, lingering potion, or tipped arrow. This contains the potion metadata of the item",
-									"if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
-									"required": false,
-									"type": "object",
-									"default": {},
-									"properties": {
-										"type": {
-											"description": "The type of potion",
-											"required": true,
-											"type": "potion"
-										},
-										"extended": {
-											"description": "Whether the potion is extended", 
-											"required": false,
-											"type": "boolean",
-											"default": false
-										},
-										"upgraded": {
-											"description": "Whether the potion is upgraded", 
-											"required": false,
-											"type": "boolean",
-											"default": false
-										}
-									}
-								}
-							}
-						}
-					}
+					"type": "ItemStackData"
 				}
 			}
 		},
@@ -1341,36 +1110,7 @@
 				"entity": {
 					"description": "The entity to shoot",
 					"required": true,
-					"type": "object",
-					"properties": {
-						"type": {
-							"description": "The entity type",
-							"required": false, 
-							"type": "entity",
-							"default": "ZOMBIE"
-						},
-						"nametag": {
-							"description": "The nametag of the spawned entity. Defaults to no nametag",
-							"required": false,
-							"type": "string",
-							"default": ""
-						},
-						"shouldDespawn": {
-							"description": "If true, the entity can despawn",
-							"required": false,
-							"type": "boolean",
-							"default": true
-						},
-						"passenger": {
-							"description": "The passanger of the entity",
-							"required": false,
-							"type": "object",
-							"ref": "entity",
-							"properties": {},
-							"default": {}
-						}
-						// oh god, TODO
-					}
+					"type": "EntityData"
 				},
 				"velocity": {
 					"description": "The shooting velocity",
@@ -1387,27 +1127,7 @@
 				"sound": {
 					"description": "The sound data",
 					"required": true,
-					"type": "object",
-					"properties": {
-						"sound": {
-							"description": "The sound to make",
-							"required": false,
-							"type": "sound",
-							"default": "ENTITY_GENERIC_EXPLODE"
-						},
-						"volume": {
-							"description": "The volume of the sound",
-							"required": false,
-							"type": "number",
-							"default": 1
-						},
-						"pitch": {
-							"description": "The pitch of the sound",
-							"required": false,
-							"type": "number",
-							"default": 1
-						}
-					}
+					"type": "SoundData"
 				}
 			}
 		},
@@ -1593,28 +1313,8 @@
 				"offset": {
 					"description": "The offset from the original location",
 					"required": false,
-					"type": "object",
-					"default": {"x": 0, "y": 0, "z": 0},
-					"properties": {
-						"x": {
-							"description": "The x component of the vector",
-							"required": false,
-							"type": "number",
-							"default": 0
-						},
-						"y": {
-							"description": "The y component of the vector",
-							"required": false,
-							"type": "number",
-							"default": 0
-						},
-						"z": {
-							"description": "The z component of the vector",
-							"required": false,
-							"type": "number",
-							"default": 0
-						}
-					}
+					"type": "VectorData",
+					"default": {"x": 0, "y": 0, "z": 0}
 				},
 				"conditions": {
 					"description": "The list of conditions",
@@ -1885,6 +1585,370 @@
 				"DIVIDE",
 				"SET"
 			]
+		},
+		"ItemAttributeData": {
+			"description": "The attribute data for an item",
+			"type": "object",
+			"propertiesMap": [
+				{
+					"key": {
+						"description": "The attribute name",
+						"type": "attribute"
+					},
+					"value": {
+						"description": "The attribute properties",
+						"required": false,
+						"type": "object",
+						"default": null,
+						"properties": {
+							"value": {
+								"description": "The value of the attribute to change to",
+								"required": false,
+								"type": "number",
+								"default": 0
+							},
+							"equipmentslot": {
+								"description": "The slot that this attribute will be active",
+								"required": false,
+								"type": "equipmentSlot",
+								"default": "HAND"
+							}
+						}
+					}
+				}
+			]
+		},
+		"EnchantmentData": {
+			"description": "The enchantment data for an item",
+			"type": "object",
+			"propertiesMap": [
+				{
+					"key": {
+						"description": "The enchantment name",
+						"type": "enchantment"
+					},
+					"value": {
+						"description": "The level of the enchantment",
+						"required": true,
+						"type": "integer"
+					}
+				}
+			]
+		},
+		"ItemMetaData": {
+			"description": "The metadata of an item",
+			"type": "object",
+			"properties": {
+				"displayName": {
+					"description": "The display name of the item. Defaults to the normal item name",
+					"required": false,
+					"type": "string",
+					"default": ""
+				},
+				"lore": {
+					"description": "The lore of the item",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
+				},
+				"isUnbreakable": {
+					"description": "If true, makes the item unbreakable",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"durability": {
+					"description": "The durability of the item. 0 is normal durability",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"attributes": {
+					"description": "The enchantments",
+					"required": false,
+					"type": "ItemAttributeData",
+					"default": {}
+				}, 
+				"enchants": {
+					"description": "The enchantments",
+					"required": false,
+					"type": "EnchantmentData",
+					"default": {}
+				}, 
+				"color": {
+					"description": "If type is a leather armour. This contains the color metadata of the item",
+					"if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
+					"required": false,
+					"type": "object",
+					"default": {},
+					"properties": {
+						"red": {
+							"description": "The red value",
+							"required": true,
+							"type": "integer",
+							"min": 0,
+							"max": 255
+						},
+						"green": {
+							"description": "The green value",
+							"required": true,
+							"type": "integer",
+							"min": 0,
+							"max": 255
+						},
+						"blue": {
+							"description": "The blue value",
+							"required": true,
+							"type": "integer",
+							"min": 0,
+							"max": 255
+						}
+					}
+				}, 
+				"potion": {
+					"description": "If type is a potion, splash potion, lingering potion, or tipped arrow. This contains the potion metadata of the item",
+					"if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
+					"required": false,
+					"type": "object",
+					"default": {},
+					"properties": {
+						"type": {
+							"description": "The type of potion",
+							"required": true,
+							"type": "potion"
+						},
+						"extended": {
+							"description": "Whether the potion is extended", 
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"upgraded": {
+							"description": "Whether the potion is upgraded", 
+							"required": false,
+							"type": "boolean",
+							"default": false
+						}
+					}
+				}
+			}
+		},
+		"ItemStackData": {
+			"description": "The data of an item",
+			"type": "object",
+			"properties": {
+				"type": {
+					"description": "The type of item",
+					"required": false,
+					"type": "item",
+					"default": "STONE"
+				},
+				"amount": {
+					"description": "The amount of item to give",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"metadata": {
+					"description": "The metadata of the item",
+					"required": false,
+					"type": "ItemMetaData",
+					"default": {}
+				}
+			}
+		},
+		"AttributeData": {
+			"description": "The list of attributes and it's value",
+			"type": "object",
+			"propertiesMap": [
+				{
+					"key": {
+						"description": "The attribute name",
+						"type": "attribute"
+					},
+					"value": {
+						"description": "The attribute value",
+						"required": false,
+						"type": "number",
+						"default": -1
+					}
+				}
+			]
+		},
+		"EntityData": {
+			"description": "The data of an entity",
+			"type": "object",
+			"properties": {
+				"type": {
+					"description": "The entity type",
+					"required": false, 
+					"type": "entity",
+					"default": "ZOMBIE"
+				},
+				"nametag": {
+					"description": "The nametag of the spawned entity. Defaults to no nametag",
+					"required": false,
+					"type": "string",
+					"default": ""
+				},
+				"shouldDespawn": {
+					"description": "If true, the entity can despawn",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"passenger": {
+					"description": "The passenger of the entity",
+					"required": false,
+					"type": "EntityData",
+					"default": {}
+				}
+				// oh god, TODO
+			}
+		},
+		"VectorData": {
+			"description": "The data of a vector",
+			"type": "object",
+			"default": {"x": 0, "y": 0, "z": 0},
+			"properties": {
+				"x": {
+					"description": "The x component of the vector",
+					"required": false,
+					"type": "number",
+					"default": 0
+				},
+				"y": {
+					"description": "The y component of the vector",
+					"required": false,
+					"type": "number",
+					"default": 0
+				},
+				"z": {
+					"description": "The z component of the vector",
+					"required": false,
+					"type": "number",
+					"default": 0
+				}
+			}
+		},
+		"SoundData": {
+			"description": "The data of a sound",
+			"type": "object",
+			"properties": {
+				"sound": {
+					"description": "The sound to make",
+					"required": false,
+					"type": "sound",
+					"default": "ENTITY_GENERIC_EXPLODE"
+				},
+				"volume": {
+					"description": "The volume of the sound",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"pitch": {
+					"description": "The pitch of the sound",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"PotionEffectData": {
+			"description": "The data of a potion effect",
+			"type": "object",
+			"properties": {
+				"potency": {
+					"description": "The potency or amplifier of the potion",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"type": {
+					"description": "The type of the potion",
+					"required": true,
+					"type": "potion"
+				},
+				"duration": {
+					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+					"required": false,
+					"type": "number",
+					"default": 10
+				}
+			}
+		},
+		"LoreData": {
+			"type": "array",
+			"items": "string" //regex type
+		},
+		"EnchantComparisonData": {
+			"type": "object",
+			"default": {},
+			"propertiesMap": [
+				{
+					"key": {
+						"description": "The enchantment name",
+						"type": "enchantment"
+					},
+					"value": {
+						"description": "The level of the enchantment",
+						"required": false,
+						"type": "range",
+						"default": "-Infinity - Infinity"
+					}
+				}
+			]
+		},
+		"ItemMetaComparisonData": {
+			"description": "A comparison for metadata",
+			"type": "object",
+			"properties": {
+				"displayName": {
+					"description": "A regex to match the display name against",
+					"required": false,
+					"type": "string", //regex type
+					"default": ".+"
+				},
+				"lore": {
+					"description": "A list of regex to match the lore against",
+					"required": false,
+					"type": "LoreData",
+					"default": ".+"
+				},
+				"enchants": {
+					"description": "The item to check against",
+					"required": false,
+					"type": "EnchantComparisonData",
+					"default": {}
+				}
+			}
+		},
+		"ItemComparisonData": {
+			"description": "A comparison for items",
+			"type": "object",
+			"properties": {
+				"types": {
+					"description": "The list of item types",
+					"required": false,
+					"type": "array",
+					"items": "item",
+					"default": []
+				},
+				"amount": {
+					"description": "The range of item amount",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				},
+				"metadata": {
+					"description": "The metadata of the item",
+					"required": false,
+					"type": "ItemMetaComparisonData",
+					"default": {}
+				}
+			}
 		},
 		"entity": {
 			"description": "A type of entity",

@@ -345,6 +345,8 @@
 			"enum": [
 				"string", 
 				"range", "comparison", "operation", 
+				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData",
+				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData",
 				"entity", "block", "item", 
 				"enchantment", "potion", 
 				"damageCause", "action",
