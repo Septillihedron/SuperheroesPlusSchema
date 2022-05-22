@@ -2486,81 +2486,9 @@
                     "description": "The item to check against",
                     "anyOf": [
                         {
-                            "type": "object"
+                            "$ref": "#/types/ItemComparisonData"
                         }
-                    ],
-                    "properties": {
-                        "types": {
-                            "description": "The list of item types. \nDefaults to ",
-                            "anyOf": [
-                                {
-                                    "type": "array"
-                                }
-                            ],
-                            "items": {
-                                "anyOf": [
-                                    {
-                                        "$ref": "#/types/item"
-                                    }
-                                ]
-                            },
-                            "default": []
-                        },
-                        "amount": {
-                            "description": "The range of item amount. \nDefaults to -Infinity - Infinity",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/range"
-                                }
-                            ],
-                            "default": "-Infinity - Infinity"
-                        },
-                        "metadata": {
-                            "description": "The metadata of the item. \nDefaults to [object Object]",
-                            "anyOf": [
-                                {
-                                    "type": "object"
-                                }
-                            ],
-                            "default": {},
-                            "properties": {
-                                "displayName": {
-                                    "description": "A regex to match the display name against. \nDefaults to .+",
-                                    "anyOf": [
-                                        {
-                                            "type": "string"
-                                        }
-                                    ],
-                                    "default": ".+"
-                                },
-                                "lore": {
-                                    "description": "A list of regex to match the lore against. \nDefaults to .+",
-                                    "anyOf": [
-                                        {
-                                            "type": "array"
-                                        }
-                                    ],
-                                    "items": {
-                                        "anyOf": [
-                                            {
-                                                "type": "string"
-                                            }
-                                        ]
-                                    },
-                                    "default": ".+"
-                                },
-                                "enchants": {
-                                    "description": "The item to check against. \nDefaults to [object Object]",
-                                    "anyOf": [
-                                        {
-                                            "type": "object"
-                                        }
-                                    ],
-                                    "default": {}
-                                }
-                            }
-                        }
-                    }
+                    ]
                 }
             },
             "required": [
@@ -2821,45 +2749,14 @@
                     "description": "The potion effect. \nDefaults to [object Object]",
                     "anyOf": [
                         {
-                            "type": "object"
+                            "$ref": "#/types/PotionEffectData"
                         }
                     ],
                     "default": {
                         "type": "REGENERATION",
                         "potency": 1,
                         "duration": 10
-                    },
-                    "properties": {
-                        "potency": {
-                            "description": "The potency or amplifier of the potion. \nDefaults to 1",
-                            "anyOf": [
-                                {
-                                    "type": "integer"
-                                }
-                            ],
-                            "default": 1
-                        },
-                        "type": {
-                            "description": "The type of the potion",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/potion"
-                                }
-                            ]
-                        },
-                        "duration": {
-                            "description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks). \nDefaults to 10",
-                            "anyOf": [
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "default": 10
-                        }
-                    },
-                    "required": [
-                        "type"
-                    ]
+                    }
                 }
             }
         },
@@ -3243,187 +3140,9 @@
                     "description": "The item to give",
                     "anyOf": [
                         {
-                            "type": "object"
+                            "$ref": "#/types/ItemStackData"
                         }
-                    ],
-                    "properties": {
-                        "type": {
-                            "description": "The type of item. \nDefaults to STONE",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/item"
-                                }
-                            ],
-                            "default": "STONE"
-                        },
-                        "amount": {
-                            "description": "The amount of item to give. \nDefaults to 1",
-                            "anyOf": [
-                                {
-                                    "type": "integer"
-                                }
-                            ],
-                            "default": 1
-                        },
-                        "metadata": {
-                            "description": "The metadata of the item. \nDefaults to [object Object]",
-                            "anyOf": [
-                                {
-                                    "type": "object"
-                                }
-                            ],
-                            "default": {},
-                            "properties": {
-                                "displayName": {
-                                    "description": "The display name of the item. Defaults to the normal item name",
-                                    "anyOf": [
-                                        {
-                                            "type": "string"
-                                        }
-                                    ],
-                                    "default": ""
-                                },
-                                "lore": {
-                                    "description": "The lore of the item. \nDefaults to ",
-                                    "anyOf": [
-                                        {
-                                            "type": "array"
-                                        }
-                                    ],
-                                    "items": {
-                                        "anyOf": [
-                                            {
-                                                "type": "string"
-                                            }
-                                        ]
-                                    },
-                                    "default": []
-                                },
-                                "isUnbreakable": {
-                                    "description": "If true, makes the item unbreakable. \nDefaults to false",
-                                    "anyOf": [
-                                        {
-                                            "type": "boolean"
-                                        }
-                                    ],
-                                    "default": false
-                                },
-                                "durability": {
-                                    "description": "The durability of the item. 0 is normal durability. \nDefaults to 0",
-                                    "anyOf": [
-                                        {
-                                            "type": "integer"
-                                        }
-                                    ],
-                                    "default": 0
-                                },
-                                "attributes": {
-                                    "description": "The enchantments. \nDefaults to [object Object]",
-                                    "anyOf": [
-                                        {
-                                            "type": "object"
-                                        }
-                                    ],
-                                    "default": {}
-                                },
-                                "enchants": {
-                                    "description": "The enchantments. \nDefaults to [object Object]",
-                                    "anyOf": [
-                                        {
-                                            "type": "object"
-                                        }
-                                    ],
-                                    "default": {}
-                                },
-                                "color": {
-                                    "description": "If type is a leather armour. This contains the color metadata of the item. \nDefaults to [object Object]",
-                                    "anyOf": [
-                                        {
-                                            "type": "object"
-                                        }
-                                    ],
-                                    "default": {},
-                                    "required": [
-                                        "red",
-                                        "green",
-                                        "blue"
-                                    ],
-                                    "properties": {
-                                        "red": {
-                                            "description": "The red value",
-                                            "anyOf": [
-                                                {
-                                                    "type": "integer"
-                                                }
-                                            ],
-                                            "minimum": 0,
-                                            "maximum": 255
-                                        },
-                                        "green": {
-                                            "description": "The green value",
-                                            "anyOf": [
-                                                {
-                                                    "type": "integer"
-                                                }
-                                            ],
-                                            "minimum": 0,
-                                            "maximum": 255
-                                        },
-                                        "blue": {
-                                            "description": "The blue value",
-                                            "anyOf": [
-                                                {
-                                                    "type": "integer"
-                                                }
-                                            ],
-                                            "minimum": 0,
-                                            "maximum": 255
-                                        }
-                                    }
-                                },
-                                "potion": {
-                                    "description": "If type is a potion, splash potion, lingering potion, or tipped arrow. This contains the potion metadata of the item. \nDefaults to [object Object]",
-                                    "anyOf": [
-                                        {
-                                            "type": "object"
-                                        }
-                                    ],
-                                    "default": {},
-                                    "required": [
-                                        "type"
-                                    ],
-                                    "properties": {
-                                        "type": {
-                                            "description": "The type of potion",
-                                            "anyOf": [
-                                                {
-                                                    "$ref": "#/types/potion"
-                                                }
-                                            ]
-                                        },
-                                        "extended": {
-                                            "description": "Whether the potion is extended. \nDefaults to false",
-                                            "anyOf": [
-                                                {
-                                                    "type": "boolean"
-                                                }
-                                            ],
-                                            "default": false
-                                        },
-                                        "upgraded": {
-                                            "description": "Whether the potion is upgraded. \nDefaults to false",
-                                            "anyOf": [
-                                                {
-                                                    "type": "boolean"
-                                                }
-                                            ],
-                                            "default": false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    ]
                 }
             },
             "required": [
@@ -3490,47 +3209,9 @@
                     "description": "The entity to shoot",
                     "anyOf": [
                         {
-                            "type": "object"
+                            "$ref": "#/types/EntityData"
                         }
-                    ],
-                    "properties": {
-                        "type": {
-                            "description": "The entity type. \nDefaults to ZOMBIE",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/entity"
-                                }
-                            ],
-                            "default": "ZOMBIE"
-                        },
-                        "nametag": {
-                            "description": "The nametag of the spawned entity. Defaults to no nametag",
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                }
-                            ],
-                            "default": ""
-                        },
-                        "shouldDespawn": {
-                            "description": "If true, the entity can despawn. \nDefaults to true",
-                            "anyOf": [
-                                {
-                                    "type": "boolean"
-                                }
-                            ],
-                            "default": true
-                        },
-                        "passenger": {
-                            "description": "The passanger of the entity. \nDefaults to [object Object]",
-                            "anyOf": [
-                                {
-                                    "type": "object"
-                                }
-                            ],
-                            "default": {}
-                        }
-                    }
+                    ]
                 },
                 "velocity": {
                     "description": "The shooting velocity. \nDefaults to 1",
@@ -3562,38 +3243,9 @@
                     "description": "The sound data",
                     "anyOf": [
                         {
-                            "type": "object"
+                            "$ref": "#/types/SoundData"
                         }
-                    ],
-                    "properties": {
-                        "sound": {
-                            "description": "The sound to make. \nDefaults to ENTITY_GENERIC_EXPLODE",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/sound"
-                                }
-                            ],
-                            "default": "ENTITY_GENERIC_EXPLODE"
-                        },
-                        "volume": {
-                            "description": "The volume of the sound. \nDefaults to 1",
-                            "anyOf": [
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "default": 1
-                        },
-                        "pitch": {
-                            "description": "The pitch of the sound. \nDefaults to 1",
-                            "anyOf": [
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "default": 1
-                        }
-                    }
+                    ]
                 }
             },
             "required": [
@@ -3847,42 +3499,13 @@
                     "description": "The offset from the original location. \nDefaults to [object Object]",
                     "anyOf": [
                         {
-                            "type": "object"
+                            "$ref": "#/types/VectorData"
                         }
                     ],
                     "default": {
                         "x": 0,
                         "y": 0,
                         "z": 0
-                    },
-                    "properties": {
-                        "x": {
-                            "description": "The x component of the vector. \nDefaults to 0",
-                            "anyOf": [
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "default": 0
-                        },
-                        "y": {
-                            "description": "The y component of the vector. \nDefaults to 0",
-                            "anyOf": [
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "default": 0
-                        },
-                        "z": {
-                            "description": "The z component of the vector. \nDefaults to 0",
-                            "anyOf": [
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "default": 0
-                        }
                     }
                 }
             },
@@ -4166,6 +3789,412 @@
                 "DIVIDE",
                 "SET"
             ]
+        },
+        "ItemAttributeData": {
+            "type": "object"
+        },
+        "EnchantmentData": {
+            "type": "object"
+        },
+        "ItemMetaData": {
+            "type": "object",
+            "properties": {
+                "displayName": {
+                    "description": "The display name of the item. Defaults to the normal item name",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "default": ""
+                },
+                "lore": {
+                    "description": "The lore of the item",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "default": []
+                },
+                "isUnbreakable": {
+                    "description": "If true, makes the item unbreakable",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": false
+                },
+                "durability": {
+                    "description": "The durability of the item. 0 is normal durability",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": 0
+                },
+                "attributes": {
+                    "description": "The enchantments",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/ItemAttributeData"
+                        }
+                    ],
+                    "default": {}
+                },
+                "enchants": {
+                    "description": "The enchantments",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/EnchantmentData"
+                        }
+                    ],
+                    "default": {}
+                },
+                "color": {
+                    "description": "If type is a leather armour. This contains the color metadata of the item",
+                    "anyOf": [
+                        {
+                            "type": "object"
+                        }
+                    ],
+                    "default": {},
+                    "required": [
+                        "red",
+                        "green",
+                        "blue"
+                    ],
+                    "properties": {
+                        "red": {
+                            "description": "The red value",
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                }
+                            ],
+                            "minimum": 0,
+                            "maximum": 255
+                        },
+                        "green": {
+                            "description": "The green value",
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                }
+                            ],
+                            "minimum": 0,
+                            "maximum": 255
+                        },
+                        "blue": {
+                            "description": "The blue value",
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                }
+                            ],
+                            "minimum": 0,
+                            "maximum": 255
+                        }
+                    }
+                },
+                "potion": {
+                    "description": "If type is a potion, splash potion, lingering potion, or tipped arrow. This contains the potion metadata of the item",
+                    "anyOf": [
+                        {
+                            "type": "object"
+                        }
+                    ],
+                    "default": {},
+                    "required": [
+                        "type"
+                    ],
+                    "properties": {
+                        "type": {
+                            "description": "The type of potion",
+                            "anyOf": [
+                                {
+                                    "$ref": "#/types/potion"
+                                }
+                            ]
+                        },
+                        "extended": {
+                            "description": "Whether the potion is extended",
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                }
+                            ],
+                            "default": false
+                        },
+                        "upgraded": {
+                            "description": "Whether the potion is upgraded",
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                }
+                            ],
+                            "default": false
+                        }
+                    }
+                }
+            }
+        },
+        "ItemStackData": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "The type of item",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/item"
+                        }
+                    ],
+                    "default": "STONE"
+                },
+                "amount": {
+                    "description": "The amount of item to give",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": 1
+                },
+                "metadata": {
+                    "description": "The metadata of the item",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/ItemMetaData"
+                        }
+                    ],
+                    "default": {}
+                }
+            }
+        },
+        "AttributeData": {
+            "type": "object"
+        },
+        "EntityData": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "The entity type",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/entity"
+                        }
+                    ],
+                    "default": "ZOMBIE"
+                },
+                "nametag": {
+                    "description": "The nametag of the spawned entity. Defaults to no nametag",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "default": ""
+                },
+                "shouldDespawn": {
+                    "description": "If true, the entity can despawn",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": true
+                },
+                "passenger": {
+                    "description": "The passenger of the entity",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/EntityData"
+                        }
+                    ],
+                    "default": {}
+                }
+            }
+        },
+        "VectorData": {
+            "type": "object",
+            "properties": {
+                "x": {
+                    "description": "The x component of the vector",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 0
+                },
+                "y": {
+                    "description": "The y component of the vector",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 0
+                },
+                "z": {
+                    "description": "The z component of the vector",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 0
+                }
+            }
+        },
+        "SoundData": {
+            "type": "object",
+            "properties": {
+                "sound": {
+                    "description": "The sound to make",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/sound"
+                        }
+                    ],
+                    "default": "ENTITY_GENERIC_EXPLODE"
+                },
+                "volume": {
+                    "description": "The volume of the sound",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 1
+                },
+                "pitch": {
+                    "description": "The pitch of the sound",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 1
+                }
+            }
+        },
+        "PotionEffectData": {
+            "type": "object",
+            "properties": {
+                "potency": {
+                    "description": "The potency or amplifier of the potion",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": 1
+                },
+                "type": {
+                    "description": "The type of the potion",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/potion"
+                        }
+                    ]
+                },
+                "duration": {
+                    "description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 10
+                }
+            }
+        },
+        "LoreData": {
+            "type": "array"
+        },
+        "EnchantComparisonData": {
+            "type": "object"
+        },
+        "ItemMetaComparisonData": {
+            "type": "object",
+            "properties": {
+                "displayName": {
+                    "description": "A regex to match the display name against",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "default": ".+"
+                },
+                "lore": {
+                    "description": "A list of regex to match the lore against",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/LoreData"
+                        }
+                    ],
+                    "default": ".+"
+                },
+                "enchants": {
+                    "description": "The item to check against",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/EnchantComparisonData"
+                        }
+                    ],
+                    "default": {}
+                }
+            }
+        },
+        "ItemComparisonData": {
+            "type": "object",
+            "properties": {
+                "types": {
+                    "description": "The list of item types",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/item"
+                            }
+                        ]
+                    },
+                    "default": []
+                },
+                "amount": {
+                    "description": "The range of item amount",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/range"
+                        }
+                    ],
+                    "default": "-Infinity - Infinity"
+                },
+                "metadata": {
+                    "description": "The metadata of the item",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/ItemMetaComparisonData"
+                        }
+                    ],
+                    "default": {}
+                }
+            }
         },
         "entity": {
             "type": "string",
