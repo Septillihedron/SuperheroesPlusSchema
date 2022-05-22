@@ -1,5 +1,197 @@
 {
 	"$schema": "propertiesSchema.json",
+	"skills": {
+		"POTIONEFFECT": {
+			"description": "Applies the potion effect to the user",
+			"typeProperties": {
+				"potency": {
+					"description": "The potency or amplifier of the potion",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"type": {
+					"description": "The type of the potion",
+					"required": false,
+					"type": "potion",
+					"default": {}
+				},
+				"duration": {
+					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+					"required": false,
+					"type": "number",
+					"default": 4
+				}
+			}
+		},
+		"OHKO": {
+			"description": "Kills the entity in one hit",
+			"typeProperties": {
+				"entityTypes": {
+					"description": "The types of entities that can be killed in one hit by the user",
+					"required": false,
+					"type": "array",
+					"items": "entity",
+					"default": []
+				},
+				"displayName": {
+					"description": "The custom name of the entity that can be killed in one hit by the user. \nDefaults to any name",
+					"required": false,
+					"type": "string",
+					"default": ""
+				}
+			}
+		},
+		"REPULSION": {
+			"description": "Repulses all nearby entities when the user sneaks",
+			"typeProperties": {
+				"multiplier": {
+					"description": "The multiplier for the repulsion",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"radius": {
+					"description": "The radius where inside entities are effected",
+					"required": false,
+					"type": "number",
+					"default": 5
+				},
+				"entityBlacklist": {
+					"description": "The entities to not get effected",
+					"required": false,
+					"type": "array",
+					"items": "entity",
+					"default": []
+				}
+			}
+		}//,
+		// "CONVERTITEM": {
+		// 	"description": "",
+		// 	"typeProperties": {
+		// 		"inputItem": {
+		// 			"description": "",
+		// 			"required": false,
+		// 			"default": null
+		// 		},
+		// 		"outputItem": {
+		// 			"description": "",
+		// 			"required": false,
+		// 			"default": null
+		// 		},
+		// 		"chance": {
+		// 			"description": "",
+		// 			"required": false,
+		// 			"default": null
+		// 		}
+		// 	}
+		// },
+		// "CONVERTBLOCK": {
+		// 	"description": ""
+		// },
+		// "REMOTEDETONATION": {
+		// 	"description": ""
+		// },
+		// "BLOCKDROPS": {
+		// 	"description": ""
+		// },
+		// "CREEPER": {
+		// 	"description": ""
+		// },
+		// "GIVEITEM": {
+		// 	"description": ""
+		// },
+		// "GUN": {
+		// 	"description": ""
+		// },
+		// "SNEAK": {
+		// 	"description": ""
+		// },
+		// "SHIELD": {
+		// 	"description": ""
+		// },
+		// "SPELL": {
+		// 	"description": ""
+		// },
+		// "THROWER": {
+		// 	"description": ""
+		// },
+		// "BLOCKRAY": {
+		// 	"description": ""
+		// },
+		// "POTIONGIFTER": {
+		// 	"description": ""
+		// },
+		// "CONSUME": {
+		// 	"description": ""
+		// },
+		// "SUMMON": {
+		// 	"description": ""
+		// },
+		// "DECOY": {
+		// 	"description": ""
+		// },
+		// "PHASE": {
+		// 	"description": ""
+		// },
+		// "STRONGMAN": {
+		// 	"description": ""
+		// },
+		// "CRAFTING": {
+		// 	"description": ""
+		// },
+		// "SLAM": {
+		// 	"description": ""
+		// },
+		// "ERASER": {
+		// 	"description": ""
+		// },
+		// "TELEPORT": {
+		// 	"description": ""
+		// },
+		// "INSTANTBREAK": {
+		// 	"description": ""
+		// },
+		// "LIGHT": {
+		// 	"description": ""
+		// },
+		// "NOHUNGER": {
+		// 	"description": ""
+		// },
+		// "DAMAGERESISTANCE": {
+		// 	"description": ""
+		// },
+		// "SLIME": {
+		// 	"description": ""
+		// },
+		// "SNEAKINGPOTION": {
+		// 	"description": ""
+		// },
+		// "AURA": {
+		// 	"description": ""
+		// },
+		// "EGGLAYER": {
+		// 	"description": ""
+		// },
+		// "WALKER": {
+		// 	"description": ""
+		// },
+		// "PICKPOCKET": {
+		// 	"description": ""
+		// },
+		// "CONVERTDROPS": {
+		// 	"description": ""
+		// },
+		// "LIFESTEAL": {
+		// 	"description": ""
+		// },
+		// "DAMAGEPOTION": {
+		// 	"description": ""
+		// },
+		// "WEATHERDAMAGE": {
+		// 	"description": ""
+		// }
+	},
 	"triggers": {
 		"DAMAGEDENTITY": {
 			"description": "Triggers when the user damage an entity. \nThe target entity will be set as the damaged entity"
