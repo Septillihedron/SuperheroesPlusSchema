@@ -65,7 +65,7 @@
 					"default": []
 				}
 			}
-		}//,
+		},
 		// "CONVERTITEM": {
 		// 	"description": "",
 		// 	"typeProperties": {
@@ -137,9 +137,80 @@
 		// "STRONGMAN": {
 		// 	"description": ""
 		// },
-		// "CRAFTING": {
-		// 	"description": ""
-		// },
+		"CRAFTING": {
+			"description": "Enables the user to use this recipe",
+			"typeProperties": {
+				"isShaped": {
+					"description": "If true, this recipe is shaped",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"result": {
+					"description": "The result of the recipe",
+					"required": false,
+					"type": "ItemStackData",
+					"default": {
+						"type": "STONE",
+						"amount": 1
+					}
+				},
+				"recipeKeys": {
+					"description": "The list of keys to the material that the key is representing",
+					"if": {"isShaped": {"const": true}},
+					"required": false,
+					"type": "object",
+					"default": {},
+					"propertiesMap": [
+						{
+							"key": {
+								"description": "The recipe key",
+								"type": "string"
+							},
+							"value": {
+								"description": "The material that the key maps to",
+								"required": true,
+								"type": "item"
+							}
+						}
+					]
+				},
+				"recipe": {
+					"description": "The shape of the recipe",
+					"if": {"isShaped": {"const": true}},
+					"required": false,
+					"type": "array",
+					"items": {
+						"type": "string",
+						"maxLength": 3
+					},
+					"maxItems": 3,
+					"default": ["", "", ""]
+				},
+				"ingredients": {
+					"description": "The map of ingredients to count of that ingredients that's needed for the recipe",
+					"if": {"isShaped": {"const": false}},
+					"required": false,
+					"type": "object",
+					"default": {},
+					"propertiesMap": [
+						{
+							"key": {
+								"description": "The recipe key",
+								"type": "item"
+							},
+							"value": {
+								"description": "The material that the key maps to",
+								"required": true,
+								"type": "integer",
+								"min": 1,
+								"max": 9
+							}
+						}
+					]
+				}
+			}
+		}//,
 		// "SLAM": {
 		// 	"description": ""
 		// },
