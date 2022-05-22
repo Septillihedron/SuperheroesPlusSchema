@@ -196,13 +196,15 @@
 					"description": "If the type is either a number of integer, it tells the maximum acceptable value"
 				},
 				"items": {
-					"type": ["string", "array"],
+					"type": ["string", "array", "object"],
 					"items": {
 						"type": "string",
 						"$ref": "#/definitions/types"
 					},
 					"minItems": 1,
-					"description": "For arrays, contains the types of items allowed"
+					"description": "For arrays, contains the types of items allowed",
+					"$ref": "#/definitions/property",
+					"required": ["type"]
 				},
 				"properties": {
 					"type": "object",
