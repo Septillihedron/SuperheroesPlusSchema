@@ -31,7 +31,7 @@ class Schema {
 	readonly triggers: MonoTypeObject<TriggerDefinition> = {}
 	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
 	readonly effects: MonoTypeObject<EffectDefinition> = {}
-	readonly types: MonoTypeObject<TypeDefinition> = {}
+	readonly types: MonoTypeObject<Property> = {}
 }
 
 class Hero {
@@ -216,6 +216,8 @@ type Property = {
 	enum?: any[]
 	allOf?: Property[]
 	anyOf?: Property[]
+	propertyNames?: Property
+	pattern?: string
 }
 
 class PropertyClass implements Property {
@@ -235,6 +237,8 @@ class PropertyClass implements Property {
 	enum?: any[]
 	allOf?: Property[]
 	anyOf?: Property[]
+	propertyNames?: Property
+	pattern?: string
 
 	name: string
 	path: Path
@@ -329,6 +333,12 @@ class PropertyClass implements Property {
 	addAnyOf(property: Property): void {
 		if (this.anyOf === undefined) this.anyOf = []
 		this.anyOf.push(property)
+	}
+	setPropertyNames(property: Property): void {
+		this.propertyNames = property
+	}
+	setPattern(pattern: string): void {
+		this.pattern = pattern
 	}
 
 }
