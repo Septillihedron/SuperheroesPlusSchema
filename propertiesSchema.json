@@ -221,41 +221,37 @@
 					"description": "The properties (in form of regex) that this property has"
 				},
 				"propertiesMap": {
-					"type": "array",
 					"description": "The properties (in form of regex) that this property has",
-					"items": {
-						"type": "object",
-						"description": "",
-						"properties": {
-							"key": {
-								"type": "object",
-								"description": "Specify the type(s) that the key has",
-								"properties": {
-									"description": {
+					"type": "object",
+					"properties": {
+						"key": {
+							"type": "object",
+							"description": "Specify the type(s) that the key has",
+							"properties": {
+								"description": {
+									"type": "string",
+									"description": "The description of the key"
+								},
+								"type": {
+									"type": ["string", "array"],
+									"items": {
 										"type": "string",
-										"description": "The description of the key"
+										"$ref": "#/definitions/stringTypes"
 									},
-									"type": {
-										"type": ["string", "array"],
-										"items": {
-											"type": "string",
-											"$ref": "#/definitions/stringTypes"
-										},
-										"minItems": 1,
-										"description": "The type of value(s) the key can be"
-									}
-								},
-								"if": {
-									"properties": { "type": { "type": "string" }}
-								},
-								"then": {
-									"properties": { "type": { "$ref": "#/definitions/stringTypes" }}
+									"minItems": 1,
+									"description": "The type of value(s) the key can be"
 								}
 							},
-							"value": {
-								"$ref": "#/definitions/property",
-								"description": "Specify the type(s) that the value has"
+							"if": {
+								"properties": { "type": { "type": "string" }}
+							},
+							"then": {
+								"properties": { "type": { "$ref": "#/definitions/stringTypes" }}
 							}
+						},
+						"value": {
+							"$ref": "#/definitions/property",
+							"description": "Specify the type(s) that the value has"
 						}
 					}
 				},

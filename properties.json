@@ -161,19 +161,17 @@
 					"required": false,
 					"type": "object",
 					"default": {},
-					"propertiesMap": [
-						{
-							"key": {
-								"description": "The recipe key",
-								"type": "string"
-							},
-							"value": {
-								"description": "The material that the key maps to",
-								"required": true,
-								"type": "item"
-							}
+					"propertiesMap": {
+						"key": {
+							"description": "The recipe key",
+							"type": "string"
+						},
+						"value": {
+							"description": "The material that the key maps to",
+							"required": true,
+							"type": "item"
 						}
-					]
+					}
 				},
 				"recipe": {
 					"description": "The shape of the recipe",
@@ -193,21 +191,19 @@
 					"required": false,
 					"type": "object",
 					"default": {},
-					"propertiesMap": [
-						{
-							"key": {
-								"description": "The recipe key",
-								"type": "item"
-							},
-							"value": {
-								"description": "The material that the key maps to",
-								"required": true,
-								"type": "integer",
-								"min": 1,
-								"max": 9
-							}
+					"propertiesMap": {
+						"key": {
+							"description": "The recipe key",
+							"type": "item"
+						},
+						"value": {
+							"description": "The material that the key maps to",
+							"required": true,
+							"type": "integer",
+							"min": 1,
+							"max": 9
 						}
-					]
+					}
 				}
 			}
 		}//,
@@ -1660,51 +1656,47 @@
 		"ItemAttributeData": {
 			"description": "The attribute data for an item",
 			"type": "object",
-			"propertiesMap": [
-				{
-					"key": {
-						"description": "The attribute name",
-						"type": "attribute"
-					},
-					"value": {
-						"description": "The attribute properties",
-						"required": false,
-						"type": "object",
-						"default": null,
-						"properties": {
-							"value": {
-								"description": "The value of the attribute to change to",
-								"required": false,
-								"type": "number",
-								"default": 0
-							},
-							"equipmentslot": {
-								"description": "The slot that this attribute will be active",
-								"required": false,
-								"type": "equipmentSlot",
-								"default": "HAND"
-							}
+			"propertiesMap": {
+				"key": {
+					"description": "The attribute name",
+					"type": "attribute"
+				},
+				"value": {
+					"description": "The attribute properties",
+					"required": false,
+					"type": "object",
+					"default": null,
+					"properties": {
+						"value": {
+							"description": "The value of the attribute to change to",
+							"required": false,
+							"type": "number",
+							"default": 0
+						},
+						"equipmentslot": {
+							"description": "The slot that this attribute will be active",
+							"required": false,
+							"type": "equipmentSlot",
+							"default": "HAND"
 						}
 					}
 				}
-			]
+			}
 		},
 		"EnchantmentData": {
 			"description": "The enchantment data for an item",
 			"type": "object",
-			"propertiesMap": [
-				{
-					"key": {
-						"description": "The enchantment name",
-						"type": "enchantment"
-					},
-					"value": {
-						"description": "The level of the enchantment",
-						"required": true,
-						"type": "integer"
-					}
+			"propertiesMap": {
+				"key": {
+					"description": "The enchantment name",
+					"type": "enchantment"
+				},
+				"value": {
+					"description": "The level of the enchantment",
+					"required": true,
+					"type": "integer"
 				}
-			]
+			}
 		},
 		"ItemMetaData": {
 			"description": "The metadata of an item",
@@ -1832,20 +1824,18 @@
 		"AttributeData": {
 			"description": "The list of attributes and it's value",
 			"type": "object",
-			"propertiesMap": [
-				{
-					"key": {
-						"description": "The attribute name",
-						"type": "attribute"
-					},
-					"value": {
-						"description": "The attribute value",
-						"required": false,
-						"type": "number",
-						"default": -1
-					}
+			"propertiesMap": {
+				"key": {
+					"description": "The attribute name",
+					"type": "attribute"
+				},
+				"value": {
+					"description": "The attribute value",
+					"required": false,
+					"type": "number",
+					"default": -1
 				}
-			]
+			}
 		},
 		"EntityData": {
 			"description": "The data of an entity",
@@ -1957,20 +1947,18 @@
 		"EnchantComparisonData": {
 			"type": "object",
 			"default": {},
-			"propertiesMap": [
-				{
-					"key": {
-						"description": "The enchantment name",
-						"type": "enchantment"
-					},
-					"value": {
-						"description": "The level of the enchantment",
-						"required": false,
-						"type": "range",
-						"default": "-Infinity - Infinity"
-					}
+			"propertiesMap": {
+				"key": {
+					"description": "The enchantment name",
+					"type": "enchantment"
+				},
+				"value": {
+					"description": "The level of the enchantment",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
 				}
-			]
+			}
 		},
 		"ItemMetaComparisonData": {
 			"description": "A comparison for metadata",
