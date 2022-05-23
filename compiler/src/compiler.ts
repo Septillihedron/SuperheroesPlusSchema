@@ -101,20 +101,23 @@ function compileEffect(effect: Preprocessed.Effect, effects: MonoTypeObject<Prep
 	return compiledEffect
 }
 
-function compileType(type: Preprocessed.TypeDefinition, types: MonoTypeObject<Preprocessed.TypeDefinition>): Compiled.TypeDefinition {
+function compileType(type: Preprocessed.TypeDefinition, types: MonoTypeObject<Preprocessed.TypeDefinition>): Compiled.Property {
 
-	let compiledType: Compiled.TypeDefinition = {}
+	let compiledType = new Compiled.PropertyClass({}, "", "")
 
-	compiledType.type = type.type as Compiled.types
-	compiledType.enum = type.enum
-	compiledType.pattern = type.pattern
+	if (type.type instanceof Array) {
+		type.type.forEach(type => compiledType.addType(type))
+	} else if (type.type !== undefined) {
+		compiledType.addType(type.type)
+	}
+	if (type.enum !== undefined) compiledType.setEnum(type.enum)
+	if (type.pattern !== undefined) compiledType.setPattern(type.pattern)
 	if (type.properties !== undefined) {
-		compiledType.properties = {}
 		objectPropertyMap(type.properties)
 			.forEach((property, name) => {
 				let compiledProperty = compileProperty(property, 
 					new Compiled.PropertyClass(types, name as string, `#/types/${name}`))
-				compiledType.properties![name] = compiledProperty
+				compiledType.addProperty(name as string, compiledProperty)
 			})
 	}
 	if (type.patternProperties !== undefined) {
@@ -123,10 +126,21 @@ function compileType(type: Preprocessed.TypeDefinition, types: MonoTypeObject<Pr
 			.forEach((property, name) => {
 				let compiledProperty = compileProperty(property, 
 					new Compiled.PropertyClass(types, name as string, `#/types/${name}`))
-				compiledType.patternProperties![name] = compiledProperty
+					compiledType.addPatternProperty(name as string, compiledProperty)
 			})
 	}
-	if (type.extends !== undefined) compiledType.$ref = `#/types/${type.extends}`
+	if (type.propertiesMap !== undefined) {
+		let keyProperty = new Compiled.PropertyClass(compiledType, "propertyNames")
+		compileProperty({required: false, ...type.propertiesMap.key}, keyProperty)
+		let valueProperty = new Compiled.PropertyClass(compiledType, "patternProperties")
+		compileProperty(type.propertiesMap.value, valueProperty)
+		compiledType.addAnyOf({
+			propertyNames: keyProperty,
+			patternProperties: {".*": valueProperty}
+		})
+	}
+	if (type.extends !== undefined) compiledType.set$ref(`#/types/${type.extends}`)
+	deletePropertyClassHelperProperties(compiledType)
 
 	return compiledType
 }
@@ -195,8 +209,16 @@ const PropertyPartsCompiler: propertyPartsCompiler = {
 			compilingProperty.addPatternProperty(name as string, compiledProperty)
 		})
 	},
-	propertiesMap: (property, compilingProperty) => {
-		
+	propertiesMap: (propertiesMap, compilingProperty) => {
+		if (propertiesMap === undefined) return
+		let keyProperty = new Compiled.PropertyClass(compilingProperty, "propertyNames")
+		compileProperty({required: false, ...propertiesMap.key}, keyProperty)
+		let valueProperty = new Compiled.PropertyClass(compilingProperty, "patternProperties")
+		compileProperty(propertiesMap.value, valueProperty)
+		compilingProperty.addAnyOf({
+			propertyNames: keyProperty,
+			patternProperties: {".*": valueProperty}
+		})
 	},
 	ref: ($ref, compilingProperty) => {
 		
