@@ -6,7 +6,7 @@ export {
 	Hero, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	SkillDefinition, TriggerDefinition, ConditionDefinition, EffectDefinition, TypeDefinition
+	SkillDefinition, TriggerDefinition, ConditionDefinition, EffectDefinition
 }
 
 class Schema {
@@ -415,19 +415,4 @@ class EffectDefinition extends Definition {
 		this.internalSetExtension("effect", extension, extendedProperties)
 	}
 
-}
-
-interface TypeDefinition {
-	type?: types | types[]
-	properties?: PropertyMap
-	patternProperties?: PropertyMap
-	$ref?: string
-	if?: IfPath
-	then?: Property
-	else?: Property
-	required?: string[]
-	enum?: any[]
-	pattern?: string
-	allOf?: Property[]
-	anyOf?: Property[]
 }
