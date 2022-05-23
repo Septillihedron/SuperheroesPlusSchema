@@ -4,7 +4,7 @@ export {
 	Descriptable,  
 	PropertyMap, Type, Trigger, ConditionModes, Condition, EffectModes, Effect, TypeDefinition, 
 	PropertyTypes, PropertyStringTypes, PropertyType, 
-	PropertiesMap, PropertiesMapEntry, PropertiesMapKey, Property, 
+	PropertiesMap, PropertiesMapKey, Property, 
 	IfPath
 }
 
@@ -41,12 +41,11 @@ interface Effect extends Type {
 
 type PropertyTypes = PropertyStringTypes | "array" | "object" | "string" | "number" | "integer" | "boolean"
 type PropertyStringTypes = "string" | "range" | "comparison" | "operation" | "entity" | "block" | "item" | "enchantment" | "potion" | "biome" | "world" | "equipmentSlot" | "attribute" | "sound" | "condition" | "effect"
-type PropertiesMapEntry = {
+type PropertiesMap = {
 	key: PropertiesMapKey
 	value: Property
 }
 type PropertyType = PropertyTypes | PropertyTypes[]
-type PropertiesMap = PropertiesMapEntry[]
 interface PropertiesMapKey extends Descriptable {
 	type: PropertyType
 }
