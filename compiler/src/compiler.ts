@@ -32,7 +32,7 @@ export class Compiler {
 		})
 		objectPropertyMap(preprocessed.types).forEach((type: Preprocessed.TypeDefinition, name) => {
 			if (["condition", "effect"].includes(name as string)) return
-			schema.types[name] = this.compileType(type)
+			schema.types[name] = this.compileType(name as string, type)
 		})
 		this.addInternalTypes();
 
@@ -111,8 +111,8 @@ export class Compiler {
 		return compiledEffect
 	}
 	
-	compileType(type: Preprocessed.TypeDefinition): Compiled.Property {
-		let compiledType = new Compiled.PropertyClass({}, "", "")
+	compileType(name: string, type: Preprocessed.TypeDefinition): Compiled.Property {
+		let compiledType = new Compiled.PropertyClass(this.schema.types, name, `#/types/${name}`)
 		
 		compiledType.pattern = type.pattern
 		this.PropertyPartsCompiler.type(type.type, compiledType)
