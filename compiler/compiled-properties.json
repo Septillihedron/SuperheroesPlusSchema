@@ -3758,14 +3758,22 @@
     },
     "types": {
         "range": {
-            "type": [
-                "string",
-                "number"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "number"
+                }
             ],
             "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$"
         },
         "comparison": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "=",
                 "==",
@@ -3781,7 +3789,11 @@
             ]
         },
         "operation": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "ADD",
                 "SUBTRACT",
@@ -3791,13 +3803,89 @@
             ]
         },
         "ItemAttributeData": {
-            "type": "object"
+            "anyOf": [
+                {
+                    "type": "object"
+                },
+                {
+                    "propertyNames": {
+                        "description": "The attribute name",
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/attribute"
+                            }
+                        ]
+                    },
+                    "patternProperties": {
+                        ".*": {
+                            "description": "The attribute properties",
+                            "anyOf": [
+                                {
+                                    "type": "object"
+                                }
+                            ],
+                            "default": null,
+                            "properties": {
+                                "value": {
+                                    "description": "The value of the attribute to change to",
+                                    "anyOf": [
+                                        {
+                                            "type": "number"
+                                        }
+                                    ],
+                                    "default": 0
+                                },
+                                "equipmentslot": {
+                                    "description": "The slot that this attribute will be active",
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/types/equipmentSlot"
+                                        }
+                                    ],
+                                    "default": "HAND"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
         },
         "EnchantmentData": {
-            "type": "object"
+            "anyOf": [
+                {
+                    "type": "object"
+                },
+                {
+                    "propertyNames": {
+                        "description": "The enchantment name",
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/enchantment"
+                            }
+                        ]
+                    },
+                    "patternProperties": {
+                        ".*": {
+                            "description": "The level of the enchantment",
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "required": [
+                "patternProperties"
+            ]
         },
         "ItemMetaData": {
-            "type": "object",
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
             "properties": {
                 "displayName": {
                     "description": "The display name of the item. Defaults to the normal item name",
@@ -3843,7 +3931,7 @@
                     "default": 0
                 },
                 "attributes": {
-                    "description": "The enchantments",
+                    "description": "The attributes",
                     "anyOf": [
                         {
                             "$ref": "#/types/ItemAttributeData"
@@ -3949,7 +4037,11 @@
             }
         },
         "ItemStackData": {
-            "type": "object",
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
             "properties": {
                 "type": {
                     "description": "The type of item",
@@ -3981,10 +4073,39 @@
             }
         },
         "AttributeData": {
-            "type": "object"
+            "anyOf": [
+                {
+                    "type": "object"
+                },
+                {
+                    "propertyNames": {
+                        "description": "The attribute name",
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/attribute"
+                            }
+                        ]
+                    },
+                    "patternProperties": {
+                        ".*": {
+                            "description": "The attribute value",
+                            "anyOf": [
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "default": -1
+                        }
+                    }
+                }
+            ]
         },
         "EntityData": {
-            "type": "object",
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
             "properties": {
                 "type": {
                     "description": "The entity type",
@@ -4025,7 +4146,11 @@
             }
         },
         "VectorData": {
-            "type": "object",
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
             "properties": {
                 "x": {
                     "description": "The x component of the vector",
@@ -4057,7 +4182,11 @@
             }
         },
         "SoundData": {
-            "type": "object",
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
             "properties": {
                 "sound": {
                     "description": "The sound to make",
@@ -4089,7 +4218,11 @@
             }
         },
         "PotionEffectData": {
-            "type": "object",
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
             "properties": {
                 "potency": {
                     "description": "The potency or amplifier of the potion",
@@ -4120,13 +4253,46 @@
             }
         },
         "LoreData": {
-            "type": "array"
+            "anyOf": [
+                {
+                    "type": "array"
+                }
+            ]
         },
         "EnchantComparisonData": {
-            "type": "object"
+            "anyOf": [
+                {
+                    "type": "object"
+                },
+                {
+                    "propertyNames": {
+                        "description": "The enchantment name",
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/enchantment"
+                            }
+                        ]
+                    },
+                    "patternProperties": {
+                        ".*": {
+                            "description": "The level of the enchantment",
+                            "anyOf": [
+                                {
+                                    "$ref": "#/types/range"
+                                }
+                            ],
+                            "default": "-Infinity - Infinity"
+                        }
+                    }
+                }
+            ]
         },
         "ItemMetaComparisonData": {
-            "type": "object",
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
             "properties": {
                 "displayName": {
                     "description": "A regex to match the display name against",
@@ -4158,7 +4324,11 @@
             }
         },
         "ItemComparisonData": {
-            "type": "object",
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
             "properties": {
                 "types": {
                     "description": "The list of item types",
@@ -4197,7 +4367,11 @@
             }
         },
         "entity": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "DROPPED_ITEM",
                 "EXPERIENCE_ORB",
@@ -4322,10 +4496,18 @@
             "$ref": "#/types/material"
         },
         "enchantment": {
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ]
         },
         "potion": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "SPEED",
                 "SLOW",
@@ -4362,7 +4544,11 @@
             ]
         },
         "damageCause": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "CONTACT",
                 "ENTITY_ATTACK",
@@ -4396,7 +4582,11 @@
             ]
         },
         "action": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "LEFT_CLICK_AIR",
                 "LEFT_CLICK_BLOCK",
@@ -4406,7 +4596,11 @@
             ]
         },
         "biome": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "OCEAN",
                 "PLAINS",
@@ -4473,10 +4667,18 @@
             ]
         },
         "world": {
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ]
         },
         "equipmentSlot": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "HAND",
                 "OFF_HAND",
@@ -4487,7 +4689,11 @@
             ]
         },
         "attribute": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "MAX_HEALTH",
                 "FOLLOW_RANGE",
@@ -4505,7 +4711,11 @@
             ]
         },
         "sound": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "AMBIENT_BASALT_DELTAS_ADDITIONS",
                 "AMBIENT_BASALT_DELTAS_LOOP",
@@ -5713,7 +5923,11 @@
             ]
         },
         "material": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
             "enum": [
                 "AIR",
                 "STONE",
