@@ -11,7 +11,7 @@
 					"description": "A skill and it's properties",
 					"properties": {
 						"description": true,
-						"typeProperties": true,
+						"properties": true,
 						"internal": {
 							"type": "boolean",
 							"description": "If true, this skill is managed internally"
@@ -31,7 +31,7 @@
 					"description": "A trigger and it's properties",
 					"properties": {
 						"description": true,
-						"typeProperties": true
+						"properties": true
 					},
 					"allOf": [{ "$ref": "#/definitions/type" }],
 					"additionalProperties": false
@@ -56,7 +56,7 @@
 							}
 						},
 						"description": true,
-						"typeProperties": true,
+						"properties": true,
 						"available": true,
 						"extends": true
 					},
@@ -84,7 +84,7 @@
 							}
 						},
 						"description": true,
-						"typeProperties": true,
+						"properties": true,
 						"available": true,
 						"extends": true
 					},
@@ -130,7 +130,7 @@
 					"type": "string",
 					"description": "The description of this type"
 				},
-				"typeProperties": {
+				"properties": {
 					"type": "object",
 					"description": "The list of properties",
 					"patternProperties": {

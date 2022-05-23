@@ -3,7 +3,7 @@
 	"skills": {
 		"POTIONEFFECT": {
 			"description": "Applies the potion effect to the user",
-			"typeProperties": {
+			"properties": {
 				"potency": {
 					"description": "The potency or amplifier of the potion",
 					"required": false,
@@ -26,7 +26,7 @@
 		},
 		"OHKO": {
 			"description": "Kills the entity in one hit",
-			"typeProperties": {
+			"properties": {
 				"entityTypes": {
 					"description": "The types of entities that can be killed in one hit by the user",
 					"required": false,
@@ -44,7 +44,7 @@
 		},
 		"REPULSION": {
 			"description": "Repulses all nearby entities when the user sneaks",
-			"typeProperties": {
+			"properties": {
 				"multiplier": {
 					"description": "The multiplier for the repulsion",
 					"required": false,
@@ -68,7 +68,7 @@
 		},
 		// "CONVERTITEM": {
 		// 	"description": "",
-		// 	"typeProperties": {
+		// 	"properties": {
 		// 		"inputItem": {
 		// 			"description": "",
 		// 			"required": false,
@@ -139,7 +139,7 @@
 		// },
 		"CRAFTING": {
 			"description": "Enables the user to use this recipe",
-			"typeProperties": {
+			"properties": {
 				"isShaped": {
 					"description": "If true, this recipe is shaped",
 					"required": false,
@@ -268,7 +268,7 @@
 		},
 		"DAMAGEDBYPROJECTILE": {
 			"description": "Triggers when an entity damages the user. \nIf the damaging entity is a projectile, the target entity will be set as the source of the projectile. \nOtherwise, The target entity will be set as the damaging entity",
-			"typeProperties": {
+			"properties": {
 				"onlyProjectiles": {
 					"description": "If true, will only trigger if the damaging entity is a projectile",
 					"required": false,
@@ -279,7 +279,7 @@
 		},
 		"DAMAGEDENTITYWITHPROJECTILE": {
 			"description": "Triggers when the user damages an entity directly or with a projectile. \nThe target entity will be set as the damaged entity",
-			"typeProperties": {
+			"properties": {
 				"onlyProjectiles": {
 					"description": "If true, will only trigger if the damage is from a projectile",
 					"required": false,
@@ -296,7 +296,7 @@
 		},
 		"DAMAGED": {
 			"description": "Triggers when the user gets damaged",
-			"typeProperties": {
+			"properties": {
 				"causes": {
 					"description": "The causes of damage. Defaults to all damage causes",
 					"required": false,
@@ -317,7 +317,7 @@
 		},
 		"LOOP": {
 			"description": "Triggers periodically every couple of ticks",
-			"typeProperties": {
+			"properties": {
 				"period": {
 					"description": "The delay period in seconds (1 = 20 ticks)",
 					"required": false,
@@ -358,7 +358,7 @@
 		},
 		"PROJECTILECOMBAT": {
 			"description": "Acts like the DAMAGEDBYPROJECTILE and DAMAGEDENTITYWITHPROJECTILE triggers combined",
-			"typeProperties": {
+			"properties": {
 				"onlyProjectiles": {
 					"description": "If true, will only trigger if the damage is from a projectile",
 					"required": false,
@@ -372,7 +372,7 @@
 		},
 		"INTERACT": {
 			"description": "Triggers when the user interacts with a block or air",
-			"typeProperties": {
+			"properties": {
 				"actions": {
 					"description": "The interactions that will trigger this trigger",
 					"required": false,
@@ -387,7 +387,7 @@
 		},
 		"POTIONEFFECT": {
 			"description": "Triggers when a potion effect is applied to the user",
-			"typeProperties": {
+			"properties": {
 				"effects": {
 					"description": "The potion effects that will trigger this trigger",
 					"required": false,
@@ -402,7 +402,7 @@
 		"HEALTH": {
 			"description": "Checks if the hp percentage of the user or target entity is in the range",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"minimumHealthPercentage": {
 					"description": "The minimum hp percentage",
 					"required": false,
@@ -424,7 +424,7 @@
 		"CHANCE": {
 			"description": "A chance for this condition to be true",
 			"supportedModes": ["ALL", "SELF"],
-			"typeProperties": {
+			"properties": {
 				"chance": {
 					"description": "The chance that is used",
 					"required": false,
@@ -438,7 +438,7 @@
 		"COOLDOWN": {
 			"description": "Checks if the time since the get last effect triggered is after the cooldown",
 			"supportedModes": ["ALL", "SELF"],
-			"typeProperties": {
+			"properties": {
 				"cooldown": {
 					"description": "The cooldown time that is used in seconds",
 					"required": false,
@@ -450,7 +450,7 @@
 		"ENTITY": {
 			"description": "Checks the target entity against this whitelist/blacklist",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"whitelist": {
 					"description": "If true, the entities property will whitelist. If false, the entities property will blacklist",
 					"required": false,
@@ -469,7 +469,7 @@
 		"SIZE": {
 			"description": "Checks if the size of the user or target entity is in the range (for slimes, magma cubes, and phantoms)",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"minimumSize": {
 					"description": "The minimum size",
 					"required": false,
@@ -487,7 +487,7 @@
 		"NOT": {
 			"description": "Inverts the inside condition",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"condition": {
 					"description": "The condition to invert",
 					"required": true,
@@ -498,7 +498,7 @@
 		"SNEAK": {
 			"description": "Checks if the player or entity is shifting",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"sneak": {
 					"description": "If true, checks if the entity is shifting. If false, it checks the opposite",
 					"required": false,
@@ -510,7 +510,7 @@
 		"TIME": {
 			"description": "Checks the relative ingame time (time of day) of the world that the player is in against the range. Measured in milli-hours or hours*1000",
 			"supportedModes": ["ALL", "SELF"],
-			"typeProperties": {
+			"properties": {
 				"minimumTime": {
 					"description": "The minimum time",
 					"required": false,
@@ -528,7 +528,7 @@
 		"ONGROUND": {
 			"description": "Checks if the user or target entity is on the ground",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"grounded": {
 					"description": "If true, checks if the entity is on the ground. If false, it checks the opposite",
 					"required": false,
@@ -540,7 +540,7 @@
 		"GLIDING": {
 			"description": "Checks if the user gliding",
 			"supportedModes": ["ALL", "SELF"],
-			"typeProperties": {
+			"properties": {
 				"shouldGlide": {
 					"description": "If true, checks if the entity is gliding. If false, it checks the opposite",
 					"required": false,
@@ -552,7 +552,7 @@
 		"BIOME": {
 			"description": "Checks if the biome that the user, target entity, or location is in is one of the listed biomes",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"biomes": {
 					"description": "The list of biomes",
 					"required": false,
@@ -565,7 +565,7 @@
 		"COMPARISON": {
 			"description": "Compares a variable",
 			"available": false,
-			"typeProperties": {
+			"properties": {
 				"comparison": {
 					"description": "The comparison to use",
 					"required": false,
@@ -584,7 +584,7 @@
 			"description": "Compares a user defined variable",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"extends": "COMPARISON",
-			"typeProperties": {
+			"properties": {
 				"variable": {
 					"description": "The variable to compare",
 					"required": true,
@@ -607,7 +607,7 @@
 		"NPC": {
 			"description": "Checks if the user or target entity is an npc",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"isNPC": {
 					"description": "If true, checks if the entity is an npc. If false, it checks the opposite",
 					"required": false,
@@ -623,7 +623,7 @@
 		"INBLOCK": {
 			"description": "Checks if the user or target entity is in one of the listed blocks",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"blocks": {
 					"description": "The list of blocks",
 					"required": false,
@@ -636,7 +636,7 @@
 		"WORLD": {
 			"description": "Checks if the world that the user, target entity, or location is in is one of the listed worlds",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"worlds": {
 					"description": "The list of worlds",
 					"required": false,
@@ -649,7 +649,7 @@
 		"TAMED": {
 			"description": "Checks if the target entity is tamed",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"checkOwner": {
 					"description": "If true, also checks if the user is the owner",
 					"required": false,
@@ -665,7 +665,7 @@
 		"HEIGHT": {
 			"description": "Checks if the user or target entity y coordinate is in the range",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"height": {
 					"description": "The range in blocks",
 					"required": false,
@@ -677,7 +677,7 @@
 		"BLOCK": {
 			"description": "Checks if the location has one of the listed blocks",
 			"supportedModes": ["ALL", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"materials": {
 					"description": "The list of blocks",
 					"required": false,
@@ -690,7 +690,7 @@
 		"ITEM": {
 			"description": "Checks the item or the item in the declared slot against the declared item",
 			"supportedModes": ["ALL", "SELF", "OTHER", "ITEM"],
-			"typeProperties": {
+			"properties": {
 				"slot": {
 					"description": "The slot to check",
 					"required": false,
@@ -707,7 +707,7 @@
 		"OR": {
 			"description": "ORs all the conditions inside",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"conditions": {
 					"description": "The conditions to OR",
 					"required": false,
@@ -727,7 +727,7 @@
 		"VISIBILITY": {
 			"description": "Checks if the user has a direct line of sight to the target entity",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"maxDistance": {
 					"description": "The maximum distance to the target entity",
 					"required": false,
@@ -741,7 +741,7 @@
 		"DAMAGE": {
 			"description": "Damages the user or the target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"damage": {
 					"description": "The amount damage that will be dealt",
 					"required": false,
@@ -753,7 +753,7 @@
 		"WRAPPER": {
 			"description": "Acts like a trigger",
 			"available": false,
-			"typeProperties": {
+			"properties": {
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
@@ -788,7 +788,7 @@
 			"description": "Acts like a trigger. \nTriggers for every entity in the range. \nThe target entity will be set to the entity this trigger triggers for",
 			"supportedModes": ["ALL", "SELF"],
 			"extends": "WRAPPER",
-			"typeProperties": {
+			"properties": {
 				"radius": {
 					"description": "Half the side length of the box",
 					"required": false,
@@ -828,7 +828,7 @@
 		"VELOCITY": {
 			"description": "Sets the Y velocity of the user or target entity. Same as FLING",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"velocity": {
 					"description": "The Y velocity to set to",
 					"required": false,
@@ -844,7 +844,7 @@
 		"GLIDING": {
 			"description": "Sets the gliding mode of the user or target entity (works even if an Elytra is not equipped)",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"glide": {
 					"description": "If true, makes the user or target entity glide. If false, makes the user or target entity stop gliding",
 					"required": false,
@@ -857,7 +857,7 @@
 			"description": "Acts like a trigger. \nWaits a duration of time before it triggers",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
 			"extends": "WRAPPER",
-			"typeProperties": {
+			"properties": {
 				"delay": {
 					"description": "The delay time in seconds (1 is 20 ticks)",
 					"required": false,
@@ -897,7 +897,7 @@
 		"POTION": {
 			"description": "Applies the potion effect to the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"potion": {
 					"description": "The potion effect",
 					"required": false,
@@ -913,7 +913,7 @@
 		"WEB": {
 			"description": "Change the block at the user or target entity for a duration of time, then change it back. Same as the BLOCKENTITY effect",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"duration": {
 					"description": "The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back",
 					"required": false,
@@ -931,7 +931,7 @@
 		"BLOCKENTITY": {
 			"description": "Change the block at the user or target entity for a duration of time, then change it back. Same as the WEB effect",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"duration": {
 					"description": "The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back",
 					"required": false,
@@ -949,7 +949,7 @@
 		"ARROW": {
 			"description": "Shoot an arrow to the location or the location of the user or target entity", 
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"velocity": {
 					"description": "Used to determine the time that it takes to hit by (pythagoras distance)/velocity",
 					"required": false,
@@ -974,7 +974,7 @@
 		"MODIFY": {
 			"description": "Modifies a variable, either user defined or not",
 			"available": false,
-			"typeProperties": {
+			"properties": {
 				"operation": {
 					"description": "The operation to do",
 					"required": true,
@@ -992,7 +992,7 @@
 			"description": "Modifies an attribute owned by the user or target entity",
 			"extends": "MODIFY",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"attribute": {
 					"description": "The attribute to modify. The name of the attribute should exclude the \"GENERIC_\" in the begining",
 					"required": true,
@@ -1018,7 +1018,7 @@
 		"LAUNCH": {
 			"description": "Launches an entity at the target entity",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"type": {
 					"description": "The entity to launch",
 					"required": false,
@@ -1036,7 +1036,7 @@
 		"MESSAGE": {
 			"description": "Sends a chat message to the user or target player",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"message": {
 					"description": "The message to send. The first occurence of \"player\" will be replaced by the player name",
 					"required": true, 
@@ -1051,7 +1051,7 @@
 		"REPULSE": {
 			"description": "Repulse the target entity",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"velocity": {
 					"description": "The speed to repulse the target entity. Positive value means into the user. Negative value means away from the user",
 					"required": false,
@@ -1064,7 +1064,7 @@
 			"description": "Resizes the user or target entity (for slimes, magma cubes, and phantoms)",
 			"extends": "MODIFY",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"retainHealth": {
 					"description": "For slimes and magma cubes. If true, make the entity retain the previous health, if more than the new max health, it sets it to the new max health",
 					"required": false,
@@ -1087,7 +1087,7 @@
 		"SMITE": {
 			"description": "Smites the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"fake": {
 					"description": "If true, it only makes the effect of lightning, not summoning an actual lightning",
 					"required": false,
@@ -1099,7 +1099,7 @@
 		"FLING": {
 			"description": "Sets the Y velocity of the user or target entity. Same as VELOCITY",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"velocity": {
 					"description": "The Y velocity to set to",
 					"required": false,
@@ -1112,7 +1112,7 @@
 			"description": "Modifies a user defined variable",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"extends": "MODIFY",
-			"typeProperties": {
+			"properties": {
 				"variable": {
 					"description": "The name of the variable",
 					"required": true,
@@ -1134,7 +1134,7 @@
 		"GIVEITEM": {
 			"description": "Gives the user or target entity an item",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"dropIfFull": {
 					"description": "If true, drops the items that did not fit into the inventory",
 					"required": false,
@@ -1155,7 +1155,7 @@
 		"RANDOMTELEPORT": {
 			"description": "Teleports the user or target entity a random distance",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"minDistance": {
 					"description": "The minimum distance",
 					"required": false,
@@ -1173,7 +1173,7 @@
 		"PROJECTILE": {
 			"description": "Shoots an entity from the user. if mode is SELF, shoots the entity in the direction that the user is looking",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"entity": {
 					"description": "The entity to shoot",
 					"required": true,
@@ -1190,7 +1190,7 @@
 		"SOUND": {
 			"description": "Plays a sound at the location or at the location of the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"sound": {
 					"description": "The sound data",
 					"required": true,
@@ -1201,7 +1201,7 @@
 		"COMMAND": { // Not usable in normal skills library as the time of writing
 			"description": "Excecutes a command",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"executor": {
 					"description": "The executor that will execute the command",
 					"required": false,
@@ -1219,7 +1219,7 @@
 		"LUNGE": {
 			"description": "Applies an acceleration to the user or the target entity based on the direction the user is looking",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"horizontalVelocity": {
 					"description": "The scale to scale the horizontal components of the velocity vector",
 					"required": false,
@@ -1244,7 +1244,7 @@
 			"description": "Acts like a trigger. \nTriggers for the nearest entity in the radius. \nThe target entity will be set as the nearest entity",
 			"extends": "WRAPPER",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"radius": {
 					"description": "Half the side length of the box",
 					"required": false,
@@ -1285,7 +1285,7 @@
 			"description": "Acts like a trigger. \nTriggers for the target entity. \nThe new target entity will be set as the source of the projectile if the old target entity is a projectile, otherwise the target entity will remain the same",
 			"extends": "WRAPPER",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"onlyProjectiles": {
 					"description": "If true, only triggers if the original target entity is a projectile. If false, keep the target entity the same",
 					"required": false,
@@ -1325,7 +1325,7 @@
 		"KNOCKBACK": {
 			"description": "Applies a velocity to the target entity in the direction that the user is looking as the direction",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"multiplier": {
 					"description": "The velocity to apply",
 					"required": false,
@@ -1343,7 +1343,7 @@
 		"IGNITE": {
 			"description": "Sets the user or target entity on fire",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"fireTicks": {
 					"description": "The amount of time the fire will last (in ticks)",
 					"required": false,
@@ -1364,7 +1364,7 @@
 			"description": "Acts like a trigger. \nTriggers for every location in the cube around the user or target entity. \nThe location will be set as the location the trigger triggers for", 
 			"extends": "WRAPPER",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"verticalRadius": {
 					"description": "Half of the vertical side length of the cube",
 					"required": false,
@@ -1416,7 +1416,7 @@
 		"PLACEBLOCK": {
 			"description": "Replaces a block at the location for an amount of time. Retains the original block data",
 			"supportedModes": ["ALL", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"material": {
 					"description": "The block to replace to",
 					"required": false,
@@ -1444,7 +1444,7 @@
 		"REMOVEPOTION": {
 			"description": "Removes potion effects from the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"types": {
 					"description": "The list of potion types. If empty, removes all potion effect",
 					"required": false,
@@ -1466,7 +1466,7 @@
 			"description": "Acts like a trigger. \nTriggers for a number of times with a period and initial delay. \nTarget items will be forwarded",
 			"extends": "WRAPPER",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
-			"typeProperties": {
+			"properties": {
 				"delay": {
 					"description": "The initial delay in seconds (1 is 20 ticks)",
 					"required": false,
@@ -1523,7 +1523,7 @@
 			"description": "Acts like a trigger. \nTriggers for the item in the slot. \nThe item will be set to the item in the slot",
 			"extends": "WRAPPER",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"slot": {
 					"description": "The slot of the item",
 					"required": false,
@@ -1564,7 +1564,7 @@
 			"description": "Modifies the item amount",
 			"extends": "MODIFY",
 			"supportedModes": ["ALL", "ITEM"],
-			"typeProperties": {
+			"properties": {
 				"operation": {
 					"description": "The operation to do",
 					"required": true,
@@ -1582,7 +1582,7 @@
 			"description": "Acts like a trigger. \nThe target entity will be set as the original user.\n the user will be set as the original target entity",
 			"extends": "WRAPPER",
 			"supportedModes": ["ALL", "OTHER"],
-			"typeProperties": {
+			"properties": {
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,

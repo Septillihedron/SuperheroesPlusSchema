@@ -7,8 +7,8 @@ export function preprocess(unprocessed: any): Schema {
 	objectPropertyMap(unprocessed).forEach((types: extendableMap) => {
 		resolveExtends(types)
 		objectPropertyMap(types).forEach((type: Type) => {
-			if (!type.typeProperties) return
-			objectPropertyMap(type.typeProperties).forEach(property => addDefaultToDescription(property))
+			if (!type.properties) return
+			objectPropertyMap(type.properties).forEach(property => addDefaultToDescription(property))
 		})
 	})
 	return unprocessed
@@ -20,13 +20,13 @@ function resolveExtends(extendableMap: extendableMap) : void {
 	objectPropertyMap(extendableMap).forEach((type, name) => {
 		var extendsVal = type.extends
 		if (!extendsVal) return
-		var extendedProperties = extendableMap[extendsVal].typeProperties
+		var extendedProperties = extendableMap[extendsVal].properties
 		if (!extendedProperties) return
-		var typeProperties = type.typeProperties
-		if (!typeProperties) return
+		var properties = type.properties
+		if (!properties) return
 
 		Object.keys(extendedProperties).forEach(propertyKey => {
-			delete (typeProperties as PropertyMap)[propertyKey]
+			delete (properties as PropertyMap)[propertyKey]
 		})
 	})
 }

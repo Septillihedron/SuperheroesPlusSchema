@@ -1,18 +1,19 @@
-# yaml-language-server: $schema=compiled-properties-compressed.json
-heroName:
-  colouredName: ashd
-  description: A hero
+# yaml-language-server: $schema=compiled-properties.json
+:
+  colouredName: $schema
+  description: "colouredName:"
   skills:
-    nasd:
+    $schema:
       skill: CUSTOM
-      trigger:
-        type: LOOP
-        period: 120
-        conditions:
-          jsds:
-            type: BIOME
-            mode: LOCATION
-            biomes:
-              - BEACH
-              - BASALT_DELTAS
-
+      effects:
+        $schema:
+          type: GIVEITEM
+          mode: OTHER
+          item: 
+            amount: 1
+            type: STONE
+            metadata: 
+              attributes: 
+                ATTACK_SPEED:
+                  equipmentslot: FEET
+                  value: 102

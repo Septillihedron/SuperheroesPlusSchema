@@ -58,12 +58,12 @@ export class Compiler {
 		let compiledTrigger = new Compiled.TriggerDefinition()
 		if (trigger.extends !== undefined) {
 			let extendedName = trigger.extends
-			let properties = this.preprocessed.triggers[extendedName].typeProperties;
+			let properties = this.preprocessed.triggers[extendedName].properties;
 			if (properties === undefined) properties = {}
 			compiledTrigger.setExtension(extendedName, properties)
 		}
-		if (trigger.typeProperties === undefined) return compiledTrigger
-		objectPropertyMap(trigger.typeProperties)
+		if (trigger.properties === undefined) return compiledTrigger
+		objectPropertyMap(trigger.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass({}, name as string, `#/triggers/${name}`))
@@ -77,12 +77,12 @@ export class Compiler {
 		let compiledCondition = new Compiled.ConditionDefinition(condition.supportedModes!)
 		if (condition.extends !== undefined) {
 			let extendedName = condition.extends
-			let properties = this.preprocessed.conditions[extendedName].typeProperties;
+			let properties = this.preprocessed.conditions[extendedName].properties;
 			if (properties === undefined) properties = {}
 			compiledCondition.setExtension(extendedName, properties)
 		}
-		if (condition.typeProperties === undefined) return compiledCondition
-		objectPropertyMap(condition.typeProperties)
+		if (condition.properties === undefined) return compiledCondition
+		objectPropertyMap(condition.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass({}, name as string, `#/conditions/${name}`))
@@ -96,12 +96,12 @@ export class Compiler {
 		let compiledEffect = new Compiled.EffectDefinition(effect.supportedModes!)
 		if (effect.extends !== undefined) {
 			let extendedName = effect.extends
-			let properties = this.preprocessed.effects[extendedName].typeProperties;
+			let properties = this.preprocessed.effects[extendedName].properties;
 			if (properties === undefined) properties = {}
 			compiledEffect.setExtension(extendedName, properties)
 		}
-		if (effect.typeProperties === undefined) return compiledEffect
-		objectPropertyMap(effect.typeProperties)
+		if (effect.properties === undefined) return compiledEffect
+		objectPropertyMap(effect.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass({}, name as string, `#/effects/${name}`))
