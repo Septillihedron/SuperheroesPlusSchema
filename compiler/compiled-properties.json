@@ -4493,19 +4493,9 @@
             ]
         },
         "block": {
-            "anyOf": [
-                {
-                    "$ref": "#/types/undefined"
-                }
-            ],
             "$ref": "#/types/material"
         },
         "item": {
-            "anyOf": [
-                {
-                    "$ref": "#/types/undefined"
-                }
-            ],
             "$ref": "#/types/material"
         },
         "enchantment": {
