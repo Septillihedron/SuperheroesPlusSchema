@@ -1,4 +1,4 @@
-import { Schema, PropertiesMapEntry, Property, PropertyMap, Type } from "./PreprocessedSchema"
+import { Schema, Property, PropertyMap, Type } from "./PreprocessedSchema"
 import { objectPropertyMap } from "./utils"
 
 export function preprocess(unprocessed: any): Schema {
@@ -39,7 +39,7 @@ function addDefaultToDescription(property: Property): void {
 		objectPropertyMap(property.patternProperties).forEach((val: Property) => addDefaultToDescription(val))
 	}
 	if (property.propertiesMap !== undefined) {
-		objectPropertyMap(property.propertiesMap).forEach((val: PropertiesMapEntry) => addDefaultToDescription(val.value))
+		addDefaultToDescription(property.propertiesMap.value)
 	}
 
 	var defaultVal = property.default
