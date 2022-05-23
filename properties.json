@@ -1736,7 +1736,7 @@
 					"default": 0
 				},
 				"attributes": {
-					"description": "The enchantments",
+					"description": "The attributes",
 					"required": false,
 					"type": "ItemAttributeData",
 					"default": {}
