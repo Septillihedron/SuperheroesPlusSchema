@@ -3806,79 +3806,114 @@
             "anyOf": [
                 {
                     "type": "object"
-                },
-                {
-                    "propertyNames": {
-                        "description": "The attribute name",
+                }
+            ],
+            "propertyNames": {
+                "description": "The attribute name",
+                "anyOf": [
+                    {
+                        "$ref": "#/types/attribute"
+                    }
+                ]
+            },
+            "propertyContent": {
+                "description": "The attribute properties",
+                "anyOf": [
+                    {
+                        "type": "object"
+                    }
+                ],
+                "default": null,
+                "properties": {
+                    "value": {
+                        "description": "The value of the attribute to change to",
                         "anyOf": [
                             {
-                                "$ref": "#/types/attribute"
+                                "type": "number"
                             }
-                        ]
+                        ],
+                        "default": 0
                     },
-                    "patternProperties": {
-                        ".*": {
-                            "description": "The attribute properties",
-                            "anyOf": [
-                                {
-                                    "type": "object"
-                                }
-                            ],
-                            "default": null,
-                            "properties": {
-                                "value": {
-                                    "description": "The value of the attribute to change to",
-                                    "anyOf": [
-                                        {
-                                            "type": "number"
-                                        }
-                                    ],
-                                    "default": 0
-                                },
-                                "equipmentslot": {
-                                    "description": "The slot that this attribute will be active",
-                                    "anyOf": [
-                                        {
-                                            "$ref": "#/types/equipmentSlot"
-                                        }
-                                    ],
-                                    "default": "HAND"
-                                }
+                    "equipmentslot": {
+                        "description": "The slot that this attribute will be active",
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/equipmentSlot"
                             }
-                        }
+                        ],
+                        "default": "HAND"
                     }
                 }
-            ]
+            },
+            "properties": {
+                "MAX_HEALTH": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "FOLLOW_RANGE": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "KNOCKBACK_RESISTANCE": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "MOVEMENT_SPEED": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "FLYING_SPEED": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "ATTACK_DAMAGE": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "ATTACK_KNOCKBACK": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "ATTACK_SPEED": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "ARMOR": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "ARMOR_TOUGHNESS": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "LUCK": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "HORSE_JUMP_STRENGTH": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "ZOMBIE_SPAWN_REINFORCEMENTS": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                }
+            }
         },
         "EnchantmentData": {
             "anyOf": [
                 {
                     "type": "object"
-                },
-                {
-                    "propertyNames": {
-                        "description": "The enchantment name",
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/enchantment"
-                            }
-                        ]
-                    },
-                    "patternProperties": {
-                        ".*": {
-                            "description": "The level of the enchantment",
-                            "anyOf": [
-                                {
-                                    "type": "integer"
-                                }
-                            ]
-                        }
-                    }
                 }
             ],
             "required": [
-                "patternProperties"
-            ]
+                "propertyContent"
+            ],
+            "propertyNames": {
+                "description": "The enchantment name",
+                "anyOf": [
+                    {
+                        "$ref": "#/types/enchantment"
+                    }
+                ]
+            },
+            "patternProperties": {
+                ".*": {
+                    "description": "The level of the enchantment",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ]
+                }
+            }
         },
         "ItemMetaData": {
             "anyOf": [
@@ -4076,29 +4111,66 @@
             "anyOf": [
                 {
                     "type": "object"
-                },
-                {
-                    "propertyNames": {
-                        "description": "The attribute name",
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/attribute"
-                            }
-                        ]
-                    },
-                    "patternProperties": {
-                        ".*": {
-                            "description": "The attribute value",
-                            "anyOf": [
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "default": -1
-                        }
-                    }
                 }
-            ]
+            ],
+            "propertyNames": {
+                "description": "The attribute name",
+                "anyOf": [
+                    {
+                        "$ref": "#/types/attribute"
+                    }
+                ]
+            },
+            "propertyContent": {
+                "description": "The attribute value",
+                "anyOf": [
+                    {
+                        "type": "number"
+                    }
+                ],
+                "default": -1
+            },
+            "properties": {
+                "MAX_HEALTH": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "FOLLOW_RANGE": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "KNOCKBACK_RESISTANCE": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "MOVEMENT_SPEED": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "FLYING_SPEED": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "ATTACK_DAMAGE": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "ATTACK_KNOCKBACK": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "ATTACK_SPEED": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "ARMOR": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "ARMOR_TOUGHNESS": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "LUCK": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "HORSE_JUMP_STRENGTH": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "ZOMBIE_SPAWN_REINFORCEMENTS": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                }
+            }
         },
         "EntityData": {
             "anyOf": [
@@ -4266,29 +4338,27 @@
             "anyOf": [
                 {
                     "type": "object"
-                },
-                {
-                    "propertyNames": {
-                        "description": "The enchantment name",
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/enchantment"
-                            }
-                        ]
-                    },
-                    "patternProperties": {
-                        ".*": {
-                            "description": "The level of the enchantment",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/range"
-                                }
-                            ],
-                            "default": "-Infinity - Infinity"
-                        }
-                    }
                 }
-            ]
+            ],
+            "propertyNames": {
+                "description": "The enchantment name",
+                "anyOf": [
+                    {
+                        "$ref": "#/types/enchantment"
+                    }
+                ]
+            },
+            "patternProperties": {
+                ".*": {
+                    "description": "The level of the enchantment",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/range"
+                        }
+                    ],
+                    "default": "-Infinity - Infinity"
+                }
+            }
         },
         "ItemMetaComparisonData": {
             "anyOf": [
