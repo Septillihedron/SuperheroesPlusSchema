@@ -113,41 +113,13 @@ export class Compiler {
 	
 	compileType(type: Preprocessed.TypeDefinition): Compiled.Property {
 		let compiledType = new Compiled.PropertyClass({}, "", "")
-	
-		if (type.type instanceof Array) {
-			type.type.forEach(type => compiledType.addType(type))
-		} else if (type.type !== undefined) {
-			compiledType.addType(type.type)
-		}
-		if (type.enum !== undefined) compiledType.setEnum(type.enum)
-		if (type.pattern !== undefined) compiledType.setPattern(type.pattern)
-		if (type.properties !== undefined) {
-			objectPropertyMap(type.properties)
-				.forEach((property, name) => {
-					let compiledProperty = this.compileProperty(property, 
-						new Compiled.PropertyClass({}, name as string, `#/types/${name}`))
-					compiledType.addProperty(name as string, compiledProperty)
-				})
-		}
-		if (type.patternProperties !== undefined) {
-			compiledType.patternProperties = {}
-			objectPropertyMap(type.patternProperties)
-				.forEach((property, name) => {
-					let compiledProperty = this.compileProperty(property, 
-						new Compiled.PropertyClass({}, name as string, `#/types/${name}`))
-						compiledType.addPatternProperty(name as string, compiledProperty)
-				})
-		}
-		if (type.propertiesMap !== undefined) {
-			let keyProperty = new Compiled.PropertyClass(compiledType, "propertyNames")
-			this.compileProperty({required: false, ...type.propertiesMap.key}, keyProperty)
-			let valueProperty = new Compiled.PropertyClass(compiledType, "patternProperties")
-			this.compileProperty(type.propertiesMap.value, valueProperty)
-			compiledType.addAnyOf({
-				propertyNames: keyProperty,
-				patternProperties: {".*": valueProperty}
-			})
-		}
+		
+		compiledType.pattern = type.pattern
+		this.PropertyPartsCompiler.type(type.type, compiledType)
+		this.PropertyPartsCompiler.enum(type.enum, compiledType)
+		this.PropertyPartsCompiler.properties(type.properties, compiledType)
+		this.PropertyPartsCompiler.patternProperties(type.patternProperties, compiledType)
+		this.PropertyPartsCompiler.propertiesMap(type.propertiesMap, compiledType)
 		if (type.extends !== undefined) compiledType.set$ref(`#/types/${type.extends}`)
 		deletePropertyClassHelperProperties(compiledType)
 	
