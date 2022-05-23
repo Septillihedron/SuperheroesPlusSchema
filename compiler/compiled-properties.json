@@ -3758,6 +3758,7 @@
     },
     "types": {
         "range": {
+            "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$",
             "anyOf": [
                 {
                     "type": "string"
@@ -3765,8 +3766,7 @@
                 {
                     "type": "number"
                 }
-            ],
-            "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$"
+            ]
         },
         "comparison": {
             "anyOf": [
@@ -4250,7 +4250,10 @@
                     ],
                     "default": 10
                 }
-            }
+            },
+            "required": [
+                "type"
+            ]
         },
         "LoreData": {
             "anyOf": [
@@ -4490,9 +4493,19 @@
             ]
         },
         "block": {
+            "anyOf": [
+                {
+                    "$ref": "#/types/undefined"
+                }
+            ],
             "$ref": "#/types/material"
         },
         "item": {
+            "anyOf": [
+                {
+                    "$ref": "#/types/undefined"
+                }
+            ],
             "$ref": "#/types/material"
         },
         "enchantment": {
