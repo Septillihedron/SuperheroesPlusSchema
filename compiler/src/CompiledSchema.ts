@@ -218,6 +218,7 @@ type Property = {
 	anyOf?: Property[]
 	propertyNames?: Property
 	pattern?: string
+	propertyContent?: Property
 }
 
 class PropertyClass implements Property {
@@ -239,6 +240,7 @@ class PropertyClass implements Property {
 	anyOf?: Property[]
 	propertyNames?: Property
 	pattern?: string
+	propertyContent?: Property
 
 	name: string
 	path: Path
@@ -339,6 +341,9 @@ class PropertyClass implements Property {
 	}
 	setPattern(pattern: string): void {
 		this.pattern = pattern
+	}
+	setPropertyContent(property: Property) {
+		this.propertyContent = property
 	}
 
 }
