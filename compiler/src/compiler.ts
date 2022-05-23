@@ -190,12 +190,34 @@ export class Compiler {
 			if (propertiesMap === undefined) return
 			let keyProperty = new Compiled.PropertyClass(compilingProperty, "propertyNames")
 			this.compileProperty({required: false, ...propertiesMap.key}, keyProperty)
-			let valueProperty = new Compiled.PropertyClass(compilingProperty, "patternProperties")
+			let valueProperty = new Compiled.PropertyClass(compilingProperty, "propertyContent")
 			this.compileProperty(propertiesMap.value, valueProperty)
-			compilingProperty.addAnyOf({
-				propertyNames: keyProperty,
-				patternProperties: {".*": valueProperty}
+			compilingProperty.setPropertyNames(keyProperty)
+			
+			let typesName = propertiesMap.key.type
+			if (!(typesName instanceof Array)) {
+				typesName = [typesName]
+			}
+			let enumValues: string[] = []
+			typesName.forEach(typeName => {
+				let type = this.preprocessed.types[typeName]
+				if (type.enum !== undefined) {
+					enumValues.push(...type.enum)
+				}
+				while (type.extends !== undefined) {
+					type = this.preprocessed.types[type.extends]
+					if (type.enum !== undefined) {
+						enumValues.push(...type.enum)
+					}
+				}
 			})
+			if (enumValues.length === 0) {
+				compilingProperty.addPatternProperty(".*", valueProperty)
+				return
+			}
+			compilingProperty.setPropertyContent(valueProperty)
+			let propertyContentPath = `${compilingProperty.path.asString()}/propertyContent`
+			enumValues.forEach(value => compilingProperty.addProperty(value, {$ref: propertyContentPath}))
 		},
 		ref: ($ref, compilingProperty) => {
 			
