@@ -1880,7 +1880,7 @@
                 "type": true,
                 "conditions": true,
                 "actions": {
-                    "description": "The interactions that will trigger this trigger. \nDefaults to ",
+                    "description": "The interactions that will trigger this trigger. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -1910,7 +1910,7 @@
                 "type": true,
                 "conditions": true,
                 "effects": {
-                    "description": "The potion effects that will trigger this trigger. \nDefaults to ",
+                    "description": "The potion effects that will trigger this trigger. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -2028,7 +2028,7 @@
                     "default": true
                 },
                 "entities": {
-                    "description": "The list of entities to be whitelisted/blacklisted. \nDefaults to ",
+                    "description": "The list of entities to be whitelisted/blacklisted. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -2208,7 +2208,7 @@
                     ]
                 },
                 "biomes": {
-                    "description": "The list of biomes. \nDefaults to ",
+                    "description": "The list of biomes. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -2231,7 +2231,7 @@
                 "type": true,
                 "mode": {},
                 "comparison": {
-                    "description": "The comparison to use. \nDefaults to EQUALS",
+                    "description": "The comparison to use. \nDefaults to \"EQUALS\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/comparison"
@@ -2327,7 +2327,7 @@
                     ]
                 },
                 "blocks": {
-                    "description": "The list of blocks. \nDefaults to ",
+                    "description": "The list of blocks. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -2357,7 +2357,7 @@
                     ]
                 },
                 "worlds": {
-                    "description": "The list of worlds. \nDefaults to ",
+                    "description": "The list of worlds. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -2420,7 +2420,7 @@
                     ]
                 },
                 "height": {
-                    "description": "The range in blocks. \nDefaults to -Infinity - Infinity",
+                    "description": "The range in blocks. \nDefaults to \"-Infinity - Infinity\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/range"
@@ -2441,7 +2441,7 @@
                     ]
                 },
                 "materials": {
-                    "description": "The list of blocks. \nDefaults to ",
+                    "description": "The list of blocks. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -2471,7 +2471,7 @@
                     ]
                 },
                 "slot": {
-                    "description": "The slot to check. \nDefaults to HAND",
+                    "description": "The slot to check. \nDefaults to \"HAND\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/equipmentSlot"
@@ -2507,7 +2507,7 @@
                     ]
                 },
                 "conditions": {
-                    "description": "The conditions to OR. \nDefaults to [object Object]",
+                    "description": "The conditions to OR. \nDefaults to {}",
                     "anyOf": [
                         {
                             "type": "object"
@@ -2516,7 +2516,7 @@
                     "default": {},
                     "patternProperties": {
                         "\\w": {
-                            "description": "A condition to OR. \nDefaults to [object Object]",
+                            "description": "A condition to OR. \nDefaults to {}",
                             "anyOf": [
                                 {
                                     "$ref": "#/types/condition"
@@ -2579,7 +2579,7 @@
                 "type": true,
                 "mode": {},
                 "conditions": {
-                    "description": "The list of conditions. \nDefaults to [object Object]",
+                    "description": "The list of conditions. \nDefaults to {}",
                     "anyOf": [
                         {
                             "type": "object"
@@ -2588,7 +2588,7 @@
                     "default": {},
                     "patternProperties": {
                         "\\w": {
-                            "description": "A condition. \nDefaults to [object Object]",
+                            "description": "A condition. \nDefaults to {}",
                             "anyOf": [
                                 {
                                     "$ref": "#/types/condition"
@@ -2599,7 +2599,7 @@
                     }
                 },
                 "effects": {
-                    "description": "The list of effects. \nDefaults to [object Object]",
+                    "description": "The list of effects. \nDefaults to {}",
                     "anyOf": [
                         {
                             "type": "object"
@@ -2608,7 +2608,7 @@
                     "default": {},
                     "patternProperties": {
                         "\\w": {
-                            "description": "An effect. \nDefaults to [object Object]",
+                            "description": "An effect. \nDefaults to {}",
                             "anyOf": [
                                 {
                                     "$ref": "#/types/effect"
@@ -2746,7 +2746,7 @@
                     ]
                 },
                 "potion": {
-                    "description": "The potion effect. \nDefaults to [object Object]",
+                    "description": "The potion effect. \nDefaults to {\"type\":\"REGENERATION\",\"potency\":1,\"duration\":10}",
                     "anyOf": [
                         {
                             "$ref": "#/types/PotionEffectData"
@@ -2780,7 +2780,7 @@
                     "default": -1
                 },
                 "block": {
-                    "description": "The block to change to. \nDefaults to COBWEB",
+                    "description": "The block to change to. \nDefaults to \"COBWEB\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/block"
@@ -2810,7 +2810,7 @@
                     "default": -1
                 },
                 "block": {
-                    "description": "The block to change to. \nDefaults to COBWEB",
+                    "description": "The block to change to. \nDefaults to \"COBWEB\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/block"
@@ -2842,7 +2842,7 @@
                     "default": 1
                 },
                 "entity": {
-                    "description": "The entity launch. \nDefaults to arrow",
+                    "description": "The entity launch. \nDefaults to \"arrow\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/entity"
@@ -2930,7 +2930,7 @@
             "additionalProperties": false,
             "properties": {
                 "type": {
-                    "description": "The entity to launch. \nDefaults to FIREBALL",
+                    "description": "The entity to launch. \nDefaults to \"FIREBALL\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/entity"
@@ -3264,7 +3264,7 @@
                     ]
                 },
                 "executor": {
-                    "description": "The executor that will execute the command. \nDefaults to CONSOLE",
+                    "description": "The executor that will execute the command. \nDefaults to \"CONSOLE\"",
                     "anyOf": [
                         {
                             "type": "string"
@@ -3496,7 +3496,7 @@
                     "default": 0
                 },
                 "offset": {
-                    "description": "The offset from the original location. \nDefaults to [object Object]",
+                    "description": "The offset from the original location. \nDefaults to {\"x\":0,\"y\":0,\"z\":0}",
                     "anyOf": [
                         {
                             "$ref": "#/types/VectorData"
@@ -3526,7 +3526,7 @@
                     ]
                 },
                 "material": {
-                    "description": "The block to replace to. \nDefaults to STONE",
+                    "description": "The block to replace to. \nDefaults to \"STONE\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/block"
@@ -3580,7 +3580,7 @@
                     ]
                 },
                 "types": {
-                    "description": "The list of potion types. If empty, removes all potion effect. \nDefaults to ",
+                    "description": "The list of potion types. If empty, removes all potion effect. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -3699,7 +3699,7 @@
                 "conditions": true,
                 "effects": true,
                 "slot": {
-                    "description": "The slot of the item. \nDefaults to HAND",
+                    "description": "The slot of the item. \nDefaults to \"HAND\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/equipmentSlot"
@@ -3932,7 +3932,7 @@
                     "default": ""
                 },
                 "lore": {
-                    "description": "The lore of the item. \nDefaults to ",
+                    "description": "The lore of the item. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -3966,7 +3966,7 @@
                     "default": 0
                 },
                 "attributes": {
-                    "description": "The attributes. \nDefaults to [object Object]",
+                    "description": "The attributes. \nDefaults to {}",
                     "anyOf": [
                         {
                             "$ref": "#/types/ItemAttributeData"
@@ -3975,7 +3975,7 @@
                     "default": {}
                 },
                 "enchants": {
-                    "description": "The enchantments. \nDefaults to [object Object]",
+                    "description": "The enchantments. \nDefaults to {}",
                     "anyOf": [
                         {
                             "$ref": "#/types/EnchantmentData"
@@ -3984,7 +3984,7 @@
                     "default": {}
                 },
                 "color": {
-                    "description": "If type is a leather armour. This contains the color metadata of the item. \nDefaults to [object Object]",
+                    "description": "If type is a leather armour. This contains the color metadata of the item. \nDefaults to {}",
                     "anyOf": [
                         {
                             "type": "object"
@@ -4030,7 +4030,7 @@
                     }
                 },
                 "potion": {
-                    "description": "If type is a potion, splash potion, lingering potion, or tipped arrow. This contains the potion metadata of the item. \nDefaults to [object Object]",
+                    "description": "If type is a potion, splash potion, lingering potion, or tipped arrow. This contains the potion metadata of the item. \nDefaults to {}",
                     "anyOf": [
                         {
                             "type": "object"
@@ -4079,7 +4079,7 @@
             ],
             "properties": {
                 "type": {
-                    "description": "The type of item. \nDefaults to STONE",
+                    "description": "The type of item. \nDefaults to \"STONE\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/item"
@@ -4097,7 +4097,7 @@
                     "default": 1
                 },
                 "metadata": {
-                    "description": "The metadata of the item. \nDefaults to [object Object]",
+                    "description": "The metadata of the item. \nDefaults to {}",
                     "anyOf": [
                         {
                             "$ref": "#/types/ItemMetaData"
@@ -4180,7 +4180,7 @@
             ],
             "properties": {
                 "type": {
-                    "description": "The entity type. \nDefaults to ZOMBIE",
+                    "description": "The entity type. \nDefaults to \"ZOMBIE\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/entity"
@@ -4207,7 +4207,7 @@
                     "default": true
                 },
                 "passenger": {
-                    "description": "The passenger of the entity. \nDefaults to [object Object]",
+                    "description": "The passenger of the entity. \nDefaults to {}",
                     "anyOf": [
                         {
                             "$ref": "#/types/EntityData"
@@ -4261,7 +4261,7 @@
             ],
             "properties": {
                 "sound": {
-                    "description": "The sound to make. \nDefaults to ENTITY_GENERIC_EXPLODE",
+                    "description": "The sound to make. \nDefaults to \"ENTITY_GENERIC_EXPLODE\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/sound"
@@ -4368,7 +4368,7 @@
             ],
             "properties": {
                 "displayName": {
-                    "description": "A regex to match the display name against. \nDefaults to .+",
+                    "description": "A regex to match the display name against. \nDefaults to \".+\"",
                     "anyOf": [
                         {
                             "type": "string"
@@ -4377,7 +4377,7 @@
                     "default": ".+"
                 },
                 "lore": {
-                    "description": "A list of regex to match the lore against. \nDefaults to .+",
+                    "description": "A list of regex to match the lore against. \nDefaults to \".+\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/LoreData"
@@ -4386,7 +4386,7 @@
                     "default": ".+"
                 },
                 "enchants": {
-                    "description": "The item to check against. \nDefaults to [object Object]",
+                    "description": "The item to check against. \nDefaults to {}",
                     "anyOf": [
                         {
                             "$ref": "#/types/EnchantComparisonData"
@@ -4404,7 +4404,7 @@
             ],
             "properties": {
                 "types": {
-                    "description": "The list of item types. \nDefaults to ",
+                    "description": "The list of item types. \nDefaults to []",
                     "anyOf": [
                         {
                             "type": "array"
@@ -4420,7 +4420,7 @@
                     "default": []
                 },
                 "amount": {
-                    "description": "The range of item amount. \nDefaults to -Infinity - Infinity",
+                    "description": "The range of item amount. \nDefaults to \"-Infinity - Infinity\"",
                     "anyOf": [
                         {
                             "$ref": "#/types/range"
@@ -4429,7 +4429,7 @@
                     "default": "-Infinity - Infinity"
                 },
                 "metadata": {
-                    "description": "The metadata of the item. \nDefaults to [object Object]",
+                    "description": "The metadata of the item. \nDefaults to {}",
                     "anyOf": [
                         {
                             "$ref": "#/types/ItemMetaComparisonData"

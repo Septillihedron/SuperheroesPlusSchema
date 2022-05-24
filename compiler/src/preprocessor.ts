@@ -47,6 +47,6 @@ function addDefaultToDescription(property: Property): void {
 	var description = property.description
 	if (property.description.match(/.*(default|Default).*/)) return
 
-	property.description = `${description}. \nDefaults to ${defaultVal}`
+	property.description = `${description}. \nDefaults to ${JSON.stringify(defaultVal)}`
 
 }
