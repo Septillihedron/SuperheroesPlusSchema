@@ -338,6 +338,9 @@
 		"TARGET": {
 			"description": "Triggers when the user targets an entity. \nThe target entity will be set as the target"
 		},
+		"TARGETED": {
+			"description": "Triggers when the user is targeted by an entity. \nThe target entity will be set as the entity that targeted the user"
+		},
 		"VEHICLE": {
 			"description": "Deprecated, use ENTERVEHICLE instead. \nTriggers when the user enters a vehicle. \nThe target entity will be set as the vehicle"
 		},
@@ -735,6 +738,19 @@
 					"default": 16
 				}
 			}
+		},
+		"HERO": {
+			"description": "Checks the user or target entity against the list of heroes",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"properties": {
+				"heroes": {
+					"description": "The list of heroes",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
+				}
+			}
 		}
 	},
 	"effects": {
@@ -861,7 +877,7 @@
 			"properties": {
 				"delay": {
 					"description": "The delay time in seconds (1 is 20 ticks)",
-					"required": false,
+					"required": true,
 					"type": "number",
 					"default": 1
 				},
@@ -1199,8 +1215,8 @@
 				}
 			}
 		},
-		"COMMAND": { // Not usable in normal skills library as the time of writing
-			"description": "Excecutes a command",
+		"COMMAND": {
+			"description": "Excecutes a list of commands",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
 				"executor": {
@@ -1210,10 +1226,12 @@
 					"enum": ["CONSOLE", "PLAYER"],
 					"default": "CONSOLE"
 				},
-				"command": {
-					"description": "The command to execute. \"%self_name%\" will be interpreted as the user if the user is a player. Otherwise, \"%target_name%\" will be interpreted as the target entity if the target entity is a player",
-					"required": true,
-					"type": "string"
+				"commands": {
+					"description": "The list of commands to execute. \"%self_name%\" will be interpreted as the user if the user is a player. Otherwise, \"%target_name%\" will be interpreted as the target entity if the target entity is a player",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
 				}
 			}
 		},

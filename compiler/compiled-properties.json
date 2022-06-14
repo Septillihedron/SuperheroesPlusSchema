@@ -144,6 +144,10 @@
                             "description": "Triggers when the user targets an entity. \nThe target entity will be set as the target"
                         },
                         {
+                            "const": "TARGETED",
+                            "description": "Triggers when the user is targeted by an entity. \nThe target entity will be set as the entity that targeted the user"
+                        },
+                        {
                             "const": "VEHICLE",
                             "description": "Deprecated, use ENTERVEHICLE instead. \nTriggers when the user enters a vehicle. \nThe target entity will be set as the vehicle"
                         },
@@ -391,6 +395,18 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "TARGETED"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/TARGETED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "VEHICLE"
                                 }
                             }
@@ -623,6 +639,10 @@
                         {
                             "const": "VISIBILITY",
                             "description": "Checks if the user has a direct line of sight to the target entity"
+                        },
+                        {
+                            "const": "HERO",
+                            "description": "Checks the user or target entity against the list of heroes"
                         }
                     ],
                     "description": "The type of the condition"
@@ -917,6 +937,18 @@
                         "then": {
                             "$ref": "#/conditions/VISIBILITY"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HERO"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/HERO"
+                        }
                     }
                 ]
             }
@@ -1026,7 +1058,7 @@
                         },
                         {
                             "const": "COMMAND",
-                            "description": "Excecutes a command"
+                            "description": "Excecutes a list of commands"
                         },
                         {
                             "const": "LUNGE",
@@ -1801,6 +1833,13 @@
             }
         },
         "TARGET": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "TARGETED": {
             "additionalProperties": false,
             "properties": {
                 "type": true,
@@ -2612,6 +2651,38 @@
             "required": [
                 "mode"
             ]
+        },
+        "HERO": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "heroes": {
+                    "description": "The list of heroes. \nDefaults to []",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "default": []
+                }
+            },
+            "required": [
+                "mode"
+            ]
         }
     },
     "effects": {
@@ -2808,7 +2879,10 @@
             "then": {
                 "$ref": "#/effects/WRAPPER",
                 "additionalProperties": true
-            }
+            },
+            "required": [
+                "delay"
+            ]
         },
         "POTION": {
             "additionalProperties": false,
@@ -3398,18 +3472,25 @@
                     ],
                     "default": "CONSOLE"
                 },
-                "command": {
-                    "description": "The command to execute. \"%self_name%\" will be interpreted as the user if the user is a player. Otherwise, \"%target_name%\" will be interpreted as the target entity if the target entity is a player",
+                "commands": {
+                    "description": "The list of commands to execute. \"%self_name%\" will be interpreted as the user if the user is a player. Otherwise, \"%target_name%\" will be interpreted as the target entity if the target entity is a player. \nDefaults to []",
                     "anyOf": [
                         {
-                            "type": "string"
+                            "type": "array"
                         }
-                    ]
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "default": []
                 }
             },
             "required": [
-                "mode",
-                "command"
+                "mode"
             ]
         },
         "LUNGE": {
