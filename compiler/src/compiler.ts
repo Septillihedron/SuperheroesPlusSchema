@@ -75,12 +75,17 @@ export class Compiler {
 	
 	compileCondition(condition: Preprocessed.Condition): Compiled.ConditionDefinition {
 		let compiledCondition = new Compiled.ConditionDefinition(condition.supportedModes!)
+		let requireMode: boolean | undefined = undefined
 		if (condition.extends !== undefined) {
 			let extendedName = condition.extends
-			let properties = this.preprocessed.conditions[extendedName].properties;
+			let extendedCondition = this.preprocessed.conditions[extendedName]
+			let properties = extendedCondition.properties;
 			if (properties === undefined) properties = {}
 			compiledCondition.setExtension(extendedName, properties)
+			requireMode = extendedCondition.requireMode
 		}
+		requireMode = condition.requireMode === undefined? requireMode : condition.requireMode
+		if (requireMode === true || requireMode === undefined) compiledCondition.requireMode()
 		if (condition.properties === undefined) return compiledCondition
 		objectPropertyMap(condition.properties)
 			.forEach((property, name) => {
@@ -94,12 +99,17 @@ export class Compiler {
 	
 	compileEffect(effect: Preprocessed.Effect): Compiled.EffectDefinition {
 		let compiledEffect = new Compiled.EffectDefinition(effect.supportedModes!)
+		let requireMode: boolean | undefined = undefined
 		if (effect.extends !== undefined) {
 			let extendedName = effect.extends
-			let properties = this.preprocessed.effects[extendedName].properties;
+			let extendedEffect = this.preprocessed.effects[extendedName]
+			let properties = extendedEffect.properties;
 			if (properties === undefined) properties = {}
 			compiledEffect.setExtension(extendedName, properties)
+			requireMode = extendedEffect.requireMode
 		}
+		requireMode = effect.requireMode === undefined? requireMode : effect.requireMode
+		if (requireMode === true || requireMode === undefined) compiledEffect.requireMode()
 		if (effect.properties === undefined) return compiledEffect
 		objectPropertyMap(effect.properties)
 			.forEach((property, name) => {

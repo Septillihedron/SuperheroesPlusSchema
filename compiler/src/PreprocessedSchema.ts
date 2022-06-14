@@ -25,6 +25,7 @@ interface Type extends Descriptable {
 	properties?: PropertyMap
 	available?: boolean
 	extends?: string
+	requireMode?: boolean
 }
 
 interface Trigger extends Type {}

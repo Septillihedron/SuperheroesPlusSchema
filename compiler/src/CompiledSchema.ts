@@ -137,7 +137,7 @@ class Condition {
 			type: "string"
 		}
 	}
-	readonly required = ["type", "mode"]
+	readonly required = ["type"]
 	readonly if = {"properties": {"type": false}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
@@ -156,7 +156,7 @@ class Effect {
 			type: "string"
 		}
 	}
-	readonly required = ["type", "mode"]
+	readonly required = ["type"]
 	readonly if = {"properties": {"type": false}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
@@ -365,6 +365,10 @@ abstract class Definition {
 			if (this.required === undefined) this.required = []
 			this.required.push(name)
 		}
+	}
+	requireMode() {
+		if (this.required === undefined) this.required = ["mode"]
+		else this.required.push("mode")
 	}
 	protected internalSetExtension(type: string, extension: string, extendedProperties: MonoTypeObject<any>) {
 		this.if = true

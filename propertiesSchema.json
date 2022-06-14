@@ -149,6 +149,11 @@
 				"extends": {
 					"type": "string",
 					"description": "The type that this type is extending"
+				},
+				"requireMode": {
+					"type": "boolean",
+					"description": "If false, the mode will not be required",
+					"default": true
 				}
 			},
 			"required": ["description"],

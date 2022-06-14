@@ -753,6 +753,7 @@
 		"WRAPPER": {
 			"description": "Acts like a trigger",
 			"available": false,
+			"requireMode": false,
 			"properties": {
 				"conditions": {
 					"description": "The list of conditions",
