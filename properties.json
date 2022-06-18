@@ -739,6 +739,18 @@
 				}
 			}
 		},
+		"TEMPERATURE": {
+			"description": "Checks if the location or the location of the user or target entity is in the range",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"properties": {
+				"temperature": {
+					"description": "The range of tempreture from -1 to 1",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				}
+			}
+		},
 		"HERO": {
 			"description": "Checks the user or target entity against the list of heroes",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
@@ -763,6 +775,12 @@
 					"required": false,
 					"type": "number",
 					"default": 5
+				},
+				"cause": {
+					"description": "The type of damage that will be dealt",
+					"required": false,
+					"type": "damageCause",
+					"default": "CUSTOM"
 				}
 			}
 		},
@@ -1631,6 +1649,54 @@
 					}
 				}
 			}
+		},
+		"LOCATIONOFFSET": {
+			"description": "Acts like a trigger. \nTriggers the location of the user or target entity after being offseted. \nThe location will be set as the location the trigger triggers for",
+			"extends": "WRAPPER",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"properties": {
+				"offset": {
+					"description": "The offset from the original location",
+					"required": false,
+					"type": "VectorData",
+					"default": {"x": 0, "y": 0, "z": 0}
+				}
+			}
+		},
+		"BONEMEAL": {
+			"description": "Applies bonemeal to the location or location of the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"properties": {
+				"faces": {
+					"description": "The list of faces to apply bonemeal from",
+					"required": false,
+					"type": "array",
+					"items": "blockFace",
+					"default": ["UP", "DOWN", "NORTH", "SOUTH", "EAST", "WEST"]
+				}
+			}
+		},
+		"HUNGER": {
+			"description": "Modifies the hunger value of the user or target entity",
+			"extends": "MODIFY",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"properties": {
+				"operation": {
+					"description": "The operation to do",
+					"required": true,
+					"type": "operation"
+				},
+				"value": {
+					"description": "The number on the right side of the operation",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"LOSETARGET": {
+			"description": "Make the user lose interest in the current target",
+			"supportedModes": ["ALL", "SELF"]
 		}
 	},
 	"types": {
@@ -2036,6 +2102,11 @@
 		"block": {
 			"description": "A block",
 			"extends": "material"
+		},
+		"blockFace": {
+			"description": "A face of a block",
+			"type": "string",
+			"enum": ["DOWN", "EAST", "EAST_NORTH_EAST", "EAST_SOUTH_EAST", "NORTH", "NORTH_EAST", "NORTH_NORTH_EAST", "NORTH_NORTH_WEST", "NORTH_WEST", "SELF", "SOUTH", "SOUTH_EAST", "SOUTH_SOUTH_EAST", "SOUTH_SOUTH_WEST", "SOUTH_WEST", "UP", "WEST", "WEST_NORTH_WEST", "WEST_SOUTH_WEST"]
 		},
 		"item": {
 			"description": "An item",

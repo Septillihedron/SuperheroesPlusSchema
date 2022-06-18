@@ -641,6 +641,10 @@
                             "description": "Checks if the user has a direct line of sight to the target entity"
                         },
                         {
+                            "const": "TEMPERATURE",
+                            "description": "Checks if the location or the location of the user or target entity is in the range"
+                        },
+                        {
                             "const": "HERO",
                             "description": "Checks the user or target entity against the list of heroes"
                         }
@@ -942,6 +946,18 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "TEMPERATURE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/TEMPERATURE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "HERO"
                                 }
                             }
@@ -1131,6 +1147,22 @@
                         {
                             "const": "SWITCHEROO",
                             "description": "Acts like a trigger. \nThe target entity will be set as the original user.\n the user will be set as the original target entity"
+                        },
+                        {
+                            "const": "LOCATIONOFFSET",
+                            "description": "Acts like a trigger. \nTriggers the location of the user or target entity after being offseted. \nThe location will be set as the location the trigger triggers for"
+                        },
+                        {
+                            "const": "BONEMEAL",
+                            "description": "Applies bonemeal to the location or location of the user or target entity"
+                        },
+                        {
+                            "const": "HUNGER",
+                            "description": "Modifies the hunger value of the user or target entity"
+                        },
+                        {
+                            "const": "LOSETARGET",
+                            "description": "Make the user lose interest in the current target"
                         }
                     ],
                     "description": "The type of the effect"
@@ -1664,6 +1696,54 @@
                         },
                         "then": {
                             "$ref": "#/effects/SWITCHEROO"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "LOCATIONOFFSET"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/LOCATIONOFFSET"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "BONEMEAL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/BONEMEAL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HUNGER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/HUNGER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "LOSETARGET"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/LOSETARGET"
                         }
                     }
                 ]
@@ -2652,6 +2732,32 @@
                 "mode"
             ]
         },
+        "TEMPERATURE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER",
+                        "LOCATION"
+                    ]
+                },
+                "temperature": {
+                    "description": "The range of tempreture from -1 to 1. \nDefaults to \"-Infinity - Infinity\"",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/range"
+                        }
+                    ],
+                    "default": "-Infinity - Infinity"
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
         "HERO": {
             "additionalProperties": false,
             "properties": {
@@ -2705,6 +2811,15 @@
                         }
                     ],
                     "default": 5
+                },
+                "cause": {
+                    "description": "The type of damage that will be dealt. \nDefaults to \"CUSTOM\"",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/damageCause"
+                        }
+                    ],
+                    "default": "CUSTOM"
                 }
             },
             "required": [
@@ -3994,6 +4109,118 @@
                 "$ref": "#/effects/WRAPPER",
                 "additionalProperties": true
             }
+        },
+        "LOCATIONOFFSET": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER",
+                        "LOCATION"
+                    ]
+                },
+                "conditions": true,
+                "effects": true,
+                "offset": {
+                    "description": "The offset from the original location. \nDefaults to {\"x\":0,\"y\":0,\"z\":0}",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/VectorData"
+                        }
+                    ],
+                    "default": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                }
+            },
+            "if": true,
+            "then": {
+                "$ref": "#/effects/WRAPPER",
+                "additionalProperties": true
+            }
+        },
+        "BONEMEAL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER",
+                        "LOCATION"
+                    ]
+                },
+                "faces": {
+                    "description": "The list of faces to apply bonemeal from. \nDefaults to [\"UP\",\"DOWN\",\"NORTH\",\"SOUTH\",\"EAST\",\"WEST\"]",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/blockFace"
+                            }
+                        ]
+                    },
+                    "default": [
+                        "UP",
+                        "DOWN",
+                        "NORTH",
+                        "SOUTH",
+                        "EAST",
+                        "WEST"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "HUNGER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "operation": true,
+                "value": true
+            },
+            "if": true,
+            "then": {
+                "$ref": "#/effects/MODIFY",
+                "additionalProperties": true
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "LOSETARGET": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
         }
     },
     "types": {
@@ -4804,6 +5031,34 @@
         },
         "block": {
             "$ref": "#/types/material"
+        },
+        "blockFace": {
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
+            "enum": [
+                "DOWN",
+                "EAST",
+                "EAST_NORTH_EAST",
+                "EAST_SOUTH_EAST",
+                "NORTH",
+                "NORTH_EAST",
+                "NORTH_NORTH_EAST",
+                "NORTH_NORTH_WEST",
+                "NORTH_WEST",
+                "SELF",
+                "SOUTH",
+                "SOUTH_EAST",
+                "SOUTH_SOUTH_EAST",
+                "SOUTH_SOUTH_WEST",
+                "SOUTH_WEST",
+                "UP",
+                "WEST",
+                "WEST_NORTH_WEST",
+                "WEST_SOUTH_WEST"
+            ]
         },
         "item": {
             "$ref": "#/types/material"
