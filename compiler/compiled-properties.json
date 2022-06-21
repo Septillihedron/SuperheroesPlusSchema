@@ -4226,6 +4226,7 @@
     "types": {
         "range": {
             "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$",
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -4236,6 +4237,7 @@
             ]
         },
         "comparison": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -4256,6 +4258,7 @@
             ]
         },
         "operation": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -4270,6 +4273,7 @@
             ]
         },
         "ItemAttributeData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4355,6 +4359,7 @@
             }
         },
         "EnchantmentData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4383,6 +4388,7 @@
             }
         },
         "ItemMetaData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4539,6 +4545,7 @@
             }
         },
         "ItemStackData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4575,6 +4582,7 @@
             }
         },
         "AttributeData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4640,6 +4648,7 @@
             }
         },
         "EntityData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4685,6 +4694,7 @@
             }
         },
         "VectorData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4721,6 +4731,7 @@
             }
         },
         "SoundData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4757,6 +4768,7 @@
             }
         },
         "PotionEffectData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4795,6 +4807,7 @@
             ]
         },
         "LoreData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "array"
@@ -4802,6 +4815,7 @@
             ]
         },
         "EnchantComparisonData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4828,6 +4842,7 @@
             }
         },
         "ItemMetaComparisonData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4864,6 +4879,7 @@
             }
         },
         "ItemComparisonData": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "object"
@@ -4907,6 +4923,7 @@
             }
         },
         "entity": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5035,9 +5052,11 @@
             ]
         },
         "block": {
+            "additionalProperties": false,
             "$ref": "#/types/material"
         },
         "blockFace": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5066,9 +5085,11 @@
             ]
         },
         "item": {
+            "additionalProperties": false,
             "$ref": "#/types/material"
         },
         "enchantment": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5076,6 +5097,7 @@
             ]
         },
         "potion": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5118,6 +5140,7 @@
             ]
         },
         "damageCause": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5157,6 +5180,7 @@
             ]
         },
         "action": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5171,6 +5195,7 @@
             ]
         },
         "biome": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5244,6 +5269,7 @@
             ]
         },
         "world": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5251,6 +5277,7 @@
             ]
         },
         "equipmentSlot": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5266,6 +5293,7 @@
             ]
         },
         "attribute": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -5288,6 +5316,7 @@
             ]
         },
         "sound": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"
@@ -6618,6 +6647,7 @@
             ]
         },
         "material": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "type": "string"

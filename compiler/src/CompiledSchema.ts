@@ -219,6 +219,7 @@ type Property = {
 	propertyNames?: Property
 	pattern?: string
 	propertyContent?: Property
+	additionalProperties?: boolean
 }
 
 class PropertyClass implements Property {
@@ -241,6 +242,7 @@ class PropertyClass implements Property {
 	propertyNames?: Property
 	pattern?: string
 	propertyContent?: Property
+	additionalProperties?: boolean
 
 	name: string
 	path: Path

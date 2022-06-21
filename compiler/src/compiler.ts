@@ -125,6 +125,7 @@ export class Compiler {
 		let compiledType = new Compiled.PropertyClass(this.schema.types, name, `#/types/${name}`)
 		
 		compiledType.pattern = type.pattern
+		compiledType.additionalProperties = false
 		if (type.type !== undefined) this.PropertyPartsCompiler.type(type.type, compiledType)
 		this.PropertyPartsCompiler.enum(type.enum, compiledType)
 		this.PropertyPartsCompiler.properties(type.properties, compiledType)
