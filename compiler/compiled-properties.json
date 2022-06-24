@@ -2691,6 +2691,7 @@
                         }
                     ],
                     "default": {},
+                    "additionalProperties": false,
                     "patternProperties": {
                         "\\w": {
                             "description": "A condition to OR. \nDefaults to {}",
@@ -2839,6 +2840,7 @@
                         }
                     ],
                     "default": {},
+                    "additionalProperties": false,
                     "patternProperties": {
                         "\\w": {
                             "description": "A condition. \nDefaults to {}",
@@ -2859,6 +2861,7 @@
                         }
                     ],
                     "default": {},
+                    "additionalProperties": false,
                     "patternProperties": {
                         "\\w": {
                             "description": "An effect. \nDefaults to {}",
@@ -4295,6 +4298,7 @@
                     }
                 ],
                 "default": null,
+                "additionalProperties": false,
                 "properties": {
                     "value": {
                         "description": "The value of the attribute to change to",
@@ -4464,6 +4468,7 @@
                         }
                     ],
                     "default": {},
+                    "additionalProperties": false,
                     "required": [
                         "red",
                         "green",
@@ -4510,6 +4515,7 @@
                         }
                     ],
                     "default": {},
+                    "additionalProperties": false,
                     "required": [
                         "type"
                     ],

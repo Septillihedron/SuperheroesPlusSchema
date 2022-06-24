@@ -181,6 +181,7 @@ export class Compiler {
 		},
 		properties: (properties, compilingProperty) => {
 			if (properties === undefined) return
+			compilingProperty.additionalProperties = false
 			objectPropertyMap(properties).forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compilingProperty, name as string))
@@ -190,6 +191,7 @@ export class Compiler {
 		},
 		patternProperties: (patternProperties, compilingProperty) => {
 			if (patternProperties === undefined) return
+			compilingProperty.additionalProperties = false
 			objectPropertyMap(patternProperties).forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compilingProperty, name as string))
@@ -199,6 +201,7 @@ export class Compiler {
 		},
 		propertiesMap: (propertiesMap, compilingProperty) => {
 			if (propertiesMap === undefined) return
+			compilingProperty.additionalProperties = false
 			let keyProperty = new Compiled.PropertyClass(compilingProperty, "propertyNames")
 			this.compileProperty({required: false, ...propertiesMap.key}, keyProperty)
 			let valueProperty = new Compiled.PropertyClass(compilingProperty, "propertyContent")
