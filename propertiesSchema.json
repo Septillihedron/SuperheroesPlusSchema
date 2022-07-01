@@ -360,13 +360,13 @@
 				"biome", "world", 
 				"equipmentSlot", 
 				"attribute", 
-				"sound", 
+				"sound", "particle",
 				"condition", "effect"
 			]
 		},
 		"objectTypes": {
 			"enum": [
-				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData",
+				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData",
 				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData"
 			]
 		},
