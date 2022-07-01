@@ -15,7 +15,8 @@
 						"internal": {
 							"type": "boolean",
 							"description": "If true, this skill is managed internally"
-						}
+						},
+						"extends": true
 					},
 					"allOf": [{ "$ref": "#/definitions/type" }],
 					"additionalProperties": false
@@ -55,6 +56,7 @@
 								"description": "The supported mode"
 							}
 						},
+						"requireMode": true,
 						"description": true,
 						"properties": true,
 						"available": true,
@@ -83,13 +85,14 @@
 								"description": "The supported mode"
 							}
 						},
+						"requireMode": true,
 						"description": true,
 						"properties": true,
 						"available": true,
 						"extends": true
 					},
 					"allOf": [{ "$ref": "#/definitions/type" }],
-					"additionalItems": false
+					"additionalProperties": false
 				}
 			},
 			"additionalProperties": false
