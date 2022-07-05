@@ -15,6 +15,11 @@ export class Compiler {
 	compile() {
 		let {schema, preprocessed} = this
 		this.addCustomSkill()
+		objectPropertyMap(preprocessed.skills).forEach((skill: Preprocessed.Skill, name) => {
+			schema.skills[name] = this.compileSkill(skill)
+			if (skill.available === false) return
+			schema.definitions.skill.addSkill(name as string, skill.description)
+		})
 		objectPropertyMap(preprocessed.triggers).forEach((trigger: Preprocessed.Trigger, name) => {
 			schema.triggers[name] = this.compileTrigger(trigger)
 			if (trigger.available === false) return
@@ -52,6 +57,24 @@ export class Compiler {
 			description: "The list of effetcs"
 		})
 		skills["CUSTOM"] = skill
+	}
+
+	compileSkill(skill: Preprocessed.Skill): Compiled.SkillDefinition {
+		let compiledSkill = new Compiled.SkillDefinition()
+		if (skill.extends !== undefined) {
+			let extendedName = skill.extends
+			let properties = this.preprocessed.skills[extendedName].properties;
+			if (properties === undefined) properties = {}
+			compiledSkill.setExtension(extendedName, properties)
+		}
+		if (skill.properties === undefined) return compiledSkill
+		objectPropertyMap(skill.properties)
+			.forEach((property, name) => {
+				let compiledProperty = this.compileProperty(property, 
+					new Compiled.PropertyClass({}, name as string, `#/skills/${name}`))
+				compiledSkill.addProperty(name as string, compiledProperty, property.required)
+			})
+		return compiledSkill
 	}
 	
 	compileTrigger(trigger: Preprocessed.Trigger): Compiled.TriggerDefinition {

@@ -92,7 +92,19 @@ class IfThenRefrence {
 class Skill {
 	readonly description = "A skill"
 	readonly type = "object"
-	readonly properties = { skill: new Types("The type of the skill") }
+	readonly properties = {
+		skill: new Types("The type of the skill"), 
+		conditions: {
+			description: "The list of conditions that the skill has",
+			type: "object",
+			additionalProperties: false,
+			patternProperties: {
+				".*": {
+					$ref: "#/definitions/condition"
+				}
+			}
+		}
+	}
 	readonly required = ["skill"]
 	readonly if = {"properties": {"skill": false}}
 	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
@@ -383,7 +395,7 @@ abstract class Definition {
 class SkillDefinition extends Definition {
 
 	constructor() {
-		super({ skill: true });
+		super({ skill: true, conditions: true });
 	}
 
 	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {

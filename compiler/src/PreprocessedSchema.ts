@@ -2,13 +2,14 @@
 export {
 	Schema,
 	Descriptable,  
-	PropertyMap, Type, Trigger, ConditionModes, Condition, EffectModes, Effect, TypeDefinition, 
+	PropertyMap, Type, Skill, Trigger, ConditionModes, Condition, EffectModes, Effect, TypeDefinition, 
 	PropertyTypes, PropertyStringTypes, PropertyType, 
 	PropertiesMap, PropertiesMapKey, Property, 
 	IfPath
 }
 
 interface Schema {
+	skills: {[key: string] : Skill}
 	triggers: {[key: string] : Trigger}
 	conditions: {[key: string] : Condition}
 	effects: {[key: string] : Effect}
@@ -27,6 +28,8 @@ interface Type extends Descriptable {
 	extends?: string
 	requireMode?: boolean
 }
+
+interface Skill extends Type {}
 
 interface Trigger extends Type {}
 
