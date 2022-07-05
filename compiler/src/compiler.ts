@@ -198,8 +198,12 @@ export class Compiler {
 		items: (items, compilingProperty) => {
 			if (items === undefined) return
 			var itemsProperty = new Compiled.PropertyClass(compilingProperty, "items")
-			deletePropertyClassHelperProperties(itemsProperty)
-			this.PropertyPartsCompiler.type(items, itemsProperty)
+			if (typeof items === "string" || items instanceof Array) {
+				deletePropertyClassHelperProperties(itemsProperty)
+				this.PropertyPartsCompiler.type(items, itemsProperty)
+			} else {
+				this.compileProperty(items, itemsProperty)
+			}
 			compilingProperty.setItems(itemsProperty)
 		},
 		properties: (properties, compilingProperty) => {

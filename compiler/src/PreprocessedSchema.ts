@@ -59,7 +59,7 @@ interface Property extends Descriptable {
 	type: PropertyType
 	min?: number
 	max?: number
-	items?: PropertyType
+	items?: PropertyType | Property
 	properties?: PropertyMap
 	patternProperties?: PropertyMap
 	propertiesMap?: PropertiesMap
