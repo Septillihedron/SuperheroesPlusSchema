@@ -232,6 +232,7 @@ export class Compiler {
 			let keyProperty = new Compiled.PropertyClass(compilingProperty, "propertyNames")
 			this.compileProperty({required: false, ...propertiesMap.key}, keyProperty)
 			let valueProperty = new Compiled.PropertyClass(compilingProperty, "propertyContent")
+			propertiesMap.value.required = false
 			this.compileProperty(propertiesMap.value, valueProperty)
 			compilingProperty.setPropertyNames(keyProperty)
 			
@@ -278,7 +279,11 @@ export class Compiler {
 	compileProperty(property: Preprocessed.Property, compilingProperty: Compiled.Property): Compiled.Property {
 
 		Object.keys(property).forEach(key => {
-			(this.PropertyPartsCompiler as any)[key]((property as any)[key], compilingProperty)
+			if (key in this.PropertyPartsCompiler) {
+				(this.PropertyPartsCompiler as any)[key]((property as any)[key], compilingProperty)
+			} else {
+				(compilingProperty as any)[key] = (property as any)[key]
+			}
 		})
 
 		deletePropertyClassHelperProperties(compilingProperty)
