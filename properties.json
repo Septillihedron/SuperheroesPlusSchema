@@ -554,13 +554,9 @@
 					"required": false,
 					"type": "object",
 					"default": {},
-					"propertiesMap": {
-						"key": {
-							"description": "The recipe key",
-							"type": "string"
-						},
-						"value": {
-							"description": "The material that the key maps to",
+					"patternProperties": {
+						".*": {
+							"description": "The material that the key is representing",
 							"required": true,
 							"type": "item"
 						}
