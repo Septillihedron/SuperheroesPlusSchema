@@ -1,19 +1,12 @@
 # yaml-language-server: $schema=compiled-properties.json
-:
-  colouredName: $schema
-  description: "colouredName:"
+SkillToggleItem:
+  colouredName: "templateSkillToggle"
+  description: "template"
   skills:
-    $schema:
-      skill: CUSTOM
-      effects:
-        $schema:
-          type: GIVEITEM
-          mode: OTHER
-          item: 
-            amount: 1
-            type: STONE
-            metadata: 
-              attributes: 
-                ATTACK_SPEED:
-                  equipmentslot: FEET
-                  value: 102
+    sunny_saturation:
+      skill: CRAFTING
+      isShaped: false
+      ingredients:
+        ACACIA_BOAT: 2
+        ACACIA_FENCE_GATE: 1
+        OAK_LOG: 1

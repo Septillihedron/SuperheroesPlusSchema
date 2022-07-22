@@ -186,14 +186,12 @@ class Path {
 
 	readonly parts: string[]
 
-	constructor(parts: string)
-	constructor(...parts: string[])
-	constructor(parts: string[] | string) {
-		if (parts instanceof Array) {
+	constructor(...parts: string[]) {
+		if (parts.length == 1) {
+			this.parts = parts[0].split("/")
+		} else {
 			this.parts = parts
-			return
 		}
-		this.parts = parts.split("/")
 	}
 
 	asIf(content: IfPath): IfPath {
