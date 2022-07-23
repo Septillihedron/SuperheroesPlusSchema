@@ -14,8 +14,7 @@ export class Compiler {
 
 	compile() {
 		let {schema, preprocessed} = this
-		this.addCustomSkill()
-		for (let set of ["skill", "trigger", "condition", "effect"]) {
+		for (let set of ["trigger", "condition", "effect"]) {
 			objectPropertyMap((preprocessed as any)[`${set}s`]).forEach((type, name) => {
 				(this as any)[`compile${set.charAt(0).toUpperCase() + set.slice(1)}`](type, name)
 			})
@@ -27,42 +26,6 @@ export class Compiler {
 		this.addInternalTypes();
 
 		return schema
-	}
-
-	addCustomSkill(): void {
-		let {definitions, skills} = this.schema
-		definitions.skill.addSkill("CUSTOM", "A custom skill, used in combination with the SkillsLibrary")
-		var skill = new Compiled.SkillDefinition()
-		skill.addProperty("trigger", {$ref: "#/definitions/trigger"})
-		skill.addProperty("effects", {
-			patternProperties: {
-				".*": { $ref: "#/definitions/effect" }
-			},
-			type: "object",
-			description: "The list of effetcs"
-		})
-		skills["CUSTOM"] = skill
-	}
-
-	compileSkill(skill: Preprocessed.Skill, skillName: string) {
-		let compiledSkill = new Compiled.SkillDefinition()
-		if (skill.extends !== undefined) {
-			let extendedName = skill.extends
-			let properties = this.preprocessed.skills[extendedName].properties;
-			if (properties === undefined) properties = {}
-			compiledSkill.setExtension(extendedName, properties)
-		}
-		if (skill.properties === undefined) return compiledSkill
-		objectPropertyMap(skill.properties)
-			.forEach((property, name) => {
-				let compiledProperty = this.compileProperty(property, 
-					new Compiled.PropertyClass(compiledSkill, name as string, `#/skills/${skillName}/properties/${name}`))
-				compiledSkill.addProperty(name as string, compiledProperty, property.required)
-			})
-		this.schema.skills[skillName] = compiledSkill
-		
-		if (skill.available === false) return
-		this.schema.definitions.skill.addSkill(skillName, skill.description)
 	}
 	
 	compileTrigger(trigger: Preprocessed.Trigger, triggerName: string) {

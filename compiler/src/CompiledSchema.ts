@@ -6,7 +6,7 @@ export {
 	Hero, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	SkillDefinition, TriggerDefinition, ConditionDefinition, EffectDefinition
+	TriggerDefinition, ConditionDefinition, EffectDefinition
 }
 
 class Schema {
@@ -27,7 +27,6 @@ class Schema {
 		condition: new Condition(),
 		effect: new Effect()
 	}
-	readonly skills: MonoTypeObject<SkillDefinition> = {}
 	readonly triggers: MonoTypeObject<TriggerDefinition> = {}
 	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
 	readonly effects: MonoTypeObject<EffectDefinition> = {}
@@ -93,26 +92,16 @@ class Skill {
 	readonly description = "A skill"
 	readonly type = "object"
 	readonly properties = {
-		skill: new Types("The type of the skill"), 
-		conditions: {
-			description: "The list of conditions that the skill has",
-			type: "object",
-			additionalProperties: false,
+		trigger: {$ref: "#/definitions/trigger"},
+		effects: {
 			patternProperties: {
-				".*": {
-					$ref: "#/definitions/condition"
-				}
-			}
+				".*": { $ref: "#/definitions/effect" }
+			},
+			type: "object",
+			description: "The list of effetcs"
 		}
 	}
-	readonly required = ["skill"]
-	readonly if = {"properties": {"skill": false}}
-	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
-	addSkill(name: string, description: string): void {
-		this.properties.skill.addType(name, description)
-		this.else.allOf.push(new IfThenRefrence("skill", name))
-	}
 }
 
 class Trigger {
@@ -386,18 +375,6 @@ abstract class Definition {
 		this.if = true
 		this.then = {$ref: `#/${type}s/${extension.toUpperCase()}`, additionalProperties: true}
 		Object.keys(extendedProperties).forEach(name => this.properties[name] = true)
-	}
-
-}
-
-class SkillDefinition extends Definition {
-
-	constructor() {
-		super({ skill: true, conditions: true });
-	}
-
-	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
-		this.internalSetExtension("skill", extension, extendedProperties)
 	}
 
 }

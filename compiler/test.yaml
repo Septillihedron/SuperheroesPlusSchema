@@ -4,9 +4,9 @@ SkillToggleItem:
   description: "template"
   skills:
     sunny_saturation:
-      skill: CRAFTING
-      isShaped: false
-      ingredients:
-        ACACIA_BOAT: 2
-        ACACIA_FENCE_GATE: 1
-        OAK_LOG: 1
+      trigger:
+        type: DAMAGED
+        causes:
+          - CONTACT
+      effects:
+        

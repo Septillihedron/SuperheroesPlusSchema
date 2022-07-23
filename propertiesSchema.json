@@ -2,27 +2,6 @@
 	"$schema": "http://json-schema.org/schema",
 	"type": "object",
 	"properties": {
-		"skills": {
-			"type": "object",
-			"description": "The list of skills and their properties",
-			"patternProperties": {
-				"\\p{Upper}": {
-					"type": "object",
-					"description": "A skill and it's properties",
-					"properties": {
-						"description": true,
-						"properties": true,
-						"internal": {
-							"type": "boolean",
-							"description": "If true, this skill is managed internally"
-						},
-						"extends": true
-					},
-					"allOf": [{ "$ref": "#/definitions/type" }],
-					"additionalProperties": false
-				}
-			}
-		},
 		"triggers": {
 			"type": "object",
 			"description": "The list of trigers and their properties",
