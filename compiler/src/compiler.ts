@@ -14,7 +14,7 @@ export class Compiler {
 
 	compile() {
 		let {schema, preprocessed} = this
-		for (let set of ["trigger", "condition", "effect"]) {
+		for (let set of ["trigger", "condition", "effect", "distribution"]) {
 			objectPropertyMap((preprocessed as any)[`${set}s`]).forEach((type, name) => {
 				(this as any)[`compile${set.charAt(0).toUpperCase() + set.slice(1)}`](type, name)
 			})
@@ -99,6 +99,28 @@ export class Compiler {
 		
 		if (effect.available === false) return
 		this.schema.definitions.effect.addType(effectName, effect.description)
+	}
+
+	compileDistribution(distribution: Preprocessed.Distribution, distributionName: string) {
+		let compiledDistribution = new Compiled.DistributionDefinition()
+		if (distribution.extends !== undefined) {
+			let extendedName = distribution.extends
+			let extendedDistribution = this.preprocessed.distribution[extendedName]
+			let properties = extendedDistribution.properties;
+			if (properties === undefined) properties = {}
+			compiledDistribution.setExtension(extendedName, properties)
+		}
+		if (distribution.properties === undefined) return compiledDistribution
+		objectPropertyMap(distribution.properties)
+			.forEach((property, name) => {
+				let compiledProperty = this.compileProperty(property, 
+					new Compiled.PropertyClass(compiledDistribution, name as string, `#/distributions/${distributionName}/properties/${name}`))
+				compiledDistribution.addProperty(name as string, compiledProperty, property.required)
+			})
+		this.schema.distributions[distributionName] = compiledDistribution
+		
+		if (distribution.available === false) return
+		this.schema.definitions.distribution.addType(distributionName, distribution.description)
 	}
 	
 	compileType(name: string, type: Preprocessed.TypeDefinition): Compiled.Property {

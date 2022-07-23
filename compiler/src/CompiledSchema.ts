@@ -3,10 +3,10 @@ import { MonoTypeObject, objectPropertyMap } from "./utils";
 
 export {
 	Schema, 
-	Item, Skill, Trigger, Condition, Effect, 
+	Item, Skill, Trigger, Condition, Effect, Distribution,
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	TriggerDefinition, ConditionDefinition, EffectDefinition
+	TriggerDefinition, ConditionDefinition, EffectDefinition, DistributionDefinition
 }
 
 class Schema {
@@ -25,11 +25,13 @@ class Schema {
 		skill: new Skill(),
 		trigger: new Trigger(),
 		condition: new Condition(),
-		effect: new Effect()
+		effect: new Effect(),
+		distribution: new Distribution(),
 	}
 	readonly triggers: MonoTypeObject<TriggerDefinition> = {}
 	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
 	readonly effects: MonoTypeObject<EffectDefinition> = {}
+	readonly distributions: MonoTypeObject<DistributionDefinition> = {}
 	readonly types: MonoTypeObject<Property> = {}
 }
 
@@ -73,7 +75,7 @@ class Item {
 			description: "The list of distributions",
 			patternProperties: {
 				".*": {
-					// $ref: "#/definitions/distribution"
+					$ref: "#/definitions/distribution"
 				}
 			}
 		},
@@ -210,6 +212,21 @@ class Effect {
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
 		this.else.allOf.push(new IfThenRefrence("effect", name))
+	}
+}
+
+class Distribution {
+	readonly type = "object"
+	readonly properties = {
+		type: new Types("The type of the distribution")
+	}
+	readonly required = ["type"]
+	readonly if = {"properties": {"type": false}}
+	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
+
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
+		this.else.allOf.push(new IfThenRefrence("distribution", name))
 	}
 }
 
@@ -457,6 +474,18 @@ class EffectDefinition extends Definition {
 
 	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
 		this.internalSetExtension("effect", extension, extendedProperties)
+	}
+
+}
+
+class DistributionDefinition extends Definition {
+
+	constructor() {
+		super({ type: true })
+	}
+
+	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
+		this.internalSetExtension("distribution", extension, extendedProperties)
 	}
 
 }

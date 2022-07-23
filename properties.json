@@ -1440,6 +1440,63 @@
 			"supportedModes": ["ALL", "SELF"]
 		}
 	},
+	"distributions": {
+		"LOOT": {
+			"description": "Adds a chance for loot tables to have the skill item",
+			"properties": {
+				"chance": {
+					"description": "The chance of the skill item being added",
+					"required": false,
+					"type": "number",
+					"min": 0,
+					"max": 1,
+					"default": 0
+				},
+				"loottable": {
+					"description": "The loot table to add the skill item to",
+					"required": true,
+					"type": "array",
+					"items": "lootTable"
+				}
+			}
+		},
+		"CRAFTING": {
+			"description": "Adds a recipe for the skill item",
+			"properties": {
+				"recipe": {
+					"description": "The shape of the recipe",
+					"required": true,
+					"type": "array",
+					"items": {
+						"type": "string",
+						"maxLength": 3,
+						"minLength": 3
+					},
+					"default": ["", "", ""],
+					"maxItems": 3,
+					"minItems": 3
+				},
+				"recipeKeys": {
+					"description": "The map from material to recipe key",
+					"required": true,
+					"type": "object",
+					"propertiesMap": {
+						"key": {
+							"description": "The recipe key",
+							"type": "item"
+						},
+						"value": {
+							"description": "The recipe key",
+							"type": "string",
+							"maxLength": 1,
+							"minLength": 1,
+							"required": true
+						}
+					}
+				}
+			}
+		}
+	},
 	"types": {
 		"condition": {
 			"description": "A skills library condition",
@@ -1889,6 +1946,11 @@
 			"description": "An interaction action",
 			"type": "string",
 			"enum": ["LEFT_CLICK_AIR", "LEFT_CLICK_BLOCK", "PHYSICAL", "RIGHT_CLICK_AIR", "RIGHT_CLICK_BLOCK"]
+		},
+		"lootTable": {
+			"description": "A loot table type",
+			"type": "string",
+			"enum": ["EMPTY", "ABANDONED_MINESHAFT", "BURIED_TREASURE", "DESERT_PYRAMID", "END_CITY_TREASURE", "IGLOO_CHEST", "JUNGLE_TEMPLE", "JUNGLE_TEMPLE_DISPENSER", "NETHER_BRIDGE", "PILLAGER_OUTPOST", "BASTION_TREASURE", "BASTION_OTHER", "BASTION_BRIDGE", "BASTION_HOGLIN_STABLE", "ANCIENT_CITY", "ANCIENT_CITY_ICE_BOX", "RUINED_PORTAL", "SHIPWRECK_MAP", "SHIPWRECK_SUPPLY", "SHIPWRECK_TREASURE", "SIMPLE_DUNGEON", "SPAWN_BONUS_CHEST", "STRONGHOLD_CORRIDOR", "STRONGHOLD_CROSSING", "STRONGHOLD_LIBRARY", "UNDERWATER_RUIN_BIG", "UNDERWATER_RUIN_SMALL", "VILLAGE_ARMORER", "VILLAGE_BUTCHER", "VILLAGE_CARTOGRAPHER", "VILLAGE_DESERT_HOUSE", "VILLAGE_FISHER", "VILLAGE_FLETCHER", "VILLAGE_MASON", "VILLAGE_PLAINS_HOUSE", "VILLAGE_SAVANNA_HOUSE", "VILLAGE_SHEPHERD", "VILLAGE_SNOWY_HOUSE", "VILLAGE_TAIGA_HOUSE", "VILLAGE_TANNERY", "VILLAGE_TEMPLE", "VILLAGE_TOOLSMITH", "VILLAGE_WEAPONSMITH", "WOODLAND_MANSION", "ARMOR_STAND", "AXOLOTL", "BAT", "BEE", "BLAZE", "CAT", "CAVE_SPIDER", "CHICKEN", "COD", "COW", "CREEPER", "DOLPHIN", "DONKEY", "DROWNED", "ELDER_GUARDIAN", "ENDER_DRAGON", "ENDERMAN", "ENDERMITE", "EVOKER", "FOX", "GHAST", "GIANT", "GLOW_SQUID", "GOAT", "GUARDIAN", "HOGLIN", "HORSE", "HUSK", "ILLUSIONER", "IRON_GOLEM", "LLAMA", "MAGMA_CUBE", "MOOSHROOM", "MULE", "OCELOT", "PANDA", "PARROT", "PHANTOM", "PIG", "PIGLIN", "PIGLIN_BRUTE", "PILLAGER", "PLAYER", "POLAR_BEAR", "PUFFERFISH", "RABBIT", "RAVAGER", "SALMON", "SHULKER", "SILVERFISH", "SKELETON", "SKELETON_HORSE", "SLIME", "SNOW_GOLEM", "SPIDER", "SQUID", "STRAY", "STRIDER", "TRADER_LLAMA", "TROPICAL_FISH", "TURTLE", "VEX", "VILLAGER", "VINDICATOR", "WANDERING_TRADER", "WITCH", "WITHER", "WITHER_SKELETON", "WOLF", "ZOGLIN", "ZOMBIE", "ZOMBIE_HORSE", "ZOMBIE_VILLAGER", "ZOMBIFIED_PIGLIN", "ARMORER_GIFT", "BUTCHER_GIFT", "CARTOGRAPHER_GIFT", "CAT_MORNING_GIFT", "CLERIC_GIFT", "FARMER_GIFT", "FISHERMAN_GIFT", "FISHING", "FISHING_FISH", "FISHING_JUNK", "FISHING_TREASURE", "FLETCHER_GIFT", "LEATHERWORKER_GIFT", "LIBRARIAN_GIFT", "MASON_GIFT", "SHEPHERD_GIFT", "TOOLSMITH_GIFT", "WEAPONSMITH_GIFT", "PIGLIN_BARTERING", "SHEEP", "SHEEP_BLACK", "SHEEP_BLUE", "SHEEP_BROWN", "SHEEP_CYAN", "SHEEP_GRAY", "SHEEP_GREEN", "SHEEP_LIGHT_BLUE", "SHEEP_LIGHT_GRAY", "SHEEP_LIME", "SHEEP_MAGENTA", "SHEEP_ORANGE", "SHEEP_PINK", "SHEEP_PURPLE", "SHEEP_RED", "SHEEP_WHITE", "SHEEP_YELLOW"]
 		},
 		"biome": {
 			"description": "A biome",

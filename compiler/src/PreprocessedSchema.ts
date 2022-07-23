@@ -2,7 +2,7 @@
 export {
 	Schema,
 	Descriptable,  
-	PropertyMap, Type, Trigger, ConditionModes, Condition, EffectModes, Effect, TypeDefinition, 
+	PropertyMap, Type, Trigger, ConditionModes, Condition, EffectModes, Effect, Distribution, TypeDefinition, 
 	PropertyTypes, PropertyStringTypes, PropertyType, 
 	PropertiesMap, PropertiesMapKey, Property, 
 	IfPath
@@ -12,6 +12,7 @@ interface Schema {
 	triggers: {[key: string] : Trigger}
 	conditions: {[key: string] : Condition}
 	effects: {[key: string] : Effect}
+	distribution: {[key: string] : Distribution}
 	types: {[key: string] : TypeDefinition}
 }
 
@@ -29,6 +30,8 @@ interface Type extends Descriptable {
 }
 
 interface Trigger extends Type {}
+
+interface Distribution extends Type {}
 
 type ConditionModes = "SELF" | "OTHER" | "LOCATION" | "ITEM" | "ALL"
 interface Condition extends Type {
