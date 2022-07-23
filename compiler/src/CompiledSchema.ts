@@ -3,7 +3,7 @@ import { MonoTypeObject, objectPropertyMap } from "./utils";
 
 export {
 	Schema, 
-	Hero, Skill, Trigger, Condition, Effect, 
+	Item, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
 	TriggerDefinition, ConditionDefinition, EffectDefinition
@@ -17,11 +17,11 @@ class Schema {
 	readonly minProperties = 1
 	readonly patternProperties = {
 		".*": {
-			$ref: "#/definitions/hero"
+			$ref: "#/definitions/item"
 		}
 	}
 	readonly definitions = {
-		hero: new Hero(),
+		item: new Item(),
 		skill: new Skill(),
 		trigger: new Trigger(),
 		condition: new Condition(),
@@ -33,21 +33,66 @@ class Schema {
 	readonly types: MonoTypeObject<Property> = {}
 }
 
-class Hero {
-	readonly description = "Hero name"
+class Item {
+	readonly description = "Item name"
 	readonly type = "object"
 	readonly additionalProperties = false
 	readonly properties = {
-		colouredName: {
-			description: "The coloured name that will appear ingame",
-			type: "string"
+		item: {
+			description: "The skill item",
+			$ref: "#/types/ItemStackData"
 		},
-		description: {
-			description: "The description of the hero",
-			type: "string"
+		levels: {
+			description: "The level data",
+			type: "object",
+			additionalProperties: false,
+			properties: {
+				maxLevel: {
+					description: "The maximum level",
+					type: "number",
+					minimum: 0,
+					default: 0
+				}
+			},
+			patternProperties: {
+				"^([2-9])|([1-9]+[0-9])$": {
+					description: "The level data",
+					type: "object",
+					additionalProperties: false,
+					properties: {
+						experienceRequired: {
+							description: "The experience required to level up",
+							type: "number"
+						}
+					},
+					required: ["experienceRequired"]
+				}
+			}
+		},
+		distribution: {
+			description: "The list of distributions",
+			patternProperties: {
+				".*": {
+					// $ref: "#/definitions/distribution"
+				}
+			}
+		},
+		slots: {
+			description: "The list of slots",
+			items: {
+				description: "A slot",
+				anyOf: [
+					{
+						type: "number"
+					},
+					{
+						$ref: "#/types/equipmentSlot"
+					}
+				]
+			}
 		},
 		skills: {
-			description: "The list of skill that the hero has",
+			description: "The list of skill that the item has",
 			type: "object",
 			additionalProperties: false,
 			patternProperties: {
@@ -57,6 +102,7 @@ class Hero {
 			}
 		}
 	}
+	readonly required = ["item"]
 }
 
 type constDescription = {const: string, description: string}
