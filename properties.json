@@ -1487,19 +1487,13 @@
 					"minItems": 3
 				},
 				"recipeKeys": {
-					"description": "The map from material to recipe key",
+					"description": "The map from recipe key to material/skill item",
 					"required": true,
 					"type": "object",
-					"propertiesMap": {
-						"key": {
-							"description": "The recipe key",
-							"type": "item"
-						},
-						"value": {
-							"description": "The recipe key",
-							"type": "string",
-							"maxLength": 1,
-							"minLength": 1,
+					"patternProperties": {
+						"^.$": {
+							"description": "The material or skill item",
+							"type": ["item", "string"],
 							"required": true
 						}
 					}
