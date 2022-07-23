@@ -344,8 +344,8 @@
                             "description": "Checks if the location or the location of the user or target entity is in the range"
                         },
                         {
-                            "const": "HERO",
-                            "description": "Checks the user or target entity against the list of heroes"
+                            "const": "SKILLITEM",
+                            "description": "Checks if the user has the skill item in one of the skill item slots"
                         }
                     ],
                     "description": "The type of the condition"
@@ -633,12 +633,12 @@
                         "if": {
                             "properties": {
                                 "type": {
-                                    "const": "HERO"
+                                    "const": "SKILLITEM"
                                 }
                             }
                         },
                         "then": {
-                            "$ref": "#/conditions/HERO"
+                            "$ref": "#/conditions/SKILLITEM"
                         }
                     }
                 ]
@@ -2139,7 +2139,7 @@
                 "mode"
             ]
         },
-        "HERO": {
+        "SKILLITEM": {
             "additionalProperties": false,
             "properties": {
                 "type": true,
@@ -2150,25 +2150,18 @@
                         "OTHER"
                     ]
                 },
-                "heroes": {
-                    "description": "The list of heroes. \nDefaults to []",
+                "skillItem": {
+                    "description": "The skill item to check for",
                     "anyOf": [
                         {
-                            "type": "array"
+                            "type": "string"
                         }
-                    ],
-                    "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "default": []
+                    ]
                 }
             },
             "required": [
-                "mode"
+                "mode",
+                "skillItem"
             ]
         }
     },

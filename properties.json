@@ -492,18 +492,28 @@
 				}
 			}
 		},
-		"HERO": {
-			"description": "Checks the user or target entity against the list of heroes",
+		"SKILLITEM": {
+			"description": "Checks if the user has the skill item in one of the skill item slots",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
-				"heroes": {
-					"description": "The list of heroes",
-					"required": false,
-					"type": "array",
-					"items": "string",
-					"default": []
+				"skillItem": {
+					"description": "The skill item to check for",
+					"required": true,
+					"type": "string"
 				}
 			}
+		},
+		"ITEMLEVEL": {
+			"description": "Checks if the user has the item level in the range",
+			"supportedModes": ["ALL", "SELF", "OTHER"]//,
+			// "properties": {
+			// 	"itemLevel": {
+			// 		"description": "The range of item levels",
+			// 		"required": false,
+			// 		"type": "range",
+			// 		"default": "-Infinity - Infinity"
+			// 	}
+			// }
 		}
 	},
 	"effects": {
