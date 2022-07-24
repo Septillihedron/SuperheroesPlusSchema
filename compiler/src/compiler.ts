@@ -30,27 +30,35 @@ export class Compiler {
 	
 	compileTrigger(trigger: Preprocessed.Trigger, triggerName: string) {
 		let compiledTrigger = new Compiled.TriggerDefinition()
+
+		this.schema.triggers[triggerName] = compiledTrigger
+		if (trigger.available !== false) {
+			this.schema.definitions.trigger.addType(triggerName, trigger.description)
+		}
+
 		if (trigger.extends !== undefined) {
 			let extendedName = trigger.extends
 			let properties = this.preprocessed.triggers[extendedName].properties;
 			if (properties === undefined) properties = {}
 			compiledTrigger.setExtension(extendedName, properties)
 		}
-		if (trigger.properties === undefined) return compiledTrigger
+		if (trigger.properties === undefined) return
 		objectPropertyMap(trigger.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compiledTrigger, name as string, `#/triggers/${triggerName}/properties/${name}`))
 				compiledTrigger.addProperty(name as string, compiledProperty, property.required)
 			})
-		this.schema.triggers[triggerName] = compiledTrigger
-		
-		if (trigger.available === false) return
-		this.schema.definitions.trigger.addType(triggerName, trigger.description)
 	}
 	
 	compileCondition(condition: Preprocessed.Condition, conditionName: string) {
 		let compiledCondition = new Compiled.ConditionDefinition(condition.supportedModes!)
+
+		this.schema.conditions[conditionName] = compiledCondition
+		if (condition.available !== false) {
+			this.schema.definitions.condition.addType(conditionName, condition.description)
+		}
+
 		let requireMode: boolean | undefined = undefined
 		if (condition.extends !== undefined) {
 			let extendedName = condition.extends
@@ -62,21 +70,23 @@ export class Compiler {
 		}
 		requireMode = condition.requireMode === undefined? requireMode : condition.requireMode
 		if (requireMode === true || requireMode === undefined) compiledCondition.requireMode()
-		if (condition.properties === undefined) return compiledCondition
+		if (condition.properties === undefined) return
 		objectPropertyMap(condition.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compiledCondition, name as string, `#/conditions/${conditionName}/properties/${name}`))
 				compiledCondition.addProperty(name as string, compiledProperty, property.required)
 			})
-		this.schema.conditions[conditionName] = compiledCondition
-		
-		if (condition.available === false) return
-		this.schema.definitions.condition.addType(conditionName, condition.description)
 	}
 	
 	compileEffect(effect: Preprocessed.Effect, effectName: string) {
 		let compiledEffect = new Compiled.EffectDefinition(effect.supportedModes!)
+
+		this.schema.effects[effectName] = compiledEffect
+		if (effect.available !== false) {
+			this.schema.definitions.effect.addType(effectName, effect.description)
+		}
+
 		let requireMode: boolean | undefined = undefined
 		if (effect.extends !== undefined) {
 			let extendedName = effect.extends
@@ -88,21 +98,23 @@ export class Compiler {
 		}
 		requireMode = effect.requireMode === undefined? requireMode : effect.requireMode
 		if (requireMode === true || requireMode === undefined) compiledEffect.requireMode()
-		if (effect.properties === undefined) return compiledEffect
+		if (effect.properties === undefined) return
 		objectPropertyMap(effect.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compiledEffect, name as string, `#/effects/${effectName}/properties/${name}`))
 				compiledEffect.addProperty(name as string, compiledProperty, property.required)
 			})
-		this.schema.effects[effectName] = compiledEffect
-		
-		if (effect.available === false) return
-		this.schema.definitions.effect.addType(effectName, effect.description)
 	}
 
 	compileDistribution(distribution: Preprocessed.Distribution, distributionName: string) {
 		let compiledDistribution = new Compiled.DistributionDefinition()
+
+		this.schema.distributions[distributionName] = compiledDistribution
+		if (distribution.available === false) {
+			this.schema.definitions.distribution.addType(distributionName, distribution.description)
+		}
+
 		if (distribution.extends !== undefined) {
 			let extendedName = distribution.extends
 			let extendedDistribution = this.preprocessed.distribution[extendedName]
@@ -110,17 +122,13 @@ export class Compiler {
 			if (properties === undefined) properties = {}
 			compiledDistribution.setExtension(extendedName, properties)
 		}
-		if (distribution.properties === undefined) return compiledDistribution
+		if (distribution.properties === undefined) return
 		objectPropertyMap(distribution.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compiledDistribution, name as string, `#/distributions/${distributionName}/properties/${name}`))
 				compiledDistribution.addProperty(name as string, compiledProperty, property.required)
 			})
-		this.schema.distributions[distributionName] = compiledDistribution
-		
-		if (distribution.available === false) return
-		this.schema.definitions.distribution.addType(distributionName, distribution.description)
 	}
 	
 	compileType(name: string, type: Preprocessed.TypeDefinition): Compiled.Property {
