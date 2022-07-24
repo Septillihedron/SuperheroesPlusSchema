@@ -30,27 +30,35 @@ export class Compiler {
 	
 	compileTrigger(trigger: Preprocessed.Trigger, triggerName: string) {
 		let compiledTrigger = new Compiled.TriggerDefinition()
+
+		this.schema.triggers[triggerName] = compiledTrigger
+		if (trigger.available !== false) {
+			this.schema.definitions.trigger.addType(triggerName, trigger.description)
+		}
+
 		if (trigger.extends !== undefined) {
 			let extendedName = trigger.extends
 			let properties = this.preprocessed.triggers[extendedName].properties;
 			if (properties === undefined) properties = {}
 			compiledTrigger.setExtension(extendedName, properties)
 		}
-		if (trigger.properties === undefined) return compiledTrigger
+		if (trigger.properties === undefined) return
 		objectPropertyMap(trigger.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compiledTrigger, name as string, `#/triggers/${triggerName}/properties/${name}`))
 				compiledTrigger.addProperty(name as string, compiledProperty, property.required)
 			})
-		this.schema.triggers[triggerName] = compiledTrigger
-		
-		if (trigger.available === false) return
-		this.schema.definitions.trigger.addType(triggerName, trigger.description)
 	}
 	
 	compileCondition(condition: Preprocessed.Condition, conditionName: string) {
 		let compiledCondition = new Compiled.ConditionDefinition(condition.supportedModes!)
+
+		this.schema.conditions[conditionName] = compiledCondition
+		if (condition.available !== false) {
+			this.schema.definitions.condition.addType(conditionName, condition.description)
+		}
+
 		let requireMode: boolean | undefined = undefined
 		if (condition.extends !== undefined) {
 			let extendedName = condition.extends
@@ -62,21 +70,23 @@ export class Compiler {
 		}
 		requireMode = condition.requireMode === undefined? requireMode : condition.requireMode
 		if (requireMode === true || requireMode === undefined) compiledCondition.requireMode()
-		if (condition.properties === undefined) return compiledCondition
+		if (condition.properties === undefined) return
 		objectPropertyMap(condition.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compiledCondition, name as string, `#/conditions/${conditionName}/properties/${name}`))
 				compiledCondition.addProperty(name as string, compiledProperty, property.required)
 			})
-		this.schema.conditions[conditionName] = compiledCondition
-		
-		if (condition.available === false) return
-		this.schema.definitions.condition.addType(conditionName, condition.description)
 	}
 	
 	compileEffect(effect: Preprocessed.Effect, effectName: string) {
 		let compiledEffect = new Compiled.EffectDefinition(effect.supportedModes!)
+
+		this.schema.effects[effectName] = compiledEffect
+		if (effect.available !== false) {
+			this.schema.definitions.effect.addType(effectName, effect.description)
+		}
+
 		let requireMode: boolean | undefined = undefined
 		if (effect.extends !== undefined) {
 			let extendedName = effect.extends
@@ -88,26 +98,22 @@ export class Compiler {
 		}
 		requireMode = effect.requireMode === undefined? requireMode : effect.requireMode
 		if (requireMode === true || requireMode === undefined) compiledEffect.requireMode()
-		if (effect.properties === undefined) return compiledEffect
+		if (effect.properties === undefined) return
 		objectPropertyMap(effect.properties)
 			.forEach((property, name) => {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compiledEffect, name as string, `#/effects/${effectName}/properties/${name}`))
 				compiledEffect.addProperty(name as string, compiledProperty, property.required)
 			})
-		this.schema.effects[effectName] = compiledEffect
-		
-		if (effect.available === false) return
-		this.schema.definitions.effect.addType(effectName, effect.description)
 	}
 
 	compileDamagemodifier(damageModifier: Preprocessed.DamageModifier, damageModifierName: string) {
 		let compiledDamageModifier = new Compiled.DamageModifierDefinition()
 
+		this.schema.damagemodifiers[damageModifierName] = compiledDamageModifier
 		if (damageModifier.available !== false) {
 			this.schema.definitions.damagemodifier.addType(damageModifierName, damageModifier.description)
 		}
-		this.schema.damagemodifiers[damageModifierName] = compiledDamageModifier
 
 		if (damageModifier.extends !== undefined) {
 			let extendedName = damageModifier.extends
@@ -127,10 +133,10 @@ export class Compiler {
 	compileReward(reward: Preprocessed.Reward, rewardName: string) {
 		let compiledReward = new Compiled.RewardDefinition()
 
+		this.schema.rewards[rewardName] = compiledReward
 		if (reward.available !== false) {
 			this.schema.definitions.reward.addType(rewardName, reward.description)
 		}
-		this.schema.rewards[rewardName] = compiledReward
 
 		if (reward.extends !== undefined) {
 			let extendedName = reward.extends
