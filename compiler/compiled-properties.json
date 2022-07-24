@@ -5,25 +5,29 @@
     "minProperties": 1,
     "patternProperties": {
         ".*": {
-            "$ref": "#/definitions/hero"
+            "$ref": "#/definitions/boss"
         }
     },
     "definitions": {
-        "hero": {
-            "description": "Hero name",
+        "boss": {
+            "description": "Boss name",
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "colouredName": {
-                    "description": "The coloured name that will appear ingame",
+                    "description": "The coloured name that will appear ingame. \n\nDefaults to Boss name",
                     "type": "string"
                 },
                 "description": {
-                    "description": "The description of the hero",
+                    "description": "The description of the boss. \n\nDefaults to Boss name + \" description\"",
                     "type": "string"
                 },
+                "entity": {
+                    "description": "The entity that the boss is",
+                    "$ref": "#/types/EntityData"
+                },
                 "skills": {
-                    "description": "The list of skill that the hero has",
+                    "description": "The list of skill that the boss has",
                     "type": "object",
                     "additionalProperties": false,
                     "patternProperties": {
@@ -31,6 +35,15 @@
                             "$ref": "#/definitions/skill"
                         }
                     }
+                },
+                "bossbar": {
+                    "$ref": "#/types/BossBarData"
+                },
+                "autospawn": {
+                    "$ref": "#/types/SpawnData"
+                },
+                "damagemodifier": {
+                    "$ref": "#/definitions/damagemodifier"
                 }
             }
         },
@@ -1193,6 +1206,46 @@
                         },
                         "then": {
                             "$ref": "#/effects/HUNGER"
+                        }
+                    }
+                ]
+            }
+        },
+        "damagemodifier": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "oneOf": [
+                        {},
+                        {
+                            "const": "BLANK",
+                            "description": ""
+                        }
+                    ],
+                    "description": "The type of the damage modifier"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "if": {
+                "properties": {
+                    "type": false
+                }
+            },
+            "else": {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "BLANK"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/damagemodifiers/BLANK"
                         }
                     }
                 ]
@@ -3285,6 +3338,14 @@
             ]
         }
     },
+    "damagemodifiers": {
+        "BLANK": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true
+            }
+        }
+    },
     "types": {
         "range": {
             "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$",
@@ -3333,6 +3394,12 @@
                 "DIVIDE",
                 "SET"
             ]
+        },
+        "SpawnData": {
+            "additionalProperties": false
+        },
+        "BossBarData": {
+            "additionalProperties": false
         },
         "ItemAttributeData": {
             "additionalProperties": false,

@@ -3,10 +3,10 @@ import { MonoTypeObject, objectPropertyMap } from "./utils";
 
 export {
 	Schema, 
-	Boss, Skill, Trigger, Condition, Effect, 
+	Boss, Skill, Trigger, Condition, Effect, DamageModifier,
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	TriggerDefinition, ConditionDefinition, EffectDefinition
+	TriggerDefinition, ConditionDefinition, EffectDefinition, DamageModifierDefinition
 }
 
 class Schema {
@@ -26,10 +26,12 @@ class Schema {
 		trigger: new Trigger(),
 		condition: new Condition(),
 		effect: new Effect(),
+		damagemodifier: new DamageModifier()
 	}
 	readonly triggers: MonoTypeObject<TriggerDefinition> = {}
 	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
 	readonly effects: MonoTypeObject<EffectDefinition> = {}
+	readonly damagemodifiers: MonoTypeObject<DamageModifierDefinition> = {}
 	readonly types: MonoTypeObject<Property> = {}
 }
 
@@ -65,6 +67,9 @@ class Boss {
 		},
 		autospawn: {
 			$ref: "#/types/SpawnData"
+		},
+		damagemodifier: {
+			$ref: "#/definitions/damagemodifier"
 		}
 	}
 }
@@ -174,6 +179,21 @@ class Effect {
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
 		this.else.allOf.push(new IfThenRefrence("effect", name))
+	}
+}
+
+class DamageModifier {
+	readonly type = "object"
+	readonly properties = {
+		type: new Types("The type of the damage modifier")
+	}
+	readonly required = ["type"]
+	readonly if = {"properties": {"type": false}}
+	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
+
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
+		this.else.allOf.push(new IfThenRefrence("damagemodifier", name))
 	}
 }
 
@@ -421,6 +441,18 @@ class EffectDefinition extends Definition {
 
 	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
 		this.internalSetExtension("effect", extension, extendedProperties)
+	}
+
+}
+
+class DamageModifierDefinition extends Definition {
+
+	constructor() {
+		super({ type: true })
+	}
+
+	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
+		this.internalSetExtension("damagemodifiers", extension, extendedProperties)
 	}
 
 }

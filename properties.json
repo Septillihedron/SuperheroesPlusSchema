@@ -1427,6 +1427,11 @@
 			"supportedModes": ["ALL", "SELF"]
 		}
 	},
+	"damagemodifiers": {
+		"BLANK": {
+			"description": ""
+		}
+	},
 	"types": {
 		"condition": {
 			"description": "A skills library condition",
@@ -1466,6 +1471,8 @@
 				"SET"
 			]
 		},
+		"SpawnData": {},
+		"BossBarData": {},
 		"ItemAttributeData": {
 			"description": "The attribute data for an item",
 			"type": "object",

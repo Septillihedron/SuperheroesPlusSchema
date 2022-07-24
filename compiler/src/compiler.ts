@@ -14,7 +14,7 @@ export class Compiler {
 
 	compile() {
 		let {schema, preprocessed} = this
-		for (let set of ["trigger", "condition", "effect"]) {
+		for (let set of ["trigger", "condition", "effect", "damagemodifier"]) {
 			objectPropertyMap((preprocessed as any)[`${set}s`]).forEach((type, name) => {
 				(this as any)[`compile${set.charAt(0).toUpperCase() + set.slice(1)}`](type, name)
 			})
@@ -99,6 +99,29 @@ export class Compiler {
 		
 		if (effect.available === false) return
 		this.schema.definitions.effect.addType(effectName, effect.description)
+	}
+
+	compileDamagemodifier(damageModifier: Preprocessed.DamageModifier, damageModifierName: string) {
+		let compiledDamageModifier = new Compiled.DamageModifierDefinition()
+
+		if (damageModifier.available !== false) {
+			this.schema.definitions.damagemodifier.addType(damageModifierName, damageModifier.description)
+		}
+		this.schema.damagemodifiers[damageModifierName] = compiledDamageModifier
+
+		if (damageModifier.extends !== undefined) {
+			let extendedName = damageModifier.extends
+			let properties = this.preprocessed.damagemodifiers[extendedName].properties;
+			if (properties === undefined) properties = {}
+			compiledDamageModifier.setExtension(extendedName, properties)
+		}
+		if (damageModifier.properties === undefined) return
+		objectPropertyMap(damageModifier.properties)
+			.forEach((property, name) => {
+				let compiledProperty = this.compileProperty(property, 
+					new Compiled.PropertyClass(compiledDamageModifier, name as string, `#/damagemodifiers/${damageModifierName}/properties/${name}`))
+				compiledDamageModifier.addProperty(name as string, compiledProperty, property.required)
+			})
 	}
 	
 	compileType(name: string, type: Preprocessed.TypeDefinition): Compiled.Property {
