@@ -3,7 +3,7 @@ import { MonoTypeObject, objectPropertyMap } from "./utils";
 
 export {
 	Schema, 
-	Hero, Skill, Trigger, Condition, Effect, 
+	Boss, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
 	TriggerDefinition, ConditionDefinition, EffectDefinition
@@ -17,15 +17,15 @@ class Schema {
 	readonly minProperties = 1
 	readonly patternProperties = {
 		".*": {
-			$ref: "#/definitions/hero"
+			$ref: "#/definitions/boss"
 		}
 	}
 	readonly definitions = {
-		hero: new Hero(),
+		boss: new Boss(),
 		skill: new Skill(),
 		trigger: new Trigger(),
 		condition: new Condition(),
-		effect: new Effect()
+		effect: new Effect(),
 	}
 	readonly triggers: MonoTypeObject<TriggerDefinition> = {}
 	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
@@ -33,21 +33,25 @@ class Schema {
 	readonly types: MonoTypeObject<Property> = {}
 }
 
-class Hero {
-	readonly description = "Hero name"
+class Boss {
+	readonly description = "Boss name"
 	readonly type = "object"
 	readonly additionalProperties = false
 	readonly properties = {
 		colouredName: {
-			description: "The coloured name that will appear ingame",
+			description: "The coloured name that will appear ingame. \n\nDefaults to Boss name",
 			type: "string"
 		},
 		description: {
-			description: "The description of the hero",
+			description: "The description of the boss. \n\nDefaults to Boss name + \" description\"",
 			type: "string"
 		},
+		entity: {
+			description: "The entity that the boss is",
+			$ref: "#/types/EntityData"
+		},
 		skills: {
-			description: "The list of skill that the hero has",
+			description: "The list of skill that the boss has",
 			type: "object",
 			additionalProperties: false,
 			patternProperties: {
@@ -55,6 +59,12 @@ class Hero {
 					$ref: "#/definitions/skill"
 				}
 			}
+		},
+		bossbar: {
+			$ref: "#/types/BossBarData"
+		},
+		autospawn: {
+			$ref: "#/types/SpawnData"
 		}
 	}
 }
