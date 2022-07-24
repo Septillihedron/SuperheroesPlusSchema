@@ -366,6 +366,14 @@
                     "oneOf": [
                         {},
                         {
+                            "const": "DAMAGEDENTITY",
+                            "description": "Triggers when the user damage an entity. \nThe target entity will be set as the damaged entity"
+                        },
+                        {
+                            "const": "DAMAGEDBYENTITY",
+                            "description": "Triggers when an entity damages the user. \nThe target entity will be set as the damaging entity"
+                        },
+                        {
                             "const": "DAMAGEDBYPROJECTILE",
                             "description": "Triggers when an entity damages the user. \nIf the damaging entity is a projectile, the target entity will be set as the source of the projectile. \nOtherwise, The target entity will be set as the damaging entity"
                         },
@@ -374,20 +382,92 @@
                             "description": "Triggers when the user damages an entity directly or with a projectile. \nThe target entity will be set as the damaged entity"
                         },
                         {
+                            "const": "LAUNCHPROJECTILE",
+                            "description": "Triggers when the user launched a projectile. \nThe target entity will be set as the launched projectile"
+                        },
+                        {
+                            "const": "PROJECTILEHIT",
+                            "description": "Triggers when a projectile shot by the user landed and/or hits an entity. \nThe target entity will be set as the projectile"
+                        },
+                        {
                             "const": "DAMAGED",
                             "description": "Triggers when the user gets damaged"
+                        },
+                        {
+                            "const": "SNEAK",
+                            "description": "Triggers when the user sneaks"
+                        },
+                        {
+                            "const": "TOGGLEGLIDE",
+                            "description": "Triggers when the user glides or unglides"
+                        },
+                        {
+                            "const": "PLAYERJUMP",
+                            "description": "Triggers when the user jumps"
                         },
                         {
                             "const": "LOOP",
                             "description": "Triggers periodically every couple of ticks"
                         },
                         {
+                            "const": "COMBAT",
+                            "description": "Triggers when the user damages an entity or gets damaged by an entity. \nThe target entity will be set as the damaged entity or the damaging entity respectively"
+                        },
+                        {
+                            "const": "DEATH",
+                            "description": "Triggers when the user is killed. \nThe target entity will be set as the killer if it exist"
+                        },
+                        {
+                            "const": "SPAWN",
+                            "description": "Triggers when the user spawns"
+                        },
+                        {
+                            "const": "TARGET",
+                            "description": "Triggers when the user targets an entity. \nThe target entity will be set as the target"
+                        },
+                        {
+                            "const": "TARGETED",
+                            "description": "Triggers when the user is targeted by an entity. \nThe target entity will be set as the entity that targeted the user"
+                        },
+                        {
+                            "const": "VEHICLE",
+                            "description": "Deprecated, use ENTERVEHICLE instead. \nTriggers when the user enters a vehicle. \nThe target entity will be set as the vehicle"
+                        },
+                        {
+                            "const": "ENTERVEHICLE",
+                            "description": "Triggers when the user enters a vehicle. \nThe target entity will be set as the vehicle"
+                        },
+                        {
+                            "const": "BECOMEVEHICLE",
+                            "description": "Triggers when an entity enters the user, thus using the user as a vehicle. \nThe target entity will be set as the entering entity"
+                        },
+                        {
+                            "const": "EXITVEHICLE",
+                            "description": "Triggers when the user exits a vehicle. \nThe target entity will be set as the vehicle"
+                        },
+                        {
+                            "const": "PLAYERJOIN",
+                            "description": "Triggers when the user joins the server"
+                        },
+                        {
+                            "const": "PLAYERQUIT",
+                            "description": "Triggers when the user exits the server"
+                        },
+                        {
                             "const": "PROJECTILECOMBAT",
                             "description": "Acts like the DAMAGEDBYPROJECTILE and DAMAGEDENTITYWITHPROJECTILE triggers combined"
                         },
                         {
+                            "const": "TAME",
+                            "description": "Triggers when the user tames an entity. \nThe target entity will be set as the tamed entity"
+                        },
+                        {
                             "const": "INTERACT",
                             "description": "Triggers when the user interacts with a block or air"
+                        },
+                        {
+                            "const": "KILL",
+                            "description": "Triggers when the user kills an entity. \nThe target entity will be set as the killed entity"
                         },
                         {
                             "const": "POTIONEFFECT",
@@ -417,6 +497,30 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "DAMAGEDENTITY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/DAMAGEDENTITY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DAMAGEDBYENTITY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/DAMAGEDBYENTITY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "DAMAGEDBYPROJECTILE"
                                 }
                             }
@@ -441,12 +545,72 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "LAUNCHPROJECTILE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/LAUNCHPROJECTILE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PROJECTILEHIT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/PROJECTILEHIT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "DAMAGED"
                                 }
                             }
                         },
                         "then": {
                             "$ref": "#/triggers/DAMAGED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SNEAK"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/SNEAK"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TOGGLEGLIDE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/TOGGLEGLIDE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PLAYERJUMP"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/PLAYERJUMP"
                         }
                     },
                     {
@@ -465,6 +629,138 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "COMBAT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/COMBAT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DEATH"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/DEATH"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SPAWN"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/SPAWN"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TARGET"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/TARGET"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TARGETED"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/TARGETED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "VEHICLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/VEHICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ENTERVEHICLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/ENTERVEHICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "BECOMEVEHICLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/BECOMEVEHICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "EXITVEHICLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/EXITVEHICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PLAYERJOIN"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/PLAYERJOIN"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PLAYERQUIT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/PLAYERQUIT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "PROJECTILECOMBAT"
                                 }
                             }
@@ -477,12 +773,36 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "TAME"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/TAME"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "INTERACT"
                                 }
                             }
                         },
                         "then": {
                             "$ref": "#/triggers/INTERACT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "KILL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/KILL"
                         }
                     },
                     {
@@ -563,6 +883,10 @@
                             "description": "Checks if the user or target entity is an npc"
                         },
                         {
+                            "const": "WEATHER",
+                            "description": "Checks if the world that the user is in has a storm"
+                        },
+                        {
                             "const": "INBLOCK",
                             "description": "Checks if the user or target entity is in one of the listed blocks"
                         },
@@ -573,6 +897,10 @@
                         {
                             "const": "TAMED",
                             "description": "Checks if the target entity is tamed"
+                        },
+                        {
+                            "const": "FLYING",
+                            "description": "Checks if the user or target entity is flying"
                         },
                         {
                             "const": "HEIGHT",
@@ -780,6 +1108,18 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "WEATHER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/WEATHER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "INBLOCK"
                                 }
                             }
@@ -810,6 +1150,18 @@
                         },
                         "then": {
                             "$ref": "#/conditions/TAMED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FLYING"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/FLYING"
                         }
                     },
                     {
@@ -919,6 +1271,10 @@
                             "description": "Sets the Y velocity of the user or target entity. Same as FLING"
                         },
                         {
+                            "const": "CANCEL",
+                            "description": "Cancels the event that triggered this effect"
+                        },
+                        {
                             "const": "GLIDING",
                             "description": "Sets the gliding mode of the user or target entity (works even if an Elytra is not equipped)"
                         },
@@ -955,6 +1311,10 @@
                             "description": "Sends a chat message to the user or target player"
                         },
                         {
+                            "const": "PICKUP",
+                            "description": "Pick up the target entity and places it on the user's head"
+                        },
+                        {
                             "const": "REPULSE",
                             "description": "Repulse the target entity"
                         },
@@ -977,6 +1337,10 @@
                         {
                             "const": "GIVEITEM",
                             "description": "Gives the user or target entity an item"
+                        },
+                        {
+                            "const": "SCRAMBLEINVENTORY",
+                            "description": "Scrambles the inventory of the user or target entity"
                         },
                         {
                             "const": "RANDOMTELEPORT",
@@ -1015,6 +1379,14 @@
                             "description": "Sets the user or target entity on fire"
                         },
                         {
+                            "const": "TARGET",
+                            "description": "If the user is a mob, sets the target of the user to the target entity"
+                        },
+                        {
+                            "const": "SWAP",
+                            "description": "Swaps the position of the user and target entity"
+                        },
+                        {
                             "const": "LOCATIONCUBE",
                             "description": "Acts like a trigger. \nTriggers for every location in the cube around the user or target entity. \nThe location will be set as the location the trigger triggers for"
                         },
@@ -1023,12 +1395,28 @@
                             "description": "Replaces a block at the location for an amount of time. Retains the original block data"
                         },
                         {
+                            "const": "SPAWNENTITY",
+                            "description": ""
+                        },
+                        {
                             "const": "REMOVEPOTION",
                             "description": "Removes potion effects from the user or target entity"
                         },
                         {
+                            "const": "TELEPORT",
+                            "description": "Teleports the user to the location or the location of the target entity"
+                        },
+                        {
+                            "const": "RAYTRACE",
+                            "description": ""
+                        },
+                        {
                             "const": "TIMER",
                             "description": "Acts like a trigger. \nTriggers for a number of times with a period and initial delay. \nTarget items will be forwarded"
+                        },
+                        {
+                            "const": "REMOVEENTITY",
+                            "description": "Removes the user or target entity"
                         },
                         {
                             "const": "ITEMSTACK",
@@ -1053,6 +1441,10 @@
                         {
                             "const": "HUNGER",
                             "description": "Modifies the hunger value of the user or target entity"
+                        },
+                        {
+                            "const": "LOSETARGET",
+                            "description": "Make the user lose interest in the current target"
                         }
                     ],
                     "description": "The type of the effect"
@@ -1106,6 +1498,18 @@
                         },
                         "then": {
                             "$ref": "#/effects/VELOCITY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CANCEL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/CANCEL"
                         }
                     },
                     {
@@ -1220,6 +1624,18 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "PICKUP"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/PICKUP"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "REPULSE"
                                 }
                             }
@@ -1286,6 +1702,18 @@
                         },
                         "then": {
                             "$ref": "#/effects/GIVEITEM"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SCRAMBLEINVENTORY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/SCRAMBLEINVENTORY"
                         }
                     },
                     {
@@ -1400,6 +1828,30 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "TARGET"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/TARGET"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SWAP"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/SWAP"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "LOCATIONCUBE"
                                 }
                             }
@@ -1424,6 +1876,18 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "SPAWNENTITY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/SPAWNENTITY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "REMOVEPOTION"
                                 }
                             }
@@ -1436,12 +1900,48 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "TELEPORT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/TELEPORT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "RAYTRACE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/RAYTRACE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "TIMER"
                                 }
                             }
                         },
                         "then": {
                             "$ref": "#/effects/TIMER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "REMOVEENTITY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/REMOVEENTITY"
                         }
                     },
                     {
@@ -1514,6 +2014,18 @@
                         },
                         "then": {
                             "$ref": "#/effects/HUNGER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "LOSETARGET"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/LOSETARGET"
                         }
                     }
                 ]
@@ -10195,6 +10707,20 @@
         }
     },
     "triggers": {
+        "DAMAGEDENTITY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "DAMAGEDBYENTITY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
         "DAMAGEDBYPROJECTILE": {
             "additionalProperties": false,
             "properties": {
@@ -10227,6 +10753,20 @@
                 }
             }
         },
+        "LAUNCHPROJECTILE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "PROJECTILEHIT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
         "DAMAGED": {
             "additionalProperties": false,
             "properties": {
@@ -10250,6 +10790,27 @@
                 }
             }
         },
+        "SNEAK": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "TOGGLEGLIDE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "PLAYERJUMP": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
         "LOOP": {
             "additionalProperties": false,
             "properties": {
@@ -10266,6 +10827,83 @@
                 }
             }
         },
+        "COMBAT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "DEATH": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "SPAWN": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "TARGET": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "TARGETED": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "VEHICLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "ENTERVEHICLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "BECOMEVEHICLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "EXITVEHICLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "PLAYERJOIN": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "PLAYERQUIT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
         "PROJECTILECOMBAT": {
             "additionalProperties": false,
             "properties": {
@@ -10280,6 +10918,13 @@
                     ],
                     "default": false
                 }
+            }
+        },
+        "TAME": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
             }
         },
         "INTERACT": {
@@ -10303,6 +10948,13 @@
                     },
                     "default": []
                 }
+            }
+        },
+        "KILL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
             }
         },
         "POTIONEFFECT": {
@@ -10742,6 +11394,21 @@
                 "mode"
             ]
         },
+        "WEATHER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
         "INBLOCK": {
             "additionalProperties": false,
             "properties": {
@@ -10825,6 +11492,22 @@
                         }
                     ],
                     "default": true
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "FLYING": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
                 }
             },
             "required": [
@@ -11182,6 +11865,21 @@
                 "mode"
             ]
         },
+        "CANCEL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
         "GLIDING": {
             "additionalProperties": false,
             "properties": {
@@ -11439,6 +12137,16 @@
                 "attribute"
             ]
         },
+        "BREAKBLOCK": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {}
+            },
+            "required": [
+                "mode"
+            ]
+        },
         "LAUNCH": {
             "additionalProperties": false,
             "properties": {
@@ -11494,6 +12202,21 @@
             "required": [
                 "mode",
                 "message"
+            ]
+        },
+        "PICKUP": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "OTHER"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
             ]
         },
         "REPULSE": {
@@ -11666,6 +12389,22 @@
             "required": [
                 "mode",
                 "item"
+            ]
+        },
+        "SCRAMBLEINVENTORY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
             ]
         },
         "RANDOMTELEPORT": {
@@ -11967,6 +12706,36 @@
                 "mode"
             ]
         },
+        "TARGET": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "OTHER"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "SWAP": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "OTHER"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
         "LOCATIONCUBE": {
             "additionalProperties": false,
             "properties": {
@@ -12061,6 +12830,23 @@
                 "mode"
             ]
         },
+        "SPAWNENTITY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER",
+                        "LOCATION"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
         "REMOVEPOTION": {
             "additionalProperties": false,
             "properties": {
@@ -12087,6 +12873,39 @@
                         ]
                     },
                     "default": []
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "TELEPORT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "OTHER",
+                        "LOCATION"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "RAYTRACE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER",
+                        "LOCATION"
+                    ]
                 }
             },
             "required": [
@@ -12140,6 +12959,22 @@
                 "$ref": "#/effects/WRAPPER",
                 "additionalProperties": true
             }
+        },
+        "REMOVEENTITY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
         },
         "ITEMSTACK": {
             "additionalProperties": false,
@@ -12306,6 +13141,21 @@
             "then": {
                 "$ref": "#/effects/MODIFY",
                 "additionalProperties": true
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "LOSETARGET": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF"
+                    ]
+                }
             },
             "required": [
                 "mode"
