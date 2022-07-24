@@ -491,19 +491,6 @@
 					"default": "-Infinity - Infinity"
 				}
 			}
-		},
-		"HERO": {
-			"description": "Checks the user or target entity against the list of heroes",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"properties": {
-				"heroes": {
-					"description": "The list of heroes",
-					"required": false,
-					"type": "array",
-					"items": "string",
-					"default": []
-				}
-			}
 		}
 	},
 	"effects": {

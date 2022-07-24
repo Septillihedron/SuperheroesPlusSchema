@@ -292,10 +292,6 @@
                         {
                             "const": "TEMPERATURE",
                             "description": "Checks if the location or the location of the user or target entity is in the range"
-                        },
-                        {
-                            "const": "HERO",
-                            "description": "Checks the user or target entity against the list of heroes"
                         }
                     ],
                     "description": "The type of the condition"
@@ -577,18 +573,6 @@
                         },
                         "then": {
                             "$ref": "#/conditions/TEMPERATURE"
-                        }
-                    },
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
-                                    "const": "HERO"
-                                }
-                            }
-                        },
-                        "then": {
-                            "$ref": "#/conditions/HERO"
                         }
                     }
                 ]
@@ -2027,38 +2011,6 @@
                         }
                     ],
                     "default": "-Infinity - Infinity"
-                }
-            },
-            "required": [
-                "mode"
-            ]
-        },
-        "HERO": {
-            "additionalProperties": false,
-            "properties": {
-                "type": true,
-                "mode": {
-                    "enum": [
-                        "ALL",
-                        "SELF",
-                        "OTHER"
-                    ]
-                },
-                "heroes": {
-                    "description": "The list of heroes. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
-                    "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "default": []
                 }
             },
             "required": [
