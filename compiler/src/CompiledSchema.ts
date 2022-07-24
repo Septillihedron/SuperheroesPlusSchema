@@ -3,10 +3,10 @@ import { MonoTypeObject, objectPropertyMap } from "./utils";
 
 export {
 	Schema, 
-	Boss, Skill, Trigger, Condition, Effect, DamageModifier,
+	Boss, Skill, Trigger, Condition, Effect, DamageModifier, Reward,
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	TriggerDefinition, ConditionDefinition, EffectDefinition, DamageModifierDefinition
+	TriggerDefinition, ConditionDefinition, EffectDefinition, DamageModifierDefinition, RewardDefinition
 }
 
 class Schema {
@@ -26,12 +26,14 @@ class Schema {
 		trigger: new Trigger(),
 		condition: new Condition(),
 		effect: new Effect(),
-		damagemodifier: new DamageModifier()
+		damagemodifier: new DamageModifier(),
+		reward: new Reward()
 	}
 	readonly triggers: MonoTypeObject<TriggerDefinition> = {}
 	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
 	readonly effects: MonoTypeObject<EffectDefinition> = {}
 	readonly damagemodifiers: MonoTypeObject<DamageModifierDefinition> = {}
+	readonly rewards: MonoTypeObject<RewardDefinition> = {}
 	readonly types: MonoTypeObject<Property> = {}
 }
 
@@ -70,6 +72,9 @@ class Boss {
 		},
 		damagemodifier: {
 			$ref: "#/definitions/damagemodifier"
+		},
+		reward: {
+			$ref: "#/definitions/reward"
 		}
 	}
 }
@@ -194,6 +199,21 @@ class DamageModifier {
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
 		this.else.allOf.push(new IfThenRefrence("damagemodifier", name))
+	}
+}
+
+class Reward {
+	readonly type = "object"
+	readonly properties = {
+		type: new Types("The type of the reward")
+	}
+	readonly required = ["type"]
+	readonly if = {"properties": {"type": false}}
+	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
+
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
+		this.else.allOf.push(new IfThenRefrence("reward", name))
 	}
 }
 
@@ -453,6 +473,18 @@ class DamageModifierDefinition extends Definition {
 
 	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
 		this.internalSetExtension("damagemodifiers", extension, extendedProperties)
+	}
+
+}
+
+class RewardDefinition extends Definition {
+
+	constructor() {
+		super({ type: true })
+	}
+
+	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
+		this.internalSetExtension("reward", extension, extendedProperties)
 	}
 
 }

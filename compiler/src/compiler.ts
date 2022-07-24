@@ -14,7 +14,7 @@ export class Compiler {
 
 	compile() {
 		let {schema, preprocessed} = this
-		for (let set of ["trigger", "condition", "effect", "damagemodifier"]) {
+		for (let set of ["trigger", "condition", "effect", "damagemodifier", "reward"]) {
 			objectPropertyMap((preprocessed as any)[`${set}s`]).forEach((type, name) => {
 				(this as any)[`compile${set.charAt(0).toUpperCase() + set.slice(1)}`](type, name)
 			})
@@ -121,6 +121,29 @@ export class Compiler {
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compiledDamageModifier, name as string, `#/damagemodifiers/${damageModifierName}/properties/${name}`))
 				compiledDamageModifier.addProperty(name as string, compiledProperty, property.required)
+			})
+	}
+
+	compileReward(reward: Preprocessed.Reward, rewardName: string) {
+		let compiledReward = new Compiled.RewardDefinition()
+
+		if (reward.available !== false) {
+			this.schema.definitions.reward.addType(rewardName, reward.description)
+		}
+		this.schema.rewards[rewardName] = compiledReward
+
+		if (reward.extends !== undefined) {
+			let extendedName = reward.extends
+			let properties = this.preprocessed.rewards[extendedName].properties;
+			if (properties === undefined) properties = {}
+			compiledReward.setExtension(extendedName, properties)
+		}
+		if (reward.properties === undefined) return
+		objectPropertyMap(reward.properties)
+			.forEach((property, name) => {
+				let compiledProperty = this.compileProperty(property, 
+					new Compiled.PropertyClass(compiledReward, name as string, `#/rewards/${rewardName}/properties/${name}`))
+				compiledReward.addProperty(name as string, compiledProperty, property.required)
 			})
 	}
 	

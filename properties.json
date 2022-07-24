@@ -1432,6 +1432,11 @@
 			"description": ""
 		}
 	},
+	"rewards": {
+		"BASIC": {
+			"description": ""
+		}
+	},
 	"types": {
 		"condition": {
 			"description": "A skills library condition",

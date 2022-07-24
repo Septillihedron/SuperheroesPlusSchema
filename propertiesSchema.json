@@ -92,6 +92,22 @@
 				}
 			}
 		},
+		"rewards": {
+			"type": "object",
+			"description": "The list of rewards and their properties",
+			"patternProperties": {
+				"\\p{Upper}": {
+					"type": "object",
+					"description": "A reward and it's properties",
+					"properties": {
+						"description": true,
+						"properties": true
+					},
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalProperties": false
+				}
+			}
+		},
 		"types": {
 			"type": "object",
 			"description": "The list of types and their definitions that is in the skills library",

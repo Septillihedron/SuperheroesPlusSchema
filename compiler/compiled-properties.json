@@ -44,6 +44,9 @@
                 },
                 "damagemodifier": {
                     "$ref": "#/definitions/damagemodifier"
+                },
+                "reward": {
+                    "$ref": "#/definitions/reward"
                 }
             }
         },
@@ -1246,6 +1249,46 @@
                         },
                         "then": {
                             "$ref": "#/damagemodifiers/BLANK"
+                        }
+                    }
+                ]
+            }
+        },
+        "reward": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "oneOf": [
+                        {},
+                        {
+                            "const": "BASIC",
+                            "description": ""
+                        }
+                    ],
+                    "description": "The type of the reward"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "if": {
+                "properties": {
+                    "type": false
+                }
+            },
+            "else": {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "BASIC"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/rewards/BASIC"
                         }
                     }
                 ]
@@ -3340,6 +3383,14 @@
     },
     "damagemodifiers": {
         "BLANK": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true
+            }
+        }
+    },
+    "rewards": {
+        "BASIC": {
             "additionalProperties": false,
             "properties": {
                 "type": true
