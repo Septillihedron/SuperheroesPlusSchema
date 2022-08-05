@@ -636,6 +636,10 @@
                         {
                             "const": "TEMPERATURE",
                             "description": "Checks if the location or the location of the user or target entity is in the range"
+                        },
+                        {
+                            "const": "BOSS",
+                            "description": "Checks if the user or target entity one of the listed bosses"
                         }
                     ],
                     "description": "The type of the condition"
@@ -942,6 +946,18 @@
                         "then": {
                             "$ref": "#/conditions/TEMPERATURE"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "BOSS"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/BOSS"
+                        }
                     }
                 ]
             }
@@ -1140,6 +1156,14 @@
                         {
                             "const": "LOSETARGET",
                             "description": "Make the user lose interest in the current target"
+                        },
+                        {
+                            "const": "MINION",
+                            "description": "Spawns bosses on the location of the user or target entity"
+                        },
+                        {
+                            "const": "RIDER",
+                            "description": "Spawns a boss that rides the user"
                         }
                     ],
                     "description": "The type of the effect"
@@ -1722,6 +1746,30 @@
                         "then": {
                             "$ref": "#/effects/LOSETARGET"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "MINION"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/MINION"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "RIDER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/RIDER"
+                        }
                     }
                 ]
             }
@@ -1735,7 +1783,19 @@
                         {},
                         {
                             "const": "BLANK",
-                            "description": ""
+                            "description": "No damage modifier"
+                        },
+                        {
+                            "const": "EASED",
+                            "description": "Modifies the damage based on a downwards facing parabola. \nFor visualization: https://www.desmos.com/calculator/pyb798rnyr"
+                        },
+                        {
+                            "const": "EASEDPLAYERADJUSTED",
+                            "description": "Modifies the damage based on a downwards facing parabola divided by (number of players)^(playerScalingModifier). \nFor visualization: https://www.desmos.com/calculator/drpnfjm4ty"
+                        },
+                        {
+                            "const": "PLAYERADJUSTED",
+                            "description": "Modifies the damage based damage/((number of players)^(playerScalingModifier)). \nFor visualization: https://www.desmos.com/calculator/p03hsebinc"
                         }
                     ],
                     "description": "The type of the damage modifier"
@@ -1762,6 +1822,42 @@
                         "then": {
                             "$ref": "#/damagemodifiers/BLANK"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "EASED"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/damagemodifiers/EASED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "EASEDPLAYERADJUSTED"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/damagemodifiers/EASEDPLAYERADJUSTED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PLAYERADJUSTED"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/damagemodifiers/PLAYERADJUSTED"
+                        }
                     }
                 ]
             }
@@ -1775,7 +1871,7 @@
                         {},
                         {
                             "const": "BASIC",
-                            "description": ""
+                            "description": "Gives experience, items, and executes commands"
                         }
                     ],
                     "description": "The type of the reward"
@@ -2790,6 +2886,38 @@
                         }
                     ],
                     "default": "-Infinity - Infinity"
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "BOSS": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "entities": {
+                    "description": "The list of bosses. \nDefaults to []",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "default": []
                 }
             },
             "required": [
@@ -4229,6 +4357,73 @@
             "required": [
                 "mode"
             ]
+        },
+        "MINION": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "amount": {
+                    "description": "The amount of minions to spawn. \nDefaults to 1",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": 1
+                },
+                "spawn": {
+                    "description": "The name of the boss to spawn",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "spawnOnTarget": {
+                    "description": "Whether or not to spawn on the target entity when using mode \"OTHER\". \nDefaults to true",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": true
+                }
+            },
+            "required": [
+                "mode",
+                "spawn"
+            ]
+        },
+        "RIDER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF"
+                    ]
+                },
+                "rider": {
+                    "description": "The name of the boss to spawn",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "mode",
+                "rider"
+            ]
         }
     },
     "damagemodifiers": {
@@ -4237,13 +4432,119 @@
             "properties": {
                 "type": true
             }
+        },
+        "EASED": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "expectedMaximumDamage": {
+                    "description": "The width of the parabola. \nThe variable b on desmos. \nDefaults to 30",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 30
+                },
+                "damageCap": {
+                    "description": "The maximum of the parabola. \nThe variable k on desmos. \nDefaults to 15",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 15
+                }
+            }
+        },
+        "EASEDPLAYERADJUSTED": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "expectedMaximumDamage": true,
+                "damageCap": true,
+                "playerScalingModifier": {
+                    "description": "The power the number of players is raised by. \nRecommended not to set to above one as then it will punish players for bringing teammates. \nThe variable w on desmos. \nDefaults to 0.5",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 0.5
+                }
+            },
+            "if": true,
+            "then": {
+                "$ref": "#/damagemodifiers/EASED",
+                "additionalProperties": true
+            }
+        },
+        "PLAYERADJUSTED": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "playerScalingModifier": {
+                    "description": "The power the number of players is raised by. \nRecommended not to set to above one as then it will punish players for bringing teammates. \nThe variable w on desmos. \nDefaults to 0.5",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 0.5
+                }
+            }
         }
     },
     "rewards": {
         "BASIC": {
             "additionalProperties": false,
             "properties": {
-                "type": true
+                "type": true,
+                "commands": {
+                    "description": "The list of commands to execute. \nAll instances of \"<player>\" will be replaced by the player name. \nDefaults to []",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "default": []
+                },
+                "items": {
+                    "description": "The map of items to give to the player. \nDefaults to {}",
+                    "anyOf": [
+                        {
+                            "type": "object"
+                        }
+                    ],
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        ".*": {
+                            "description": "An item to give",
+                            "anyOf": [
+                                {
+                                    "$ref": "#/types/ItemStackData"
+                                }
+                            ]
+                        }
+                    },
+                    "default": {}
+                },
+                "experience": {
+                    "description": "The amount of experience to give. \nDefaults to 100",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": 100
+                }
             }
         }
     },
@@ -4297,10 +4598,198 @@
             ]
         },
         "SpawnData": {
-            "additionalProperties": false
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
+            "properties": {
+                "enabled": {
+                    "description": "Whether the spawn behavior is enabled. \nDefaults to false",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": false
+                },
+                "weighting": {
+                    "description": "The weighting of the spawn behavior. \nDefaults to 1",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": 1
+                },
+                "biomes": {
+                    "description": "The list of biomes that this boss can or cannot spawn in. \nDefaults to []",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/biome"
+                            }
+                        ]
+                    },
+                    "default": []
+                },
+                "worlds": {
+                    "description": "The list of worlds that this boss can spawn in. \nDefaults to []",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/world"
+                            }
+                        ]
+                    },
+                    "default": []
+                },
+                "biomesWhitelist": {
+                    "description": "Whether the biomes list is a whitelist or blacklist. \nDefaults to true",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": true
+                },
+                "spaceNeeded": {
+                    "description": "The space needed to spawn the boss. \nDefaults to 0",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": 0
+                },
+                "spawnOnAir": {
+                    "description": "Whether the boss can spawn on air. \nDefaults to false",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": false
+                },
+                "maxHeight": {
+                    "description": "The maximum height the boss can spawn at. -1 for world height. \nDefaults to -1",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": -1
+                }
+            }
         },
         "BossBarData": {
-            "additionalProperties": false
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
+            "properties": {
+                "enabled": {
+                    "description": "Whether the boss bar is enabled. \nDefaults to false",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": false
+                },
+                "flags": {
+                    "description": "The flags for the boss bar. \nDefaults to []",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/bossBarFlag"
+                            }
+                        ]
+                    },
+                    "default": []
+                },
+                "color": {
+                    "description": "The color of the boss bar. \nDefaults to \"PURPLE\"",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/bossBarColor"
+                        }
+                    ],
+                    "default": "PURPLE"
+                },
+                "style": {
+                    "description": "The style of the boss bar. \nDefaults to \"PROGRESS\"",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/bossBarStyle"
+                        }
+                    ],
+                    "default": "PROGRESS"
+                }
+            }
+        },
+        "bossBarFlag": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
+            "enum": [
+                "DARKEN_SCREEN",
+                "PLAY_BOSS_MUSIC",
+                "CREATE_WORLD_FOG"
+            ]
+        },
+        "bossBarColor": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
+            "enum": [
+                "PINK",
+                "BLUE",
+                "RED",
+                "GREEN",
+                "YELLOW",
+                "PURPLE",
+                "WHITE"
+            ]
+        },
+        "bossBarStyle": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
+            "enum": [
+                "PROGRESS",
+                "NOTCHED_6",
+                "NOTCHED_10",
+                "NOTCHED_12",
+                "NOTCHED_20"
+            ]
         },
         "ItemAttributeData": {
             "additionalProperties": false,

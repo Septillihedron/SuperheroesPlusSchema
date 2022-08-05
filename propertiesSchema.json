@@ -85,7 +85,8 @@
 					"description": "A damage modifier and it's properties",
 					"properties": {
 						"description": true,
-						"properties": true
+						"properties": true,
+						"extends": true
 					},
 					"allOf": [{ "$ref": "#/definitions/type" }],
 					"additionalProperties": false
@@ -369,6 +370,7 @@
 				"enchantment", "potion", 
 				"damageCause", "action",
 				"biome", "world", 
+				"bossBarFlag", "bossBarColor", "bossBarStyle",
 				"equipmentSlot", 
 				"attribute", 
 				"sound", "particle",

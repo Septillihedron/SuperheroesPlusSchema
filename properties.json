@@ -491,6 +491,19 @@
 					"default": "-Infinity - Infinity"
 				}
 			}
+		},
+		"BOSS": {
+			"description": "Checks if the user or target entity one of the listed bosses",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"properties": {
+				"entities": {
+					"description": "The list of bosses",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
+				}
+			}
 		}
 	},
 	"effects": {
@@ -1425,16 +1438,118 @@
 		"LOSETARGET": {
 			"description": "Make the user lose interest in the current target",
 			"supportedModes": ["ALL", "SELF"]
+		},
+		"MINION": {
+			"description": "Spawns bosses on the location of the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"properties": {
+				"amount": {
+					"description": "The amount of minions to spawn",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"spawn": {
+					"description": "The name of the boss to spawn",
+					"required": true,
+					"type": "string"
+				},
+				"spawnOnTarget": {
+					"description": "Whether or not to spawn on the target entity when using mode \"OTHER\"",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"RIDER": {
+			"description": "Spawns a boss that rides the user",
+			"supportedModes": ["ALL", "SELF"],
+			"properties": {
+				"rider": {
+					"description": "The name of the boss to spawn",
+					"required": true,
+					"type": "string"
+				}
+			}
 		}
 	},
 	"damagemodifiers": {
 		"BLANK": {
-			"description": ""
+			"description": "No damage modifier"
+		},
+		"EASED": {
+			"description": "Modifies the damage based on a downwards facing parabola. \nFor visualization: https://www.desmos.com/calculator/pyb798rnyr",
+			"properties": {
+				"expectedMaximumDamage": {
+					"description": "The width of the parabola. \nThe variable b on desmos",
+					"required": false,
+					"type": "number",
+					"default": 30
+				},
+				"damageCap": {
+					"description": "The maximum of the parabola. \nThe variable k on desmos",
+					"required": false,
+					"type": "number",
+					"default": 15
+				}
+			}
+		},
+		"EASEDPLAYERADJUSTED": {
+			"description": "Modifies the damage based on a downwards facing parabola divided by (number of players)^(playerScalingModifier). \nFor visualization: https://www.desmos.com/calculator/drpnfjm4ty",
+			"extends": "EASED",
+			"properties": {
+				"playerScalingModifier": {
+					"description": "The power the number of players is raised by. \nRecommended not to set to above one as then it will punish players for bringing teammates. \nThe variable w on desmos",
+					"required": false,
+					"type": "number",
+					"default": 0.5
+				}
+			}
+		},
+		"PLAYERADJUSTED": {
+			"description": "Modifies the damage based damage/((number of players)^(playerScalingModifier)). \nFor visualization: https://www.desmos.com/calculator/p03hsebinc",
+			"properties": {
+				"playerScalingModifier": {
+					"description": "The power the number of players is raised by. \nRecommended not to set to above one as then it will punish players for bringing teammates. \nThe variable w on desmos",
+					"required": false,
+					"type": "number",
+					"default": 0.5
+				}
+			}
 		}
 	},
 	"rewards": {
 		"BASIC": {
-			"description": ""
+			"description": "Gives experience, items, and executes commands",
+			"properties": {
+				"commands": {
+					"description": "The list of commands to execute. \nAll instances of \"<player>\" will be replaced by the player name",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
+				},
+				"items": {
+					"description": "The map of items to give to the player",
+					"required": false,
+					"type": "object",
+					"patternProperties": {
+						".*": {
+							"description": "An item to give",
+							"required": true,
+							"type": "ItemStackData"
+						}
+					},
+					"default": {}
+				},
+				"experience": {
+					"description": "The amount of experience to give",
+					"required": false,
+					"type": "integer",
+					"default": 100
+				}
+			}
 		}
 	},
 	"types": {
@@ -1476,8 +1591,108 @@
 				"SET"
 			]
 		},
-		"SpawnData": {},
-		"BossBarData": {},
+		"SpawnData": {
+			"description": "The data for spawning behavior",
+			"type": "object",
+			"properties": {
+				"enabled": {
+					"description": "Whether the spawn behavior is enabled",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"weighting": {
+					"description": "The weighting of the spawn behavior",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"biomes": {
+					"description": "The list of biomes that this boss can or cannot spawn in",
+					"required": false,
+					"type": "array",
+					"items": "biome",
+					"default": []
+				},
+				"worlds": {
+					"description": "The list of worlds that this boss can spawn in",
+					"required": false,
+					"type": "array",
+					"items": "world",
+					"default": []
+				},
+				"biomesWhitelist": {
+					"description": "Whether the biomes list is a whitelist or blacklist",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"spaceNeeded": {
+					"description": "The space needed to spawn the boss",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"spawnOnAir": {
+					"description": "Whether the boss can spawn on air",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"maxHeight": {
+					"description": "The maximum height the boss can spawn at. -1 for world height",
+					"required": false,
+					"type": "number",
+					"default": -1
+				}
+			}
+		},
+		"BossBarData": {
+			"description": "The styling for a boss bar",
+			"type": "object",
+			"properties": {
+				"enabled": {
+					"description": "Whether the boss bar is enabled",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"flags": {
+					"description": "The flags for the boss bar",
+					"required": false,
+					"type": "array",
+					"items": "bossBarFlag",
+					"default": []
+				},
+				"color": {
+					"description": "The color of the boss bar",
+					"required": false,
+					"type": "bossBarColor",
+					"default": "PURPLE"
+				},
+				"style": {
+					"description": "The style of the boss bar",
+					"required": false,
+					"type": "bossBarStyle",
+					"default": "PROGRESS"
+				}
+			}
+		},
+		"bossBarFlag": {
+			"description": "The flag of a boss bar",
+			"type": "string",
+			"enum": ["DARKEN_SCREEN", "PLAY_BOSS_MUSIC", "CREATE_WORLD_FOG"]
+		},
+		"bossBarColor": {
+			"description": "The color of a boss bar",
+			"type": "string",
+			"enum": ["PINK", "BLUE", "RED", "GREEN", "YELLOW", "PURPLE", "WHITE"]
+		},
+		"bossBarStyle": {
+			"description": "The style of a boss bar",
+			"type": "string",
+			"enum": ["PROGRESS", "NOTCHED_6", "NOTCHED_10", "NOTCHED_12", "NOTCHED_20"]
+		},
 		"ItemAttributeData": {
 			"description": "The attribute data for an item",
 			"type": "object",
