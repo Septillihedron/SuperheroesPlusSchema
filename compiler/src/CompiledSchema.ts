@@ -472,7 +472,7 @@ class DamageModifierDefinition extends Definition {
 	}
 
 	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
-		this.internalSetExtension("damagemodifiers", extension, extendedProperties)
+		this.internalSetExtension("damagemodifier", extension, extendedProperties)
 	}
 
 }
