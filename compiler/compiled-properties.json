@@ -37,15 +37,19 @@
                     }
                 },
                 "bossbar": {
+                    "description": "The styling for a boss bar",
                     "$ref": "#/types/BossBarData"
                 },
                 "autospawn": {
+                    "description": "The data for spawning behavior",
                     "$ref": "#/types/SpawnData"
                 },
                 "damagemodifier": {
+                    "description": "The modifier that modifies the amount of damage the boss will recieve when damaged",
                     "$ref": "#/definitions/damagemodifier"
                 },
                 "reward": {
+                    "description": "The reward for killing the boss",
                     "$ref": "#/definitions/reward"
                 }
             }
