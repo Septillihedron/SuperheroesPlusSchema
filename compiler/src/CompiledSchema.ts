@@ -178,12 +178,22 @@ class Trigger {
 }
 
 class Condition {
+	readonly description = "A condition"
 	readonly type = "object"
 	readonly properties = {
 		type: new Types("The type of the condition"),
 		mode: {
 			description: "The condition mode",
 			type: "string"
+		},
+		else: {
+			description: "The list of effects that will be called when the condition is false",
+			type: "object",
+			patternProperties: {
+				".*": {
+					$ref: "#/definitions/effect"
+				}
+			}
 		}
 	}
 	readonly required = ["type"]
@@ -197,6 +207,7 @@ class Condition {
 }
 
 class Effect {
+	readonly description = "An effect"
 	readonly type = "object"
 	readonly properties = {
 		type: new Types("The type of the effect"),
@@ -457,7 +468,7 @@ class TriggerDefinition extends Definition {
 class ConditionDefinition extends Definition {
 	
 	constructor(modes: ConditionModes[]) {
-		super({ type: true, mode: { enum: modes } })
+		super({ type: true, mode: { enum: modes }, else: true })
 	}
 
 	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
