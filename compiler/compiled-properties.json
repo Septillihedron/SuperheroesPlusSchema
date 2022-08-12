@@ -1064,6 +1064,15 @@
                 "mode": {
                     "description": "The condition mode",
                     "type": "string"
+                },
+                "else": {
+                    "description": "The list of effects that will be called when the condition is false",
+                    "type": "object",
+                    "patternProperties": {
+                        ".*": {
+                            "$ref": "#/definitions/effect"
+                        }
+                    }
                 }
             },
             "required": [
@@ -11234,6 +11243,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "minimumHealthPercentage": {
                     "description": "The minimum hp percentage. \nDefaults to 0",
                     "anyOf": [
@@ -11271,6 +11281,7 @@
                         "SELF"
                     ]
                 },
+                "else": true,
                 "chance": {
                     "description": "The chance that is used. \nDefaults to 1",
                     "anyOf": [
@@ -11297,6 +11308,7 @@
                         "SELF"
                     ]
                 },
+                "else": true,
                 "cooldown": {
                     "description": "The cooldown time that is used in seconds. \nDefaults to 10",
                     "anyOf": [
@@ -11321,6 +11333,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "whitelist": {
                     "description": "If true, the entities property will whitelist. If false, the entities property will blacklist. \nDefaults to true",
                     "anyOf": [
@@ -11362,6 +11375,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "minimumSize": {
                     "description": "The minimum size. \nDefaults to 0",
                     "anyOf": [
@@ -11396,6 +11410,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "condition": {
                     "description": "The condition to invert",
                     "anyOf": [
@@ -11421,6 +11436,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "sneak": {
                     "description": "If true, checks if the entity is shifting. If false, it checks the opposite. \nDefaults to true",
                     "anyOf": [
@@ -11445,6 +11461,7 @@
                         "SELF"
                     ]
                 },
+                "else": true,
                 "minimumTime": {
                     "description": "The minimum time. \nDefaults to 0",
                     "anyOf": [
@@ -11479,6 +11496,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "grounded": {
                     "description": "If true, checks if the entity is on the ground. If false, it checks the opposite. \nDefaults to true",
                     "anyOf": [
@@ -11503,6 +11521,7 @@
                         "SELF"
                     ]
                 },
+                "else": true,
                 "shouldGlide": {
                     "description": "If true, checks if the entity is gliding. If false, it checks the opposite. \nDefaults to true",
                     "anyOf": [
@@ -11529,6 +11548,7 @@
                         "LOCATION"
                     ]
                 },
+                "else": true,
                 "biomes": {
                     "description": "The list of biomes. \nDefaults to []",
                     "anyOf": [
@@ -11555,6 +11575,7 @@
             "properties": {
                 "type": true,
                 "mode": {},
+                "else": true,
                 "comparison": {
                     "description": "The comparison to use. \nDefaults to \"EQUALS\"",
                     "anyOf": [
@@ -11589,6 +11610,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "comparison": true,
                 "value": true,
                 "variable": {
@@ -11621,6 +11643,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "isNPC": {
                     "description": "If true, checks if the entity is an npc. If false, it checks the opposite. \nDefaults to false",
                     "anyOf": [
@@ -11644,7 +11667,8 @@
                         "ALL",
                         "SELF"
                     ]
-                }
+                },
+                "else": true
             },
             "required": [
                 "mode"
@@ -11661,6 +11685,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "blocks": {
                     "description": "The list of blocks. \nDefaults to []",
                     "anyOf": [
@@ -11694,6 +11719,7 @@
                         "LOCATION"
                     ]
                 },
+                "else": true,
                 "worlds": {
                     "description": "The list of worlds. \nDefaults to []",
                     "anyOf": [
@@ -11725,6 +11751,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "checkOwner": {
                     "description": "If true, also checks if the user is the owner. \nDefaults to true",
                     "anyOf": [
@@ -11749,7 +11776,8 @@
                         "SELF",
                         "OTHER"
                     ]
-                }
+                },
+                "else": true
             },
             "required": [
                 "mode"
@@ -11766,6 +11794,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "height": {
                     "description": "The range in blocks. \nDefaults to \"-Infinity - Infinity\"",
                     "anyOf": [
@@ -11790,6 +11819,7 @@
                         "LOCATION"
                     ]
                 },
+                "else": true,
                 "materials": {
                     "description": "The list of blocks. \nDefaults to []",
                     "anyOf": [
@@ -11823,6 +11853,7 @@
                         "ITEM"
                     ]
                 },
+                "else": true,
                 "slot": {
                     "description": "The slot to check. \nDefaults to \"HAND\"",
                     "anyOf": [
@@ -11860,6 +11891,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "conditions": {
                     "description": "The conditions to OR. \nDefaults to {}",
                     "anyOf": [
@@ -11896,6 +11928,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "maxDistance": {
                     "description": "The maximum distance to the target entity. \nDefaults to 16",
                     "anyOf": [
@@ -11922,6 +11955,7 @@
                         "LOCATION"
                     ]
                 },
+                "else": true,
                 "temperature": {
                     "description": "The range of tempreture from -1 to 1. \nDefaults to \"-Infinity - Infinity\"",
                     "anyOf": [
@@ -11947,6 +11981,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "heroes": {
                     "description": "The list of heroes. \nDefaults to []",
                     "anyOf": [
@@ -11978,6 +12013,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "distance": {
                     "description": "The squared distance range in blocks. \nDefaults to \"-Infinity - Infinity\"",
                     "anyOf": [
@@ -12001,7 +12037,8 @@
                         "ALL",
                         "SELF"
                     ]
-                }
+                },
+                "else": true
             },
             "required": [
                 "mode"
@@ -12012,6 +12049,7 @@
             "properties": {
                 "type": true,
                 "mode": {},
+                "else": true,
                 "conditions": {
                     "description": "The conditions to check. \nDefaults to {}",
                     "anyOf": [
@@ -12045,6 +12083,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "slot": {
                     "description": "The slot for the item. \nDefaults to \"HAND\"",
                     "anyOf": [
