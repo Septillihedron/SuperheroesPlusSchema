@@ -141,6 +141,7 @@ class Trigger {
 }
 
 class Condition {
+	readonly description = "A condition"
 	readonly type = "object"
 	readonly properties = {
 		type: new Types("The type of the condition"),
@@ -169,6 +170,7 @@ class Condition {
 }
 
 class Effect {
+	readonly description = "An effect"
 	readonly type = "object"
 	readonly properties = {
 		type: new Types("The type of the effect"),

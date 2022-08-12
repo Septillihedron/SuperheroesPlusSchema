@@ -936,6 +936,7 @@
             ]
         },
         "condition": {
+            "description": "A condition",
             "type": "object",
             "properties": {
                 "type": {
@@ -1437,6 +1438,7 @@
             }
         },
         "effect": {
+            "description": "An effect",
             "type": "object",
             "properties": {
                 "type": {
