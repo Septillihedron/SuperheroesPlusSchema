@@ -788,6 +788,31 @@
 					"default": []
 				}
 			}
+		},
+		"INTERACTENTITY": {
+			"description": "Triggers when the user right clicks an entity. \nThe target entity will be set as the interacted entity"
+		},
+		"RIPTIDE": {
+			"description": "Triggers when the user activates the riptide enchantment"
+		},
+		// "TOGGLESPRINT": { // Not implemented
+		// 	"description": "Triggers when the user starts or stops sprinting",
+		//  "available": false
+		// },
+		"CHANGEMAINHAND": {
+			"description": "Triggers when the user changes where the main hand slot is (i.e. scrolls or hits a number). \nThe item will be set as the item in the new slot"
+		},
+		"EQUIPARMOR": {
+			"description": "Triggers when the user equips an armour. \nThe item will be set as the equiped item"
+		},
+		"SPRINT": {
+			"description": "Triggers when the user starts or stops sprinting"
+		},
+		"BLOCKBREAK": {
+			"description": "Triggers when the user breaks a block. \nThe location will be set as the location of the broken block"
+		},
+		"TOTEM": {
+			"description": "Triggers when the user activates a totem. \nThe target entity will be set as the killer of the user"
 		}
 	},
 	"conditions": {
@@ -1152,6 +1177,53 @@
 					"default": []
 				}
 			}
+		},
+		"DISTANCE": {
+			"description": "Checks if the distance squared between the user and target entity is in the range",
+			"supportedModes": ["ALL", "OTHER"],
+			"properties": {
+				"distance": {
+					"description": "The squared distance range in blocks",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				}
+			}
+		},
+		"SHIELDED": {
+			"description": "CHecks if the user is blocking",
+			"supportedModes": ["ALL", "SELF"]
+		},
+		"WRAPPER": {
+			"description": "Checks if all inside conditions are true",
+			"requireMode": false,
+			"properties": {
+				"conditions": {
+					"description": "The conditions to check",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						".*": {
+							"description": "A condition",
+							"required": true,
+							"type": "condition"
+						}
+					}
+				}
+			}
+		},
+		"ITEMWRAPPER": {
+			"description": "Checks if all inside conditions are true. \nThe item will be set as the item in the specified slot of the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"properties": {
+				"slot": {
+					"description": "The slot for the item",
+					"required": false,
+					"type": ["equipmentSlot", "integer"],
+					"default": "HAND"
+				}
+			}
 		}
 	},
 	"effects": {
@@ -1273,7 +1345,7 @@
 					"description": "If true, makes the user or target entity glide. If false, makes the user or target entity stop gliding",
 					"required": false,
 					"type": "boolean",
-					"default": false
+					"default": true
 				}
 			}
 		},
@@ -1392,6 +1464,12 @@
 					"required": false,
 					"type": "integer",
 					"default": 4
+				},
+				"fireTicks": {
+					"description": "The amount of ticks the projectile will be on fire",
+					"required": false,
+					"type": "integer",
+					"default": 0
 				}
 			}
 		},
@@ -1863,9 +1941,16 @@
 				}
 			}
 		},
-		"SPAWNENTITY": {//TODO
-			"description": "",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+		"SPAWNENTITY": {
+			"description": "Spawns an entity at the location or the location of the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"properties": {
+				"entity": {
+					"description": "The entity to spawn",
+					"required": true,
+					"type": "entity"
+				}
+			}
 		},
 		"REMOVEPOTION": {
 			"description": "Removes potion effects from the user or target entity",
@@ -2086,6 +2171,30 @@
 		"LOSETARGET": {
 			"description": "Make the user lose interest in the current target",
 			"supportedModes": ["ALL", "SELF"]
+		},
+		"VEINMINER": {
+			"description": "Breaks surrounding blocks around a location recursively",
+			"supportedModes": ["ALL", "LOCATION"],
+			"properties": {
+				"types": {
+					"description": "The list of types that can be broken",
+					"required": true,
+					"type": "array",
+					"items": "block"
+				},
+				"delay": {
+					"description": "The delay between each break is seconds (1 is 20 ticks)",
+					"required": false,
+					"type": "number",
+					"default": 0.5
+				},
+				"allowMultiTypeVein": {
+					"description": "If true, the vein will break all types in the list instead of only breaking the same type of block as the one in original location",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
 		}
 	},
 	"types": {
