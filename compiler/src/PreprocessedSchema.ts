@@ -12,7 +12,7 @@ interface Schema {
 	triggers: {[key: string] : Trigger}
 	conditions: {[key: string] : Condition}
 	effects: {[key: string] : Effect}
-	distribution: {[key: string] : Distribution}
+	distributions: {[key: string] : Distribution}
 	types: {[key: string] : TypeDefinition}
 }
 

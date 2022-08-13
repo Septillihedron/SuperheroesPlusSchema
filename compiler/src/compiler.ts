@@ -111,13 +111,13 @@ export class Compiler {
 		let compiledDistribution = new Compiled.DistributionDefinition()
 
 		this.schema.distributions[distributionName] = compiledDistribution
-		if (distribution.available === false) {
+		if (distribution.available !== false) {
 			this.schema.definitions.distribution.addType(distributionName, distribution.description)
 		}
 
 		if (distribution.extends !== undefined) {
 			let extendedName = distribution.extends
-			let extendedDistribution = this.preprocessed.distribution[extendedName]
+			let extendedDistribution = this.preprocessed.distributions[extendedName]
 			let properties = extendedDistribution.properties;
 			if (properties === undefined) properties = {}
 			compiledDistribution.setExtension(extendedName, properties)

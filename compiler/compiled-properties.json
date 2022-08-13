@@ -2001,7 +2001,15 @@
                 "type": {
                     "type": "string",
                     "oneOf": [
-                        {}
+                        {},
+                        {
+                            "const": "LOOT",
+                            "description": "Adds a chance for loot tables to have the skill item"
+                        },
+                        {
+                            "const": "CRAFTING",
+                            "description": "Adds a recipe for the skill item"
+                        }
                     ],
                     "description": "The type of the distribution"
                 }
@@ -2015,7 +2023,32 @@
                 }
             },
             "else": {
-                "allOf": []
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "LOOT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/distributions/LOOT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CRAFTING"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/distributions/CRAFTING"
+                        }
+                    }
+                ]
             }
         }
     },
