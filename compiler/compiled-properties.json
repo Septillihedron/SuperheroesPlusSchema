@@ -187,6 +187,34 @@
                         {
                             "const": "POTIONEFFECT",
                             "description": "Triggers when a potion effect is applied to the user"
+                        },
+                        {
+                            "const": "INTERACTENTITY",
+                            "description": "Triggers when the user right clicks an entity. \nThe target entity will be set as the interacted entity"
+                        },
+                        {
+                            "const": "RIPTIDE",
+                            "description": "Triggers when the user activates the riptide enchantment"
+                        },
+                        {
+                            "const": "CHANGEMAINHAND",
+                            "description": "Triggers when the user changes where the main hand slot is (i.e. scrolls or hits a number). \nThe item will be set as the item in the new slot"
+                        },
+                        {
+                            "const": "EQUIPARMOR",
+                            "description": "Triggers when the user equips an armour. \nThe item will be set as the equiped item"
+                        },
+                        {
+                            "const": "SPRINT",
+                            "description": "Triggers when the user starts or stops sprinting"
+                        },
+                        {
+                            "const": "BLOCKBREAK",
+                            "description": "Triggers when the user breaks a block. \nThe location will be set as the location of the broken block"
+                        },
+                        {
+                            "const": "TOTEM",
+                            "description": "Triggers when the user activates a totem. \nThe target entity will be set as the killer of the user"
                         }
                     ],
                     "description": "The type of trigger"
@@ -531,6 +559,90 @@
                         "then": {
                             "$ref": "#/triggers/POTIONEFFECT"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "INTERACTENTITY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/INTERACTENTITY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "RIPTIDE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/RIPTIDE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CHANGEMAINHAND"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/CHANGEMAINHAND"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "EQUIPARMOR"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/EQUIPARMOR"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SPRINT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/SPRINT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "BLOCKBREAK"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/BLOCKBREAK"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TOTEM"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/TOTEM"
+                        }
                     }
                 ]
             },
@@ -539,6 +651,7 @@
             ]
         },
         "condition": {
+            "description": "A condition",
             "type": "object",
             "properties": {
                 "type": {
@@ -644,6 +757,22 @@
                         {
                             "const": "BOSS",
                             "description": "Checks if the user or target entity one of the listed bosses"
+                        },
+                        {
+                            "const": "DISTANCE",
+                            "description": "Checks if the distance squared between the user and target entity is in the range"
+                        },
+                        {
+                            "const": "SHIELDED",
+                            "description": "CHecks if the user is blocking"
+                        },
+                        {
+                            "const": "WRAPPER",
+                            "description": "Checks if all inside conditions are true"
+                        },
+                        {
+                            "const": "ITEMWRAPPER",
+                            "description": "Checks if all inside conditions are true. \nThe item will be set as the item in the specified slot of the user or target entity"
                         }
                     ],
                     "description": "The type of the condition"
@@ -651,6 +780,15 @@
                 "mode": {
                     "description": "The condition mode",
                     "type": "string"
+                },
+                "else": {
+                    "description": "The list of effects that will be called when the condition is false",
+                    "type": "object",
+                    "patternProperties": {
+                        ".*": {
+                            "$ref": "#/definitions/effect"
+                        }
+                    }
                 }
             },
             "required": [
@@ -962,11 +1100,60 @@
                         "then": {
                             "$ref": "#/conditions/BOSS"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DISTANCE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/DISTANCE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SHIELDED"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/SHIELDED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "WRAPPER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/WRAPPER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ITEMWRAPPER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/ITEMWRAPPER"
+                        }
                     }
                 ]
             }
         },
         "effect": {
+            "description": "An effect",
             "type": "object",
             "properties": {
                 "type": {
@@ -1111,7 +1298,7 @@
                         },
                         {
                             "const": "SPAWNENTITY",
-                            "description": ""
+                            "description": "Spawns an entity at the location or the location of the user or target entity"
                         },
                         {
                             "const": "REMOVEPOTION",
@@ -1168,6 +1355,10 @@
                         {
                             "const": "RIDER",
                             "description": "Spawns a boss that rides the user"
+                        },
+                        {
+                            "const": "VEINMINER",
+                            "description": "Breaks surrounding blocks around a location recursively"
                         }
                     ],
                     "description": "The type of the effect"
@@ -1774,6 +1965,18 @@
                         "then": {
                             "$ref": "#/effects/RIDER"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "VEINMINER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/VEINMINER"
+                        }
                     }
                 ]
             }
@@ -2180,6 +2383,55 @@
                     "default": []
                 }
             }
+        },
+        "INTERACTENTITY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "RIPTIDE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "CHANGEMAINHAND": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "EQUIPARMOR": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "SPRINT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "BLOCKBREAK": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "TOTEM": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
         }
     },
     "conditions": {
@@ -2194,6 +2446,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "minimumHealthPercentage": {
                     "description": "The minimum hp percentage. \nDefaults to 0",
                     "anyOf": [
@@ -2231,6 +2484,7 @@
                         "SELF"
                     ]
                 },
+                "else": true,
                 "chance": {
                     "description": "The chance that is used. \nDefaults to 1",
                     "anyOf": [
@@ -2257,6 +2511,7 @@
                         "SELF"
                     ]
                 },
+                "else": true,
                 "cooldown": {
                     "description": "The cooldown time that is used in seconds. \nDefaults to 10",
                     "anyOf": [
@@ -2281,6 +2536,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "whitelist": {
                     "description": "If true, the entities property will whitelist. If false, the entities property will blacklist. \nDefaults to true",
                     "anyOf": [
@@ -2322,6 +2578,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "minimumSize": {
                     "description": "The minimum size. \nDefaults to 0",
                     "anyOf": [
@@ -2356,6 +2613,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "condition": {
                     "description": "The condition to invert",
                     "anyOf": [
@@ -2381,6 +2639,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "sneak": {
                     "description": "If true, checks if the entity is shifting. If false, it checks the opposite. \nDefaults to true",
                     "anyOf": [
@@ -2405,6 +2664,7 @@
                         "SELF"
                     ]
                 },
+                "else": true,
                 "minimumTime": {
                     "description": "The minimum time. \nDefaults to 0",
                     "anyOf": [
@@ -2439,6 +2699,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "grounded": {
                     "description": "If true, checks if the entity is on the ground. If false, it checks the opposite. \nDefaults to true",
                     "anyOf": [
@@ -2463,6 +2724,7 @@
                         "SELF"
                     ]
                 },
+                "else": true,
                 "shouldGlide": {
                     "description": "If true, checks if the entity is gliding. If false, it checks the opposite. \nDefaults to true",
                     "anyOf": [
@@ -2489,6 +2751,7 @@
                         "LOCATION"
                     ]
                 },
+                "else": true,
                 "biomes": {
                     "description": "The list of biomes. \nDefaults to []",
                     "anyOf": [
@@ -2515,6 +2778,7 @@
             "properties": {
                 "type": true,
                 "mode": {},
+                "else": true,
                 "comparison": {
                     "description": "The comparison to use. \nDefaults to \"EQUALS\"",
                     "anyOf": [
@@ -2549,6 +2813,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "comparison": true,
                 "value": true,
                 "variable": {
@@ -2581,6 +2846,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "isNPC": {
                     "description": "If true, checks if the entity is an npc. If false, it checks the opposite. \nDefaults to false",
                     "anyOf": [
@@ -2604,7 +2870,8 @@
                         "ALL",
                         "SELF"
                     ]
-                }
+                },
+                "else": true
             },
             "required": [
                 "mode"
@@ -2621,6 +2888,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "blocks": {
                     "description": "The list of blocks. \nDefaults to []",
                     "anyOf": [
@@ -2654,6 +2922,7 @@
                         "LOCATION"
                     ]
                 },
+                "else": true,
                 "worlds": {
                     "description": "The list of worlds. \nDefaults to []",
                     "anyOf": [
@@ -2685,6 +2954,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "checkOwner": {
                     "description": "If true, also checks if the user is the owner. \nDefaults to true",
                     "anyOf": [
@@ -2709,7 +2979,8 @@
                         "SELF",
                         "OTHER"
                     ]
-                }
+                },
+                "else": true
             },
             "required": [
                 "mode"
@@ -2726,6 +2997,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "height": {
                     "description": "The range in blocks. \nDefaults to \"-Infinity - Infinity\"",
                     "anyOf": [
@@ -2750,6 +3022,7 @@
                         "LOCATION"
                     ]
                 },
+                "else": true,
                 "materials": {
                     "description": "The list of blocks. \nDefaults to []",
                     "anyOf": [
@@ -2783,6 +3056,7 @@
                         "ITEM"
                     ]
                 },
+                "else": true,
                 "slot": {
                     "description": "The slot to check. \nDefaults to \"HAND\"",
                     "anyOf": [
@@ -2820,6 +3094,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "conditions": {
                     "description": "The conditions to OR. \nDefaults to {}",
                     "anyOf": [
@@ -2856,6 +3131,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "maxDistance": {
                     "description": "The maximum distance to the target entity. \nDefaults to 16",
                     "anyOf": [
@@ -2882,6 +3158,7 @@
                         "LOCATION"
                     ]
                 },
+                "else": true,
                 "temperature": {
                     "description": "The range of tempreture from -1 to 1. \nDefaults to \"-Infinity - Infinity\"",
                     "anyOf": [
@@ -2907,6 +3184,7 @@
                         "OTHER"
                     ]
                 },
+                "else": true,
                 "entities": {
                     "description": "The list of bosses. \nDefaults to []",
                     "anyOf": [
@@ -2922,6 +3200,104 @@
                         ]
                     },
                     "default": []
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "DISTANCE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "OTHER"
+                    ]
+                },
+                "else": true,
+                "distance": {
+                    "description": "The squared distance range in blocks. \nDefaults to \"-Infinity - Infinity\"",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/range"
+                        }
+                    ],
+                    "default": "-Infinity - Infinity"
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "SHIELDED": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF"
+                    ]
+                },
+                "else": true
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "WRAPPER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {},
+                "else": true,
+                "conditions": {
+                    "description": "The conditions to check. \nDefaults to {}",
+                    "anyOf": [
+                        {
+                            "type": "object"
+                        }
+                    ],
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        ".*": {
+                            "description": "A condition",
+                            "anyOf": [
+                                {
+                                    "$ref": "#/types/condition"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "ITEMWRAPPER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "else": true,
+                "slot": {
+                    "description": "The slot for the item. \nDefaults to \"HAND\"",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/equipmentSlot"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": "HAND"
                 }
             },
             "required": [
@@ -3093,13 +3469,13 @@
                     ]
                 },
                 "glide": {
-                    "description": "If true, makes the user or target entity glide. If false, makes the user or target entity stop gliding. \nDefaults to false",
+                    "description": "If true, makes the user or target entity glide. If false, makes the user or target entity stop gliding. \nDefaults to true",
                     "anyOf": [
                         {
                             "type": "boolean"
                         }
                     ],
-                    "default": false
+                    "default": true
                 }
             },
             "required": [
@@ -3272,6 +3648,15 @@
                         }
                     ],
                     "default": 4
+                },
+                "fireTicks": {
+                    "description": "The amount of ticks the projectile will be on fire. \nDefaults to 0",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": 0
                 }
             },
             "required": [
@@ -4042,10 +4427,19 @@
                         "OTHER",
                         "LOCATION"
                     ]
+                },
+                "entity": {
+                    "description": "The entity to spawn",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/entity"
+                        }
+                    ]
                 }
             },
             "required": [
-                "mode"
+                "mode",
+                "entity"
             ]
         },
         "REMOVEPOTION": {
@@ -4427,6 +4821,55 @@
             "required": [
                 "mode",
                 "rider"
+            ]
+        },
+        "VEINMINER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "LOCATION"
+                    ]
+                },
+                "types": {
+                    "description": "The list of types that can be broken",
+                    "anyOf": [
+                        {
+                            "type": "array"
+                        }
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/types/block"
+                            }
+                        ]
+                    }
+                },
+                "delay": {
+                    "description": "The delay between each break is seconds (1 is 20 ticks). \nDefaults to 0.5",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 0.5
+                },
+                "allowMultiTypeVein": {
+                    "description": "If true, the vein will break all types in the list instead of only breaking the same type of block as the one in original location. \nDefaults to false",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": false
+                }
+            },
+            "required": [
+                "mode",
+                "types"
             ]
         }
     },
