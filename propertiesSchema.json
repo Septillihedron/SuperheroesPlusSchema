@@ -373,6 +373,7 @@
 				"bossBarFlag", "bossBarColor", "bossBarStyle",
 				"equipmentSlot", 
 				"attribute", 
+				"collisionMode",
 				"sound", "particle",
 				"condition", "effect"
 			]

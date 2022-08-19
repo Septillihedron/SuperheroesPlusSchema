@@ -568,6 +568,7 @@
 		"ITEMWRAPPER": {
 			"description": "Checks if all inside conditions are true. \nThe item will be set as the item in the specified slot of the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "WRAPPER",
 			"properties": {
 				"slot": {
 					"description": "The slot for the item",
@@ -1321,9 +1322,42 @@
 			"description": "Teleports the user to the location or the location of the target entity",
 			"supportedModes": ["ALL", "OTHER", "LOCATION"]
 		},
-		"RAYTRACE": {//TODO
-			"description": "",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"]
+		"RAYTRACE": {
+			"description": "Acts like a trigger. \nSends out a raytrace that collides with entities or blocks in the direction that the user or target entity is looking. \nThe target entity will be set as the collided entity. \nThe location will be set as the location of the collided block",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "WRAPPER",
+			"properties": {
+				"maxDistance": {
+					"description": "The maximum distance the raytrace can collide",
+					"required": false,
+					"type": "integer",
+					"default": 10
+				},
+				"alwaysHit": {
+					"description": "If true, if the raytrace does not hit anything, the location will be set as the maxDistance in the direction the user is looking",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"ignorePassanles": {
+					"description": "Whether to ignore passable blocks (ex. tall grass, signs, fluids)",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"raySize": {
+					"description": "The collision size of the ray",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"collisionMode": {
+					"description": "The collision behavior when a fluid gets hit by the raytrace",
+					"required": false,
+					"type": "collisionMode",
+					"default": "NEVER"
+				}
+			}
 		},
 		"TIMER": {
 			"description": "Acts like a trigger. \nTriggers for a number of times with a period and initial delay. \nTarget items will be forwarded",
@@ -2231,6 +2265,11 @@
 			"description": "An attribute",
 			"type": "string",
 			"enum": ["MAX_HEALTH", "FOLLOW_RANGE", "KNOCKBACK_RESISTANCE", "MOVEMENT_SPEED", "FLYING_SPEED", "ATTACK_DAMAGE", "ATTACK_KNOCKBACK", "ATTACK_SPEED", "ARMOR", "ARMOR_TOUGHNESS", "LUCK", "HORSE_JUMP_STRENGTH", "ZOMBIE_SPAWN_REINFORCEMENTS"]
+		},
+		"collisionMode": {
+			"description": "The fluid collision mode for raytrace",
+			"type": "string",
+			"enum": ["ALWAYS", "SOURCE_ONLY", "NEVER"]
 		},
 		"sound": {
 			"description": "A sound",
