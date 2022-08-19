@@ -358,6 +358,7 @@
 				"biome", "world", 
 				"equipmentSlot", 
 				"attribute", 
+				"collisionMode",
 				"sound", "particle",
 				"condition", "effect"
 			]

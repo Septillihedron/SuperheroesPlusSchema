@@ -1356,7 +1356,7 @@
                         },
                         {
                             "const": "RAYTRACE",
-                            "description": ""
+                            "description": "Acts like a trigger. \nSends out a raytrace that collides with entities or blocks in the direction that the user or target entity is looking. \nThe target entity will be set as the collided entity. \nThe location will be set as the location of the collided block"
                         },
                         {
                             "const": "TIMER",
@@ -3248,6 +3248,7 @@
                     ]
                 },
                 "else": true,
+                "conditions": true,
                 "slot": {
                     "description": "The slot for the item. \nDefaults to \"HAND\"",
                     "anyOf": [
@@ -3261,9 +3262,11 @@
                     "default": "HAND"
                 }
             },
-            "required": [
-                "mode"
-            ]
+            "if": true,
+            "then": {
+                "$ref": "#/conditions/WRAPPER",
+                "additionalProperties": true
+            }
         }
     },
     "effects": {
@@ -4459,14 +4462,62 @@
                     "enum": [
                         "ALL",
                         "SELF",
-                        "OTHER",
-                        "LOCATION"
+                        "OTHER"
                     ]
+                },
+                "conditions": true,
+                "effects": true,
+                "maxDistance": {
+                    "description": "The maximum distance the raytrace can collide. \nDefaults to 10",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": 10
+                },
+                "alwaysHit": {
+                    "description": "If true, if the raytrace does not hit anything, the location will be set as the maxDistance in the direction the user is looking. \nDefaults to true",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": true
+                },
+                "ignorePassanles": {
+                    "description": "Whether to ignore passable blocks (ex. tall grass, signs, fluids). \nDefaults to true",
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": true
+                },
+                "raySize": {
+                    "description": "The collision size of the ray. \nDefaults to 1",
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "default": 1
+                },
+                "collisionMode": {
+                    "description": "The collision behavior when a fluid gets hit by the raytrace. \nDefaults to \"NEVER\"",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/collisionMode"
+                        }
+                    ],
+                    "default": "NEVER"
                 }
             },
-            "required": [
-                "mode"
-            ]
+            "if": true,
+            "then": {
+                "$ref": "#/effects/WRAPPER",
+                "additionalProperties": true
+            }
         },
         "TIMER": {
             "additionalProperties": false,
@@ -6131,6 +6182,19 @@
                 "LUCK",
                 "HORSE_JUMP_STRENGTH",
                 "ZOMBIE_SPAWN_REINFORCEMENTS"
+            ]
+        },
+        "collisionMode": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "type": "string"
+                }
+            ],
+            "enum": [
+                "ALWAYS",
+                "SOURCE_ONLY",
+                "NEVER"
             ]
         },
         "sound": {
