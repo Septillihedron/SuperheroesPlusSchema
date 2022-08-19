@@ -7,7 +7,7 @@
     "run": "tsc && node ./out/index.js && pause && npm run run"
   },
   "author": "Sepdron",
-  "license": "ISC",
+  "license": "",
   "devDependencies": {
     "@types/node": "^17.0.31",
     "json5": "^2.2.1",
