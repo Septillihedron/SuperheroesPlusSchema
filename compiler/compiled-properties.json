@@ -4783,8 +4783,8 @@
                     "maximum": 1,
                     "default": 0
                 },
-                "loottable": {
-                    "description": "The loot table to add the skill item to",
+                "loottables": {
+                    "description": "The loot tables to add the skill item to",
                     "anyOf": [
                         {
                             "type": "array"
@@ -4800,7 +4800,7 @@
                 }
             },
             "required": [
-                "loottable"
+                "loottables"
             ]
         },
         "CRAFTING": {
