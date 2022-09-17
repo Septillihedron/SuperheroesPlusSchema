@@ -500,6 +500,14 @@
                         {
                             "const": "TOTEM",
                             "description": "Triggers when the user activates a totem. \nThe target entity will be set as the killer of the user"
+                        },
+                        {
+                            "const": "CONSUME",
+                            "description": "Triggers when the user consumed an item"
+                        },
+                        {
+                            "const": "MOVE",
+                            "description": "Triggers when the user moves. \nThe location will be set as the location the user moves to"
                         }
                     ],
                     "description": "The type of trigger"
@@ -928,6 +936,30 @@
                         "then": {
                             "$ref": "#/triggers/TOTEM"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CONSUME"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/CONSUME"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "MOVE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/MOVE"
+                        }
                     }
                 ]
             },
@@ -1058,6 +1090,10 @@
                         {
                             "const": "ITEMWRAPPER",
                             "description": "Checks if all inside conditions are true. \nThe item will be set as the item in the specified slot of the user or target entity"
+                        },
+                        {
+                            "const": "SWIMMING",
+                            "description": "Checks if the user or target entity is swimming"
                         }
                     ],
                     "description": "The type of the condition"
@@ -1433,6 +1469,18 @@
                         "then": {
                             "$ref": "#/conditions/ITEMWRAPPER"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SWIMMING"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/SWIMMING"
+                        }
                     }
                 ]
             }
@@ -1483,7 +1531,7 @@
                         },
                         {
                             "const": "ARROW",
-                            "description": "Shoot an arrow to the location or the location of the user or target entity"
+                            "description": "Shoot an arrow to the location of the target entity"
                         },
                         {
                             "const": "ATTRIBUTE",
@@ -1511,6 +1559,10 @@
                         },
                         {
                             "const": "SMITE",
+                            "description": "Smites the user or target entity"
+                        },
+                        {
+                            "const": "LIGHTNING",
                             "description": "Smites the user or target entity"
                         },
                         {
@@ -1563,6 +1615,10 @@
                         },
                         {
                             "const": "IGNITE",
+                            "description": "Sets the user or target entity on fire"
+                        },
+                        {
+                            "const": "FIRE",
                             "description": "Sets the user or target entity on fire"
                         },
                         {
@@ -1636,6 +1692,10 @@
                         {
                             "const": "VEINMINER",
                             "description": "Breaks surrounding blocks around a location recursively"
+                        },
+                        {
+                            "const": "ACTIONBAR",
+                            "description": "Sends an action bar to the user or target entity"
                         }
                     ],
                     "description": "The type of the effect"
@@ -1863,6 +1923,18 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "LIGHTNING"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/LIGHTNING"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "FLING"
                                 }
                             }
@@ -2013,6 +2085,18 @@
                         },
                         "then": {
                             "$ref": "#/effects/IGNITE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FIRE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/FIRE"
                         }
                     },
                     {
@@ -2229,6 +2313,18 @@
                         },
                         "then": {
                             "$ref": "#/effects/VEINMINER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ACTIONBAR"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/ACTIONBAR"
                         }
                     }
                 ]
@@ -11231,6 +11327,20 @@
                 "type": true,
                 "conditions": true
             }
+        },
+        "CONSUME": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "MOVE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
         }
     },
     "conditions": {
@@ -12105,6 +12215,23 @@
                 "$ref": "#/conditions/WRAPPER",
                 "additionalProperties": true
             }
+        },
+        "SWIMMING": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "else": true
+            },
+            "required": [
+                "mode"
+            ]
         }
     },
     "effects": {
@@ -12419,9 +12546,7 @@
                 "mode": {
                     "enum": [
                         "ALL",
-                        "SELF",
-                        "OTHER",
-                        "LOCATION"
+                        "OTHER"
                     ]
                 },
                 "velocity": {
@@ -12664,6 +12789,28 @@
             ]
         },
         "SMITE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "fake": true
+            },
+            "if": true,
+            "then": {
+                "$ref": "#/effects/LIGHTNING",
+                "additionalProperties": true
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "LIGHTNING": {
             "additionalProperties": false,
             "properties": {
                 "type": true,
@@ -13081,14 +13228,36 @@
                     ]
                 },
                 "fireTicks": {
-                    "description": "The amount of time the fire will last (in ticks). \nDefaults to 0",
+                    "description": "The amount of time the fire will last (in ticks). \nDefaults to 40",
                     "anyOf": [
                         {
                             "type": "integer"
                         }
                     ],
-                    "default": 0
+                    "default": 40
                 }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "FIRE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "fireTicks": true
+            },
+            "if": true,
+            "then": {
+                "$ref": "#/effects/IGNITE",
+                "additionalProperties": true
             },
             "required": [
                 "mode"
@@ -13187,13 +13356,22 @@
                     ]
                 },
                 "material": {
-                    "description": "The block to replace to. \nDefaults to \"STONE\"",
+                    "description": "The block to replace to, will override the \"block\" property if it exist. \nDefaults to null",
                     "anyOf": [
                         {
                             "$ref": "#/types/block"
                         }
                     ],
-                    "default": "STONE"
+                    "default": null
+                },
+                "block": {
+                    "description": "The data for the block to replace to, requires the \"material\" property to not exist or be null. \nDefaults to {}",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/BlockDataData"
+                        }
+                    ],
+                    "default": {}
                 },
                 "updatePhysics": {
                     "description": "If false, does not update neighboring blocks. \nDefaults to true",
@@ -13653,6 +13831,31 @@
             "required": [
                 "mode",
                 "types"
+            ]
+        },
+        "ACTIONBAR": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "message": {
+                    "description": "The message to send, instances of the text \"<player>\" will be changed to the name of the player that this is sent",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "mode",
+                "message"
             ]
         }
     },
@@ -14253,6 +14456,43 @@
                         }
                     ],
                     "default": 1
+                }
+            }
+        },
+        "BlockDataData": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "type": "object"
+                }
+            ],
+            "properties": {
+                "type": {
+                    "description": "The type of block. \nDefaults to \"STONE\"",
+                    "anyOf": [
+                        {
+                            "$ref": "#/types/block"
+                        }
+                    ],
+                    "default": "STONE"
+                },
+                "level": {
+                    "description": "The fluid level of the block. \n\nDefaults to not set",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": -1
+                },
+                "age": {
+                    "description": "The growth stage of the block. \n\nDefaults to not set",
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": -1
                 }
             }
         },

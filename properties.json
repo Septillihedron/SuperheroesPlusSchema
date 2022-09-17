@@ -813,6 +813,12 @@
 		},
 		"TOTEM": {
 			"description": "Triggers when the user activates a totem. \nThe target entity will be set as the killer of the user"
+		},
+		"CONSUME": {
+			"description": "Triggers when the user consumed an item"
+		},
+		"MOVE": {
+			"description": "Triggers when the user moves. \nThe location will be set as the location the user moves to"
 		}
 	},
 	"conditions": {
@@ -1225,6 +1231,10 @@
 					"default": "HAND"
 				}
 			}
+		},
+		"SWIMMING": {
+			"description": "Checks if the user or target entity is swimming",
+			"supportedModes": ["ALL", "SELF", "OTHER"]
 		}
 	},
 	"effects": {
@@ -1444,8 +1454,8 @@
 			}
 		},
 		"ARROW": {
-			"description": "Shoot an arrow to the location or the location of the user or target entity", 
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"description": "Shoot an arrow to the location of the target entity", 
+			"supportedModes": ["ALL", "OTHER"],
 			"properties": {
 				"velocity": {
 					"description": "Used to determine the time that it takes to hit by (pythagoras distance)/velocity",
@@ -1588,6 +1598,11 @@
 			}
 		},
 		"SMITE": {
+			"description": "Smites the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "LIGHTNING"
+		},
+		"LIGHTNING": {
 			"description": "Smites the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
@@ -1853,9 +1868,14 @@
 					"description": "The amount of time the fire will last (in ticks)",
 					"required": false,
 					"type": "integer",
-					"default": 0
+					"default": 40
 				}
 			}
+		},
+		"FIRE": {
+			"description": "Sets the user or target entity on fire",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "IGNITE"
 		},
 		"TARGET": {
 			"description": "If the user is a mob, sets the target of the user to the target entity",
@@ -1923,10 +1943,16 @@
 			"supportedModes": ["ALL", "LOCATION"],
 			"properties": {
 				"material": {
-					"description": "The block to replace to",
+					"description": "The block to replace to, will override the \"block\" property if it exist",
 					"required": false,
 					"type": "block",
-					"default": "STONE"
+					"default": null
+				},
+				"block": {
+					"description": "The data for the block to replace to, requires the \"material\" property to not exist or be null",
+					"required": false,
+					"type": "BlockDataData",
+					"default": {}
 				},
 				"updatePhysics": {
 					"description": "If false, does not update neighboring blocks",
@@ -2227,6 +2253,17 @@
 					"required": false,
 					"type": "boolean",
 					"default": false
+				}
+			}
+		},
+		"ACTIONBAR": {
+			"description": "Sends an action bar to the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"properties": {
+				"message": {
+					"description": "The message to send, instances of the text \"<player>\" will be changed to the name of the player that this is sent",
+					"required": true,
+					"type": "string"
 				}
 			}
 		}
@@ -2572,6 +2609,30 @@
 					"required": false,
 					"type": "integer",
 					"default": 1
+				}
+			}
+		},
+		"BlockDataData": {
+			"description": "The data of a block data",
+			"type": "object",
+			"properties": {
+				"type": {
+					"description": "The type of block",
+					"required": false,
+					"type": "block",
+					"default": "STONE"
+				},
+				"level": {
+					"description": "The fluid level of the block. \n\nDefaults to not set",
+					"required": false,
+					"type": "integer",
+					"default": -1
+				},
+				"age": {
+					"description": "The growth stage of the block. \n\nDefaults to not set",
+					"required": false,
+					"type": "integer",
+					"default": -1
 				}
 			}
 		},

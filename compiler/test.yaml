@@ -10,3 +10,10 @@ SkillToggleItem:
         ACACIA_BOAT: 2
         ACACIA_FENCE_GATE: 1
         OAK_LOG: 1
+    custom:
+      skill: CUSTOM
+      effects:
+        A:
+          type: SMITE
+          mode: OTHER
+          fake: false

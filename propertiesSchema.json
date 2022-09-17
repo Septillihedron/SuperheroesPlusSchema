@@ -367,7 +367,7 @@
 		},
 		"objectTypes": {
 			"enum": [
-				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData",
+				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData", "BlockDataData",
 				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData"
 			]
 		},
