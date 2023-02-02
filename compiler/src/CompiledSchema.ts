@@ -383,7 +383,7 @@ abstract class Definition {
 		this.properties = properties
 	}
 
-	addProperty(name: string, property: Property, required?: true): void {
+	addProperty(name: string, property: Property, required?: boolean): void {
 		this.properties[name] = property
 		if (required) {
 			if (this.required === undefined) this.required = []
