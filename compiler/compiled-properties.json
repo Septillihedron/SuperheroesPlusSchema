@@ -41,7 +41,6 @@
                 "skill": {
                     "type": "string",
                     "oneOf": [
-                        {},
                         {
                             "const": "CUSTOM",
                             "description": "A custom skill, used in combination with the SkillsLibrary"
@@ -364,7 +363,6 @@
                 "type": {
                     "type": "string",
                     "oneOf": [
-                        {},
                         {
                             "const": "DAMAGEDENTITY",
                             "description": "Triggers when the user damage an entity. \nThe target entity will be set as the damaged entity"
@@ -974,7 +972,6 @@
                 "type": {
                     "type": "string",
                     "oneOf": [
-                        {},
                         {
                             "const": "HEALTH",
                             "description": "Checks if the hp percentage of the user or target entity is in the range"
@@ -1492,7 +1489,6 @@
                 "type": {
                     "type": "string",
                     "oneOf": [
-                        {},
                         {
                             "const": "DAMAGE",
                             "description": "Damages the user or the target entity"
@@ -14614,11 +14610,7 @@
         },
         "entity": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "DROPPED_ITEM",
                 "EXPERIENCE_ORB",

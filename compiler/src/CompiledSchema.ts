@@ -67,9 +67,10 @@ type Types_oneOf = ({ enum: string[], oneOf: constDescription[] }|{})[]
 class Types {
 	readonly description: string
 	readonly type = "string"
-	readonly oneOf: Types_oneOf = [{}]
+	oneOf?: Types_oneOf = undefined
 
 	addType(name: string, description: string): void {
+		if (!this.oneOf) this.oneOf = []
 		this.oneOf.push({const: name, description: description})
 	}
 
