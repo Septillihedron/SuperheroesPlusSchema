@@ -568,6 +568,8 @@
 					"required": false,
 					"type": "array",
 					"items": {
+						"description": "A row of recipe keys",
+						"required": true,
 						"type": "string",
 						"maxLength": 3
 					},

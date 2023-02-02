@@ -211,7 +211,8 @@
 					},
 					"minItems": 1,
 					"description": "For arrays, contains the types of items allowed",
-					"$ref": "#/definitions/property",
+					"if": {"type": "object"},
+					"then": {"$ref": "#/definitions/property"},
 					"required": ["type"]
 				},
 				"properties": {
