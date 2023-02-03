@@ -113,14 +113,14 @@
 				"outputBlock": {
 					"description": "The block to convert to",
 					"required": false,
-					"type": "block",
+					"type": "material",
 					"default": "GOLD_BLOCK"
 				},
 				"inputBlocks": {
 					"description": "The list of blocks to convert from",
 					"required": false,
 					"type": "array",
-					"items": "block",
+					"items": "material",
 					"default": []
 				}
 			}
@@ -172,7 +172,7 @@
 					"propertiesMap": {
 						"key": {
 							"description": "The block drop to change",
-							"type": "block"
+							"type": "material"
 						},
 						"value": {
 							"description": "The items to drop",
@@ -292,7 +292,7 @@
 				"item": {
 					"description": "The item that will be used as the gun",
 					"required": true,
-					"type": "item"
+					"type": "material"
 				},
 				"shootSound": {
 					"description": "The sound that will be played when the gun shoots",
@@ -351,7 +351,7 @@
 				"fuel": {
 					"description": "The fuel that will be used to cast the spell",
 					"required": false,
-					"type": "item",
+					"type": "material",
 					"default": "REDSTONE"
 				},
 				"cooldown": {
@@ -406,14 +406,14 @@
 						"resultantBlock": {
 							"description": "",
 							"required": false,
-							"type": "block",
+							"type": "material",
 							"default": "REDSTONE_BLOCK"
 						},
 						"transmutableBlocks": {
 							"description": "",
 							"required": false,
 							"type": "array",
-							"items": "block",
+							"items": "material",
 							"default": []
 						}
 					}
@@ -476,14 +476,14 @@
 					"description": "",
 					"required": false,
 					"type": "array",
-					"items": "block",
+					"items": "material",
 					"default": []
 				},
 				"blocksToReplace": {
 					"description": "",
 					"required": false,
 					"type": "array",
-					"items": "block",
+					"items": "material",
 					"default": []
 				},
 				"blockRayMode": {
@@ -558,7 +558,7 @@
 						".*": {
 							"description": "The material that the key is representing",
 							"required": true,
-							"type": "item"
+							"type": "material"
 						}
 					}
 				},
@@ -585,7 +585,7 @@
 					"propertiesMap": {
 						"key": {
 							"description": "The recipe key",
-							"type": "item"
+							"type": "material"
 						},
 						"value": {
 							"description": "The material that the key maps to",
@@ -1053,7 +1053,7 @@
 					"description": "The list of blocks",
 					"required": false,
 					"type": "array",
-					"items": "block",
+					"items": "material",
 					"default": []
 				}
 			}
@@ -1107,7 +1107,7 @@
 					"description": "The list of blocks",
 					"required": false,
 					"type": "array",
-					"items": "block",
+					"items": "material",
 					"default": []
 				}
 			}
@@ -1432,7 +1432,7 @@
 				"block": {
 					"description": "The block to change to",
 					"required": false,
-					"type": "block",
+					"type": "material",
 					"default": "COBWEB"
 				}
 			}
@@ -1450,7 +1450,7 @@
 				"block": {
 					"description": "The block to change to",
 					"required": false,
-					"type": "block",
+					"type": "material",
 					"default": "COBWEB"
 				}
 			}
@@ -1947,7 +1947,7 @@
 				"material": {
 					"description": "The block to replace to, will override the \"block\" property if it exist",
 					"required": false,
-					"type": "block",
+					"type": "material",
 					"default": null
 				},
 				"block": {
@@ -2242,7 +2242,7 @@
 					"description": "The list of types that can be broken",
 					"required": true,
 					"type": "array",
-					"items": "block"
+					"items": "material"
 				},
 				"delay": {
 					"description": "The delay between each break is seconds (1 is 20 ticks)",
@@ -2460,7 +2460,7 @@
 				"type": {
 					"description": "The type of item",
 					"required": false,
-					"type": "item",
+					"type": "material",
 					"default": "STONE"
 				},
 				"amount": {
@@ -2621,7 +2621,7 @@
 				"type": {
 					"description": "The type of block",
 					"required": false,
-					"type": "block",
+					"type": "material",
 					"default": "STONE"
 				},
 				"level": {
@@ -2690,7 +2690,7 @@
 					"description": "The list of item types",
 					"required": false,
 					"type": "array",
-					"items": "item",
+					"items": "material",
 					"default": []
 				},
 				"amount": {
@@ -2712,18 +2712,10 @@
 			"type": "string",
 			"enum": ["DROPPED_ITEM", "EXPERIENCE_ORB", "AREA_EFFECT_CLOUD", "ELDER_GUARDIAN", "WITHER_SKELETON", "STRAY", "EGG", "LEASH_HITCH", "PAINTING", "ARROW", "SNOWBALL", "FIREBALL", "SMALL_FIREBALL", "ENDER_PEARL", "ENDER_SIGNAL", "SPLASH_POTION", "THROWN_EXP_BOTTLE", "ITEM_FRAME", "WITHER_SKULL", "PRIMED_TNT", "FALLING_BLOCK", "FIREWORK", "HUSK", "SPECTRAL_ARROW", "SHULKER_BULLET", "DRAGON_FIREBALL", "ZOMBIE_VILLAGER", "SKELETON_HORSE", "ZOMBIE_HORSE", "ARMOR_STAND", "DONKEY", "MULE", "EVOKER_FANGS", "EVOKER", "VEX", "VINDICATOR", "ILLUSIONER", "MINECART_COMMAND", "BOAT", "MINECART", "MINECART_CHEST", "MINECART_FURNACE", "MINECART_TNT", "MINECART_HOPPER", "MINECART_MOB_SPAWNER", "CREEPER", "SKELETON", "SPIDER", "GIANT", "ZOMBIE", "SLIME", "GHAST", "ZOMBIFIED_PIGLIN", "ENDERMAN", "CAVE_SPIDER", "SILVERFISH", "BLAZE", "MAGMA_CUBE", "ENDER_DRAGON", "WITHER", "BAT", "WITCH", "ENDERMITE", "GUARDIAN", "SHULKER", "PIG", "SHEEP", "COW", "CHICKEN", "SQUID", "WOLF", "MUSHROOM_COW", "SNOWMAN", "OCELOT", "IRON_GOLEM", "HORSE", "RABBIT", "POLAR_BEAR", "LLAMA", "LLAMA_SPIT", "PARROT", "VILLAGER", "ENDER_CRYSTAL", "TURTLE", "PHANTOM", "TRIDENT", "COD", "SALMON", "PUFFERFISH", "TROPICAL_FISH", "DROWNED", "DOLPHIN", "CAT", "PANDA", "PILLAGER", "RAVAGER", "TRADER_LLAMA", "WANDERING_TRADER", "FOX", "BEE", "HOGLIN", "PIGLIN", "STRIDER", "ZOGLIN", "PIGLIN_BRUTE", "AXOLOTL", "GLOW_ITEM_FRAME", "GLOW_SQUID", "GOAT", "MARKER", "ALLAY", "CHEST_BOAT", "FROG", "TADPOLE", "WARDEN", "FISHING_HOOK", "LIGHTNING", "PLAYER", "UNKNOWN"]
 		},
-		"block": {
-			"description": "A block",
-			"extends": "material"
-		},
 		"blockFace": {
 			"description": "A face of a block",
 			"type": "string",
 			"enum": ["DOWN", "EAST", "EAST_NORTH_EAST", "EAST_SOUTH_EAST", "NORTH", "NORTH_EAST", "NORTH_NORTH_EAST", "NORTH_NORTH_WEST", "NORTH_WEST", "SELF", "SOUTH", "SOUTH_EAST", "SOUTH_SOUTH_EAST", "SOUTH_SOUTH_WEST", "SOUTH_WEST", "UP", "WEST", "WEST_NORTH_WEST", "WEST_SOUTH_WEST"]
-		},
-		"item": {
-			"description": "An item",
-			"extends": "material"
 		},
 		"enchantment": {
 			"description": "An enchantment",

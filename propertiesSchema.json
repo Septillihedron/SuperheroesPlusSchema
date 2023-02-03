@@ -355,7 +355,7 @@
 			"enum": [
 				"string", 
 				"range", "comparison", "operation", 
-				"entity", "block", "blockFace", "item",
+				"entity", "material", "blockFace", 
 				"enchantment", "potion", 
 				"damageCause", "action",
 				"biome", "world", 
