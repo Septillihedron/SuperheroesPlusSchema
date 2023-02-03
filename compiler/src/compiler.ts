@@ -51,13 +51,6 @@ export class Compiler {
 		if (skill.available !== false) {
 			this.schema.definitions.skill.addSkill(skillName, skill.description)
 		}
-
-		if (skill.extends !== undefined) {
-			let extendedName = skill.extends
-			let properties = this.preprocessed.skills[extendedName].properties;
-			if (properties === undefined) properties = {}
-			compiledSkill.setExtension(extendedName, properties)
-		}
 		if (skill.properties === undefined) return
 		objectPropertyMap(skill.properties)
 			.forEach((property, name) => {
@@ -73,13 +66,6 @@ export class Compiler {
 		this.schema.triggers[triggerName] = compiledTrigger
 		if (trigger.available !== false) {
 			this.schema.definitions.trigger.addType(triggerName, trigger.description)
-		}
-
-		if (trigger.extends !== undefined) {
-			let extendedName = trigger.extends
-			let properties = this.preprocessed.triggers[extendedName].properties;
-			if (properties === undefined) properties = {}
-			compiledTrigger.setExtension(extendedName, properties)
 		}
 		if (trigger.properties === undefined) return
 		objectPropertyMap(trigger.properties)
@@ -97,17 +83,7 @@ export class Compiler {
 		if (condition.available !== false) {
 			this.schema.definitions.condition.addType(conditionName, condition.description)
 		}
-
-		let requireMode: boolean | undefined = undefined
-		if (condition.extends !== undefined) {
-			let extendedName = condition.extends
-			let extendedCondition = this.preprocessed.conditions[extendedName]
-			let properties = extendedCondition.properties;
-			if (properties === undefined) properties = {}
-			compiledCondition.setExtension(extendedName, properties)
-			requireMode = extendedCondition.requireMode
-		}
-		requireMode = condition.requireMode === undefined? requireMode : condition.requireMode
+		let requireMode = condition.requireMode
 		if (requireMode === true || requireMode === undefined) compiledCondition.requireMode()
 		if (condition.properties === undefined) return
 		objectPropertyMap(condition.properties)
@@ -126,16 +102,7 @@ export class Compiler {
 			this.schema.definitions.effect.addType(effectName, effect.description)
 		}
 
-		let requireMode: boolean | undefined = undefined
-		if (effect.extends !== undefined) {
-			let extendedName = effect.extends
-			let extendedEffect = this.preprocessed.effects[extendedName]
-			let properties = extendedEffect.properties;
-			if (properties === undefined) properties = {}
-			compiledEffect.setExtension(extendedName, properties)
-			requireMode = extendedEffect.requireMode
-		}
-		requireMode = effect.requireMode === undefined? requireMode : effect.requireMode
+		let requireMode = effect.requireMode
 		if (requireMode === true || requireMode === undefined) compiledEffect.requireMode()
 		if (effect.properties === undefined) return
 		objectPropertyMap(effect.properties)
@@ -156,7 +123,6 @@ export class Compiler {
 		this.PropertyPartsCompiler.properties(type.properties, compiledType)
 		this.PropertyPartsCompiler.patternProperties(type.patternProperties, compiledType)
 		this.PropertyPartsCompiler.propertiesMap(type.propertiesMap, compiledType)
-		if (type.extends !== undefined) compiledType.set$ref(`#/types/${type.extends}`)
 		deletePropertyClassHelperProperties(compiledType)
 	
 		return compiledType
