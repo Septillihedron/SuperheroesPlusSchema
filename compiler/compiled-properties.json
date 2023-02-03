@@ -11166,6 +11166,11 @@
                     "description": "The maximum time. \nDefaults to 24000",
                     "type": "integer",
                     "default": 24000
+                },
+                "time": {
+                    "description": "A range for time. \nDefaults to \"0 - 24000\"",
+                    "$ref": "#/types/range",
+                    "default": "0 - 24000"
                 }
             },
             "required": [
@@ -13287,6 +13292,15 @@
                 "SET"
             ]
         },
+        "attributeOperation": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "ADD_NUMBER",
+                "ADD_SCALAR",
+                "MULTIPLY_SCALAR_1"
+            ]
+        },
         "ItemAttributeData": {
             "additionalProperties": false,
             "type": "object",
@@ -13309,6 +13323,11 @@
                         "description": "The slot that this attribute will be active",
                         "$ref": "#/types/equipmentSlot",
                         "default": "HAND"
+                    },
+                    "operation": {
+                        "description": "The operation to do on the attribute with `value`",
+                        "$ref": "#/types/attributeOperation",
+                        "default": "ADD_NUMBER"
                     }
                 }
             },
@@ -13553,6 +13572,108 @@
                     "description": "The passenger of the entity. \nDefaults to {}",
                     "$ref": "#/types/EntityData",
                     "default": {}
+                },
+                "extra": {
+                    "description": "The extra data for entities. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "properties": {
+                        "canEquip": {
+                            "description": "For living entities. Whether the entity can pick up items. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "isZombifiable": {
+                            "description": "For piglins, piglin brutes, and hoglins. Whether the entity can be zombified into their zombie couterparts. \nDefaults to true",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "color": {
+                            "description": "For colorable entities. The color for the entity",
+                            "$ref": "#/types/dyeColor"
+                        },
+                        "armorSection": {
+                            "description": "For horses. The armor for the horse. \nDefaults to {}",
+                            "$ref": "#/types/ItemStackData",
+                            "default": {}
+                        },
+                        "hasSaddle": {
+                            "description": "For horses___. Whether the entity has a saddle attached. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "style": {
+                            "description": "For horses. The style/markings that the horse has. \nDefaults to \"NONE\"",
+                            "$ref": "#/types/horseStyle",
+                            "default": "NONE"
+                        },
+                        "tamingDifficulty": {
+                            "description": "For horses___. The difficulty of taming the entity (ie the amount of domesticating (feeding, riding, ect.) necessary in order to tame it). \nDefaults to 1",
+                            "type": "integer",
+                            "default": 1
+                        },
+                        "jumpStrength": {
+                            "description": "For horses___. The strength of jump for the entity. \nDefaults to 0.7",
+                            "type": "number",
+                            "default": 0.7
+                        },
+                        "hasChest": {
+                            "description": "For chestedHorses___. Whether the entity is carrying a chest. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "tamed": {
+                            "description": "For horses___. Whether the horse is tamed. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "angry": {
+                            "description": "For wolfs. Whether the wolf is angry. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "size": {
+                            "description": "For slimes, magmacubes, and phantoms. The size of the entity. \nDefaults to 0",
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "potion": {
+                            "description": "For thrown potions. The item data for the thrown potion. \nDefaults to {}",
+                            "$ref": "#/types/ItemStackData",
+                            "default": {}
+                        },
+                        "fuse": {
+                            "description": "For creepers. The time a creeper is allowed to be primed before exploding (in ticks). \nDefaults to 30",
+                            "type": "integer",
+                            "default": 30
+                        },
+                        "ignited": {
+                            "description": "For creepers. Whether the creeper is primed/ignited. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "explosionRadius": {
+                            "description": "For creepers. The explosion radius when exploded. \nDefaults to 3",
+                            "type": "integer",
+                            "default": 3
+                        },
+                        "powered": {
+                            "description": "For creepers. Whether the creeper is powered/charged/electrecuted. \nDefaults to 3",
+                            "type": "integer",
+                            "default": 3
+                        },
+                        "variant": {
+                            "description": "For axolotls. The variant of the entity. Defaults to a random variant (probably, not sure)",
+                            "$ref": "#/types/axolotlVariant",
+                            "default": ""
+                        },
+                        "isBaby": {
+                            "description": "For ageable entities. Whether the entity is a baby. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
                 }
             }
         },
@@ -13655,6 +13776,37 @@
                 }
             }
         },
+        "BlockDataComparison": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "types": {
+                    "description": "The types that is compared to. \nDefaults to [\"STONE\"]",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/material"
+                    },
+                    "default": [
+                        "STONE"
+                    ]
+                },
+                "type": {
+                    "description": "The type that is compared to. Can be used instead of `types`. \nDefaults to \"STONE\"",
+                    "$ref": "#/types/material",
+                    "default": "STONE"
+                },
+                "level": {
+                    "description": "The range of fluid levels. \nDefaults to \"-Infinity - Infinity\"",
+                    "$ref": "#/types/range",
+                    "default": "-Infinity - Infinity"
+                },
+                "age": {
+                    "description": "The range of block age. \nDefaults to \"-Infinity - Infinity\"",
+                    "$ref": "#/types/range",
+                    "default": "-Infinity - Infinity"
+                }
+            }
+        },
         "LoreData": {
             "additionalProperties": false,
             "type": "array"
@@ -13706,6 +13858,11 @@
                         "$ref": "#/types/material"
                     },
                     "default": []
+                },
+                "type": {
+                    "description": "An item type. Can be used instead of `types` for single items. \nDefaults to \"STONE\"",
+                    "$ref": "#/types/material",
+                    "default": "STONE"
                 },
                 "amount": {
                     "description": "The range of item amount. \nDefaults to \"-Infinity - Infinity\"",
@@ -13910,6 +14067,63 @@
                 "BAD_OMEN",
                 "HERO_OF_THE_VILLAGE",
                 "DARKNESS"
+            ]
+        },
+        "dyeColor": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "BLACK",
+                "BLUE",
+                "BROWN",
+                "CYAN",
+                "GRAY",
+                "GREEN",
+                "LIGHT_BLUE",
+                "LIGHT_GRAY",
+                "LIME",
+                "MAGENTA",
+                "ORANGE",
+                "PINK",
+                "PURPLE",
+                "RED",
+                "WHITE",
+                "YELLOW"
+            ]
+        },
+        "axolotlVariant": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "BLUE",
+                "CYAN",
+                "GOLD",
+                "LUCY",
+                "WILD"
+            ]
+        },
+        "horseColor": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "BLACK",
+                "BROWN",
+                "CHESTNUT",
+                "CREAMY",
+                "DARK_BROWN",
+                "GRAY",
+                "WHITE"
+            ]
+        },
+        "horseStyle": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "BLACK_DOTS",
+                "NONE",
+                "WHITE",
+                "WHITE_DOTS",
+                "WHITEFIELD"
             ]
         },
         "damageCause": {

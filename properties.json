@@ -947,7 +947,13 @@
 					"required": false,
 					"type": "integer",
 					"default": 24000
-				}
+				},
+                "time": {
+					"description": "A range for time",
+					"required": false,
+					"type": "range",
+					"default": "0 - 24000"
+				}   
 			}
 		},
 		"ONGROUND": {
@@ -2309,6 +2315,15 @@
 				"SET"
 			]
 		},
+		"attributeOperation": {
+			"description": "A number operator for attributes",
+			"type": "string",
+			"enum": [
+				"ADD_NUMBER",
+				"ADD_SCALAR",
+				"MULTIPLY_SCALAR_1"
+			]
+		},
 		"ItemAttributeData": {
 			"description": "The attribute data for an item",
 			"type": "object",
@@ -2334,6 +2349,12 @@
 							"required": false,
 							"type": "equipmentSlot",
 							"default": "HAND"
+						},
+						"operation": {
+							"description": "The operation to do on the attribute with `value`",
+							"required": false,
+							"type": "attributeOperation",
+							"default": "ADD_NUMBER"
 						}
 					}
 				}
@@ -2520,8 +2541,134 @@
 					"required": false,
 					"type": "EntityData",
 					"default": {}
+				},
+				"extra": {
+					"description": "The extra data for entities",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"properties": {
+						"canEquip": {
+							"description": "For living entities. Whether the entity can pick up items",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"isZombifiable": {
+							"description": "For piglins, piglin brutes, and hoglins. Whether the entity can be zombified into their zombie couterparts",
+							"required": false,
+							"type": "boolean",
+							"default": true
+						},
+						"color": {
+							"description": "For colorable entities. The color for the entity",
+							"required": true, 
+							"type": "dyeColor"
+						},
+						"armorSection": {
+							"description": "For horses. The armor for the horse",
+							"required": false,
+							"type": "ItemStackData",
+							"default": {}
+						},
+						"hasSaddle": {
+							"description": "For horses___. Whether the entity has a saddle attached",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						// "color": {  
+						// 	"description": "For horses. The color of the entity",
+						// 	"required": false,
+						// 	"type": "horseColor",
+						// 	"default": "CHESTNUT"
+						// },
+						"style": {
+							"description": "For horses. The style/markings that the horse has",
+							"required": false,
+							"type": "horseStyle",
+							"default": "NONE"
+						},
+						"tamingDifficulty": {
+							"description": "For horses___. The difficulty of taming the entity (ie the amount of domesticating (feeding, riding, ect.) necessary in order to tame it)",
+							"required": false,
+							"type": "integer",
+							"default": 1
+						},
+						"jumpStrength": {
+							"description": "For horses___. The strength of jump for the entity",
+							"required": false,
+							"type": "number",
+							"default": 0.7
+						},
+						"hasChest": {
+							"description": "For chestedHorses___. Whether the entity is carrying a chest",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"tamed": {
+							"description": "For horses___. Whether the horse is tamed",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"angry": {
+							"description": "For wolfs. Whether the wolf is angry",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"size": {
+							"description": "For slimes, magmacubes, and phantoms. The size of the entity",
+							"required": false,
+							"type": "integer",
+							"default": 0
+						},
+						"potion": {
+							"description": "For thrown potions. The item data for the thrown potion",
+							"required": false,
+							"type": "ItemStackData",
+							"default": {}
+						},
+						"fuse": {
+							"description": "For creepers. The time a creeper is allowed to be primed before exploding (in ticks)",
+							"required": false,
+							"type": "integer",
+							"default": 30
+						},
+						"ignited": {
+							"description": "For creepers. Whether the creeper is primed/ignited",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"explosionRadius": {
+							"description": "For creepers. The explosion radius when exploded",
+							"required": false,
+							"type": "integer",
+							"default": 3
+						},
+						"powered": {
+							"description": "For creepers. Whether the creeper is powered/charged/electrecuted",
+							"required": false,
+							"type": "integer",
+							"default": 3
+						},
+						"variant": {
+							"description": "For axolotls. The variant of the entity. Defaults to a random variant (probably, not sure)",
+							"required": false,
+							"type": "axolotlVariant",
+							"default": ""
+						},
+						"isBaby": {
+							"description": "For ageable entities. Whether the entity is a baby",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						}
+					}
 				}
-				// oh god, TODO
 			}
 		},
 		"VectorData": {
@@ -2638,6 +2785,37 @@
 				}
 			}
 		},
+		"BlockDataComparison": {
+			"description": "A comparison for block data",
+			"type": "object",
+			"properties": {
+				"types": {
+					"description": "The types that is compared to",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": ["STONE"]
+				},
+				"type": {
+					"description": "The type that is compared to. Can be used instead of `types`",
+					"required": false,
+					"type": "material",
+					"default": "STONE"
+				},
+				"level": {
+					"description": "The range of fluid levels",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				},
+				"age": {
+					"description": "The range of block age",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				}
+			}
+		},
 		"LoreData": {
 			"type": "array",
 			"items": "string" //regex type
@@ -2693,6 +2871,12 @@
 					"items": "material",
 					"default": []
 				},
+				"type": {
+					"description": "An item type. Can be used instead of `types` for single items",
+					"required": false,
+					"type": "material",
+					"default": "STONE"
+				},
 				"amount": {
 					"description": "The range of item amount",
 					"required": false,
@@ -2725,6 +2909,63 @@
 			"description": "A potion effect",
 			"type": "string",
 			"enum": ["SPEED", "SLOW", "FAST_DIGGING", "SLOW_DIGGING", "INCREASE_DAMAGE", "HEAL", "HARM", "JUMP", "CONFUSION", "REGENERATION", "DAMAGE_RESISTANCE", "FIRE_RESISTANCE", "WATER_BREATHING", "INVISIBILITY", "BLINDNESS", "NIGHT_VISION", "HUNGER", "WEAKNESS", "POISON", "WITHER", "HEALTH_BOOST", "ABSORPTION", "SATURATION", "GLOWING", "LEVITATION", "LUCK", "UNLUCK", "SLOW_FALLING", "CONDUIT_POWER", "DOLPHINS_GRACE", "BAD_OMEN", "HERO_OF_THE_VILLAGE", "DARKNESS"]
+		},
+		"dyeColor": {
+			"description": "A dye color",
+			"type": "string",
+			"enum": [
+				"BLACK",
+				"BLUE",
+				"BROWN",
+				"CYAN",
+				"GRAY",
+				"GREEN",
+				"LIGHT_BLUE",
+				"LIGHT_GRAY",
+				"LIME",
+				"MAGENTA",
+				"ORANGE",
+				"PINK",
+				"PURPLE",
+				"RED",
+				"WHITE",
+				"YELLOW"
+			]
+		},
+		"axolotlVariant": {
+			"description": "A variant of axolotls",
+			"type": "string",
+			"enum": [
+				"BLUE",
+				"CYAN",
+				"GOLD",
+				"LUCY", // Leucistic (pink)
+				"WILD" // brown
+			]
+		},
+		"horseColor": {
+			"description": "A color of horses",
+			"type": "string",
+			"enum": [
+				"BLACK",
+				"BROWN",
+				"CHESTNUT",
+				"CREAMY",
+				"DARK_BROWN",
+				"GRAY",
+				"WHITE"
+			]
+		},
+		"horseStyle": {
+			"description": "A style/markings of horses",
+			"type": "string",
+			"enum": [
+				"BLACK_DOTS",
+				"NONE",
+				"WHITE",
+				"WHITE_DOTS",
+				"WHITEFIELD"
+			]
 		},
 		"damageCause": {
 			"description": "A damage cause",

@@ -354,9 +354,10 @@
 		"stringTypes": {
 			"enum": [
 				"string", 
-				"range", "comparison", "operation", 
+				"range", "comparison", "operation", "attributeOperation",
 				"entity", "material", "blockFace", 
-				"enchantment", "potion", 
+				"enchantment", "potion", "dyeColor",
+				"axolotlVariant", "horseColor", "horseStyle",
 				"damageCause", "action",
 				"biome", "world", 
 				"equipmentSlot", 
@@ -368,7 +369,7 @@
 		},
 		"objectTypes": {
 			"enum": [
-				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData", "BlockDataData",
+				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData", "BlockDataData", "BlockDataComparison",
 				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData"
 			]
 		},
