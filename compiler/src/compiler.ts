@@ -150,11 +150,11 @@ export class Compiler {
 				compilingProperty.parent.addRequired(compilingProperty.name)
 			}
 		},
-		type: (type, compilingProperty) => {
+		type: (type: Preprocessed.PropertyTypes | Preprocessed.PropertyTypes[], compilingProperty) => {
 			if (type instanceof Array) {
-				type.forEach(type => compilingProperty.addType(type))
-			} else {
 				compilingProperty.addType(type)
+			} else {
+				compilingProperty.addType([type])
 			}
 		},
 		min: (min, compilingProperty) => {
