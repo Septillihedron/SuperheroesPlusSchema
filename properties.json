@@ -1983,7 +1983,7 @@
 				"entity": {
 					"description": "The entity to spawn",
 					"required": true,
-					"type": "entity"
+					"type": "EntityData"
 				}
 			}
 		},

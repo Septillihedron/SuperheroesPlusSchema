@@ -12777,7 +12777,7 @@
                 },
                 "entity": {
                     "description": "The entity to spawn",
-                    "$ref": "#/types/entity"
+                    "$ref": "#/types/EntityData"
                 }
             },
             "required": [
