@@ -79,7 +79,6 @@
                 "type": {
                     "type": "string",
                     "oneOf": [
-                        {},
                         {
                             "const": "DAMAGEDENTITY",
                             "description": "Triggers when the user damage an entity. \nThe target entity will be set as the damaged entity"
@@ -215,6 +214,14 @@
                         {
                             "const": "TOTEM",
                             "description": "Triggers when the user activates a totem. \nThe target entity will be set as the killer of the user"
+                        },
+                        {
+                            "const": "CONSUME",
+                            "description": "Triggers when the user consumed an item"
+                        },
+                        {
+                            "const": "MOVE",
+                            "description": "Triggers when the user moves. \nThe location will be set as the location the user moves to"
                         }
                     ],
                     "description": "The type of trigger"
@@ -643,6 +650,30 @@
                         "then": {
                             "$ref": "#/triggers/TOTEM"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CONSUME"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/CONSUME"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "MOVE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/triggers/MOVE"
+                        }
                     }
                 ]
             },
@@ -657,7 +688,6 @@
                 "type": {
                     "type": "string",
                     "oneOf": [
-                        {},
                         {
                             "const": "HEALTH",
                             "description": "Checks if the hp percentage of the user or target entity is in the range"
@@ -773,6 +803,10 @@
                         {
                             "const": "ITEMWRAPPER",
                             "description": "Checks if all inside conditions are true. \nThe item will be set as the item in the specified slot of the user or target entity"
+                        },
+                        {
+                            "const": "SWIMMING",
+                            "description": "Checks if the user or target entity is swimming"
                         }
                     ],
                     "description": "The type of the condition"
@@ -1148,6 +1182,18 @@
                         "then": {
                             "$ref": "#/conditions/ITEMWRAPPER"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SWIMMING"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/SWIMMING"
+                        }
                     }
                 ]
             }
@@ -1159,7 +1205,6 @@
                 "type": {
                     "type": "string",
                     "oneOf": [
-                        {},
                         {
                             "const": "DAMAGE",
                             "description": "Damages the user or the target entity"
@@ -1198,7 +1243,7 @@
                         },
                         {
                             "const": "ARROW",
-                            "description": "Shoot an arrow to the location or the location of the user or target entity"
+                            "description": "Shoot an arrow to the location of the target entity"
                         },
                         {
                             "const": "ATTRIBUTE",
@@ -1226,6 +1271,10 @@
                         },
                         {
                             "const": "SMITE",
+                            "description": "Smites the user or target entity"
+                        },
+                        {
+                            "const": "LIGHTNING",
                             "description": "Smites the user or target entity"
                         },
                         {
@@ -1278,6 +1327,10 @@
                         },
                         {
                             "const": "IGNITE",
+                            "description": "Sets the user or target entity on fire"
+                        },
+                        {
+                            "const": "FIRE",
                             "description": "Sets the user or target entity on fire"
                         },
                         {
@@ -1359,6 +1412,10 @@
                         {
                             "const": "VEINMINER",
                             "description": "Breaks surrounding blocks around a location recursively"
+                        },
+                        {
+                            "const": "ACTIONBAR",
+                            "description": "Sends an action bar to the user or target entity"
                         }
                     ],
                     "description": "The type of the effect"
@@ -1586,6 +1643,18 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "LIGHTNING"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/LIGHTNING"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "FLING"
                                 }
                             }
@@ -1736,6 +1805,18 @@
                         },
                         "then": {
                             "$ref": "#/effects/IGNITE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FIRE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/FIRE"
                         }
                     },
                     {
@@ -1977,6 +2058,18 @@
                         "then": {
                             "$ref": "#/effects/VEINMINER"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ACTIONBAR"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/ACTIONBAR"
+                        }
                     }
                 ]
             }
@@ -1987,7 +2080,6 @@
                 "type": {
                     "type": "string",
                     "oneOf": [
-                        {},
                         {
                             "const": "BLANK",
                             "description": "No damage modifier"
@@ -2075,7 +2167,6 @@
                 "type": {
                     "type": "string",
                     "oneOf": [
-                        {},
                         {
                             "const": "BASIC",
                             "description": "Gives experience, items, and executes commands"
@@ -2132,11 +2223,7 @@
                 "conditions": true,
                 "onlyProjectiles": {
                     "description": "If true, will only trigger if the damaging entity is a projectile. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": false
                 }
             }
@@ -2148,11 +2235,7 @@
                 "conditions": true,
                 "onlyProjectiles": {
                     "description": "If true, will only trigger if the damage is from a projectile. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": false
                 }
             }
@@ -2178,17 +2261,9 @@
                 "conditions": true,
                 "causes": {
                     "description": "The causes of damage. Defaults to all damage causes",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/damageCause"
-                            }
-                        ]
+                        "$ref": "#/types/damageCause"
                     },
                     "default": []
                 }
@@ -2222,11 +2297,7 @@
                 "conditions": true,
                 "period": {
                     "description": "The delay period in seconds (1 = 20 ticks). \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 }
             }
@@ -2315,11 +2386,7 @@
                 "conditions": true,
                 "onlyProjectiles": {
                     "description": "If true, will only trigger if the damage is from a projectile. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": false
                 }
             }
@@ -2338,17 +2405,9 @@
                 "conditions": true,
                 "actions": {
                     "description": "The interactions that will trigger this trigger. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/action"
-                            }
-                        ]
+                        "$ref": "#/types/action"
                     },
                     "default": []
                 }
@@ -2368,17 +2427,9 @@
                 "conditions": true,
                 "effects": {
                     "description": "The potion effects that will trigger this trigger. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/potion"
-                            }
-                        ]
+                        "$ref": "#/types/potion"
                     },
                     "default": []
                 }
@@ -2432,6 +2483,20 @@
                 "type": true,
                 "conditions": true
             }
+        },
+        "CONSUME": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
+        },
+        "MOVE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "conditions": true
+            }
         }
     },
     "conditions": {
@@ -2449,22 +2514,14 @@
                 "else": true,
                 "minimumHealthPercentage": {
                     "description": "The minimum hp percentage. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "minimum": 0,
                     "maximum": 100,
                     "default": 0
                 },
                 "maximumHealthPercentage": {
                     "description": "The maximum hp percentage. \nDefaults to 100",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "minimum": 0,
                     "maximum": 100,
                     "default": 100
@@ -2487,11 +2544,7 @@
                 "else": true,
                 "chance": {
                     "description": "The chance that is used. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "minimum": 0,
                     "maximum": 1,
                     "default": 1
@@ -2514,11 +2567,7 @@
                 "else": true,
                 "cooldown": {
                     "description": "The cooldown time that is used in seconds. \nDefaults to 10",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 10
                 }
             },
@@ -2539,26 +2588,14 @@
                 "else": true,
                 "whitelist": {
                     "description": "If true, the entities property will whitelist. If false, the entities property will blacklist. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 },
                 "entities": {
                     "description": "The list of entities to be whitelisted/blacklisted. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/entity"
-                            }
-                        ]
+                        "$ref": "#/types/entity"
                     },
                     "default": []
                 }
@@ -2581,20 +2618,12 @@
                 "else": true,
                 "minimumSize": {
                     "description": "The minimum size. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 0
                 },
                 "maximumSize": {
                     "description": "The maximum size. \nDefaults to 4",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 4
                 }
             },
@@ -2616,11 +2645,7 @@
                 "else": true,
                 "condition": {
                     "description": "The condition to invert",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/condition"
-                        }
-                    ]
+                    "$ref": "#/types/condition"
                 }
             },
             "required": [
@@ -2642,11 +2667,7 @@
                 "else": true,
                 "sneak": {
                     "description": "If true, checks if the entity is shifting. If false, it checks the opposite. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
             },
@@ -2667,21 +2688,18 @@
                 "else": true,
                 "minimumTime": {
                     "description": "The minimum time. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 0
                 },
                 "maximumTime": {
                     "description": "The maximum time. \nDefaults to 24000",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 24000
+                },
+                "time": {
+                    "description": "A range for time. \nDefaults to \"0 - 24000\"",
+                    "$ref": "#/types/range",
+                    "default": "0 - 24000"
                 }
             },
             "required": [
@@ -2702,11 +2720,7 @@
                 "else": true,
                 "grounded": {
                     "description": "If true, checks if the entity is on the ground. If false, it checks the opposite. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
             },
@@ -2727,11 +2741,7 @@
                 "else": true,
                 "shouldGlide": {
                     "description": "If true, checks if the entity is gliding. If false, it checks the opposite. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
             },
@@ -2754,17 +2764,9 @@
                 "else": true,
                 "biomes": {
                     "description": "The list of biomes. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/biome"
-                            }
-                        ]
+                        "$ref": "#/types/biome"
                     },
                     "default": []
                 }
@@ -2781,20 +2783,12 @@
                 "else": true,
                 "comparison": {
                     "description": "The comparison to use. \nDefaults to \"EQUALS\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/comparison"
-                        }
-                    ],
+                    "$ref": "#/types/comparison",
                     "default": "EQUALS"
                 },
                 "value": {
                     "description": "The value to compare against. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 0
                 }
             },
@@ -2814,21 +2808,20 @@
                     ]
                 },
                 "else": true,
-                "comparison": true,
-                "value": true,
+                "comparison": {
+                    "description": "The comparison to use. \nDefaults to \"EQUALS\"",
+                    "$ref": "#/types/comparison",
+                    "default": "EQUALS"
+                },
+                "value": {
+                    "description": "The value to compare against. \nDefaults to 0",
+                    "type": "number",
+                    "default": 0
+                },
                 "variable": {
                     "description": "The variable to compare",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ]
+                    "type": "string"
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/conditions/COMPARISON",
-                "additionalProperties": true
             },
             "required": [
                 "mode",
@@ -2849,11 +2842,7 @@
                 "else": true,
                 "isNPC": {
                     "description": "If true, checks if the entity is an npc. If false, it checks the opposite. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": false
                 }
             },
@@ -2891,17 +2880,9 @@
                 "else": true,
                 "blocks": {
                     "description": "The list of blocks. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/block"
-                            }
-                        ]
+                        "$ref": "#/types/material"
                     },
                     "default": []
                 }
@@ -2925,17 +2906,9 @@
                 "else": true,
                 "worlds": {
                     "description": "The list of worlds. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/world"
-                            }
-                        ]
+                        "$ref": "#/types/world"
                     },
                     "default": []
                 }
@@ -2957,11 +2930,7 @@
                 "else": true,
                 "checkOwner": {
                     "description": "If true, also checks if the user is the owner. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
             },
@@ -3000,11 +2969,7 @@
                 "else": true,
                 "height": {
                     "description": "The range in blocks. \nDefaults to \"-Infinity - Infinity\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/range"
-                        }
-                    ],
+                    "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
             },
@@ -3025,17 +2990,9 @@
                 "else": true,
                 "materials": {
                     "description": "The list of blocks. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/block"
-                            }
-                        ]
+                        "$ref": "#/types/material"
                     },
                     "default": []
                 }
@@ -3071,11 +3028,7 @@
                 },
                 "item": {
                     "description": "The item to check against",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/ItemComparisonData"
-                        }
-                    ]
+                    "$ref": "#/types/ItemComparisonData"
                 }
             },
             "required": [
@@ -3097,21 +3050,13 @@
                 "else": true,
                 "conditions": {
                     "description": "The conditions to OR. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "type": "object"
-                        }
-                    ],
+                    "type": "object",
                     "default": {},
                     "additionalProperties": false,
                     "patternProperties": {
                         "\\w": {
                             "description": "A condition to OR. \nDefaults to {}",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/condition"
-                                }
-                            ],
+                            "$ref": "#/types/condition",
                             "default": {}
                         }
                     }
@@ -3134,11 +3079,7 @@
                 "else": true,
                 "maxDistance": {
                     "description": "The maximum distance to the target entity. \nDefaults to 16",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 16
                 }
             },
@@ -3161,11 +3102,7 @@
                 "else": true,
                 "temperature": {
                     "description": "The range of tempreture from -1 to 1. \nDefaults to \"-Infinity - Infinity\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/range"
-                        }
-                    ],
+                    "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
             },
@@ -3187,17 +3124,9 @@
                 "else": true,
                 "entities": {
                     "description": "The list of bosses. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "default": []
                 }
@@ -3219,11 +3148,7 @@
                 "else": true,
                 "distance": {
                     "description": "The squared distance range in blocks. \nDefaults to \"-Infinity - Infinity\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/range"
-                        }
-                    ],
+                    "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
             },
@@ -3255,21 +3180,13 @@
                 "else": true,
                 "conditions": {
                     "description": "The conditions to check. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "type": "object"
-                        }
-                    ],
+                    "type": "object",
                     "default": {},
                     "additionalProperties": false,
                     "patternProperties": {
                         ".*": {
                             "description": "A condition",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/condition"
-                                }
-                            ]
+                            "$ref": "#/types/condition"
                         }
                     }
                 }
@@ -3287,7 +3204,18 @@
                     ]
                 },
                 "else": true,
-                "conditions": true,
+                "conditions": {
+                    "description": "The conditions to check. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        ".*": {
+                            "description": "A condition",
+                            "$ref": "#/types/condition"
+                        }
+                    }
+                },
                 "slot": {
                     "description": "The slot for the item. \nDefaults to \"HAND\"",
                     "anyOf": [
@@ -3300,12 +3228,24 @@
                     ],
                     "default": "HAND"
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/conditions/WRAPPER",
-                "additionalProperties": true
             }
+        },
+        "SWIMMING": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "else": true
+            },
+            "required": [
+                "mode"
+            ]
         }
     },
     "effects": {
@@ -3322,20 +3262,12 @@
                 },
                 "damage": {
                     "description": "The amount damage that will be dealt. \nDefaults to 5",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 5
                 },
                 "cause": {
                     "description": "The type of damage that will be dealt. \nDefaults to \"CUSTOM\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/damageCause"
-                        }
-                    ],
+                    "$ref": "#/types/damageCause",
                     "default": "CUSTOM"
                 }
             },
@@ -3350,42 +3282,26 @@
                 "mode": {},
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "type": "object"
-                        }
-                    ],
+                    "type": "object",
                     "default": {},
                     "additionalProperties": false,
                     "patternProperties": {
                         "\\w": {
                             "description": "A condition. \nDefaults to {}",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/condition"
-                                }
-                            ],
+                            "$ref": "#/types/condition",
                             "default": {}
                         }
                     }
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "type": "object"
-                        }
-                    ],
+                    "type": "object",
                     "default": {},
                     "additionalProperties": false,
                     "patternProperties": {
                         "\\w": {
                             "description": "An effect. \nDefaults to {}",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/effect"
-                                }
-                            ],
+                            "$ref": "#/types/effect",
                             "default": {}
                         }
                     }
@@ -3402,22 +3318,37 @@
                         "SELF"
                     ]
                 },
-                "conditions": true,
-                "effects": true,
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                },
                 "radius": {
                     "description": "Half the side length of the box. \nDefaults to 5",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 5
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
             }
         },
         "VELOCITY": {
@@ -3433,11 +3364,7 @@
                 },
                 "velocity": {
                     "description": "The Y velocity to set to. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 }
             },
@@ -3473,11 +3400,7 @@
                 },
                 "glide": {
                     "description": "If true, makes the user or target entity glide. If false, makes the user or target entity stop gliding. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
             },
@@ -3497,22 +3420,37 @@
                         "LOCATION"
                     ]
                 },
-                "conditions": true,
-                "effects": true,
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                },
                 "delay": {
                     "description": "The delay time in seconds (1 is 20 ticks). \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
             },
             "required": [
                 "delay"
@@ -3531,11 +3469,7 @@
                 },
                 "potion": {
                     "description": "The potion effect. \nDefaults to {\"type\":\"REGENERATION\",\"potency\":1,\"duration\":10}",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/PotionEffectData"
-                        }
-                    ],
+                    "$ref": "#/types/PotionEffectData",
                     "default": {
                         "type": "REGENERATION",
                         "potency": 1,
@@ -3559,20 +3493,12 @@
                 },
                 "duration": {
                     "description": "The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back. \nDefaults to -1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": -1
                 },
                 "block": {
                     "description": "The block to change to. \nDefaults to \"COBWEB\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/block"
-                        }
-                    ],
+                    "$ref": "#/types/material",
                     "default": "COBWEB"
                 }
             },
@@ -3592,20 +3518,12 @@
                 },
                 "duration": {
                     "description": "The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back. \nDefaults to -1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": -1
                 },
                 "block": {
                     "description": "The block to change to. \nDefaults to \"COBWEB\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/block"
-                        }
-                    ],
+                    "$ref": "#/types/material",
                     "default": "COBWEB"
                 }
             },
@@ -3620,45 +3538,27 @@
                 "mode": {
                     "enum": [
                         "ALL",
-                        "SELF",
-                        "OTHER",
-                        "LOCATION"
+                        "OTHER"
                     ]
                 },
                 "velocity": {
                     "description": "Used to determine the time that it takes to hit by (pythagoras distance)/velocity. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 },
                 "entity": {
                     "description": "The entity launch. \nDefaults to \"arrow\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/entity"
-                        }
-                    ],
+                    "$ref": "#/types/entity",
                     "default": "arrow"
                 },
                 "damage": {
                     "description": "If projectile entity is an arrow, the damage that the arrow will do. \nDefaults to 4",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 4
                 },
                 "fireTicks": {
                     "description": "The amount of ticks the projectile will be on fire. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 0
                 }
             },
@@ -3673,19 +3573,11 @@
                 "mode": {},
                 "operation": {
                     "description": "The operation to do",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/operation"
-                        }
-                    ]
+                    "$ref": "#/types/operation"
                 },
                 "value": {
                     "description": "The number on the right side of the operation. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 }
             },
@@ -3705,24 +3597,23 @@
                         "OTHER"
                     ]
                 },
-                "operation": true,
-                "value": true,
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
                 "attribute": {
                     "description": "The attribute to modify. The name of the attribute should exclude the \"GENERIC_\" in the begining",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/attribute"
-                        }
-                    ]
+                    "$ref": "#/types/attribute"
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/MODIFY",
-                "additionalProperties": true
             },
             "required": [
                 "mode",
+                "operation",
                 "attribute"
             ]
         },
@@ -3741,11 +3632,7 @@
             "properties": {
                 "type": {
                     "description": "The entity to launch. \nDefaults to \"FIREBALL\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/entity"
-                        }
-                    ],
+                    "$ref": "#/types/entity",
                     "default": "FIREBALL"
                 },
                 "mode": {
@@ -3756,11 +3643,7 @@
                 },
                 "velocity": {
                     "description": "The speed to launch at. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 }
             },
@@ -3781,11 +3664,7 @@
                 },
                 "message": {
                     "description": "The message to send. The first occurence of \"player\" will be replaced by the player name",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ]
+                    "type": "string"
                 }
             },
             "required": [
@@ -3820,11 +3699,7 @@
                 },
                 "velocity": {
                     "description": "The speed to repulse the target entity. Positive value means into the user. Negative value means away from the user. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 }
             },
@@ -3843,25 +3718,24 @@
                         "OTHER"
                     ]
                 },
-                "operation": true,
-                "value": true,
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
                 "retainHealth": {
                     "description": "For slimes and magma cubes. If true, make the entity retain the previous health, if more than the new max health, it sets it to the new max health. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
             },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/MODIFY",
-                "additionalProperties": true
-            },
             "required": [
-                "mode"
+                "mode",
+                "operation"
             ]
         },
         "SMITE": {
@@ -3877,11 +3751,28 @@
                 },
                 "fake": {
                     "description": "If true, it only makes the effect of lightning, not summoning an actual lightning. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "LIGHTNING": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "fake": {
+                    "description": "If true, it only makes the effect of lightning, not summoning an actual lightning. \nDefaults to false",
+                    "type": "boolean",
                     "default": false
                 }
             },
@@ -3902,11 +3793,7 @@
                 },
                 "velocity": {
                     "description": "The Y velocity to set to. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 }
             },
@@ -3925,24 +3812,23 @@
                         "OTHER"
                     ]
                 },
-                "operation": true,
-                "value": true,
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
                 "variable": {
                     "description": "The name of the variable",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ]
+                    "type": "string"
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/MODIFY",
-                "additionalProperties": true
             },
             "required": [
                 "mode",
+                "operation",
                 "variable"
             ]
         },
@@ -3959,20 +3845,12 @@
                 },
                 "dropIfFull": {
                     "description": "If true, drops the items that did not fit into the inventory. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 },
                 "item": {
                     "description": "The item to give",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/ItemStackData"
-                        }
-                    ]
+                    "$ref": "#/types/ItemStackData"
                 }
             },
             "required": [
@@ -4009,20 +3887,12 @@
                 },
                 "minDistance": {
                     "description": "The minimum distance. \nDefaults to 5",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 5
                 },
                 "maxDistance": {
                     "description": "The maximum distance. \nDefaults to 5",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 5
                 }
             },
@@ -4044,19 +3914,11 @@
                 },
                 "entity": {
                     "description": "The entity to shoot",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/EntityData"
-                        }
-                    ]
+                    "$ref": "#/types/EntityData"
                 },
                 "velocity": {
                     "description": "The shooting velocity. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 }
             },
@@ -4079,11 +3941,7 @@
                 },
                 "sound": {
                     "description": "The sound data",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/SoundData"
-                        }
-                    ]
+                    "$ref": "#/types/SoundData"
                 }
             },
             "required": [
@@ -4104,11 +3962,7 @@
                 },
                 "executor": {
                     "description": "The executor that will execute the command. \nDefaults to \"CONSOLE\"",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ],
+                    "type": "string",
                     "enum": [
                         "CONSOLE",
                         "PLAYER"
@@ -4117,17 +3971,9 @@
                 },
                 "commands": {
                     "description": "The list of commands to execute. \"%self_name%\" will be interpreted as the user if the user is a player. Otherwise, \"%target_name%\" will be interpreted as the target entity if the target entity is a player. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "default": []
                 }
@@ -4149,29 +3995,17 @@
                 },
                 "horizontalVelocity": {
                     "description": "The scale to scale the horizontal components of the velocity vector. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 0
                 },
                 "verticalVelocity": {
                     "description": "The scale to scale the vertical components of the velocity vector. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 0
                 },
                 "overwrite": {
                     "description": "If true, sets the velocity vector. If false, adds to the velocity vector. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
             },
@@ -4191,22 +4025,37 @@
                         "LOCATION"
                     ]
                 },
-                "conditions": true,
-                "effects": true,
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                },
                 "radius": {
                     "description": "Half the side length of the box. \nDefaults to 5",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 5
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
             }
         },
         "SHOOTER": {
@@ -4219,22 +4068,37 @@
                         "OTHER"
                     ]
                 },
-                "conditions": true,
-                "effects": true,
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                },
                 "onlyProjectiles": {
                     "description": "If true, only triggers if the original target entity is a projectile. If false, keep the target entity the same. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
             }
         },
         "KNOCKBACK": {
@@ -4249,20 +4113,12 @@
                 },
                 "multiplier": {
                     "description": "The velocity to apply. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 },
                 "overwriteCurrentVelocity": {
                     "description": "If true, sets the velocity of the target entity. If false, adds to the original velocity of the target entity. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
             },
@@ -4282,13 +4138,30 @@
                     ]
                 },
                 "fireTicks": {
-                    "description": "The amount of time the fire will last (in ticks). \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
-                    "default": 0
+                    "description": "The amount of time the fire will last (in ticks). \nDefaults to 40",
+                    "type": "integer",
+                    "default": 40
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "FIRE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "fireTicks": {
+                    "description": "The amount of time the fire will last (in ticks). \nDefaults to 40",
+                    "type": "integer",
+                    "default": 40
                 }
             },
             "required": [
@@ -4337,44 +4210,51 @@
                         "LOCATION"
                     ]
                 },
-                "conditions": true,
-                "effects": true,
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                },
                 "verticalRadius": {
                     "description": "Half of the vertical side length of the cube. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 0
                 },
                 "horizontalRadius": {
                     "description": "Half of the horizontal side length of the cube. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 0
                 },
                 "offset": {
                     "description": "The offset from the original location. \nDefaults to {\"x\":0,\"y\":0,\"z\":0}",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/VectorData"
-                        }
-                    ],
+                    "$ref": "#/types/VectorData",
                     "default": {
                         "x": 0,
                         "y": 0,
                         "z": 0
                     }
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
             }
         },
         "PLACEBLOCK": {
@@ -4388,30 +4268,23 @@
                     ]
                 },
                 "material": {
-                    "description": "The block to replace to. \nDefaults to \"STONE\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/block"
-                        }
-                    ],
-                    "default": "STONE"
+                    "description": "The block to replace to, will override the \"block\" property if it exist. \nDefaults to null",
+                    "$ref": "#/types/material",
+                    "default": null
+                },
+                "block": {
+                    "description": "The data for the block to replace to, requires the \"material\" property to not exist or be null. \nDefaults to {}",
+                    "$ref": "#/types/BlockDataData",
+                    "default": {}
                 },
                 "updatePhysics": {
                     "description": "If false, does not update neighboring blocks. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 },
                 "revertsAfter": {
                     "description": "Time before the block reverts to the original block in seconds (1 is 20 ticks). If less than or equal to 0, does not revert the original block. \nDefaults to -1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": -1
                 }
             },
@@ -4433,11 +4306,7 @@
                 },
                 "entity": {
                     "description": "The entity to spawn",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/entity"
-                        }
-                    ]
+                    "$ref": "#/types/EntityData"
                 }
             },
             "required": [
@@ -4458,17 +4327,9 @@
                 },
                 "types": {
                     "description": "The list of potion types. If empty, removes all potion effect. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/potion"
-                            }
-                        ]
+                        "$ref": "#/types/potion"
                     },
                     "default": []
                 }
@@ -4504,58 +4365,57 @@
                         "OTHER"
                     ]
                 },
-                "conditions": true,
-                "effects": true,
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                },
                 "maxDistance": {
                     "description": "The maximum distance the raytrace can collide. \nDefaults to 10",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 10
                 },
                 "alwaysHit": {
                     "description": "If true, if the raytrace does not hit anything, the location will be set as the maxDistance in the direction the user is looking. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 },
                 "ignorePassanles": {
                     "description": "Whether to ignore passable blocks (ex. tall grass, signs, fluids). \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 },
                 "raySize": {
                     "description": "The collision size of the ray. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 },
                 "collisionMode": {
                     "description": "The collision behavior when a fluid gets hit by the raytrace. \nDefaults to \"NEVER\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/collisionMode"
-                        }
-                    ],
+                    "$ref": "#/types/collisionMode",
                     "default": "NEVER"
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
             }
         },
         "TIMER": {
@@ -4570,40 +4430,47 @@
                         "LOCATION"
                     ]
                 },
-                "conditions": true,
-                "effects": true,
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                },
                 "delay": {
                     "description": "The initial delay in seconds (1 is 20 ticks). \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 },
                 "period": {
                     "description": "The delay between triggers in seconds (1 is 20 ticks). \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 },
                 "numberOfRepeats": {
                     "description": "The number of times this trigger will trigger. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 1
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
             }
         },
         "REMOVEENTITY": {
@@ -4633,8 +4500,32 @@
                         "OTHER"
                     ]
                 },
-                "conditions": true,
-                "effects": true,
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                },
                 "slot": {
                     "description": "The slot of the item. \nDefaults to \"HAND\"",
                     "anyOf": [
@@ -4647,11 +4538,6 @@
                     ],
                     "default": "HAND"
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
             }
         },
         "ITEMAMOUNT": {
@@ -4664,16 +4550,19 @@
                         "ITEM"
                     ]
                 },
-                "operation": true,
-                "value": true
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/MODIFY",
-                "additionalProperties": true
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                }
             },
             "required": [
-                "mode"
+                "mode",
+                "operation"
             ]
         },
         "SWITCHEROO": {
@@ -4686,13 +4575,32 @@
                         "OTHER"
                     ]
                 },
-                "conditions": true,
-                "effects": true
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                }
             }
         },
         "LOCATIONOFFSET": {
@@ -4707,26 +4615,41 @@
                         "LOCATION"
                     ]
                 },
-                "conditions": true,
-                "effects": true,
+                "conditions": {
+                    "description": "The list of conditions. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "A condition. \nDefaults to {}",
+                            "$ref": "#/types/condition",
+                            "default": {}
+                        }
+                    }
+                },
+                "effects": {
+                    "description": "The list of effects. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "\\w": {
+                            "description": "An effect. \nDefaults to {}",
+                            "$ref": "#/types/effect",
+                            "default": {}
+                        }
+                    }
+                },
                 "offset": {
                     "description": "The offset from the original location. \nDefaults to {\"x\":0,\"y\":0,\"z\":0}",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/VectorData"
-                        }
-                    ],
+                    "$ref": "#/types/VectorData",
                     "default": {
                         "x": 0,
                         "y": 0,
                         "z": 0
                     }
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/WRAPPER",
-                "additionalProperties": true
             }
         },
         "BONEMEAL": {
@@ -4743,17 +4666,9 @@
                 },
                 "faces": {
                     "description": "The list of faces to apply bonemeal from. \nDefaults to [\"UP\",\"DOWN\",\"NORTH\",\"SOUTH\",\"EAST\",\"WEST\"]",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/blockFace"
-                            }
-                        ]
+                        "$ref": "#/types/blockFace"
                     },
                     "default": [
                         "UP",
@@ -4780,16 +4695,19 @@
                         "OTHER"
                     ]
                 },
-                "operation": true,
-                "value": true
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/effects/MODIFY",
-                "additionalProperties": true
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                }
             },
             "required": [
-                "mode"
+                "mode",
+                "operation"
             ]
         },
         "LOSETARGET": {
@@ -4820,28 +4738,16 @@
                 },
                 "amount": {
                     "description": "The amount of minions to spawn. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 1
                 },
                 "spawn": {
                     "description": "The name of the boss to spawn",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ]
+                    "type": "string"
                 },
                 "spawnOnTarget": {
                     "description": "Whether or not to spawn on the target entity when using mode \"OTHER\". \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 }
             },
@@ -4862,11 +4768,7 @@
                 },
                 "rider": {
                     "description": "The name of the boss to spawn",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ]
+                    "type": "string"
                 }
             },
             "required": [
@@ -4886,41 +4788,46 @@
                 },
                 "types": {
                     "description": "The list of types that can be broken",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/block"
-                            }
-                        ]
+                        "$ref": "#/types/material"
                     }
                 },
                 "delay": {
                     "description": "The delay between each break is seconds (1 is 20 ticks). \nDefaults to 0.5",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 0.5
                 },
                 "allowMultiTypeVein": {
                     "description": "If true, the vein will break all types in the list instead of only breaking the same type of block as the one in original location. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": false
                 }
             },
             "required": [
                 "mode",
                 "types"
+            ]
+        },
+        "ACTIONBAR": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "message": {
+                    "description": "The message to send, instances of the text \"<player>\" will be changed to the name of the player that this is sent",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "mode",
+                "message"
             ]
         }
     },
@@ -4937,20 +4844,12 @@
                 "type": true,
                 "expectedMaximumDamage": {
                     "description": "The width of the parabola. \nThe variable b on desmos. \nDefaults to 30",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 30
                 },
                 "damageCap": {
                     "description": "The maximum of the parabola. \nThe variable k on desmos. \nDefaults to 15",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 15
                 }
             }
@@ -4959,22 +4858,21 @@
             "additionalProperties": false,
             "properties": {
                 "type": true,
-                "expectedMaximumDamage": true,
-                "damageCap": true,
+                "expectedMaximumDamage": {
+                    "description": "The width of the parabola. \nThe variable b on desmos. \nDefaults to 30",
+                    "type": "number",
+                    "default": 30
+                },
+                "damageCap": {
+                    "description": "The maximum of the parabola. \nThe variable k on desmos. \nDefaults to 15",
+                    "type": "number",
+                    "default": 15
+                },
                 "playerScalingModifier": {
                     "description": "The power the number of players is raised by. \nRecommended not to set to above one as then it will punish players for bringing teammates. \nThe variable w on desmos. \nDefaults to 0.5",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 0.5
                 }
-            },
-            "if": true,
-            "then": {
-                "$ref": "#/damagemodifiers/EASED",
-                "additionalProperties": true
             }
         },
         "PLAYERADJUSTED": {
@@ -4983,11 +4881,7 @@
                 "type": true,
                 "playerScalingModifier": {
                     "description": "The power the number of players is raised by. \nRecommended not to set to above one as then it will punish players for bringing teammates. \nThe variable w on desmos. \nDefaults to 0.5",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 0.5
                 }
             }
@@ -5000,47 +4894,27 @@
                 "type": true,
                 "commands": {
                     "description": "The list of commands to execute. \nAll instances of \"<player>\" will be replaced by the player name. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "default": []
                 },
                 "items": {
                     "description": "The map of items to give to the player. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "type": "object"
-                        }
-                    ],
+                    "type": "object",
                     "additionalProperties": false,
                     "patternProperties": {
                         ".*": {
                             "description": "An item to give",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/ItemStackData"
-                                }
-                            ]
+                            "$ref": "#/types/ItemStackData"
                         }
                     },
                     "default": {}
                 },
                 "experience": {
                     "description": "The amount of experience to give. \nDefaults to 100",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 100
                 }
             }
@@ -5061,11 +4935,7 @@
         },
         "comparison": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "=",
                 "==",
@@ -5082,11 +4952,7 @@
         },
         "operation": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "ADD",
                 "SUBTRACT",
@@ -5095,162 +4961,99 @@
                 "SET"
             ]
         },
+        "attributeOperation": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "ADD_NUMBER",
+                "ADD_SCALAR",
+                "MULTIPLY_SCALAR_1"
+            ]
+        },
         "SpawnData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "enabled": {
                     "description": "Whether the spawn behavior is enabled. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": false
                 },
                 "weighting": {
                     "description": "The weighting of the spawn behavior. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 1
                 },
                 "biomes": {
                     "description": "The list of biomes that this boss can or cannot spawn in. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/biome"
-                            }
-                        ]
+                        "$ref": "#/types/biome"
                     },
                     "default": []
                 },
                 "worlds": {
                     "description": "The list of worlds that this boss can spawn in. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/world"
-                            }
-                        ]
+                        "$ref": "#/types/world"
                     },
                     "default": []
                 },
                 "biomesWhitelist": {
                     "description": "Whether the biomes list is a whitelist or blacklist. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 },
                 "spaceNeeded": {
                     "description": "The space needed to spawn the boss. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 0
                 },
                 "spawnOnAir": {
                     "description": "Whether the boss can spawn on air. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": false
                 },
                 "maxHeight": {
                     "description": "The maximum height the boss can spawn at. -1 for world height. \nDefaults to -1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": -1
                 }
             }
         },
         "BossBarData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "enabled": {
                     "description": "Whether the boss bar is enabled. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": false
                 },
                 "flags": {
                     "description": "The flags for the boss bar. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/bossBarFlag"
-                            }
-                        ]
+                        "$ref": "#/types/bossBarFlag"
                     },
                     "default": []
                 },
                 "color": {
                     "description": "The color of the boss bar. \nDefaults to \"PURPLE\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/bossBarColor"
-                        }
-                    ],
+                    "$ref": "#/types/bossBarColor",
                     "default": "PURPLE"
                 },
                 "style": {
                     "description": "The style of the boss bar. \nDefaults to \"PROGRESS\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/bossBarStyle"
-                        }
-                    ],
+                    "$ref": "#/types/bossBarStyle",
                     "default": "PROGRESS"
                 }
             }
         },
         "bossBarFlag": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "DARKEN_SCREEN",
                 "PLAY_BOSS_MUSIC",
@@ -5259,11 +5062,7 @@
         },
         "bossBarColor": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "PINK",
                 "BLUE",
@@ -5276,11 +5075,7 @@
         },
         "bossBarStyle": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "PROGRESS",
                 "NOTCHED_6",
@@ -5291,46 +5086,31 @@
         },
         "ItemAttributeData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "propertyNames": {
                 "description": "The attribute name",
-                "anyOf": [
-                    {
-                        "$ref": "#/types/attribute"
-                    }
-                ]
+                "$ref": "#/types/attribute"
             },
             "propertyContent": {
                 "description": "The attribute properties",
-                "anyOf": [
-                    {
-                        "type": "object"
-                    }
-                ],
+                "type": "object",
                 "default": null,
                 "additionalProperties": false,
                 "properties": {
                     "value": {
                         "description": "The value of the attribute to change to",
-                        "anyOf": [
-                            {
-                                "type": "number"
-                            }
-                        ],
+                        "type": "number",
                         "default": 0
                     },
                     "equipmentslot": {
                         "description": "The slot that this attribute will be active",
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/equipmentSlot"
-                            }
-                        ],
+                        "$ref": "#/types/equipmentSlot",
                         "default": "HAND"
+                    },
+                    "operation": {
+                        "description": "The operation to do on the attribute with `value`",
+                        "$ref": "#/types/attributeOperation",
+                        "default": "ADD_NUMBER"
                     }
                 }
             },
@@ -5378,136 +5158,76 @@
         },
         "EnchantmentData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "propertyNames": {
                 "description": "The enchantment name",
-                "anyOf": [
-                    {
-                        "$ref": "#/types/enchantment"
-                    }
-                ]
+                "$ref": "#/types/enchantment"
             },
             "patternProperties": {
                 ".*": {
                     "description": "The level of the enchantment",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ]
+                    "type": "integer"
                 }
             }
         },
         "ItemMetaData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "displayName": {
                     "description": "The display name of the item. Defaults to the normal item name",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ],
+                    "type": "string",
                     "default": ""
                 },
                 "lore": {
                     "description": "The lore of the item. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "default": []
                 },
                 "isUnbreakable": {
                     "description": "If true, makes the item unbreakable. \nDefaults to false",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": false
                 },
                 "durability": {
                     "description": "The durability of the item. 0 is normal durability. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 0
                 },
                 "attributes": {
                     "description": "The attributes. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/ItemAttributeData"
-                        }
-                    ],
+                    "$ref": "#/types/ItemAttributeData",
                     "default": {}
                 },
                 "enchants": {
                     "description": "The enchantments. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/EnchantmentData"
-                        }
-                    ],
+                    "$ref": "#/types/EnchantmentData",
                     "default": {}
                 },
                 "color": {
                     "description": "If type is a leather armour. This contains the color metadata of the item. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "type": "object"
-                        }
-                    ],
+                    "type": "object",
                     "default": {},
                     "additionalProperties": false,
                     "properties": {
                         "red": {
                             "description": "The red value",
-                            "anyOf": [
-                                {
-                                    "type": "integer"
-                                }
-                            ],
+                            "type": "integer",
                             "minimum": 0,
                             "maximum": 255
                         },
                         "green": {
                             "description": "The green value",
-                            "anyOf": [
-                                {
-                                    "type": "integer"
-                                }
-                            ],
+                            "type": "integer",
                             "minimum": 0,
                             "maximum": 255
                         },
                         "blue": {
                             "description": "The blue value",
-                            "anyOf": [
-                                {
-                                    "type": "integer"
-                                }
-                            ],
+                            "type": "integer",
                             "minimum": 0,
                             "maximum": 255
                         }
@@ -5515,38 +5235,22 @@
                 },
                 "potion": {
                     "description": "If type is a potion, splash potion, lingering potion, or tipped arrow. This contains the potion metadata of the item. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "type": "object"
-                        }
-                    ],
+                    "type": "object",
                     "default": {},
                     "additionalProperties": false,
                     "properties": {
                         "type": {
                             "description": "The type of potion",
-                            "anyOf": [
-                                {
-                                    "$ref": "#/types/potion"
-                                }
-                            ]
+                            "$ref": "#/types/potion"
                         },
                         "extended": {
                             "description": "Whether the potion is extended. \nDefaults to false",
-                            "anyOf": [
-                                {
-                                    "type": "boolean"
-                                }
-                            ],
+                            "type": "boolean",
                             "default": false
                         },
                         "upgraded": {
                             "description": "Whether the potion is upgraded. \nDefaults to false",
-                            "anyOf": [
-                                {
-                                    "type": "boolean"
-                                }
-                            ],
+                            "type": "boolean",
                             "default": false
                         }
                     }
@@ -5555,63 +5259,35 @@
         },
         "ItemStackData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "type": {
                     "description": "The type of item. \nDefaults to \"STONE\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/item"
-                        }
-                    ],
+                    "$ref": "#/types/material",
                     "default": "STONE"
                 },
                 "amount": {
                     "description": "The amount of item to give. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 1
                 },
                 "metadata": {
                     "description": "The metadata of the item. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/ItemMetaData"
-                        }
-                    ],
+                    "$ref": "#/types/ItemMetaData",
                     "default": {}
                 }
             }
         },
         "AttributeData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "propertyNames": {
                 "description": "The attribute name",
-                "anyOf": [
-                    {
-                        "$ref": "#/types/attribute"
-                    }
-                ]
+                "$ref": "#/types/attribute"
             },
             "propertyContent": {
                 "description": "The attribute value",
-                "anyOf": [
-                    {
-                        "type": "number"
-                    }
-                ],
+                "type": "number",
                 "default": -1
             },
             "properties": {
@@ -5658,311 +5334,334 @@
         },
         "EntityData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "type": {
                     "description": "The entity type. \nDefaults to \"ZOMBIE\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/entity"
-                        }
-                    ],
+                    "$ref": "#/types/entity",
                     "default": "ZOMBIE"
                 },
                 "nametag": {
                     "description": "The nametag of the spawned entity. Defaults to no nametag",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ],
+                    "type": "string",
                     "default": ""
                 },
                 "shouldDespawn": {
                     "description": "If true, the entity can despawn. \nDefaults to true",
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        }
-                    ],
+                    "type": "boolean",
                     "default": true
                 },
                 "passenger": {
                     "description": "The passenger of the entity. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/EntityData"
-                        }
-                    ],
+                    "$ref": "#/types/EntityData",
                     "default": {}
+                },
+                "extra": {
+                    "description": "The extra data for entities. \nDefaults to {}",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": false,
+                    "properties": {
+                        "canEquip": {
+                            "description": "For living entities. Whether the entity can pick up items. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "isZombifiable": {
+                            "description": "For piglins, piglin brutes, and hoglins. Whether the entity can be zombified into their zombie couterparts. \nDefaults to true",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "color": {
+                            "description": "For colorable entities. The color for the entity",
+                            "$ref": "#/types/dyeColor"
+                        },
+                        "armorSection": {
+                            "description": "For horses. The armor for the horse. \nDefaults to {}",
+                            "$ref": "#/types/ItemStackData",
+                            "default": {}
+                        },
+                        "hasSaddle": {
+                            "description": "For horses___. Whether the entity has a saddle attached. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "style": {
+                            "description": "For horses. The style/markings that the horse has. \nDefaults to \"NONE\"",
+                            "$ref": "#/types/horseStyle",
+                            "default": "NONE"
+                        },
+                        "tamingDifficulty": {
+                            "description": "For horses___. The difficulty of taming the entity (ie the amount of domesticating (feeding, riding, ect.) necessary in order to tame it). \nDefaults to 1",
+                            "type": "integer",
+                            "default": 1
+                        },
+                        "jumpStrength": {
+                            "description": "For horses___. The strength of jump for the entity. \nDefaults to 0.7",
+                            "type": "number",
+                            "default": 0.7
+                        },
+                        "hasChest": {
+                            "description": "For chestedHorses___. Whether the entity is carrying a chest. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "tamed": {
+                            "description": "For horses___. Whether the horse is tamed. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "angry": {
+                            "description": "For wolfs. Whether the wolf is angry. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "size": {
+                            "description": "For slimes, magmacubes, and phantoms. The size of the entity. \nDefaults to 0",
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "potion": {
+                            "description": "For thrown potions. The item data for the thrown potion. \nDefaults to {}",
+                            "$ref": "#/types/ItemStackData",
+                            "default": {}
+                        },
+                        "fuse": {
+                            "description": "For creepers. The time a creeper is allowed to be primed before exploding (in ticks). \nDefaults to 30",
+                            "type": "integer",
+                            "default": 30
+                        },
+                        "ignited": {
+                            "description": "For creepers. Whether the creeper is primed/ignited. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "explosionRadius": {
+                            "description": "For creepers. The explosion radius when exploded. \nDefaults to 3",
+                            "type": "integer",
+                            "default": 3
+                        },
+                        "powered": {
+                            "description": "For creepers. Whether the creeper is powered/charged/electrecuted. \nDefaults to 3",
+                            "type": "integer",
+                            "default": 3
+                        },
+                        "variant": {
+                            "description": "For axolotls. The variant of the entity. Defaults to a random variant (probably, not sure)",
+                            "$ref": "#/types/axolotlVariant",
+                            "default": ""
+                        },
+                        "isBaby": {
+                            "description": "For ageable entities. Whether the entity is a baby. \nDefaults to false",
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
                 }
             }
         },
         "VectorData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "x": {
                     "description": "The x component of the vector. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 0
                 },
                 "y": {
                     "description": "The y component of the vector. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 0
                 },
                 "z": {
                     "description": "The z component of the vector. \nDefaults to 0",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 0
                 }
             }
         },
         "SoundData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "sound": {
                     "description": "The sound to make. \nDefaults to \"ENTITY_GENERIC_EXPLODE\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/sound"
-                        }
-                    ],
+                    "$ref": "#/types/sound",
                     "default": "ENTITY_GENERIC_EXPLODE"
                 },
                 "volume": {
                     "description": "The volume of the sound. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 },
                 "pitch": {
                     "description": "The pitch of the sound. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 1
                 }
             }
         },
         "PotionEffectData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "potency": {
                     "description": "The potency or amplifier of the potion. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 1
                 },
                 "type": {
                     "description": "The type of the potion",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/potion"
-                        }
-                    ]
+                    "$ref": "#/types/potion"
                 },
                 "duration": {
                     "description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks). \nDefaults to 10",
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "type": "number",
                     "default": 10
                 }
             }
         },
         "ParticleData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "particle": {
                     "description": "The particle type. \nDefaults to \"BARRIER\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/particle"
-                        }
-                    ],
+                    "$ref": "#/types/particle",
                     "default": "BARRIER"
                 },
                 "numberOfParticles": {
                     "description": "The number of particle. \nDefaults to 1",
-                    "anyOf": [
-                        {
-                            "type": "integer"
-                        }
-                    ],
+                    "type": "integer",
                     "default": 1
+                }
+            }
+        },
+        "BlockDataData": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "The type of block. \nDefaults to \"STONE\"",
+                    "$ref": "#/types/material",
+                    "default": "STONE"
+                },
+                "level": {
+                    "description": "The fluid level of the block. \n\nDefaults to not set",
+                    "type": "integer",
+                    "default": -1
+                },
+                "age": {
+                    "description": "The growth stage of the block. \n\nDefaults to not set",
+                    "type": "integer",
+                    "default": -1
+                }
+            }
+        },
+        "BlockDataComparison": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "types": {
+                    "description": "The types that is compared to. \nDefaults to [\"STONE\"]",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/material"
+                    },
+                    "default": [
+                        "STONE"
+                    ]
+                },
+                "type": {
+                    "description": "The type that is compared to. Can be used instead of `types`. \nDefaults to \"STONE\"",
+                    "$ref": "#/types/material",
+                    "default": "STONE"
+                },
+                "level": {
+                    "description": "The range of fluid levels. \nDefaults to \"-Infinity - Infinity\"",
+                    "$ref": "#/types/range",
+                    "default": "-Infinity - Infinity"
+                },
+                "age": {
+                    "description": "The range of block age. \nDefaults to \"-Infinity - Infinity\"",
+                    "$ref": "#/types/range",
+                    "default": "-Infinity - Infinity"
                 }
             }
         },
         "LoreData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "array"
-                }
-            ]
+            "type": "array"
         },
         "EnchantComparisonData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "propertyNames": {
                 "description": "The enchantment name",
-                "anyOf": [
-                    {
-                        "$ref": "#/types/enchantment"
-                    }
-                ]
+                "$ref": "#/types/enchantment"
             },
             "patternProperties": {
                 ".*": {
                     "description": "The level of the enchantment",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/range"
-                        }
-                    ],
+                    "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
             }
         },
         "ItemMetaComparisonData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "displayName": {
                     "description": "A regex to match the display name against. \nDefaults to \".+\"",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ],
+                    "type": "string",
                     "default": ".+"
                 },
                 "lore": {
                     "description": "A list of regex to match the lore against. \nDefaults to \".+\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/LoreData"
-                        }
-                    ],
+                    "$ref": "#/types/LoreData",
                     "default": ".+"
                 },
                 "enchants": {
                     "description": "The item to check against. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/EnchantComparisonData"
-                        }
-                    ],
+                    "$ref": "#/types/EnchantComparisonData",
                     "default": {}
                 }
             }
         },
         "ItemComparisonData": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "object"
-                }
-            ],
+            "type": "object",
             "properties": {
                 "types": {
                     "description": "The list of item types. \nDefaults to []",
-                    "anyOf": [
-                        {
-                            "type": "array"
-                        }
-                    ],
+                    "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/types/item"
-                            }
-                        ]
+                        "$ref": "#/types/material"
                     },
                     "default": []
                 },
+                "type": {
+                    "description": "An item type. Can be used instead of `types` for single items. \nDefaults to \"STONE\"",
+                    "$ref": "#/types/material",
+                    "default": "STONE"
+                },
                 "amount": {
                     "description": "The range of item amount. \nDefaults to \"-Infinity - Infinity\"",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/range"
-                        }
-                    ],
+                    "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 },
                 "metadata": {
                     "description": "The metadata of the item. \nDefaults to {}",
-                    "anyOf": [
-                        {
-                            "$ref": "#/types/ItemMetaComparisonData"
-                        }
-                    ],
+                    "$ref": "#/types/ItemMetaComparisonData",
                     "default": {}
                 }
             }
         },
         "entity": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "DROPPED_ITEM",
                 "EXPERIENCE_ORB",
@@ -6085,17 +5784,9 @@
                 "UNKNOWN"
             ]
         },
-        "block": {
-            "additionalProperties": false,
-            "$ref": "#/types/material"
-        },
         "blockFace": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "DOWN",
                 "EAST",
@@ -6118,25 +5809,13 @@
                 "WEST_SOUTH_WEST"
             ]
         },
-        "item": {
-            "additionalProperties": false,
-            "$ref": "#/types/material"
-        },
         "enchantment": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ]
+            "type": "string"
         },
         "potion": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "SPEED",
                 "SLOW",
@@ -6173,13 +5852,66 @@
                 "DARKNESS"
             ]
         },
+        "dyeColor": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "BLACK",
+                "BLUE",
+                "BROWN",
+                "CYAN",
+                "GRAY",
+                "GREEN",
+                "LIGHT_BLUE",
+                "LIGHT_GRAY",
+                "LIME",
+                "MAGENTA",
+                "ORANGE",
+                "PINK",
+                "PURPLE",
+                "RED",
+                "WHITE",
+                "YELLOW"
+            ]
+        },
+        "axolotlVariant": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "BLUE",
+                "CYAN",
+                "GOLD",
+                "LUCY",
+                "WILD"
+            ]
+        },
+        "horseColor": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "BLACK",
+                "BROWN",
+                "CHESTNUT",
+                "CREAMY",
+                "DARK_BROWN",
+                "GRAY",
+                "WHITE"
+            ]
+        },
+        "horseStyle": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "BLACK_DOTS",
+                "NONE",
+                "WHITE",
+                "WHITE_DOTS",
+                "WHITEFIELD"
+            ]
+        },
         "damageCause": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "CONTACT",
                 "ENTITY_ATTACK",
@@ -6215,11 +5947,7 @@
         },
         "action": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "LEFT_CLICK_AIR",
                 "LEFT_CLICK_BLOCK",
@@ -6230,11 +5958,7 @@
         },
         "biome": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "OCEAN",
                 "PLAINS",
@@ -6304,19 +6028,11 @@
         },
         "world": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ]
+            "type": "string"
         },
         "equipmentSlot": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "HAND",
                 "OFF_HAND",
@@ -6328,11 +6044,7 @@
         },
         "attribute": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "MAX_HEALTH",
                 "FOLLOW_RANGE",
@@ -6351,11 +6063,7 @@
         },
         "collisionMode": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "ALWAYS",
                 "SOURCE_ONLY",
@@ -6364,11 +6072,7 @@
         },
         "sound": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "AMBIENT_BASALT_DELTAS_ADDITIONS",
                 "AMBIENT_BASALT_DELTAS_LOOP",
@@ -7695,11 +7399,7 @@
         },
         "particle": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "EXPLOSION_NORMAL",
                 "EXPLOSION_LARGE",
@@ -7804,11 +7504,7 @@
         },
         "material": {
             "additionalProperties": false,
-            "anyOf": [
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
             "enum": [
                 "AIR",
                 "STONE",

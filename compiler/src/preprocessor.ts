@@ -4,7 +4,7 @@ import { objectPropertyMap } from "./utils"
 export function preprocess(unprocessed: any): Schema {
 	delete unprocessed.$schema
 	unprocessed = unprocessed as Schema
-	objectPropertyMap(unprocessed).forEach((types: extendableMap) => {
+	objectPropertyMap<extendableMap>(unprocessed).forEach((types: extendableMap) => {
 		resolveExtends(types)
 		objectPropertyMap(types).forEach((type: Type) => {
 			if (!type.properties) return
@@ -14,21 +14,29 @@ export function preprocess(unprocessed: any): Schema {
 	return unprocessed
 }
 
-type extendableMap = {[key: string] : Type}
+type extendableType = Type & {extends?: string}
+type extendableMap = {[key: string] : extendableType}
 
 function resolveExtends(extendableMap: extendableMap) : void {
 	objectPropertyMap(extendableMap).forEach((type, name) => {
 		var extendsVal = type.extends
+		if (type.available === undefined) type.available = true
 		if (!extendsVal) return
-		var extendedProperties = extendableMap[extendsVal].properties
-		if (!extendedProperties) return
-		var properties = type.properties
-		if (!properties) return
-
-		Object.keys(extendedProperties).forEach(propertyKey => {
-			delete (properties as PropertyMap)[propertyKey]
-		})
+		extendableMap[name] = deepMerge(extendableMap[extendsVal], type)
+		delete extendableMap[name]["extends"]
 	})
+}
+
+function deepMerge<T extends Object>(object: T, ...objects: T[]): T {
+	if (objects.length == 0) return object
+	const merged = structuredClone(object)
+	const second = objects.shift()
+	for (const _key in second) {
+		const key = _key as keyof T & string
+		if (merged[key] === undefined || typeof second[key] !== "object") merged[key] = second[key]
+		else merged[key] = deepMerge<any>(merged[key], second[key])
+	}
+	return deepMerge(merged, ...objects)
 }
 
 function addDefaultToDescription(property: Property): void {

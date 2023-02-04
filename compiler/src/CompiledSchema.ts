@@ -90,9 +90,10 @@ type Types_oneOf = ({ enum: string[], oneOf: constDescription[] }|{})[]
 class Types {
 	readonly description: string
 	readonly type = "string"
-	readonly oneOf: Types_oneOf = [{}]
+	oneOf?: Types_oneOf = undefined
 
 	addType(name: string, description: string): void {
+		if (!this.oneOf) this.oneOf = []
 		this.oneOf.push({const: name, description: description})
 	}
 
@@ -335,18 +336,21 @@ class PropertyClass implements Property {
 	setDefault(defaultVal: any): void {
 		this.default = defaultVal
 	}
-	addType(type: PropertyTypes): void {
-		let parsedType = this.parseType(type)
-		if (parsedType === undefined) return
-
-		this.addAnyOf({ type: parsedType })
+	addType(types: PropertyTypes[]): void {
+		if (types.length === 0) return
+		if (types.length === 1) {
+			const parsedType = this.parseType(types[0])
+			Object.assign(this, parsedType)
+			return
+		}
+		types.map(this.parseType).forEach(p => this.addAnyOf(p))
 	}
 	private static readonly typesArray = ["array", "object", "string", "number", "integer", "boolean"]
-	private parseType(type: PropertyTypes): types | undefined {
+	private parseType(type: PropertyTypes): {type: types} | {$ref: string} {
 		if (PropertyClass.typesArray.includes(type)) {
-			return type as types
+			return {type: type as types}
 		} else {
-			this.addAnyOf({$ref: `#/types/${type}`})
+			return {$ref: `#/types/${type}`}
 		}
 	}
 	setMin(min: number): void {
@@ -425,7 +429,7 @@ abstract class Definition {
 		this.properties = properties
 	}
 
-	addProperty(name: string, property: Property, required?: true): void {
+	addProperty(name: string, property: Property, required?: boolean): void {
 		this.properties[name] = property
 		if (required) {
 			if (this.required === undefined) this.required = []
@@ -436,11 +440,6 @@ abstract class Definition {
 		if (this.required === undefined) this.required = ["mode"]
 		else this.required.push("mode")
 	}
-	protected internalSetExtension(type: string, extension: string, extendedProperties: MonoTypeObject<any>) {
-		this.if = true
-		this.then = {$ref: `#/${type}s/${extension.toUpperCase()}`, additionalProperties: true}
-		Object.keys(extendedProperties).forEach(name => this.properties[name] = true)
-	}
 
 }
 
@@ -448,10 +447,6 @@ class TriggerDefinition extends Definition {
 
 	constructor() {
 		super({ type: true, conditions: true })
-	}
-
-	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
-		this.internalSetExtension("trigger", extension, extendedProperties)
 	}
 
 }
@@ -462,20 +457,12 @@ class ConditionDefinition extends Definition {
 		super({ type: true, mode: { enum: modes }, else: true })
 	}
 
-	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
-		this.internalSetExtension("condition", extension, extendedProperties)
-	}
-
 }
 
 class EffectDefinition extends Definition {
 
 	constructor(modes: EffectModes[]) {
 		super({ type: true, mode: { enum: modes } })
-	}
-
-	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
-		this.internalSetExtension("effect", extension, extendedProperties)
 	}
 
 }
@@ -486,20 +473,12 @@ class DamageModifierDefinition extends Definition {
 		super({ type: true })
 	}
 
-	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
-		this.internalSetExtension("damagemodifier", extension, extendedProperties)
-	}
-
 }
 
 class RewardDefinition extends Definition {
 
 	constructor() {
 		super({ type: true })
-	}
-
-	setExtension(extension: string, extendedProperties: MonoTypeObject<any>) {
-		this.internalSetExtension("reward", extension, extendedProperties)
 	}
 
 }

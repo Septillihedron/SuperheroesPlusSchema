@@ -35,13 +35,6 @@ export class Compiler {
 		if (trigger.available !== false) {
 			this.schema.definitions.trigger.addType(triggerName, trigger.description)
 		}
-
-		if (trigger.extends !== undefined) {
-			let extendedName = trigger.extends
-			let properties = this.preprocessed.triggers[extendedName].properties;
-			if (properties === undefined) properties = {}
-			compiledTrigger.setExtension(extendedName, properties)
-		}
 		if (trigger.properties === undefined) return
 		objectPropertyMap(trigger.properties)
 			.forEach((property, name) => {
@@ -58,17 +51,7 @@ export class Compiler {
 		if (condition.available !== false) {
 			this.schema.definitions.condition.addType(conditionName, condition.description)
 		}
-
-		let requireMode: boolean | undefined = undefined
-		if (condition.extends !== undefined) {
-			let extendedName = condition.extends
-			let extendedCondition = this.preprocessed.conditions[extendedName]
-			let properties = extendedCondition.properties;
-			if (properties === undefined) properties = {}
-			compiledCondition.setExtension(extendedName, properties)
-			requireMode = extendedCondition.requireMode
-		}
-		requireMode = condition.requireMode === undefined? requireMode : condition.requireMode
+		let requireMode = condition.requireMode
 		if (requireMode === true || requireMode === undefined) compiledCondition.requireMode()
 		if (condition.properties === undefined) return
 		objectPropertyMap(condition.properties)
@@ -87,16 +70,7 @@ export class Compiler {
 			this.schema.definitions.effect.addType(effectName, effect.description)
 		}
 
-		let requireMode: boolean | undefined = undefined
-		if (effect.extends !== undefined) {
-			let extendedName = effect.extends
-			let extendedEffect = this.preprocessed.effects[extendedName]
-			let properties = extendedEffect.properties;
-			if (properties === undefined) properties = {}
-			compiledEffect.setExtension(extendedName, properties)
-			requireMode = extendedEffect.requireMode
-		}
-		requireMode = effect.requireMode === undefined? requireMode : effect.requireMode
+		let requireMode = effect.requireMode
 		if (requireMode === true || requireMode === undefined) compiledEffect.requireMode()
 		if (effect.properties === undefined) return
 		objectPropertyMap(effect.properties)
@@ -114,13 +88,6 @@ export class Compiler {
 		if (damageModifier.available !== false) {
 			this.schema.definitions.damagemodifier.addType(damageModifierName, damageModifier.description)
 		}
-
-		if (damageModifier.extends !== undefined) {
-			let extendedName = damageModifier.extends
-			let properties = this.preprocessed.damagemodifiers[extendedName].properties;
-			if (properties === undefined) properties = {}
-			compiledDamageModifier.setExtension(extendedName, properties)
-		}
 		if (damageModifier.properties === undefined) return
 		objectPropertyMap(damageModifier.properties)
 			.forEach((property, name) => {
@@ -136,13 +103,6 @@ export class Compiler {
 		this.schema.rewards[rewardName] = compiledReward
 		if (reward.available !== false) {
 			this.schema.definitions.reward.addType(rewardName, reward.description)
-		}
-
-		if (reward.extends !== undefined) {
-			let extendedName = reward.extends
-			let properties = this.preprocessed.rewards[extendedName].properties;
-			if (properties === undefined) properties = {}
-			compiledReward.setExtension(extendedName, properties)
 		}
 		if (reward.properties === undefined) return
 		objectPropertyMap(reward.properties)
@@ -163,7 +123,6 @@ export class Compiler {
 		this.PropertyPartsCompiler.properties(type.properties, compiledType)
 		this.PropertyPartsCompiler.patternProperties(type.patternProperties, compiledType)
 		this.PropertyPartsCompiler.propertiesMap(type.propertiesMap, compiledType)
-		if (type.extends !== undefined) compiledType.set$ref(`#/types/${type.extends}`)
 		deletePropertyClassHelperProperties(compiledType)
 	
 		return compiledType
@@ -191,11 +150,11 @@ export class Compiler {
 				compilingProperty.parent.addRequired(compilingProperty.name)
 			}
 		},
-		type: (type, compilingProperty) => {
+		type: (type: Preprocessed.PropertyTypes | Preprocessed.PropertyTypes[], compilingProperty) => {
 			if (type instanceof Array) {
-				type.forEach(type => compilingProperty.addType(type))
-			} else {
 				compilingProperty.addType(type)
+			} else {
+				compilingProperty.addType([type])
 			}
 		},
 		min: (min, compilingProperty) => {
