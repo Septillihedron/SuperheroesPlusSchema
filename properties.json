@@ -948,7 +948,7 @@
 					"type": "integer",
 					"default": 24000
 				},
-                "time": {
+				"time": {
 					"description": "A range for time",
 					"required": false,
 					"type": "range",
