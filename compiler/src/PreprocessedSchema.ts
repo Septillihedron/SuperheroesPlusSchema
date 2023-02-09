@@ -25,7 +25,6 @@ type PropertyMap = {[key: string] : Property}
 interface Type extends Descriptable {
 	properties?: PropertyMap
 	available?: boolean
-	extends?: string
 	requireMode?: boolean
 }
 

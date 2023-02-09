@@ -209,7 +209,8 @@
 					},
 					"minItems": 1,
 					"description": "For arrays, contains the types of items allowed",
-					"$ref": "#/definitions/property",
+					"if": {"type": "object"},
+					"then": {"$ref": "#/definitions/property"},
 					"required": ["type"]
 				},
 				"properties": {
@@ -351,9 +352,10 @@
 		"stringTypes": {
 			"enum": [
 				"string", 
-				"range", "comparison", "operation", 
-				"entity", "block", "blockFace", "item",
-				"enchantment", "potion", 
+				"range", "comparison", "operation", "attributeOperation",
+				"entity", "material", "blockFace", 
+				"enchantment", "potion", "dyeColor",
+				"axolotlVariant", "horseColor", "horseStyle",
 				"damageCause", "action", "lootTable",
 				"biome", "world", 
 				"equipmentSlot", 
@@ -365,7 +367,7 @@
 		},
 		"objectTypes": {
 			"enum": [
-				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData",
+				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData", "BlockDataData", "BlockDataComparison",
 				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData"
 			]
 		},

@@ -165,6 +165,12 @@
 		},
 		"TOTEM": {
 			"description": "Triggers when the user activates a totem. \nThe target entity will be set as the killer of the user"
+		},
+		"CONSUME": {
+			"description": "Triggers when the user consumed an item"
+		},
+		"MOVE": {
+			"description": "Triggers when the user moves. \nThe location will be set as the location the user moves to"
 		}
 	},
 	"conditions": {
@@ -291,7 +297,13 @@
 					"required": false,
 					"type": "integer",
 					"default": 24000
-				}
+				},
+				"time": {
+					"description": "A range for time",
+					"required": false,
+					"type": "range",
+					"default": "0 - 24000"
+				}   
 			}
 		},
 		"ONGROUND": {
@@ -397,7 +409,7 @@
 					"description": "The list of blocks",
 					"required": false,
 					"type": "array",
-					"items": "block",
+					"items": "material",
 					"default": []
 				}
 			}
@@ -451,7 +463,7 @@
 					"description": "The list of blocks",
 					"required": false,
 					"type": "array",
-					"items": "block",
+					"items": "material",
 					"default": []
 				}
 			}
@@ -587,6 +599,10 @@
 					"default": "HAND"
 				}
 			}
+		},
+		"SWIMMING": {
+			"description": "Checks if the user or target entity is swimming",
+			"supportedModes": ["ALL", "SELF", "OTHER"]
 		}
 	},
 	"effects": {
@@ -782,7 +798,7 @@
 				"block": {
 					"description": "The block to change to",
 					"required": false,
-					"type": "block",
+					"type": "material",
 					"default": "COBWEB"
 				}
 			}
@@ -800,14 +816,14 @@
 				"block": {
 					"description": "The block to change to",
 					"required": false,
-					"type": "block",
+					"type": "material",
 					"default": "COBWEB"
 				}
 			}
 		},
 		"ARROW": {
-			"description": "Shoot an arrow to the location or the location of the user or target entity", 
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"description": "Shoot an arrow to the location of the target entity", 
+			"supportedModes": ["ALL", "OTHER"],
 			"properties": {
 				"velocity": {
 					"description": "Used to determine the time that it takes to hit by (pythagoras distance)/velocity",
@@ -950,6 +966,11 @@
 			}
 		},
 		"SMITE": {
+			"description": "Smites the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "LIGHTNING"
+		},
+		"LIGHTNING": {
 			"description": "Smites the user or target entity",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
@@ -1215,9 +1236,14 @@
 					"description": "The amount of time the fire will last (in ticks)",
 					"required": false,
 					"type": "integer",
-					"default": 0
+					"default": 40
 				}
 			}
+		},
+		"FIRE": {
+			"description": "Sets the user or target entity on fire",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "IGNITE"
 		},
 		"TARGET": {
 			"description": "If the user is a mob, sets the target of the user to the target entity",
@@ -1285,10 +1311,16 @@
 			"supportedModes": ["ALL", "LOCATION"],
 			"properties": {
 				"material": {
-					"description": "The block to replace to",
+					"description": "The block to replace to, will override the \"block\" property if it exist",
 					"required": false,
-					"type": "block",
-					"default": "STONE"
+					"type": "material",
+					"default": null
+				},
+				"block": {
+					"description": "The data for the block to replace to, requires the \"material\" property to not exist or be null",
+					"required": false,
+					"type": "BlockDataData",
+					"default": {}
 				},
 				"updatePhysics": {
 					"description": "If false, does not update neighboring blocks",
@@ -1311,7 +1343,7 @@
 				"entity": {
 					"description": "The entity to spawn",
 					"required": true,
-					"type": "entity"
+					"type": "EntityData"
 				}
 			}
 		},
@@ -1576,7 +1608,7 @@
 					"description": "The list of types that can be broken",
 					"required": true,
 					"type": "array",
-					"items": "block"
+					"items": "material"
 				},
 				"delay": {
 					"description": "The delay between each break is seconds (1 is 20 ticks)",
@@ -1589,6 +1621,17 @@
 					"required": false,
 					"type": "boolean",
 					"default": false
+				}
+			}
+		},
+		"ACTIONBAR": {
+			"description": "Sends an action bar to the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"properties": {
+				"message": {
+					"description": "The message to send, instances of the text \"<player>\" will be changed to the name of the player that this is sent",
+					"required": true,
+					"type": "string"
 				}
 			}
 		}
@@ -1621,6 +1664,8 @@
 					"required": true,
 					"type": "array",
 					"items": {
+						"description": "A row of recipe keys",
+						"required": true,
 						"type": "string",
 						"maxLength": 3,
 						"minLength": 3
@@ -1636,7 +1681,7 @@
 					"patternProperties": {
 						"^.$": {
 							"description": "The material or skill item",
-							"type": ["item", "string"],
+							"type": ["material", "string"],
 							"required": true
 						}
 					}
@@ -1683,6 +1728,15 @@
 				"SET"
 			]
 		},
+		"attributeOperation": {
+			"description": "A number operator for attributes",
+			"type": "string",
+			"enum": [
+				"ADD_NUMBER",
+				"ADD_SCALAR",
+				"MULTIPLY_SCALAR_1"
+			]
+		},
 		"ItemAttributeData": {
 			"description": "The attribute data for an item",
 			"type": "object",
@@ -1708,6 +1762,12 @@
 							"required": false,
 							"type": "equipmentSlot",
 							"default": "HAND"
+						},
+						"operation": {
+							"description": "The operation to do on the attribute with `value`",
+							"required": false,
+							"type": "attributeOperation",
+							"default": "ADD_NUMBER"
 						}
 					}
 				}
@@ -1834,7 +1894,7 @@
 				"type": {
 					"description": "The type of item",
 					"required": false,
-					"type": "item",
+					"type": "material",
 					"default": "STONE"
 				},
 				"amount": {
@@ -1894,8 +1954,134 @@
 					"required": false,
 					"type": "EntityData",
 					"default": {}
+				},
+				"extra": {
+					"description": "The extra data for entities",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"properties": {
+						"canEquip": {
+							"description": "For living entities. Whether the entity can pick up items",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"isZombifiable": {
+							"description": "For piglins, piglin brutes, and hoglins. Whether the entity can be zombified into their zombie couterparts",
+							"required": false,
+							"type": "boolean",
+							"default": true
+						},
+						"color": {
+							"description": "For colorable entities. The color for the entity",
+							"required": true, 
+							"type": "dyeColor"
+						},
+						"armorSection": {
+							"description": "For horses. The armor for the horse",
+							"required": false,
+							"type": "ItemStackData",
+							"default": {}
+						},
+						"hasSaddle": {
+							"description": "For horses___. Whether the entity has a saddle attached",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						// "color": {  
+						// 	"description": "For horses. The color of the entity",
+						// 	"required": false,
+						// 	"type": "horseColor",
+						// 	"default": "CHESTNUT"
+						// },
+						"style": {
+							"description": "For horses. The style/markings that the horse has",
+							"required": false,
+							"type": "horseStyle",
+							"default": "NONE"
+						},
+						"tamingDifficulty": {
+							"description": "For horses___. The difficulty of taming the entity (ie the amount of domesticating (feeding, riding, ect.) necessary in order to tame it)",
+							"required": false,
+							"type": "integer",
+							"default": 1
+						},
+						"jumpStrength": {
+							"description": "For horses___. The strength of jump for the entity",
+							"required": false,
+							"type": "number",
+							"default": 0.7
+						},
+						"hasChest": {
+							"description": "For chestedHorses___. Whether the entity is carrying a chest",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"tamed": {
+							"description": "For horses___. Whether the horse is tamed",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"angry": {
+							"description": "For wolfs. Whether the wolf is angry",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"size": {
+							"description": "For slimes, magmacubes, and phantoms. The size of the entity",
+							"required": false,
+							"type": "integer",
+							"default": 0
+						},
+						"potion": {
+							"description": "For thrown potions. The item data for the thrown potion",
+							"required": false,
+							"type": "ItemStackData",
+							"default": {}
+						},
+						"fuse": {
+							"description": "For creepers. The time a creeper is allowed to be primed before exploding (in ticks)",
+							"required": false,
+							"type": "integer",
+							"default": 30
+						},
+						"ignited": {
+							"description": "For creepers. Whether the creeper is primed/ignited",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						},
+						"explosionRadius": {
+							"description": "For creepers. The explosion radius when exploded",
+							"required": false,
+							"type": "integer",
+							"default": 3
+						},
+						"powered": {
+							"description": "For creepers. Whether the creeper is powered/charged/electrecuted",
+							"required": false,
+							"type": "integer",
+							"default": 3
+						},
+						"variant": {
+							"description": "For axolotls. The variant of the entity. Defaults to a random variant (probably, not sure)",
+							"required": false,
+							"type": "axolotlVariant",
+							"default": ""
+						},
+						"isBaby": {
+							"description": "For ageable entities. Whether the entity is a baby",
+							"required": false,
+							"type": "boolean",
+							"default": false
+						}
+					}
 				}
-				// oh god, TODO
 			}
 		},
 		"VectorData": {
@@ -1988,6 +2174,61 @@
 				}
 			}
 		},
+		"BlockDataData": {
+			"description": "The data of a block data",
+			"type": "object",
+			"properties": {
+				"type": {
+					"description": "The type of block",
+					"required": false,
+					"type": "material",
+					"default": "STONE"
+				},
+				"level": {
+					"description": "The fluid level of the block. \n\nDefaults to not set",
+					"required": false,
+					"type": "integer",
+					"default": -1
+				},
+				"age": {
+					"description": "The growth stage of the block. \n\nDefaults to not set",
+					"required": false,
+					"type": "integer",
+					"default": -1
+				}
+			}
+		},
+		"BlockDataComparison": {
+			"description": "A comparison for block data",
+			"type": "object",
+			"properties": {
+				"types": {
+					"description": "The types that is compared to",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": ["STONE"]
+				},
+				"type": {
+					"description": "The type that is compared to. Can be used instead of `types`",
+					"required": false,
+					"type": "material",
+					"default": "STONE"
+				},
+				"level": {
+					"description": "The range of fluid levels",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				},
+				"age": {
+					"description": "The range of block age",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				}
+			}
+		},
 		"LoreData": {
 			"type": "array",
 			"items": "string" //regex type
@@ -2040,8 +2281,14 @@
 					"description": "The list of item types",
 					"required": false,
 					"type": "array",
-					"items": "item",
+					"items": "material",
 					"default": []
+				},
+				"type": {
+					"description": "An item type. Can be used instead of `types` for single items",
+					"required": false,
+					"type": "material",
+					"default": "STONE"
 				},
 				"amount": {
 					"description": "The range of item amount",
@@ -2062,18 +2309,10 @@
 			"type": "string",
 			"enum": ["DROPPED_ITEM", "EXPERIENCE_ORB", "AREA_EFFECT_CLOUD", "ELDER_GUARDIAN", "WITHER_SKELETON", "STRAY", "EGG", "LEASH_HITCH", "PAINTING", "ARROW", "SNOWBALL", "FIREBALL", "SMALL_FIREBALL", "ENDER_PEARL", "ENDER_SIGNAL", "SPLASH_POTION", "THROWN_EXP_BOTTLE", "ITEM_FRAME", "WITHER_SKULL", "PRIMED_TNT", "FALLING_BLOCK", "FIREWORK", "HUSK", "SPECTRAL_ARROW", "SHULKER_BULLET", "DRAGON_FIREBALL", "ZOMBIE_VILLAGER", "SKELETON_HORSE", "ZOMBIE_HORSE", "ARMOR_STAND", "DONKEY", "MULE", "EVOKER_FANGS", "EVOKER", "VEX", "VINDICATOR", "ILLUSIONER", "MINECART_COMMAND", "BOAT", "MINECART", "MINECART_CHEST", "MINECART_FURNACE", "MINECART_TNT", "MINECART_HOPPER", "MINECART_MOB_SPAWNER", "CREEPER", "SKELETON", "SPIDER", "GIANT", "ZOMBIE", "SLIME", "GHAST", "ZOMBIFIED_PIGLIN", "ENDERMAN", "CAVE_SPIDER", "SILVERFISH", "BLAZE", "MAGMA_CUBE", "ENDER_DRAGON", "WITHER", "BAT", "WITCH", "ENDERMITE", "GUARDIAN", "SHULKER", "PIG", "SHEEP", "COW", "CHICKEN", "SQUID", "WOLF", "MUSHROOM_COW", "SNOWMAN", "OCELOT", "IRON_GOLEM", "HORSE", "RABBIT", "POLAR_BEAR", "LLAMA", "LLAMA_SPIT", "PARROT", "VILLAGER", "ENDER_CRYSTAL", "TURTLE", "PHANTOM", "TRIDENT", "COD", "SALMON", "PUFFERFISH", "TROPICAL_FISH", "DROWNED", "DOLPHIN", "CAT", "PANDA", "PILLAGER", "RAVAGER", "TRADER_LLAMA", "WANDERING_TRADER", "FOX", "BEE", "HOGLIN", "PIGLIN", "STRIDER", "ZOGLIN", "PIGLIN_BRUTE", "AXOLOTL", "GLOW_ITEM_FRAME", "GLOW_SQUID", "GOAT", "MARKER", "ALLAY", "CHEST_BOAT", "FROG", "TADPOLE", "WARDEN", "FISHING_HOOK", "LIGHTNING", "PLAYER", "UNKNOWN"]
 		},
-		"block": {
-			"description": "A block",
-			"extends": "material"
-		},
 		"blockFace": {
 			"description": "A face of a block",
 			"type": "string",
 			"enum": ["DOWN", "EAST", "EAST_NORTH_EAST", "EAST_SOUTH_EAST", "NORTH", "NORTH_EAST", "NORTH_NORTH_EAST", "NORTH_NORTH_WEST", "NORTH_WEST", "SELF", "SOUTH", "SOUTH_EAST", "SOUTH_SOUTH_EAST", "SOUTH_SOUTH_WEST", "SOUTH_WEST", "UP", "WEST", "WEST_NORTH_WEST", "WEST_SOUTH_WEST"]
-		},
-		"item": {
-			"description": "An item",
-			"extends": "material"
 		},
 		"enchantment": {
 			"description": "An enchantment",
@@ -2083,6 +2322,63 @@
 			"description": "A potion effect",
 			"type": "string",
 			"enum": ["SPEED", "SLOW", "FAST_DIGGING", "SLOW_DIGGING", "INCREASE_DAMAGE", "HEAL", "HARM", "JUMP", "CONFUSION", "REGENERATION", "DAMAGE_RESISTANCE", "FIRE_RESISTANCE", "WATER_BREATHING", "INVISIBILITY", "BLINDNESS", "NIGHT_VISION", "HUNGER", "WEAKNESS", "POISON", "WITHER", "HEALTH_BOOST", "ABSORPTION", "SATURATION", "GLOWING", "LEVITATION", "LUCK", "UNLUCK", "SLOW_FALLING", "CONDUIT_POWER", "DOLPHINS_GRACE", "BAD_OMEN", "HERO_OF_THE_VILLAGE", "DARKNESS"]
+		},
+		"dyeColor": {
+			"description": "A dye color",
+			"type": "string",
+			"enum": [
+				"BLACK",
+				"BLUE",
+				"BROWN",
+				"CYAN",
+				"GRAY",
+				"GREEN",
+				"LIGHT_BLUE",
+				"LIGHT_GRAY",
+				"LIME",
+				"MAGENTA",
+				"ORANGE",
+				"PINK",
+				"PURPLE",
+				"RED",
+				"WHITE",
+				"YELLOW"
+			]
+		},
+		"axolotlVariant": {
+			"description": "A variant of axolotls",
+			"type": "string",
+			"enum": [
+				"BLUE",
+				"CYAN",
+				"GOLD",
+				"LUCY", // Leucistic (pink)
+				"WILD" // brown
+			]
+		},
+		"horseColor": {
+			"description": "A color of horses",
+			"type": "string",
+			"enum": [
+				"BLACK",
+				"BROWN",
+				"CHESTNUT",
+				"CREAMY",
+				"DARK_BROWN",
+				"GRAY",
+				"WHITE"
+			]
+		},
+		"horseStyle": {
+			"description": "A style/markings of horses",
+			"type": "string",
+			"enum": [
+				"BLACK_DOTS",
+				"NONE",
+				"WHITE",
+				"WHITE_DOTS",
+				"WHITEFIELD"
+			]
 		},
 		"damageCause": {
 			"description": "A damage cause",

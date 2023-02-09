@@ -1,6 +1,6 @@
 
-export function objectPropertyMap(object: {[key: string]: any}): Map<string | number, any> {
-	var map = new Map<string | number, any>()
+export function objectPropertyMap<T>(object: {[key: string]: T}): Map<string | number, T> {
+	var map = new Map<string | number, T>()
 	Object.keys(object).forEach(key => {
 		map.set(key, object[key])
 	});

@@ -1,12 +1,12 @@
 # yaml-language-server: $schema=compiled-properties.json
 SkillToggleItem:
-  colouredName: "templateSkillToggle"
-  description: "template"
+  item:
+    type: STONE
+    amount: 1
   skills:
     sunny_saturation:
       trigger:
         type: DAMAGED
         causes:
           - CONTACT
-      effects:
         
