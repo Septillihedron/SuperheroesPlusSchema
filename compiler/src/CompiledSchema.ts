@@ -47,6 +47,21 @@ class Hero {
 			description: "The description of the hero",
 			type: "string"
 		},
+		skin: {
+			description: "The skin that will replace the user's skin. \n\n(You can skins with values and signatures at https://mineskin.org/)",
+			type: "object",
+			properties: {
+				value: {
+					description: "The skin value",
+					type: "string"
+				},
+				signature: {
+					description: "The skin signature",
+					type: "string"
+				}
+			},
+			required: ["value", "signature"]
+		},
 		skills: {
 			description: "The list of skill that the hero has",
 			type: "object",
