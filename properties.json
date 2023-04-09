@@ -1574,7 +1574,7 @@
 			"supportedModes": ["ALL", "OTHER"],
 			"properties": {
 				"velocity": {
-					"description": "The speed to repulse the target entity. Positive value means into the user. Negative value means away from the user",
+					"description": "The speed to repulse the target entity. Positive value means away from the user. Negative value means into the user",
 					"required": false,
 					"type": "number",
 					"default": 1
