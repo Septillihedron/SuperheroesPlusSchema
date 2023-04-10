@@ -2461,6 +2461,12 @@
 					"type": "integer",
 					"default": 0
 				},
+				"customModelData": {
+					"description": "The custom model data for this item (used for texture packs)",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
 				"attributes": {
 					"description": "The attributes",
 					"required": false,

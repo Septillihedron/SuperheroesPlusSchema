@@ -14,7 +14,13 @@ SkillToggleItem:
       skill: CUSTOM
       effects:
         A:
-          type: VELOCITY
-          mode: OTHER
-          operation: ADD
-          component: XYZ
+          type: GIVEITEM
+          mode: ALL
+          item:
+            type: STONE
+            amount: 1
+            metadata:
+              displayName: s
+              isUnbreakable: false
+              durability: 0
+              customModelData: 0
