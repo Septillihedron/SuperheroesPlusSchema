@@ -178,8 +178,14 @@
 			"description": "Checks if the hp percentage of the user or target entity is in the range",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
+				"healthPercentange": {
+					"description": "The health percentage range to check againts",
+					"required": false,
+					"type": "range",
+					"default": "0 - 100"
+				},
 				"minimumHealthPercentage": {
-					"description": "The minimum hp percentage",
+					"description": "Deprecated, use `healthPercentange` instead. The minimum hp percentage",
 					"required": false,
 					"type": "number",
 					"min": 0,
@@ -187,7 +193,7 @@
 					"default": 0
 				},
 				"maximumHealthPercentage": {
-					"description": "The maximum hp percentage",
+					"description": "Deprecated, use `healthPercentange` instead. The maximum hp percentage",
 					"required": false,
 					"type": "number",
 					"min": 0,
@@ -323,6 +329,12 @@
 			"supportedModes": ["ALL", "SELF"],
 			"properties": {
 				"shouldGlide": {
+					"description": "Deprecated, use `glide` instead. If true, checks if the entity is gliding. If false, it checks the opposite",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"glide": {
 					"description": "If true, checks if the entity is gliding. If false, it checks the opposite",
 					"required": false,
 					"type": "boolean",
@@ -593,6 +605,21 @@
 		"SWIMMING": {
 			"description": "Checks if the user or target entity is swimming",
 			"supportedModes": ["ALL", "SELF", "OTHER"]
+		},
+		"SPEED": {
+			"description": "Checks whether the speed of the user or target entity is in the range",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"properties": {
+				"speed": {
+					"description": "The speed range to check againts",
+					"required": true,
+					"type": "range"
+				}
+			}
+		},
+		"SHOOTER": {
+			"description": "Checks whether the shooter of the `OTHER` entity is the `SELF` entity",
+			"supportedModes": ["ALL", "OTHER"]
 		}
 	},
 	"effects": {
@@ -691,14 +718,21 @@
 			}
 		},
 		"VELOCITY": {
-			"description": "Sets the Y velocity of the user or target entity. Same as FLING",
+			"description": "Modifies the velocity of the user or target entity. Same as FLING",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "MODIFY",
 			"properties": {
 				"velocity": {
-					"description": "The Y velocity to set to",
+					"description": "The number on the right side of the operation. The same as `value`",
 					"required": false,
 					"type": "number",
 					"default": 1.0
+				},
+				"component": {
+					"description": "The component(s) to modify, `ALL` means all components (ex. `XZ` would only modify the X and Z velocities and leave Y unmodified)",
+					"required": true,
+					"type": "string",
+					"pattern": "^(([XYZ]{0,3})|(ALL))$"
 				}
 			}
 		},
@@ -887,10 +921,10 @@
 			"available": false
 		},
 		"LAUNCH": {
-			"description": "Launches an entity at the target entity",
-			"supportedModes": ["ALL", "OTHER"],
+			"description": "Launches an entity. \nMode `OTHER`: Launched in the direction of the target entity. \nMode `SELF`: Launched in the direction the user is facing",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
-				"type": {
+				"entity": {
 					"description": "The entity to launch",
 					"required": false,
 					"type": "entity",
@@ -924,10 +958,16 @@
 			"supportedModes": ["ALL", "OTHER"],
 			"properties": {
 				"velocity": {
-					"description": "The speed to repulse the target entity. Positive value means into the user. Negative value means away from the user",
+					"description": "The speed to repulse the target entity. Positive value means away from the user. Negative value means into the user",
 					"required": false,
 					"type": "number",
 					"default": 1
+				},
+				"add": {
+					"description": "Whether to add velocity or set it",
+					"required": false,
+					"type": "boolean",
+					"default": false
 				}
 			}
 		},
@@ -973,14 +1013,21 @@
 			}
 		},
 		"FLING": {
-			"description": "Sets the Y velocity of the user or target entity. Same as VELOCITY",
+			"description": "Modifies the velocity of the user or target entity. Same as VELOCITY",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "MODIFY",
 			"properties": {
 				"velocity": {
-					"description": "The Y velocity to set to",
+					"description": "The number on the right side of the operation. The same as `value`",
 					"required": false,
 					"type": "number",
 					"default": 1.0
+				},
+				"component": {
+					"description": "The component(s) to modify, `ALL` means all components (ex. `XZ` would only modify the X and Z velocities and leave Y unmodified)",
+					"required": true,
+					"type": "string",
+					"pattern": "^(([XYZ]{0,3})|(ALL))$"
 				}
 			}
 		},
@@ -1658,6 +1705,16 @@
 					"type": "string"
 				}
 			}
+		},
+		"FREEZE": {
+			"description": "Modifies the user or target entity freezing ticks (ie. powdered snow effect)",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "MODIFY"
+		},
+		"HEALTH": {
+			"description": "Modifies the health of the user or target entity. Also rounds down to the nearest hitpoint/half a heart",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"extends": "MODIFY"
 		}
 	},
 	"damagemodifiers": {
@@ -1964,6 +2021,12 @@
 				},
 				"durability": {
 					"description": "The durability of the item. 0 is normal durability",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"customModelData": {
+					"description": "The custom model data for this item (used for texture packs)",
 					"required": false,
 					"type": "integer",
 					"default": 0
