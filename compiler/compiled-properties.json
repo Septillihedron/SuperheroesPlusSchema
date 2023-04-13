@@ -841,6 +841,14 @@
                         {
                             "const": "SWIMMING",
                             "description": "Checks if the user or target entity is swimming"
+                        },
+                        {
+                            "const": "SPEED",
+                            "description": "Checks whether the speed of the user or target entity is in the range"
+                        },
+                        {
+                            "const": "SHOOTER",
+                            "description": "Checks whether the shooter of the `OTHER` entity is the `SELF` entity"
                         }
                     ],
                     "description": "The type of the condition"
@@ -1240,6 +1248,30 @@
                         "then": {
                             "$ref": "#/conditions/SWIMMING"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SPEED"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/SPEED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SHOOTER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/SHOOTER"
+                        }
                     }
                 ]
             }
@@ -1261,7 +1293,7 @@
                         },
                         {
                             "const": "VELOCITY",
-                            "description": "Sets the Y velocity of the user or target entity. Same as FLING"
+                            "description": "Modifies the velocity of the user or target entity. Same as FLING"
                         },
                         {
                             "const": "CANCEL",
@@ -1297,7 +1329,7 @@
                         },
                         {
                             "const": "LAUNCH",
-                            "description": "Launches an entity at the target entity"
+                            "description": "Launches an entity. \nMode `OTHER`: Launched in the direction of the target entity. \nMode `SELF`: Launched in the direction the user is facing"
                         },
                         {
                             "const": "MESSAGE",
@@ -1325,7 +1357,7 @@
                         },
                         {
                             "const": "FLING",
-                            "description": "Sets the Y velocity of the user or target entity. Same as VELOCITY"
+                            "description": "Modifies the velocity of the user or target entity. Same as VELOCITY"
                         },
                         {
                             "const": "METADATA",
@@ -1454,6 +1486,14 @@
                         {
                             "const": "ACTIONBAR",
                             "description": "Sends an action bar to the user or target entity"
+                        },
+                        {
+                            "const": "FREEZE",
+                            "description": "Modifies the user or target entity freezing ticks (ie. powdered snow effect)"
+                        },
+                        {
+                            "const": "HEALTH",
+                            "description": "Modifies the health of the user or target entity. Also rounds down to the nearest hitpoint/half a heart"
                         }
                     ],
                     "description": "The type of the effect"
@@ -2084,6 +2124,30 @@
                         "then": {
                             "$ref": "#/effects/ACTIONBAR"
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FREEZE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/FREEZE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HEALTH"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/HEALTH"
+                        }
                     }
                 ]
             }
@@ -2455,15 +2519,20 @@
                     ]
                 },
                 "else": true,
+                "healthPercentange": {
+                    "description": "The health percentage range to check againts. \nDefaults to \"0 - 100\"",
+                    "$ref": "#/types/range",
+                    "default": "0 - 100"
+                },
                 "minimumHealthPercentage": {
-                    "description": "The minimum hp percentage. \nDefaults to 0",
+                    "description": "Deprecated, use `healthPercentange` instead. The minimum hp percentage. \nDefaults to 0",
                     "type": "number",
                     "minimum": 0,
                     "maximum": 100,
                     "default": 0
                 },
                 "maximumHealthPercentage": {
-                    "description": "The maximum hp percentage. \nDefaults to 100",
+                    "description": "Deprecated, use `healthPercentange` instead. The maximum hp percentage. \nDefaults to 100",
                     "type": "number",
                     "minimum": 0,
                     "maximum": 100,
@@ -2683,6 +2752,11 @@
                 },
                 "else": true,
                 "shouldGlide": {
+                    "description": "Deprecated, use `glide` instead. If true, checks if the entity is gliding. If false, it checks the opposite. \nDefaults to true",
+                    "type": "boolean",
+                    "default": true
+                },
+                "glide": {
                     "description": "If true, checks if the entity is gliding. If false, it checks the opposite. \nDefaults to true",
                     "type": "boolean",
                     "default": true
@@ -3208,6 +3282,44 @@
             "required": [
                 "mode"
             ]
+        },
+        "SPEED": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "else": true,
+                "speed": {
+                    "description": "The speed range to check againts",
+                    "$ref": "#/types/range"
+                }
+            },
+            "required": [
+                "mode",
+                "speed"
+            ]
+        },
+        "SHOOTER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "OTHER"
+                    ]
+                },
+                "else": true
+            },
+            "required": [
+                "mode"
+            ]
         }
     },
     "effects": {
@@ -3324,14 +3436,30 @@
                         "OTHER"
                     ]
                 },
-                "velocity": {
-                    "description": "The Y velocity to set to. \nDefaults to 1",
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
                     "type": "number",
                     "default": 1
+                },
+                "velocity": {
+                    "description": "The number on the right side of the operation. The same as `value`. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
+                "component": {
+                    "description": "The component(s) to modify, `ALL` means all components (ex. `XZ` would only modify the X and Z velocities and leave Y unmodified)",
+                    "type": "string",
+                    "pattern": "^(([XYZ]{0,3})|(ALL))$"
                 }
             },
             "required": [
-                "mode"
+                "mode",
+                "operation",
+                "component"
             ]
         },
         "CANCEL": {
@@ -3592,16 +3720,18 @@
         "LAUNCH": {
             "additionalProperties": false,
             "properties": {
-                "type": {
-                    "description": "The entity to launch. \nDefaults to \"FIREBALL\"",
-                    "$ref": "#/types/entity",
-                    "default": "FIREBALL"
-                },
+                "type": true,
                 "mode": {
                     "enum": [
                         "ALL",
+                        "SELF",
                         "OTHER"
                     ]
+                },
+                "entity": {
+                    "description": "The entity to launch. \nDefaults to \"FIREBALL\"",
+                    "$ref": "#/types/entity",
+                    "default": "FIREBALL"
                 },
                 "velocity": {
                     "description": "The speed to launch at. \nDefaults to 1",
@@ -3660,9 +3790,14 @@
                     ]
                 },
                 "velocity": {
-                    "description": "The speed to repulse the target entity. Positive value means into the user. Negative value means away from the user. \nDefaults to 1",
+                    "description": "The speed to repulse the target entity. Positive value means away from the user. Negative value means into the user. \nDefaults to 1",
                     "type": "number",
                     "default": 1
+                },
+                "add": {
+                    "description": "Whether to add velocity or set it. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
                 }
             },
             "required": [
@@ -3753,14 +3888,30 @@
                         "OTHER"
                     ]
                 },
-                "velocity": {
-                    "description": "The Y velocity to set to. \nDefaults to 1",
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
                     "type": "number",
                     "default": 1
+                },
+                "velocity": {
+                    "description": "The number on the right side of the operation. The same as `value`. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
+                "component": {
+                    "description": "The component(s) to modify, `ALL` means all components (ex. `XZ` would only modify the X and Z velocities and leave Y unmodified)",
+                    "type": "string",
+                    "pattern": "^(([XYZ]{0,3})|(ALL))$"
                 }
             },
             "required": [
-                "mode"
+                "mode",
+                "operation",
+                "component"
             ]
         },
         "METADATA": {
@@ -4740,6 +4891,58 @@
                 "mode",
                 "message"
             ]
+        },
+        "FREEZE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                }
+            },
+            "required": [
+                "mode",
+                "operation"
+            ]
+        },
+        "HEALTH": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                }
+            },
+            "required": [
+                "mode",
+                "operation"
+            ]
         }
     },
     "distributions": {
@@ -4975,6 +5178,11 @@
                 },
                 "durability": {
                     "description": "The durability of the item. 0 is normal durability. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                },
+                "customModelData": {
+                    "description": "The custom model data for this item (used for texture packs). \nDefaults to 0",
                     "type": "integer",
                     "default": 0
                 },
