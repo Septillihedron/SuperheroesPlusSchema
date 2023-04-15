@@ -943,13 +943,13 @@
 			"supportedModes": ["ALL", "SELF"],
 			"properties": {
 				"minimumTime": {
-					"description": "The minimum time",
+					"description": "Deprecated. The minimum time",
 					"required": false,
 					"type": "integer",
 					"default": 0
 				},
 				"maximumTime": {
-					"description": "The maximum time",
+					"description": "Deprecated. The maximum time",
 					"required": false,
 					"type": "integer",
 					"default": 24000
@@ -959,7 +959,7 @@
 					"required": false,
 					"type": "range",
 					"default": "0 - 24000"
-				}   
+				}
 			}
 		},
 		"ONGROUND": {
@@ -1149,7 +1149,7 @@
 		},
 		"OR": {
 			"description": "ORs all the conditions inside",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION", "ITEM"],
 			"properties": {
 				"conditions": {
 					"description": "The conditions to OR",
@@ -1217,12 +1217,13 @@
 			}
 		},
 		"SHIELDED": {
-			"description": "CHecks if the user is blocking",
+			"description": "Checks if the user is blocking",
 			"supportedModes": ["ALL", "SELF"]
 		},
 		"WRAPPER": {
 			"description": "Checks if all inside conditions are true",
 			"requireMode": false,
+			"available": false,
 			"properties": {
 				"conditions": {
 					"description": "The conditions to check",
@@ -1460,7 +1461,7 @@
 			}
 		},
 		"WEB": {
-			"description": "Change the block at the user or target entity for a duration of time, then change it back. Same as the BLOCKENTITY effect",
+			"description": "Change the block at target entity for a duration of time, then change it back. Same as BLOCKENTITY",
 			"supportedModes": ["ALL", "OTHER"],
 			"properties": {
 				"duration": {
@@ -1478,7 +1479,7 @@
 			}
 		},
 		"BLOCKENTITY": {
-			"description": "Change the block at the user or target entity for a duration of time, then change it back. Same as the WEB effect",
+			"description": "Change the block at target entity for a duration of time, then change it back. Same as WEB",
 			"supportedModes": ["ALL", "OTHER"],
 			"properties": {
 				"duration": {
@@ -1646,12 +1647,12 @@
 			}
 		},
 		"SMITE": {
-			"description": "Smites the user or target entity",
+			"description": "Smites the user or target entity. Same as LIGHTNING",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"extends": "LIGHTNING"
 		},
 		"LIGHTNING": {
-			"description": "Smites the user or target entity",
+			"description": "Smites the user or target entity. Same as SMITE",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
 				"fake": {
@@ -1744,7 +1745,7 @@
 			}
 		},
 		"PROJECTILE": {
-			"description": "Shoots an entity from the user. if mode is SELF, shoots the entity in the direction that the user is looking",
+			"description": "Shoots an entity from the user. \nMode `SELF`: Shoots in the direction that the user is looking. \nMode `OTHER`: Shoots at the target entity. \nMode `LOCATION`: Shoots at the location",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
 			"properties": {
 				"entity": {
@@ -1916,7 +1917,7 @@
 			}
 		},
 		"IGNITE": {
-			"description": "Sets the user or target entity on fire",
+			"description": "Sets the user or target entity on fire. Same as FIRE",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
 				"fireTicks": {
@@ -1928,7 +1929,7 @@
 			}
 		},
 		"FIRE": {
-			"description": "Sets the user or target entity on fire",
+			"description": "Sets the user or target entity on fire. Same as IGNITE",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"extends": "IGNITE"
 		},
