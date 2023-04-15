@@ -917,7 +917,7 @@
 		},
 		"NOT": {
 			"description": "Inverts the inside condition",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION", "ITEM"],
 			"properties": {
 				"condition": {
 					"description": "The condition to invert",
@@ -1405,7 +1405,7 @@
 		},
 		"WAIT": {
 			"description": "Acts like a trigger. \nWaits a duration of time before it triggers",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION", "ITEM"],
 			"extends": "WRAPPER",
 			"properties": {
 				"delay": {
@@ -2092,7 +2092,7 @@
 		"TIMER": {
 			"description": "Acts like a trigger. \nTriggers for a number of times with a period and initial delay. \nTarget items will be forwarded",
 			"extends": "WRAPPER",
-			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION", "ITEM"],
 			"properties": {
 				"delay": {
 					"description": "The initial delay in seconds (1 is 20 ticks)",
@@ -2309,6 +2309,12 @@
 					"required": false,
 					"type": "boolean",
 					"default": false
+				},
+				"limit": {
+					"description": "The max recursion depth ie. the radius from the start",
+					"required": false,
+					"type": "integer",
+					"default": 10
 				}
 			}
 		},
