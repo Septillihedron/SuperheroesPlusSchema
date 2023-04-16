@@ -2,11 +2,32 @@
 SkillToggleItem:
   colouredName: "templateSkillToggle"
   description: "template"
+  reward:
+    type: BASIC
+    items: 
+      GRASS: 
+        type: GRASS
+        metadata:
+          displayName: asd
+          isUnbreakable: false
+          durability: 0
+          customModelData: 0
   skills:
     sunny_saturation:
       trigger:
         type: DAMAGED
         causes:
           - CONTACT
+        conditions:
+          a:
+            type: NOT
+            mode: ALL
+            condition:
+              type: ENTITY
+              mode: ALL
       effects:
-        
+        a:
+          type: VELOCITY
+          mode: ALL
+          operation: ADD
+          component: XY
