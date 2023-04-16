@@ -12,6 +12,13 @@ SkillToggleItem:
         OAK_LOG: 1
     custom:
       skill: CUSTOM
+      conditions:
+        A:
+          type: NOT
+          mode: ALL
+          condition:
+            type: BIOME
+            mode: ALL
       effects:
         A:
           type: GIVEITEM

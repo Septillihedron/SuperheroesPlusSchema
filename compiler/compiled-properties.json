@@ -49,6 +49,16 @@
                             "$ref": "#/definitions/skill"
                         }
                     }
+                },
+                "plusUltraSkills": {
+                    "description": "Works the same as `skills` but only activates when SuperheroesPlusUltra is installed. Probably only used by the developer to add PlusUltra skills into default Superheroes heroes without breaking it",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        ".*": {
+                            "$ref": "#/definitions/skill"
+                        }
+                    }
                 }
             }
         },
@@ -1096,11 +1106,7 @@
                         },
                         {
                             "const": "SHIELDED",
-                            "description": "CHecks if the user is blocking"
-                        },
-                        {
-                            "const": "WRAPPER",
-                            "description": "Checks if all inside conditions are true"
+                            "description": "Checks if the user is blocking"
                         },
                         {
                             "const": "ITEMWRAPPER",
@@ -1473,18 +1479,6 @@
                         "if": {
                             "properties": {
                                 "type": {
-                                    "const": "WRAPPER"
-                                }
-                            }
-                        },
-                        "then": {
-                            "$ref": "#/conditions/WRAPPER"
-                        }
-                    },
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
                                     "const": "ITEMWRAPPER"
                                 }
                             }
@@ -1569,11 +1563,11 @@
                         },
                         {
                             "const": "WEB",
-                            "description": "Change the block at the user or target entity for a duration of time, then change it back. Same as the BLOCKENTITY effect"
+                            "description": "Change the block at target entity for a duration of time, then change it back. Same as BLOCKENTITY"
                         },
                         {
                             "const": "BLOCKENTITY",
-                            "description": "Change the block at the user or target entity for a duration of time, then change it back. Same as the WEB effect"
+                            "description": "Change the block at target entity for a duration of time, then change it back. Same as WEB"
                         },
                         {
                             "const": "ARROW",
@@ -1605,11 +1599,11 @@
                         },
                         {
                             "const": "SMITE",
-                            "description": "Smites the user or target entity"
+                            "description": "Smites the user or target entity. Same as LIGHTNING"
                         },
                         {
                             "const": "LIGHTNING",
-                            "description": "Smites the user or target entity"
+                            "description": "Smites the user or target entity. Same as SMITE"
                         },
                         {
                             "const": "FLING",
@@ -1633,7 +1627,7 @@
                         },
                         {
                             "const": "PROJECTILE",
-                            "description": "Shoots an entity from the user. if mode is SELF, shoots the entity in the direction that the user is looking"
+                            "description": "Shoots an entity from the user. \nMode `SELF`: Shoots in the direction that the user is looking. \nMode `OTHER`: Shoots at the target entity. \nMode `LOCATION`: Shoots at the location"
                         },
                         {
                             "const": "SOUND",
@@ -1661,11 +1655,11 @@
                         },
                         {
                             "const": "IGNITE",
-                            "description": "Sets the user or target entity on fire"
+                            "description": "Sets the user or target entity on fire. Same as FIRE"
                         },
                         {
                             "const": "FIRE",
-                            "description": "Sets the user or target entity on fire"
+                            "description": "Sets the user or target entity on fire. Same as IGNITE"
                         },
                         {
                             "const": "TARGET",
@@ -11197,7 +11191,9 @@
                     "enum": [
                         "ALL",
                         "SELF",
-                        "OTHER"
+                        "OTHER",
+                        "LOCATION",
+                        "ITEM"
                     ]
                 },
                 "else": true,
@@ -11245,12 +11241,12 @@
                 },
                 "else": true,
                 "minimumTime": {
-                    "description": "The minimum time. \nDefaults to 0",
+                    "description": "Deprecated. The minimum time. \nDefaults to 0",
                     "type": "integer",
                     "default": 0
                 },
                 "maximumTime": {
-                    "description": "The maximum time. \nDefaults to 24000",
+                    "description": "Deprecated. The maximum time. \nDefaults to 24000",
                     "type": "integer",
                     "default": 24000
                 },
@@ -11607,7 +11603,9 @@
                     "enum": [
                         "ALL",
                         "SELF",
-                        "OTHER"
+                        "OTHER",
+                        "LOCATION",
+                        "ITEM"
                     ]
                 },
                 "else": true,
@@ -12034,7 +12032,8 @@
                         "ALL",
                         "SELF",
                         "OTHER",
-                        "LOCATION"
+                        "LOCATION",
+                        "ITEM"
                     ]
                 },
                 "conditions": {
@@ -13067,7 +13066,8 @@
                         "ALL",
                         "SELF",
                         "OTHER",
-                        "LOCATION"
+                        "LOCATION",
+                        "ITEM"
                     ]
                 },
                 "conditions": {
@@ -13391,6 +13391,11 @@
                     "description": "If true, the vein will break all types in the list instead of only breaking the same type of block as the one in original location. \nDefaults to false",
                     "type": "boolean",
                     "default": false
+                },
+                "limit": {
+                    "description": "The max recursion depth ie. the radius from the start. \nDefaults to 10",
+                    "type": "integer",
+                    "default": 10
                 }
             },
             "required": [
