@@ -3,10 +3,27 @@ SkillToggleItem:
   item:
     type: STONE
     amount: 1
+    metadata:
+      isUnbreakable: false
+      durability: 0
+      customModelData: 0
   skills:
     sunny_saturation:
       trigger:
         type: DAMAGED
         causes:
           - CONTACT
+        conditions:
+          A:
+            type: NOT
+            mode: LOCATION
+            condition:
+              type: BLOCK
+              mode: ALL
+      effects:
+        amount: 
+          type: VELOCITY
+          mode: SELF
+          operation: DIVIDE
+          component: XY
         
