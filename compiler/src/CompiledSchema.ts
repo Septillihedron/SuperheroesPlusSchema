@@ -71,6 +71,16 @@ class Hero {
 					$ref: "#/definitions/skill"
 				}
 			}
+		},
+		plusUltraSkills: {
+			description: "Works the same as `skills` but only activates when SuperheroesPlusUltra is installed. Probably only used by the developer to add PlusUltra skills into default Superheroes heroes without breaking it",
+			type: "object",
+			additionalProperties: false,
+			patternProperties: {
+				".*": {
+					$ref: "#/definitions/skill"
+				}
+			}
 		}
 	}
 }

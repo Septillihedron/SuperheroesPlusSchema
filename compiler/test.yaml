@@ -24,3 +24,29 @@ SkillToggleItem:
               isUnbreakable: false
               durability: 0
               customModelData: 0
+  plusUltraSkills:
+    cobweb:
+      skill: CUSTOM
+      trigger:
+        type: COMBAT
+        conditions:
+          chance:
+            type: CHANCE
+            mode: SELF
+            chance: 0.1
+          cooldown:
+            type: COOLDOWN
+            mode: SELF
+            cooldown: 10
+      effects:
+        trapMob:
+          type: LOCATIONCUBE
+          mode: OTHER
+          verticalRadius: 0
+          horizontalRadius: 0
+          effects: 
+            place:
+              type: PLACEBLOCK
+              mode: LOCATION
+              block:
+                type: COBWEB
