@@ -2,6 +2,8 @@
 SkillToggleItem:
   colouredName: "templateSkillToggle"
   description: "template"
+  icon:
+    type: STONE
   skills:
     sunny_saturation:
       skill: CRAFTING

@@ -62,6 +62,11 @@ class Hero {
 			},
 			required: ["value", "signature"]
 		},
+		icon: {
+			description: "The icon for this hero in the selection GUI",
+			type: "object",
+			$ref: "#/types/ItemStackData"
+		},
 		skills: {
 			description: "The list of skill that the hero has",
 			type: "object",
