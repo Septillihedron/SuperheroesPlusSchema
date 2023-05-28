@@ -33,6 +33,16 @@ SkillToggleItem:
               isUnbreakable: false
               durability: 0
               customModelData: 0
+              enchants:
+                soul_sspeed: 0
+                power: 0
+    blockdrops:
+      skill: BLOCKDROPS
+      convertMap:
+        BAMBOO: 
+          STICK:
+            type: STICK
+            amount: 8
   plusUltraSkills:
     cobweb:
       skill: CUSTOM
@@ -47,6 +57,12 @@ SkillToggleItem:
             type: COOLDOWN
             mode: SELF
             cooldown: 10
+          world:
+            type: WORLD
+            mode: LOCATION
+            worlds:
+              - world_nethesr
+              - world_nether
       effects:
         trapMob:
           type: LOCATIONCUBE

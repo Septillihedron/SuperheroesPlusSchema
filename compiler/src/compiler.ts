@@ -123,6 +123,7 @@ export class Compiler {
 		this.PropertyPartsCompiler.properties(type.properties, compiledType)
 		this.PropertyPartsCompiler.patternProperties(type.patternProperties, compiledType)
 		this.PropertyPartsCompiler.propertiesMap(type.propertiesMap, compiledType)
+		this.PropertyPartsCompiler.requireEnum(type.requireEnum, compiledType)
 		deletePropertyClassHelperProperties(compiledType)
 	
 		return compiledType
@@ -200,7 +201,7 @@ export class Compiler {
 		},
 		propertiesMap: (propertiesMap, compilingProperty) => {
 			if (propertiesMap === undefined) return
-			compilingProperty.additionalProperties = false
+			compilingProperty.additionalProperties = true
 			let keyProperty = new Compiled.PropertyClass(compilingProperty, "propertyNames")
 			this.compileProperty({required: false, ...propertiesMap.key}, keyProperty)
 			let valueProperty = new Compiled.PropertyClass(compilingProperty, "propertyContent")
@@ -216,6 +217,7 @@ export class Compiler {
 			typesName.forEach(typeName => {
 				let type = this.preprocessed.types[typeName]
 				if (type.enum !== undefined) {
+					if (type.requireEnum) compilingProperty.additionalProperties = false
 					enumValues.push(...type.enum)
 				}
 				while (type.extends !== undefined) {
@@ -245,6 +247,15 @@ export class Compiler {
 		enum: (enumVal, compilingProperty) => {
 			if (enumVal === undefined) return
 			compilingProperty.setEnum(enumVal)
+		},
+		requireEnum: (requireEnumVal, compilingProperty) => {
+			if (requireEnumVal === undefined) return
+			if (compilingProperty.anyOf !== undefined) throw new Error("Outside implementation bound")
+			if (compilingProperty.type !== "string") throw new Error("Outside implementation bound")
+			if (compilingProperty.enum === undefined) throw new Error("Outside implementation bound / I coded something wrong")
+			compilingProperty.anyOf = [{type: "string"}, {type: "string", enum: compilingProperty.enum}]
+			compilingProperty.enum = undefined
+			compilingProperty.type = undefined
 		}
 	}
 

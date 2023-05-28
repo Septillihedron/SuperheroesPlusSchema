@@ -2617,7 +2617,7 @@
                 "convertMap": {
                     "description": "The map of block to items to drops. \nDefaults to {}",
                     "type": "object",
-                    "additionalProperties": false,
+                    "additionalProperties": true,
                     "propertyNames": {
                         "description": "The block drop to change",
                         "$ref": "#/types/material"
@@ -6893,7 +6893,7 @@
                     "description": "The map of ingredients to count of that ingredients that's needed for the recipe. \nDefaults to {}",
                     "type": "object",
                     "default": {},
-                    "additionalProperties": false,
+                    "additionalProperties": true,
                     "propertyNames": {
                         "description": "The recipe key",
                         "$ref": "#/types/material"
@@ -13533,7 +13533,7 @@
             ]
         },
         "ItemAttributeData": {
-            "additionalProperties": false,
+            "additionalProperties": true,
             "type": "object",
             "propertyNames": {
                 "description": "The attribute name",
@@ -13605,16 +13605,133 @@
             }
         },
         "EnchantmentData": {
-            "additionalProperties": false,
+            "additionalProperties": true,
             "type": "object",
             "propertyNames": {
                 "description": "The enchantment name",
                 "$ref": "#/types/enchantment"
             },
-            "patternProperties": {
-                ".*": {
-                    "description": "The level of the enchantment",
-                    "type": "integer"
+            "propertyContent": {
+                "description": "The level of the enchantment",
+                "type": "integer"
+            },
+            "properties": {
+                "fire_protection": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "sharpness": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "flame": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "soul_speed": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "aqua_affinity": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "punch": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "loyalty": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "depth_strider": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "vanishing_curse": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "unbreaking": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "knockback": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "luck_of_the_sea": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "binding_curse": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "fortune": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "protection": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "efficiency": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "mending": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "frost_walker": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "lure": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "looting": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "piercing": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "blast_protection": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "smite": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "multishot": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "swift_sneak": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "fire_aspect": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "channeling": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "sweeping": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "thorns": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "bane_of_arthropods": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "respiration": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "riptide": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "silk_touch": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "quick_charge": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "projectile_protection": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "impaling": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "feather_falling": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "power": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "infinity": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
                 }
             }
         },
@@ -13732,7 +13849,7 @@
             }
         },
         "AttributeData": {
-            "additionalProperties": false,
+            "additionalProperties": true,
             "type": "object",
             "propertyNames": {
                 "description": "The attribute name",
@@ -14048,17 +14165,134 @@
             "type": "array"
         },
         "EnchantComparisonData": {
-            "additionalProperties": false,
+            "additionalProperties": true,
             "type": "object",
             "propertyNames": {
                 "description": "The enchantment name",
                 "$ref": "#/types/enchantment"
             },
-            "patternProperties": {
-                ".*": {
-                    "description": "The level of the enchantment",
-                    "$ref": "#/types/range",
-                    "default": "-Infinity - Infinity"
+            "propertyContent": {
+                "description": "The level of the enchantment",
+                "$ref": "#/types/range",
+                "default": "-Infinity - Infinity"
+            },
+            "properties": {
+                "fire_protection": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "sharpness": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "flame": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "soul_speed": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "aqua_affinity": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "punch": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "loyalty": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "depth_strider": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "vanishing_curse": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "unbreaking": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "knockback": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "luck_of_the_sea": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "binding_curse": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "fortune": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "protection": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "efficiency": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "mending": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "frost_walker": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "lure": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "looting": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "piercing": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "blast_protection": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "smite": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "multishot": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "swift_sneak": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "fire_aspect": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "channeling": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "sweeping": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "thorns": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "bane_of_arthropods": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "respiration": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "riptide": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "silk_touch": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "quick_charge": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "projectile_protection": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "impaling": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "feather_falling": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "power": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "infinity": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
                 }
             }
         },
@@ -14264,7 +14498,55 @@
         },
         "enchantment": {
             "additionalProperties": false,
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        "fire_protection",
+                        "sharpness",
+                        "flame",
+                        "soul_speed",
+                        "aqua_affinity",
+                        "punch",
+                        "loyalty",
+                        "depth_strider",
+                        "vanishing_curse",
+                        "unbreaking",
+                        "knockback",
+                        "luck_of_the_sea",
+                        "binding_curse",
+                        "fortune",
+                        "protection",
+                        "efficiency",
+                        "mending",
+                        "frost_walker",
+                        "lure",
+                        "looting",
+                        "piercing",
+                        "blast_protection",
+                        "smite",
+                        "multishot",
+                        "swift_sneak",
+                        "fire_aspect",
+                        "channeling",
+                        "sweeping",
+                        "thorns",
+                        "bane_of_arthropods",
+                        "respiration",
+                        "riptide",
+                        "silk_touch",
+                        "quick_charge",
+                        "projectile_protection",
+                        "impaling",
+                        "feather_falling",
+                        "power",
+                        "infinity"
+                    ]
+                }
+            ]
         },
         "potion": {
             "additionalProperties": false,
@@ -14481,7 +14763,19 @@
         },
         "world": {
             "additionalProperties": false,
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        "world",
+                        "world_nether",
+                        "world_the_end"
+                    ]
+                }
+            ]
         },
         "equipmentSlot": {
             "additionalProperties": false,

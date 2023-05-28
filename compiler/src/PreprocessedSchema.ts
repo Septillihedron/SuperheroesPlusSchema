@@ -64,6 +64,7 @@ interface Property extends Descriptable {
 	propertiesMap?: PropertiesMap
 	ref?: string
 	if?: IfPath
+	requireEnum?: boolean
 	enum?: any[]
 }
 
@@ -79,6 +80,7 @@ interface TypeDefinition {
 	propertiesMap?: PropertiesMap
 	ref?: string
 	extends?: string
+	requireEnum?: boolean
 	enum?: any[]
 	pattern?: string
 	internal?: boolean

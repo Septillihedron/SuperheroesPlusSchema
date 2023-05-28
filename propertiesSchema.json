@@ -111,6 +111,7 @@
 						"patternProperties": { "$ref": "#/definitions/property/properties/patternProperties" },
 						"propertiesMap": { "$ref": "#/definitions/property/properties/propertiesMap" },
 						"ref": { "$ref": "#/definitions/property/properties/ref" },
+						"requireEnum": { "$ref": "#/definitions/property/properties/requireEnum" },
 						"enum": { "$ref": "#/definitions/property/properties/enum" },
 						"pattern": { "$ref": "#/definitions/property/properties/pattern" },
 						"internal": {
@@ -270,6 +271,10 @@
 				},
 				"if": {
 					"$ref": "#/definitions/if"
+				},
+				"requireEnum": {
+					"type": "boolean",
+					"description": "Whether the enum value is forced or just a suggestion"
 				},
 				"enum": {
 					"type": "array",
