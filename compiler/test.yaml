@@ -11,7 +11,8 @@ SkillToggleItem:
       ingredients:
         ACACIA_BOAT: 2
         ACACIA_FENCE_GATE: 1
-        OAK_LOG: 1
+        OAK_LOG: 2
+        AMETHYST_SHARD: 1
     custom:
       skill: CUSTOM
       conditions:
@@ -21,6 +22,8 @@ SkillToggleItem:
           condition:
             type: BIOME
             mode: ALL
+            biomes:
+              - RIVER
       effects:
         A:
           type: GIVEITEM
@@ -36,6 +39,7 @@ SkillToggleItem:
               enchants:
                 soul_sspeed: 0
                 power: 0
+                mending: 0
     blockdrops:
       skill: BLOCKDROPS
       convertMap:
@@ -43,6 +47,14 @@ SkillToggleItem:
           STICK:
             type: STICK
             amount: 8
+            metadata:
+              enchants:
+                aqua_affsinity: 0
+              attributes:
+                ATTACK_DAMAGE:
+                  value: 0
+                  equipmentslot: HAND
+                  operation: ADD_NUMBER
   plusUltraSkills:
     cobweb:
       skill: CUSTOM

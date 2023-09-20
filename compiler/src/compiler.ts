@@ -1,6 +1,6 @@
 import * as Preprocessed from "./PreprocessedSchema"
 import * as Compiled from "./CompiledSchema"
-import { objectPropertyMap } from "./utils"
+import { forEachEntry } from "./utils"
 
 export class Compiler {
 
@@ -15,15 +15,14 @@ export class Compiler {
 	compile() {
 		let {schema, preprocessed} = this
 		this.addCustomSkill()
-		for (let set of ["skill", "trigger", "condition", "effect"]) {
-			objectPropertyMap((preprocessed as any)[`${set}s`]).forEach((type, name) => {
-				(this as any)[`compile${set.charAt(0).toUpperCase() + set.slice(1)}`](type, name)
-			})
-		}
-		objectPropertyMap(preprocessed.types).forEach((type: Preprocessed.TypeDefinition, name) => {
-			if (["condition", "effect"].includes(name as string)) return
-			schema.types[name] = this.compileType(name as string, type)
-		})
+		const {skills, triggers, conditions, effects, types} = preprocessed;
+		forEachEntry(skills, this.compileSkill.bind(this));
+		forEachEntry(triggers, this.compileTrigger.bind(this));
+		forEachEntry(conditions, this.compileCondition.bind(this));
+		forEachEntry(effects, this.compileEffect.bind(this));
+		delete types.effect;
+		delete types.condition;
+		forEachEntry(types, this.compileType.bind(this));
 		this.addInternalTypes();
 
 		return schema
@@ -33,7 +32,7 @@ export class Compiler {
 		let {definitions, skills} = this.schema
 		definitions.skill.addSkill("CUSTOM", "A custom skill, used in combination with the SkillsLibrary")
 		var skill = new Compiled.SkillDefinition()
-		skill.addProperty("trigger", {$ref: "#/definitions/trigger"})
+		skill.addProperty("trigger", { $ref: "#/definitions/trigger" })
 		skill.addProperty("effects", {
 			patternProperties: {
 				".*": { $ref: "#/definitions/effect" }
@@ -44,76 +43,63 @@ export class Compiler {
 		skills["CUSTOM"] = skill
 	}
 
-	compileSkill(skill: Preprocessed.Skill, skillName: string) {
-		let compiledSkill = new Compiled.SkillDefinition()
-
-		this.schema.skills[skillName] = compiledSkill
-		if (skill.available !== false) {
-			this.schema.definitions.skill.addSkill(skillName, skill.description)
+	addProperties(definition: Compiled.Definition, properties: Preprocessed.PropertyMap | undefined, path: string) {
+		if (properties === undefined) return
+		for (const [name, property] of Object.entries(properties)) {
+			const propertyClass = new Compiled.PropertyClass(definition, name, path+name);
+			let compiledProperty = this.compileProperty(property, propertyClass);
+			definition.addProperty(name, compiledProperty, property.required)
 		}
-		if (skill.properties === undefined) return
-		objectPropertyMap(skill.properties)
-			.forEach((property, name) => {
-				let compiledProperty = this.compileProperty(property, 
-					new Compiled.PropertyClass(compiledSkill, name as string, `#/skills/${skillName}/properties/${name}`))
-				compiledSkill.addProperty(name as string, compiledProperty, property.required)
-			})
+	}
+
+	compileSkill(name: string, preprocessed: Preprocessed.Skill): void {
+		let compiled = new Compiled.SkillDefinition()
+
+		if (preprocessed.available) {
+			this.schema.definitions.skill.addSkill(name, preprocessed.description)
+		}
+		this.addProperties(compiled, preprocessed.properties, `#/skills/${name}/properties/`);
+
+		this.schema.skills[name] = compiled
 	}
 	
-	compileTrigger(trigger: Preprocessed.Trigger, triggerName: string) {
-		let compiledTrigger = new Compiled.TriggerDefinition()
+	compileTrigger(name: string, preprocessed: Preprocessed.Trigger): void {
+		let compiled = new Compiled.TriggerDefinition()
 
-		this.schema.triggers[triggerName] = compiledTrigger
-		if (trigger.available !== false) {
-			this.schema.definitions.trigger.addType(triggerName, trigger.description)
+		if (preprocessed.available) {
+			this.schema.definitions.trigger.addType(name, preprocessed.description)
 		}
-		if (trigger.properties === undefined) return
-		objectPropertyMap(trigger.properties)
-			.forEach((property, name) => {
-				let compiledProperty = this.compileProperty(property, 
-					new Compiled.PropertyClass(compiledTrigger, name as string, `#/triggers/${triggerName}/properties/${name}`))
-				compiledTrigger.addProperty(name as string, compiledProperty, property.required)
-			})
+		this.addProperties(compiled, preprocessed.properties, `#/triggers/${name}/properties/`);
+
+		this.schema.triggers[name] = compiled
 	}
 	
-	compileCondition(condition: Preprocessed.Condition, conditionName: string) {
-		let compiledCondition = new Compiled.ConditionDefinition(condition.supportedModes!)
+	compileCondition(name: string, preprocessed: Preprocessed.Condition): void {
+		let compiled = new Compiled.ConditionDefinition(preprocessed.supportedModes!)
 
-		this.schema.conditions[conditionName] = compiledCondition
-		if (condition.available !== false) {
-			this.schema.definitions.condition.addType(conditionName, condition.description)
+		if (preprocessed.available) {
+			this.schema.definitions.condition.addType(name, preprocessed.description)
 		}
-		let requireMode = condition.requireMode
-		if (requireMode === true || requireMode === undefined) compiledCondition.requireMode()
-		if (condition.properties === undefined) return
-		objectPropertyMap(condition.properties)
-			.forEach((property, name) => {
-				let compiledProperty = this.compileProperty(property, 
-					new Compiled.PropertyClass(compiledCondition, name as string, `#/conditions/${conditionName}/properties/${name}`))
-				compiledCondition.addProperty(name as string, compiledProperty, property.required)
-			})
+		if (preprocessed.requireMode) compiled.requireMode()
+		this.addProperties(compiled, preprocessed.properties, `#/conditions/${name}/properties/`);
+
+		this.schema.conditions[name] = compiled
 	}
 	
-	compileEffect(effect: Preprocessed.Effect, effectName: string) {
-		let compiledEffect = new Compiled.EffectDefinition(effect.supportedModes!)
+	compileEffect(name: string, preprocessed: Preprocessed.Effect): void {
+		let compiled = new Compiled.EffectDefinition(preprocessed.supportedModes!)
 
-		this.schema.effects[effectName] = compiledEffect
-		if (effect.available !== false) {
-			this.schema.definitions.effect.addType(effectName, effect.description)
+		if (preprocessed.available) {
+			this.schema.definitions.effect.addType(name, preprocessed.description)
 		}
+		
+		if (preprocessed.requireMode) compiled.requireMode()
+		this.addProperties(compiled, preprocessed.properties, `#/effects/${name}/properties/`);
 
-		let requireMode = effect.requireMode
-		if (requireMode === true || requireMode === undefined) compiledEffect.requireMode()
-		if (effect.properties === undefined) return
-		objectPropertyMap(effect.properties)
-			.forEach((property, name) => {
-				let compiledProperty = this.compileProperty(property, 
-					new Compiled.PropertyClass(compiledEffect, name as string, `#/effects/${effectName}/properties/${name}`))
-				compiledEffect.addProperty(name as string, compiledProperty, property.required)
-			})
+		this.schema.effects[name] = compiled
 	}
 	
-	compileType(name: string, type: Preprocessed.TypeDefinition): Compiled.Property {
+	compileType(name: string, type: Preprocessed.TypeDefinition): void {
 		let compiledType = new Compiled.PropertyClass(this.schema.types, name, `#/types/${name}`)
 		
 		compiledType.pattern = type.pattern
@@ -125,8 +111,8 @@ export class Compiler {
 		this.PropertyPartsCompiler.propertiesMap(type.propertiesMap, compiledType)
 		this.PropertyPartsCompiler.requireEnum(type.requireEnum, compiledType)
 		deletePropertyClassHelperProperties(compiledType)
-	
-		return compiledType
+
+		this.schema.types[name] = compiledType;
 	}
 	
 	addInternalTypes(): void {
@@ -179,7 +165,7 @@ export class Compiler {
 			if (properties === undefined) return
 			compilingProperty.additionalProperties = false
 			if (compilingProperty.properties === undefined) compilingProperty.properties = {}
-			objectPropertyMap(properties).forEach((property, name) => {
+			forEachEntry(properties, (name, property) => {
 				let propertyPath = `${compilingProperty.path.asString()}/properties/${name}`
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compilingProperty.properties!, name as string, propertyPath))
@@ -191,7 +177,7 @@ export class Compiler {
 			if (patternProperties === undefined) return
 			compilingProperty.additionalProperties = false
 			if (compilingProperty.patternProperties === undefined) compilingProperty.patternProperties = {}
-			objectPropertyMap(patternProperties).forEach((property, name) => {
+			forEachEntry(patternProperties, (name, property) => {
 				let propertyPath = `${compilingProperty.path.asString()}/patternProperties/${name}`
 				let compiledProperty = this.compileProperty(property, 
 					new Compiled.PropertyClass(compilingProperty.patternProperties!, name as string, propertyPath))
@@ -234,9 +220,6 @@ export class Compiler {
 			compilingProperty.setPropertyContent(valueProperty)
 			let propertyContentPath = `${compilingProperty.path.asString()}/propertyContent`
 			enumValues.forEach(value => compilingProperty.addProperty(value, {$ref: propertyContentPath}))
-		},
-		ref: ($ref, compilingProperty) => {
-			
 		},
 		if: (property, compilingProperty) => {
 			

@@ -1,45 +1,45 @@
+import { StringRecord } from "./utils"
 
 export {
 	Schema,
 	Descriptable,  
-	PropertyMap, Type, Skill, Trigger, ConditionModes, Condition, EffectModes, Effect, TypeDefinition, 
+	PropertyMap, Item, Skill, Trigger, Modes, Condition, Effect, TypeDefinition, 
 	PropertyTypes, PropertyStringTypes, PropertyType, 
 	PropertiesMap, PropertiesMapKey, Property, 
 	IfPath
 }
 
 interface Schema {
-	skills: {[key: string] : Skill}
-	triggers: {[key: string] : Trigger}
-	conditions: {[key: string] : Condition}
-	effects: {[key: string] : Effect}
-	types: {[key: string] : TypeDefinition}
+	skills: StringRecord<Skill>
+	triggers: StringRecord<Trigger>
+	conditions: StringRecord<Condition>
+	effects: StringRecord<Effect>
+	types: StringRecord<TypeDefinition>
 }
 
 interface Descriptable {
 	description: string
 }
 
-type PropertyMap = {[key: string] : Property}
+type PropertyMap = StringRecord<Property>
 
-interface Type extends Descriptable {
+interface Item extends Descriptable {
 	properties?: PropertyMap
-	available?: boolean
-	requireMode?: boolean
+	available: boolean
+	requireMode: boolean
 }
 
-interface Skill extends Type {}
+interface Skill extends Item {}
 
-interface Trigger extends Type {}
+interface Trigger extends Item {}
 
-type ConditionModes = "SELF" | "OTHER" | "LOCATION" | "ITEM" | "ALL"
-interface Condition extends Type {
-	supportedModes?: ConditionModes[]
+type Modes = "SELF" | "OTHER" | "LOCATION" | "ITEM" | "ALL"
+interface Condition extends Item {
+	supportedModes?: Modes[]
 }
 
-type EffectModes = "SELF" | "OTHER" | "LOCATION" | "ITEM" | "ALL"
-interface Effect extends Type {
-	supportedModes?: EffectModes[]
+interface Effect extends Item {
+	supportedModes?: Modes[]
 }
 
 type PropertyTypes = PropertyStringTypes | "array" | "object" | "string" | "number" | "integer" | "boolean"
@@ -62,7 +62,6 @@ interface Property extends Descriptable {
 	properties?: PropertyMap
 	patternProperties?: PropertyMap
 	propertiesMap?: PropertiesMap
-	ref?: string
 	if?: IfPath
 	requireEnum?: boolean
 	enum?: any[]

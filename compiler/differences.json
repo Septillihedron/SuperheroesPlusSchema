@@ -1,0 +1,94 @@
+{ // changes are for the better
+    "skills": {
+        "BLOCKDROPS": {
+            "properties": {
+                "convertMap": {
+                    "additionalProperties": [
+                        true,
+                        false
+                    ]
+                }
+            }
+        },
+        "CRAFTING": {
+            "properties": {
+                "ingredients": {
+                    "additionalProperties": [
+                        true,
+                        false
+                    ]
+                }
+            }
+        }
+    },
+    "types": {
+        "ItemAttributeData": {
+            "additionalProperties": [
+                true,
+                false
+            ]
+        },
+        "EnchantmentData": {
+            "additionalProperties": [
+                true,
+                false
+            ],
+            "propertyContent": [
+                "type object",
+                "type undefined"
+            ],
+            "properties": [
+                "type object",
+                "type undefined"
+            ],
+            "patternProperties": [
+                "type undefined",
+                "type object"
+            ]
+        },
+        "AttributeData": {
+            "additionalProperties": [
+                true,
+                false
+            ]
+        },
+        "EnchantComparisonData": {
+            "additionalProperties": [
+                true,
+                false
+            ],
+            "propertyContent": [
+                "type object",
+                "type undefined"
+            ],
+            "properties": [
+                "type object",
+                "type undefined"
+            ],
+            "patternProperties": [
+                "type undefined",
+                "type object"
+            ]
+        },
+        "enchantment": {
+            "anyOf": [
+                "type object",
+                "type undefined"
+            ],
+            "type": [
+                "type undefined",
+                "type string"
+            ]
+        },
+        "world": {
+            "anyOf": [
+                "type object",
+                "type undefined"
+            ],
+            "type": [
+                "type undefined",
+                "type string"
+            ]
+        }
+    }
+}

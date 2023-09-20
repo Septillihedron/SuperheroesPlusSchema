@@ -1,12 +1,12 @@
-import { IfPath, PropertyTypes, EffectModes, ConditionModes } from "./PreprocessedSchema";
-import { MonoTypeObject, objectPropertyMap } from "./utils";
+import { IfPath, PropertyTypes, Modes } from "./PreprocessedSchema";
+import { StringRecord } from "./utils";
 
 export {
 	Schema, 
 	Hero, Skill, Trigger, Condition, Effect, 
 	Types, IfThenRefrence, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	SkillDefinition, TriggerDefinition, ConditionDefinition, EffectDefinition
+	Definition, SkillDefinition, TriggerDefinition, ConditionDefinition, EffectDefinition
 }
 
 class Schema {
@@ -27,11 +27,11 @@ class Schema {
 		condition: new Condition(),
 		effect: new Effect()
 	}
-	readonly skills: MonoTypeObject<SkillDefinition> = {}
-	readonly triggers: MonoTypeObject<TriggerDefinition> = {}
-	readonly conditions: MonoTypeObject<ConditionDefinition> = {}
-	readonly effects: MonoTypeObject<EffectDefinition> = {}
-	readonly types: MonoTypeObject<Property> = {}
+	readonly skills: StringRecord<SkillDefinition> = {}
+	readonly triggers: StringRecord<TriggerDefinition> = {}
+	readonly conditions: StringRecord<ConditionDefinition> = {}
+	readonly effects: StringRecord<EffectDefinition> = {}
+	readonly types: StringRecord<Property> = {}
 }
 
 class Hero {
@@ -222,7 +222,7 @@ class Effect {
 
 type types = "array" | "object" | "string" | "number" | "integer" | "boolean"
 
-type PropertyMap = MonoTypeObject<Property>
+type PropertyMap = StringRecord<Property>
 
 class Path {
 
@@ -308,13 +308,11 @@ class PropertyClass implements Property {
 
 		if (path !== undefined) {
 			this.path = new Path(path)
-			return
-		}
-		if (!("path" in parent)) {// this if should never happen
+		} else if (!("path" in parent)) {// this if should never happen
 			this.path = new Path()
-			return
+		} else {
+			this.path = new Path(...parent.path.parts, name)
 		}
-		this.path = new Path(...parent.path.parts, name)
 	}
 
 	setDescription(description: string): void {
@@ -406,26 +404,27 @@ class PropertyClass implements Property {
 }
 
 abstract class Definition {
-	readonly properties: MonoTypeObject<Property | boolean>
+	readonly properties: StringRecord<Property | boolean>
 	required?: string[]
 	readonly additionalProperties = false
 	if?: true
 	then?: {$ref: string, additionalProperties: true}
 
-	constructor(properties: MonoTypeObject<Property | boolean>) {
+	constructor(properties: StringRecord<Property | boolean>) {
 		this.properties = properties
 	}
 
 	addProperty(name: string, property: Property, required?: boolean): void {
 		this.properties[name] = property
-		if (required) {
-			if (this.required === undefined) this.required = []
-			this.required.push(name)
-		}
+		if (required) this.addRequired(name)
 	}
 	requireMode() {
-		if (this.required === undefined) this.required = ["mode"]
-		else this.required.push("mode")
+		this.addRequired("mode")
+	}
+
+	private addRequired(item: string) {
+		this.required ??= [];
+		this.required.push(item)
 	}
 
 }
@@ -448,7 +447,7 @@ class TriggerDefinition extends Definition {
 
 class ConditionDefinition extends Definition {
 	
-	constructor(modes: ConditionModes[]) {
+	constructor(modes: Modes[]) {
 		super({ type: true, mode: { enum: modes }, else: true })
 	}
 
@@ -456,7 +455,7 @@ class ConditionDefinition extends Definition {
 
 class EffectDefinition extends Definition {
 
-	constructor(modes: EffectModes[]) {
+	constructor(modes: Modes[]) {
 		super({ type: true, mode: { enum: modes } })
 	}
 

@@ -1,55 +1,56 @@
-import { Schema, Property, PropertyMap, Type } from "./PreprocessedSchema"
-import { objectPropertyMap } from "./utils"
+import { Schema, Property, Item } from "./PreprocessedSchema"
+import { StringRecord, forEachEntry, forEachValue } from "./utils"
+
+type extendableType = Item & {extends?: string}
+type extendableMap = StringRecord<extendableType>
 
 export function preprocess(unprocessed: any): Schema {
 	delete unprocessed.$schema
-	unprocessed = unprocessed as Schema
-	objectPropertyMap<extendableMap>(unprocessed).forEach((types: extendableMap) => {
+	forEachValue(unprocessed, (types: extendableMap) => {
 		resolveExtends(types)
-		objectPropertyMap(types).forEach((type: Type) => {
-			if (!type.properties) return
-			objectPropertyMap(type.properties).forEach(property => addDefaultToDescription(property))
+		forEachValue(types, (type: Item) => {
+			type.requireMode ??= true;
+			walkItemProperties(type, addDefaultToDescription);
 		})
 	})
 	return unprocessed
 }
 
-type extendableType = Type & {extends?: string}
-type extendableMap = {[key: string] : extendableType}
-
 function resolveExtends(extendableMap: extendableMap) : void {
-	objectPropertyMap(extendableMap).forEach((type, name) => {
+	forEachEntry(extendableMap, (name, type) => {
 		var extendsVal = type.extends
-		if (type.available === undefined) type.available = true
+		type.available ??= true
 		if (!extendsVal) return
-		extendableMap[name] = deepMerge(extendableMap[extendsVal], type)
+		extendableMap[name] = deepMerge(structuredClone(extendableMap[extendsVal]), type)
 		delete extendableMap[name]["extends"]
 	})
 }
 
-function deepMerge<T extends Object>(object: T, ...objects: T[]): T {
-	if (objects.length == 0) return object
-	const merged = structuredClone(object)
-	const second = objects.shift()
-	for (const _key in second) {
+function deepMerge<T extends Object>(merged: T, overrides: T): T {
+	for (const _key in overrides) {
 		const key = _key as keyof T & string
-		if (merged[key] === undefined || typeof second[key] !== "object") merged[key] = second[key]
-		else merged[key] = deepMerge<any>(merged[key], second[key])
+		if (merged[key] === undefined || typeof overrides[key] !== "object") merged[key] = overrides[key]
+		else merged[key] = deepMerge<any>(merged[key], overrides[key])
 	}
-	return deepMerge(merged, ...objects)
+	return merged
 }
 
-function addDefaultToDescription(property: Property): void {
-	if (property.properties !== undefined) {
-		objectPropertyMap(property.properties).forEach((val: Property) => addDefaultToDescription(val))
-	}
-	if (property.patternProperties !== undefined) {
-		objectPropertyMap(property.patternProperties).forEach((val: Property) => addDefaultToDescription(val))
-	}
-	if (property.propertiesMap !== undefined) {
-		addDefaultToDescription(property.propertiesMap.value)
-	}
+function walkItemProperties(item: Item, func: (property: Property) => void) {
+	forEachValue(item.properties, property => walkProperty(property, func))
+}
 
+function walkProperty(property: Property | undefined, func: (property: Property) => void) {
+	if (property == undefined) return
+
+	func(property)
+
+	forEachValue(property.properties, property => walkProperty(property, func))
+	forEachValue(property.patternProperties, property => walkProperty(property, func))
+	walkProperty(property.propertiesMap?.value, func)
+}
+
+function addDefaultToDescription(property: Property | undefined): void {
+	if (property == undefined) return
 	var defaultVal = property.default
 	if (defaultVal === undefined) return
 	var description = property.description
