@@ -5559,6 +5559,11 @@
                     "$ref": "#/types/EntityData",
                     "default": {}
                 },
+                "attributes": {
+                    "description": "The attributes of the entity. \nDefaults to {}",
+                    "$ref": "#/types/AttributeData",
+                    "default": {}
+                },
                 "extra": {
                     "description": "The extra data for entities. \nDefaults to {}",
                     "type": "object",
