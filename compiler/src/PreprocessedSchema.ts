@@ -3,17 +3,30 @@ import { StringRecord } from "./utils"
 export {
 	Schema,
 	Descriptable,  
-	PropertyMap, Item, Skill, Trigger, Modes, Condition, Effect, TypeDefinition, 
+	PropertyMap,
 	PropertyTypes, PropertyStringTypes, PropertyType, 
 	PropertiesMap, PropertiesMapKey, Property, 
-	IfPath
+	IfPath,
+
+	Item, Trigger, Modes, Condition, Effect, TypeDefinition, 
+
+	Skill,
+	DamageModifier, Reward,
+	Distribution
 }
 
 interface Schema {
-	skills: StringRecord<Skill>
 	triggers: StringRecord<Trigger>
 	conditions: StringRecord<Condition>
 	effects: StringRecord<Effect>
+
+	skills: StringRecord<Skill>
+
+	damagemodifiers: StringRecord<DamageModifier>
+	rewards: StringRecord<Reward>
+	
+	distributions: StringRecord<Distribution>
+
 	types: StringRecord<TypeDefinition>
 }
 
@@ -23,13 +36,14 @@ interface Descriptable {
 
 type PropertyMap = StringRecord<Property>
 
+type Plugins ="Superheroes" | "EnchantedBosses" | "EnchantedCombat"
+
 interface Item extends Descriptable {
 	properties?: PropertyMap
 	available: boolean
 	requireMode: boolean
+	exclusiveTo?: Plugins
 }
-
-interface Skill extends Item {}
 
 interface Trigger extends Item {}
 
@@ -41,6 +55,13 @@ interface Condition extends Item {
 interface Effect extends Item {
 	supportedModes?: Modes[]
 }
+
+interface Skill extends Item {}
+
+interface DamageModifier extends Item {}
+interface Reward extends Item {}
+
+interface Distribution extends Item {}
 
 type PropertyTypes = PropertyStringTypes | "array" | "object" | "string" | "number" | "integer" | "boolean"
 type PropertyStringTypes = "string" | "range" | "comparison" | "operation" | "entity" | "block" | "item" | "enchantment" | "potion" | "biome" | "world" | "equipmentSlot" | "attribute" | "sound" | "condition" | "effect"

@@ -1,655 +1,5 @@
 {
 	"$schema": "propertiesSchema.json",
-	"skills": {
-		"POTIONEFFECT": {
-			"description": "Applies the potion effect to the user",
-			"properties": {
-				"potency": {
-					"description": "The potency or amplifier of the potion",
-					"required": false,
-					"type": "integer",
-					"default": 0
-				},
-				"type": {
-					"description": "The type of the potion",
-					"required": false,
-					"type": "potion",
-					"default": {}
-				},
-				"duration": {
-					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
-					"required": false,
-					"type": "number",
-					"default": 4
-				}
-			}
-		},
-		"OHKO": {
-			"description": "Kills the entity in one hit",
-			"properties": {
-				"entityTypes": {
-					"description": "The types of entities that can be killed in one hit by the user",
-					"required": false,
-					"type": "array",
-					"items": "entity",
-					"default": []
-				},
-				"displayName": {
-					"description": "The custom name of the entity that can be killed in one hit by the user. \nDefaults to any name",
-					"required": false,
-					"type": "string",
-					"default": ""
-				}
-			}
-		},
-		"REPULSION": {
-			"description": "Repulses all nearby entities when the user sneaks",
-			"properties": {
-				"multiplier": {
-					"description": "The multiplier for the repulsion",
-					"required": false,
-					"type": "number",
-					"default": 1
-				},
-				"radius": {
-					"description": "The radius where inside entities are effected",
-					"required": false,
-					"type": "number",
-					"default": 5
-				},
-				"entityBlacklist": {
-					"description": "The entities to not get effected",
-					"required": false,
-					"type": "array",
-					"items": "entity",
-					"default": []
-				}
-			}
-		},
-		"CONVERTITEM": {
-			"description": "Converts the input item into the output item when the user picks up an item",
-			"properties": {
-				"inputItem": {
-					"description": "The input item to convert", 
-					"required": false,
-					"type": "ItemStackData",
-					"default": null
-				},
-				"outputItem": {
-					"description": "The item to convert to",
-					"required": false,
-					"type": "ItemStackData",
-					"default": null
-				},
-				"chance": {
-					"description": "The chance of the conversion",
-					"required": false,
-					"type": "number",
-					"default": null
-				}
-			}
-		},
-		"COOLDOWN": {
-			"description": "The cooldown for the skill",
-			"properties": {
-				"cooldown": {
-					"description": "The cooldown in seconds",
-					"required": false,
-					"type": "number",
-					"default": null
-				},
-				"cooldownMessage": { 
-					"description": "The message to display when the skill is on cooldown",
-					"required": false,
-					"type": "string",
-					"default": null
-				}
-			}
-		},
-		"CONVERTBLOCK": {
-			"description": "Converts a block when the user right clicks a block",
-			"extends": "COOLDOWN",
-			"properties": {
-				"outputBlock": {
-					"description": "The block to convert to",
-					"required": false,
-					"type": "material",
-					"default": "GOLD_BLOCK"
-				},
-				"inputBlocks": {
-					"description": "The list of blocks to convert from",
-					"required": false,
-					"type": "array",
-					"items": "material",
-					"default": []
-				}
-			}
-		},
-		"REMOTEDETONATION": {
-			"description": "Creates an explosion at the entity the user is looking at when the user sneaks",
-			"extends": "COOLDOWN",
-			"properties": {
-				"explosionStrength": {
-					"description": "The strength of the explosion",
-					"required": false,
-					"type": "number",
-					"default": 1
-				},
-				"explodable": {
-					"description": "The types of entities that can be exploded",
-					"required": false,
-					"type": "array",
-					"items": "entity",
-					"default": []
-				},
-				"spawnsFire": {
-					"description": "If true, explosion will spawn fire",
-					"required": false,
-					"type": "boolean",
-					"default": false
-				},
-				"breakBlocks": {
-					"description": "If true, the explosion will break blocks",
-					"required": false,
-					"type": "boolean",
-					"default": true
-				},
-				"removeDetonatedEntity": {
-					"description": "If true, the entity that was detonated will be removed",
-					"required": false,
-					"type": "boolean",
-					"default": true
-				}
-			}
-		},
-		"BLOCKDROPS": {
-			"description": "Changes the block drops of a block",
-			"properties": {
-				"convertMap": {
-					"description": "The map of block to items to drops",
-					"required": false,
-					"type": "object",
-					"propertiesMap": {
-						"key": {
-							"description": "The block drop to change",
-							"type": "material"
-						},
-						"value": {
-							"description": "The items to drop",
-							"required": true,
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"description": "An item to drop",
-									"required": true,
-									"type": "ItemStackData"
-								}
-							}
-						}
-					},
-					"default": {}
-				},
-				"replaceDrops": {
-					"description": "If true, the original block drops will be replaced with the new drops",
-					"required": false,
-					"type": "boolean",
-					"default": false
-				}
-			}
-		},
-		"CREEPER": {
-			"description": "Creates an explosion when the user sneaks on the ground until the explosion",
-			"extends": "COOLDOWN",
-			"properties": {
-				"creeper_power": {
-					"description": "The power of the explosion",
-					"required": false,
-					"type": "number",
-					"default": 1
-				},
-				"fuse": {
-					"description": "The time to wait until the explosion in seconds (1 is 20 ticks)",
-					"required": false,
-					"type": "number",
-					"default": 2
-				},
-				"slowfall_duration": {
-					"description": "The duration of the slowfall potion in seconds (1 is 20 ticks)",
-					"required": false,
-					"type": "number",
-					"default": 7
-				},
-				"upwardsVelocity": {
-					"description": "The upwards velocity to apply to the user",
-					"required": false,
-					"type": "number",
-					"default": 2.5
-				}
-			}
-		},
-		"GIVEITEM": {
-			"description": "Gives the user an item",
-			"properties": {
-				"canStore": {
-					"description": "If true, the item can be stored outside of the player inventory",
-					"required": false,
-					"type": "boolean",
-					"default": true
-				},
-				"canDrop": {
-					"description": "If true, the item can be dropped",
-					"required": false,
-					"type": "boolean",
-					"default": true
-				},
-				"canLoseOnDeath": {
-					"description": "If true, the item can be lost on death",
-					"required": false,
-					"type": "boolean",
-					"default": true
-				},
-				// "canDropOnDeath": {
-				// 	"description": "If true, the item will be dropped on death",
-				// 	"required": false,
-				// 	"type": "boolean",
-				// 	"default": true
-				// },
-				"loseItemOnHeroLoss": {
-					"description": "If true, the item will be lost on if the user changes hero",
-					"required": false,
-					"type": "boolean",
-					"default": true
-				},
-				"item": {
-					"description": "The item to give",
-					"required": true,
-					"type": "ItemStackData"
-				}
-			}
-		},
-		"GUN": {
-			"description": "Shoots the gun in the direction that the user is looking at when the user right clicks if the user holds the gun item",
-			"extends": "COOLDOWN",
-			"properties": {
-				"maxDistance": {
-					"description": "The max distance the bullet can travel",
-					"required": false,
-					"type": "number",
-					"default": 64
-				},
-				"bulletSize": {
-					"description": "The size of the bullet",
-					"required": false,
-					"type": "number",
-					"default": 1
-				},
-				"damage": {
-					"description": "The damage that will be dealt by the bullet",
-					"required": false,
-					"type": "number",
-					"default": 5
-				},
-				"item": {
-					"description": "The item that will be used as the gun",
-					"required": true,
-					"type": "material"
-				},
-				"shootSound": {
-					"description": "The sound that will be played when the gun shoots",
-					"required": true,
-					"type": "SoundData"
-				},
-				"trailParticle": {
-					"description": "The particle that will be used for the trail",
-					"required": true,
-					"type": "ParticleData"
-				},
-				"hitParticle": {
-					"description": "The particle that will be spawned at the hit location",
-					"required": true,
-					"type": "ParticleData"
-				}
-			}
-		},
-		"SNEAK": {
-			"description": "Prevents the user from sneaking or unsneaking",
-			"properties": {
-				"mustSneak": {
-					"description": "If true, prevents the user from unsneaking. If false, prevents the user from sneaking",
-					"required": false,
-					"type": "boolean",
-					"default": true
-				},
-				"needsInvisibility": {
-					"description": "If true, only prevents the user when the user is invisible",
-					"required": false,
-					"type": "boolean",
-					"default": false
-				}
-			}
-		},
-		"SHIELD": {
-			"description": "Sets the shields cooldown when the user take damage",
-			"properties": {
-				"cooldown": {
-					"description": "The shield cooldown in seconds (1 is 20 ticks)",
-					"required": false,
-					"type": "number",
-					"default": 100
-				}
-			}
-		},
-		"SPELL": {
-			"description": "",
-			"properties": {
-				"spell": {
-					"description": "The type of spell to cast",
-					"required": true,
-					"type": "string",
-					"enum": ["FIREBALL", "SNOWBALL", "ARROW", "LIGHTNING", "EGG", "WATER", "LAVA", "FIRE", "EXPLOSION", "TRIDENT", "TRANSMUTATION", "FANGS"]
-				},
-				"fuel": {
-					"description": "The fuel that will be used to cast the spell",
-					"required": false,
-					"type": "material",
-					"default": "REDSTONE"
-				},
-				"cooldown": {
-					"description": "The cooldown in seconds (1 is 20 ticks)",
-					"required": false,
-					"type": "number",
-					"default": 1
-				},
-				"cost": {
-					"description": "The amount of fuel that will be used to cast the spell",
-					"required": false,
-					"type": "number",
-					"default": 1
-				},
-				"spellName": {
-					"description": "The name of the spell. Defaults to the type of spell",
-					"required": false,
-					"type": "string",
-					"default": ""
-				},
-				"cooldownMessage": {
-					"description": "The message that will be displayed when the spell is on cooldown. \n%spellName% will be replaced with the spell name\n%cooldown% with the cooldown in seconds\n\n%fuel% with the name of the fuel material\n%cost% with the amount of fuel used",
-					"required": false,
-					"type": "string",
-					"default": "%spellName% has %currentcooldown% seconds remaining."
-				},
-				"moreFuelMessage": {
-					"description": "",
-					"required": false,
-					"type": "string",
-					"default": "This spell needs %fuelneeded% more %fuel%"
-				},
-				"displayNameFormat": {
-					"description": "",
-					"required": false,
-					"type": "string",
-					"default": "&5%spellName%"
-				},
-				"loreFormat": {
-					"description": "",
-					"required": false,
-					"type": "array",
-					"items": "string",
-					"default": []
-				},
-				"transmutationData": {
-					"description": "",
-					"required": false,
-					"type": "object",
-					"default": {},
-					"properties": {
-						"resultantBlock": {
-							"description": "",
-							"required": false,
-							"type": "material",
-							"default": "REDSTONE_BLOCK"
-						},
-						"transmutableBlocks": {
-							"description": "",
-							"required": false,
-							"type": "array",
-							"items": "material",
-							"default": []
-						}
-					}
-				}
-			}
-		},
-		"THROWER": {
-			"description": "",
-			"extends": "COOLDOWN",
-			"properties": {
-				"ammoCost": {
-					"description": "",
-					"required": false,
-					"type": "number",
-					"default": 1
-				},
-				"item": {
-					"description": "",
-					"required": false,
-					"type": "ItemStackData",
-					"default": {}
-				},
-				"projectile": {
-					"description": "",
-					"required": false,
-					"type": "entity",
-					"default": "SNOWBALL"
-				},
-				"actions": {
-					"description": "",
-					"required": false,
-					"type": "array",
-					"items": "action",
-					"default": ["RIGHT_CLICK_AIR", "RIGHT_CLICK_BLOCK"]
-				},
-				"canPickUp": {
-					"description": "",
-					"required": false,
-					"type": "boolean",
-					"default": false
-				},
-				"velocity": {
-					"description": "",
-					"required": false,
-					"type": "number",
-					"default": 1.4
-				},
-				"damage": {
-					"description": "",
-					"required": false,
-					"type": "number",
-					"default": 3
-				}
-			}
-		},
-		"BLOCKRAY": {
-			"description": "",
-			"properties": {
-				"blocksToPlace": {
-					"description": "",
-					"required": false,
-					"type": "array",
-					"items": "material",
-					"default": []
-				},
-				"blocksToReplace": {
-					"description": "",
-					"required": false,
-					"type": "array",
-					"items": "material",
-					"default": []
-				},
-				"blockRayMode": {
-					"description": "",
-					"required": true,
-					"type": "string",
-					"enum": ["ABOVEBLOCK", "CLOSERBLOCK", "THEBLOCK"]
-				},
-				"maxDistance": {
-					"description": "",
-					"required": false,
-					"type": "integer",
-					"default": 20
-				},
-				"shouldRevert": {
-					"description": "",
-					"required": false,
-					"type": "boolean",
-					"default": false
-				},
-				"revertsAfter": {
-					"description": "in seconds (1 is 20 ticks)",
-					"required": false,
-					"type": "integer",
-					"default": 15
-				}
-			}
-		},
-		// "POTIONGIFTER": {
-		// 	"description": ""
-		// },
-		// "CONSUME": {
-		// 	"description": ""
-		// },
-		// "SUMMON": {
-		// 	"description": ""
-		// },
-		// "DECOY": {
-		// 	"description": ""
-		// },
-		// "PHASE": {
-		// 	"description": ""
-		// },
-		// "STRONGMAN": {
-		// 	"description": ""
-		// },
-		"CRAFTING": {
-			"description": "Enables the user to use this recipe",
-			"properties": {
-				"isShaped": {
-					"description": "If true, this recipe is shaped",
-					"required": false,
-					"type": "boolean",
-					"default": true
-				},
-				"result": {
-					"description": "The result of the recipe",
-					"required": false,
-					"type": "ItemStackData",
-					"default": {
-						"type": "STONE",
-						"amount": 1
-					}
-				},
-				"recipeKeys": {
-					"description": "The list of keys to the material that the key is representing",
-					"if": {"isShaped": {"const": true}},
-					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						".*": {
-							"description": "The material that the key is representing",
-							"required": true,
-							"type": "material"
-						}
-					}
-				},
-				"recipe": {
-					"description": "The shape of the recipe",
-					"if": {"isShaped": {"const": true}},
-					"required": false,
-					"type": "array",
-					"items": {
-						"description": "A row of recipe keys",
-						"required": true,
-						"type": "string",
-						"maxLength": 3
-					},
-					"maxItems": 3,
-					"default": ["", "", ""]
-				},
-				"ingredients": {
-					"description": "The map of ingredients to count of that ingredients that's needed for the recipe",
-					"if": {"isShaped": {"const": false}},
-					"required": false,
-					"type": "object",
-					"default": {},
-					"propertiesMap": {
-						"key": {
-							"description": "The recipe key",
-							"type": "material"
-						},
-						"value": {
-							"description": "The material that the key maps to",
-							"required": true,
-							"type": "integer",
-							"min": 1,
-							"max": 9
-						}
-					}
-				}
-			}
-		}//,
-		// "SLAM": {
-		// 	"description": ""
-		// },
-		// "ERASER": {
-		// 	"description": ""
-		// },
-		// "TELEPORT": {
-		// 	"description": ""
-		// },
-		// "INSTANTBREAK": {
-		// 	"description": ""
-		// },
-		// "LIGHT": {
-		// 	"description": ""
-		// },
-		// "NOHUNGER": {
-		// 	"description": ""
-		// },
-		// "DAMAGERESISTANCE": {
-		// 	"description": ""
-		// },
-		// "SLIME": {
-		// 	"description": ""
-		// },
-		// "SNEAKINGPOTION": {
-		// 	"description": ""
-		// },
-		// "AURA": {
-		// 	"description": ""
-		// },
-		// "EGGLAYER": {
-		// 	"description": ""
-		// },
-		// "WALKER": {
-		// 	"description": ""
-		// },
-		// "PICKPOCKET": {
-		// 	"description": ""
-		// },
-		// "CONVERTDROPS": {
-		// 	"description": ""
-		// },
-		// "LIFESTEAL": {
-		// 	"description": ""
-		// },
-		// "DAMAGEPOTION": {
-		// 	"description": ""
-		// },
-		// "WEATHERDAMAGE": {
-		// 	"description": ""
-		// }
-	},
 	"triggers": {
 		"DAMAGEDENTITY": {
 			"description": "Triggers when the user damage an entity. \nThe target entity will be set as the damaged entity"
@@ -1191,19 +541,6 @@
 				}
 			}
 		},
-		"HERO": {
-			"description": "Checks the user or target entity against the list of heroes",
-			"supportedModes": ["ALL", "SELF", "OTHER"],
-			"properties": {
-				"heroes": {
-					"description": "The list of heroes",
-					"required": false,
-					"type": "array",
-					"items": "string",
-					"default": []
-				}
-			}
-		},
 		"DISTANCE": {
 			"description": "Checks if the distance squared between the user and target entity is in the range",
 			"supportedModes": ["ALL", "OTHER"],
@@ -1271,6 +608,62 @@
 		"SHOOTER": {
 			"description": "Checks whether the shooter of the `OTHER` entity is the `SELF` entity",
 			"supportedModes": ["ALL", "OTHER"]
+		},
+		// Superheroes exclusives
+		"HERO": {
+			"description": "Checks the user or target entity against the list of heroes",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"exclusiveTo": "Superheroes",
+			"properties": {
+				"heroes": {
+					"description": "The list of heroes",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
+				}
+			}
+		},
+		// EB exclusives
+		"BOSS": {
+			"description": "Checks if the user or target entity one of the listed bosses",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"exclusiveTo": "EnchantedBosses",
+			"properties": {
+				"entities": {
+					"description": "The list of bosses",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
+				}
+			}
+		},
+		// EC exclusives
+		"SKILLITEM": {
+			"description": "Checks if the user has the skill item in one of the skill item slots",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"exclusiveTo": "EnchantedCombat",
+			"properties": {
+				"skillItem": {
+					"description": "The skill item to check for",
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"ITEMLEVEL": {
+			"description": "Checks if the user has the item level in the range",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"exclusiveTo": "EnchantedCombat",
+			"properties": {
+				"itemLevel": {
+					"description": "The range of item levels",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				}
+			}
 		}
 	},
 	"effects": {
@@ -2338,8 +1731,841 @@
 			"description": "Modifies the health of the user or target entity. Also rounds down to the nearest hitpoint/half a heart",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"extends": "MODIFY"
+		},
+		// EB exclusives
+		"MINION": {
+			"description": "Spawns bosses on the location of the user or target entity",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"exclusiveTo": "EnchantedBosses",
+			"properties": {
+				"amount": {
+					"description": "The amount of minions to spawn",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"spawn": {
+					"description": "The name of the boss to spawn",
+					"required": true,
+					"type": "string"
+				},
+				"spawnOnTarget": {
+					"description": "Whether or not to spawn on the target entity when using mode \"OTHER\"",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"RIDER": {
+			"description": "Spawns a boss that rides the user",
+			"supportedModes": ["ALL", "SELF"],
+			"exclusiveTo": "EnchantedBosses",
+			"properties": {
+				"rider": {
+					"description": "The name of the boss to spawn",
+					"required": true,
+					"type": "string"
+				}
+			}
 		}
 	},
+	// Superheroes
+	"skills": {
+		"POTIONEFFECT": {
+			"description": "Applies the potion effect to the user",
+			"properties": {
+				"potency": {
+					"description": "The potency or amplifier of the potion",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"type": {
+					"description": "The type of the potion",
+					"required": false,
+					"type": "potion",
+					"default": {}
+				},
+				"duration": {
+					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+					"required": false,
+					"type": "number",
+					"default": 4
+				}
+			}
+		},
+		"OHKO": {
+			"description": "Kills the entity in one hit",
+			"properties": {
+				"entityTypes": {
+					"description": "The types of entities that can be killed in one hit by the user",
+					"required": false,
+					"type": "array",
+					"items": "entity",
+					"default": []
+				},
+				"displayName": {
+					"description": "The custom name of the entity that can be killed in one hit by the user. \nDefaults to any name",
+					"required": false,
+					"type": "string",
+					"default": ""
+				}
+			}
+		},
+		"REPULSION": {
+			"description": "Repulses all nearby entities when the user sneaks",
+			"properties": {
+				"multiplier": {
+					"description": "The multiplier for the repulsion",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"radius": {
+					"description": "The radius where inside entities are effected",
+					"required": false,
+					"type": "number",
+					"default": 5
+				},
+				"entityBlacklist": {
+					"description": "The entities to not get effected",
+					"required": false,
+					"type": "array",
+					"items": "entity",
+					"default": []
+				}
+			}
+		},
+		"CONVERTITEM": {
+			"description": "Converts the input item into the output item when the user picks up an item",
+			"properties": {
+				"inputItem": {
+					"description": "The input item to convert", 
+					"required": false,
+					"type": "ItemStackData",
+					"default": null
+				},
+				"outputItem": {
+					"description": "The item to convert to",
+					"required": false,
+					"type": "ItemStackData",
+					"default": null
+				},
+				"chance": {
+					"description": "The chance of the conversion",
+					"required": false,
+					"type": "number",
+					"default": null
+				}
+			}
+		},
+		"COOLDOWN": {
+			"description": "The cooldown for the skill",
+			"properties": {
+				"cooldown": {
+					"description": "The cooldown in seconds",
+					"required": false,
+					"type": "number",
+					"default": null
+				},
+				"cooldownMessage": { 
+					"description": "The message to display when the skill is on cooldown",
+					"required": false,
+					"type": "string",
+					"default": null
+				}
+			}
+		},
+		"CONVERTBLOCK": {
+			"description": "Converts a block when the user right clicks a block",
+			"extends": "COOLDOWN",
+			"properties": {
+				"outputBlock": {
+					"description": "The block to convert to",
+					"required": false,
+					"type": "material",
+					"default": "GOLD_BLOCK"
+				},
+				"inputBlocks": {
+					"description": "The list of blocks to convert from",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": []
+				}
+			}
+		},
+		"REMOTEDETONATION": {
+			"description": "Creates an explosion at the entity the user is looking at when the user sneaks",
+			"extends": "COOLDOWN",
+			"properties": {
+				"explosionStrength": {
+					"description": "The strength of the explosion",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"explodable": {
+					"description": "The types of entities that can be exploded",
+					"required": false,
+					"type": "array",
+					"items": "entity",
+					"default": []
+				},
+				"spawnsFire": {
+					"description": "If true, explosion will spawn fire",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"breakBlocks": {
+					"description": "If true, the explosion will break blocks",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"removeDetonatedEntity": {
+					"description": "If true, the entity that was detonated will be removed",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"BLOCKDROPS": {
+			"description": "Changes the block drops of a block",
+			"properties": {
+				"convertMap": {
+					"description": "The map of block to items to drops",
+					"required": false,
+					"type": "object",
+					"propertiesMap": {
+						"key": {
+							"description": "The block drop to change",
+							"type": "material"
+						},
+						"value": {
+							"description": "The items to drop",
+							"required": true,
+							"type": "object",
+							"patternProperties": {
+								".*": {
+									"description": "An item to drop",
+									"required": true,
+									"type": "ItemStackData"
+								}
+							}
+						}
+					},
+					"default": {}
+				},
+				"replaceDrops": {
+					"description": "If true, the original block drops will be replaced with the new drops",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"CREEPER": {
+			"description": "Creates an explosion when the user sneaks on the ground until the explosion",
+			"extends": "COOLDOWN",
+			"properties": {
+				"creeper_power": {
+					"description": "The power of the explosion",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"fuse": {
+					"description": "The time to wait until the explosion in seconds (1 is 20 ticks)",
+					"required": false,
+					"type": "number",
+					"default": 2
+				},
+				"slowfall_duration": {
+					"description": "The duration of the slowfall potion in seconds (1 is 20 ticks)",
+					"required": false,
+					"type": "number",
+					"default": 7
+				},
+				"upwardsVelocity": {
+					"description": "The upwards velocity to apply to the user",
+					"required": false,
+					"type": "number",
+					"default": 2.5
+				}
+			}
+		},
+		"GIVEITEM": {
+			"description": "Gives the user an item",
+			"properties": {
+				"canStore": {
+					"description": "If true, the item can be stored outside of the player inventory",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"canDrop": {
+					"description": "If true, the item can be dropped",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"canLoseOnDeath": {
+					"description": "If true, the item can be lost on death",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				// "canDropOnDeath": {
+				// 	"description": "If true, the item will be dropped on death",
+				// 	"required": false,
+				// 	"type": "boolean",
+				// 	"default": true
+				// },
+				"loseItemOnHeroLoss": {
+					"description": "If true, the item will be lost on if the user changes hero",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"item": {
+					"description": "The item to give",
+					"required": true,
+					"type": "ItemStackData"
+				}
+			}
+		},
+		"GUN": {
+			"description": "Shoots the gun in the direction that the user is looking at when the user right clicks if the user holds the gun item",
+			"extends": "COOLDOWN",
+			"properties": {
+				"maxDistance": {
+					"description": "The max distance the bullet can travel",
+					"required": false,
+					"type": "number",
+					"default": 64
+				},
+				"bulletSize": {
+					"description": "The size of the bullet",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"damage": {
+					"description": "The damage that will be dealt by the bullet",
+					"required": false,
+					"type": "number",
+					"default": 5
+				},
+				"item": {
+					"description": "The item that will be used as the gun",
+					"required": true,
+					"type": "material"
+				},
+				"shootSound": {
+					"description": "The sound that will be played when the gun shoots",
+					"required": true,
+					"type": "SoundData"
+				},
+				"trailParticle": {
+					"description": "The particle that will be used for the trail",
+					"required": true,
+					"type": "ParticleData"
+				},
+				"hitParticle": {
+					"description": "The particle that will be spawned at the hit location",
+					"required": true,
+					"type": "ParticleData"
+				}
+			}
+		},
+		"SNEAK": {
+			"description": "Prevents the user from sneaking or unsneaking",
+			"properties": {
+				"mustSneak": {
+					"description": "If true, prevents the user from unsneaking. If false, prevents the user from sneaking",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"needsInvisibility": {
+					"description": "If true, only prevents the user when the user is invisible",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"SHIELD": {
+			"description": "Sets the shields cooldown when the user take damage",
+			"properties": {
+				"cooldown": {
+					"description": "The shield cooldown in seconds (1 is 20 ticks)",
+					"required": false,
+					"type": "number",
+					"default": 100
+				}
+			}
+		},
+		"SPELL": {
+			"description": "",
+			"properties": {
+				"spell": {
+					"description": "The type of spell to cast",
+					"required": true,
+					"type": "string",
+					"enum": ["FIREBALL", "SNOWBALL", "ARROW", "LIGHTNING", "EGG", "WATER", "LAVA", "FIRE", "EXPLOSION", "TRIDENT", "TRANSMUTATION", "FANGS"]
+				},
+				"fuel": {
+					"description": "The fuel that will be used to cast the spell",
+					"required": false,
+					"type": "material",
+					"default": "REDSTONE"
+				},
+				"cooldown": {
+					"description": "The cooldown in seconds (1 is 20 ticks)",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"cost": {
+					"description": "The amount of fuel that will be used to cast the spell",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"spellName": {
+					"description": "The name of the spell. Defaults to the type of spell",
+					"required": false,
+					"type": "string",
+					"default": ""
+				},
+				"cooldownMessage": {
+					"description": "The message that will be displayed when the spell is on cooldown. \n%spellName% will be replaced with the spell name\n%cooldown% with the cooldown in seconds\n\n%fuel% with the name of the fuel material\n%cost% with the amount of fuel used",
+					"required": false,
+					"type": "string",
+					"default": "%spellName% has %currentcooldown% seconds remaining."
+				},
+				"moreFuelMessage": {
+					"description": "",
+					"required": false,
+					"type": "string",
+					"default": "This spell needs %fuelneeded% more %fuel%"
+				},
+				"displayNameFormat": {
+					"description": "",
+					"required": false,
+					"type": "string",
+					"default": "&5%spellName%"
+				},
+				"loreFormat": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
+				},
+				"transmutationData": {
+					"description": "",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"properties": {
+						"resultantBlock": {
+							"description": "",
+							"required": false,
+							"type": "material",
+							"default": "REDSTONE_BLOCK"
+						},
+						"transmutableBlocks": {
+							"description": "",
+							"required": false,
+							"type": "array",
+							"items": "material",
+							"default": []
+						}
+					}
+				}
+			}
+		},
+		"THROWER": {
+			"description": "",
+			"extends": "COOLDOWN",
+			"properties": {
+				"ammoCost": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"item": {
+					"description": "",
+					"required": false,
+					"type": "ItemStackData",
+					"default": {}
+				},
+				"projectile": {
+					"description": "",
+					"required": false,
+					"type": "entity",
+					"default": "SNOWBALL"
+				},
+				"actions": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "action",
+					"default": ["RIGHT_CLICK_AIR", "RIGHT_CLICK_BLOCK"]
+				},
+				"canPickUp": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"velocity": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 1.4
+				},
+				"damage": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 3
+				}
+			}
+		},
+		"BLOCKRAY": {
+			"description": "",
+			"properties": {
+				"blocksToPlace": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": []
+				},
+				"blocksToReplace": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": []
+				},
+				"blockRayMode": {
+					"description": "",
+					"required": true,
+					"type": "string",
+					"enum": ["ABOVEBLOCK", "CLOSERBLOCK", "THEBLOCK"]
+				},
+				"maxDistance": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 20
+				},
+				"shouldRevert": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"revertsAfter": {
+					"description": "in seconds (1 is 20 ticks)",
+					"required": false,
+					"type": "integer",
+					"default": 15
+				}
+			}
+		},
+		// "POTIONGIFTER": {
+		// 	"description": ""
+		// },
+		// "CONSUME": {
+		// 	"description": ""
+		// },
+		// "SUMMON": {
+		// 	"description": ""
+		// },
+		// "DECOY": {
+		// 	"description": ""
+		// },
+		// "PHASE": {
+		// 	"description": ""
+		// },
+		// "STRONGMAN": {
+		// 	"description": ""
+		// },
+		"CRAFTING": {
+			"description": "Enables the user to use this recipe",
+			"properties": {
+				"isShaped": {
+					"description": "If true, this recipe is shaped",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"result": {
+					"description": "The result of the recipe",
+					"required": false,
+					"type": "ItemStackData",
+					"default": {
+						"type": "STONE",
+						"amount": 1
+					}
+				},
+				"recipeKeys": {
+					"description": "The list of keys to the material that the key is representing",
+					"if": {"isShaped": {"const": true}},
+					"required": false,
+					"type": "object",
+					"default": {},
+					"patternProperties": {
+						".*": {
+							"description": "The material that the key is representing",
+							"required": true,
+							"type": "material"
+						}
+					}
+				},
+				"recipe": {
+					"description": "The shape of the recipe",
+					"if": {"isShaped": {"const": true}},
+					"required": false,
+					"type": "array",
+					"items": {
+						"description": "A row of recipe keys",
+						"required": true,
+						"type": "string",
+						"maxLength": 3
+					},
+					"maxItems": 3,
+					"default": ["", "", ""]
+				},
+				"ingredients": {
+					"description": "The map of ingredients to count of that ingredients that's needed for the recipe",
+					"if": {"isShaped": {"const": false}},
+					"required": false,
+					"type": "object",
+					"default": {},
+					"propertiesMap": {
+						"key": {
+							"description": "The recipe key",
+							"type": "material"
+						},
+						"value": {
+							"description": "The material that the key maps to",
+							"required": true,
+							"type": "integer",
+							"min": 1,
+							"max": 9
+						}
+					}
+				}
+			}
+		}//,
+		// "SLAM": {
+		// 	"description": ""
+		// },
+		// "ERASER": {
+		// 	"description": ""
+		// },
+		// "TELEPORT": {
+		// 	"description": ""
+		// },
+		// "INSTANTBREAK": {
+		// 	"description": ""
+		// },
+		// "LIGHT": {
+		// 	"description": ""
+		// },
+		// "NOHUNGER": {
+		// 	"description": ""
+		// },
+		// "DAMAGERESISTANCE": {
+		// 	"description": ""
+		// },
+		// "SLIME": {
+		// 	"description": ""
+		// },
+		// "SNEAKINGPOTION": {
+		// 	"description": ""
+		// },
+		// "AURA": {
+		// 	"description": ""
+		// },
+		// "EGGLAYER": {
+		// 	"description": ""
+		// },
+		// "WALKER": {
+		// 	"description": ""
+		// },
+		// "PICKPOCKET": {
+		// 	"description": ""
+		// },
+		// "CONVERTDROPS": {
+		// 	"description": ""
+		// },
+		// "LIFESTEAL": {
+		// 	"description": ""
+		// },
+		// "DAMAGEPOTION": {
+		// 	"description": ""
+		// },
+		// "WEATHERDAMAGE": {
+		// 	"description": ""
+		// }
+	},
+	// EB
+	"damagemodifiers": {
+		"BLANK": {
+			"description": "No damage modifier"
+		},
+		"EASED": {
+			"description": "Modifies the damage based on a downwards facing parabola. \nFor visualization: https://www.desmos.com/calculator/pyb798rnyr",
+			"properties": {
+				"expectedMaximumDamage": {
+					"description": "The width of the parabola. \nThe variable b on desmos",
+					"required": false,
+					"type": "number",
+					"default": 30
+				},
+				"damageCap": {
+					"description": "The maximum of the parabola. \nThe variable k on desmos",
+					"required": false,
+					"type": "number",
+					"default": 15
+				}
+			}
+		},
+		"EASEDPLAYERADJUSTED": {
+			"description": "Modifies the damage based on a downwards facing parabola divided by (number of players)^(playerScalingModifier). \nFor visualization: https://www.desmos.com/calculator/drpnfjm4ty",
+			"properties": {
+				"expectedMaximumDamage": {
+					"description": "The width of the parabola. \nThe variable b on desmos",
+					"required": false,
+					"type": "number",
+					"default": 30
+				},
+				"damageCap": {
+					"description": "The maximum of the parabola. \nThe variable k on desmos",
+					"required": false,
+					"type": "number",
+					"default": 15
+				},
+				"playerScalingModifier": {
+					"description": "The power the number of players is raised by. \nRecommended not to set to above one as then it will punish players for bringing teammates. \nThe variable w on desmos",
+					"required": false,
+					"type": "number",
+					"default": 0.5
+				}
+			}
+		},
+		"PLAYERADJUSTED": {
+			"description": "Modifies the damage based damage/((number of players)^(playerScalingModifier)). \nFor visualization: https://www.desmos.com/calculator/p03hsebinc",
+			"properties": {
+				"playerScalingModifier": {
+					"description": "The power the number of players is raised by. \nRecommended not to set to above one as then it will punish players for bringing teammates. \nThe variable w on desmos",
+					"required": false,
+					"type": "number",
+					"default": 0.5
+				}
+			}
+		}
+	},
+	"rewards": {
+		"BASIC": {
+			"description": "Gives experience, items, and executes commands",
+			"properties": {
+				"commands": {
+					"description": "The list of commands to execute. \nAll instances of \"<player>\" will be replaced by the player name",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
+				},
+				"items": {
+					"description": "The map of items to give to the player",
+					"required": false,
+					"type": "object",
+					"patternProperties": {
+						".*": {
+							"description": "An item to give",
+							"required": true,
+							"type": "ItemStackData"
+						}
+					},
+					"default": {}
+				},
+				"experience": {
+					"description": "The amount of experience to give",
+					"required": false,
+					"type": "integer",
+					"default": 100
+				}
+			}
+		}
+	},
+	// EC
+	"distributions": {
+		"LOOT": {
+			"description": "Adds a chance for loot tables to have the skill item",
+			"properties": {
+				"chance": {
+					"description": "The chance of the skill item being added",
+					"required": false,
+					"type": "number",
+					"min": 0,
+					"max": 1,
+					"default": 0
+				},
+				"loottables": {
+					"description": "The loot tables to add the skill item to",
+					"required": true,
+					"type": "array",
+					"items": "lootTable"
+				}
+			}
+		},
+		"CRAFTING": {
+			"description": "Adds a recipe for the skill item",
+			"properties": {
+				"recipe": {
+					"description": "The shape of the recipe",
+					"required": true,
+					"type": "array",
+					"items": {
+						"description": "A row of recipe keys",
+						"required": true,
+						"type": "string",
+						"maxLength": 3,
+						"minLength": 3
+					},
+					"default": ["", "", ""],
+					"maxItems": 3,
+					"minItems": 3
+				},
+				"recipeKeys": {
+					"description": "The map from recipe key to material/skill item",
+					"required": true,
+					"type": "object",
+					"patternProperties": {
+						"^.$": {
+							"description": "The material or skill item",
+							"type": ["material", "string"],
+							"required": true
+						}
+					}
+				}
+			}
+		}
+	},
+
 	"types": {
 		"condition": {
 			"description": "A skills library condition",
@@ -2387,6 +2613,108 @@
 				"ADD_SCALAR",
 				"MULTIPLY_SCALAR_1"
 			]
+		},
+		"SpawnData": {
+			"description": "The data for spawning behavior",
+			"type": "object",
+			"properties": {
+				"enabled": {
+					"description": "Whether the spawn behavior is enabled",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"weighting": {
+					"description": "The weighting of the spawn behavior",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"biomes": {
+					"description": "The list of biomes that this boss can or cannot spawn in",
+					"required": false,
+					"type": "array",
+					"items": "biome",
+					"default": []
+				},
+				"worlds": {
+					"description": "The list of worlds that this boss can spawn in",
+					"required": false,
+					"type": "array",
+					"items": "world",
+					"default": []
+				},
+				"biomesWhitelist": {
+					"description": "Whether the biomes list is a whitelist or blacklist",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"spaceNeeded": {
+					"description": "The space needed to spawn the boss",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"spawnOnAir": {
+					"description": "Whether the boss can spawn on air",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"maxHeight": {
+					"description": "The maximum height the boss can spawn at. -1 for world height",
+					"required": false,
+					"type": "number",
+					"default": -1
+				}
+			}
+		},
+		"BossBarData": {
+			"description": "The styling for a boss bar",
+			"type": "object",
+			"properties": {
+				"enabled": {
+					"description": "Whether the boss bar is enabled",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"flags": {
+					"description": "The flags for the boss bar",
+					"required": false,
+					"type": "array",
+					"items": "bossBarFlag",
+					"default": []
+				},
+				"color": {
+					"description": "The color of the boss bar",
+					"required": false,
+					"type": "bossBarColor",
+					"default": "PURPLE"
+				},
+				"style": {
+					"description": "The style of the boss bar",
+					"required": false,
+					"type": "bossBarStyle",
+					"default": "PROGRESS"
+				}
+			}
+		},
+		"bossBarFlag": {
+			"description": "The flag of a boss bar",
+			"type": "string",
+			"enum": ["DARKEN_SCREEN", "PLAY_BOSS_MUSIC", "CREATE_WORLD_FOG"]
+		},
+		"bossBarColor": {
+			"description": "The color of a boss bar",
+			"type": "string",
+			"enum": ["PINK", "BLUE", "RED", "GREEN", "YELLOW", "PURPLE", "WHITE"]
+		},
+		"bossBarStyle": {
+			"description": "The style of a boss bar",
+			"type": "string",
+			"enum": ["PROGRESS", "NOTCHED_6", "NOTCHED_10", "NOTCHED_12", "NOTCHED_20"]
 		},
 		"ItemAttributeData": {
 			"description": "The attribute data for an item",
@@ -2610,6 +2938,12 @@
 					"description": "The passenger of the entity",
 					"required": false,
 					"type": "EntityData",
+					"default": {}
+				},
+				"attributes": {
+					"description": "The attributes of the entity",
+					"required": false,
+					"type": "AttributeData",
 					"default": {}
 				},
 				"extra": {
@@ -3048,6 +3382,11 @@
 			"description": "An interaction action",
 			"type": "string",
 			"enum": ["LEFT_CLICK_AIR", "LEFT_CLICK_BLOCK", "PHYSICAL", "RIGHT_CLICK_AIR", "RIGHT_CLICK_BLOCK"]
+		},
+		"lootTable": {
+			"description": "A loot table type",
+			"type": "string",
+			"enum": ["EMPTY", "ABANDONED_MINESHAFT", "BURIED_TREASURE", "DESERT_PYRAMID", "END_CITY_TREASURE", "IGLOO_CHEST", "JUNGLE_TEMPLE", "JUNGLE_TEMPLE_DISPENSER", "NETHER_BRIDGE", "PILLAGER_OUTPOST", "BASTION_TREASURE", "BASTION_OTHER", "BASTION_BRIDGE", "BASTION_HOGLIN_STABLE", "ANCIENT_CITY", "ANCIENT_CITY_ICE_BOX", "RUINED_PORTAL", "SHIPWRECK_MAP", "SHIPWRECK_SUPPLY", "SHIPWRECK_TREASURE", "SIMPLE_DUNGEON", "SPAWN_BONUS_CHEST", "STRONGHOLD_CORRIDOR", "STRONGHOLD_CROSSING", "STRONGHOLD_LIBRARY", "UNDERWATER_RUIN_BIG", "UNDERWATER_RUIN_SMALL", "VILLAGE_ARMORER", "VILLAGE_BUTCHER", "VILLAGE_CARTOGRAPHER", "VILLAGE_DESERT_HOUSE", "VILLAGE_FISHER", "VILLAGE_FLETCHER", "VILLAGE_MASON", "VILLAGE_PLAINS_HOUSE", "VILLAGE_SAVANNA_HOUSE", "VILLAGE_SHEPHERD", "VILLAGE_SNOWY_HOUSE", "VILLAGE_TAIGA_HOUSE", "VILLAGE_TANNERY", "VILLAGE_TEMPLE", "VILLAGE_TOOLSMITH", "VILLAGE_WEAPONSMITH", "WOODLAND_MANSION", "ARMOR_STAND", "AXOLOTL", "BAT", "BEE", "BLAZE", "CAT", "CAVE_SPIDER", "CHICKEN", "COD", "COW", "CREEPER", "DOLPHIN", "DONKEY", "DROWNED", "ELDER_GUARDIAN", "ENDER_DRAGON", "ENDERMAN", "ENDERMITE", "EVOKER", "FOX", "GHAST", "GIANT", "GLOW_SQUID", "GOAT", "GUARDIAN", "HOGLIN", "HORSE", "HUSK", "ILLUSIONER", "IRON_GOLEM", "LLAMA", "MAGMA_CUBE", "MOOSHROOM", "MULE", "OCELOT", "PANDA", "PARROT", "PHANTOM", "PIG", "PIGLIN", "PIGLIN_BRUTE", "PILLAGER", "PLAYER", "POLAR_BEAR", "PUFFERFISH", "RABBIT", "RAVAGER", "SALMON", "SHULKER", "SILVERFISH", "SKELETON", "SKELETON_HORSE", "SLIME", "SNOW_GOLEM", "SPIDER", "SQUID", "STRAY", "STRIDER", "TRADER_LLAMA", "TROPICAL_FISH", "TURTLE", "VEX", "VILLAGER", "VINDICATOR", "WANDERING_TRADER", "WITCH", "WITHER", "WITHER_SKELETON", "WOLF", "ZOGLIN", "ZOMBIE", "ZOMBIE_HORSE", "ZOMBIE_VILLAGER", "ZOMBIFIED_PIGLIN", "ARMORER_GIFT", "BUTCHER_GIFT", "CARTOGRAPHER_GIFT", "CAT_MORNING_GIFT", "CLERIC_GIFT", "FARMER_GIFT", "FISHERMAN_GIFT", "FISHING", "FISHING_FISH", "FISHING_JUNK", "FISHING_TREASURE", "FLETCHER_GIFT", "LEATHERWORKER_GIFT", "LIBRARIAN_GIFT", "MASON_GIFT", "SHEPHERD_GIFT", "TOOLSMITH_GIFT", "WEAPONSMITH_GIFT", "PIGLIN_BARTERING", "SHEEP", "SHEEP_BLACK", "SHEEP_BLUE", "SHEEP_BROWN", "SHEEP_CYAN", "SHEEP_GRAY", "SHEEP_GREEN", "SHEEP_LIGHT_BLUE", "SHEEP_LIGHT_GRAY", "SHEEP_LIME", "SHEEP_MAGENTA", "SHEEP_ORANGE", "SHEEP_PINK", "SHEEP_PURPLE", "SHEEP_RED", "SHEEP_WHITE", "SHEEP_YELLOW"]
 		},
 		"biome": {
 			"description": "A biome",

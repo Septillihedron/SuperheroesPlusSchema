@@ -1,7 +1,39 @@
 const { writeFileSync } = require('fs')
 
+/**
+ * @param {string} s 
+ * @returns {string}
+ */
+const removeComments = s => {
+    let slashes = 0
+    let inString = false
+    let res = []
+    let inComment = false
+    for (let c of s) {
+        if (inString) {
+            if (c == '"') inString = false
+        } else {
+            if (c == '"') inString = true
+            if (slashes == 2) {
+                inComment = true
+                // remove the two slashes
+                res.pop()
+                res.pop()
+            }
+            if (c == '/') slashes++
+            else slashes = 0;
+            if (inComment) {
+                if (/\n|\r/.test(c)) inComment = false
+                else continue
+            }
+        }
+        if (!inComment) res.push(c)
+    }
+    return res.join("")
+}
+
 const readFile = require('fs').readFileSync
-const readJsonFile = file => JSON.parse(readFile(file))
+const readJsonFile = file => JSON.parse(removeComments(readFile(file).toString()))
 
 /**
  * @type {unknown[]}

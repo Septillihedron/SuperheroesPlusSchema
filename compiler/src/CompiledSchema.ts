@@ -2,14 +2,17 @@ import { IfPath, PropertyTypes, Modes } from "./PreprocessedSchema";
 import { StringRecord } from "./utils";
 
 export {
-	Schema, 
-	Hero, Skill, Trigger, Condition, Effect, 
-	Types, IfThenRefrence, 
+	FullSchema, 
+	Types, IfThenReference, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	Definition, SkillDefinition, TriggerDefinition, ConditionDefinition, EffectDefinition
+	
+	Definition, TriggerDefinition, ConditionDefinition, EffectDefinition,
+	SkillDefinition,
+	DamageModifierDefinition, RewardDefinition,
+	DistributionDefinition
 }
 
-class Schema {
+class FullSchema {
 
 	readonly $schema = "http://json-schema.org/schema";
 	readonly type = "object"
@@ -17,20 +20,41 @@ class Schema {
 	readonly minProperties = 1
 	readonly patternProperties = {
 		".*": {
-			$ref: "#/definitions/hero"
+			oneOf: [
+				{ $ref: "#/definitions/hero" },
+				{ $ref: "#/definitions/boss" },
+				{ $ref: "#/definitions/item" },
+			]
 		}
 	}
 	readonly definitions = {
 		hero: new Hero(),
-		skill: new Skill(),
+		boss: new Boss(),
+		item: new Item(),
+
+		SLSkill: new SLSkill(),
 		trigger: new Trigger(),
 		condition: new Condition(),
-		effect: new Effect()
+		effect: new Effect(),
+		
+		skill: new Skill(),
+
+		damagemodifier: new DamageModifier(),
+		reward: new Reward(),
+
+		distribution: new Distribution(),
 	}
-	readonly skills: StringRecord<SkillDefinition> = {}
 	readonly triggers: StringRecord<TriggerDefinition> = {}
 	readonly conditions: StringRecord<ConditionDefinition> = {}
 	readonly effects: StringRecord<EffectDefinition> = {}
+
+	readonly skills: StringRecord<SkillDefinition> = {}
+
+	readonly damagemodifiers: StringRecord<DamageModifierDefinition> = {}
+	readonly rewards: StringRecord<RewardDefinition> = {}
+
+	readonly distributions: StringRecord<DistributionDefinition> = {}
+
 	readonly types: StringRecord<Property> = {}
 }
 
@@ -89,6 +113,123 @@ class Hero {
 		}
 	}
 }
+class Boss {
+	readonly description = "Boss name"
+	readonly type = "object"
+	readonly additionalProperties = false
+	readonly properties = {
+		colouredName: {
+			description: "The coloured name that will appear ingame. \n\nDefaults to Boss name",
+			type: "string"
+		},
+		description: {
+			description: "The description of the boss. \n\nDefaults to Boss name + \" description\"",
+			type: "string"
+		},
+		entity: {
+			description: "The entity that the boss is",
+			$ref: "#/types/EntityData"
+		},
+		skills: {
+			description: "The list of skill that the boss has",
+			type: "object",
+			additionalProperties: false,
+			patternProperties: {
+				".*": {
+					$ref: "#/definitions/SLSkill"
+				}
+			}
+		},
+		bossbar: {
+			description: "The styling for a boss bar",
+			$ref: "#/types/BossBarData"
+		},
+		autospawn: {
+			description: "The data for spawning behavior",
+			$ref: "#/types/SpawnData"
+		},
+		damagemodifier: {
+			description: "The modifier that modifies the amount of damage the boss will recieve when damaged",
+			$ref: "#/definitions/damagemodifier"
+		},
+		reward: {
+			description: "The reward for killing the boss",
+			$ref: "#/definitions/reward"
+		}
+	}
+}
+class Item {
+	readonly description = "Item name"
+	readonly type = "object"
+	readonly additionalProperties = false
+	readonly properties = {
+		item: {
+			description: "The skill item",
+			$ref: "#/types/ItemStackData"
+		},
+		levels: {
+			description: "The level data",
+			type: "object",
+			additionalProperties: false,
+			properties: {
+				maxLevel: {
+					description: "The maximum level",
+					type: "number",
+					minimum: 0,
+					default: 0
+				}
+			},
+			patternProperties: {
+				"^([2-9])|([1-9]+[0-9])$": {
+					description: "The level data",
+					type: "object",
+					additionalProperties: false,
+					properties: {
+						experienceRequired: {
+							description: "The experience required to level up",
+							type: "number"
+						}
+					},
+					required: ["experienceRequired"]
+				}
+			}
+		},
+		distribution: {
+			description: "The list of distributions",
+			patternProperties: {
+				".*": {
+					$ref: "#/definitions/distribution"
+				}
+			}
+		},
+		slots: {
+			description: "The list of slots",
+			items: {
+				description: "A slot",
+				anyOf: [
+					{
+						type: "number"
+					},
+					{
+						$ref: "#/types/equipmentSlot"
+					}
+				]
+			}
+		},
+		skills: {
+			description: "The list of skill that the item has",
+			type: "object",
+			additionalProperties: false,
+			patternProperties: {
+				".*": {
+					$ref: "#/definitions/SLSkill"
+				}
+			}
+		}
+	}
+	readonly required = ["item"]
+}
+
 
 type constDescription = {const: string, description: string}
 
@@ -109,7 +250,7 @@ class Types {
 	}
 }
 
-class IfThenRefrence {
+class IfThenReference {
 	if: {properties: {type: {const: string}} | {skill: {const: string}}}
 	then: {$ref: string}
 
@@ -120,32 +261,21 @@ class IfThenRefrence {
 
 }
 
-class Skill {
+class SLSkill {
 	readonly description = "A skill"
 	readonly type = "object"
 	readonly properties = {
-		skill: new Types("The type of the skill"), 
-		conditions: {
-			description: "The list of conditions that the skill has",
-			type: "object",
-			additionalProperties: false,
+		trigger: { $ref: "#/definitions/trigger" },
+		effects: {
 			patternProperties: {
-				".*": {
-					$ref: "#/definitions/condition"
-				}
-			}
+				".*": { $ref: "#/definitions/effect" }
+			},
+			type: "object",
+			description: "The list of effetcs"
 		}
 	}
-	readonly required = ["skill"]
-	readonly if = {"properties": {"skill": false}}
-	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
 
-	addSkill(name: string, description: string): void {
-		this.properties.skill.addType(name, description)
-		this.else.allOf.push(new IfThenRefrence("skill", name))
-	}
 }
-
 class Trigger {
 	readonly description = "The skill trigger"
 	readonly type = "object"
@@ -162,12 +292,12 @@ class Trigger {
 		}
 	}
 	readonly if = {"properties": {"type": false}}
-	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
+	readonly else: {allOf: IfThenReference[]} = {allOf: []}
 	readonly required = ["type"]
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenRefrence("trigger", name))
+		this.else.allOf.push(new IfThenReference("trigger", name))
 	}
 }
 
@@ -192,11 +322,11 @@ class Condition {
 	}
 	readonly required = ["type"]
 	readonly if = {"properties": {"type": false}}
-	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
+	readonly else: {allOf: IfThenReference[]} = {allOf: []}
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenRefrence("condition", name))
+		this.else.allOf.push(new IfThenReference("condition", name))
 	}
 }
 
@@ -212,11 +342,82 @@ class Effect {
 	}
 	readonly required = ["type"]
 	readonly if = {"properties": {"type": false}}
-	readonly else: {allOf: IfThenRefrence[]} = {allOf: []}
+	readonly else: {allOf: IfThenReference[]} = {allOf: []}
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenRefrence("effect", name))
+		this.else.allOf.push(new IfThenReference("effect", name))
+	}
+}
+
+class Skill {
+	readonly description = "A skill"
+	readonly type = "object"
+	readonly properties = {
+		skill: new Types("The type of the skill"), 
+		conditions: {
+			description: "The list of conditions that the skill has",
+			type: "object",
+			additionalProperties: false,
+			patternProperties: {
+				".*": {
+					$ref: "#/definitions/condition"
+				}
+			}
+		}
+	}
+	readonly required = ["skill"]
+	readonly if = {"properties": {"skill": false}}
+	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+
+	addSkill(name: string, description: string): void {
+		this.properties.skill.addType(name, description)
+		this.else.allOf.push(new IfThenReference("skill", name))
+	}
+}
+
+class DamageModifier {
+	readonly type = "object"
+	readonly properties = {
+		type: new Types("The type of the damage modifier")
+	}
+	readonly required = ["type"]
+	readonly if = {"properties": {"type": false}}
+	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
+		this.else.allOf.push(new IfThenReference("damagemodifier", name))
+	}
+}
+
+class Reward {
+	readonly type = "object"
+	readonly properties = {
+		type: new Types("The type of the reward")
+	}
+	readonly required = ["type"]
+	readonly if = {"properties": {"type": false}}
+	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
+		this.else.allOf.push(new IfThenReference("reward", name))
+	}
+}
+
+class Distribution {
+	readonly type = "object"
+	readonly properties = {
+		type: new Types("The type of the distribution")
+	}
+	readonly required = ["type"]
+	readonly if = {"properties": {"type": false}}
+	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
+		this.else.allOf.push(new IfThenReference("distribution", name))
 	}
 }
 
@@ -429,14 +630,6 @@ abstract class Definition {
 
 }
 
-class SkillDefinition extends Definition {
-
-	constructor() {
-		super({ skill: true, conditions: true });
-	}
-
-}
-
 class TriggerDefinition extends Definition {
 
 	constructor() {
@@ -457,6 +650,38 @@ class EffectDefinition extends Definition {
 
 	constructor(modes: Modes[]) {
 		super({ type: true, mode: { enum: modes } })
+	}
+
+}
+
+class SkillDefinition extends Definition {
+
+	constructor() {
+		super({ skill: true, conditions: true });
+	}
+
+}
+
+class DamageModifierDefinition extends Definition {
+
+	constructor() {
+		super({ type: true })
+	}
+
+}
+
+class RewardDefinition extends Definition {
+
+	constructor() {
+		super({ type: true })
+	}
+
+}
+
+class DistributionDefinition extends Definition {
+
+	constructor() {
+		super({ type: true })
 	}
 
 }

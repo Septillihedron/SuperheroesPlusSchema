@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=compiled-properties.json
-SkillToggleItem:
+Superheroes:
   colouredName: "templateSkillToggle"
   description: "template"
   icon:
@@ -87,3 +87,102 @@ SkillToggleItem:
               mode: LOCATION
               block:
                 type: COBWEB
+EnchantedBosses:
+  colouredName: <blue>Boss</blue>
+  description: Blue Boss
+  reward:
+    type: BASIC
+    items: 
+      sword: 
+        type: DIAMOND_SWORD
+        amount: 1
+        metadata:
+          displayName: <blue>Sword</blue>
+          isUnbreakable: true
+          enchants:
+            knockback: 7
+            fire_aspect: 128
+  entity:
+    type: PHANTOM
+    shouldDespawn: false
+    attributes:
+      MAX_HEALTH: 300
+    extra:
+      size: 6
+  damagemodifier:
+    type: EASED
+    damageCap: 13
+    expectedMaximumDamage: 30
+  bossbar:
+    enabled: true
+    color: PURPLE
+    style: PROGRESS
+  
+  skills:
+    slSkill:
+      trigger:
+        type: LOOP
+        period: 2
+      effects:
+        aoeBurn:
+          type: AOE
+          radius: 5
+          effects: 
+            burn:
+              type: FIRE
+              mode: OTHER
+              fireTicks: 120
+    exclusiveThings:
+      effects:
+        minion:
+          type: MINION
+          mode: OTHER
+          spawn: EB_Minnio
+EnchantedCombat:
+  item:
+    type: WOODEN_HOE
+    amount: 1
+    metadata:
+      displayName: <red>Squeaker</red>
+      isUnbreakable: true
+      lore:
+        - "Shift to increasingly squeak"
+        - "Annoy everyone!"
+  distribution:
+    bat:
+      type: LOOT
+      loottables:
+        - BAT
+      chance: 0.1
+  levels:
+    maxLevel: 1
+  skills:
+    squeak:
+      trigger:
+        type: LOOP
+        period: 19
+        conditions:
+          sneak:
+            type: SNEAK
+            mode: SELF
+            sneak: true
+      effects:
+        squeakLoop:
+          type: TIMER
+          delay: 10
+          numberOfRepeats: 500
+          conditions: 
+            sneak:
+              type: SNEAK
+              mode: SELF
+              sneak: true
+          effects: 
+            squeak:
+              type: SOUND
+              mode: SELF
+              sound:
+                sound: ENTITY_BAT_DEATH
+                volume: 1
+                pitch: 1
+      
+  

@@ -5,21 +5,24 @@ import { forEachEntry } from "./utils"
 export class Compiler {
 
 	preprocessed: Preprocessed.Schema
-	schema: Compiled.Schema
+	schema: Compiled.FullSchema
 
 	constructor(preprocessed: Preprocessed.Schema) {
 		this.preprocessed = preprocessed
-		this.schema = new Compiled.Schema()
+		this.schema = new Compiled.FullSchema()
 	}
 
 	compile() {
 		let {schema, preprocessed} = this
 		this.addCustomSkill()
-		const {skills, triggers, conditions, effects, types} = preprocessed;
-		forEachEntry(skills, this.compileSkill.bind(this));
+		const {triggers, conditions, effects, skills, damagemodifiers, rewards, distributions, types} = preprocessed;
 		forEachEntry(triggers, this.compileTrigger.bind(this));
 		forEachEntry(conditions, this.compileCondition.bind(this));
 		forEachEntry(effects, this.compileEffect.bind(this));
+		forEachEntry(skills, this.compileSkill.bind(this));
+		forEachEntry(damagemodifiers, this.compileDamagemodifier.bind(this));
+		forEachEntry(rewards, this.compileReward.bind(this));
+		forEachEntry(distributions, this.compileDistribution.bind(this));
 		delete types.effect;
 		delete types.condition;
 		forEachEntry(types, this.compileType.bind(this));
@@ -50,17 +53,6 @@ export class Compiler {
 			let compiledProperty = this.compileProperty(property, propertyClass);
 			definition.addProperty(name, compiledProperty, property.required)
 		}
-	}
-
-	compileSkill(name: string, preprocessed: Preprocessed.Skill): void {
-		let compiled = new Compiled.SkillDefinition()
-
-		if (preprocessed.available) {
-			this.schema.definitions.skill.addSkill(name, preprocessed.description)
-		}
-		this.addProperties(compiled, preprocessed.properties, `#/skills/${name}/properties/`);
-
-		this.schema.skills[name] = compiled
 	}
 	
 	compileTrigger(name: string, preprocessed: Preprocessed.Trigger): void {
@@ -97,6 +89,50 @@ export class Compiler {
 		this.addProperties(compiled, preprocessed.properties, `#/effects/${name}/properties/`);
 
 		this.schema.effects[name] = compiled
+	}
+
+	compileSkill(name: string, preprocessed: Preprocessed.Skill): void {
+		let compiled = new Compiled.SkillDefinition()
+
+		if (preprocessed.available) {
+			this.schema.definitions.skill.addSkill(name, preprocessed.description)
+		}
+		this.addProperties(compiled, preprocessed.properties, `#/skills/${name}/properties/`);
+
+		this.schema.skills[name] = compiled
+	}
+
+	compileDamagemodifier(name: string, preprocessed: Preprocessed.DamageModifier) {
+		let compiled = new Compiled.DamageModifierDefinition()
+
+		if (preprocessed.available) {
+			this.schema.definitions.damagemodifier.addType(name, preprocessed.description)
+		}
+		this.addProperties(compiled, preprocessed.properties, `#/damagemodifiers/${name}/properties/`);
+
+		this.schema.damagemodifiers[name] = compiled
+	}
+
+	compileReward(name: string, preprocessed: Preprocessed.Reward) {
+		let compiled = new Compiled.RewardDefinition()
+
+		if (preprocessed.available) {
+			this.schema.definitions.reward.addType(name, preprocessed.description)
+		}
+		this.addProperties(compiled, preprocessed.properties, `#/rewards/${name}/properties/`);
+
+		this.schema.rewards[name] = compiled
+	}
+
+	compileDistribution(name: string, preprocessed: Preprocessed.Distribution) {
+		let compiled = new Compiled.DistributionDefinition()
+
+		if (preprocessed.available) {
+			this.schema.definitions.distribution.addType(name, preprocessed.description)
+		}
+		this.addProperties(compiled, preprocessed.properties, `#/distributions/${name}/properties/`);
+
+		this.schema.distributions[name] = compiled
 	}
 	
 	compileType(name: string, type: Preprocessed.TypeDefinition): void {

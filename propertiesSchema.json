@@ -2,27 +2,7 @@
 	"$schema": "http://json-schema.org/schema",
 	"type": "object",
 	"properties": {
-		"skills": {
-			"type": "object",
-			"description": "The list of skills and their properties",
-			"patternProperties": {
-				"\\p{Upper}": {
-					"type": "object",
-					"description": "A skill and it's properties",
-					"properties": {
-						"description": true,
-						"properties": true,
-						"internal": {
-							"type": "boolean",
-							"description": "If true, this skill is managed internally"
-						},
-						"extends": true
-					},
-					"allOf": [{ "$ref": "#/definitions/type" }],
-					"additionalProperties": false
-				}
-			}
-		},
+		"$schema": true,
 		"triggers": {
 			"type": "object",
 			"description": "The list of trigers and their properties",
@@ -60,7 +40,8 @@
 						"description": true,
 						"properties": true,
 						"available": true,
-						"extends": true
+						"extends": true,
+						"exclusiveTo": true
 					},
 					"allOf": [{ "$ref": "#/definitions/type" }],
 					"additionalProperties": false
@@ -89,6 +70,80 @@
 						"description": true,
 						"properties": true,
 						"available": true,
+						"extends": true,
+						"exclusiveTo": true
+					},
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		},
+		"skills": {
+			"type": "object",
+			"description": "The list of skills and their properties",
+			"patternProperties": {
+				"\\p{Upper}": {
+					"type": "object",
+					"description": "A skill and it's properties",
+					"properties": {
+						"description": true,
+						"properties": true,
+						"internal": {
+							"type": "boolean",
+							"description": "If true, this skill is managed internally"
+						},
+						"extends": true
+					},
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalProperties": false
+				}
+			}
+		},
+		"damagemodifiers": {
+			"type": "object",
+			"description": "The list of damage modifiers and their properties",
+			"patternProperties": {
+				"\\p{Upper}": {
+					"type": "object",
+					"description": "A damage modifier and it's properties",
+					"properties": {
+						"description": true,
+						"properties": true,
+						"extends": true
+					},
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalProperties": false
+				}
+			}
+		},
+		"rewards": {
+			"type": "object",
+			"description": "The list of rewards and their properties",
+			"patternProperties": {
+				"\\p{Upper}": {
+					"type": "object",
+					"description": "A reward and it's properties",
+					"properties": {
+						"description": true,
+						"properties": true
+					},
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalProperties": false
+				}
+			}
+		},
+		"distributions": {
+			"type": "object",
+			"description": "The list of distribution types and their properties that is in the skills library",
+			"patternProperties": {
+				"\\p{Upper}": {
+					"type": "object",
+					"description": "An distribution type and it's properties",
+					"properties": {
+						"description": true,
+						"properties": true,
+						"available": true,
 						"extends": true
 					},
 					"allOf": [{ "$ref": "#/definitions/type" }],
@@ -110,7 +165,7 @@
 						"properties": { "$ref": "#/definitions/property/properties/properties" },
 						"patternProperties": { "$ref": "#/definitions/property/properties/patternProperties" },
 						"propertiesMap": { "$ref": "#/definitions/property/properties/propertiesMap" },
-						"requireEnum": { "$ref": "#/definitions/property/properties/requireEnum" },
+						"ref": { "$ref": "#/definitions/property/properties/ref" },
 						"enum": { "$ref": "#/definitions/property/properties/enum" },
 						"pattern": { "$ref": "#/definitions/property/properties/pattern" },
 						"internal": {
@@ -126,6 +181,7 @@
 			"additionalProperties": false
 		}
 	},
+	"additionalProperties": false,
 	"definitions": {
 		"type": {
 			"properties": {
@@ -157,6 +213,11 @@
 					"type": "boolean",
 					"description": "If false, the mode will not be required",
 					"default": true
+				},
+				"exclusiveTo": {
+					"type": "string",
+					"description": "To which plugin this item is exclusive to",
+					"enum": ["Superheroes", "EnchantedBosses", "EnchantedCombat"]
 				}
 			},
 			"required": ["description"],
@@ -264,12 +325,12 @@
 						}
 					}
 				},
+				"ref": {
+					"type": "string",
+					"description": "Refrences a definition"
+				},
 				"if": {
 					"$ref": "#/definitions/if"
-				},
-				"requireEnum": {
-					"type": "boolean",
-					"description": "Whether the enum value is forced or just a suggestion"
 				},
 				"enum": {
 					"type": "array",
@@ -364,13 +425,19 @@
 				"attribute", 
 				"collisionMode",
 				"sound", "particle",
-				"condition", "effect"
+				"condition", "effect",
+				// EB exclusives
+				"bossBarFlag", "bossBarColor", "bossBarStyle",
+				// EC exclusives
+				"lootTable"
 			]
 		},
 		"objectTypes": {
 			"enum": [
 				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData", "BlockDataData", "BlockDataComparison",
-				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData"
+				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData",
+				// EB exclusives
+				"SpawnData", "BossBarData"
 			]
 		},
 		"if": {

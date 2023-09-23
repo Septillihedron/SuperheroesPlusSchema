@@ -6,11 +6,12 @@ type extendableMap = StringRecord<extendableType>
 
 export function preprocess(unprocessed: any): Schema {
 	delete unprocessed.$schema
-	forEachValue(unprocessed, (types: extendableMap) => {
-		resolveExtends(types)
-		forEachValue(types, (type: Item) => {
-			type.requireMode ??= true;
-			walkItemProperties(type, addDefaultToDescription);
+	forEachValue(unprocessed, (items: extendableMap) => {
+		resolveExtends(items)
+		forEachValue(items, (item: Item) => {
+			item.requireMode ??= true
+			addExclusiveToDescription(item)
+			walkItemProperties(item, addDefaultToDescription)
 		})
 	})
 	return unprocessed
@@ -18,11 +19,10 @@ export function preprocess(unprocessed: any): Schema {
 
 function resolveExtends(extendableMap: extendableMap) : void {
 	forEachEntry(extendableMap, (name, type) => {
-		var extendsVal = type.extends
 		type.available ??= true
-		if (!extendsVal) return
-		extendableMap[name] = deepMerge(structuredClone(extendableMap[extendsVal]), type)
-		delete extendableMap[name]["extends"]
+		if (!type.extends) return
+		extendableMap[name] = deepMerge(structuredClone(extendableMap[type.extends]), type)
+		delete extendableMap[name].extends
 	})
 }
 
@@ -33,6 +33,11 @@ function deepMerge<T extends Object>(merged: T, overrides: T): T {
 		else merged[key] = deepMerge<any>(merged[key], overrides[key])
 	}
 	return merged
+}
+
+function addExclusiveToDescription(item: Item) {
+	if (!item.exclusiveTo) return
+	item.description += `\n\nOnly available if you have the ${item.exclusiveTo} plugin`
 }
 
 function walkItemProperties(item: Item, func: (property: Property) => void) {
