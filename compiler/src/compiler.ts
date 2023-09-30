@@ -2,6 +2,10 @@ import * as Preprocessed from "./PreprocessedSchema"
 import * as Compiled from "./CompiledSchema"
 import { forEachEntry } from "./utils"
 
+export function compile(preprocessed: Preprocessed.Schema) {
+	return new Compiler(preprocessed).compile()
+}
+
 export class Compiler {
 
 	preprocessed: Preprocessed.Schema

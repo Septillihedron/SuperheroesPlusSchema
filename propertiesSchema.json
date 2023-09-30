@@ -175,7 +175,22 @@
 						"extends": { "$ref": "#/definitions/type/properties/extends" }
 					},
 					"additionalItems": false,
-					"default": {}
+					"anyOf": [
+						{
+							"default": {
+								"description": "",
+								"type": "string",
+								"enum": []
+							}
+						},
+						{
+							"default": {
+								"description": "",
+								"type": "object",
+								"properties": {}
+							}
+						}
+					]
 				}
 			},
 			"additionalProperties": false
@@ -342,6 +357,12 @@
 					"description": "A regex to match the string againt"
 				}
 			},
+			"default": {
+				"description": "",
+				"required": false,
+				"type": "",
+				"default": ""
+			},
 			"required": ["description", "required", "type"],
 			"allOf": [
 				{
@@ -417,6 +438,7 @@
 				"string", 
 				"range", "comparison", "operation", "attributeOperation",
 				"entity", "material", "blockFace", 
+				"trimPattern", "trimMaterial",
 				"enchantment", "potion", "dyeColor",
 				"axolotlVariant", "horseColor", "horseStyle",
 				"damageCause", "action",
