@@ -24,7 +24,26 @@ Superheroes:
             mode: ALL
             biomes:
               - RIVER
+        OR:
+          type: OR
+          conditions: 
+            A:
+              type: BIOME
+              mode: ALL
       effects:
+        WRAPPER:
+          type: AOE
+          conditions: 
+            A:
+              type: BIOME
+              mode: OTHER
+              biomes:
+                - BADLANDS
+          effects: 
+            A:
+              type: IGNITE
+              mode: OTHER
+              fireTicks: 40
         A:
           type: GIVEITEM
           mode: ALL

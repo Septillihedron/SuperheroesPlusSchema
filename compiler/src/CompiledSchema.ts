@@ -497,6 +497,7 @@ class PropertyClass implements Property {
 	propertyContent?: Property
 	additionalProperties?: boolean
 
+	recordItem?: Property
 	name: string
 	path: Path
 	parent: object
@@ -522,6 +523,9 @@ class PropertyClass implements Property {
 	setDefault(defaultVal: any): void {
 		this.default = defaultVal
 	}
+	setRecordItem(recordItem: PropertyTypes) {
+		this.recordItem = this.parseType(recordItem)
+	}
 	addType(types: PropertyTypes[]): void {
 		if (types.length === 0) return
 		if (types.length === 1) {
@@ -532,9 +536,20 @@ class PropertyClass implements Property {
 		types.map(this.parseType).forEach(p => this.addAnyOf(p))
 	}
 	private static readonly typesArray = ["array", "object", "string", "number", "integer", "boolean"]
-	private parseType(type: PropertyTypes): {type: types} | {$ref: string} {
+	private parseType(type: PropertyTypes): Property {
 		if (PropertyClass.typesArray.includes(type)) {
 			return {type: type as types}
+		} else if (type === "record") {
+			if (this.recordItem === undefined) {
+				throw new Error("[Implementation Error] Record item is used before is set")
+			}
+			return {
+				type: "object",
+				additionalProperties: false,
+				patternProperties: {
+					".*": this.recordItem
+				}
+			}
 		} else {
 			return {$ref: `#/types/${type}`}
 		}

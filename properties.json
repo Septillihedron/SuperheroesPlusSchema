@@ -507,20 +507,13 @@
 		"OR": {
 			"description": "ORs all the conditions inside",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION", "ITEM"],
+			"requireMode": false,
 			"properties": {
 				"conditions": {
 					"description": "The conditions to OR",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition to OR",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				}
 			}
 		},
@@ -572,15 +565,8 @@
 				"conditions": {
 					"description": "The conditions to check",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						".*": {
-							"description": "A condition",
-							"required": true,
-							"type": "condition"
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				}
 			}
 		},
@@ -700,30 +686,14 @@
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				},
 				"effects": {
 					"description": "The list of effects",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "An effect",
-							"required": false,
-							"type": "effect",
-							"default": {}
-						}
-					}
+					"type": "EffectList",
+					"default": {}
 				}
 			}
 		},
@@ -741,30 +711,14 @@
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				},
 				"effects": {
 					"description": "The list of effects",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "An effect",
-							"required": false,
-							"type": "effect",
-							"default": {}
-						}
-					}
+					"type": "EffectList",
+					"default": {}
 				}
 			}
 		},
@@ -817,30 +771,14 @@
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				},
 				"effects": {
 					"description": "The list of effects",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "An effect",
-							"required": false,
-							"type": "effect",
-							"default": {}
-						}
-					}
+					"type": "EffectList",
+					"default": {}
 				}
 			}
 		},
@@ -1230,30 +1168,14 @@
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				},
 				"effects": {
 					"description": "The list of effects",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "An effect",
-							"required": false,
-							"type": "effect",
-							"default": {}
-						}
-					}
+					"type": "EffectList",
+					"default": {}
 				}
 			}
 		},
@@ -1271,30 +1193,14 @@
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				},
 				"effects": {
 					"description": "The list of effects",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "An effect",
-							"required": false,
-							"type": "effect",
-							"default": {}
-						}
-					}
+					"type": "EffectList",
+					"default": {}
 				}
 			}
 		},
@@ -1367,30 +1273,14 @@
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				},
 				"effects": {
 					"description": "The list of effects",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "An effect",
-							"required": false,
-							"type": "effect",
-							"default": {}
-						}
-					}
+					"type": "EffectList",
+					"default": {}
 				}
 			}
 		},
@@ -1515,30 +1405,14 @@
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				},
 				"effects": {
 					"description": "The list of effects",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "An effect",
-							"required": false,
-							"type": "effect",
-							"default": {}
-						}
-					}
+					"type": "EffectList",
+					"default": {}
 				}
 			}
 		},
@@ -1560,30 +1434,14 @@
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				},
 				"effects": {
 					"description": "The list of effects",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "An effect",
-							"required": false,
-							"type": "effect",
-							"default": {}
-						}
-					}
+					"type": "EffectList",
+					"default": {}
 				}
 			}
 		},
@@ -1613,30 +1471,14 @@
 				"conditions": {
 					"description": "The list of conditions",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "A condition",
-							"required": false,
-							"type": "condition",
-							"default": {}
-						}
-					}
+					"type": "ConditionList",
+					"default": {}
 				},
 				"effects": {
 					"description": "The list of effects",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"patternProperties": {
-						"\\w": {
-							"description": "An effect",
-							"required": false,
-							"type": "effect",
-							"default": {}
-						}
-					}
+					"type": "EffectList",
+					"default": {}
 				}
 			}
 		},
@@ -1979,14 +1821,8 @@
 						"value": {
 							"description": "The items to drop",
 							"required": true,
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"description": "An item to drop",
-									"required": true,
-									"type": "ItemStackData"
-								}
-							}
+							"type": "record",
+							"recordItem": "ItemStackData"
 						}
 					},
 					"default": {}
@@ -2523,14 +2359,8 @@
 				"items": {
 					"description": "The map of items to give to the player",
 					"required": false,
-					"type": "object",
-					"patternProperties": {
-						".*": {
-							"description": "An item to give",
-							"required": true,
-							"type": "ItemStackData"
-						}
-					},
+					"type": "record",
+					"recordItem": "ItemStackData",
 					"default": {}
 				},
 				"experience": {
@@ -2596,7 +2426,6 @@
 			}
 		}
 	},
-
 	"types": {
 		"condition": {
 			"description": "A skills library condition",
@@ -2644,6 +2473,16 @@
 				"ADD_SCALAR",
 				"MULTIPLY_SCALAR_1"
 			]
+		},
+		"ConditionList": {
+			"description": "A list of conditions",
+			"type": "record",
+			"recordItem": "condition"
+		},
+		"EffectList": {
+			"description": "A list of effects",
+			"type": "record",
+			"recordItem": "effect"
 		},
 		"SpawnData": {
 			"description": "The data for spawning behavior",

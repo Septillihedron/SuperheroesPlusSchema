@@ -63,7 +63,7 @@ interface Reward extends Item {}
 
 interface Distribution extends Item {}
 
-type PropertyTypes = PropertyStringTypes | "array" | "object" | "string" | "number" | "integer" | "boolean"
+type PropertyTypes = PropertyStringTypes | "array" | "object" | "record" | "string" | "number" | "integer" | "boolean"
 type PropertyStringTypes = "string" | "range" | "comparison" | "operation" | "entity" | "block" | "item" | "enchantment" | "potion" | "biome" | "world" | "equipmentSlot" | "attribute" | "sound" | "condition" | "effect"
 type PropertiesMap = {
 	key: PropertiesMapKey
@@ -80,6 +80,7 @@ interface Property extends Descriptable {
 	min?: number
 	max?: number
 	items?: PropertyType | Property
+	recordItem?: PropertyTypes
 	properties?: PropertyMap
 	patternProperties?: PropertyMap
 	propertiesMap?: PropertiesMap
@@ -95,6 +96,7 @@ interface IfPath {
 
 interface TypeDefinition {
 	type: PropertyType
+	recordItem?: PropertyTypes
 	properties?: PropertyMap
 	patternProperties?: PropertyMap
 	propertiesMap?: PropertiesMap

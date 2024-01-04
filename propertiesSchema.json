@@ -168,6 +168,7 @@
 						"ref": { "$ref": "#/definitions/property/properties/ref" },
 						"enum": { "$ref": "#/definitions/property/properties/enum" },
 						"pattern": { "$ref": "#/definitions/property/properties/pattern" },
+						"recordItem": { "$ref": "#/definitions/property/properties/recordItem" },
 						"internal": {
 							"type": "boolean",
 							"description": "If true, this type is managed internally"
@@ -355,6 +356,11 @@
 				"pattern": {
 					"type": "string",
 					"description": "A regex to match the string againt"
+				},
+				"recordItem": {
+					"type": "string",
+					"description": "The type of the record",
+					"$ref": "#/definitions/types"
 				}
 			},
 			"default": {
@@ -414,6 +420,14 @@
 					"then": {
 						"properties": { "type": { "$ref": "#/definitions/types" }}
 					}
+				},
+				{
+					"if": {
+						"properties": { "type": { "const": "record" }}
+					},
+					"then": {
+						"required": ["recordItem"]
+					}
 				}
 			]
 		},
@@ -421,7 +435,7 @@
 			"anyOf": [
 				{
 					"enum": [
-						"array", "object", 
+						"array", "object", "record",
 						"string", "number", "integer", "boolean"
 					]
 				},
@@ -456,6 +470,7 @@
 		},
 		"objectTypes": {
 			"enum": [
+				"ConditionList", "EffectList",
 				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData", "BlockDataData", "BlockDataComparison",
 				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData",
 				// EB exclusives

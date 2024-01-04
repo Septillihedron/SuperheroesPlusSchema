@@ -3768,21 +3768,10 @@
                 "else": true,
                 "conditions": {
                     "description": "The conditions to OR. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition to OR. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 }
-            },
-            "required": [
-                "mode"
-            ]
+            }
         },
         "VISIBILITY": {
             "additionalProperties": false,
@@ -3873,15 +3862,8 @@
                 "else": true,
                 "conditions": {
                     "description": "The conditions to check. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        ".*": {
-                            "description": "A condition",
-                            "$ref": "#/types/condition"
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 }
             }
         },
@@ -3899,15 +3881,8 @@
                 "else": true,
                 "conditions": {
                     "description": "The conditions to check. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        ".*": {
-                            "description": "A condition",
-                            "$ref": "#/types/condition"
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "slot": {
                     "description": "The slot for the item. \nDefaults to \"HAND\"",
@@ -4107,29 +4082,13 @@
                 "mode": {},
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 }
             }
         },
@@ -4145,29 +4104,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 },
                 "radius": {
                     "description": "Half the side length of the box. \nDefaults to 5",
@@ -4264,29 +4207,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 },
                 "delay": {
                     "description": "The delay time in seconds (1 is 20 ticks). \nDefaults to 1",
@@ -4892,29 +4819,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 },
                 "radius": {
                     "description": "Half the side length of the box. \nDefaults to 5",
@@ -4935,29 +4846,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 },
                 "onlyProjectiles": {
                     "description": "If true, only triggers if the original target entity is a projectile. If false, keep the target entity the same. \nDefaults to true",
@@ -5077,29 +4972,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 },
                 "verticalRadius": {
                     "description": "Half of the vertical side length of the cube. \nDefaults to 0",
@@ -5232,29 +5111,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 },
                 "maxDistance": {
                     "description": "The maximum distance the raytrace can collide. \nDefaults to 10",
@@ -5298,29 +5161,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 },
                 "delay": {
                     "description": "The initial delay in seconds (1 is 20 ticks). \nDefaults to 1",
@@ -5368,29 +5215,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 },
                 "slot": {
                     "description": "The slot of the item. \nDefaults to \"HAND\"",
@@ -5443,29 +5274,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 }
             }
         },
@@ -5483,29 +5298,13 @@
                 },
                 "conditions": {
                     "description": "The list of conditions. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "A condition. \nDefaults to {}",
-                            "$ref": "#/types/condition",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "effects": {
                     "description": "The list of effects. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "patternProperties": {
-                        "\\w": {
-                            "description": "An effect. \nDefaults to {}",
-                            "$ref": "#/types/effect",
-                            "default": {}
-                        }
-                    }
+                    "$ref": "#/types/EffectList",
+                    "default": {}
                 },
                 "offset": {
                     "description": "The offset from the original location. \nDefaults to {\"x\":0,\"y\":0,\"z\":0}",
@@ -6014,7 +5813,6 @@
                         "additionalProperties": false,
                         "patternProperties": {
                             ".*": {
-                                "description": "An item to drop",
                                 "$ref": "#/types/ItemStackData"
                             }
                         }
@@ -14940,7 +14738,6 @@
                     "additionalProperties": false,
                     "patternProperties": {
                         ".*": {
-                            "description": "An item to give",
                             "$ref": "#/types/ItemStackData"
                         }
                     },
@@ -15076,6 +14873,24 @@
                 "ADD_SCALAR",
                 "MULTIPLY_SCALAR_1"
             ]
+        },
+        "ConditionList": {
+            "additionalProperties": false,
+            "type": "object",
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/types/condition"
+                }
+            }
+        },
+        "EffectList": {
+            "additionalProperties": false,
+            "type": "object",
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/types/effect"
+                }
+            }
         },
         "SpawnData": {
             "additionalProperties": false,

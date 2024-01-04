@@ -144,7 +144,8 @@ export class Compiler {
 		
 		compiledType.pattern = type.pattern
 		compiledType.additionalProperties = false
-		if (type.type !== undefined) this.PropertyPartsCompiler.type(type.type, compiledType)
+		this.PropertyPartsCompiler.recordItem(type.recordItem, compiledType)
+		this.PropertyPartsCompiler.type(type.type, compiledType)
 		this.PropertyPartsCompiler.enum(type.enum, compiledType)
 		this.PropertyPartsCompiler.properties(type.properties, compiledType)
 		this.PropertyPartsCompiler.patternProperties(type.patternProperties, compiledType)
@@ -176,6 +177,10 @@ export class Compiler {
 			if (compilingProperty.parent instanceof Compiled.PropertyClass) {
 				compilingProperty.parent.addRequired(compilingProperty.name)
 			}
+		},
+		recordItem(recordItem, compilingProperty) {
+			if (recordItem === undefined) return
+			compilingProperty.setRecordItem(recordItem)
 		},
 		type: (type: Preprocessed.PropertyTypes | Preprocessed.PropertyTypes[], compilingProperty) => {
 			if (type instanceof Array) {
@@ -282,8 +287,8 @@ export class Compiler {
 		}
 	}
 
-	compileProperty(property: Preprocessed.Property, compilingProperty: Compiled.Property): Compiled.Property {
-
+	compileProperty(property: Preprocessed.Property, compilingProperty: Compiled.PropertyClass): Compiled.Property {
+		this.PropertyPartsCompiler.recordItem(property.recordItem, compilingProperty)
 		Object.keys(property).forEach(key => {
 			if (key in this.PropertyPartsCompiler) {
 				(this.PropertyPartsCompiler as any)[key]((property as any)[key], compilingProperty)
@@ -306,7 +311,7 @@ type propertyPartsCompiler = {
 
 function deletePropertyClassHelperProperties(property: Compiled.Property): Compiled.Property {
 	Object.keys(property).forEach(key => {
-		if (["parent", "path", "name"].includes(key)) delete (property as any)[key]
+		if (["recordItem", "parent", "path", "name"].includes(key)) delete (property as any)[key]
 	})
 	return property
 }
