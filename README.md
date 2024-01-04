@@ -1,4 +1,4 @@
-# WIP readme
+# [Download](https://github.com/Septillihedron/SuperheroesPlusSchema/releases/latest)
 # SuperheroesPlusSchema
 
 ## Uses
