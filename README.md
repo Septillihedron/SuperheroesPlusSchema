@@ -25,4 +25,4 @@ A: It does that when there is nothing to auto-complete or when you are auto-comp
 To solve the latter, make sure you are below the tag and indented relative to the tag, then try again
 
 ## Other
-For any questions, bug reports, miss documentation, and/or suggestions, ping me (Sepdron#5047) in `#my-plugins` in [Xemor's server](https://discord.gg/d7XA8nr)
+For any questions, bug reports, miss documentation, and/or suggestions, ping me (sepdron) in `#my-plugins` in [Xemor's server](https://discord.gg/d7XA8nr)
