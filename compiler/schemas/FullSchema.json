@@ -161,6 +161,7 @@
                     }
                 },
                 "distribution": {
+                    "type": "object",
                     "description": "The list of distributions",
                     "patternProperties": {
                         ".*": {
@@ -170,6 +171,7 @@
                 },
                 "slots": {
                     "description": "The list of slots",
+                    "type": "array",
                     "items": {
                         "description": "A slot",
                         "anyOf": [

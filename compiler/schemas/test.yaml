@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=FullSchema.json
+# yaml-language-server: $schema=Superheroes.json
 Superheroes:
   colouredName: "templateSkillToggle"
   description: "template"
@@ -41,7 +41,7 @@ Superheroes:
                 - BADLANDS
           effects: 
             A:
-              type: IGNITE
+              type: so
               mode: OTHER
               fireTicks: 40
         A:
@@ -156,6 +156,38 @@ EnchantedBosses:
           type: MINION
           mode: OTHER
           spawn: EB_Minnio
+
+Exampleboss: 
+  colouredName: <red>Exampleboss
+  description: A description fit for an example
+  damagemodifier: 
+    type: BLANK
+  entity: 
+    type: DROPPED_ITEM
+    shouldDespawn: true
+  reward: 
+    type: BASIC
+    experience: 100
+    items: 
+      items0: 
+        type: AIR
+        amount: 1
+  bossbar: 
+    enabled: true
+    color: PINK
+    style: PROGRESS
+    flags: 
+      - PLAY_BOSS_MUSIC
+  skills: 
+    skills0: 
+      skill: CUSTOM
+      trigger: 
+        type: DAMAGEDENTITY
+        conditions: 
+          conditions0: 
+            type: HEALTH
+            mode: SELF
+            maximumHealthPercentage: 100
 EnchantedCombat:
   item:
     type: WOODEN_HOE

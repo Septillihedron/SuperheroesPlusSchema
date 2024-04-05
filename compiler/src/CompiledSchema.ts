@@ -195,6 +195,7 @@ class Item {
 			}
 		},
 		distribution: {
+			type: "object",
 			description: "The list of distributions",
 			patternProperties: {
 				".*": {
@@ -204,6 +205,7 @@ class Item {
 		},
 		slots: {
 			description: "The list of slots",
+			type: "array",
 			items: {
 				description: "A slot",
 				anyOf: [
@@ -459,15 +461,20 @@ type Property = {
 	minimum?: number
 	maximum?: number
 	items?: Property
+	minItems?: number
+	maxItems?: number
 	properties?: PropertyMap
 	patternProperties?: PropertyMap
+	minProperties?: number
+	maxProperties?: number
 	$ref?: string
-	if?: IfPath
+	if?: Property
 	then?: Property
 	else?: Property
 	required?: string[]
 	enum?: any[]
 	allOf?: Property[]
+	oneOf?: Property[]
 	anyOf?: Property[]
 	propertyNames?: Property
 	pattern?: string
@@ -485,7 +492,7 @@ class PropertyClass implements Property {
 	properties?: PropertyMap
 	patternProperties?: PropertyMap
 	$ref?: string
-	if?: IfPath
+	if?: Property
 	then?: Property
 	else?: Property
 	required?: string[]
@@ -578,7 +585,7 @@ class PropertyClass implements Property {
 	set$ref($ref: string): void {
 		this.$ref = $ref
 	}
-	setIf(ifVal: IfPath): void {
+	setIf(ifVal: Property): void {
 		this.if = ifVal
 	}
 	setThen(then: Property): void {
@@ -587,7 +594,7 @@ class PropertyClass implements Property {
 	setElse(elseVal: Property): void {
 		this.else = elseVal
 	}
-	setIfThenElse(ifVal: IfPath, then: Property, elseVal?: Property): void {
+	setIfThenElse(ifVal: Property, then: Property, elseVal?: Property): void {
 		this.if = ifVal
 		this.then = then
 		if (elseVal !== undefined) this.else = elseVal
