@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=Superheroes.json
+# yaml-language-server: $schema=FullSchema.json
 Superheroes:
   colouredName: "templateSkillToggle"
   description: "template"

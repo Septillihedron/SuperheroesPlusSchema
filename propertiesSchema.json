@@ -165,15 +165,13 @@
 						"properties": { "$ref": "#/definitions/property/properties/properties" },
 						"patternProperties": { "$ref": "#/definitions/property/properties/patternProperties" },
 						"propertiesMap": { "$ref": "#/definitions/property/properties/propertiesMap" },
-						"ref": { "$ref": "#/definitions/property/properties/ref" },
 						"enum": { "$ref": "#/definitions/property/properties/enum" },
 						"pattern": { "$ref": "#/definitions/property/properties/pattern" },
 						"recordItem": { "$ref": "#/definitions/property/properties/recordItem" },
 						"internal": {
 							"type": "boolean",
 							"description": "If true, this type is managed internally"
-						},
-						"extends": { "$ref": "#/definitions/type/properties/extends" }
+						}
 					},
 					"additionalItems": false,
 					"anyOf": [
@@ -319,12 +317,8 @@
 									"description": "The description of the key"
 								},
 								"type": {
-									"type": ["string", "array"],
-									"items": {
-										"type": "string",
-										"$ref": "#/definitions/stringTypes"
-									},
-									"minItems": 1,
+									"type": "string",
+									"$ref": "#/definitions/stringTypes",
 									"description": "The type of value(s) the key can be"
 								}
 							},

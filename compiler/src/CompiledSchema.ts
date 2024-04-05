@@ -1,4 +1,4 @@
-import { IfPath, PropertyTypes, Modes } from "./PreprocessedSchema";
+import { PropertyTypes, Mode } from "./PreprocessedSchema";
 import { StringRecord } from "./utils";
 
 export {
@@ -438,16 +438,6 @@ class Path {
 			this.parts = parts
 		}
 	}
-
-	asIf(content: IfPath): IfPath {
-		var originalPath: IfPath = {}
-		var path: IfPath = originalPath
-		this.parts.forEach((part: string) => {
-			path[part] = {}
-			path = path[part]
-		})
-		return originalPath
-	}
 	asString(): string {
 		return this.parts.join("/")
 	}
@@ -662,7 +652,7 @@ class TriggerDefinition extends Definition {
 
 class ConditionDefinition extends Definition {
 	
-	constructor(modes: Modes[]) {
+	constructor(modes: Mode[]) {
 		super({ type: true, mode: { enum: modes }, else: true })
 	}
 
@@ -670,7 +660,7 @@ class ConditionDefinition extends Definition {
 
 class EffectDefinition extends Definition {
 
-	constructor(modes: Modes[]) {
+	constructor(modes: Mode[]) {
 		super({ type: true, mode: { enum: modes } })
 	}
 

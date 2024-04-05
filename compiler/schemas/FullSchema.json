@@ -14828,7 +14828,6 @@
     },
     "types": {
         "range": {
-            "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$",
             "additionalProperties": false,
             "anyOf": [
                 {
@@ -14837,7 +14836,8 @@
                 {
                     "type": "number"
                 }
-            ]
+            ],
+            "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$"
         },
         "comparison": {
             "additionalProperties": false,

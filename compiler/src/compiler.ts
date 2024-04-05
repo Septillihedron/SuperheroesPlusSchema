@@ -27,8 +27,6 @@ export class Compiler {
 		forEachEntry(damagemodifiers, this.compileDamagemodifier.bind(this));
 		forEachEntry(rewards, this.compileReward.bind(this));
 		forEachEntry(distributions, this.compileDistribution.bind(this));
-		delete types.effect;
-		delete types.condition;
 		forEachEntry(types, this.compileType.bind(this));
 		this.addInternalTypes();
 
@@ -59,7 +57,7 @@ export class Compiler {
 		}
 	}
 	
-	compileTrigger(name: string, preprocessed: Preprocessed.Trigger): void {
+	compileTrigger(name: string, preprocessed: Preprocessed.Item): void {
 		let compiled = new Compiled.TriggerDefinition()
 
 		if (preprocessed.available) {
@@ -70,7 +68,7 @@ export class Compiler {
 		this.schema.triggers[name] = compiled
 	}
 	
-	compileCondition(name: string, preprocessed: Preprocessed.Condition): void {
+	compileCondition(name: string, preprocessed: Preprocessed.Item): void {
 		let compiled = new Compiled.ConditionDefinition(preprocessed.supportedModes!)
 
 		if (preprocessed.available) {
@@ -82,7 +80,7 @@ export class Compiler {
 		this.schema.conditions[name] = compiled
 	}
 	
-	compileEffect(name: string, preprocessed: Preprocessed.Effect): void {
+	compileEffect(name: string, preprocessed: Preprocessed.Item): void {
 		let compiled = new Compiled.EffectDefinition(preprocessed.supportedModes!)
 
 		if (preprocessed.available) {
@@ -95,7 +93,7 @@ export class Compiler {
 		this.schema.effects[name] = compiled
 	}
 
-	compileSkill(name: string, preprocessed: Preprocessed.Skill): void {
+	compileSkill(name: string, preprocessed: Preprocessed.Item): void {
 		let compiled = new Compiled.SkillDefinition()
 
 		if (preprocessed.available) {
@@ -106,7 +104,7 @@ export class Compiler {
 		this.schema.skills[name] = compiled
 	}
 
-	compileDamagemodifier(name: string, preprocessed: Preprocessed.DamageModifier) {
+	compileDamagemodifier(name: string, preprocessed: Preprocessed.Item) {
 		let compiled = new Compiled.DamageModifierDefinition()
 
 		if (preprocessed.available) {
@@ -117,7 +115,7 @@ export class Compiler {
 		this.schema.damagemodifiers[name] = compiled
 	}
 
-	compileReward(name: string, preprocessed: Preprocessed.Reward) {
+	compileReward(name: string, preprocessed: Preprocessed.Item) {
 		let compiled = new Compiled.RewardDefinition()
 
 		if (preprocessed.available) {
@@ -128,7 +126,7 @@ export class Compiler {
 		this.schema.rewards[name] = compiled
 	}
 
-	compileDistribution(name: string, preprocessed: Preprocessed.Distribution) {
+	compileDistribution(name: string, preprocessed: Preprocessed.Item) {
 		let compiled = new Compiled.DistributionDefinition()
 
 		if (preprocessed.available) {
@@ -139,10 +137,9 @@ export class Compiler {
 		this.schema.distributions[name] = compiled
 	}
 	
-	compileType(name: string, type: Preprocessed.TypeDefinition): void {
+	compileType(name: string, type: Preprocessed.Property): void {
 		let compiledType = new Compiled.PropertyClass(this.schema.types, name, `#/types/${name}`)
 		
-		compiledType.pattern = type.pattern
 		compiledType.additionalProperties = false
 		this.PropertyPartsCompiler.recordItem(type.recordItem, compiledType)
 		this.PropertyPartsCompiler.type(type.type, compiledType)
@@ -151,6 +148,7 @@ export class Compiler {
 		this.PropertyPartsCompiler.patternProperties(type.patternProperties, compiledType)
 		this.PropertyPartsCompiler.propertiesMap(type.propertiesMap, compiledType)
 		this.PropertyPartsCompiler.requireEnum(type.requireEnum, compiledType)
+		this.PropertyPartsCompiler.pattern(type.pattern, compiledType)
 		deletePropertyClassHelperProperties(compiledType)
 
 		this.schema.types[name] = compiledType;
@@ -251,12 +249,6 @@ export class Compiler {
 					if (type.requireEnum) compilingProperty.additionalProperties = false
 					enumValues.push(...type.enum)
 				}
-				while (type.extends !== undefined) {
-					type = this.preprocessed.types[type.extends]
-					if (type.enum !== undefined) {
-						enumValues.push(...type.enum)
-					}
-				}
 			})
 			if (enumValues.length === 0) {
 				compilingProperty.addPatternProperty(".*", valueProperty)
@@ -284,7 +276,11 @@ export class Compiler {
 			compilingProperty.anyOf = [{type: "string"}, {type: "string", enum: compilingProperty.enum}]
 			compilingProperty.enum = undefined
 			compilingProperty.type = undefined
-		}
+		},
+		pattern: (pattern, compilingProperty) => {
+			if (pattern === undefined) return
+			compilingProperty.setPattern(pattern)
+		},
 	}
 
 	compileProperty(property: Preprocessed.Property, compilingProperty: Compiled.PropertyClass): Compiled.Property {

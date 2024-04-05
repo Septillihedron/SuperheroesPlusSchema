@@ -14,6 +14,9 @@ export function preprocess(unprocessed: any): Schema {
 			walkItemProperties(item, addDefaultToDescription)
 		})
 	})
+	forEachEntry(unprocessed.types, (name, type: Property & {internal?: true}) => {
+		if (type.internal === true) delete unprocessed.types[name]
+	})
 	return unprocessed
 }
 

@@ -1,2 +1,2 @@
 @echo off
-tsc && node ./out/index.js && echo done
+echo Compiling... && tsc && echo Running... && node ./out/index.js && echo Done!
