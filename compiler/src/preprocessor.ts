@@ -1,17 +1,23 @@
 import { Schema, Property, Item } from "./PreprocessedSchema"
 import { StringRecord, forEachEntry, forEachValue } from "./utils"
 
-type extendableType = Item & {extends?: string}
-type extendableMap = StringRecord<extendableType>
+type UnprocessedItem = Item & {extends?: string, available?: boolean}
 
 export function preprocess(unprocessed: any): Schema {
 	delete unprocessed.$schema
-	forEachValue(unprocessed, (items: extendableMap) => {
+	forEachValue(unprocessed, (items: StringRecord<UnprocessedItem>) => {
 		resolveExtends(items)
 		forEachValue(items, (item: Item) => {
 			item.requireMode ??= true
 			addExclusiveToDescription(item)
 			walkItemProperties(item, addDefaultToDescription)
+		})
+		forEachEntry(items, (name, item) => {
+			if (item.available === false) {
+				delete items[name]
+				return
+			}
+			delete item.available
 		})
 	})
 	forEachEntry(unprocessed.types, (name, type: Property & {internal?: true}) => {
@@ -20,12 +26,12 @@ export function preprocess(unprocessed: any): Schema {
 	return unprocessed
 }
 
-function resolveExtends(extendableMap: extendableMap) : void {
-	forEachEntry(extendableMap, (name, type) => {
+function resolveExtends(items: StringRecord<UnprocessedItem>) : void {
+	forEachEntry(items, (name, type) => {
 		type.available ??= true
 		if (!type.extends) return
-		extendableMap[name] = deepMerge(structuredClone(extendableMap[type.extends]), type)
-		delete extendableMap[name].extends
+		items[name] = deepMerge(structuredClone(items[type.extends]), type)
+		delete items[name].extends
 	})
 }
 

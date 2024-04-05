@@ -68,8 +68,6 @@ export class Compiler {
 		name: string, 
 		preprocessed: Preprocessed.Item, 
 	) {
-		if (!preprocessed.available) return
-
 		const extraProperties = this.definitionExtraProperties[category];
 		const compiled = new Compiled.Definition(extraProperties)
 		if (preprocessed.supportedModes) {

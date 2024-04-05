@@ -36,7 +36,6 @@ type Plugins = "Superheroes" | "EnchantedBosses" | "EnchantedCombat"
 type Mode = "SELF" | "OTHER" | "LOCATION" | "ITEM" | "ALL"
 interface Item extends Descriptable {
 	properties?: PropertyMap
-	available: boolean
 	supportedModes?: Mode[]
 	requireMode: boolean
 	exclusiveTo?: Plugins
