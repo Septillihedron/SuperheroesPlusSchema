@@ -39,11 +39,17 @@ Superheroes:
               mode: OTHER
               biomes:
                 - BADLANDS
+            WRAPPER:
+              type: ITEMWRAPPER
+              
           effects: 
             A:
-              type: so
+              type: SOUND
               mode: OTHER
-              fireTicks: 40
+              sound:
+                sound: ENTITY_GENERIC_EXPLODE
+                volume: 1
+                pitch: 1
         A:
           type: GIVEITEM
           mode: ALL
@@ -59,6 +65,7 @@ Superheroes:
                 soul_sspeed: 0
                 power: 0
                 mending: 0
+        
     blockdrops:
       skill: BLOCKDROPS
       convertMap:

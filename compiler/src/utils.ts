@@ -8,8 +8,8 @@ export function forEachValue<T>(object: StringRecord<T> | undefined, func: (valu
 	}
 }
 
-export function forEachEntry<T>(object: StringRecord<T>, func: (key: string, value: T) => void) {
+export function forEachEntry<K extends string, V>(object: Record<K, V>, func: (key: K, value: V) => void) {
 	for (const [key, value] of Object.entries(object)) {
-		func(key, value)
+		func(key as K, value as V)
 	}
 }

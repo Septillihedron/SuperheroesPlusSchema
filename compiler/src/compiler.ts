@@ -1,6 +1,6 @@
 import * as Preprocessed from "./PreprocessedSchema"
 import * as Compiled from "./CompiledSchema"
-import { forEachEntry } from "./utils"
+import { StringRecord, forEachEntry } from "./utils"
 
 export function compile(preprocessed: Preprocessed.Schema) {
 	return new Compiler(preprocessed).compile()
@@ -10,23 +10,29 @@ export class Compiler {
 
 	preprocessed: Preprocessed.Schema
 	schema: Compiled.FullSchema
+	definitionExtraProperties: Record<Compiled.Category, StringRecord<Compiled.Property | boolean>>
 
 	constructor(preprocessed: Preprocessed.Schema) {
 		this.preprocessed = preprocessed
 		this.schema = new Compiled.FullSchema()
+		this.definitionExtraProperties = {
+			triggers: { type: true, conditions: true },
+			conditions: { type: true, else: true },
+			effects: { type: true },
+			skills: { skill: true, conditions: true },
+			damagemodifiers: { type: true },
+			rewards: { type: true },
+			distributions: { type: true }
+		}
 	}
 
 	compile() {
 		let {schema, preprocessed} = this
 		this.addCustomSkill()
-		const {triggers, conditions, effects, skills, damagemodifiers, rewards, distributions, types} = preprocessed;
-		forEachEntry(triggers, this.compileTrigger.bind(this));
-		forEachEntry(conditions, this.compileCondition.bind(this));
-		forEachEntry(effects, this.compileEffect.bind(this));
-		forEachEntry(skills, this.compileSkill.bind(this));
-		forEachEntry(damagemodifiers, this.compileDamagemodifier.bind(this));
-		forEachEntry(rewards, this.compileReward.bind(this));
-		forEachEntry(distributions, this.compileDistribution.bind(this));
+		const {types, ...itemsCategory} = preprocessed;
+		forEachEntry(itemsCategory, 
+			(category, items) => forEachEntry(items, this.compileItem.bind(this, category))
+		)
 		forEachEntry(types, this.compileType.bind(this));
 		this.addInternalTypes();
 
@@ -35,8 +41,8 @@ export class Compiler {
 
 	addCustomSkill(): void {
 		let {definitions, skills} = this.schema
-		definitions.skill.addSkill("CUSTOM", "A custom skill, used in combination with the SkillsLibrary")
-		var skill = new Compiled.SkillDefinition()
+		definitions.skill.addType("CUSTOM", "A custom skill, used in combination with the SkillsLibrary")
+		var skill = new Compiled.Definition(this.definitionExtraProperties.skills)
 		skill.addProperty("trigger", { $ref: "#/definitions/trigger" })
 		skill.addProperty("effects", {
 			patternProperties: {
@@ -56,85 +62,27 @@ export class Compiler {
 			definition.addProperty(name, compiledProperty, property.required)
 		}
 	}
-	
-	compileTrigger(name: string, preprocessed: Preprocessed.Item): void {
-		let compiled = new Compiled.TriggerDefinition()
 
-		if (preprocessed.available) {
-			this.schema.definitions.trigger.addType(name, preprocessed.description)
+	compileItem(
+		category: Compiled.Category, 
+		name: string, 
+		preprocessed: Preprocessed.Item, 
+	) {
+		if (!preprocessed.available) return
+
+		const extraProperties = this.definitionExtraProperties[category];
+		const compiled = new Compiled.Definition(extraProperties)
+		if (preprocessed.supportedModes) {
+			compiled.addProperty("mode", { enum: preprocessed.supportedModes })
 		}
-		this.addProperties(compiled, preprocessed.properties, `#/triggers/${name}/properties/`);
 
-		this.schema.triggers[name] = compiled
-	}
-	
-	compileCondition(name: string, preprocessed: Preprocessed.Item): void {
-		let compiled = new Compiled.ConditionDefinition(preprocessed.supportedModes!)
+		if (preprocessed.supportedModes && preprocessed.requireMode) compiled.requireMode()
 
-		if (preprocessed.available) {
-			this.schema.definitions.condition.addType(name, preprocessed.description)
-		}
-		if (preprocessed.requireMode) compiled.requireMode()
-		this.addProperties(compiled, preprocessed.properties, `#/conditions/${name}/properties/`);
+		const unpluralCategory = Compiled.pluralToUnpluralCategories[category]
+		this.schema.definitions[unpluralCategory].addType(name, preprocessed.description)
+		this.addProperties(compiled, preprocessed.properties, `#/${category}/${name}/properties/`);
 
-		this.schema.conditions[name] = compiled
-	}
-	
-	compileEffect(name: string, preprocessed: Preprocessed.Item): void {
-		let compiled = new Compiled.EffectDefinition(preprocessed.supportedModes!)
-
-		if (preprocessed.available) {
-			this.schema.definitions.effect.addType(name, preprocessed.description)
-		}
-		
-		if (preprocessed.requireMode) compiled.requireMode()
-		this.addProperties(compiled, preprocessed.properties, `#/effects/${name}/properties/`);
-
-		this.schema.effects[name] = compiled
-	}
-
-	compileSkill(name: string, preprocessed: Preprocessed.Item): void {
-		let compiled = new Compiled.SkillDefinition()
-
-		if (preprocessed.available) {
-			this.schema.definitions.skill.addSkill(name, preprocessed.description)
-		}
-		this.addProperties(compiled, preprocessed.properties, `#/skills/${name}/properties/`);
-
-		this.schema.skills[name] = compiled
-	}
-
-	compileDamagemodifier(name: string, preprocessed: Preprocessed.Item) {
-		let compiled = new Compiled.DamageModifierDefinition()
-
-		if (preprocessed.available) {
-			this.schema.definitions.damagemodifier.addType(name, preprocessed.description)
-		}
-		this.addProperties(compiled, preprocessed.properties, `#/damagemodifiers/${name}/properties/`);
-
-		this.schema.damagemodifiers[name] = compiled
-	}
-
-	compileReward(name: string, preprocessed: Preprocessed.Item) {
-		let compiled = new Compiled.RewardDefinition()
-
-		if (preprocessed.available) {
-			this.schema.definitions.reward.addType(name, preprocessed.description)
-		}
-		this.addProperties(compiled, preprocessed.properties, `#/rewards/${name}/properties/`);
-
-		this.schema.rewards[name] = compiled
-	}
-
-	compileDistribution(name: string, preprocessed: Preprocessed.Item) {
-		let compiled = new Compiled.DistributionDefinition()
-
-		if (preprocessed.available) {
-			this.schema.definitions.distribution.addType(name, preprocessed.description)
-		}
-		this.addProperties(compiled, preprocessed.properties, `#/distributions/${name}/properties/`);
-
-		this.schema.distributions[name] = compiled
+		this.schema[category][name] = compiled
 	}
 	
 	compileType(name: string, type: Preprocessed.Property): void {

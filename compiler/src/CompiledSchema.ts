@@ -1,16 +1,31 @@
-import { PropertyTypes, Mode } from "./PreprocessedSchema";
+import { PropertyTypes } from "./PreprocessedSchema";
 import { StringRecord } from "./utils";
 
 export {
 	FullSchema, 
 	Types, IfThenReference, 
 	Path, Property, PropertyClass, PropertyMap, types, 
-	
-	Definition, TriggerDefinition, ConditionDefinition, EffectDefinition,
-	SkillDefinition,
-	DamageModifierDefinition, RewardDefinition,
-	DistributionDefinition
+	Definition,
+	Category, NonPluralCategory, pluralToUnpluralCategories
 }
+
+type Category = keyof {
+	[K in keyof FullSchema as FullSchema[K] extends StringRecord<Definition>? K : never]: K
+}
+type NonPluralCategory = keyof {
+	[K in keyof FullSchema["definitions"] as FullSchema["definitions"][K] extends UnionType? K : never]: K
+}
+
+const pluralToUnpluralCategories: Record<Category, NonPluralCategory> = {
+	triggers: "trigger",
+	conditions: "condition",
+	effects: "effect",
+	skills: "skill",
+	damagemodifiers: "damagemodifier",
+	rewards: "reward",
+	distributions: "distribution",
+}
+
 
 class FullSchema {
 
@@ -44,16 +59,16 @@ class FullSchema {
 
 		distribution: new Distribution(),
 	}
-	readonly triggers: StringRecord<TriggerDefinition> = {}
-	readonly conditions: StringRecord<ConditionDefinition> = {}
-	readonly effects: StringRecord<EffectDefinition> = {}
+	readonly triggers: StringRecord<Definition> = {}
+	readonly conditions: StringRecord<Definition> = {}
+	readonly effects: StringRecord<Definition> = {}
 
-	readonly skills: StringRecord<SkillDefinition> = {}
+	readonly skills: StringRecord<Definition> = {}
 
-	readonly damagemodifiers: StringRecord<DamageModifierDefinition> = {}
-	readonly rewards: StringRecord<RewardDefinition> = {}
+	readonly damagemodifiers: StringRecord<Definition> = {}
+	readonly rewards: StringRecord<Definition> = {}
 
-	readonly distributions: StringRecord<DistributionDefinition> = {}
+	readonly distributions: StringRecord<Definition> = {}
 
 	readonly types: StringRecord<Property> = {}
 }
@@ -278,7 +293,12 @@ class SLSkill {
 	}
 
 }
-class Trigger {
+
+interface UnionType {
+	addType(name: string, description: string): void
+}
+
+class Trigger implements UnionType {
 	readonly description = "The skill trigger"
 	readonly type = "object"
 	readonly properties = {
@@ -303,7 +323,7 @@ class Trigger {
 	}
 }
 
-class Condition {
+class Condition implements UnionType {
 	readonly description = "A condition"
 	readonly type = "object"
 	readonly properties = {
@@ -332,7 +352,7 @@ class Condition {
 	}
 }
 
-class Effect {
+class Effect implements UnionType {
 	readonly description = "An effect"
 	readonly type = "object"
 	readonly properties = {
@@ -352,7 +372,7 @@ class Effect {
 	}
 }
 
-class Skill {
+class Skill implements UnionType {
 	readonly description = "A skill"
 	readonly type = "object"
 	readonly properties = {
@@ -372,13 +392,13 @@ class Skill {
 	readonly if = {"properties": {"skill": false}}
 	readonly else: {allOf: IfThenReference[]} = {allOf: []}
 
-	addSkill(name: string, description: string): void {
+	addType(name: string, description: string): void {
 		this.properties.skill.addType(name, description)
 		this.else.allOf.push(new IfThenReference("skill", name))
 	}
 }
 
-class DamageModifier {
+class DamageModifier implements UnionType {
 	readonly type = "object"
 	readonly properties = {
 		type: new Types("The type of the damage modifier")
@@ -393,7 +413,7 @@ class DamageModifier {
 	}
 }
 
-class Reward {
+class Reward implements UnionType {
 	readonly type = "object"
 	readonly properties = {
 		type: new Types("The type of the reward")
@@ -408,7 +428,7 @@ class Reward {
 	}
 }
 
-class Distribution {
+class Distribution implements UnionType {
 	readonly type = "object"
 	readonly properties = {
 		type: new Types("The type of the distribution")
@@ -616,7 +636,7 @@ class PropertyClass implements Property {
 
 }
 
-abstract class Definition {
+class Definition {
 	readonly properties: StringRecord<Property | boolean>
 	required?: string[]
 	readonly additionalProperties = false
@@ -624,7 +644,7 @@ abstract class Definition {
 	then?: {$ref: string, additionalProperties: true}
 
 	constructor(properties: StringRecord<Property | boolean>) {
-		this.properties = properties
+		this.properties = structuredClone(properties)
 	}
 
 	addProperty(name: string, property: Property, required?: boolean): void {
@@ -638,62 +658,6 @@ abstract class Definition {
 	private addRequired(item: string) {
 		this.required ??= [];
 		this.required.push(item)
-	}
-
-}
-
-class TriggerDefinition extends Definition {
-
-	constructor() {
-		super({ type: true, conditions: true })
-	}
-
-}
-
-class ConditionDefinition extends Definition {
-	
-	constructor(modes: Mode[]) {
-		super({ type: true, mode: { enum: modes }, else: true })
-	}
-
-}
-
-class EffectDefinition extends Definition {
-
-	constructor(modes: Mode[]) {
-		super({ type: true, mode: { enum: modes } })
-	}
-
-}
-
-class SkillDefinition extends Definition {
-
-	constructor() {
-		super({ skill: true, conditions: true });
-	}
-
-}
-
-class DamageModifierDefinition extends Definition {
-
-	constructor() {
-		super({ type: true })
-	}
-
-}
-
-class RewardDefinition extends Definition {
-
-	constructor() {
-		super({ type: true })
-	}
-
-}
-
-class DistributionDefinition extends Definition {
-
-	constructor() {
-		super({ type: true })
 	}
 
 }

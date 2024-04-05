@@ -44,6 +44,17 @@
 						"exclusiveTo": true
 					},
 					"allOf": [{ "$ref": "#/definitions/type" }],
+					"oneOf": [
+						{ "required": ["supportedModes"] },
+						{
+							"properties": {
+								"available": {
+									"const": false
+								}
+							},
+							"required": ["available"]
+						}
+					],
 					"additionalProperties": false
 				}
 			},
@@ -74,6 +85,17 @@
 						"exclusiveTo": true
 					},
 					"allOf": [{ "$ref": "#/definitions/type" }],
+					"oneOf": [
+						{ "required": ["supportedModes"] },
+						{
+							"properties": {
+								"available": {
+									"const": false
+								}
+							},
+							"required": ["available"]
+						}
+					],
 					"additionalProperties": false
 				}
 			},

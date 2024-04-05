@@ -161,6 +161,7 @@
                     }
                 },
                 "distribution": {
+                    "type": "object",
                     "description": "The list of distributions",
                     "patternProperties": {
                         ".*": {
@@ -170,6 +171,7 @@
                 },
                 "slots": {
                     "description": "The list of slots",
+                    "type": "array",
                     "items": {
                         "description": "A slot",
                         "anyOf": [
@@ -3474,27 +3476,6 @@
                 "mode"
             ]
         },
-        "COMPARISON": {
-            "additionalProperties": false,
-            "properties": {
-                "type": true,
-                "mode": {},
-                "else": true,
-                "comparison": {
-                    "description": "The comparison to use. \nDefaults to \"EQUALS\"",
-                    "$ref": "#/types/comparison",
-                    "default": "EQUALS"
-                },
-                "value": {
-                    "description": "The value to compare against. \nDefaults to 0",
-                    "type": "number",
-                    "default": 0
-                }
-            },
-            "required": [
-                "mode"
-            ]
-        },
         "METADATA": {
             "additionalProperties": false,
             "properties": {
@@ -3854,19 +3835,6 @@
                 "mode"
             ]
         },
-        "WRAPPER": {
-            "additionalProperties": false,
-            "properties": {
-                "type": true,
-                "mode": {},
-                "else": true,
-                "conditions": {
-                    "description": "The conditions to check. \nDefaults to {}",
-                    "$ref": "#/types/ConditionList",
-                    "default": {}
-                }
-            }
-        },
         "ITEMWRAPPER": {
             "additionalProperties": false,
             "properties": {
@@ -4074,23 +4042,6 @@
             "required": [
                 "mode"
             ]
-        },
-        "WRAPPER": {
-            "additionalProperties": false,
-            "properties": {
-                "type": true,
-                "mode": {},
-                "conditions": {
-                    "description": "The list of conditions. \nDefaults to {}",
-                    "$ref": "#/types/ConditionList",
-                    "default": {}
-                },
-                "effects": {
-                    "description": "The list of effects. \nDefaults to {}",
-                    "$ref": "#/types/EffectList",
-                    "default": {}
-                }
-            }
         },
         "AOE": {
             "additionalProperties": false,
@@ -4335,26 +4286,6 @@
                 "mode"
             ]
         },
-        "MODIFY": {
-            "additionalProperties": false,
-            "properties": {
-                "type": true,
-                "mode": {},
-                "operation": {
-                    "description": "The operation to do",
-                    "$ref": "#/types/operation"
-                },
-                "value": {
-                    "description": "The number on the right side of the operation. \nDefaults to 1",
-                    "type": "number",
-                    "default": 1
-                }
-            },
-            "required": [
-                "mode",
-                "operation"
-            ]
-        },
         "ATTRIBUTE": {
             "additionalProperties": false,
             "properties": {
@@ -4384,16 +4315,6 @@
                 "mode",
                 "operation",
                 "attribute"
-            ]
-        },
-        "BREAKBLOCK": {
-            "additionalProperties": false,
-            "properties": {
-                "type": true,
-                "mode": {}
-            },
-            "required": [
-                "mode"
             ]
         },
         "LAUNCH": {
@@ -14826,7 +14747,6 @@
     },
     "types": {
         "range": {
-            "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$",
             "additionalProperties": false,
             "anyOf": [
                 {
@@ -14835,7 +14755,8 @@
                 {
                     "type": "number"
                 }
-            ]
+            ],
+            "pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$"
         },
         "comparison": {
             "additionalProperties": false,
