@@ -19,5 +19,5 @@ function saveSchema(name: string, json: any, readable=false) {
 
 saveSchema('FullSchema', fullSchema, true)
 forEachEntry(splitted, (plugin, schema) => {
-    saveSchema(plugin, schema)
+    saveSchema(plugin, schema, true)
 })

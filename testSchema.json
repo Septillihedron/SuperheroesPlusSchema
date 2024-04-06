@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "properties": {
+        "A": {}
+    },
+    "required": ["A", "B"]
+}

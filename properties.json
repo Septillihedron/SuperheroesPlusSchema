@@ -3269,7 +3269,7 @@
 		"enchantment": {
 			"description": "An enchantment",
 			"type": "string",
-			"requireEnum": false,
+			// "requireEnum": false,
 			"enum": ["fire_protection", "sharpness", "flame", "soul_speed", "aqua_affinity", "punch", "loyalty", "depth_strider", "vanishing_curse", "unbreaking", "knockback", "luck_of_the_sea", "binding_curse", "fortune", "protection", "efficiency", "mending", "frost_walker", "lure", "looting", "piercing", "blast_protection", "smite", "multishot", "swift_sneak", "fire_aspect", "channeling", "sweeping", "thorns", "bane_of_arthropods", "respiration", "riptide", "silk_touch", "quick_charge", "projectile_protection", "impaling", "feather_falling", "power", "infinity"]
 		},
 		"potion": {
@@ -3340,7 +3340,7 @@
 		"world": {
 			"description": "A dimension",
 			"type": "string",
-			"requireEnum": false,
+			// "requireEnum": false,
 			"enum": ["world", "world_nether", "world_the_end"]
 		},
 		"equipmentSlot": {

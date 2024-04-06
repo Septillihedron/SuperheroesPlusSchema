@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=EnchantedCombat.json
+- name: EnchantedCombat
+  item:
+    type: WOODEN_HOE
+    amount: 1
+    metadata:
+      displayName: <red>Squeaker</red>
+      isUnbreakable: true
+      lore:
+        - "Shift to increasingly squeak"
+        - "Annoy everyone!"
+  skills:
+    - name: squeak
+      trigger:
+        type: DAMAGEDENTITY
+        conditions:
+          - name: time
+            type: TIME
+            mode: SELF
+            time: 0 - 24000
+      effects:
+        - name: squeakLoop
+          type: TIMER
+          delay: 10
+          numberOfRepeats: 500
+          conditions: 
+            - name: sneak
+              type: SNEAK
+              mode: SELF
+              sneak: true
+          effects: 
+            - name: squeak
+              type: SOUND
+              mode: SELF
+              sound:
+                sound: ENTITY_BAT_DEATH
+                volume: 1
+                pitch: 1

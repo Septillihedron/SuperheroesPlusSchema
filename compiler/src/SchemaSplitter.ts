@@ -12,10 +12,9 @@ class PartialSchemaBuilder {
     initialize(root: string): void {
         this.partialSchema = {
             $schema: "http://json-schema.org/schema",
-            type: "object",
-            additionalProperties: false,
-            minProperties: 1,
-            patternProperties: { ".*": { $ref: `#/definitions/${root}` } },
+            type: "array",
+            minItems: 1,
+            items: { $ref: `#/definitions/${root}` },
             definitions: {},
         }
         this.partialSchema.definitions = {
@@ -68,7 +67,7 @@ export function splitFullSchema(fullSchema: FullSchema): SplittedSchemas {
 
     builder.initialize("item")
     builder.addItemCollection("SLSkill")
-    builder.addItemCollection("distribution")
+    // builder.addItemCollection("distribution")
     const EnchantedCombat = builder.build();
 
     return { Superheroes, EnchantedBosses, EnchantedCombat }

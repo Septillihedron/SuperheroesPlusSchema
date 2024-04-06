@@ -209,15 +209,14 @@ EnchantedCombat:
     bat:
       type: LOOT
       loottables:
-        - BAT
-      chance: 0.1
+        - AXOLOTL
   levels:
     maxLevel: 1
   skills:
     squeak:
       trigger:
-        type: LOOP
-        period: 19
+        type: CONSUME
+        
         conditions:
           sneak:
             type: SNEAK

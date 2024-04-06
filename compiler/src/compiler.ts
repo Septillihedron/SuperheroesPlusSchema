@@ -10,20 +10,10 @@ export class Compiler {
 
 	preprocessed: Preprocessed.Schema
 	schema: Compiled.FullSchema
-	definitionExtraProperties: Record<Compiled.Category, StringRecord<Compiled.Property | boolean>>
 
 	constructor(preprocessed: Preprocessed.Schema) {
 		this.preprocessed = preprocessed
 		this.schema = new Compiled.FullSchema()
-		this.definitionExtraProperties = {
-			triggers: { type: true, conditions: true },
-			conditions: { type: true, else: true },
-			effects: { type: true },
-			skills: { skill: true, conditions: true },
-			damagemodifiers: { type: true },
-			rewards: { type: true },
-			distributions: { type: true }
-		}
 	}
 
 	compile() {
@@ -40,18 +30,11 @@ export class Compiler {
 	}
 
 	addCustomSkill(): void {
-		let {definitions, skills} = this.schema
-		definitions.skill.addType("CUSTOM", "A custom skill, used in combination with the SkillsLibrary")
-		var skill = new Compiled.Definition(this.definitionExtraProperties.skills)
+		let {definitions} = this.schema
+		var skill = new Compiled.Definition()
 		skill.addProperty("trigger", { $ref: "#/definitions/trigger" })
-		skill.addProperty("effects", {
-			patternProperties: {
-				".*": { $ref: "#/definitions/effect" }
-			},
-			type: "object",
-			description: "The list of effetcs"
-		})
-		skills["CUSTOM"] = skill
+		skill.addProperty("effects", { $ref: "#/types/EffectList" })
+		definitions.skill.addType("CUSTOM", "A custom skill, used in combination with the SkillsLibrary", skill)
 	}
 
 	addProperties(definition: Compiled.Definition, properties: Preprocessed.PropertyMap | undefined, path: string) {
@@ -68,19 +51,16 @@ export class Compiler {
 		name: string, 
 		preprocessed: Preprocessed.Item, 
 	) {
-		const extraProperties = this.definitionExtraProperties[category];
-		const compiled = new Compiled.Definition(extraProperties)
+		const compiled = new Compiled.Definition()
 		if (preprocessed.supportedModes) {
 			compiled.addProperty("mode", { enum: preprocessed.supportedModes })
 		}
 
 		if (preprocessed.supportedModes && preprocessed.requireMode) compiled.requireMode()
 
+		this.addProperties(compiled, preprocessed.properties, `null`);
 		const unpluralCategory = Compiled.pluralToUnpluralCategories[category]
-		this.schema.definitions[unpluralCategory].addType(name, preprocessed.description)
-		this.addProperties(compiled, preprocessed.properties, `#/${category}/${name}/properties/`);
-
-		this.schema[category][name] = compiled
+		this.schema.definitions[unpluralCategory].addType(name, preprocessed.description, compiled)
 	}
 	
 	compileType(name: string, type: Preprocessed.Property): void {
@@ -196,7 +176,11 @@ export class Compiler {
 					enumValues.push(...type.enum)
 				}
 			})
-			if (enumValues.length === 0) {
+			// disable huge enum keys
+			if (enumValues.length === 0 || enumValues.length > 100) {
+				if (enumValues.length > 100) {
+					console.warn("Enum keys disabled for:", propertiesMap.key.type)
+				}
 				compilingProperty.addPatternProperty(".*", valueProperty)
 				return
 			}

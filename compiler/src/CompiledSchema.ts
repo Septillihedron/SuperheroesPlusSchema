@@ -1,9 +1,8 @@
 import { PropertyTypes } from "./PreprocessedSchema";
-import { StringRecord } from "./utils";
+import { StringRecord, forEachEntry, forEachValue } from "./utils";
 
 export {
 	FullSchema, 
-	Types, IfThenReference, 
 	Path, Property, PropertyClass, PropertyMap, types, 
 	Definition,
 	Category, NonPluralCategory, pluralToUnpluralCategories
@@ -178,45 +177,13 @@ class Item {
 	readonly type = "object"
 	readonly additionalProperties = false
 	readonly properties = {
+		name: {
+			description: "name",
+			type: "string"
+		},
 		item: {
 			description: "The skill item",
 			$ref: "#/types/ItemStackData"
-		},
-		levels: {
-			description: "The level data",
-			type: "object",
-			additionalProperties: false,
-			properties: {
-				maxLevel: {
-					description: "The maximum level",
-					type: "number",
-					minimum: 0,
-					default: 0
-				}
-			},
-			patternProperties: {
-				"^([2-9])|([1-9]+[0-9])$": {
-					description: "The level data",
-					type: "object",
-					additionalProperties: false,
-					properties: {
-						experienceRequired: {
-							description: "The experience required to level up",
-							type: "number"
-						}
-					},
-					required: ["experienceRequired"]
-				}
-			}
-		},
-		distribution: {
-			type: "object",
-			description: "The list of distributions",
-			patternProperties: {
-				".*": {
-					$ref: "#/definitions/distribution"
-				}
-			}
 		},
 		slots: {
 			description: "The list of slots",
@@ -235,217 +202,145 @@ class Item {
 		},
 		skills: {
 			description: "The list of skill that the item has",
-			type: "object",
-			additionalProperties: false,
-			patternProperties: {
-				".*": {
-					$ref: "#/definitions/SLSkill"
-				}
+			type: "array",
+			items: {
+				$ref: "#/definitions/SLSkill"
 			}
 		}
 	}
 	readonly required = ["item"]
 }
 
-
-type constDescription = {const: string, description: string}
-
-type Types_oneOf = ({ enum: string[], oneOf: constDescription[] }|{})[]
-
-class Types {
-	readonly description: string
-	readonly type = "string"
-	oneOf?: Types_oneOf = undefined
-
-	addType(name: string, description: string): void {
-		if (!this.oneOf) this.oneOf = []
-		this.oneOf.push({const: name, description: description})
-	}
-
-	constructor(description: string) {
-		this.description = description
-	}
-}
-
-class IfThenReference {
-	if: {properties: {type: {const: string}} | {skill: {const: string}}}
-	then: {$ref: string}
-
-	constructor(type: string, name: string) {
-		this.if = {properties: type == "skill"? {skill:{const: name}} : {type: {const: name}}}
-		this.then = {$ref: `#/${type}s/${name}`}
-	}
-
-}
-
 class SLSkill {
 	readonly description = "A skill"
 	readonly type = "object"
 	readonly properties = {
-		trigger: { $ref: "#/definitions/trigger" },
-		effects: {
-			patternProperties: {
-				".*": { $ref: "#/definitions/effect" }
-			},
-			type: "object",
-			description: "The list of effetcs"
-		}
-	}
-
-}
-
-interface UnionType {
-	addType(name: string, description: string): void
-}
-
-class Trigger implements UnionType {
-	readonly description = "The skill trigger"
-	readonly type = "object"
-	readonly properties = {
-		type: new Types("The type of trigger"),
-		conditions: {
-			description: "The list of conditions",
-			type: "object",
-			patternProperties: {
-			".*": {
-					$ref: "#/definitions/condition"
-				}
-			}
-		}
-	}
-	readonly if = {"properties": {"type": false}}
-	readonly else: {allOf: IfThenReference[]} = {allOf: []}
-	readonly required = ["type"]
-
-	addType(name: string, description: string): void {
-		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("trigger", name))
-	}
-}
-
-class Condition implements UnionType {
-	readonly description = "A condition"
-	readonly type = "object"
-	readonly properties = {
-		type: new Types("The type of the condition"),
-		mode: {
-			description: "The condition mode",
+		name: {
+			description: "name",
 			type: "string"
 		},
-		else: {
-			description: "The list of effects that will be called when the condition is false",
-			type: "object",
-			patternProperties: {
-				".*": {
-					$ref: "#/definitions/effect"
-				}
+		trigger: { $ref: "#/definitions/trigger" },
+		effects: {
+			$ref: "#/types/EffectList"
+		}
+	}
+
+}
+
+abstract class UnionType {
+	readonly type = "object"
+	description: string
+	properties: StringRecord<Property>
+	required: ["type" | "skill"]
+	oneOf: Property[]
+
+	constructor(description: string, extraProperties: StringRecord<Property>, isSkill=false) {
+		const typeKey = isSkill? "skill" : "type"
+		this.description = description
+		this.properties = {...extraProperties}
+		this.required = [typeKey]
+		this.oneOf = []
+	}
+
+	addType(name: string, description: string, definition: Definition): void {
+		const typeKey = this.required[0]
+		definition.addProperty(typeKey, {
+			type: "string",
+			description: description,
+			const: name
+		})
+		forEachEntry(this.properties, (key, val) => definition.addProperty(key, val))
+		this.oneOf.push(definition)
+	}
+}
+
+class Trigger extends UnionType {
+
+	constructor() {
+		super("The skill trigger", {
+			conditions: {
+				$ref: "#/types/ConditionList"
 			}
-		}
-	}
-	readonly required = ["type"]
-	readonly if = {"properties": {"type": false}}
-	readonly else: {allOf: IfThenReference[]} = {allOf: []}
-
-	addType(name: string, description: string): void {
-		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("condition", name))
+		})
 	}
 }
 
-class Effect implements UnionType {
-	readonly description = "An effect"
-	readonly type = "object"
-	readonly properties = {
-		type: new Types("The type of the effect"),
-		mode: {
-			description: "The effect mode",
-			type: "string"
-		}
-	}
-	readonly required = ["type"]
-	readonly if = {"properties": {"type": false}}
-	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+class Condition extends UnionType {
 
-	addType(name: string, description: string): void {
-		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("effect", name))
-	}
-}
-
-class Skill implements UnionType {
-	readonly description = "A skill"
-	readonly type = "object"
-	readonly properties = {
-		skill: new Types("The type of the skill"), 
-		conditions: {
-			description: "The list of conditions that the skill has",
-			type: "object",
-			additionalProperties: false,
-			patternProperties: {
-				".*": {
-					$ref: "#/definitions/condition"
-				}
+	constructor() {
+		super("A condition", {
+			name: {
+				description: "name",
+				type: "string"
+			},
+			mode: {
+				description: "The condition mode",
+				type: "string"
+			},
+			else: {
+				$ref: "#/types/EffectList"
 			}
-		}
-	}
-	readonly required = ["skill"]
-	readonly if = {"properties": {"skill": false}}
-	readonly else: {allOf: IfThenReference[]} = {allOf: []}
-
-	addType(name: string, description: string): void {
-		this.properties.skill.addType(name, description)
-		this.else.allOf.push(new IfThenReference("skill", name))
+		})
 	}
 }
 
-class DamageModifier implements UnionType {
-	readonly type = "object"
-	readonly properties = {
-		type: new Types("The type of the damage modifier")
-	}
-	readonly required = ["type"]
-	readonly if = {"properties": {"type": false}}
-	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+class Effect extends UnionType {
 
-	addType(name: string, description: string): void {
-		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("damagemodifier", name))
+	constructor() {
+		super("An effect", {
+			name: {
+				description: "name",
+				type: "string"
+			},
+			mode: {
+				description: "The effect mode",
+				type: "string"
+			}
+		})
 	}
+
 }
 
-class Reward implements UnionType {
-	readonly type = "object"
-	readonly properties = {
-		type: new Types("The type of the reward")
-	}
-	readonly required = ["type"]
-	readonly if = {"properties": {"type": false}}
-	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+class Skill extends UnionType {
 
-	addType(name: string, description: string): void {
-		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("reward", name))
+	constructor() {
+		super("A skill", {
+			conditions: {
+				description: "The list of conditions that the skill has",
+				$ref: "#/types/ConditionList"
+			}
+		}, true)
 	}
+
 }
 
-class Distribution implements UnionType {
-	readonly type = "object"
-	readonly properties = {
-		type: new Types("The type of the distribution")
-	}
-	readonly required = ["type"]
-	readonly if = {"properties": {"type": false}}
-	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+class DamageModifier extends UnionType {
 
-	addType(name: string, description: string): void {
-		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("distribution", name))
+	constructor() {
+		super("The damage modifier", {})
 	}
+
+}
+
+class Reward extends UnionType {
+
+	constructor() {
+		super("The reward", {})
+	}
+
+}
+
+class Distribution extends UnionType {
+
+	constructor() {
+		super("A distribution", {})
+	}
+	
 }
 
 type types = "array" | "object" | "string" | "number" | "integer" | "boolean"
 
-type PropertyMap = StringRecord<Property>
+type PropertyMap = StringRecord<Property | boolean>
 
 class Path {
 
@@ -474,11 +369,11 @@ type Property = {
 	minItems?: number
 	maxItems?: number
 	properties?: PropertyMap
-	patternProperties?: PropertyMap
+	// patternProperties?: PropertyMap
 	minProperties?: number
 	maxProperties?: number
 	$ref?: string
-	if?: Property
+	if?: Property | true
 	then?: Property
 	else?: Property
 	required?: string[]
@@ -490,6 +385,7 @@ type Property = {
 	pattern?: string
 	propertyContent?: Property
 	additionalProperties?: boolean
+	const?: any
 }
 
 class PropertyClass implements Property {
@@ -561,11 +457,8 @@ class PropertyClass implements Property {
 				throw new Error("[Implementation Error] Record item is used before is set")
 			}
 			return {
-				type: "object",
-				additionalProperties: false,
-				patternProperties: {
-					".*": this.recordItem
-				}
+				type: "array",
+				items: this.recordItem
 			}
 		} else {
 			return {$ref: `#/types/${type}`}
@@ -636,16 +529,12 @@ class PropertyClass implements Property {
 
 }
 
-class Definition {
-	readonly properties: StringRecord<Property | boolean>
+class Definition implements Property {
+	properties: StringRecord<Property> = {}
 	required?: string[]
-	readonly additionalProperties = false
-	if?: true
-	then?: {$ref: string, additionalProperties: true}
+	additionalProperties = false
 
-	constructor(properties: StringRecord<Property | boolean>) {
-		this.properties = structuredClone(properties)
-	}
+	constructor() {}
 
 	addProperty(name: string, property: Property, required?: boolean): void {
 		this.properties[name] = property
