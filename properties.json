@@ -205,6 +205,18 @@
 				}
 			}
 		},
+		"HOTBARSLOT": {
+			"description": "Checks if the held item/main hand in in a range of hotbar slots",
+			"supportedModes": [],
+			"properties": {
+				"slot": {
+					"description": "The range of slots it could be in",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				}
+			}
+		},
 		"CHANCE": {
 			"description": "A chance for this condition to be true",
 			"supportedModes": ["ALL", "SELF"],
@@ -542,11 +554,11 @@
 			}
 		},
 		"DISTANCE": {
-			"description": "Checks if the distance squared between the user and target entity is in the range",
-			"supportedModes": ["ALL", "OTHER"],
+			"description": "Checks if the distance between the user and target entity is in the range",
+			"supportedModes": ["ALL", "OTHER", "LOCATION"],
 			"properties": {
 				"distance": {
-					"description": "The squared distance range in blocks",
+					"description": "The distance range in blocks",
 					"required": false,
 					"type": "range",
 					"default": "-Infinity - Infinity"
@@ -601,6 +613,10 @@
 		"SHOOTER": {
 			"description": "Checks whether the shooter of the `OTHER` entity is the `SELF` entity",
 			"supportedModes": ["ALL", "OTHER"]
+		},
+		"SPRINTING": {
+			"description": "Checks if the user or target entity is sprinting",
+			"supportedModes": ["ALL", "SELF", "OTHER"]
 		},
 		// Superheroes exclusives
 		"HERO": {
@@ -788,13 +804,8 @@
 			"properties": {
 				"potion": {
 					"description": "The potion effect",
-					"required": false,
-					"type": "PotionEffectData",
-					"default": {
-						"type": "REGENERATION",
-						"potency": 1,
-						"duration": 10
-					}
+					"required": true,
+					"type": "PotionEffectData"
 				}
 			}
 		},
@@ -927,7 +938,7 @@
 				}
 			}
 		},
-		"MESSAGE": {
+		"MESSAGE": { // TODO placeholder stuff
 			"description": "Sends a chat message to the user or target player",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
@@ -1122,7 +1133,7 @@
 					"default": "CONSOLE"
 				},
 				"commands": {
-					"description": "The list of commands to execute. \"%self_name%\" will be interpreted as the user if the user is a player. Otherwise, \"%target_name%\" will be interpreted as the target entity if the target entity is a player",
+					"description": "The list of commands to execute. \n\"%self_name%\" will be interpreted as the user if the user is a player. \n\"%target_name%\" will be interpreted as the target entity if the target entity is a player",
 					"required": false,
 					"type": "array",
 					"items": "string",
@@ -1131,7 +1142,7 @@
 			}
 		},
 		"LUNGE": {
-			"description": "Applies an acceleration to the user or the target entity based on the direction the user is looking",
+			"description": "Applies an acceleration to the user or the target entity based on the direction the entity is looking",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
 				"horizontalVelocity": {
@@ -1284,7 +1295,7 @@
 				}
 			}
 		},
-		"PLACEBLOCK": {
+		"PLACEBLOCK": { // TODO
 			"description": "Replaces a block at the location for an amount of time. Retains the original block data",
 			"supportedModes": ["ALL", "LOCATION"],
 			"properties": {
@@ -1305,6 +1316,18 @@
 					"required": false,
 					"type": "boolean",
 					"default": true
+				},
+				"isPacket": { // TODO
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"revertConditions": {
+					"description": "The conditions to revert the block to the original state",
+					"required": false,
+					"type": "ConditionList",
+					"default": {}
 				},
 				"revertsAfter": {
 					"description": "Time before the block reverts to the original block in seconds (1 is 20 ticks). If less than or equal to 0, does not revert the original block",
@@ -1604,6 +1627,11 @@
 					"default": true
 				}
 			}
+		},
+		"FURNACEBURNTIME": {
+			"description": "Modifies a furnace's burn time",
+			"extends": "MODIFY",
+			"supportedModes": ["ALL", "LOCATION"]
 		},
 		// EB exclusives
 		"MINION": {

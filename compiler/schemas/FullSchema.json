@@ -854,6 +854,10 @@
                             "description": "Checks if the hp percentage of the user or target entity is in the range"
                         },
                         {
+                            "const": "HOTBARSLOT",
+                            "description": "Checks if the held item/main hand in in a range of hotbar slots"
+                        },
+                        {
                             "const": "CHANCE",
                             "description": "A chance for this condition to be true"
                         },
@@ -951,7 +955,7 @@
                         },
                         {
                             "const": "DISTANCE",
-                            "description": "Checks if the distance squared between the user and target entity is in the range"
+                            "description": "Checks if the distance between the user and target entity is in the range"
                         },
                         {
                             "const": "SHIELDED",
@@ -972,6 +976,10 @@
                         {
                             "const": "SHOOTER",
                             "description": "Checks whether the shooter of the `OTHER` entity is the `SELF` entity"
+                        },
+                        {
+                            "const": "SPRINTING",
+                            "description": "Checks if the user or target entity is sprinting"
                         },
                         {
                             "const": "HERO",
@@ -1026,6 +1034,18 @@
                         },
                         "then": {
                             "$ref": "#/conditions/HEALTH"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HOTBARSLOT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/HOTBARSLOT"
                         }
                     },
                     {
@@ -1392,6 +1412,18 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "SPRINTING"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/SPRINTING"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "HERO"
                                 }
                             }
@@ -1552,7 +1584,7 @@
                         },
                         {
                             "const": "LUNGE",
-                            "description": "Applies an acceleration to the user or the target entity based on the direction the user is looking"
+                            "description": "Applies an acceleration to the user or the target entity based on the direction the entity is looking"
                         },
                         {
                             "const": "NEAREST",
@@ -1665,6 +1697,10 @@
                         {
                             "const": "FLYING",
                             "description": "Sets the ability for the creative flight. Alias for FLY \n\nModes: \nSELF: For the user;\nOTHER: For the target entity."
+                        },
+                        {
+                            "const": "FURNACEBURNTIME",
+                            "description": "Modifies a furnace's burn time"
                         },
                         {
                             "const": "MINION",
@@ -2350,6 +2386,18 @@
                         },
                         "then": {
                             "$ref": "#/effects/FLYING"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FURNACEBURNTIME"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/FURNACEBURNTIME"
                         }
                     },
                     {
@@ -3673,6 +3721,24 @@
                 "mode"
             ]
         },
+        "HOTBARSLOT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "else": true,
+                "mode": {
+                    "enum": []
+                },
+                "slot": {
+                    "description": "The range of slots it could be in. \nDefaults to \"-Infinity - Infinity\"",
+                    "$ref": "#/types/range",
+                    "default": "-Infinity - Infinity"
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
         "CHANCE": {
             "additionalProperties": false,
             "properties": {
@@ -4254,11 +4320,12 @@
                 "mode": {
                     "enum": [
                         "ALL",
-                        "OTHER"
+                        "OTHER",
+                        "LOCATION"
                     ]
                 },
                 "distance": {
-                    "description": "The squared distance range in blocks. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The distance range in blocks. \nDefaults to \"-Infinity - Infinity\"",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
@@ -4361,6 +4428,23 @@
                 "mode": {
                     "enum": [
                         "ALL",
+                        "OTHER"
+                    ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "SPRINTING": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "else": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
                         "OTHER"
                     ]
                 }
@@ -4636,17 +4720,13 @@
                     ]
                 },
                 "potion": {
-                    "description": "The potion effect. \nDefaults to {\"type\":\"REGENERATION\",\"potency\":1,\"duration\":10}",
-                    "$ref": "#/types/PotionEffectData",
-                    "default": {
-                        "type": "REGENERATION",
-                        "potency": 1,
-                        "duration": 10
-                    }
+                    "description": "The potion effect",
+                    "$ref": "#/types/PotionEffectData"
                 }
             },
             "required": [
-                "mode"
+                "mode",
+                "potion"
             ]
         },
         "WEB": {
@@ -5131,7 +5211,7 @@
                     "default": "CONSOLE"
                 },
                 "commands": {
-                    "description": "The list of commands to execute. \"%self_name%\" will be interpreted as the user if the user is a player. Otherwise, \"%target_name%\" will be interpreted as the target entity if the target entity is a player. \nDefaults to []",
+                    "description": "The list of commands to execute. \n\"%self_name%\" will be interpreted as the user if the user is a player. \n\"%target_name%\" will be interpreted as the target entity if the target entity is a player. \nDefaults to []",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -5394,6 +5474,16 @@
                     "description": "If false, does not update neighboring blocks. \nDefaults to true",
                     "type": "boolean",
                     "default": true
+                },
+                "isPacket": {
+                    "description": ". \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "revertConditions": {
+                    "description": "The conditions to revert the block to the original state. \nDefaults to {}",
+                    "$ref": "#/types/ConditionList",
+                    "default": {}
                 },
                 "revertsAfter": {
                     "description": "Time before the block reverts to the original block in seconds (1 is 20 ticks). If less than or equal to 0, does not revert the original block. \nDefaults to -1",
@@ -5908,6 +5998,31 @@
             },
             "required": [
                 "mode"
+            ]
+        },
+        "FURNACEBURNTIME": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "LOCATION"
+                    ]
+                },
+                "operation": {
+                    "description": "The operation to do",
+                    "$ref": "#/types/operation"
+                },
+                "value": {
+                    "description": "The number on the right side of the operation. \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                }
+            },
+            "required": [
+                "mode",
+                "operation"
             ]
         },
         "MINION": {
