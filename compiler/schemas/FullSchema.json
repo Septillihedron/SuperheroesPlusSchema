@@ -4488,11 +4488,7 @@
         "POTIONEFFECT": {
             "additionalProperties": false,
             "properties": {
-                "type": {
-                    "description": "The type of potion to check. If not specified, it will check for any type of potion. \nDefaults to null",
-                    "$ref": "#/types/potion",
-                    "default": null
-                },
+                "type": true,
                 "else": true,
                 "mode": {
                     "enum": [
@@ -4500,6 +4496,11 @@
                         "SELF",
                         "OTHER"
                     ]
+                },
+                "effect": {
+                    "description": "The type of potion to check. If not specified, it will check for any type of potion. \nDefaults to null",
+                    "$ref": "#/types/potion",
+                    "default": null
                 },
                 "potency": {
                     "description": "The range of potion potency to check against. \nDefaults to \"-Infinity - Infinity\"",
