@@ -3626,6 +3626,22 @@
                         "$ref": "#/types/potion"
                     },
                     "default": []
+                },
+                "causes": {
+                    "description": "The list of potion effect causes to check. \nDefaults to []",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/potionEffectCause"
+                    },
+                    "default": []
+                },
+                "actions": {
+                    "description": "The list of potion effect actions to check. \nDefaults to []",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/potionEffectAction"
+                    },
+                    "default": []
                 }
             }
         },
@@ -22715,6 +22731,47 @@
                 "DRYOUT",
                 "FREEZE",
                 "SONIC_BOOM"
+            ]
+        },
+        "potionEffectCause": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "AREA_EFFECT_CLOUD",
+                "ARROW",
+                "ATTACK",
+                "AXOLOTL",
+                "BEACON",
+                "COMMAND",
+                "CONDUIT",
+                "CONVERSION",
+                "DEATH",
+                "DOLPHIN",
+                "EXPIRATION",
+                "FOOD",
+                "ILLUSION",
+                "MILK",
+                "PATROL_CAPTAIN",
+                "PLUGIN",
+                "POTION_DRINK",
+                "POTION_SPLASH",
+                "SPIDER_SPAWN",
+                "TOTEM",
+                "TURTLE_HELMET",
+                "UNKNOWN",
+                "VILLAGER_TRADE",
+                "WARDEN",
+                "WITHER_ROSE"
+            ]
+        },
+        "potionEffectAction": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "ADDED",
+                "CHANGED",
+                "CLEARED",
+                "REMOVED"
             ]
         },
         "teleportCause": {

@@ -471,7 +471,7 @@
 				"trimPattern", "trimMaterial",
 				"enchantment", "potion", "dyeColor",
 				"axolotlVariant", "horseColor", "horseStyle",
-				"damageCause", "teleportCause", "action",
+				"damageCause", "potionEffectCause", "potionEffectAction", "teleportCause", "action",
 				"biome", "world", 
 				"equipmentSlot", 
 				"attribute", 

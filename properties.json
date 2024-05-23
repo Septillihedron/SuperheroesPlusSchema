@@ -138,6 +138,20 @@
 					"type": "array",
 					"items": "potion",
 					"default": []
+				},
+				"causes": {
+					"description": "The list of potion effect causes to check",
+					"required": false,
+					"type": "array",
+					"items": "potionEffectCause",
+					"default": []
+				},
+				"actions": {
+					"description": "The list of potion effect actions to check",
+					"required": false,
+					"type": "array",
+					"items": "potionEffectAction",
+					"default": []
 				}
 			}
 		},
@@ -4187,6 +4201,16 @@
 			"description": "A damage cause",
 			"type": "string",
 			"enum": ["KILL", "WORLD_BORDER", "CONTACT", "ENTITY_ATTACK", "ENTITY_SWEEP_ATTACK", "PROJECTILE", "SUFFOCATION", "FALL", "FIRE", "FIRE_TICK", "MELTING", "LAVA", "DROWNING", "BLOCK_EXPLOSION", "ENTITY_EXPLOSION", "VOID", "LIGHTNING", "SUICIDE", "STARVATION", "POISON", "MAGIC", "WITHER", "FALLING_BLOCK", "THORNS", "DRAGON_BREATH", "CUSTOM", "FLY_INTO_WALL", "HOT_FLOOR", "CRAMMING", "DRYOUT", "FREEZE", "SONIC_BOOM"]
+		},
+		"potionEffectCause": {
+			"description": "A potion effect event cause",
+			"type": "string",
+			"enum": ["AREA_EFFECT_CLOUD", "ARROW", "ATTACK", "AXOLOTL", "BEACON", "COMMAND", "CONDUIT", "CONVERSION", "DEATH", "DOLPHIN", "EXPIRATION", "FOOD", "ILLUSION", "MILK", "PATROL_CAPTAIN", "PLUGIN", "POTION_DRINK", "POTION_SPLASH", "SPIDER_SPAWN", "TOTEM", "TURTLE_HELMET", "UNKNOWN", "VILLAGER_TRADE", "WARDEN", "WITHER_ROSE"]
+		},
+		"potionEffectAction": {
+			"description": "A potion effect event action",
+			"type": "string",
+			"enum": ["ADDED", "CHANGED", "CLEARED", "REMOVED"]
 		},
 		"teleportCause": {
 			"description": "A teleport cause",
