@@ -6374,6 +6374,45 @@
                         "TUFF": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "TUFF_SLAB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_STAIRS": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_WALL": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "CHISELED_TUFF": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "POLISHED_TUFF": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "POLISHED_TUFF_SLAB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "POLISHED_TUFF_STAIRS": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "POLISHED_TUFF_WALL": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_BRICKS": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_BRICK_SLAB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_BRICK_STAIRS": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_BRICK_WALL": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "CHISELED_TUFF_BRICKS": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "DRIPSTONE_BLOCK": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -6551,6 +6590,9 @@
                         "RAW_GOLD_BLOCK": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "HEAVY_CORE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "AMETHYST_BLOCK": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -6579,6 +6621,18 @@
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "OXIDIZED_COPPER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "CHISELED_COPPER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_CHISELED_COPPER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_CHISELED_COPPER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_CHISELED_COPPER": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "CUT_COPPER": {
@@ -6627,6 +6681,18 @@
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "WAXED_OXIDIZED_COPPER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_CHISELED_COPPER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_CHISELED_COPPER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_CHISELED_COPPER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_CHISELED_COPPER": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "WAXED_CUT_COPPER": {
@@ -6854,7 +6920,7 @@
                         "COBWEB": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
-                        "GRASS": {
+                        "SHORT_GRASS": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "FERN": {
@@ -8435,6 +8501,30 @@
                         "WARPED_DOOR": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "COPPER_DOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_COPPER_DOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_COPPER_DOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_DOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_COPPER_DOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_DOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_DOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_DOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "IRON_TRAPDOOR": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -8469,6 +8559,30 @@
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "WARPED_TRAPDOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_TRAPDOOR": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "OAK_FENCE_GATE": {
@@ -8606,7 +8720,13 @@
                         "TURTLE_HELMET": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
-                        "SCUTE": {
+                        "TURTLE_SCUTE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "ARMADILLO_SCUTE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WOLF_ARMOR": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "FLINT_AND_STEEL": {
@@ -9158,6 +9278,9 @@
                         "COOKIE": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "CRAFTER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "FILLED_MAP": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -9236,6 +9359,9 @@
                         "GLISTERING_MELON_SLICE": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "ARMADILLO_SPAWN_EGG": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "ALLAY_SPAWN_EGG": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -9249,6 +9375,12 @@
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "BLAZE_SPAWN_EGG": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "BOGGED_SPAWN_EGG": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "BREEZE_SPAWN_EGG": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "CAT_SPAWN_EGG": {
@@ -9473,10 +9605,16 @@
                         "FIRE_CHARGE": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "WIND_CHARGE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "WRITABLE_BOOK": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "WRITTEN_BOOK": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "MACE": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "ITEM_FRAME": {
@@ -9791,6 +9929,12 @@
                         "PIGLIN_BANNER_PATTERN": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "FLOW_BANNER_PATTERN": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "GUSTER_BANNER_PATTERN": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "GOAT_HORN": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -10040,6 +10184,12 @@
                         "HOST_ARMOR_TRIM_SMITHING_TEMPLATE": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "FLOW_ARMOR_TRIM_SMITHING_TEMPLATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "BOLT_ARMOR_TRIM_SMITHING_TEMPLATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "ANGLER_POTTERY_SHERD": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -10064,7 +10214,13 @@
                         "EXPLORER_POTTERY_SHERD": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "FLOW_POTTERY_SHERD": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "FRIEND_POTTERY_SHERD": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "GUSTER_POTTERY_SHERD": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "HEART_POTTERY_SHERD": {
@@ -10088,6 +10244,9 @@
                         "PRIZE_POTTERY_SHERD": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "SCRAPE_POTTERY_SHERD": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "SHEAF_POTTERY_SHERD": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -10098,6 +10257,72 @@
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "SNORT_POTTERY_SHERD": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "COPPER_GRATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_COPPER_GRATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_COPPER_GRATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_GRATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_COPPER_GRATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_GRATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_GRATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_GRATE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "COPPER_BULB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_COPPER_BULB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_COPPER_BULB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_BULB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_COPPER_BULB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_BULB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_BULB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_BULB": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TRIAL_SPAWNER": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TRIAL_KEY": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OMINOUS_TRIAL_KEY": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "VAULT": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OMINOUS_BOTTLE": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "BREEZE_ROD": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "WATER": {
@@ -11239,6 +11464,45 @@
                         "TUFF": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "TUFF_SLAB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "TUFF_STAIRS": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "TUFF_WALL": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "CHISELED_TUFF": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "POLISHED_TUFF": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "POLISHED_TUFF_SLAB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "POLISHED_TUFF_STAIRS": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "POLISHED_TUFF_WALL": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "TUFF_BRICKS": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "TUFF_BRICK_SLAB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "TUFF_BRICK_STAIRS": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "TUFF_BRICK_WALL": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "CHISELED_TUFF_BRICKS": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "DRIPSTONE_BLOCK": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -11416,6 +11680,9 @@
                         "RAW_GOLD_BLOCK": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "HEAVY_CORE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "AMETHYST_BLOCK": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -11444,6 +11711,18 @@
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "OXIDIZED_COPPER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "CHISELED_COPPER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "EXPOSED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WEATHERED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "OXIDIZED_CHISELED_COPPER": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "CUT_COPPER": {
@@ -11492,6 +11771,18 @@
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "WAXED_OXIDIZED_COPPER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_EXPOSED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_WEATHERED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_CHISELED_COPPER": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "WAXED_CUT_COPPER": {
@@ -11719,7 +12010,7 @@
                         "COBWEB": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
-                        "GRASS": {
+                        "SHORT_GRASS": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "FERN": {
@@ -13300,6 +13591,30 @@
                         "WARPED_DOOR": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "COPPER_DOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "EXPOSED_COPPER_DOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WEATHERED_COPPER_DOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_DOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_COPPER_DOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_DOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_DOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_DOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "IRON_TRAPDOOR": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -13334,6 +13649,30 @@
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "WARPED_TRAPDOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "EXPOSED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WEATHERED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_TRAPDOOR": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "OAK_FENCE_GATE": {
@@ -13471,7 +13810,13 @@
                         "TURTLE_HELMET": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
-                        "SCUTE": {
+                        "TURTLE_SCUTE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "ARMADILLO_SCUTE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WOLF_ARMOR": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "FLINT_AND_STEEL": {
@@ -14023,6 +14368,9 @@
                         "COOKIE": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "CRAFTER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "FILLED_MAP": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -14101,6 +14449,9 @@
                         "GLISTERING_MELON_SLICE": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "ARMADILLO_SPAWN_EGG": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "ALLAY_SPAWN_EGG": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -14114,6 +14465,12 @@
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "BLAZE_SPAWN_EGG": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "BOGGED_SPAWN_EGG": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "BREEZE_SPAWN_EGG": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "CAT_SPAWN_EGG": {
@@ -14338,10 +14695,16 @@
                         "FIRE_CHARGE": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "WIND_CHARGE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "WRITABLE_BOOK": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "WRITTEN_BOOK": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "MACE": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "ITEM_FRAME": {
@@ -14656,6 +15019,12 @@
                         "PIGLIN_BANNER_PATTERN": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "FLOW_BANNER_PATTERN": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "GUSTER_BANNER_PATTERN": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "GOAT_HORN": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -14905,6 +15274,12 @@
                         "HOST_ARMOR_TRIM_SMITHING_TEMPLATE": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "FLOW_ARMOR_TRIM_SMITHING_TEMPLATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "BOLT_ARMOR_TRIM_SMITHING_TEMPLATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "ANGLER_POTTERY_SHERD": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -14929,7 +15304,13 @@
                         "EXPLORER_POTTERY_SHERD": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "FLOW_POTTERY_SHERD": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "FRIEND_POTTERY_SHERD": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "GUSTER_POTTERY_SHERD": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "HEART_POTTERY_SHERD": {
@@ -14953,6 +15334,9 @@
                         "PRIZE_POTTERY_SHERD": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "SCRAPE_POTTERY_SHERD": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "SHEAF_POTTERY_SHERD": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -14963,6 +15347,72 @@
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "SNORT_POTTERY_SHERD": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "COPPER_GRATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "EXPOSED_COPPER_GRATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WEATHERED_COPPER_GRATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_GRATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_COPPER_GRATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_GRATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_GRATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_GRATE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "COPPER_BULB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "EXPOSED_COPPER_BULB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WEATHERED_COPPER_BULB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_BULB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_COPPER_BULB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_BULB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_BULB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_BULB": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "TRIAL_SPAWNER": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "TRIAL_KEY": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "OMINOUS_TRIAL_KEY": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "VAULT": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "OMINOUS_BOTTLE": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "BREEZE_ROD": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "WATER": {
@@ -15902,6 +16352,45 @@
                         "TUFF": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "TUFF_SLAB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_STAIRS": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_WALL": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "CHISELED_TUFF": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "POLISHED_TUFF": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "POLISHED_TUFF_SLAB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "POLISHED_TUFF_STAIRS": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "POLISHED_TUFF_WALL": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_BRICKS": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_BRICK_SLAB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_BRICK_STAIRS": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TUFF_BRICK_WALL": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "CHISELED_TUFF_BRICKS": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "DRIPSTONE_BLOCK": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -16079,6 +16568,9 @@
                         "RAW_GOLD_BLOCK": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "HEAVY_CORE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "AMETHYST_BLOCK": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -16107,6 +16599,18 @@
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "OXIDIZED_COPPER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "CHISELED_COPPER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_CHISELED_COPPER": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "CUT_COPPER": {
@@ -16155,6 +16659,18 @@
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "WAXED_OXIDIZED_COPPER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_CHISELED_COPPER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_CHISELED_COPPER": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "WAXED_CUT_COPPER": {
@@ -16382,7 +16898,7 @@
                         "COBWEB": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
-                        "GRASS": {
+                        "SHORT_GRASS": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "FERN": {
@@ -17963,6 +18479,30 @@
                         "WARPED_DOOR": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "COPPER_DOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_COPPER_DOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_COPPER_DOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_DOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_COPPER_DOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_DOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_DOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_DOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "IRON_TRAPDOOR": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -17997,6 +18537,30 @@
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "WARPED_TRAPDOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_TRAPDOOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_TRAPDOOR": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "OAK_FENCE_GATE": {
@@ -18134,7 +18698,13 @@
                         "TURTLE_HELMET": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
-                        "SCUTE": {
+                        "TURTLE_SCUTE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "ARMADILLO_SCUTE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WOLF_ARMOR": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "FLINT_AND_STEEL": {
@@ -18686,6 +19256,9 @@
                         "COOKIE": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "CRAFTER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "FILLED_MAP": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -18764,6 +19337,9 @@
                         "GLISTERING_MELON_SLICE": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "ARMADILLO_SPAWN_EGG": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "ALLAY_SPAWN_EGG": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -18777,6 +19353,12 @@
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "BLAZE_SPAWN_EGG": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "BOGGED_SPAWN_EGG": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "BREEZE_SPAWN_EGG": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "CAT_SPAWN_EGG": {
@@ -19001,10 +19583,16 @@
                         "FIRE_CHARGE": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "WIND_CHARGE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "WRITABLE_BOOK": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "WRITTEN_BOOK": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "MACE": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "ITEM_FRAME": {
@@ -19319,6 +19907,12 @@
                         "PIGLIN_BANNER_PATTERN": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "FLOW_BANNER_PATTERN": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "GUSTER_BANNER_PATTERN": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "GOAT_HORN": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -19568,6 +20162,12 @@
                         "HOST_ARMOR_TRIM_SMITHING_TEMPLATE": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "FLOW_ARMOR_TRIM_SMITHING_TEMPLATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "BOLT_ARMOR_TRIM_SMITHING_TEMPLATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "ANGLER_POTTERY_SHERD": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -19592,7 +20192,13 @@
                         "EXPLORER_POTTERY_SHERD": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "FLOW_POTTERY_SHERD": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "FRIEND_POTTERY_SHERD": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "GUSTER_POTTERY_SHERD": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "HEART_POTTERY_SHERD": {
@@ -19616,6 +20222,9 @@
                         "PRIZE_POTTERY_SHERD": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "SCRAPE_POTTERY_SHERD": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "SHEAF_POTTERY_SHERD": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -19626,6 +20235,72 @@
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "SNORT_POTTERY_SHERD": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "COPPER_GRATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_COPPER_GRATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_COPPER_GRATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_GRATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_COPPER_GRATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_GRATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_GRATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_GRATE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "COPPER_BULB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "EXPOSED_COPPER_BULB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WEATHERED_COPPER_BULB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OXIDIZED_COPPER_BULB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_COPPER_BULB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_EXPOSED_COPPER_BULB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_WEATHERED_COPPER_BULB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "WAXED_OXIDIZED_COPPER_BULB": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TRIAL_SPAWNER": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "TRIAL_KEY": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OMINOUS_TRIAL_KEY": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "VAULT": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "OMINOUS_BOTTLE": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "BREEZE_ROD": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "WATER": {
@@ -20634,40 +21309,67 @@
                 }
             },
             "properties": {
-                "MAX_HEALTH": {
+                "GENERIC_MAX_HEALTH": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "FOLLOW_RANGE": {
+                "GENERIC_FOLLOW_RANGE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "KNOCKBACK_RESISTANCE": {
+                "GENERIC_KNOCKBACK_RESISTANCE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "MOVEMENT_SPEED": {
+                "GENERIC_MOVEMENT_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "FLYING_SPEED": {
+                "GENERIC_FLYING_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ATTACK_DAMAGE": {
+                "GENERIC_ATTACK_DAMAGE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ATTACK_KNOCKBACK": {
+                "GENERIC_ATTACK_KNOCKBACK": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ATTACK_SPEED": {
+                "GENERIC_ATTACK_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ARMOR": {
+                "GENERIC_ARMOR": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ARMOR_TOUGHNESS": {
+                "GENERIC_ARMOR_TOUGHNESS": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "LUCK": {
+                "GENERIC_FALL_DAMAGE_MULTIPLIER": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "HORSE_JUMP_STRENGTH": {
+                "GENERIC_LUCK": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_MAX_ABSORPTION": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_SAFE_FALL_DISTANCE": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_SCALE": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_STEP_HEIGHT": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_GRAVITY": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_JUMP_STRENGTH": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "PLAYER_BLOCK_INTERACTION_RANGE": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "PLAYER_ENTITY_INTERACTION_RANGE": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "PLAYER_BLOCK_BREAK_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
                 "ZOMBIE_SPAWN_REINFORCEMENTS": {
@@ -20687,121 +21389,130 @@
                 "type": "integer"
             },
             "properties": {
-                "fire_protection": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "sharpness": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "flame": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "soul_speed": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "aqua_affinity": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "punch": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "loyalty": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "depth_strider": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "vanishing_curse": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "unbreaking": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "knockback": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "luck_of_the_sea": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "binding_curse": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "fortune": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "protection": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "efficiency": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "mending": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "frost_walker": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "lure": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "looting": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "piercing": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "blast_protection": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "smite": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "multishot": {
+                "density": {
                     "$ref": "#/types/EnchantmentData/propertyContent"
                 },
                 "swift_sneak": {
                     "$ref": "#/types/EnchantmentData/propertyContent"
                 },
-                "fire_aspect": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "channeling": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "sweeping": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "thorns": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "bane_of_arthropods": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "respiration": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "riptide": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "silk_touch": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "quick_charge": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "projectile_protection": {
-                    "$ref": "#/types/EnchantmentData/propertyContent"
-                },
-                "impaling": {
+                "breach": {
                     "$ref": "#/types/EnchantmentData/propertyContent"
                 },
                 "feather_falling": {
                     "$ref": "#/types/EnchantmentData/propertyContent"
                 },
+                "infinity": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "flame": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "impaling": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "protection": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "knockback": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "depth_strider": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "luck_of_the_sea": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "silk_touch": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "loyalty": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "vanishing_curse": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "fire_protection": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "channeling": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "binding_curse": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "quick_charge": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "bane_of_arthropods": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "frost_walker": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "multishot": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "projectile_protection": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "aqua_affinity": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "soul_speed": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "wind_burst": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "looting": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "smite": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "piercing": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "lure": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "riptide": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
                 "power": {
                     "$ref": "#/types/EnchantmentData/propertyContent"
                 },
-                "infinity": {
+                "blast_protection": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "mending": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "fire_aspect": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "respiration": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "thorns": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "sweeping_edge": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "punch": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "sharpness": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "efficiency": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "fortune": {
+                    "$ref": "#/types/EnchantmentData/propertyContent"
+                },
+                "unbreaking": {
                     "$ref": "#/types/EnchantmentData/propertyContent"
                 }
             }
@@ -20978,40 +21689,67 @@
                 "default": -1
             },
             "properties": {
-                "MAX_HEALTH": {
+                "GENERIC_MAX_HEALTH": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "FOLLOW_RANGE": {
+                "GENERIC_FOLLOW_RANGE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "KNOCKBACK_RESISTANCE": {
+                "GENERIC_KNOCKBACK_RESISTANCE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "MOVEMENT_SPEED": {
+                "GENERIC_MOVEMENT_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "FLYING_SPEED": {
+                "GENERIC_FLYING_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ATTACK_DAMAGE": {
+                "GENERIC_ATTACK_DAMAGE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ATTACK_KNOCKBACK": {
+                "GENERIC_ATTACK_KNOCKBACK": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ATTACK_SPEED": {
+                "GENERIC_ATTACK_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ARMOR": {
+                "GENERIC_ARMOR": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ARMOR_TOUGHNESS": {
+                "GENERIC_ARMOR_TOUGHNESS": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "LUCK": {
+                "GENERIC_FALL_DAMAGE_MULTIPLIER": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "HORSE_JUMP_STRENGTH": {
+                "GENERIC_LUCK": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_MAX_ABSORPTION": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_SAFE_FALL_DISTANCE": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_SCALE": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_STEP_HEIGHT": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_GRAVITY": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_JUMP_STRENGTH": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "PLAYER_BLOCK_INTERACTION_RANGE": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "PLAYER_ENTITY_INTERACTION_RANGE": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "PLAYER_BLOCK_BREAK_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
                 "ZOMBIE_SPAWN_REINFORCEMENTS": {
@@ -21360,121 +22098,130 @@
                 "default": "-Infinity - Infinity"
             },
             "properties": {
-                "fire_protection": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "sharpness": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "flame": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "soul_speed": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "aqua_affinity": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "punch": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "loyalty": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "depth_strider": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "vanishing_curse": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "unbreaking": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "knockback": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "luck_of_the_sea": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "binding_curse": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "fortune": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "protection": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "efficiency": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "mending": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "frost_walker": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "lure": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "looting": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "piercing": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "blast_protection": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "smite": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "multishot": {
+                "density": {
                     "$ref": "#/types/EnchantComparisonData/propertyContent"
                 },
                 "swift_sneak": {
                     "$ref": "#/types/EnchantComparisonData/propertyContent"
                 },
-                "fire_aspect": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "channeling": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "sweeping": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "thorns": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "bane_of_arthropods": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "respiration": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "riptide": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "silk_touch": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "quick_charge": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "projectile_protection": {
-                    "$ref": "#/types/EnchantComparisonData/propertyContent"
-                },
-                "impaling": {
+                "breach": {
                     "$ref": "#/types/EnchantComparisonData/propertyContent"
                 },
                 "feather_falling": {
                     "$ref": "#/types/EnchantComparisonData/propertyContent"
                 },
+                "infinity": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "flame": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "impaling": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "protection": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "knockback": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "depth_strider": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "luck_of_the_sea": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "silk_touch": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "loyalty": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "vanishing_curse": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "fire_protection": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "channeling": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "binding_curse": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "quick_charge": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "bane_of_arthropods": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "frost_walker": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "multishot": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "projectile_protection": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "aqua_affinity": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "soul_speed": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "wind_burst": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "looting": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "smite": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "piercing": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "lure": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "riptide": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
                 "power": {
                     "$ref": "#/types/EnchantComparisonData/propertyContent"
                 },
-                "infinity": {
+                "blast_protection": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "mending": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "fire_aspect": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "respiration": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "thorns": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "sweeping_edge": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "punch": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "sharpness": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "efficiency": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "fortune": {
+                    "$ref": "#/types/EnchantComparisonData/propertyContent"
+                },
+                "unbreaking": {
                     "$ref": "#/types/EnchantComparisonData/propertyContent"
                 }
             }
@@ -21533,28 +22280,28 @@
             "additionalProperties": false,
             "type": "string",
             "enum": [
-                "DROPPED_ITEM",
+                "ITEM",
                 "EXPERIENCE_ORB",
                 "AREA_EFFECT_CLOUD",
                 "ELDER_GUARDIAN",
                 "WITHER_SKELETON",
                 "STRAY",
                 "EGG",
-                "LEASH_HITCH",
+                "LEASH_KNOT",
                 "PAINTING",
                 "ARROW",
                 "SNOWBALL",
                 "FIREBALL",
                 "SMALL_FIREBALL",
                 "ENDER_PEARL",
-                "ENDER_SIGNAL",
-                "SPLASH_POTION",
-                "THROWN_EXP_BOTTLE",
+                "EYE_OF_ENDER",
+                "POTION",
+                "EXPERIENCE_BOTTLE",
                 "ITEM_FRAME",
                 "WITHER_SKULL",
-                "PRIMED_TNT",
+                "TNT",
                 "FALLING_BLOCK",
-                "FIREWORK",
+                "FIREWORK_ROCKET",
                 "HUSK",
                 "SPECTRAL_ARROW",
                 "SHULKER_BULLET",
@@ -21570,14 +22317,14 @@
                 "VEX",
                 "VINDICATOR",
                 "ILLUSIONER",
-                "MINECART_COMMAND",
+                "COMMAND_BLOCK_MINECART",
                 "BOAT",
                 "MINECART",
-                "MINECART_CHEST",
-                "MINECART_FURNACE",
-                "MINECART_TNT",
-                "MINECART_HOPPER",
-                "MINECART_MOB_SPAWNER",
+                "CHEST_MINECART",
+                "FURNACE_MINECART",
+                "TNT_MINECART",
+                "HOPPER_MINECART",
+                "SPAWNER_MINECART",
                 "CREEPER",
                 "SKELETON",
                 "SPIDER",
@@ -21604,8 +22351,8 @@
                 "CHICKEN",
                 "SQUID",
                 "WOLF",
-                "MUSHROOM_COW",
-                "SNOWMAN",
+                "MOOSHROOM",
+                "SNOW_GOLEM",
                 "OCELOT",
                 "IRON_GOLEM",
                 "HORSE",
@@ -21615,7 +22362,7 @@
                 "LLAMA_SPIT",
                 "PARROT",
                 "VILLAGER",
-                "ENDER_CRYSTAL",
+                "END_CRYSTAL",
                 "TURTLE",
                 "PHANTOM",
                 "TRIDENT",
@@ -21654,8 +22401,14 @@
                 "ITEM_DISPLAY",
                 "SNIFFER",
                 "TEXT_DISPLAY",
-                "FISHING_HOOK",
-                "LIGHTNING",
+                "BREEZE",
+                "WIND_CHARGE",
+                "BREEZE_WIND_CHARGE",
+                "ARMADILLO",
+                "BOGGED",
+                "OMINOUS_ITEM_SPAWNER",
+                "FISHING_BOBBER",
+                "LIGHTNING_BOLT",
                 "PLAYER",
                 "UNKNOWN"
             ]
@@ -21732,45 +22485,48 @@
                 {
                     "type": "string",
                     "enum": [
-                        "fire_protection",
-                        "sharpness",
-                        "flame",
-                        "soul_speed",
-                        "aqua_affinity",
-                        "punch",
-                        "loyalty",
-                        "depth_strider",
-                        "vanishing_curse",
-                        "unbreaking",
-                        "knockback",
-                        "luck_of_the_sea",
-                        "binding_curse",
-                        "fortune",
-                        "protection",
-                        "efficiency",
-                        "mending",
-                        "frost_walker",
-                        "lure",
-                        "looting",
-                        "piercing",
-                        "blast_protection",
-                        "smite",
-                        "multishot",
+                        "density",
                         "swift_sneak",
-                        "fire_aspect",
-                        "channeling",
-                        "sweeping",
-                        "thorns",
-                        "bane_of_arthropods",
-                        "respiration",
-                        "riptide",
-                        "silk_touch",
-                        "quick_charge",
-                        "projectile_protection",
-                        "impaling",
+                        "breach",
                         "feather_falling",
+                        "infinity",
+                        "flame",
+                        "impaling",
+                        "protection",
+                        "knockback",
+                        "depth_strider",
+                        "luck_of_the_sea",
+                        "silk_touch",
+                        "loyalty",
+                        "vanishing_curse",
+                        "fire_protection",
+                        "channeling",
+                        "binding_curse",
+                        "quick_charge",
+                        "bane_of_arthropods",
+                        "frost_walker",
+                        "multishot",
+                        "projectile_protection",
+                        "aqua_affinity",
+                        "soul_speed",
+                        "wind_burst",
+                        "looting",
+                        "smite",
+                        "piercing",
+                        "lure",
+                        "riptide",
                         "power",
-                        "infinity"
+                        "blast_protection",
+                        "mending",
+                        "fire_aspect",
+                        "respiration",
+                        "thorns",
+                        "sweeping_edge",
+                        "punch",
+                        "sharpness",
+                        "efficiency",
+                        "fortune",
+                        "unbreaking"
                     ]
                 }
             ]
@@ -21779,39 +22535,45 @@
             "additionalProperties": false,
             "type": "string",
             "enum": [
-                "SPEED",
-                "SLOWNESS",
-                "HASTE",
-                "MINING_FATIGUE",
-                "STRENGTH",
-                "INSTANT_HEALTH",
-                "INSTANT_DAMAGE",
-                "JUMP_BOOST",
-                "NAUSEA",
-                "REGENERATION",
-                "RESISTANCE",
                 "FIRE_RESISTANCE",
                 "WATER_BREATHING",
-                "INVISIBILITY",
-                "BLINDNESS",
-                "NIGHT_VISION",
-                "HUNGER",
-                "WEAKNESS",
-                "POISON",
-                "WITHER",
-                "HEALTH_BOOST",
-                "ABSORPTION",
+                "JUMP_BOOST",
                 "SATURATION",
-                "GLOWING",
-                "LEVITATION",
-                "LUCK",
-                "UNLUCK",
+                "HEALTH_BOOST",
+                "NIGHT_VISION",
+                "WEAKNESS",
+                "WIND_CHARGED",
+                "WITHER",
+                "MINING_FATIGUE",
                 "SLOW_FALLING",
-                "CONDUIT_POWER",
-                "DOLPHINS_GRACE",
-                "BAD_OMEN",
+                "RAID_OMEN",
+                "LUCK",
+                "STRENGTH",
+                "INFESTED",
+                "POISON",
                 "HERO_OF_THE_VILLAGE",
-                "DARKNESS"
+                "UNLUCK",
+                "INVISIBILITY",
+                "ABSORPTION",
+                "SLOWNESS",
+                "HASTE",
+                "WEAVING",
+                "GLOWING",
+                "BAD_OMEN",
+                "DOLPHINS_GRACE",
+                "LEVITATION",
+                "CONDUIT_POWER",
+                "BLINDNESS",
+                "INSTANT_DAMAGE",
+                "NAUSEA",
+                "INSTANT_HEALTH",
+                "REGENERATION",
+                "HUNGER",
+                "SPEED",
+                "TRIAL_OMEN",
+                "DARKNESS",
+                "OOZING",
+                "RESISTANCE"
             ]
         },
         "dyeColor": {
@@ -21913,16 +22675,16 @@
             "additionalProperties": false,
             "type": "string",
             "enum": [
-                "CHORUS_FRUIT",
-                "COMMAND",
-                "DISMOUNT",
-                "END_GATEWAY",
-                "END_PORTAL",
                 "ENDER_PEARL",
-                "EXIT_BED",
-                "NETHER_PORTAL",
+                "COMMAND",
                 "PLUGIN",
+                "NETHER_PORTAL",
+                "END_PORTAL",
                 "SPECTATE",
+                "END_GATEWAY",
+                "CHORUS_FRUIT",
+                "DISMOUNT",
+                "EXIT_BED",
                 "UNKNOWN"
             ]
         },
@@ -21958,6 +22720,26 @@
                 "ANCIENT_CITY",
                 "ANCIENT_CITY_ICE_BOX",
                 "RUINED_PORTAL",
+                "TRIAL_CHAMBERS_REWARD",
+                "TRIAL_CHAMBERS_REWARD_COMMON",
+                "TRIAL_CHAMBERS_REWARD_RARE",
+                "TRIAL_CHAMBERS_REWARD_UNIQUE",
+                "TRIAL_CHAMBERS_REWARD_OMINOUS",
+                "TRIAL_CHAMBERS_REWARD_OMINOUS_COMMON",
+                "TRIAL_CHAMBERS_REWARD_OMINOUS_RARE",
+                "TRIAL_CHAMBERS_REWARD_OMINOUS_UNIQUE",
+                "TRIAL_CHAMBERS_SUPPLY",
+                "TRIAL_CHAMBERS_CORRIDOR",
+                "TRIAL_CHAMBERS_INTERSECTION",
+                "TRIAL_CHAMBERS_INTERSECTION_BARREL",
+                "TRIAL_CHAMBERS_ENTRANCE",
+                "TRIAL_CHAMBERS_CORRIDOR_DISPENSER",
+                "TRIAL_CHAMBERS_CHAMBER_DISPENSER",
+                "TRIAL_CHAMBERS_WATER_DISPENSER",
+                "TRIAL_CHAMBERS_CORRIDOR_POT",
+                "EQUIPMENT_TRIAL_CHAMBER",
+                "EQUIPMENT_TRIAL_CHAMBER_RANGED",
+                "EQUIPMENT_TRIAL_CHAMBER_MELEE",
                 "SHIPWRECK_MAP",
                 "SHIPWRECK_SUPPLY",
                 "SHIPWRECK_TREASURE",
@@ -22078,7 +22860,14 @@
                 "TOOLSMITH_GIFT",
                 "WEAPONSMITH_GIFT",
                 "SNIFFER_DIGGING",
+                "PANDA_SNEEZE",
                 "PIGLIN_BARTERING",
+                "TRIAL_CHAMBER_KEY",
+                "TRIAL_CHAMBER_CONSUMABLES",
+                "OMINOUS_TRIAL_CHAMBER_KEY",
+                "OMINOUS_TRIAL_CHAMBER_CONSUMABLES",
+                "TRIAL_CHAMBER_ITEMS_TO_DROP_WHEN_OMINOUS",
+                "SHEARING_BOGGED",
                 "DESERT_WELL_ARCHAEOLOGY",
                 "DESERT_PYRAMID_ARCHAEOLOGY",
                 "TRAIL_RUINS_ARCHAEOLOGY_COMMON",
@@ -22200,25 +22989,35 @@
                 "FEET",
                 "LEGS",
                 "CHEST",
-                "HEAD"
+                "HEAD",
+                "BODY"
             ]
         },
         "attribute": {
             "additionalProperties": false,
             "type": "string",
             "enum": [
-                "MAX_HEALTH",
-                "FOLLOW_RANGE",
-                "KNOCKBACK_RESISTANCE",
-                "MOVEMENT_SPEED",
-                "FLYING_SPEED",
-                "ATTACK_DAMAGE",
-                "ATTACK_KNOCKBACK",
-                "ATTACK_SPEED",
-                "ARMOR",
-                "ARMOR_TOUGHNESS",
-                "LUCK",
-                "HORSE_JUMP_STRENGTH",
+                "GENERIC_MAX_HEALTH",
+                "GENERIC_FOLLOW_RANGE",
+                "GENERIC_KNOCKBACK_RESISTANCE",
+                "GENERIC_MOVEMENT_SPEED",
+                "GENERIC_FLYING_SPEED",
+                "GENERIC_ATTACK_DAMAGE",
+                "GENERIC_ATTACK_KNOCKBACK",
+                "GENERIC_ATTACK_SPEED",
+                "GENERIC_ARMOR",
+                "GENERIC_ARMOR_TOUGHNESS",
+                "GENERIC_FALL_DAMAGE_MULTIPLIER",
+                "GENERIC_LUCK",
+                "GENERIC_MAX_ABSORPTION",
+                "GENERIC_SAFE_FALL_DISTANCE",
+                "GENERIC_SCALE",
+                "GENERIC_STEP_HEIGHT",
+                "GENERIC_GRAVITY",
+                "GENERIC_JUMP_STRENGTH",
+                "PLAYER_BLOCK_INTERACTION_RANGE",
+                "PLAYER_ENTITY_INTERACTION_RANGE",
+                "PLAYER_BLOCK_BREAK_SPEED",
                 "ZOMBIE_SPAWN_REINFORCEMENTS"
             ]
         },
@@ -22426,6 +23225,11 @@
                 "BLOCK_CHISELED_BOOKSHELF_STEP",
                 "BLOCK_CHORUS_FLOWER_DEATH",
                 "BLOCK_CHORUS_FLOWER_GROW",
+                "BLOCK_COBWEB_BREAK",
+                "BLOCK_COBWEB_FALL",
+                "BLOCK_COBWEB_HIT",
+                "BLOCK_COBWEB_PLACE",
+                "BLOCK_COBWEB_STEP",
                 "BLOCK_COMPARATOR_CLICK",
                 "BLOCK_COMPOSTER_EMPTY",
                 "BLOCK_COMPOSTER_FILL",
@@ -22437,19 +23241,39 @@
                 "BLOCK_CONDUIT_ATTACK_TARGET",
                 "BLOCK_CONDUIT_DEACTIVATE",
                 "BLOCK_COPPER_BREAK",
+                "BLOCK_COPPER_BULB_BREAK",
+                "BLOCK_COPPER_BULB_FALL",
+                "BLOCK_COPPER_BULB_HIT",
+                "BLOCK_COPPER_BULB_PLACE",
+                "BLOCK_COPPER_BULB_STEP",
+                "BLOCK_COPPER_BULB_TURN_OFF",
+                "BLOCK_COPPER_BULB_TURN_ON",
+                "BLOCK_COPPER_DOOR_CLOSE",
+                "BLOCK_COPPER_DOOR_OPEN",
                 "BLOCK_COPPER_FALL",
+                "BLOCK_COPPER_GRATE_BREAK",
+                "BLOCK_COPPER_GRATE_FALL",
+                "BLOCK_COPPER_GRATE_HIT",
+                "BLOCK_COPPER_GRATE_PLACE",
+                "BLOCK_COPPER_GRATE_STEP",
                 "BLOCK_COPPER_HIT",
                 "BLOCK_COPPER_PLACE",
                 "BLOCK_COPPER_STEP",
+                "BLOCK_COPPER_TRAPDOOR_CLOSE",
+                "BLOCK_COPPER_TRAPDOOR_OPEN",
                 "BLOCK_CORAL_BLOCK_BREAK",
                 "BLOCK_CORAL_BLOCK_FALL",
                 "BLOCK_CORAL_BLOCK_HIT",
                 "BLOCK_CORAL_BLOCK_PLACE",
                 "BLOCK_CORAL_BLOCK_STEP",
+                "BLOCK_CRAFTER_CRAFT",
+                "BLOCK_CRAFTER_FAIL",
                 "BLOCK_CROP_BREAK",
                 "BLOCK_DECORATED_POT_BREAK",
                 "BLOCK_DECORATED_POT_FALL",
                 "BLOCK_DECORATED_POT_HIT",
+                "BLOCK_DECORATED_POT_INSERT",
+                "BLOCK_DECORATED_POT_INSERT_FAIL",
                 "BLOCK_DECORATED_POT_PLACE",
                 "BLOCK_DECORATED_POT_SHATTER",
                 "BLOCK_DECORATED_POT_STEP",
@@ -22540,6 +23364,12 @@
                 "BLOCK_HANGING_SIGN_HIT",
                 "BLOCK_HANGING_SIGN_PLACE",
                 "BLOCK_HANGING_SIGN_STEP",
+                "BLOCK_HANGING_SIGN_WAXED_INTERACT_FAIL",
+                "BLOCK_HEAVY_CORE_BREAK",
+                "BLOCK_HEAVY_CORE_FALL",
+                "BLOCK_HEAVY_CORE_HIT",
+                "BLOCK_HEAVY_CORE_PLACE",
+                "BLOCK_HEAVY_CORE_STEP",
                 "BLOCK_HONEY_BLOCK_BREAK",
                 "BLOCK_HONEY_BLOCK_FALL",
                 "BLOCK_HONEY_BLOCK_HIT",
@@ -22716,6 +23546,11 @@
                 "BLOCK_POLISHED_DEEPSLATE_HIT",
                 "BLOCK_POLISHED_DEEPSLATE_PLACE",
                 "BLOCK_POLISHED_DEEPSLATE_STEP",
+                "BLOCK_POLISHED_TUFF_BREAK",
+                "BLOCK_POLISHED_TUFF_FALL",
+                "BLOCK_POLISHED_TUFF_HIT",
+                "BLOCK_POLISHED_TUFF_PLACE",
+                "BLOCK_POLISHED_TUFF_STEP",
                 "BLOCK_PORTAL_AMBIENT",
                 "BLOCK_PORTAL_TRAVEL",
                 "BLOCK_PORTAL_TRIGGER",
@@ -22821,6 +23656,12 @@
                 "BLOCK_SOUL_SOIL_HIT",
                 "BLOCK_SOUL_SOIL_PLACE",
                 "BLOCK_SOUL_SOIL_STEP",
+                "BLOCK_SPONGE_ABSORB",
+                "BLOCK_SPONGE_BREAK",
+                "BLOCK_SPONGE_FALL",
+                "BLOCK_SPONGE_HIT",
+                "BLOCK_SPONGE_PLACE",
+                "BLOCK_SPONGE_STEP",
                 "BLOCK_SPORE_BLOSSOM_BREAK",
                 "BLOCK_SPORE_BLOSSOM_FALL",
                 "BLOCK_SPORE_BLOSSOM_HIT",
@@ -22853,15 +23694,49 @@
                 "BLOCK_SWEET_BERRY_BUSH_BREAK",
                 "BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES",
                 "BLOCK_SWEET_BERRY_BUSH_PLACE",
+                "BLOCK_TRIAL_SPAWNER_ABOUT_TO_SPAWN_ITEM",
+                "BLOCK_TRIAL_SPAWNER_AMBIENT",
+                "BLOCK_TRIAL_SPAWNER_AMBIENT_CHARGED",
+                "BLOCK_TRIAL_SPAWNER_BREAK",
+                "BLOCK_TRIAL_SPAWNER_CHARGE_ACTIVATE",
+                "BLOCK_TRIAL_SPAWNER_CLOSE_SHUTTER",
+                "BLOCK_TRIAL_SPAWNER_DETECT_PLAYER",
+                "BLOCK_TRIAL_SPAWNER_EJECT_ITEM",
+                "BLOCK_TRIAL_SPAWNER_FALL",
+                "BLOCK_TRIAL_SPAWNER_HIT",
+                "BLOCK_TRIAL_SPAWNER_OPEN_SHUTTER",
+                "BLOCK_TRIAL_SPAWNER_PLACE",
+                "BLOCK_TRIAL_SPAWNER_SPAWN_ITEM",
+                "BLOCK_TRIAL_SPAWNER_SPAWN_ITEM_BEGIN",
+                "BLOCK_TRIAL_SPAWNER_SPAWN_MOB",
+                "BLOCK_TRIAL_SPAWNER_STEP",
                 "BLOCK_TRIPWIRE_ATTACH",
                 "BLOCK_TRIPWIRE_CLICK_OFF",
                 "BLOCK_TRIPWIRE_CLICK_ON",
                 "BLOCK_TRIPWIRE_DETACH",
                 "BLOCK_TUFF_BREAK",
+                "BLOCK_TUFF_BRICKS_BREAK",
+                "BLOCK_TUFF_BRICKS_FALL",
+                "BLOCK_TUFF_BRICKS_HIT",
+                "BLOCK_TUFF_BRICKS_PLACE",
+                "BLOCK_TUFF_BRICKS_STEP",
                 "BLOCK_TUFF_FALL",
                 "BLOCK_TUFF_HIT",
                 "BLOCK_TUFF_PLACE",
                 "BLOCK_TUFF_STEP",
+                "BLOCK_VAULT_ACTIVATE",
+                "BLOCK_VAULT_AMBIENT",
+                "BLOCK_VAULT_BREAK",
+                "BLOCK_VAULT_CLOSE_SHUTTER",
+                "BLOCK_VAULT_DEACTIVATE",
+                "BLOCK_VAULT_EJECT_ITEM",
+                "BLOCK_VAULT_FALL",
+                "BLOCK_VAULT_HIT",
+                "BLOCK_VAULT_INSERT_ITEM",
+                "BLOCK_VAULT_INSERT_ITEM_FAIL",
+                "BLOCK_VAULT_OPEN_SHUTTER",
+                "BLOCK_VAULT_PLACE",
+                "BLOCK_VAULT_STEP",
                 "BLOCK_VINE_BREAK",
                 "BLOCK_VINE_FALL",
                 "BLOCK_VINE_HIT",
@@ -22883,6 +23758,12 @@
                 "BLOCK_WET_GRASS_HIT",
                 "BLOCK_WET_GRASS_PLACE",
                 "BLOCK_WET_GRASS_STEP",
+                "BLOCK_WET_SPONGE_BREAK",
+                "BLOCK_WET_SPONGE_DRIES",
+                "BLOCK_WET_SPONGE_FALL",
+                "BLOCK_WET_SPONGE_HIT",
+                "BLOCK_WET_SPONGE_PLACE",
+                "BLOCK_WET_SPONGE_STEP",
                 "BLOCK_WOODEN_BUTTON_CLICK_OFF",
                 "BLOCK_WOODEN_BUTTON_CLICK_ON",
                 "BLOCK_WOODEN_DOOR_CLOSE",
@@ -22909,6 +23790,19 @@
                 "ENTITY_ALLAY_ITEM_GIVEN",
                 "ENTITY_ALLAY_ITEM_TAKEN",
                 "ENTITY_ALLAY_ITEM_THROWN",
+                "ENTITY_ARMADILLO_AMBIENT",
+                "ENTITY_ARMADILLO_BRUSH",
+                "ENTITY_ARMADILLO_DEATH",
+                "ENTITY_ARMADILLO_EAT",
+                "ENTITY_ARMADILLO_HURT",
+                "ENTITY_ARMADILLO_HURT_REDUCED",
+                "ENTITY_ARMADILLO_LAND",
+                "ENTITY_ARMADILLO_PEEK",
+                "ENTITY_ARMADILLO_ROLL",
+                "ENTITY_ARMADILLO_SCUTE_DROP",
+                "ENTITY_ARMADILLO_STEP",
+                "ENTITY_ARMADILLO_UNROLL_FINISH",
+                "ENTITY_ARMADILLO_UNROLL_START",
                 "ENTITY_ARMOR_STAND_BREAK",
                 "ENTITY_ARMOR_STAND_FALL",
                 "ENTITY_ARMOR_STAND_HIT",
@@ -22941,6 +23835,24 @@
                 "ENTITY_BLAZE_SHOOT",
                 "ENTITY_BOAT_PADDLE_LAND",
                 "ENTITY_BOAT_PADDLE_WATER",
+                "ENTITY_BOGGED_AMBIENT",
+                "ENTITY_BOGGED_DEATH",
+                "ENTITY_BOGGED_HURT",
+                "ENTITY_BOGGED_SHEAR",
+                "ENTITY_BOGGED_STEP",
+                "ENTITY_BREEZE_CHARGE",
+                "ENTITY_BREEZE_DEATH",
+                "ENTITY_BREEZE_DEFLECT",
+                "ENTITY_BREEZE_HURT",
+                "ENTITY_BREEZE_IDLE_AIR",
+                "ENTITY_BREEZE_IDLE_GROUND",
+                "ENTITY_BREEZE_INHALE",
+                "ENTITY_BREEZE_JUMP",
+                "ENTITY_BREEZE_LAND",
+                "ENTITY_BREEZE_SHOOT",
+                "ENTITY_BREEZE_SLIDE",
+                "ENTITY_BREEZE_WHIRL",
+                "ENTITY_BREEZE_WIND_BURST",
                 "ENTITY_CAMEL_AMBIENT",
                 "ENTITY_CAMEL_DASH",
                 "ENTITY_CAMEL_DASH_READY",
@@ -22994,6 +23906,7 @@
                 "ENTITY_DONKEY_DEATH",
                 "ENTITY_DONKEY_EAT",
                 "ENTITY_DONKEY_HURT",
+                "ENTITY_DONKEY_JUMP",
                 "ENTITY_DRAGON_FIREBALL_EXPLODE",
                 "ENTITY_DROWNED_AMBIENT",
                 "ENTITY_DROWNED_AMBIENT_WATER",
@@ -23214,6 +24127,7 @@
                 "ENTITY_MULE_DEATH",
                 "ENTITY_MULE_EAT",
                 "ENTITY_MULE_HURT",
+                "ENTITY_MULE_JUMP",
                 "ENTITY_OCELOT_AMBIENT",
                 "ENTITY_OCELOT_DEATH",
                 "ENTITY_OCELOT_HURT",
@@ -23236,6 +24150,8 @@
                 "ENTITY_PARROT_FLY",
                 "ENTITY_PARROT_HURT",
                 "ENTITY_PARROT_IMITATE_BLAZE",
+                "ENTITY_PARROT_IMITATE_BOGGED",
+                "ENTITY_PARROT_IMITATE_BREEZE",
                 "ENTITY_PARROT_IMITATE_CREEPER",
                 "ENTITY_PARROT_IMITATE_DROWNED",
                 "ENTITY_PARROT_IMITATE_ELDER_GUARDIAN",
@@ -23320,6 +24236,7 @@
                 "ENTITY_PLAYER_SPLASH",
                 "ENTITY_PLAYER_SPLASH_HIGH_SPEED",
                 "ENTITY_PLAYER_SWIM",
+                "ENTITY_PLAYER_TELEPORT",
                 "ENTITY_POLAR_BEAR_AMBIENT",
                 "ENTITY_POLAR_BEAR_AMBIENT_BABY",
                 "ENTITY_POLAR_BEAR_DEATH",
@@ -23512,6 +24429,8 @@
                 "ENTITY_WARDEN_SONIC_CHARGE",
                 "ENTITY_WARDEN_STEP",
                 "ENTITY_WARDEN_TENDRIL_CLICKS",
+                "ENTITY_WIND_CHARGE_THROW",
+                "ENTITY_WIND_CHARGE_WIND_BURST",
                 "ENTITY_WITCH_AMBIENT",
                 "ENTITY_WITCH_CELEBRATE",
                 "ENTITY_WITCH_DEATH",
@@ -23566,6 +24485,9 @@
                 "ENTITY_ZOMBIFIED_PIGLIN_ANGRY",
                 "ENTITY_ZOMBIFIED_PIGLIN_DEATH",
                 "ENTITY_ZOMBIFIED_PIGLIN_HURT",
+                "EVENT_MOB_EFFECT_BAD_OMEN",
+                "EVENT_MOB_EFFECT_RAID_OMEN",
+                "EVENT_MOB_EFFECT_TRIAL_OMEN",
                 "EVENT_RAID_HORN",
                 "INTENTIONALLY_EMPTY",
                 "ITEM_ARMOR_EQUIP_CHAIN",
@@ -23577,6 +24499,8 @@
                 "ITEM_ARMOR_EQUIP_LEATHER",
                 "ITEM_ARMOR_EQUIP_NETHERITE",
                 "ITEM_ARMOR_EQUIP_TURTLE",
+                "ITEM_ARMOR_EQUIP_WOLF",
+                "ITEM_ARMOR_UNEQUIP_WOLF",
                 "ITEM_AXE_SCRAPE",
                 "ITEM_AXE_STRIP",
                 "ITEM_AXE_WAX_OFF",
@@ -23635,7 +24559,11 @@
                 "ITEM_HONEY_BOTTLE_DRINK",
                 "ITEM_INK_SAC_USE",
                 "ITEM_LODESTONE_COMPASS_LOCK",
+                "ITEM_MACE_SMASH_AIR",
+                "ITEM_MACE_SMASH_GROUND",
+                "ITEM_MACE_SMASH_GROUND_HEAVY",
                 "ITEM_NETHER_WART_PLANT",
+                "ITEM_OMINOUS_BOTTLE_DISPOSE",
                 "ITEM_SHIELD_BLOCK",
                 "ITEM_SHIELD_BREAK",
                 "ITEM_SHOVEL_FLATTEN",
@@ -23650,6 +24578,10 @@
                 "ITEM_TRIDENT_RIPTIDE_3",
                 "ITEM_TRIDENT_THROW",
                 "ITEM_TRIDENT_THUNDER",
+                "ITEM_WOLF_ARMOR_BREAK",
+                "ITEM_WOLF_ARMOR_CRACK",
+                "ITEM_WOLF_ARMOR_DAMAGE",
+                "ITEM_WOLF_ARMOR_REPAIR",
                 "MUSIC_CREATIVE",
                 "MUSIC_CREDITS",
                 "MUSIC_DISC_11",
@@ -23715,51 +24647,47 @@
             "additionalProperties": false,
             "type": "string",
             "enum": [
-                "EXPLOSION_NORMAL",
-                "EXPLOSION_LARGE",
-                "EXPLOSION_HUGE",
-                "FIREWORKS_SPARK",
-                "WATER_BUBBLE",
-                "WATER_SPLASH",
-                "WATER_WAKE",
-                "SUSPENDED",
-                "SUSPENDED_DEPTH",
+                "POOF",
+                "EXPLOSION",
+                "EXPLOSION_EMITTER",
+                "FIREWORK",
+                "BUBBLE",
+                "SPLASH",
+                "FISHING",
+                "UNDERWATER",
                 "CRIT",
-                "CRIT_MAGIC",
-                "SMOKE_NORMAL",
-                "SMOKE_LARGE",
-                "SPELL",
-                "SPELL_INSTANT",
-                "SPELL_MOB",
-                "SPELL_MOB_AMBIENT",
-                "SPELL_WITCH",
-                "DRIP_WATER",
-                "DRIP_LAVA",
-                "VILLAGER_ANGRY",
-                "VILLAGER_HAPPY",
-                "TOWN_AURA",
+                "ENCHANTED_HIT",
+                "SMOKE",
+                "LARGE_SMOKE",
+                "EFFECT",
+                "INSTANT_EFFECT",
+                "ENTITY_EFFECT",
+                "WITCH",
+                "DRIPPING_WATER",
+                "DRIPPING_LAVA",
+                "ANGRY_VILLAGER",
+                "HAPPY_VILLAGER",
+                "MYCELIUM",
                 "NOTE",
                 "PORTAL",
-                "ENCHANTMENT_TABLE",
+                "ENCHANT",
                 "FLAME",
                 "LAVA",
                 "CLOUD",
-                "REDSTONE",
-                "SNOWBALL",
-                "SNOW_SHOVEL",
-                "SLIME",
+                "DUST",
+                "ITEM_SNOWBALL",
+                "ITEM_SLIME",
                 "HEART",
-                "ITEM_CRACK",
-                "BLOCK_CRACK",
-                "BLOCK_DUST",
-                "WATER_DROP",
-                "MOB_APPEARANCE",
+                "ITEM",
+                "BLOCK",
+                "RAIN",
+                "ELDER_GUARDIAN",
                 "DRAGON_BREATH",
                 "END_ROD",
                 "DAMAGE_INDICATOR",
                 "SWEEP_ATTACK",
                 "FALLING_DUST",
-                "TOTEM",
+                "TOTEM_OF_UNDYING",
                 "SPIT",
                 "SQUID_INK",
                 "BUBBLE_POP",
@@ -23812,10 +24740,22 @@
                 "SHRIEK",
                 "CHERRY_LEAVES",
                 "EGG_CRACK",
-                "BLOCK_MARKER",
-                "LEGACY_BLOCK_CRACK",
-                "LEGACY_BLOCK_DUST",
-                "LEGACY_FALLING_DUST"
+                "DUST_PLUME",
+                "WHITE_SMOKE",
+                "GUST",
+                "SMALL_GUST",
+                "GUST_EMITTER_LARGE",
+                "GUST_EMITTER_SMALL",
+                "TRIAL_SPAWNER_DETECTION",
+                "TRIAL_SPAWNER_DETECTION_OMINOUS",
+                "VAULT_CONNECTION",
+                "INFESTED",
+                "ITEM_COBWEB",
+                "DUST_PILLAR",
+                "OMINOUS_SPAWNING",
+                "RAID_OMEN",
+                "TRIAL_OMEN",
+                "BLOCK_MARKER"
             ]
         },
         "material": {
@@ -23835,6 +24775,19 @@
                 "POLISHED_DEEPSLATE",
                 "CALCITE",
                 "TUFF",
+                "TUFF_SLAB",
+                "TUFF_STAIRS",
+                "TUFF_WALL",
+                "CHISELED_TUFF",
+                "POLISHED_TUFF",
+                "POLISHED_TUFF_SLAB",
+                "POLISHED_TUFF_STAIRS",
+                "POLISHED_TUFF_WALL",
+                "TUFF_BRICKS",
+                "TUFF_BRICK_SLAB",
+                "TUFF_BRICK_STAIRS",
+                "TUFF_BRICK_WALL",
+                "CHISELED_TUFF_BRICKS",
                 "DRIPSTONE_BLOCK",
                 "GRASS_BLOCK",
                 "DIRT",
@@ -23894,6 +24847,7 @@
                 "RAW_IRON_BLOCK",
                 "RAW_COPPER_BLOCK",
                 "RAW_GOLD_BLOCK",
+                "HEAVY_CORE",
                 "AMETHYST_BLOCK",
                 "BUDDING_AMETHYST",
                 "IRON_BLOCK",
@@ -23904,6 +24858,10 @@
                 "EXPOSED_COPPER",
                 "WEATHERED_COPPER",
                 "OXIDIZED_COPPER",
+                "CHISELED_COPPER",
+                "EXPOSED_CHISELED_COPPER",
+                "WEATHERED_CHISELED_COPPER",
+                "OXIDIZED_CHISELED_COPPER",
                 "CUT_COPPER",
                 "EXPOSED_CUT_COPPER",
                 "WEATHERED_CUT_COPPER",
@@ -23920,6 +24878,10 @@
                 "WAXED_EXPOSED_COPPER",
                 "WAXED_WEATHERED_COPPER",
                 "WAXED_OXIDIZED_COPPER",
+                "WAXED_CHISELED_COPPER",
+                "WAXED_EXPOSED_CHISELED_COPPER",
+                "WAXED_WEATHERED_CHISELED_COPPER",
+                "WAXED_OXIDIZED_CHISELED_COPPER",
                 "WAXED_CUT_COPPER",
                 "WAXED_EXPOSED_CUT_COPPER",
                 "WAXED_WEATHERED_CUT_COPPER",
@@ -23995,7 +24957,7 @@
                 "CHISELED_SANDSTONE",
                 "CUT_SANDSTONE",
                 "COBWEB",
-                "GRASS",
+                "SHORT_GRASS",
                 "FERN",
                 "AZALEA",
                 "FLOWERING_AZALEA",
@@ -24522,6 +25484,14 @@
                 "BAMBOO_DOOR",
                 "CRIMSON_DOOR",
                 "WARPED_DOOR",
+                "COPPER_DOOR",
+                "EXPOSED_COPPER_DOOR",
+                "WEATHERED_COPPER_DOOR",
+                "OXIDIZED_COPPER_DOOR",
+                "WAXED_COPPER_DOOR",
+                "WAXED_EXPOSED_COPPER_DOOR",
+                "WAXED_WEATHERED_COPPER_DOOR",
+                "WAXED_OXIDIZED_COPPER_DOOR",
                 "IRON_TRAPDOOR",
                 "OAK_TRAPDOOR",
                 "SPRUCE_TRAPDOOR",
@@ -24534,6 +25504,14 @@
                 "BAMBOO_TRAPDOOR",
                 "CRIMSON_TRAPDOOR",
                 "WARPED_TRAPDOOR",
+                "COPPER_TRAPDOOR",
+                "EXPOSED_COPPER_TRAPDOOR",
+                "WEATHERED_COPPER_TRAPDOOR",
+                "OXIDIZED_COPPER_TRAPDOOR",
+                "WAXED_COPPER_TRAPDOOR",
+                "WAXED_EXPOSED_COPPER_TRAPDOOR",
+                "WAXED_WEATHERED_COPPER_TRAPDOOR",
+                "WAXED_OXIDIZED_COPPER_TRAPDOOR",
                 "OAK_FENCE_GATE",
                 "SPRUCE_FENCE_GATE",
                 "BIRCH_FENCE_GATE",
@@ -24579,7 +25557,9 @@
                 "STRUCTURE_BLOCK",
                 "JIGSAW",
                 "TURTLE_HELMET",
-                "SCUTE",
+                "TURTLE_SCUTE",
+                "ARMADILLO_SCUTE",
+                "WOLF_ARMOR",
                 "FLINT_AND_STEEL",
                 "APPLE",
                 "BOW",
@@ -24763,6 +25743,7 @@
                 "RED_BED",
                 "BLACK_BED",
                 "COOKIE",
+                "CRAFTER",
                 "FILLED_MAP",
                 "SHEARS",
                 "MELON_SLICE",
@@ -24789,11 +25770,14 @@
                 "CAULDRON",
                 "ENDER_EYE",
                 "GLISTERING_MELON_SLICE",
+                "ARMADILLO_SPAWN_EGG",
                 "ALLAY_SPAWN_EGG",
                 "AXOLOTL_SPAWN_EGG",
                 "BAT_SPAWN_EGG",
                 "BEE_SPAWN_EGG",
                 "BLAZE_SPAWN_EGG",
+                "BOGGED_SPAWN_EGG",
+                "BREEZE_SPAWN_EGG",
                 "CAT_SPAWN_EGG",
                 "CAMEL_SPAWN_EGG",
                 "CAVE_SPIDER_SPAWN_EGG",
@@ -24868,8 +25852,10 @@
                 "ZOMBIFIED_PIGLIN_SPAWN_EGG",
                 "EXPERIENCE_BOTTLE",
                 "FIRE_CHARGE",
+                "WIND_CHARGE",
                 "WRITABLE_BOOK",
                 "WRITTEN_BOOK",
+                "MACE",
                 "ITEM_FRAME",
                 "GLOW_ITEM_FRAME",
                 "FLOWER_POT",
@@ -24974,6 +25960,8 @@
                 "MOJANG_BANNER_PATTERN",
                 "GLOBE_BANNER_PATTERN",
                 "PIGLIN_BANNER_PATTERN",
+                "FLOW_BANNER_PATTERN",
+                "GUSTER_BANNER_PATTERN",
                 "GOAT_HORN",
                 "COMPOSTER",
                 "BARREL",
@@ -25057,6 +26045,8 @@
                 "SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE",
                 "RAISER_ARMOR_TRIM_SMITHING_TEMPLATE",
                 "HOST_ARMOR_TRIM_SMITHING_TEMPLATE",
+                "FLOW_ARMOR_TRIM_SMITHING_TEMPLATE",
+                "BOLT_ARMOR_TRIM_SMITHING_TEMPLATE",
                 "ANGLER_POTTERY_SHERD",
                 "ARCHER_POTTERY_SHERD",
                 "ARMS_UP_POTTERY_SHERD",
@@ -25065,7 +26055,9 @@
                 "BURN_POTTERY_SHERD",
                 "DANGER_POTTERY_SHERD",
                 "EXPLORER_POTTERY_SHERD",
+                "FLOW_POTTERY_SHERD",
                 "FRIEND_POTTERY_SHERD",
+                "GUSTER_POTTERY_SHERD",
                 "HEART_POTTERY_SHERD",
                 "HEARTBREAK_POTTERY_SHERD",
                 "HOWL_POTTERY_SHERD",
@@ -25073,10 +26065,33 @@
                 "MOURNER_POTTERY_SHERD",
                 "PLENTY_POTTERY_SHERD",
                 "PRIZE_POTTERY_SHERD",
+                "SCRAPE_POTTERY_SHERD",
                 "SHEAF_POTTERY_SHERD",
                 "SHELTER_POTTERY_SHERD",
                 "SKULL_POTTERY_SHERD",
                 "SNORT_POTTERY_SHERD",
+                "COPPER_GRATE",
+                "EXPOSED_COPPER_GRATE",
+                "WEATHERED_COPPER_GRATE",
+                "OXIDIZED_COPPER_GRATE",
+                "WAXED_COPPER_GRATE",
+                "WAXED_EXPOSED_COPPER_GRATE",
+                "WAXED_WEATHERED_COPPER_GRATE",
+                "WAXED_OXIDIZED_COPPER_GRATE",
+                "COPPER_BULB",
+                "EXPOSED_COPPER_BULB",
+                "WEATHERED_COPPER_BULB",
+                "OXIDIZED_COPPER_BULB",
+                "WAXED_COPPER_BULB",
+                "WAXED_EXPOSED_COPPER_BULB",
+                "WAXED_WEATHERED_COPPER_BULB",
+                "WAXED_OXIDIZED_COPPER_BULB",
+                "TRIAL_SPAWNER",
+                "TRIAL_KEY",
+                "OMINOUS_TRIAL_KEY",
+                "VAULT",
+                "OMINOUS_BOTTLE",
+                "BREEZE_ROD",
                 "WATER",
                 "LAVA",
                 "TALL_SEAGRASS",
