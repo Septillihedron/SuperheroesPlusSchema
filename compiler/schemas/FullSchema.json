@@ -982,6 +982,10 @@
                             "description": "Checks if the user or target entity is sprinting"
                         },
                         {
+                            "const": "POTIONEFFECT",
+                            "description": "Checks whether the user or target entity has the potion effect"
+                        },
+                        {
                             "const": "HERO",
                             "description": "Checks the user or target entity against the list of heroes\n\nOnly available if you have the Superheroes plugin"
                         },
@@ -1418,6 +1422,18 @@
                         },
                         "then": {
                             "$ref": "#/conditions/SPRINTING"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "POTIONEFFECT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/POTIONEFFECT"
                         }
                     },
                     {
@@ -4447,6 +4463,37 @@
                         "SELF",
                         "OTHER"
                     ]
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "POTIONEFFECT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "description": "The type of potion to check. If not specified, it will check for any type of potion. \nDefaults to null",
+                    "$ref": "#/types/potion",
+                    "default": null
+                },
+                "else": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "potency": {
+                    "description": "The range of potion potency to check against. \nDefaults to \"-Infinity - Infinity\"",
+                    "$ref": "#/types/range",
+                    "default": "-Infinity - Infinity"
+                },
+                "duration": {
+                    "description": "The range of potion duration to check against (in seconds). \nDefaults to \"-Infinity - Infinity\"",
+                    "$ref": "#/types/range",
+                    "default": "-Infinity - Infinity"
                 }
             },
             "required": [

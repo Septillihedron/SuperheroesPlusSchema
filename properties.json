@@ -618,6 +618,30 @@
 			"description": "Checks if the user or target entity is sprinting",
 			"supportedModes": ["ALL", "SELF", "OTHER"]
 		},
+		"POTIONEFFECT": {
+			"description": "Checks whether the user or target entity has the potion effect",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+			"properties": {
+				"type": {
+					"description": "The type of potion to check. If not specified, it will check for any type of potion",
+					"required": false,
+					"type": "potion",
+					"default": null
+				},
+				"potency": {
+					"description": "The range of potion potency to check against",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				},
+				"duration": {
+					"description": "The range of potion duration to check against (in seconds)",
+					"required": false,
+					"type": "range",
+					"default": "-Infinity - Infinity"
+				}
+			}
+		},
 		// Superheroes exclusives
 		"HERO": {
 			"description": "Checks the user or target entity against the list of heroes",
