@@ -175,8 +175,10 @@ Exampleboss:
   damagemodifier: 
     type: BLANK
   entity: 
-    type: DROPPED_ITEM
+    type: ITEM
     shouldDespawn: true
+    attributes:
+      ARMOR_TOUGHNESS: 0
   reward: 
     type: BASIC
     experience: 100

@@ -21685,8 +21685,7 @@
             },
             "propertyContent": {
                 "description": "The attribute value",
-                "type": "number",
-                "default": -1
+                "type": "number"
             },
             "properties": {
                 "MAX_HEALTH": {

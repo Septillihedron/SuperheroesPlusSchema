@@ -3628,9 +3628,8 @@
 				},
 				"value": {
 					"description": "The attribute value",
-					"required": false,
-					"type": "number",
-					"default": -1
+					"required": true,
+					"type": "number"
 				}
 			}
 		},
@@ -4196,7 +4195,7 @@
 			"type": "string",
 			"enum": ["HAND", "OFF_HAND", "FEET", "LEGS", "CHEST", "HEAD", "BODY"]
 		},
-		"attribute": { // remove generic
+		"attribute": {
 			"description": "An attribute",
 			"type": "string",
 			"enum": ["MAX_HEALTH", "FOLLOW_RANGE", "KNOCKBACK_RESISTANCE", "MOVEMENT_SPEED", "FLYING_SPEED", "ATTACK_DAMAGE", "ATTACK_KNOCKBACK", "ATTACK_SPEED", "ARMOR", "ARMOR_TOUGHNESS", "FALL_DAMAGE_MULTIPLIER", "LUCK", "MAX_ABSORPTION", "SAFE_FALL_DISTANCE", "SCALE", "STEP_HEIGHT", "GRAVITY", "JUMP_STRENGTH", "PLAYER_BLOCK_INTERACTION_RANGE", "PLAYER_ENTITY_INTERACTION_RANGE", "PLAYER_BLOCK_BREAK_SPEED", "ZOMBIE_SPAWN_REINFORCEMENTS"]
