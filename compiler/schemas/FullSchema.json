@@ -4947,7 +4947,7 @@
                     ]
                 },
                 "message": {
-                    "description": "The message to send. The first occurence of \"player\" will be replaced by the player name",
+                    "description": "The message to send. \nIn mode SELF, \"<player>\" and \"<self>\" will be replaced by the user's name. \nIn mode OTHER, \"<self>\" will be replaced by the user's name; \"<player>\" and \"<target>\" will be replaced by the target's name",
                     "type": "string"
                 }
             },
@@ -5540,7 +5540,7 @@
                     "default": true
                 },
                 "isPacket": {
-                    "description": ". \nDefaults to false",
+                    "description": "Whether to fake this block change (ie. just changed for the user's/client's side not on the server's side). \nDefaults to false",
                     "type": "boolean",
                     "default": false
                 },

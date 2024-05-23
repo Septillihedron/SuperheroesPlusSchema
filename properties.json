@@ -976,12 +976,12 @@
 				}
 			}
 		},
-		"MESSAGE": { // TODO placeholder stuff
+		"MESSAGE": {
 			"description": "Sends a chat message to the user or target player",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
 				"message": {
-					"description": "The message to send. The first occurence of \"player\" will be replaced by the player name",
+					"description": "The message to send. \nIn mode SELF, \"<player>\" and \"<self>\" will be replaced by the user's name. \nIn mode OTHER, \"<self>\" will be replaced by the user's name; \"<player>\" and \"<target>\" will be replaced by the target's name",
 					"required": true, 
 					"type": "string"
 				}
@@ -1333,7 +1333,7 @@
 				}
 			}
 		},
-		"PLACEBLOCK": { // TODO
+		"PLACEBLOCK": {
 			"description": "Replaces a block at the location for an amount of time. Retains the original block data",
 			"supportedModes": ["ALL", "LOCATION"],
 			"properties": {
@@ -1355,8 +1355,8 @@
 					"type": "boolean",
 					"default": true
 				},
-				"isPacket": { // TODO
-					"description": "",
+				"isPacket": {
+					"description": "Whether to fake this block change (ie. just changed for the user's/client's side not on the server's side)",
 					"required": false,
 					"type": "boolean",
 					"default": false
