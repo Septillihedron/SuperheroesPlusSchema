@@ -1,0 +1,232 @@
+{
+    "AURA": {
+        "description": "",
+        "properties": {
+            "radius": "number? 5 # ",
+            "potency": "integer? 1 # The potency or amplifier of the potion",
+            "type": "potion! undefined # The type of the potion",
+            "ambient": "boolean? true # Whether to make the particles more translucent or not",
+            "hasParticles": "boolean? true # Whether to make this potion effect has particles or not",
+            "duration": "number? 10 # The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)"
+        }
+    },
+    "__BlankData__": {
+        "description": "",
+        "properties": {}
+    },
+    "BLOCKRAY": {
+        "description": "",
+        "properties": {
+            "blocksToPlace": "material[]?  # ",
+            "blocksToReplace": "material[]?  # ",
+            "blockRayMode": "blockRayMode? undefined # ",
+            "maxDistance": "integer? 20 # ",
+            "shouldRevert": "boolean? false # ",
+            "revertsAfter": "integer? 15 # "
+        }
+    },
+    "CLIMB": {
+        "description": "",
+        "properties": {
+            "proximity": "number? 0.2 # ",
+            "speed": "number? 0.2 # ",
+            "debug": "boolean? false # ",
+            "blocks": "Material[]?  # SetData",
+            "whitelist": "boolean? true # "
+        }
+    },
+    "CONVERTBLOCK": {
+        "description": "",
+        "properties": {
+            "cooldown": "number? NaN # ",
+            "cooldownMessage": "string? undefined # ",
+            "outputBlock": "material? GOLD_BLOCK # ",
+            "inputBlocks": "material[]?  # "
+        }
+    },
+    "CREEPER": {
+        "description": "",
+        "properties": {
+            "cooldown": "number? NaN # ",
+            "cooldownMessage": "string? undefined # ",
+            "creeper_power": "number? 1 # ",
+            "fuse": "number? 2 # ",
+            "slowfall_duration": "number? 7 # ",
+            "upwardsVelocity": "number? 2.5 # "
+        }
+    },
+    "EGGLAYER": {
+        "description": "",
+        "properties": {
+            "type": "string? EGG # ",
+            "quantity": "integer? 1 # ",
+            "delay": "number? 15 # "
+        }
+    },
+    "ERASER": {
+        "description": "",
+        "properties": {
+            "cooldown": "number? NaN # ",
+            "cooldownMessage": "string? undefined # ",
+            "removedMessage": "string? <player> has had their power erased temporarily! # ",
+            "returnedMessage": "string? <player> has had their power reinstated! # ",
+            "range": "number? 30 # ",
+            "duration": "number? 7.5 # "
+        }
+    },
+    "GIVEITEM": {
+        "description": "",
+        "properties": {
+            "canStore": "boolean? true # ",
+            "canDrop": "boolean? true # ",
+            "canDropOnDeath": "boolean? true # ",
+            "canLoseOnDeath": "boolean? true # ",
+            "loseItemOnHeroLoss": "boolean? true # ",
+            "item": "section? undefined # ",
+            "__error__itemConfig = itemConfig == null ? configurationSection : itemConfig;": {
+                "description": "Uncategorized line",
+                "line": "itemConfig = itemConfig == null ? configurationSection : itemConfig;",
+                "class": "GiveItemData",
+                "required": true,
+                "type": "error"
+            }
+        }
+    },
+    "HEARTSTEAL": {
+        "description": "",
+        "properties": {
+            "heartsgained": "integer? 2 # ",
+            "maxhearts": "integer? 24 # ",
+            "entities": "EntityType[]?  # SetData"
+        }
+    },
+    "KILLPOTION": {
+        "description": "",
+        "extends": "POTIONEFFECT",
+        "properties": {
+            "entities": "EntityType[]?  # SetData"
+        }
+    },
+    "LIFESTEAL": {
+        "description": "",
+        "properties": {
+            "lifestealPercentage": "number? 5 # "
+        }
+    },
+    "LIGHT": {
+        "description": "",
+        "extends": "POTIONEFFECT",
+        "properties": {}
+    },
+    "NOHUNGER": {
+        "description": "",
+        "properties": {
+            "minimumHunger": "number? 19 # "
+        }
+    },
+    "OHKO": {
+        "description": "",
+        "properties": {
+            "entityTypes": "undefined[]?  # ",
+            "displayName": "string? undefined # "
+        }
+    },
+    "PHASE": {
+        "description": "",
+        "properties": {
+            "minimumPhaseYAxis": "number? 5 # "
+        }
+    },
+    "PICKPOCKET": {
+        "description": "",
+        "properties": {
+            "range": "number? 3 # ",
+            "isSneaking": "boolean? true # "
+        }
+    },
+    "POTIONEFFECT": {
+        "description": "",
+        "properties": {
+            "potency": "integer? 1 # The potency or amplifier of the potion",
+            "type": "potion! undefined # The type of the potion",
+            "ambient": "boolean? true # Whether to make the particles more translucent or not",
+            "hasParticles": "boolean? true # Whether to make this potion effect has particles or not",
+            "duration": "number? 10 # The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)"
+        }
+    },
+    "POTIONGIFTER": {
+        "description": "",
+        "extends": "POTIONEFFECT",
+        "properties": {
+            "cooldown": "number? 10 # ",
+            "receiverMessage": "string? <grey><i>You have received a potion effect. # ",
+            "giverMessage": "string? <grey><i>You gave them a potion effect. # ",
+            "cooldownMessage": "string? <grey><i>You have <currentcooldown> seconds left until it can be used again! # "
+        }
+    },
+    "REMOTEDETONATION": {
+        "description": "",
+        "properties": {
+            "cooldown": "number? NaN # ",
+            "cooldownMessage": "string? undefined # ",
+            "explosionStrength": "number? 1 # ",
+            "explodable": "undefined[]?  # ",
+            "spawnsFire": "boolean? false # ",
+            "breakBlocks": "boolean? true # ",
+            "removeDetonatedEntity": "boolean? true # "
+        }
+    },
+    "REPULSION": {
+        "description": "",
+        "properties": {
+            "multiplier": "number? 1 # ",
+            "radius": "number? 5 # ",
+            "entityBlacklist": "undefined[]?  # "
+        }
+    },
+    "SHIELD": {
+        "description": "",
+        "properties": {
+            "cooldown": "number? 100 # "
+        }
+    },
+    "SLIME": {
+        "description": "",
+        "properties": {
+            "speedMultiplier": "number? 1 # "
+        }
+    },
+    "SNEAK": {
+        "description": "",
+        "properties": {
+            "mustSneak": "boolean? true # ",
+            "needsInvisibility": "boolean? false # "
+        }
+    },
+    "SNEAKINGPOTION": {
+        "description": "",
+        "properties": {
+            "potency": "integer? 1 # The potency or amplifier of the potion",
+            "type": "potion! undefined # The type of the potion",
+            "ambient": "boolean? true # Whether to make the particles more translucent or not",
+            "hasParticles": "boolean? true # Whether to make this potion effect has particles or not",
+            "duration": "number? 10 # The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)"
+        }
+    },
+    "STRONGMAN": {
+        "description": "",
+        "properties": {
+            "velocity": "number? 2.5 # ",
+            "upwardsVelocity": "number? 1 # ",
+            "tooMuscularMessage": "string? <player> <white> is too strong to sit in a vehicle! # ",
+            "maxPassengers": "integer? 10 # "
+        }
+    },
+    "WEATHERDAMAGE": {
+        "description": "",
+        "properties": {
+            "damage": "number? 1 # ",
+            "checkShelter": "boolean? true # "
+        }
+    }
+}

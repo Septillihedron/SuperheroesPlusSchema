@@ -1645,30 +1645,54 @@
 	},
 	// Superheroes
 	"skills": {
-		"POTIONEFFECT": {
+		"ATTRIBUTE": { // done
+			"description": "Applies attributes to the player",
+			"properties": {
+				"attributes": {
+					"description": "The attributes to apply",
+					"required": true,
+					"type": "AttributeData"
+				}
+			}
+		},
+		"FLIGHT": { // no doc
+			"description": ""
+		},
+		"POTIONEFFECT": { // done
 			"description": "Applies the potion effect to the user",
 			"properties": {
 				"potency": {
 					"description": "The potency or amplifier of the potion",
 					"required": false,
 					"type": "integer",
-					"default": 0
+					"default": 1
 				},
 				"type": {
 					"description": "The type of the potion",
+					"required": true,
+					"type": "potion"
+				},
+				"ambient": {
+					"description": "Whether to make the particles more translucent or not",
 					"required": false,
-					"type": "potion",
-					"default": {}
+					"type": "boolean",
+					"default": true
+				},
+				"hasParticles": {
+					"description": "Whether to make this potion effect has particles or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
 				},
 				"duration": {
 					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
 					"required": false,
 					"type": "number",
-					"default": 4
+					"default": 10
 				}
 			}
 		},
-		"OHKO": {
+		"OHKO": { // done
 			"description": "Kills the entity in one hit",
 			"properties": {
 				"entityTypes": {
@@ -1686,7 +1710,7 @@
 				}
 			}
 		},
-		"REPULSION": {
+		"REPULSION": { // done
 			"description": "Repulses all nearby entities when the user sneaks",
 			"properties": {
 				"multiplier": {
@@ -1702,7 +1726,7 @@
 					"default": 5
 				},
 				"entityBlacklist": {
-					"description": "The entities to not get effected",
+					"description": "The entities that doesn't effected",
 					"required": false,
 					"type": "array",
 					"items": "entity",
@@ -1710,7 +1734,7 @@
 				}
 			}
 		},
-		"CONVERTITEM": {
+		"CONVERTITEM": { // done
 			"description": "Converts the input item into the output item when the user picks up an item",
 			"properties": {
 				"inputItem": {
@@ -1733,7 +1757,7 @@
 				}
 			}
 		},
-		"COOLDOWN": {
+		"COOLDOWN": { // done
 			"description": "The cooldown for the skill",
 			"properties": {
 				"cooldown": {
@@ -1750,7 +1774,7 @@
 				}
 			}
 		},
-		"CONVERTBLOCK": {
+		"CONVERTBLOCK": { // done
 			"description": "Converts a block when the user right clicks a block",
 			"extends": "COOLDOWN",
 			"properties": {
@@ -1766,10 +1790,22 @@
 					"type": "array",
 					"items": "material",
 					"default": []
+				},
+				"cooldown": {
+					"description": "The cooldown in seconds",
+					"required": false,
+					"type": "number",
+					"default": 0
+				},
+				"cooldownMessage": { 
+					"description": "The message to display when the skill is on cooldown",
+					"required": false,
+					"type": "string",
+					"default": "There are <s> seconds before you can transmutate the block again!"
 				}
 			}
 		},
-		"REMOTEDETONATION": {
+		"REMOTEDETONATION": { // done
 			"description": "Creates an explosion at the entity the user is looking at when the user sneaks",
 			"extends": "COOLDOWN",
 			"properties": {
@@ -1803,10 +1839,22 @@
 					"required": false,
 					"type": "boolean",
 					"default": true
+				},
+				"cooldown": {
+					"description": "The cooldown in seconds",
+					"required": false,
+					"type": "number",
+					"default": 10
+				},
+				"cooldownMessage": { 
+					"description": "The message to display when the skill is on cooldown",
+					"required": false,
+					"type": "string",
+					"default": "You have <s> seconds remaining before you can remote detonate again"
 				}
 			}
 		},
-		"BLOCKDROPS": {
+		"BLOCKDROPS": { // done
 			"description": "Changes the block drops of a block",
 			"properties": {
 				"convertMap": {
@@ -1835,7 +1883,7 @@
 				}
 			}
 		},
-		"CREEPER": {
+		"CREEPER": { // done
 			"description": "Creates an explosion when the user sneaks on the ground until the explosion",
 			"extends": "COOLDOWN",
 			"properties": {
@@ -1862,10 +1910,22 @@
 					"required": false,
 					"type": "number",
 					"default": 2.5
+				},
+				"cooldown": {
+					"description": "The cooldown in seconds",
+					"required": false,
+					"type": "number",
+					"default": 10
+				},
+				"cooldownMessage": { 
+					"description": "The message to display when the skill is on cooldown",
+					"required": false,
+					"type": "string",
+					"default": "<dark_green><bold>Creeper <white>Cooldown: <s> seconds"
 				}
 			}
 		},
-		"GIVEITEM": {
+		"GIVEITEM": { // done
 			"description": "Gives the user an item",
 			"properties": {
 				"canStore": {
@@ -1886,12 +1946,12 @@
 					"type": "boolean",
 					"default": true
 				},
-				// "canDropOnDeath": {
-				// 	"description": "If true, the item will be dropped on death",
-				// 	"required": false,
-				// 	"type": "boolean",
-				// 	"default": true
-				// },
+				"canDropOnDeath": {
+					"description": "If true, the item will be dropped on death",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
 				"loseItemOnHeroLoss": {
 					"description": "If true, the item will be lost on if the user changes hero",
 					"required": false,
@@ -1905,7 +1965,7 @@
 				}
 			}
 		},
-		"GUN": {
+		"GUN": { // done
 			"description": "Shoots the gun in the direction that the user is looking at when the user right clicks if the user holds the gun item",
 			"extends": "COOLDOWN",
 			"properties": {
@@ -1930,7 +1990,7 @@
 				"item": {
 					"description": "The item that will be used as the gun",
 					"required": true,
-					"type": "material"
+					"type": "ItemComparisonData"
 				},
 				"shootSound": {
 					"description": "The sound that will be played when the gun shoots",
@@ -1946,10 +2006,22 @@
 					"description": "The particle that will be spawned at the hit location",
 					"required": true,
 					"type": "ParticleData"
+				},
+				"cooldown": {
+					"description": "The cooldown in seconds",
+					"required": false,
+					"type": "number",
+					"default": 2
+				},
+				"cooldownMessage": {
+					"description": "The message to display when the skill is on cooldown",
+					"required": false,
+					"type": "string",
+					"default": "<dark_grey><bold>Gun <grey>has <s> seconds left until it can be used again!"
 				}
 			}
 		},
-		"SNEAK": {
+		"SNEAK": { // done
 			"description": "Prevents the user from sneaking or unsneaking",
 			"properties": {
 				"mustSneak": {
@@ -1966,7 +2038,7 @@
 				}
 			}
 		},
-		"SHIELD": {
+		"SHIELD": { // done
 			"description": "Sets the shields cooldown when the user take damage",
 			"properties": {
 				"cooldown": {
@@ -1977,8 +2049,8 @@
 				}
 			}
 		},
-		"SPELL": {
-			"description": "",
+		"SPELL": { // incomplete description, TODO spells
+			"description": "Lets the user cast spells",
 			"properties": {
 				"spell": {
 					"description": "The type of spell to cast",
@@ -2001,7 +2073,7 @@
 				"cost": {
 					"description": "The amount of fuel that will be used to cast the spell",
 					"required": false,
-					"type": "number",
+					"type": "integer",
 					"default": 1
 				},
 				"spellName": {
@@ -2014,19 +2086,19 @@
 					"description": "The message that will be displayed when the spell is on cooldown. \n%spellName% will be replaced with the spell name\n%cooldown% with the cooldown in seconds\n\n%fuel% with the name of the fuel material\n%cost% with the amount of fuel used",
 					"required": false,
 					"type": "string",
-					"default": "%spellName% has %currentcooldown% seconds remaining."
+					"default": "<spellName> has <currentcooldown> seconds remaining."
 				},
 				"moreFuelMessage": {
 					"description": "",
 					"required": false,
 					"type": "string",
-					"default": "This spell needs %fuelneeded% more %fuel%"
+					"default": "This spell needs <fuelneeded> more <fuel>"
 				},
 				"displayNameFormat": {
 					"description": "",
 					"required": false,
 					"type": "string",
-					"default": "&5%spellName%"
+					"default": "<purple><spellName>"
 				},
 				"loreFormat": {
 					"description": "",
@@ -2058,7 +2130,7 @@
 				}
 			}
 		},
-		"THROWER": {
+		"THROWER": { // no doc
 			"description": "",
 			"extends": "COOLDOWN",
 			"properties": {
@@ -2070,9 +2142,8 @@
 				},
 				"item": {
 					"description": "",
-					"required": false,
-					"type": "ItemStackData",
-					"default": {}
+					"required": true,
+					"type": "ItemStackData"
 				},
 				"projectile": {
 					"description": "",
@@ -2107,7 +2178,7 @@
 				}
 			}
 		},
-		"BLOCKRAY": {
+		"BLOCKRAY": { // no doc
 			"description": "",
 			"properties": {
 				"blocksToPlace": {
@@ -2150,25 +2221,184 @@
 				}
 			}
 		},
-		// "POTIONGIFTER": {
-		// 	"description": ""
-		// },
-		// "CONSUME": {
-		// 	"description": ""
-		// },
-		// "SUMMON": {
-		// 	"description": ""
-		// },
-		// "DECOY": {
-		// 	"description": ""
-		// },
-		// "PHASE": {
-		// 	"description": ""
-		// },
-		// "STRONGMAN": {
-		// 	"description": ""
-		// },
-		"CRAFTING": {
+		"POTIONGIFTER": { // no doc
+			"description": "",
+			"extends": "POTIONEFFECT",
+			"properties": {
+				"receiverMessage": {
+					"description": "",
+					"required": false,
+					"type": "string",
+					"default": "<grey><i>You have received a potion effect."
+				},
+				"giverMessage": {
+					"description": "",
+					"required": false,
+					"type": "string",
+					"default": "<grey><i>You have received a potion effect."
+				},
+				"cooldown": {
+					"description": "The cooldown in seconds",
+					"required": false,
+					"type": "number",
+					"default": 10
+				},
+				"cooldownMessage": { 
+					"description": "The message to display when the skill is on cooldown",
+					"required": false,
+					"type": "string",
+					"default": "<grey><i>You have <currentcooldown> seconds left until it can be used again!"
+				}
+			}
+		},
+		"CONSUME": { // no doc
+			"description": "",
+			"properties": {
+				"material": {
+					"description": "",
+					"required": false,
+					"type": "material",
+					"default": "DIRT"
+				},
+				"hunger": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				}
+			}
+		},
+		"SUMMON": { // no doc
+			"description": "",
+			"extends": "POTIONEFFECT",
+			"properties": {
+				"entity": {
+					"description": "",
+					"required": false,
+					"type": "entity",
+					"default": "LIGHTNING"
+				},
+				"range": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 10
+				},
+				"action": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "action",
+					"default": ["LEFT_CLICK_AIR", "LEFT_CLICK_BLOCK"]
+				},
+				"mustSneak": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"repel": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"cooldown": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 10
+				},
+				"cooldownMessage": {
+					"description": "",
+					"required": false,
+					"type": "string",
+					"default": "<yellow><bold>Zeus <white>Cooldown: <s> seconds"
+				}
+			}
+		},
+		"DECOY": { // no doc
+			"description": "",
+			"properties": {
+				"color": {
+					"description": "",
+					"required": false,
+					"type": "object",
+					"properties": {
+						"red": {
+							"description": "The red value of the color",
+							"required": true,
+							"type": "integer",
+							"default": 0
+						},
+						"green": {
+							"description": "The green value of the color",
+							"required": true,
+							"type": "integer",
+							"default": 0
+						},
+						"blue": {
+							"description": "The blue value of the color",
+							"required": true,
+							"type": "integer",
+							"default": 0
+						}
+					},
+					"default": {
+						"red": 0,
+						"green": 0,
+						"blue": 0
+					}	
+				}, 
+				"base64Skin": {
+					"description": "",
+					"required": false,
+					"type": "string",
+					"default": "SELF"
+				}
+			}
+		},
+		"PHASE": { // no doc
+			"description": "",
+			"properties": {
+				"minimumPhaseYAxis": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 5
+				}
+			}
+		},
+		"STRONGMAN": { // no doc
+			"description": "",
+			"properties": {
+				"velocity": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 2.5
+				}, 
+				"upwardsVelocity": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}, 
+				"tooMuscularMessage": {
+					"description": "",
+					"required": false,
+					"type": "string",
+					"default": "<player> <white> is too strong to sit in a vehicle!"
+				}, 
+				"maxPassengers": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 10
+				}
+			}
+		},
+		"CRAFTING": { // done
 			"description": "Enables the user to use this recipe",
 			"properties": {
 				"isShaped": {
@@ -2193,7 +2423,7 @@
 					"type": "object",
 					"default": {},
 					"patternProperties": {
-						".*": {
+						"^.$": {
 							"description": "The material that the key is representing",
 							"required": true,
 							"type": "material"
@@ -2235,58 +2465,607 @@
 					}
 				}
 			}
-		}//,
-		// "SLAM": {
-		// 	"description": ""
-		// },
-		// "ERASER": {
-		// 	"description": ""
-		// },
-		// "TELEPORT": {
-		// 	"description": ""
-		// },
-		// "INSTANTBREAK": {
-		// 	"description": ""
-		// },
-		// "LIGHT": {
-		// 	"description": ""
-		// },
-		// "NOHUNGER": {
-		// 	"description": ""
-		// },
-		// "DAMAGERESISTANCE": {
-		// 	"description": ""
-		// },
-		// "SLIME": {
-		// 	"description": ""
-		// },
-		// "SNEAKINGPOTION": {
-		// 	"description": ""
-		// },
-		// "AURA": {
-		// 	"description": ""
-		// },
-		// "EGGLAYER": {
-		// 	"description": ""
-		// },
-		// "WALKER": {
-		// 	"description": ""
-		// },
-		// "PICKPOCKET": {
-		// 	"description": ""
-		// },
-		// "CONVERTDROPS": {
-		// 	"description": ""
-		// },
-		// "LIFESTEAL": {
-		// 	"description": ""
-		// },
-		// "DAMAGEPOTION": {
-		// 	"description": ""
-		// },
-		// "WEATHERDAMAGE": {
-		// 	"description": ""
-		// }
+		},
+		"SLAM": { // no doc
+			"description": "",
+			"extends": "COOLDOWN",
+			"properties": {
+				"item": {
+					"description": "",
+					"required": false,
+					"type": "ItemStackData",
+					"default": {
+						"type": "AIR"
+					}
+				},
+				"airCooldown": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"foodCost": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"minimumFood": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 0
+				},
+				"radius": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 5
+				},
+				"damage": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 0
+				},
+				"cooldown": {
+					"description": "The cooldown in seconds",
+					"required": false,
+					"type": "number",
+					"default": 10
+				},
+				"cooldownMessage": { 
+					"description": "The message to display when the skill is on cooldown",
+					"required": false,
+					"type": "string",
+					"default": "<dark_gray><bold>Slam <white>Cooldown: <currentcooldown> seconds"
+				}
+			}
+		},
+		"ERASER": { // done
+			"description": "Removes all of another player's powers temporarily",
+			"extends": "COOLDOWN",
+			"properties": {
+				"removedMessage": {
+					"description": "The message to send to the user and erased player when their powers are removed",
+					"required": false,
+					"type": "string",
+					"default": "<player> has had their power erased temporarily!"
+				},
+				"returnedMessage": {
+					"description": "The message to send to the user and erased player when their powers are reinstated",
+					"required": false,
+					"type": "string",
+					"default": "<player> has had their power reinstated!"
+				},
+				"range": {
+					"description": "The maximum distance to the target player to be erased",
+					"required": false,
+					"type": "number",
+					"default": 30
+				},
+				"duration": {
+					"description": "How long the powers are erased",
+					"required": false,
+					"type": "number",
+					"default": 7.5
+				},
+				"cooldown": {
+					"description": "The cooldown in seconds",
+					"required": false,
+					"type": "number",
+					"default": 10
+				},
+				"cooldownMessage": { 
+					"description": "The message to display when the skill is on cooldown",
+					"required": false,
+					"type": "string",
+					"default": "You need to wait <currentcooldown> seconds before you can erase their power again!"
+				}
+			}
+		},
+		"TELEPORT": { // no doc
+			"description": "",
+			"properties": {
+				"leftClick": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"distance": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 30
+				},
+				"yAxisDistanceMultiplier": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"teleportCause": {
+					"description": "Sets the cause of the teleportation",
+					"required": false,
+					"type": "teleportCause",
+					"default": "ENDER_PEARL"
+				},
+				"particle": {
+					"description": "",
+					"required": false,
+					"type": "SuperheroesParticleData",
+					"default": {}
+				},
+				"teleportItem": {
+					"description": "",
+					"required": false,
+					"type": "material",
+					"default": "AIR"
+				},
+				"cooldown": {
+					"description": "The cooldown in seconds",
+					"required": false,
+					"type": "number",
+					"default": 10
+				},
+				"cooldownMessage": { 
+					"description": "The message to display when the skill is on cooldown",
+					"required": false,
+					"type": "string",
+					"default": "<purple><bold>Teleport <grey>has <s> seconds until it can be used again!"
+				}
+			}
+		},
+		"INSTANTBREAK": { // no doc
+			"description": "",
+			"properties": {
+				"blocks": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": []
+				}, 
+				"breakUsing": {
+					"description": "",
+					"required": true,
+					"type": "material"
+				}
+			}
+		},
+		"LIGHT": { // done
+			"description": "Applies a potion effect when the user is at a light level above 10",
+			"extends": "POTIONEFFECT",
+			"properties": {}
+		},
+		"NOHUNGER": { // done
+			"description": "Makes the user's hunger not go down after a certain hunger level",
+			"properties": {
+				"minimumHunger": {
+					"description": "The minimum hunger level the user can be at",
+					"required": false,
+					"type": "number",
+					"default": 19
+				}
+			}
+		},
+		"DAMAGERESISTANCE": { // no doc
+			"description": "",
+			"properties": {
+				"damageMultiplier": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 0
+				},
+				"damageCause": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "damageCause",
+					"default": []
+				},
+				// inline PotionEffectData
+				"potency": {
+					"description": "The potency or amplifier of the potion",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"type": {
+					"description": "The type of the potion",
+					"required": true,
+					"type": "potion"
+				},
+				"ambient": {
+					"description": "Whether to make the particles more translucent or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"hasParticles": {
+					"description": "Whether to make this potion effect has particles or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"duration": {
+					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+					"required": false,
+					"type": "number",
+					"default": 10
+				}
+			}
+		},
+		"SLIME": {// no doc
+			"description": "",
+			"properties": {
+				"speedMultiplier": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}
+			}
+		},
+		"SNEAKINGPOTION": { // done
+			"description": "Gives the user a potion effect when sneaking",
+			"properties": {
+				// inline PotionEffectData
+				"potency": {
+					"description": "The potency or amplifier of the potion",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"type": {
+					"description": "The type of the potion",
+					"required": true,
+					"type": "potion"
+				},
+				"ambient": {
+					"description": "Whether to make the particles more translucent or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"hasParticles": {
+					"description": "Whether to make this potion effect has particles or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"duration": {
+					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+					"required": false,
+					"type": "number",
+					"default": 10
+				}
+			}
+		},
+		"AURA": { // done
+			"description": "Gives every entity in the radius a potion effect",
+			"properties": {
+				"radius": {
+					"description": "The radius of the aura",
+					"required": false,
+					"type": "number",
+					"default": "5"
+				}, 
+				// inline PotionEffectData
+				"potency": {
+					"description": "The potency or amplifier of the potion",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"type": {
+					"description": "The type of the potion",
+					"required": true,
+					"type": "potion"
+				},
+				"ambient": {
+					"description": "Whether to make the particles more translucent or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"hasParticles": {
+					"description": "Whether to make this potion effect has particles or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"duration": {
+					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+					"required": false,
+					"type": "number",
+					"default": 10
+				}
+			}
+		},
+		"EGGLAYER": { // no doc
+			"description": "",
+			"properties": {
+				"type": {
+					"description": "",
+					"required": false,
+					"type": "string",
+					"default": "EGG"
+				}, 
+				"quantity": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				}, 
+				"delay": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 15
+				}
+			}
+		},
+		"WALKER": { // no doc
+			"description": "",
+			"properties": {
+				"blocksToReplace": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": []
+				},
+				"blocksToPlace": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": []
+				},
+				"blocksToPlaceOn": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": []
+				},
+				"isSneaking": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"blocksDrop": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"shouldRevert": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"revertsAfter": {
+					"description": "in seconds",
+					"required": false,
+					"type": "number",
+					"default": 15
+				},
+				"aboveFloor": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				},
+				"canPlaceFloating": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"PICKPOCKET": { // no doc
+			"description": "",
+			"properties": {
+				"range": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 3
+				}, 
+				"isSneaking": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"CONVERTDROPS": { // no doc
+			"description": "",
+			"properties": {
+				"convertMap": {
+					"description": "",
+					"required": false,
+					"type": "object",
+					"default": {},
+					"propertiesMap": {
+						"key": {
+							"description": "The item to be converted",
+							"type": "material"
+						},
+						"value": {
+							"description": "The item it converts to",
+							"required": false,
+							"type": "ItemStackData",
+							"default": {}
+						}
+					}
+				},
+				"ignoredBlocks": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": []
+				},
+				"ignoreSilkTouch": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"LIFESTEAL": { // done
+			"description": "Gives a percentage of the damage dealt to an entity as health to the user, cannot exceed maximum hp",
+			"properties": {
+				"lifestealPercentage": {
+					"description": "The percentage of damage that is given to the user as health",
+					"required": false,
+					"type": "number",
+					"default": 5
+				}
+			}
+		},
+		"DAMAGEPOTION": { // no doc
+			"description": "",
+			"properties": {
+				"damageCause": {
+					"description": "ALL will remove this requirement", // TODO
+					"required": false,
+					"type": "array",
+					"items": "damageCause",
+					"default": ""
+				},
+				// inline PotionEffectData
+				"potency": {
+					"description": "The potency or amplifier of the potion",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"type": {
+					"description": "The type of the potion",
+					"required": true,
+					"type": "potion"
+				},
+				"ambient": {
+					"description": "Whether to make the particles more translucent or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"hasParticles": {
+					"description": "Whether to make this potion effect has particles or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"duration": {
+					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+					"required": false,
+					"type": "number",
+					"default": 10
+				}
+			}
+		},
+		"WEATHERDAMAGE": { // no doc
+			"description": "",
+			"properties": {
+				"damage": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 1
+				}, 
+				"checkShelter": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"HEARTSTEAL": { // no doc
+			"description": "",
+			"properties": {
+				"heartsgained": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 2
+				}, 
+				"maxhearts": {
+					"description": "",
+					"required": false,
+					"type": "integer",
+					"default": 24
+				}, 
+				"entities": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "string",
+					"default": []
+				}
+			}
+		},
+		"KILLPOTION": { // done
+			"description": "Applies a potion effect everytime the user kills an entity",
+			"extends": "POTIONEFFECT",
+			"properties": {
+				"entities": {
+					"description": "The list entities that will trigger this skill. An empty list means all entities",
+					"required": false,
+					"type": "array",
+					"items": "entity",
+					"default": []
+				}
+			}
+		},
+		"CLIMB": { // no doc
+			"description": "",
+			"properties": {
+				"proximity": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 0.2
+				}, 
+				"speed": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 0.2
+				}, 
+				"debug": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": false
+				}, 
+				"blocks": {
+					"description": "",
+					"required": false,
+					"type": "array",
+					"items": "material",
+					"default": false
+				}, 
+				"whitelist": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				}
+			}
+		}
 	},
 	// EB
 	"damagemodifiers": {
@@ -3116,6 +3895,42 @@
 				}
 			}
 		},
+		"SuperheroesParticleData": {
+			"description": "The data of a particle for superheroes",
+			"type": "object",
+			"properties": {
+				"isHelix": {
+					"description": "",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"radius": {
+					"description": "",
+					"required": false,
+					"type": "number",
+					"default": 1
+				},
+				"duration": {
+					"description": "in seconds",
+					"required": false,
+					"type": "number",
+					"default": 2.5
+				},
+				"particleType": {
+					"description": "The type of particle",
+					"required": false,
+					"type": "particle",
+					"default": "PORTAL"
+				},
+				"numberOfParticles": {
+					"description": "The number of particles",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				}
+			}
+		},
 		"BlockDataData": {
 			"description": "The data of a block data",
 			"type": "object",
@@ -3321,6 +4136,11 @@
 			"description": "A damage cause",
 			"type": "string",
 			"enum": ["KILL", "WORLD_BORDER", "CONTACT", "ENTITY_ATTACK", "ENTITY_SWEEP_ATTACK", "PROJECTILE", "SUFFOCATION", "FALL", "FIRE", "FIRE_TICK", "MELTING", "LAVA", "DROWNING", "BLOCK_EXPLOSION", "ENTITY_EXPLOSION", "VOID", "LIGHTNING", "SUICIDE", "STARVATION", "POISON", "MAGIC", "WITHER", "FALLING_BLOCK", "THORNS", "DRAGON_BREATH", "CUSTOM", "FLY_INTO_WALL", "HOT_FLOOR", "CRAMMING", "DRYOUT", "FREEZE", "SONIC_BOOM"]
+		},
+		"teleportCause": {
+			"description": "A teleport cause",
+			"type": "string",
+			"enum": ["CHORUS_FRUIT", "COMMAND", "DISMOUNT", "END_GATEWAY", "END_PORTAL", "ENDER_PEARL", "EXIT_BED", "NETHER_PORTAL", "PLUGIN", "SPECTATE", "UNKNOWN"]
 		},
 		"action": {
 			"description": "An interaction action",

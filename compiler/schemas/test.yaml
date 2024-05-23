@@ -13,6 +13,11 @@ Superheroes:
         ACACIA_FENCE_GATE: 1
         OAK_LOG: 2
         AMETHYST_SHARD: 1
+    hsdgs:
+      skill: KILLPOTION
+      type: BLINDNESS
+      entities:
+        - AREA_EFFECT_CLOUD
     custom:
       skill: CUSTOM
       conditions:
