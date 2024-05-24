@@ -1,0 +1,6 @@
+name: DocTools
+version: ${version}
+main: me.sepdron.schema.mc.DocTools
+api-version: 1.20
+authors: [Sepdron]
+description: 
