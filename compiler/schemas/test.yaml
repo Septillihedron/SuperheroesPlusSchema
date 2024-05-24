@@ -13,6 +13,11 @@ Superheroes:
         ACACIA_FENCE_GATE: 1
         OAK_LOG: 2
         AMETHYST_SHARD: 1
+    hsdgs:
+      skill: KILLPOTION
+      type: BLINDNESS
+      entities:
+        - AREA_EFFECT_CLOUD
     custom:
       skill: CUSTOM
       conditions:
@@ -157,6 +162,28 @@ EnchantedBosses:
               type: FIRE
               mode: OTHER
               fireTicks: 120
+          conditions: 
+            potion:
+              type: POTIONEFFECT
+              mode: OTHER
+              duration: 2 - 100
+              potency: 0 - 3
+        potion:
+          type: POTION
+          mode: OTHER
+          potion:
+            potency: 1
+            ambient: true
+            hasParticles: true
+            duration: 10
+    effectTrig:
+      trigger:
+        type: POTIONEFFECT
+        actions:
+          - CHANGED
+        causes:
+          - VILLAGER_TRADE
+        
     exclusiveThings:
       effects:
         minion:
@@ -170,8 +197,10 @@ Exampleboss:
   damagemodifier: 
     type: BLANK
   entity: 
-    type: DROPPED_ITEM
+    type: ITEM
     shouldDespawn: true
+    attributes:
+      ARMOR_TOUGHNESS: 0
   reward: 
     type: BASIC
     experience: 100

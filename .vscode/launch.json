@@ -16,6 +16,16 @@
             "outFiles": [
                 "${workspaceFolder}/compiler/out/*.js"
             ]
-        }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "AutoDoc-simple",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "localRoot": "${workspaceFolder}\\AutoDoc-simple",
+            "program": "${workspaceFolder}\\AutoDoc-simple\\autodoc.mjs"
+        },
     ]
 }
