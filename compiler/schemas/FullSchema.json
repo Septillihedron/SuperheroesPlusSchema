@@ -11113,7 +11113,7 @@
                 },
                 "item": {
                     "description": "",
-                    "$ref": "#/types/ItemStackData"
+                    "$ref": "#/types/ItemComparisonData"
                 },
                 "projectile": {
                     "description": ". \nDefaults to \"SNOWBALL\"",

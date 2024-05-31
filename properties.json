@@ -2209,7 +2209,7 @@
 				"item": {
 					"description": "",
 					"required": true,
-					"type": "ItemStackData"
+					"type": "ItemComparisonData"
 				},
 				"projectile": {
 					"description": "",
