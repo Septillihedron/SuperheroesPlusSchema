@@ -469,7 +469,7 @@
 				"range", "comparison", "operation", "attributeOperation",
 				"entity", "material", "blockFace", 
 				"trimPattern", "trimMaterial",
-				"enchantment", "potion", "dyeColor",
+				"enchantment", "potion", "potionItemType", "dyeColor",
 				"axolotlVariant", "horseColor", "horseStyle",
 				"damageCause", "potionEffectCause", "potionEffectAction", "teleportCause", "action",
 				"biome", "world", 

@@ -1,10 +1,9 @@
 @echo off
 
-xcopy /v/y parse.py %pluginFolder%\DocTools\parse.py
 cd %pluginFolder%\..
+del plugins\DocTools\config.yml
 java -jar Paper.jar
-cd plugins/DocTools
-python parse.py
-xcopy /v/y/f parsed.txt %~dp0\parsed.txt
+echo F | xcopy /v/y/f plugins\DocTools\config.yml %~dp0\unparsed.yml
 cd %~dp0
-parsed.txt
+python parse.py
+parsed.json

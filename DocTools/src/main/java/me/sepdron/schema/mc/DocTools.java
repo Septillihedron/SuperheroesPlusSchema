@@ -25,6 +25,7 @@ public final class DocTools extends JavaPlugin {
         saveKeyed("trimMaterial", Registry.TRIM_MATERIAL.stream().toArray(Keyed[]::new));
 		saveKeyed("enchantment", org.bukkit.enchantments.Enchantment.values());
         saveKeyed("potion", org.bukkit.potion.PotionEffectType.values());
+		save("potionItemType", org.bukkit.potion.PotionType.values());
         save("dyeColor", org.bukkit.DyeColor.values());
         save("axolotlVariant", org.bukkit.entity.Axolotl.Variant.values());
         save("horseColor", org.bukkit.entity.Horse.Color.values());
@@ -36,7 +37,7 @@ public final class DocTools extends JavaPlugin {
         save("action", org.bukkit.event.block.Action.values());
         save("lootTable", org.bukkit.loot.LootTables.values());
         save("biome", org.bukkit.block.Biome.values());
-		getConfig().set("world", "[\"world\", \"world_nether\", \"world_the_end\"]");
+		save("world", new String[]{"world", "world_nether", "world_the_end"});
         save("equipmentSlot", org.bukkit.inventory.EquipmentSlot.values());
         save("attribute", org.bukkit.attribute.Attribute.values());
         save("collisionMode", org.bukkit.FluidCollisionMode.values());
@@ -44,6 +45,7 @@ public final class DocTools extends JavaPlugin {
         save("particle", org.bukkit.Particle.values());
         save("material", org.bukkit.Material.values());
 		
+		saveConfig();
         Bukkit.getServer().shutdown();
     }
     
@@ -61,10 +63,9 @@ public final class DocTools extends JavaPlugin {
         save(name, stream, x -> x.toString());
     }
     <T> void save(String name, Stream<T> stream, Function<T, String> function) {
-        String array = stream.map(function).collect(JSONArrayCollector.instance);
+        String array = stream.map(function).map(String::toUpperCase).collect(JSONArrayCollector.instance);
 		
         getConfig().set(name, array);
-        saveConfig();
     }
     
     static class JSONArrayCollector implements Collector<String, StringBuilder, String> {
