@@ -1719,6 +1719,10 @@
                             "description": "Modifies a furnace's burn time"
                         },
                         {
+                            "const": "PARTICLE",
+                            "description": "Spawns particles"
+                        },
+                        {
                             "const": "MINION",
                             "description": "Spawns bosses on the location of the user or target entity\n\nOnly available if you have the EnchantedBosses plugin"
                         },
@@ -2420,6 +2424,18 @@
                         "if": {
                             "properties": {
                                 "type": {
+                                    "const": "PARTICLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/PARTICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
                                     "const": "MINION"
                                 }
                             }
@@ -2438,6 +2454,142 @@
                         },
                         "then": {
                             "$ref": "#/effects/RIDER"
+                        }
+                    }
+                ]
+            }
+        },
+        "particleShape": {
+            "description": "A particle shape",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "oneOf": [
+                        {
+                            "const": "HELIX",
+                            "description": ""
+                        },
+                        {
+                            "const": "POINT",
+                            "description": ""
+                        },
+                        {
+                            "const": "HALO",
+                            "description": ""
+                        },
+                        {
+                            "const": "WISP",
+                            "description": ""
+                        },
+                        {
+                            "const": "HEART",
+                            "description": ""
+                        },
+                        {
+                            "const": "FAIRY_WINGS",
+                            "description": ""
+                        },
+                        {
+                            "const": "EARS",
+                            "description": ""
+                        }
+                    ],
+                    "description": "The type of the particle shape"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "if": {
+                "properties": {
+                    "type": false
+                }
+            },
+            "else": {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HELIX"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/particleShapes/HELIX"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "POINT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/particleShapes/POINT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HALO"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/particleShapes/HALO"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "WISP"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/particleShapes/WISP"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HEART"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/particleShapes/HEART"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FAIRY_WINGS"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/particleShapes/FAIRY_WINGS"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "EARS"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/particleShapes/EARS"
                         }
                     }
                 ]
@@ -6089,6 +6241,29 @@
                 "operation"
             ]
         },
+        "PARTICLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER",
+                        "LOCATION"
+                    ]
+                },
+                "particle": {
+                    "description": "The data of the particles to spawn. \nDefaults to {}",
+                    "$ref": "#/types/ParticleData",
+                    "default": {}
+                }
+            },
+            "required": [
+                "mode",
+                "particle"
+            ]
+        },
         "MINION": {
             "additionalProperties": false,
             "properties": {
@@ -6139,6 +6314,170 @@
                 "mode",
                 "rider"
             ]
+        }
+    },
+    "particleShapes": {
+        "HELIX": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "radius": {
+                    "description": ". \nDefaults to 0.5",
+                    "type": "number",
+                    "default": 0.5
+                },
+                "speed": {
+                    "description": ". \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
+                "wave_frequency": {
+                    "description": ". \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
+                "frequency": {
+                    "description": ". \nDefaults to 0.05",
+                    "type": "number",
+                    "default": 0.05
+                },
+                "height": {
+                    "description": ". \nDefaults to 2",
+                    "type": "number",
+                    "default": 2
+                }
+            }
+        },
+        "POINT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "spread": {
+                    "description": ". \nDefaults to 0.5",
+                    "type": "number",
+                    "default": 0.5
+                },
+                "offset": {
+                    "description": ". \nDefaults to 0",
+                    "type": "number",
+                    "default": 0
+                }
+            }
+        },
+        "HALO": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "height": {
+                    "description": ". \nDefaults to 0.3",
+                    "type": "number",
+                    "default": 0.3
+                },
+                "radius": {
+                    "description": ". \nDefaults to 0.3",
+                    "type": "number",
+                    "default": 0.3
+                },
+                "resolution": {
+                    "description": ". \nDefaults to 32",
+                    "type": "number",
+                    "default": 32
+                }
+            }
+        },
+        "WISP": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "radius": {
+                    "description": ". \nDefaults to 0.5",
+                    "type": "number",
+                    "default": 0.5
+                },
+                "speed": {
+                    "description": ". \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
+                "wave_frequency": {
+                    "description": ". \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
+                "height": {
+                    "description": ". \nDefaults to 2",
+                    "type": "number",
+                    "default": 2
+                }
+            }
+        },
+        "HEART": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "height": {
+                    "description": ". \nDefaults to 2",
+                    "type": "number",
+                    "default": 2
+                },
+                "frequency": {
+                    "description": ". \nDefaults to 0.05",
+                    "type": "number",
+                    "default": 0.05
+                },
+                "size": {
+                    "description": ". \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                }
+            }
+        },
+        "FAIRY_WINGS": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "height": {
+                    "description": ". \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
+                "frequency": {
+                    "description": ". \nDefaults to 0.05",
+                    "type": "number",
+                    "default": 0.05
+                },
+                "size": {
+                    "description": ". \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                }
+            }
+        },
+        "EARS": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "height": {
+                    "description": ". \nDefaults to 0.2",
+                    "type": "number",
+                    "default": 0.2
+                },
+                "frequency": {
+                    "description": ". \nDefaults to 0.05",
+                    "type": "number",
+                    "default": 0.05
+                },
+                "size": {
+                    "description": ". \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                },
+                "spread": {
+                    "description": ". \nDefaults to 0.2",
+                    "type": "number",
+                    "default": 0.2
+                }
+            }
         }
     },
     "skills": {
@@ -10956,11 +11295,11 @@
                 },
                 "trailParticle": {
                     "description": "The particle that will be used for the trail",
-                    "$ref": "#/types/ParticleData"
+                    "$ref": "#/types/ConfigurationDataParticleData"
                 },
                 "hitParticle": {
                     "description": "The particle that will be spawned at the hit location",
-                    "$ref": "#/types/ParticleData"
+                    "$ref": "#/types/ConfigurationDataParticleData"
                 }
             },
             "required": [
@@ -22045,7 +22384,7 @@
                 }
             }
         },
-        "ParticleData": {
+        "ConfigurationDataParticleData": {
             "additionalProperties": false,
             "type": "object",
             "properties": {
@@ -22336,6 +22675,84 @@
                     "description": "The metadata of the item. \nDefaults to {}",
                     "$ref": "#/types/ItemMetaComparisonData",
                     "default": {}
+                }
+            }
+        },
+        "ParticleData": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": ". \nDefaults to \"PORTAL\"",
+                    "$ref": "#/types/particle",
+                    "default": "PORTAL"
+                },
+                "duration": {
+                    "description": "in seconds. \nDefaults to 2.5",
+                    "type": "number",
+                    "default": 2.5
+                },
+                "amount": {
+                    "description": ". \nDefaults to \"1\"",
+                    "type": "integer",
+                    "default": "1"
+                },
+                "extra": {
+                    "description": ". \nDefaults to \"0\"",
+                    "type": "integer",
+                    "default": "0"
+                },
+                "shape": {
+                    "description": "",
+                    "$ref": "#/types/particleShape"
+                },
+                "options": {
+                    "description": "only for dust particle. \nDefaults to \"0\"",
+                    "$ref": "#/types/ParticleOptionsData",
+                    "default": "0"
+                }
+            }
+        },
+        "ParticleOptionsData": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "colours": {
+                    "description": ". \nDefaults to {}",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        ".*": {
+                            "$ref": "#/types/Colour"
+                        }
+                    },
+                    "default": {}
+                },
+                "scale": {
+                    "description": ". \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
+                }
+            }
+        },
+        "Colour": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "red": {
+                    "description": ". \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                },
+                "green": {
+                    "description": ". \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                },
+                "blue": {
+                    "description": ". \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
                 }
             }
         },
@@ -26397,6 +26814,10 @@
                 "POTTED_FLOWERING_AZALEA_BUSH"
             ]
         },
+        "trigger": {
+            "type": "object",
+            "$ref": "#/definitions/trigger"
+        },
         "condition": {
             "type": "object",
             "$ref": "#/definitions/condition"
@@ -26404,6 +26825,26 @@
         "effect": {
             "type": "object",
             "$ref": "#/definitions/effect"
+        },
+        "particleShape": {
+            "type": "object",
+            "$ref": "#/definitions/particleShape"
+        },
+        "skill": {
+            "type": "object",
+            "$ref": "#/definitions/skill"
+        },
+        "damagemodifier": {
+            "type": "object",
+            "$ref": "#/definitions/damagemodifier"
+        },
+        "reward": {
+            "type": "object",
+            "$ref": "#/definitions/reward"
+        },
+        "distribution": {
+            "type": "object",
+            "$ref": "#/definitions/distribution"
         }
     }
 }

@@ -1,0 +1,11 @@
+{
+  "name": "schema-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "run": "node src/index.mjs > out.json && echo done"
+  },
+  "author": "Sepdron",
+  "license": "ISC"
+}

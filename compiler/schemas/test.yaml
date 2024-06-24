@@ -176,6 +176,19 @@ EnchantedBosses:
             ambient: true
             hasParticles: true
             duration: 10
+        particle:
+          type: PARTICLE
+          mode: SELF
+          particle:
+            type: PORTAL
+            duration: 2.5
+            amount: 1
+            extra: 0
+            shape:
+              type: FAIRY_WINGS
+              frequency: 0.05
+              height: 1
+              size: 1
     effectTrig:
       trigger:
         type: POTIONEFFECT

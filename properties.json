@@ -1671,6 +1671,18 @@
 			"extends": "MODIFY",
 			"supportedModes": ["ALL", "LOCATION"]
 		},
+		"PARTICLE": {
+			"description": "Spawns particles",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+			"properties": {
+				"particle": {
+					"description": "The data of the particles to spawn",
+					"required": true,
+					"type": "ParticleData",
+					"default": {}
+				}
+			}
+		},
 		// EB exclusives
 		"MINION": {
 			"description": "Spawns bosses on the location of the user or target entity",
@@ -1709,6 +1721,187 @@
 			}
 		}
 	},
+	"particleShapes": {
+        "HELIX": {
+            "description": "",
+            "properties": {
+                "radius": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.5
+                },
+                "speed": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                },
+                "wave_frequency": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                },
+                "frequency": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.05
+                },
+                "height": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 2
+                }
+            }
+        },
+        "POINT": {
+            "description": "",
+            "properties": {
+                "spread": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.5
+                },
+                "offset": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0
+                }
+            }
+        },
+        "HALO": {
+            "description": "",
+            "properties": {
+                "height": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.3
+                },
+                "radius": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.3
+                },
+                "resolution": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 32
+                }
+            }
+        },
+        "WISP": {
+            "description": "",
+            "properties": {
+                "radius": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.5
+                },
+                "speed": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                },
+                "wave_frequency": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                },
+                "height": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 2
+                }
+            }
+        },
+        "HEART": {
+            "description": "",
+            "properties": {
+                "height": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 2
+                },
+                "frequency": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.05
+                },
+                "size": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                }
+            }
+        },
+        "FAIRY_WINGS": {
+            "description": "",
+            "properties": {
+                "height": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                },
+                "frequency": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.05
+                },
+                "size": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                }
+            }
+        },
+        "EARS": {
+            "description": "",
+            "properties": {
+                "height": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.2
+                },
+                "frequency": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.05
+                },
+                "size": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                },
+                "spread": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 0.2
+                }
+            }
+        }
+    },
 	// Superheroes
 	"skills": {
 		"ATTRIBUTE": { // done
@@ -2066,12 +2259,12 @@
 				"trailParticle": {
 					"description": "The particle that will be used for the trail",
 					"required": true,
-					"type": "ParticleData"
+					"type": "ConfigurationDataParticleData"
 				},
 				"hitParticle": {
 					"description": "The particle that will be spawned at the hit location",
 					"required": true,
-					"type": "ParticleData"
+					"type": "ConfigurationDataParticleData"
 				},
 				"cooldown": {
 					"description": "The cooldown in seconds",
@@ -3272,16 +3465,6 @@
 		}
 	},
 	"types": {
-		"condition": {
-			"description": "A skills library condition",
-			"type": "object",
-			"internal": true
-		},
-		"effect": {
-			"description": "A skills library effect",
-			"type": "object",
-			"internal": true
-		},
 		"range": {
 			"description": "A range of value",
 			"type": ["string", "number"],
@@ -3942,7 +4125,7 @@
 				}
 			}
 		},
-		"ParticleData": {
+		"ConfigurationDataParticleData": {
 			"description": "The data of a particle",
 			"type": "object",
 			"properties": {
@@ -4126,6 +4309,90 @@
 				}
 			}
 		},
+		"ParticleData": {
+            "description": "",
+			"type": "object",
+            "properties": {
+                "type": {
+                    "description": "",
+                    "type": "particle",
+                    "required": false,
+                    "default": "PORTAL"
+                },
+                "duration": {
+                    "description": "in seconds",
+                    "type": "number",
+                    "required": false,
+                    "default": 2.5
+                },
+                "amount": {
+                    "description": "",
+                    "type": "integer",
+                    "required": false,
+                    "default": "1"
+                },
+                "extra": {
+                    "description": "",
+                    "type": "integer",
+                    "required": false,
+                    "default": "0"
+                },
+                "shape": {
+                    "description": "",
+                    "type": "particleShape",
+                    "required": true
+                },
+                "options": {
+                    "description": "only for dust particle",
+                    "type": "ParticleOptionsData",
+                    "required": false,
+                    "default": "0"
+                }
+            }
+        },
+        "ParticleOptionsData": {
+            "description": "",
+			"type": "object",
+            "properties": {
+                "colours": {
+                    "description": "",
+                    "type": "record",
+                    "recordItem": "Colour",
+                    "required": false,
+                    "default": {}
+                },
+                "scale": {
+                    "description": "",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                }
+            }
+        },
+        "Colour": {
+            "description": "",
+			"type": "object",
+            "properties": {
+                "red": {
+                    "description": "",
+                    "type": "integer",
+                    "required": false,
+                    "default": 0
+                },
+                "green": {
+                    "description": "",
+                    "type": "integer",
+                    "required": false,
+                    "default": 0
+                },
+                "blue": {
+                    "description": "",
+                    "type": "integer",
+                    "required": false,
+                    "default": 0
+                }
+            }
+        },
 		"entity": {
 			"description": "A type of entity",
 			"type": "string",

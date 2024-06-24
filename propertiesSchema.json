@@ -101,6 +101,22 @@
 			},
 			"additionalProperties": false
 		},
+		"particleShapes": {
+			"type": "object",
+			"description": "The list of particle shapes and their properties",
+			"patternProperties": {
+				"\\p{Upper}": {
+					"type": "object",
+					"description": "A particle shape and it's properties",
+					"properties": {
+						"description": true,
+						"properties": true
+					},
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalProperties": false
+				}
+			}
+		},
 		"skills": {
 			"type": "object",
 			"description": "The list of skills and their properties",
@@ -477,7 +493,7 @@
 				"attribute", 
 				"collisionMode",
 				"sound", "particle",
-				"condition", "effect",
+				"condition", "effect", "particleShape",
 				// EB exclusives
 				"bossBarFlag", "bossBarColor", "bossBarStyle",
 				// EC exclusives
@@ -487,8 +503,9 @@
 		"objectTypes": {
 			"enum": [
 				"ConditionList", "EffectList",
-				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "ParticleData", "SuperheroesParticleData", "BlockDataData", "BlockDataComparison",
+				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "SuperheroesParticleData", "ConfigurationDataParticleData", "BlockDataData", "BlockDataComparison",
 				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData",
+				"ParticleData", "ParticleOptionsData", "Colour",
 				// EB exclusives
 				"SpawnData", "BossBarData"
 			]

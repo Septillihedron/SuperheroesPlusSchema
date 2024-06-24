@@ -19,6 +19,7 @@ export class Compiler {
 			triggers: { type: true, conditions: true },
 			conditions: { type: true, else: true },
 			effects: { type: true },
+			particleShapes: { type: true },
 			skills: { skill: true, conditions: true },
 			damagemodifiers: { type: true },
 			rewards: { type: true },
@@ -102,13 +103,11 @@ export class Compiler {
 	
 	addInternalTypes(): void {
 		let {types} = this.schema
-		types["condition"] = {
-			type: "object",
-			$ref: "#/definitions/condition"
-		}
-		types["effect"] = {
-			type: "object",
-			$ref: "#/definitions/effect"
+		for (const category of Object.values(Compiled.pluralToUnpluralCategories)) {
+			types[category] = {
+				type: "object",
+				$ref: `#/definitions/${category}`
+			}
 		}
 	}
 

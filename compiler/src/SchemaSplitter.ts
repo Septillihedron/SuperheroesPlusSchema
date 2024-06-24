@@ -22,12 +22,14 @@ class PartialSchemaBuilder {
             trigger: this.fullSchema.definitions.trigger,
             condition: this.fullSchema.definitions.condition,
             effect: this.fullSchema.definitions.effect,
+            particleShape: this.fullSchema.definitions.particleShape,
         }
         this.partialSchema.definitions[root] = (this.fullSchema.definitions as any)[root]
 
         this.partialSchema.triggers = this.fullSchema.triggers
         this.partialSchema.conditions = this.fullSchema.conditions
         this.partialSchema.effects = this.fullSchema.effects
+        this.partialSchema.particleShapes = this.fullSchema.particleShapes
         this.partialSchema.types = this.fullSchema.types
     }
 

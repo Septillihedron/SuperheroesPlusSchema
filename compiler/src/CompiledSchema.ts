@@ -20,6 +20,7 @@ const pluralToUnpluralCategories: Record<Category, NonPluralCategory> = {
 	triggers: "trigger",
 	conditions: "condition",
 	effects: "effect",
+	particleShapes: "particleShape",
 	skills: "skill",
 	damagemodifiers: "damagemodifier",
 	rewards: "reward",
@@ -51,6 +52,7 @@ class FullSchema {
 		trigger: new Trigger(),
 		condition: new Condition(),
 		effect: new Effect(),
+		particleShape: new ParticleShape(),
 		
 		skill: new Skill(),
 
@@ -62,6 +64,8 @@ class FullSchema {
 	readonly triggers: StringRecord<Definition> = {}
 	readonly conditions: StringRecord<Definition> = {}
 	readonly effects: StringRecord<Definition> = {}
+
+	readonly particleShapes: StringRecord<Definition> = {}
 
 	readonly skills: StringRecord<Definition> = {}
 
@@ -369,6 +373,22 @@ class Effect implements UnionType {
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
 		this.else.allOf.push(new IfThenReference("effect", name))
+	}
+}
+
+class ParticleShape implements UnionType {
+	readonly description = "A particle shape"
+	readonly type = "object"
+	readonly properties = {
+		type: new Types("The type of the particle shape")
+	}
+	readonly required = ["type"]
+	readonly if = {"properties": {"type": false}}
+	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
+		this.else.allOf.push(new IfThenReference("particleShape", name))
 	}
 }
 
