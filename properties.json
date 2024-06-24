@@ -333,7 +333,7 @@
 					"type": "integer",
 					"default": 24000
 				},
-                "time": {
+				"time": {
 					"description": "A range for time",
 					"required": false,
 					"type": "range",
@@ -1722,186 +1722,186 @@
 		}
 	},
 	"particleShapes": {
-        "HELIX": {
-            "description": "",
-            "properties": {
-                "radius": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.5
-                },
-                "speed": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 1
-                },
-                "wave_frequency": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 1
-                },
-                "frequency": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.05
-                },
-                "height": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 2
-                }
-            }
-        },
-        "POINT": {
-            "description": "",
-            "properties": {
-                "spread": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.5
-                },
-                "offset": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0
-                }
-            }
-        },
-        "HALO": {
-            "description": "",
-            "properties": {
-                "height": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.3
-                },
-                "radius": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.3
-                },
-                "resolution": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 32
-                }
-            }
-        },
-        "WISP": {
-            "description": "",
-            "properties": {
-                "radius": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.5
-                },
-                "speed": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 1
-                },
-                "wave_frequency": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 1
-                },
-                "height": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 2
-                }
-            }
-        },
-        "HEART": {
-            "description": "",
-            "properties": {
-                "height": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 2
-                },
-                "frequency": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.05
-                },
-                "size": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 1
-                }
-            }
-        },
-        "FAIRY_WINGS": {
-            "description": "",
-            "properties": {
-                "height": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 1
-                },
-                "frequency": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.05
-                },
-                "size": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 1
-                }
-            }
-        },
-        "EARS": {
-            "description": "",
-            "properties": {
-                "height": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.2
-                },
-                "frequency": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.05
-                },
-                "size": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 1
-                },
-                "spread": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 0.2
-                }
-            }
-        }
-    },
+		"HELIX": {
+			"description": "",
+			"properties": {
+				"radius": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.5
+				},
+				"speed": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 1
+				},
+				"wave_frequency": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 1
+				},
+				"frequency": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.05
+				},
+				"height": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 2
+				}
+			}
+		},
+		"POINT": {
+			"description": "",
+			"properties": {
+				"spread": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.5
+				},
+				"offset": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0
+				}
+			}
+		},
+		"HALO": {
+			"description": "",
+			"properties": {
+				"height": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.3
+				},
+				"radius": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.3
+				},
+				"resolution": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 32
+				}
+			}
+		},
+		"WISP": {
+			"description": "",
+			"properties": {
+				"radius": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.5
+				},
+				"speed": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 1
+				},
+				"wave_frequency": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 1
+				},
+				"height": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 2
+				}
+			}
+		},
+		"HEART": {
+			"description": "",
+			"properties": {
+				"height": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 2
+				},
+				"frequency": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.05
+				},
+				"size": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 1
+				}
+			}
+		},
+		"FAIRY_WINGS": {
+			"description": "",
+			"properties": {
+				"height": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 1
+				},
+				"frequency": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.05
+				},
+				"size": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 1
+				}
+			}
+		},
+		"EARS": {
+			"description": "",
+			"properties": {
+				"height": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.2
+				},
+				"frequency": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.05
+				},
+				"size": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 1
+				},
+				"spread": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 0.2
+				}
+			}
+		}
+	},
 	// Superheroes
 	"skills": {
 		"ATTRIBUTE": { // done
@@ -4310,89 +4310,89 @@
 			}
 		},
 		"ParticleData": {
-            "description": "",
+			"description": "",
 			"type": "object",
-            "properties": {
-                "type": {
-                    "description": "",
-                    "type": "particle",
-                    "required": false,
-                    "default": "PORTAL"
-                },
-                "duration": {
-                    "description": "in seconds",
-                    "type": "number",
-                    "required": false,
-                    "default": 2.5
-                },
-                "amount": {
-                    "description": "",
-                    "type": "integer",
-                    "required": false,
-                    "default": "1"
-                },
-                "extra": {
-                    "description": "",
-                    "type": "integer",
-                    "required": false,
-                    "default": "0"
-                },
-                "shape": {
-                    "description": "",
-                    "type": "particleShape",
-                    "required": true
-                },
-                "options": {
-                    "description": "only for dust particle",
-                    "type": "ParticleOptionsData",
-                    "required": false,
-                    "default": "0"
-                }
-            }
-        },
-        "ParticleOptionsData": {
-            "description": "",
+			"properties": {
+				"type": {
+					"description": "",
+					"type": "particle",
+					"required": false,
+					"default": "PORTAL"
+				},
+				"duration": {
+					"description": "in seconds",
+					"type": "number",
+					"required": false,
+					"default": 2.5
+				},
+				"amount": {
+					"description": "",
+					"type": "integer",
+					"required": false,
+					"default": "1"
+				},
+				"extra": {
+					"description": "",
+					"type": "integer",
+					"required": false,
+					"default": "0"
+				},
+				"shape": {
+					"description": "",
+					"type": "particleShape",
+					"required": true
+				},
+				"options": {
+					"description": "only for dust particle",
+					"type": "ParticleOptionsData",
+					"required": false,
+					"default": "0"
+				}
+			}
+		},
+		"ParticleOptionsData": {
+			"description": "",
 			"type": "object",
-            "properties": {
-                "colours": {
-                    "description": "",
-                    "type": "record",
-                    "recordItem": "Colour",
-                    "required": false,
-                    "default": {}
-                },
-                "scale": {
-                    "description": "",
-                    "type": "number",
-                    "required": false,
-                    "default": 1
-                }
-            }
-        },
-        "Colour": {
-            "description": "",
+			"properties": {
+				"colours": {
+					"description": "",
+					"type": "record",
+					"recordItem": "Colour",
+					"required": false,
+					"default": {}
+				},
+				"scale": {
+					"description": "",
+					"type": "number",
+					"required": false,
+					"default": 1
+				}
+			}
+		},
+		"Colour": {
+			"description": "",
 			"type": "object",
-            "properties": {
-                "red": {
-                    "description": "",
-                    "type": "integer",
-                    "required": false,
-                    "default": 0
-                },
-                "green": {
-                    "description": "",
-                    "type": "integer",
-                    "required": false,
-                    "default": 0
-                },
-                "blue": {
-                    "description": "",
-                    "type": "integer",
-                    "required": false,
-                    "default": 0
-                }
-            }
-        },
+			"properties": {
+				"red": {
+					"description": "",
+					"type": "integer",
+					"required": false,
+					"default": 0
+				},
+				"green": {
+					"description": "",
+					"type": "integer",
+					"required": false,
+					"default": 0
+				},
+				"blue": {
+					"description": "",
+					"type": "integer",
+					"required": false,
+					"default": 0
+				}
+			}
+		},
 		"entity": {
 			"description": "A type of entity",
 			"type": "string",
