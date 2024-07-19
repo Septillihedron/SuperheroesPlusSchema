@@ -190,6 +190,23 @@
 			},
 			"additionalProperties": false
 		},
+		"entityData": {
+			"type": "object",
+			"description": "The list of entity data and their properties",
+			"patternProperties": {
+				"\\p{Upper}": {
+					"type": "object",
+					"description": "A entity data and it's properties",
+					"properties": {
+						"description": true,
+						"extends": true,
+						"properties": true
+					},
+					"allOf": [{ "$ref": "#/definitions/type" }],
+					"additionalProperties": false
+				}
+			}
+		},
 		"types": {
 			"type": "object",
 			"description": "The list of types and their definitions that is in the skills library",
@@ -467,7 +484,7 @@
 			"anyOf": [
 				{
 					"enum": [
-						"array", "object", "record",
+						"array", "object", "record", 
 						"string", "number", "integer", "boolean"
 					]
 				},
@@ -482,20 +499,21 @@
 		"stringTypes": {
 			"enum": [
 				"string", 
-				"range", "comparison", "operation", "attributeOperation",
+				"range", "comparison", "operation", "attributeOperation", 
 				"entity", "material", "blockFace", 
-				"trimPattern", "trimMaterial",
-				"enchantment", "potion", "potionItemType", "dyeColor",
-				"axolotlVariant", "horseColor", "horseStyle",
-				"damageCause", "potionEffectCause", "potionEffectAction", "teleportCause", "action",
+				"trimPattern", "trimMaterial", 
+				"enchantment", "potion", "potionItemType", "dyeColor", 
+				"axolotlVariant", "horseColor", "horseStyle", "llamaColor", "rabbitType", 
+				"arrowPickupStatus", 
+				"damageCause", "potionEffectCause", "potionEffectAction", "teleportCause", "action", 
 				"biome", "world", 
 				"equipmentSlot", 
 				"attribute", 
-				"collisionMode",
-				"sound", "particle",
-				"condition", "effect", "particleShape",
+				"collisionMode", 
+				"sound", "particle", 
+				"condition", "effect", "particleShape", 
 				// EB exclusives
-				"bossBarFlag", "bossBarColor", "bossBarStyle",
+				"bossBarFlag", "bossBarColor", "bossBarStyle", 
 				// EC exclusives
 				"lootTable"
 			]
@@ -503,7 +521,7 @@
 		"objectTypes": {
 			"enum": [
 				"ConditionList", "EffectList",
-				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "SuperheroesParticleData", "ConfigurationDataParticleData", "BlockDataData", "BlockDataComparison",
+				"ItemAttributeData", "EnchantmentData", "ItemMetaData", "ItemStackData", "EquipmentData", "EquipmentItemStackData", "AttributeData", "EntityData", "VectorData", "SoundData", "PotionEffectData", "PotionItemData", "SuperheroesParticleData", "ConfigurationDataParticleData", "BlockDataData", "BlockDataComparison",
 				"LoreData", "EnchantComparisonData", "ItemMetaComparisonData", "ItemComparisonData",
 				"ParticleData", "ParticleOptionsData", "Colour",
 				// EB exclusives

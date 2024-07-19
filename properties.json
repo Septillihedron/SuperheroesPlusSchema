@@ -3464,6 +3464,982 @@
 			}
 		}
 	},
+	"entityData": {
+		"LIVING_ENTITY": {
+			"description": "The data for a living entity",
+			"properties": {
+				"canEquip": {
+					"description": "Whether the entity can pick up items",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"equipment": {
+					"description": "The equipment(s) the entity has",
+					"type": "EquipmentData",
+					"required": false,
+					"default": "{}"
+				}
+			}
+		},
+		"AXOLOTL": {
+			"extends": "LIVING_ENTITY",
+			"description": "The data for a axolotl",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"variant": {
+					"description": "The variant of axolotl. \n\nDefaults to a random variant",
+					"type": "axolotlVariant",
+					"required": false,
+					"default": "random"
+				}
+			}
+		},
+		"ABSTRACT_ARROW": {
+			"description": "The data for a abstract arrow",
+			"properties": {
+				"knockbackStrength": {
+					"description": "The knockback strength of the arrow",
+					"type": "integer",
+					"required": false,
+					"default": 0
+				},
+				"damage": {
+					"description": "The amount of damage the arrow will do (in hp / half hearts)",
+					"type": "number",
+					"required": false,
+					"default": 2
+				},
+				"pierceLevel": {
+					"description": "The amount of times the arrow can pierce through an entity",
+					"type": "integer",
+					"required": false,
+					"default": 0,
+					"min": 0,
+					"max": 127
+				},
+				"critical": {
+					"description": "Whether the arrow should do critical damage",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"pickupStatus": {
+					"description": "How the arrow can be picked up",
+					"type": "arrowPickupStatus",
+					"required": false,
+					"default": "DISALLOWED"
+				}
+			}
+		},
+		"ARROW": {
+			"extends": "ABSTRACT_ARROW",
+			"description": "The data for a arrow",
+			"properties": {
+				"potion": {
+					"description": "The potion data for the arrow",
+					"type": "PotionItemData",
+					"required": false,
+					"default": "{}"
+				}
+			}
+		},
+		"CREEPER": {
+			"extends": "LIVING_ENTITY",
+			"description": "The data for a creeper",
+			"properties": {
+				"fuse": {
+					"description": "The fuse time of the creeper (in ticks)",
+					"type": "integer",
+					"required": false,
+					"default": 30
+				},
+				"ignited": {
+					"description": "Whether the creeper is already ignited/primed",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"explosionRadius": {
+					"description": "The radius of the creeper explosion (in blocks)",
+					"type": "integer",
+					"required": false,
+					"default": 3
+				},
+				"powered": {
+					"description": "Whether the creeper is charged",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"DROPPED_ITEM": {
+			"description": "The data for a dropped item",
+			"properties": {
+				"item": {
+					"description": "The item the dropped item will be",
+					"type": "ItemStackData",
+					"required": true
+				}
+			}
+		},
+		"EXPERIENCE_ORB": {
+			"description": "The data for a experience orb",
+			"properties": {
+				"experience": {
+					"description": "The amount of xp this xp orb will have",
+					"type": "integer",
+					"required": false,
+					"default": 1
+				}
+			}
+		},
+		"FALLING_BLOCK": {
+			"description": "The data for a falling block",
+			"properties": {
+				"block": {
+					"description": "The block that is falling",
+					"type": "BlockDataData",
+					"required": true
+				},
+				"dropItem": {
+					"description": "Whether the block can be dropped as an item when the falling block cannot be placed",
+					"type": "boolean",
+					"required": false,
+					"default": true
+				},
+				"cancelDrop": {
+					"description": "Whether or not the block can be placed or dropped as an item",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"hurtEntities": {
+					"description": "Whether entities can be damaged by this falling block",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"damagePerBlock": {
+					"description": "The damage per block this falling block will deal to an entity",
+					"type": "number",
+					"required": false,
+					"default": 2
+				},
+				"maxDamage": {
+					"description": "The maximum damage this falling block can deal",
+					"type": "integer",
+					"required": false,
+					"default": 40
+				}
+			}
+		},
+		"HORSE": {
+			"extends": "LIVING_ENTITY",
+			"description": "The data for a horse",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"tamingDifficulty": {
+					"description": "How hard this horse is to tame",
+					"type": "integer",
+					"required": false,
+					"default": 1
+				},
+				"jumpStrength": {
+					"description": "The strength of the horse's jump. TODO",
+					"type": "number",
+					"required": false,
+					"default": 0.7,
+					"min": 0.7,
+					"max": 2
+				},
+				"hasChest": {
+					"description": "Whether this horse have a chest",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"tamed": {
+					"description": "Whether this horse is tamed",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"armorSection": {
+					"description": "The armor this horse wears. \n\nDefaults to not wearing armor",
+					"type": "ItemStackData",
+					"required": false,
+					"default": "{}"
+				},
+				"hasSaddle": {
+					"description": "Whether this horse has a saddle",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"color": {
+					"description": "The color of the horse",
+					"type": "horseColor",
+					"required": false,
+					"default": "CHESTNUT"
+				},
+				"style": {
+					"description": "The style of the horse",
+					"type": "horseStyle",
+					"required": false,
+					"default": "NONE"
+				}
+			}
+		},
+		"SKELETON_HORSE": {
+			"extends": "HORSE",
+			"description": "The data for a skeleton horse",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"ZOMBIE_HORSE": {
+			"extends": "HORSE",
+			"description": "The data for a zombie horse",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"LLAMA": {
+			"extends": "HORSE",
+			"description": "The data for a llama",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"color": {
+					"description": "The color of this llama. \n\nDefaults to a random color",
+					"type": "llamaColor",
+					"required": false,
+					"default": "null"
+				},
+				"strength": {
+					"description": "How much inventory space this llama can has, equal to `strength*3`",
+					"type": "integer",
+					"required": false,
+					"default": 1
+				}
+			}
+		},
+		"PRIMED_TNT": {
+			"description": "The data for a primed tnt",
+			"properties": {
+				"fuseTicks": {
+					"description": "The number of ticks until this TNT blows up (in ticks)",
+					"type": "integer",
+					"required": false,
+					"default": 100
+				}
+			}
+		},
+		"SPECTRAL_ARROW": {
+			"extends": "ABSTRACT_ARROW",
+			"description": "The data for a spectral arrow",
+			"properties": {
+				"glowingTicks": {
+					"description": "The amount of time to apply the glowing effect for (in ticks)",
+					"type": "integer",
+					"required": false,
+					"default": 200
+				}
+			}
+		},
+		"SPLASH_POTION": {
+			"description": "The data for a splash potion",
+			"properties": {
+				"potion": {
+					"description": "The item that this splash potion represent",
+					"type": "ItemStackData",
+					"required": true
+				}
+			}
+		},
+		"RABBIT": {
+			"description": "The data for a rabbit",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"variant": {
+					"description": "The variant of the rabbit. \n\nDefault to a random variant",
+					"type": "rabbitType",
+					"required": false,
+					"default": "null"
+				}
+			}
+		},
+		"TRIDENT": {
+			"extends": "ABSTRACT_ARROW",
+			"description": "The data for a trident",
+			"properties": {
+				"item": {
+					"description": "The display ItemStack for the thrown projectile",
+					"type": "ItemStackData",
+					"required": false,
+					"default": "{}"
+				}
+			}
+		},
+		"WITHER_SKULL": {
+			"description": "The data for a wither skull",
+			"properties": {
+				"yield": {
+					"description": "The radius affected by this explosive's explosion",
+					"type": "number",
+					"required": false,
+					"default": 2.5
+				},
+				"isIncendiary": {
+					"description": "Whether this explosive's explosion will cause fire",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"charged": {
+					"description": "Whether this wither skull is blue/charged",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"WOLF": {
+			"extends": "LIVING_ENTITY",
+			"description": "The data for a wolf",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"angry": {
+					"description": "Whether this wolf is angry",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"HUSK": {
+			"description": "The data for a husk",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"ZOMBIE_VILLAGER": {
+			"description": "The data for a zombie villager",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"DONKEY": {
+			"description": "The data for a donkey",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"MULE": {
+			"description": "The data for a mule",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"ZOMBIE": {
+			"description": "The data for a zombie",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"ZOMBIFIED_PIGLIN": {
+			"description": "The data for a zombified piglin",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"PIG": {
+			"description": "The data for a pig",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"SHEEP": {
+			"description": "The data for a sheep",
+			"properties": {
+				"color": {
+					"description": "The color of the entity. Works for shulkers and sheep",
+					"type": "dyeColor",
+					"required": true
+				},
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"COW": {
+			"description": "The data for a cow",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"CHICKEN": {
+			"description": "The data for a chicken",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"MOOSHROOM": {
+			"description": "The data for a mooshroom",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"OCELOT": {
+			"description": "The data for a ocelot",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"POLAR_BEAR": {
+			"description": "The data for a polar bear",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"PARROT": {
+			"description": "The data for a parrot",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"VILLAGER": {
+			"description": "The data for a villager",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"TURTLE": {
+			"description": "The data for a turtle",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"DROWNED": {
+			"description": "The data for a drowned",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"CAT": {
+			"description": "The data for a cat",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"PANDA": {
+			"description": "The data for a panda",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"TRADER_LLAMA": {
+			"description": "The data for a trader llama",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"WANDERING_TRADER": {
+			"description": "The data for a wandering trader",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"FOX": {
+			"description": "The data for a fox",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"BEE": {
+			"description": "The data for a bee",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"HOGLIN": {
+			"description": "The data for a hoglin",
+			"properties": {
+				"isZombifiable": {
+					"description": "Whether the entity is immune to zombification. Works for hoglins, piglins, and piglin brutes",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"PIGLIN": {
+			"description": "The data for a piglin",
+			"properties": {
+				"isZombifiable": {
+					"description": "Whether the entity is immune to zombification. Works for hoglins, piglins, and piglin brutes",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"STRIDER": {
+			"description": "The data for a strider",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"ZOGLIN": {
+			"description": "The data for a zoglin",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"PIGLIN_BRUTE": {
+			"description": "The data for a piglin brute",
+			"properties": {
+				"isZombifiable": {
+					"description": "Whether the entity is immune to zombification. Works for hoglins, piglins, and piglin brutes",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"GOAT": {
+			"description": "The data for a goat",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"FROG": {
+			"description": "The data for a frog",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"CAMEL": {
+			"description": "The data for a camel",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"SNIFFER": {
+			"description": "The data for a sniffer",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"ARMADILLO": {
+			"description": "The data for a armadillo",
+			"properties": {
+				"isBaby": {
+					"description": "Whether the entity is a baby",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"SHULKER": {
+			"description": "The data for a shulker",
+			"properties": {
+				"color": {
+					"description": "The color of the entity. Works for shulkers and sheep",
+					"type": "dyeColor",
+					"required": true
+				}
+			}
+		},
+		"FIREBALL": {
+			"description": "The data for a fireball",
+			"properties": {
+				"yield": {
+					"description": "The radius affected by this explosive's explosion",
+					"type": "number",
+					"required": false,
+					"default": 2.5
+				},
+				"isIncendiary": {
+					"description": "Whether this explosive's explosion will cause fire",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"SMALL_FIREBALL": {
+			"description": "The data for a small fireball",
+			"properties": {
+				"yield": {
+					"description": "The radius affected by this explosive's explosion",
+					"type": "number",
+					"required": false,
+					"default": 2.5
+				},
+				"isIncendiary": {
+					"description": "Whether this explosive's explosion will cause fire",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"TNT": {
+			"description": "The data for a tnt",
+			"properties": {
+				"yield": {
+					"description": "The radius affected by this explosive's explosion",
+					"type": "number",
+					"required": false,
+					"default": 2.5
+				},
+				"isIncendiary": {
+					"description": "Whether this explosive's explosion will cause fire",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"DRAGON_FIREBALL": {
+			"description": "The data for a dragon fireball",
+			"properties": {
+				"yield": {
+					"description": "The radius affected by this explosive's explosion",
+					"type": "number",
+					"required": false,
+					"default": 2.5
+				},
+				"isIncendiary": {
+					"description": "Whether this explosive's explosion will cause fire",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"WIND_CHARGE": {
+			"description": "The data for a wind charge",
+			"properties": {
+				"yield": {
+					"description": "The radius affected by this explosive's explosion",
+					"type": "number",
+					"required": false,
+					"default": 2.5
+				},
+				"isIncendiary": {
+					"description": "Whether this explosive's explosion will cause fire",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"BREEZE_WIND_CHARGE": {
+			"description": "The data for a breeze wind_charge",
+			"properties": {
+				"yield": {
+					"description": "The radius affected by this explosive's explosion",
+					"type": "number",
+					"required": false,
+					"default": 2.5
+				},
+				"isIncendiary": {
+					"description": "Whether this explosive's explosion will cause fire",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				}
+			}
+		},
+		"SLIME": {
+			"description": "The data for a slime",
+			"properties": {
+				"size": {
+					"description": "The size of this entity. Works for slimes, magma cubes, and phantoms",
+					"type": "integer",
+					"required": true,
+					"default": 0
+				}
+			}
+		},
+		"MAGMA_CUBE": {
+			"description": "The data for a magma cube",
+			"properties": {
+				"size": {
+					"description": "The size of this entity. Works for slimes, magma cubes, and phantoms",
+					"type": "integer",
+					"required": true,
+					"default": 0
+				}
+			}
+		},
+		"PHANTOM": {
+			"description": "The data for a phantom",
+			"properties": {
+				"size": {
+					"description": "The size of this entity. Works for slimes, magma cubes, and phantoms",
+					"type": "integer",
+					"required": true,
+					"default": 0
+				}
+			}
+		},
+		"EGG": {
+			"description": "The data for a egg",
+			"properties": {
+				"item": {
+					"description": "The display ItemStack for the thrown projectile",
+					"type": "ItemStackData",
+					"required": false,
+					"default": "{}"
+				}
+			}
+		},
+		"SNOWBALL": {
+			"description": "The data for a snowball",
+			"properties": {
+				"item": {
+					"description": "The display ItemStack for the thrown projectile",
+					"type": "ItemStackData",
+					"required": false,
+					"default": "{}"
+				}
+			}
+		},
+		"ENDER_PEARL": {
+			"description": "The data for a ender pearl",
+			"properties": {
+				"item": {
+					"description": "The display ItemStack for the thrown projectile",
+					"type": "ItemStackData",
+					"required": false,
+					"default": "{}"
+				}
+			}
+		},
+		"POTION": {
+			"description": "The data for a potion",
+			"properties": {
+				"item": {
+					"description": "The display ItemStack for the thrown projectile",
+					"type": "ItemStackData",
+					"required": false,
+					"default": "{}"
+				}
+			}
+		},
+		"EXPERIENCE_BOTTLE": {
+			"description": "The data for a experience bottle",
+			"properties": {
+				"item": {
+					"description": "The display ItemStack for the thrown projectile",
+					"type": "ItemStackData",
+					"required": false,
+					"default": "{}"
+				}
+			}
+		}
+	},
 	"types": {
 		"range": {
 			"description": "A range of value",
@@ -3839,6 +4815,78 @@
 				}
 			}
 		},
+		"EquipmentData": {
+			"description": "The equipment data for entities",
+			"properties": {
+				"helmet": {
+					"description": "The item data for the helmet slot",
+					"type": "EquipmentItemStackData",
+					"required": false,
+					"default": "{}"
+				},
+				"chestplate": {
+					"description": "The item data for the chestplate slot",
+					"type": "EquipmentItemStackData",
+					"required": false,
+					"default": "{}"
+				},
+				"leggings": {
+					"description": "The item data for the leggings slot",
+					"type": "EquipmentItemStackData",
+					"required": false,
+					"default": "{}"
+				},
+				"boots": {
+					"description": "The item data for the boots slot",
+					"type": "EquipmentItemStackData",
+					"required": false,
+					"default": "{}"
+				},
+				"mainhand": {
+					"description": "The item data for the mainhand slot",
+					"type": "EquipmentItemStackData",
+					"required": false,
+					"default": "{}"
+				},
+				"offhand": {
+					"description": "The item data for the offhand slot",
+					"type": "EquipmentItemStackData",
+					"required": false,
+					"default": "{}"
+				}
+			}
+		},
+		"EquipmentItemStackData": {
+			"description": "The item stack data for an equipment (ie. ItemStackData + droprate)",
+			"properties": {
+				"type": {
+					"description": "The type of item",
+					"type": "material",
+					"required": true,
+					"default": "STONE"
+				},
+				"amount": {
+					"description": "The amount of item to give",
+					"type": "integer",
+					"required": false,
+					"default": 1
+				},
+				"metadata": {
+					"description": "The metadata of the item",
+					"type": "ItemMetaData",
+					"required": false,
+					"default": "{}"
+				},
+				"droprate": {
+					"description": "The chance to drop the item",
+					"type": "number",
+					"required": false,
+					"default": 0,
+					"min": 0,
+					"max": 1
+				}
+			}
+		},
 		"AttributeData": {
 			"description": "The list of attributes and it's value",
 			"type": "object",
@@ -3856,188 +4904,54 @@
 		},
 		"EntityData": {
 			"description": "The data of an entity",
-			"type": "object",
 			"properties": {
 				"type": {
-					"description": "The entity type",
-					"required": false, 
+					"description": "The entity type", 
 					"type": "entity",
+					"required": true,
 					"default": "ZOMBIE"
 				},
-				"nametag": {
-					"description": "The nametag of the spawned entity. Defaults to no nametag",
-					"required": false,
-					"type": "string",
-					"default": ""
-				},
 				"shouldDespawn": {
-					"description": "If true, the entity can despawn",
-					"required": false,
+					"description": "Whether the entity can despawn. TODO",
 					"type": "boolean",
+					"required": false,
 					"default": true
 				},
-				"passenger": {
-					"description": "The passenger of the entity",
+				"nametag": {
+					"description": "The nametag of the spawned entity. \n\nDefaults to no nametag",
+					"type": "string",
 					"required": false,
-					"type": "EntityData",
-					"default": {}
+					"default": ""
+				},
+				"customNameVisible": {
+					"description": "Whether the entity shows it's custom name/nametag above it like a player",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"silent": {
+					"description": "Whether the entity makes sound",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"visualFire": {
+					"description": "Whether the entity will always be on fire (only visually)",
+					"type": "boolean",
+					"required": false,
+					"default": false
 				},
 				"attributes": {
 					"description": "The attributes of the entity",
-					"required": false,
 					"type": "AttributeData",
-					"default": {}
-				},
-				"extra": {
-					"description": "The extra data for entities",
 					"required": false,
-					"type": "object",
-					"default": {},
-					"properties": {
-						"canEquip": {
-							"description": "For living entities. Whether the entity can pick up items",
-							"required": false,
-							"type": "boolean",
-							"default": false
-						},
-						"isZombifiable": {
-							"description": "For piglins, piglin brutes, and hoglins. Whether the entity can be zombified into their zombie couterparts",
-							"required": false,
-							"type": "boolean",
-							"default": true
-						},
-						"color": {
-							"description": "For colorable entities. The color for the entity",
-							"required": true, 
-							"type": "dyeColor"
-						},
-						"armorSection": {
-							"description": "For horses. The armor for the horse",
-							"required": false,
-							"type": "ItemStackData",
-							"default": {}
-						},
-						"hasSaddle": {
-							"description": "For horses___. Whether the entity has a saddle attached",
-							"required": false,
-							"type": "boolean",
-							"default": false
-						},
-						// "color": { 
-						// 	"description": "For horses. The color of the entity",
-						// 	"required": false,
-						// 	"type": "horseColor",
-						// 	"default": "CHESTNUT"
-						// },
-						"style": {
-							"description": "For horses. The style/markings that the horse has",
-							"required": false,
-							"type": "horseStyle",
-							"default": "NONE"
-						},
-						"tamingDifficulty": {
-							"description": "For horses___. The difficulty of taming the entity (ie the amount of domesticating (feeding, riding, ect.) necessary in order to tame it)",
-							"required": false,
-							"type": "integer",
-							"default": 1
-						},
-						"jumpStrength": {
-							"description": "For horses___. The strength of jump for the entity",
-							"required": false,
-							"type": "number",
-							"default": 0.7
-						},
-						"hasChest": {
-							"description": "For chestedHorses___. Whether the entity is carrying a chest",
-							"required": false,
-							"type": "boolean",
-							"default": false
-						},
-						"tamed": {
-							"description": "For horses. Whether the horse is tamed",
-							"required": false,
-							"type": "boolean",
-							"default": false
-						},
-						"angry": {
-							"description": "For wolfs. Whether the wolf is angry",
-							"required": false,
-							"type": "boolean",
-							"default": false
-						},
-						"size": {
-							"description": "For slimes, magmacubes, and phantoms. The size of the entity",
-							"required": false,
-							"type": "integer",
-							"default": 0
-						},
-						"potion": {
-							"description": "For thrown potions. The item data for the thrown potion",
-							"required": false,
-							"type": "ItemStackData",
-							"default": {}
-						},
-						"fuse": {
-							"description": "For creepers. The time a creeper is allowed to be primed before exploding (in ticks)",
-							"required": false,
-							"type": "integer",
-							"default": 30
-						},
-						"ignited": {
-							"description": "For creepers. Whether the creeper is primed/ignited",
-							"required": false,
-							"type": "boolean",
-							"default": false
-						},
-						"explosionRadius": {
-							"description": "For creepers. The explosion radius when exploded",
-							"required": false,
-							"type": "integer",
-							"default": 3
-						},
-						"powered": {
-							"description": "For creepers. Whether the creeper is powered/charged/electrecuted",
-							"required": false,
-							"type": "integer",
-							"default": 3
-						},
-						"variant": {
-							"description": "For axolotls. The variant of the entity. Defaults to a random variant (probably, not sure)",
-							"required": false,
-							"type": "axolotlVariant",
-							"default": ""
-						},
-						"isBaby": {
-							"description": "For ageable entities. Whether the entity is a baby",
-							"required": false,
-							"type": "boolean",
-							"default": false
-						},
-						"type": {
-							"description": "For dropped item. The type of item",
-							"required": false,
-							"type": "material",
-							"default": "STONE"
-						},
-						"amount": {
-							"description": "For dropped item. The amount of item to give",
-							"required": false,
-							"type": "integer",
-							"default": 1
-						},
-						"metadata": {
-							"description": "For dropped item. The metadata of the item",
-							"required": false,
-							"type": "ItemMetaData",
-							"default": {}
-						},
-						"charged": {
-							"description": "For whither skulls. Whether to make the skull blue or not",
-							"required": false,
-							"type": "boolean",
-							"default": false
-						}
-					}
+					"default": "{}"
+				},
+				"passenger": {
+					"description": "The entity riding this entity",
+					"type": "EntityData",
+					"required": false,
+					"default": "{}"
 				}
 			}
 		},
@@ -4122,6 +5036,29 @@
 					"required": false,
 					"type": "number",
 					"default": 10
+				}
+			}
+		},
+		"PotionItemData": {
+			"description": "The data of a potion item",
+			"properties": {
+				"type": {
+					"description": "The potion type",
+					"type": "potionItemType",
+					"required": true,
+					"default": "UNCRAFTABLE"
+				},
+				"extended": {
+					"description": "Whether the potion duration is extended (like when redstone is added when brewing)",
+					"type": "boolean",
+					"required": false,
+					"default": false
+				},
+				"upgraded": {
+					"description": "Whether the potion is upgraded (level 2) (like when glowstone is added when brewing)",
+					"type": "boolean",
+					"required": false,
+					"default": false
 				}
 			}
 		},
@@ -4469,6 +5406,21 @@
 				"WHITEFIELD"
 			]
 		},
+		"llamaColor": {
+			"description": "A color of llama", 
+			"type": "string", 
+			"enum": ["CREAMY", "WHITE", "BROWN", "GRAY"]
+		}, 
+		"rabbitType": {
+			"description": "A type of rabbit", 
+			"type": "string", 
+			"enum": ["BROWN", "WHITE", "BLACK", "BLACK_AND_WHITE", "GOLD", "SALT_AND_PEPPER", "THE_KILLER_BUNNY"]
+		}, 
+		"arrowPickupStatus": {
+			"description": "A pickup status of arrow", 
+			"type": "string", 
+			"enum": ["DISALLOWED", "ALLOWED", "CREATIVE_ONLY"]
+		}, 
 		"damageCause": {
 			"description": "A damage cause",
 			"type": "string",
