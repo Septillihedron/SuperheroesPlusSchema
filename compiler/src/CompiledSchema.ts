@@ -78,16 +78,12 @@ class FullSchema {
 	readonly types: StringRecord<Property> = {}
 }
 
-
-
 type constDescription = {const: string, description: string}
-
-type Types_oneOf = ({ enum: string[], oneOf: constDescription[] }|{})[]
 
 class Types {
 	readonly description: string
 	readonly type = "string"
-	oneOf?: Types_oneOf = undefined
+	oneOf?: constDescription[] = undefined
 
 	addType(name: string, description: string): void {
 		if (!this.oneOf) this.oneOf = []
