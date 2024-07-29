@@ -4,10 +4,9 @@ import { StringRecord } from "./utils";
 
 export {
 	FullSchema, 
-	Types, IfThenReference, 
-	Path, Property, PropertyClass, PropertyMap, types, 
+	Property, PropertyClass, 
 	Definition,
-	Category, NonPluralCategory, pluralToUnpluralCategories
+	Category, pluralToUnpluralCategories
 }
 
 type Category = keyof {

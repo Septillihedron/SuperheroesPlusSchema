@@ -1,11 +1,10 @@
 import { StringRecord } from "./utils"
 
 export {
-	Schema,
-	Descriptable,  
+	Schema,  
 	PropertyMap,
-	PropertyTypes, PropertyStringTypes, PropertyType, 
-	PropertiesMap, Property, 
+	PropertyTypes,   
+	Property, 
 
 	Mode, Item, 
 }
