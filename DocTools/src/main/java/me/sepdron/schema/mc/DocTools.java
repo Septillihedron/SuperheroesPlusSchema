@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 import org.bukkit.Bukkit;
 import org.bukkit.Keyed;
 import org.bukkit.Registry;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Explosive;
@@ -29,8 +30,14 @@ public final class DocTools extends JavaPlugin {
 	
     @Override
 	public void onEnable() {
-        // createEnumTypes();
+        createEnumTypes();
+        // createEntityDataList();
+        saveConfig();
 
+        Bukkit.getServer().shutdown();
+    }
+
+    void createEntityDataList() {
         getConfig().set("Baby", new ArrayList<String>());
         getConfig().set("Colorable", new ArrayList<String>());
         getConfig().set("Explosive", new ArrayList<String>());
@@ -40,7 +47,6 @@ public final class DocTools extends JavaPlugin {
         for (EntityType entity : EntityType.values()) {
             Class<?> entityClass = entity.getEntityClass();
             if (entityClass == null) {
-                getLogger().warning("Entity class: " + entity.toString() + " is null");
                 continue;
             }
             if (Ageable.class.isAssignableFrom(entityClass)) {
@@ -74,10 +80,6 @@ public final class DocTools extends JavaPlugin {
                 getConfig().set("Zombifiable", list);
             }
         }
-        saveConfig();
-
-
-        Bukkit.getServer().shutdown();
     }
 
     void createEnumTypes() {
@@ -104,13 +106,19 @@ public final class DocTools extends JavaPlugin {
         save("biome", org.bukkit.block.Biome.values());
 		save("world", new String[]{"world", "world_nether", "world_the_end"});
         save("equipmentSlot", org.bukkit.inventory.EquipmentSlot.values());
-        save("attribute", org.bukkit.attribute.Attribute.values());
+        save("attribute", Attribute.values(), DocTools::getAttributeName);
         save("collisionMode", org.bukkit.FluidCollisionMode.values());
         save("sound", org.bukkit.Sound.values());
         save("particle", org.bukkit.Particle.values());
         save("material", org.bukkit.Material.values());
-		
-		saveConfig();
+    }
+
+    static String getAttributeName(Attribute attribute) {
+        String value = attribute.toString();
+        if (value.startsWith("GENERIC_")) {
+            value = value.substring("GENETIC_".length());
+        }
+        return value;
     }
     
     <T extends Keyed> void saveKeyed(String name, T[] arr) {
@@ -121,10 +129,10 @@ public final class DocTools extends JavaPlugin {
     }
 
     <T> void save(String name, T[] arr) {
-        save(name, Arrays.stream(arr));
+        save(name, arr, x -> x.toString());
     }
-	<T> void save(String name, Stream<T> stream) {
-        save(name, stream, x -> x.toString());
+    <T> void save(String name, T[] arr, Function<T, String> function) {
+        save(name, Arrays.stream(arr), function);
     }
     <T> void save(String name, Stream<T> stream, Function<T, String> function) {
         String array = stream.map(function).map(String::toUpperCase).collect(JSONArrayCollector.instance);

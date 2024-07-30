@@ -149,10 +149,9 @@ EnchantedBosses:
   entity:
     type: PHANTOM
     shouldDespawn: false
+    size: 0
     attributes:
       MAX_HEALTH: 300
-    extra:
-      size: 6
   damagemodifier:
     type: EASED
     damageCap: 13
@@ -223,7 +222,10 @@ Exampleboss:
   damagemodifier: 
     type: BLANK
   entity: 
-    type: ITEM
+    type: DROPPED_ITEM
+    item:
+      type: STONE
+      amount: 1
     shouldDespawn: true
     attributes:
       ARMOR_TOUGHNESS: 0

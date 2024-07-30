@@ -6187,7 +6187,7 @@
                     "default": 1
                 },
                 "attribute": {
-                    "description": "The attribute to modify. The name of the attribute should exclude the \"GENERIC_\" in the begining",
+                    "description": "The attribute to modify. The name of the attribute should exclude the \"GENERIC_\" prefix",
                     "$ref": "#/types/attribute"
                 }
             },
@@ -24583,73 +24583,73 @@
                 }
             },
             "properties": {
-                "GENERIC_MAX_HEALTH": {
+                "MAX_HEALTH": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_FOLLOW_RANGE": {
+                "FOLLOW_RANGE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_KNOCKBACK_RESISTANCE": {
+                "KNOCKBACK_RESISTANCE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_MOVEMENT_SPEED": {
+                "MOVEMENT_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_FLYING_SPEED": {
+                "FLYING_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_ATTACK_DAMAGE": {
+                "ATTACK_DAMAGE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_ATTACK_KNOCKBACK": {
+                "ATTACK_KNOCKBACK": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_ATTACK_SPEED": {
+                "ATTACK_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_ARMOR": {
+                "ARMOR": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_ARMOR_TOUGHNESS": {
+                "ARMOR_TOUGHNESS": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_FALL_DAMAGE_MULTIPLIER": {
+                "FALL_DAMAGE_MULTIPLIER": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_LUCK": {
+                "LUCK": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_MAX_ABSORPTION": {
+                "MAX_ABSORPTION": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_SAFE_FALL_DISTANCE": {
+                "SAFE_FALL_DISTANCE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_SCALE": {
+                "SCALE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_STEP_HEIGHT": {
+                "STEP_HEIGHT": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_GRAVITY": {
+                "GRAVITY": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_JUMP_STRENGTH": {
+                "JUMP_STRENGTH": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_BURNING_TIME": {
+                "BURNING_TIME": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_EXPLOSION_KNOCKBACK_RESISTANCE": {
+                "EXPLOSION_KNOCKBACK_RESISTANCE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_MOVEMENT_EFFICIENCY": {
+                "MOVEMENT_EFFICIENCY": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_OXYGEN_BONUS": {
+                "OXYGEN_BONUS": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GENERIC_WATER_MOVEMENT_EFFICIENCY": {
+                "WATER_MOVEMENT_EFFICIENCY": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
                 "PLAYER_BLOCK_INTERACTION_RANGE": {
@@ -25073,73 +25073,73 @@
                 "type": "number"
             },
             "properties": {
-                "GENERIC_MAX_HEALTH": {
+                "MAX_HEALTH": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_FOLLOW_RANGE": {
+                "FOLLOW_RANGE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_KNOCKBACK_RESISTANCE": {
+                "KNOCKBACK_RESISTANCE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_MOVEMENT_SPEED": {
+                "MOVEMENT_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_FLYING_SPEED": {
+                "FLYING_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_ATTACK_DAMAGE": {
+                "ATTACK_DAMAGE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_ATTACK_KNOCKBACK": {
+                "ATTACK_KNOCKBACK": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_ATTACK_SPEED": {
+                "ATTACK_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_ARMOR": {
+                "ARMOR": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_ARMOR_TOUGHNESS": {
+                "ARMOR_TOUGHNESS": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_FALL_DAMAGE_MULTIPLIER": {
+                "FALL_DAMAGE_MULTIPLIER": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_LUCK": {
+                "LUCK": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_MAX_ABSORPTION": {
+                "MAX_ABSORPTION": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_SAFE_FALL_DISTANCE": {
+                "SAFE_FALL_DISTANCE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_SCALE": {
+                "SCALE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_STEP_HEIGHT": {
+                "STEP_HEIGHT": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_GRAVITY": {
+                "GRAVITY": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_JUMP_STRENGTH": {
+                "JUMP_STRENGTH": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_BURNING_TIME": {
+                "BURNING_TIME": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_EXPLOSION_KNOCKBACK_RESISTANCE": {
+                "EXPLOSION_KNOCKBACK_RESISTANCE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_MOVEMENT_EFFICIENCY": {
+                "MOVEMENT_EFFICIENCY": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_OXYGEN_BONUS": {
+                "OXYGEN_BONUS": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GENERIC_WATER_MOVEMENT_EFFICIENCY": {
+                "WATER_MOVEMENT_EFFICIENCY": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
                 "PLAYER_BLOCK_INTERACTION_RANGE": {
@@ -26482,29 +26482,29 @@
             "additionalProperties": false,
             "type": "string",
             "enum": [
-                "GENERIC_MAX_HEALTH",
-                "GENERIC_FOLLOW_RANGE",
-                "GENERIC_KNOCKBACK_RESISTANCE",
-                "GENERIC_MOVEMENT_SPEED",
-                "GENERIC_FLYING_SPEED",
-                "GENERIC_ATTACK_DAMAGE",
-                "GENERIC_ATTACK_KNOCKBACK",
-                "GENERIC_ATTACK_SPEED",
-                "GENERIC_ARMOR",
-                "GENERIC_ARMOR_TOUGHNESS",
-                "GENERIC_FALL_DAMAGE_MULTIPLIER",
-                "GENERIC_LUCK",
-                "GENERIC_MAX_ABSORPTION",
-                "GENERIC_SAFE_FALL_DISTANCE",
-                "GENERIC_SCALE",
-                "GENERIC_STEP_HEIGHT",
-                "GENERIC_GRAVITY",
-                "GENERIC_JUMP_STRENGTH",
-                "GENERIC_BURNING_TIME",
-                "GENERIC_EXPLOSION_KNOCKBACK_RESISTANCE",
-                "GENERIC_MOVEMENT_EFFICIENCY",
-                "GENERIC_OXYGEN_BONUS",
-                "GENERIC_WATER_MOVEMENT_EFFICIENCY",
+                "MAX_HEALTH",
+                "FOLLOW_RANGE",
+                "KNOCKBACK_RESISTANCE",
+                "MOVEMENT_SPEED",
+                "FLYING_SPEED",
+                "ATTACK_DAMAGE",
+                "ATTACK_KNOCKBACK",
+                "ATTACK_SPEED",
+                "ARMOR",
+                "ARMOR_TOUGHNESS",
+                "FALL_DAMAGE_MULTIPLIER",
+                "LUCK",
+                "MAX_ABSORPTION",
+                "SAFE_FALL_DISTANCE",
+                "SCALE",
+                "STEP_HEIGHT",
+                "GRAVITY",
+                "JUMP_STRENGTH",
+                "BURNING_TIME",
+                "EXPLOSION_KNOCKBACK_RESISTANCE",
+                "MOVEMENT_EFFICIENCY",
+                "OXYGEN_BONUS",
+                "WATER_MOVEMENT_EFFICIENCY",
                 "PLAYER_BLOCK_INTERACTION_RANGE",
                 "PLAYER_ENTITY_INTERACTION_RANGE",
                 "PLAYER_BLOCK_BREAK_SPEED",
