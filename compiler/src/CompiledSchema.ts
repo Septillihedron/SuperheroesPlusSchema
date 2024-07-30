@@ -21,6 +21,7 @@ const pluralToUnpluralCategories: Record<Category, NonPluralCategory> = {
 	conditions: "condition",
 	effects: "effect",
 	particleShapes: "particleShape",
+	entityData: "EntityData",
 	skills: "skill",
 	damagemodifiers: "damagemodifier",
 	rewards: "reward",
@@ -52,7 +53,9 @@ class FullSchema {
 		trigger: new Trigger(),
 		condition: new Condition(),
 		effect: new Effect(),
+
 		particleShape: new ParticleShape(),
+		EntityData: new EntityData(),
 		
 		skill: new Skill(),
 
@@ -65,6 +68,7 @@ class FullSchema {
 	readonly conditions: StringRecord<Definition> = {}
 	readonly effects: StringRecord<Definition> = {}
 
+	readonly entityData: StringRecord<Definition> = {}
 	readonly particleShapes: StringRecord<Definition> = {}
 
 	readonly skills: StringRecord<Definition> = {}
@@ -98,9 +102,9 @@ class IfThenReference {
 	if: {properties: {type: {const: string}} | {skill: {const: string}}}
 	then: {$ref: string}
 
-	constructor(type: string, name: string) {
-		this.if = {properties: type == "skill"? {skill:{const: name}} : {type: {const: name}}}
-		this.then = {$ref: `#/${type}s/${name}`}
+	constructor(type: Category, name: string) {
+		this.if = {properties: type == "skills"? {skill:{const: name}} : {type: {const: name}}}
+		this.then = {$ref: `#/${type}/${name}`}
 	}
 
 }
@@ -146,7 +150,7 @@ class Trigger implements UnionType {
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("trigger", name))
+		this.else.allOf.push(new IfThenReference("triggers", name))
 	}
 }
 
@@ -175,7 +179,7 @@ class Condition implements UnionType {
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("condition", name))
+		this.else.allOf.push(new IfThenReference("conditions", name))
 	}
 }
 
@@ -195,7 +199,7 @@ class Effect implements UnionType {
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("effect", name))
+		this.else.allOf.push(new IfThenReference("effects", name))
 	}
 }
 
@@ -211,7 +215,58 @@ class ParticleShape implements UnionType {
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("particleShape", name))
+		this.else.allOf.push(new IfThenReference("particleShapes", name))
+	}
+}
+
+class EntityData implements UnionType {
+	readonly description = "An entity data"
+	readonly type = "object"
+	readonly properties = {
+		type: new Types("The entity type. \nDefaults to \"ZOMBIE\""),
+		shouldDespawn: {
+			description: "Whether the entity can despawn. TODO. \nDefaults to true",
+			type: "boolean",
+			default: true
+		},
+		nametag: {
+			description: "The nametag of the spawned entity. \n\nDefaults to no nametag",
+			type: "string",
+			default: ""
+		},
+		customNameVisible: {
+			description: "Whether the entity shows it's custom name/nametag above it like a player. \nDefaults to false",
+			type: "boolean",
+			default: false
+		},
+		silent: {
+			description: "Whether the entity makes sound. \nDefaults to false",
+			type: "boolean",
+			default: false
+		},
+		visualFire: {
+			description: "Whether the entity will always be on fire (only visually). \nDefaults to false",
+			type: "boolean",
+			default: false
+		},
+		attributes: {
+			description: "The attributes of the entity. \nDefaults to \"{}\"",
+			$ref: "#/types/AttributeData",
+			default: "{}"
+		},
+		passenger: {
+			description: "The entity riding this entity. \nDefaults to \"{}\"",
+			$ref: "#/types/EntityData",
+			default: "{}"
+		}
+	}
+	readonly required = ["type"]
+	readonly if = {"properties": {"type": false}}
+	readonly else: {allOf: IfThenReference[]} = {allOf: []}
+
+	addType(name: string, description: string): void {
+		this.properties.type.addType(name, description)
+		this.else.allOf.push(new IfThenReference("entityData", name))
 	}
 }
 
@@ -237,7 +292,7 @@ class Skill implements UnionType {
 
 	addType(name: string, description: string): void {
 		this.properties.skill.addType(name, description)
-		this.else.allOf.push(new IfThenReference("skill", name))
+		this.else.allOf.push(new IfThenReference("skills", name))
 	}
 }
 
@@ -252,7 +307,7 @@ class DamageModifier implements UnionType {
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("damagemodifier", name))
+		this.else.allOf.push(new IfThenReference("damagemodifiers", name))
 	}
 }
 
@@ -267,7 +322,7 @@ class Reward implements UnionType {
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("reward", name))
+		this.else.allOf.push(new IfThenReference("rewards", name))
 	}
 }
 
@@ -282,7 +337,7 @@ class Distribution implements UnionType {
 
 	addType(name: string, description: string): void {
 		this.properties.type.addType(name, description)
-		this.else.allOf.push(new IfThenReference("distribution", name))
+		this.else.allOf.push(new IfThenReference("distributions", name))
 	}
 }
 

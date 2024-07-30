@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/schema",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"type": "object",
 	"properties": {
 		"$schema": true,
@@ -228,6 +228,7 @@
 							"description": "If true, this type is managed internally"
 						}
 					},
+					"required": ["type"],
 					"additionalItems": false,
 					"anyOf": [
 						{
@@ -394,9 +395,6 @@
 					"type": "string",
 					"description": "Refrences a definition"
 				},
-				"if": {
-					"$ref": "#/definitions/if"
-				},
 				"enum": {
 					"type": "array",
 					"description": "List of available values",
@@ -527,31 +525,6 @@
 				// EB exclusives
 				"SpawnData", "BossBarData"
 			]
-		},
-		"if": {
-			"type": "object",
-			"description": "Conditions this property",
-			"$ref": "#/definitions/ifPath"
-		},
-		"ifPath": {
-			"$ref": "#/definitions/ifComparison",
-			"patternProperties": {
-				"\\w+": {
-					"type": "object",
-					"$ref": "#/definitions/ifPath"
-				}
-			}
-		},
-		"ifComparison": {
-			"properties": {
-				"const": {
-					"type": ["array", "boolean", "integer", "null", "number", "string"],
-					"description": "The constant to validate againt, or constants if it is an array",
-					"items": {
-						"type": ["boolean", "integer", "null", "number", "string"]
-					}
-				}
-			}
 		}
 	}
 }

@@ -18,6 +18,19 @@ Superheroes:
       type: BLINDNESS
       entities:
         - AREA_EFFECT_CLOUD
+    sdhhdsajdioashidsids:
+      skill: CUSTOM
+      effects:
+        entity:
+          type: SPAWNENTITY
+          mode: SELF
+          entity:
+            type: CREEPER
+            shouldDespawn: true
+            customNameVisible: false
+            silent: false
+            visualFire: false
+            explosionRadius: 5
     custom:
       skill: CUSTOM
       conditions:

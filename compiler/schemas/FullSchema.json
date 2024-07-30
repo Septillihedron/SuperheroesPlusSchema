@@ -2595,6 +2595,1137 @@
                 ]
             }
         },
+        "EntityData": {
+            "description": "An entity data",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "oneOf": [
+                        {
+                            "const": "LIVING_ENTITY",
+                            "description": "The data for a living entity"
+                        },
+                        {
+                            "const": "AXOLOTL",
+                            "description": "The data for a axolotl"
+                        },
+                        {
+                            "const": "ABSTRACT_ARROW",
+                            "description": "The data for a abstract arrow"
+                        },
+                        {
+                            "const": "ARROW",
+                            "description": "The data for a arrow"
+                        },
+                        {
+                            "const": "CREEPER",
+                            "description": "The data for a creeper"
+                        },
+                        {
+                            "const": "DROPPED_ITEM",
+                            "description": "The data for a dropped item"
+                        },
+                        {
+                            "const": "EXPERIENCE_ORB",
+                            "description": "The data for a experience orb"
+                        },
+                        {
+                            "const": "FALLING_BLOCK",
+                            "description": "The data for a falling block"
+                        },
+                        {
+                            "const": "HORSE",
+                            "description": "The data for a horse"
+                        },
+                        {
+                            "const": "SKELETON_HORSE",
+                            "description": "The data for a skeleton horse"
+                        },
+                        {
+                            "const": "ZOMBIE_HORSE",
+                            "description": "The data for a zombie horse"
+                        },
+                        {
+                            "const": "LLAMA",
+                            "description": "The data for a llama"
+                        },
+                        {
+                            "const": "PRIMED_TNT",
+                            "description": "The data for a primed tnt"
+                        },
+                        {
+                            "const": "SPECTRAL_ARROW",
+                            "description": "The data for a spectral arrow"
+                        },
+                        {
+                            "const": "SPLASH_POTION",
+                            "description": "The data for a splash potion"
+                        },
+                        {
+                            "const": "RABBIT",
+                            "description": "The data for a rabbit"
+                        },
+                        {
+                            "const": "TRIDENT",
+                            "description": "The data for a trident"
+                        },
+                        {
+                            "const": "WITHER_SKULL",
+                            "description": "The data for a wither skull"
+                        },
+                        {
+                            "const": "WOLF",
+                            "description": "The data for a wolf"
+                        },
+                        {
+                            "const": "HUSK",
+                            "description": "The data for a husk"
+                        },
+                        {
+                            "const": "ZOMBIE_VILLAGER",
+                            "description": "The data for a zombie villager"
+                        },
+                        {
+                            "const": "DONKEY",
+                            "description": "The data for a donkey"
+                        },
+                        {
+                            "const": "MULE",
+                            "description": "The data for a mule"
+                        },
+                        {
+                            "const": "ZOMBIE",
+                            "description": "The data for a zombie"
+                        },
+                        {
+                            "const": "ZOMBIFIED_PIGLIN",
+                            "description": "The data for a zombified piglin"
+                        },
+                        {
+                            "const": "PIG",
+                            "description": "The data for a pig"
+                        },
+                        {
+                            "const": "SHEEP",
+                            "description": "The data for a sheep"
+                        },
+                        {
+                            "const": "COW",
+                            "description": "The data for a cow"
+                        },
+                        {
+                            "const": "CHICKEN",
+                            "description": "The data for a chicken"
+                        },
+                        {
+                            "const": "MOOSHROOM",
+                            "description": "The data for a mooshroom"
+                        },
+                        {
+                            "const": "OCELOT",
+                            "description": "The data for a ocelot"
+                        },
+                        {
+                            "const": "POLAR_BEAR",
+                            "description": "The data for a polar bear"
+                        },
+                        {
+                            "const": "PARROT",
+                            "description": "The data for a parrot"
+                        },
+                        {
+                            "const": "VILLAGER",
+                            "description": "The data for a villager"
+                        },
+                        {
+                            "const": "TURTLE",
+                            "description": "The data for a turtle"
+                        },
+                        {
+                            "const": "DROWNED",
+                            "description": "The data for a drowned"
+                        },
+                        {
+                            "const": "CAT",
+                            "description": "The data for a cat"
+                        },
+                        {
+                            "const": "PANDA",
+                            "description": "The data for a panda"
+                        },
+                        {
+                            "const": "TRADER_LLAMA",
+                            "description": "The data for a trader llama"
+                        },
+                        {
+                            "const": "WANDERING_TRADER",
+                            "description": "The data for a wandering trader"
+                        },
+                        {
+                            "const": "FOX",
+                            "description": "The data for a fox"
+                        },
+                        {
+                            "const": "BEE",
+                            "description": "The data for a bee"
+                        },
+                        {
+                            "const": "HOGLIN",
+                            "description": "The data for a hoglin"
+                        },
+                        {
+                            "const": "PIGLIN",
+                            "description": "The data for a piglin"
+                        },
+                        {
+                            "const": "STRIDER",
+                            "description": "The data for a strider"
+                        },
+                        {
+                            "const": "ZOGLIN",
+                            "description": "The data for a zoglin"
+                        },
+                        {
+                            "const": "PIGLIN_BRUTE",
+                            "description": "The data for a piglin brute"
+                        },
+                        {
+                            "const": "GOAT",
+                            "description": "The data for a goat"
+                        },
+                        {
+                            "const": "FROG",
+                            "description": "The data for a frog"
+                        },
+                        {
+                            "const": "CAMEL",
+                            "description": "The data for a camel"
+                        },
+                        {
+                            "const": "SNIFFER",
+                            "description": "The data for a sniffer"
+                        },
+                        {
+                            "const": "ARMADILLO",
+                            "description": "The data for a armadillo"
+                        },
+                        {
+                            "const": "SHULKER",
+                            "description": "The data for a shulker"
+                        },
+                        {
+                            "const": "FIREBALL",
+                            "description": "The data for a fireball"
+                        },
+                        {
+                            "const": "SMALL_FIREBALL",
+                            "description": "The data for a small fireball"
+                        },
+                        {
+                            "const": "TNT",
+                            "description": "The data for a tnt"
+                        },
+                        {
+                            "const": "DRAGON_FIREBALL",
+                            "description": "The data for a dragon fireball"
+                        },
+                        {
+                            "const": "WIND_CHARGE",
+                            "description": "The data for a wind charge"
+                        },
+                        {
+                            "const": "BREEZE_WIND_CHARGE",
+                            "description": "The data for a breeze wind_charge"
+                        },
+                        {
+                            "const": "SLIME",
+                            "description": "The data for a slime"
+                        },
+                        {
+                            "const": "MAGMA_CUBE",
+                            "description": "The data for a magma cube"
+                        },
+                        {
+                            "const": "PHANTOM",
+                            "description": "The data for a phantom"
+                        },
+                        {
+                            "const": "EGG",
+                            "description": "The data for a egg"
+                        },
+                        {
+                            "const": "SNOWBALL",
+                            "description": "The data for a snowball"
+                        },
+                        {
+                            "const": "ENDER_PEARL",
+                            "description": "The data for a ender pearl"
+                        },
+                        {
+                            "const": "POTION",
+                            "description": "The data for a potion"
+                        },
+                        {
+                            "const": "EXPERIENCE_BOTTLE",
+                            "description": "The data for a experience bottle"
+                        }
+                    ],
+                    "description": "The entity type. \nDefaults to \"ZOMBIE\""
+                },
+                "shouldDespawn": {
+                    "description": "Whether the entity can despawn. TODO. \nDefaults to true",
+                    "type": "boolean",
+                    "default": true
+                },
+                "nametag": {
+                    "description": "The nametag of the spawned entity. \n\nDefaults to no nametag",
+                    "type": "string",
+                    "default": ""
+                },
+                "customNameVisible": {
+                    "description": "Whether the entity shows it's custom name/nametag above it like a player. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "silent": {
+                    "description": "Whether the entity makes sound. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "visualFire": {
+                    "description": "Whether the entity will always be on fire (only visually). \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "attributes": {
+                    "description": "The attributes of the entity. \nDefaults to \"{}\"",
+                    "$ref": "#/types/AttributeData",
+                    "default": "{}"
+                },
+                "passenger": {
+                    "description": "The entity riding this entity. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EntityData",
+                    "default": "{}"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "if": {
+                "properties": {
+                    "type": false
+                }
+            },
+            "else": {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "LIVING_ENTITY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/LIVING_ENTITY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "AXOLOTL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/AXOLOTL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ABSTRACT_ARROW"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/ABSTRACT_ARROW"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ARROW"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/ARROW"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CREEPER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/CREEPER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DROPPED_ITEM"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/DROPPED_ITEM"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "EXPERIENCE_ORB"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/EXPERIENCE_ORB"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FALLING_BLOCK"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/FALLING_BLOCK"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HORSE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/HORSE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SKELETON_HORSE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/SKELETON_HORSE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ZOMBIE_HORSE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/ZOMBIE_HORSE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "LLAMA"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/LLAMA"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PRIMED_TNT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/PRIMED_TNT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SPECTRAL_ARROW"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/SPECTRAL_ARROW"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SPLASH_POTION"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/SPLASH_POTION"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "RABBIT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/RABBIT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TRIDENT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/TRIDENT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "WITHER_SKULL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/WITHER_SKULL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "WOLF"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/WOLF"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HUSK"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/HUSK"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ZOMBIE_VILLAGER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/ZOMBIE_VILLAGER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DONKEY"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/DONKEY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "MULE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/MULE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ZOMBIE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/ZOMBIE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ZOMBIFIED_PIGLIN"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/ZOMBIFIED_PIGLIN"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PIG"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/PIG"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SHEEP"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/SHEEP"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "COW"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/COW"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CHICKEN"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/CHICKEN"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "MOOSHROOM"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/MOOSHROOM"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "OCELOT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/OCELOT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "POLAR_BEAR"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/POLAR_BEAR"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PARROT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/PARROT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "VILLAGER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/VILLAGER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TURTLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/TURTLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DROWNED"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/DROWNED"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CAT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/CAT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PANDA"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/PANDA"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TRADER_LLAMA"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/TRADER_LLAMA"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "WANDERING_TRADER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/WANDERING_TRADER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FOX"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/FOX"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "BEE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/BEE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "HOGLIN"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/HOGLIN"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PIGLIN"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/PIGLIN"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "STRIDER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/STRIDER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ZOGLIN"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/ZOGLIN"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PIGLIN_BRUTE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/PIGLIN_BRUTE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "GOAT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/GOAT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FROG"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/FROG"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "CAMEL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/CAMEL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SNIFFER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/SNIFFER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ARMADILLO"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/ARMADILLO"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SHULKER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/SHULKER"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "FIREBALL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/FIREBALL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SMALL_FIREBALL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/SMALL_FIREBALL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "TNT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/TNT"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DRAGON_FIREBALL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/DRAGON_FIREBALL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "WIND_CHARGE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/WIND_CHARGE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "BREEZE_WIND_CHARGE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/BREEZE_WIND_CHARGE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SLIME"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/SLIME"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "MAGMA_CUBE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/MAGMA_CUBE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "PHANTOM"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/PHANTOM"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "EGG"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/EGG"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "SNOWBALL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/SNOWBALL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "ENDER_PEARL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/ENDER_PEARL"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "POTION"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/POTION"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "EXPERIENCE_BOTTLE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/entityData/EXPERIENCE_BOTTLE"
+                        }
+                    }
+                ]
+            }
+        },
         "skill": {
             "description": "A skill",
             "type": "object",
@@ -5017,6 +6148,11 @@
                 },
                 "damage": {
                     "description": "If projectile entity is an arrow, the damage that the arrow will do. \nDefaults to 4",
+                    "if": {
+                        "entity": {
+                            "const": "arrow"
+                        }
+                    },
                     "type": "integer",
                     "default": 4
                 },
@@ -6314,6 +7450,1699 @@
                 "mode",
                 "rider"
             ]
+        }
+    },
+    "entityData": {
+        "LIVING_ENTITY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "canEquip": {
+                    "description": "Whether the entity can pick up items. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "equipment": {
+                    "description": "The equipment(s) the entity has. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentData",
+                    "default": "{}"
+                }
+            }
+        },
+        "AXOLOTL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "canEquip": {
+                    "description": "Whether the entity can pick up items. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "equipment": {
+                    "description": "The equipment(s) the entity has. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentData",
+                    "default": "{}"
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "variant": {
+                    "description": "The variant of axolotl. \n\nDefaults to a random variant",
+                    "$ref": "#/types/axolotlVariant",
+                    "default": "random"
+                }
+            }
+        },
+        "ABSTRACT_ARROW": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "knockbackStrength": {
+                    "description": "The knockback strength of the arrow. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                },
+                "damage": {
+                    "description": "The amount of damage the arrow will do (in hp / half hearts). \nDefaults to 2",
+                    "type": "number",
+                    "default": 2
+                },
+                "pierceLevel": {
+                    "description": "The amount of times the arrow can pierce through an entity. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 127
+                },
+                "critical": {
+                    "description": "Whether the arrow should do critical damage. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "pickupStatus": {
+                    "description": "How the arrow can be picked up. \nDefaults to \"DISALLOWED\"",
+                    "$ref": "#/types/arrowPickupStatus",
+                    "default": "DISALLOWED"
+                }
+            }
+        },
+        "ARROW": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "knockbackStrength": {
+                    "description": "The knockback strength of the arrow. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                },
+                "damage": {
+                    "description": "The amount of damage the arrow will do (in hp / half hearts). \nDefaults to 2",
+                    "type": "number",
+                    "default": 2
+                },
+                "pierceLevel": {
+                    "description": "The amount of times the arrow can pierce through an entity. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 127
+                },
+                "critical": {
+                    "description": "Whether the arrow should do critical damage. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "pickupStatus": {
+                    "description": "How the arrow can be picked up. \nDefaults to \"DISALLOWED\"",
+                    "$ref": "#/types/arrowPickupStatus",
+                    "default": "DISALLOWED"
+                },
+                "potion": {
+                    "description": "The potion data for the arrow. \nDefaults to \"{}\"",
+                    "$ref": "#/types/PotionItemData",
+                    "default": "{}"
+                }
+            }
+        },
+        "CREEPER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "canEquip": {
+                    "description": "Whether the entity can pick up items. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "equipment": {
+                    "description": "The equipment(s) the entity has. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentData",
+                    "default": "{}"
+                },
+                "fuse": {
+                    "description": "The fuse time of the creeper (in ticks). \nDefaults to 30",
+                    "type": "integer",
+                    "default": 30
+                },
+                "ignited": {
+                    "description": "Whether the creeper is already ignited/primed. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "explosionRadius": {
+                    "description": "The radius of the creeper explosion (in blocks). \nDefaults to 3",
+                    "type": "integer",
+                    "default": 3
+                },
+                "powered": {
+                    "description": "Whether the creeper is charged. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "DROPPED_ITEM": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "item": {
+                    "description": "The item the dropped item will be",
+                    "$ref": "#/types/ItemStackData"
+                }
+            },
+            "required": [
+                "item"
+            ]
+        },
+        "EXPERIENCE_ORB": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "experience": {
+                    "description": "The amount of xp this xp orb will have. \nDefaults to 1",
+                    "type": "integer",
+                    "default": 1
+                }
+            }
+        },
+        "FALLING_BLOCK": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "block": {
+                    "description": "The block that is falling",
+                    "$ref": "#/types/BlockDataData"
+                },
+                "dropItem": {
+                    "description": "Whether the block can be dropped as an item when the falling block cannot be placed. \nDefaults to true",
+                    "type": "boolean",
+                    "default": true
+                },
+                "cancelDrop": {
+                    "description": "Whether or not the block can be placed or dropped as an item. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "hurtEntities": {
+                    "description": "Whether entities can be damaged by this falling block. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "damagePerBlock": {
+                    "description": "The damage per block this falling block will deal to an entity. \nDefaults to 2",
+                    "type": "number",
+                    "default": 2
+                },
+                "maxDamage": {
+                    "description": "The maximum damage this falling block can deal. \nDefaults to 40",
+                    "type": "integer",
+                    "default": 40
+                }
+            },
+            "required": [
+                "block"
+            ]
+        },
+        "HORSE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "canEquip": {
+                    "description": "Whether the entity can pick up items. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "equipment": {
+                    "description": "The equipment(s) the entity has. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentData",
+                    "default": "{}"
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "tamingDifficulty": {
+                    "description": "How hard this horse is to tame. \nDefaults to 1",
+                    "type": "integer",
+                    "default": 1
+                },
+                "jumpStrength": {
+                    "description": "The strength of the horse's jump. TODO. \nDefaults to 0.7",
+                    "type": "number",
+                    "default": 0.7,
+                    "minimum": 0.7,
+                    "maximum": 2
+                },
+                "hasChest": {
+                    "description": "Whether this horse have a chest. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "tamed": {
+                    "description": "Whether this horse is tamed. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "armorSection": {
+                    "description": "The armor this horse wears. \n\nDefaults to not wearing armor",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                },
+                "hasSaddle": {
+                    "description": "Whether this horse has a saddle. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "color": {
+                    "description": "The color of the horse. \nDefaults to \"CHESTNUT\"",
+                    "$ref": "#/types/horseColor",
+                    "default": "CHESTNUT"
+                },
+                "style": {
+                    "description": "The style of the horse. \nDefaults to \"NONE\"",
+                    "$ref": "#/types/horseStyle",
+                    "default": "NONE"
+                }
+            }
+        },
+        "SKELETON_HORSE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "canEquip": {
+                    "description": "Whether the entity can pick up items. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "equipment": {
+                    "description": "The equipment(s) the entity has. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentData",
+                    "default": "{}"
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "tamingDifficulty": {
+                    "description": "How hard this horse is to tame. \nDefaults to 1",
+                    "type": "integer",
+                    "default": 1
+                },
+                "jumpStrength": {
+                    "description": "The strength of the horse's jump. TODO. \nDefaults to 0.7",
+                    "type": "number",
+                    "default": 0.7,
+                    "minimum": 0.7,
+                    "maximum": 2
+                },
+                "hasChest": {
+                    "description": "Whether this horse have a chest. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "tamed": {
+                    "description": "Whether this horse is tamed. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "armorSection": {
+                    "description": "The armor this horse wears. \n\nDefaults to not wearing armor",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                },
+                "hasSaddle": {
+                    "description": "Whether this horse has a saddle. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "color": {
+                    "description": "The color of the horse. \nDefaults to \"CHESTNUT\"",
+                    "$ref": "#/types/horseColor",
+                    "default": "CHESTNUT"
+                },
+                "style": {
+                    "description": "The style of the horse. \nDefaults to \"NONE\"",
+                    "$ref": "#/types/horseStyle",
+                    "default": "NONE"
+                }
+            }
+        },
+        "ZOMBIE_HORSE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "canEquip": {
+                    "description": "Whether the entity can pick up items. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "equipment": {
+                    "description": "The equipment(s) the entity has. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentData",
+                    "default": "{}"
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "tamingDifficulty": {
+                    "description": "How hard this horse is to tame. \nDefaults to 1",
+                    "type": "integer",
+                    "default": 1
+                },
+                "jumpStrength": {
+                    "description": "The strength of the horse's jump. TODO. \nDefaults to 0.7",
+                    "type": "number",
+                    "default": 0.7,
+                    "minimum": 0.7,
+                    "maximum": 2
+                },
+                "hasChest": {
+                    "description": "Whether this horse have a chest. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "tamed": {
+                    "description": "Whether this horse is tamed. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "armorSection": {
+                    "description": "The armor this horse wears. \n\nDefaults to not wearing armor",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                },
+                "hasSaddle": {
+                    "description": "Whether this horse has a saddle. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "color": {
+                    "description": "The color of the horse. \nDefaults to \"CHESTNUT\"",
+                    "$ref": "#/types/horseColor",
+                    "default": "CHESTNUT"
+                },
+                "style": {
+                    "description": "The style of the horse. \nDefaults to \"NONE\"",
+                    "$ref": "#/types/horseStyle",
+                    "default": "NONE"
+                }
+            }
+        },
+        "LLAMA": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "canEquip": {
+                    "description": "Whether the entity can pick up items. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "equipment": {
+                    "description": "The equipment(s) the entity has. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentData",
+                    "default": "{}"
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "tamingDifficulty": {
+                    "description": "How hard this horse is to tame. \nDefaults to 1",
+                    "type": "integer",
+                    "default": 1
+                },
+                "jumpStrength": {
+                    "description": "The strength of the horse's jump. TODO. \nDefaults to 0.7",
+                    "type": "number",
+                    "default": 0.7,
+                    "minimum": 0.7,
+                    "maximum": 2
+                },
+                "hasChest": {
+                    "description": "Whether this horse have a chest. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "tamed": {
+                    "description": "Whether this horse is tamed. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "armorSection": {
+                    "description": "The armor this horse wears. \n\nDefaults to not wearing armor",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                },
+                "hasSaddle": {
+                    "description": "Whether this horse has a saddle. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "color": {
+                    "description": "The color of this llama. \n\nDefaults to a random color",
+                    "$ref": "#/types/llamaColor",
+                    "default": "null"
+                },
+                "style": {
+                    "description": "The style of the horse. \nDefaults to \"NONE\"",
+                    "$ref": "#/types/horseStyle",
+                    "default": "NONE"
+                },
+                "strength": {
+                    "description": "How much inventory space this llama can has, equal to `strength*3`. \nDefaults to 1",
+                    "type": "integer",
+                    "default": 1
+                }
+            }
+        },
+        "PRIMED_TNT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "fuseTicks": {
+                    "description": "The number of ticks until this TNT blows up (in ticks). \nDefaults to 100",
+                    "type": "integer",
+                    "default": 100
+                }
+            }
+        },
+        "SPECTRAL_ARROW": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "knockbackStrength": {
+                    "description": "The knockback strength of the arrow. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                },
+                "damage": {
+                    "description": "The amount of damage the arrow will do (in hp / half hearts). \nDefaults to 2",
+                    "type": "number",
+                    "default": 2
+                },
+                "pierceLevel": {
+                    "description": "The amount of times the arrow can pierce through an entity. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 127
+                },
+                "critical": {
+                    "description": "Whether the arrow should do critical damage. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "pickupStatus": {
+                    "description": "How the arrow can be picked up. \nDefaults to \"DISALLOWED\"",
+                    "$ref": "#/types/arrowPickupStatus",
+                    "default": "DISALLOWED"
+                },
+                "glowingTicks": {
+                    "description": "The amount of time to apply the glowing effect for (in ticks). \nDefaults to 200",
+                    "type": "integer",
+                    "default": 200
+                }
+            }
+        },
+        "SPLASH_POTION": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "potion": {
+                    "description": "The item that this splash potion represent",
+                    "$ref": "#/types/ItemStackData"
+                }
+            },
+            "required": [
+                "potion"
+            ]
+        },
+        "RABBIT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "variant": {
+                    "description": "The variant of the rabbit. \n\nDefault to a random variant",
+                    "$ref": "#/types/rabbitType",
+                    "default": "null"
+                }
+            }
+        },
+        "TRIDENT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "knockbackStrength": {
+                    "description": "The knockback strength of the arrow. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                },
+                "damage": {
+                    "description": "The amount of damage the arrow will do (in hp / half hearts). \nDefaults to 2",
+                    "type": "number",
+                    "default": 2
+                },
+                "pierceLevel": {
+                    "description": "The amount of times the arrow can pierce through an entity. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 127
+                },
+                "critical": {
+                    "description": "Whether the arrow should do critical damage. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "pickupStatus": {
+                    "description": "How the arrow can be picked up. \nDefaults to \"DISALLOWED\"",
+                    "$ref": "#/types/arrowPickupStatus",
+                    "default": "DISALLOWED"
+                },
+                "item": {
+                    "description": "The display ItemStack for the thrown projectile. \nDefaults to \"{}\"",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                }
+            }
+        },
+        "WITHER_SKULL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "yield": {
+                    "description": "The radius affected by this explosive's explosion. \nDefaults to 2.5",
+                    "type": "number",
+                    "default": 2.5
+                },
+                "isIncendiary": {
+                    "description": "Whether this explosive's explosion will cause fire. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "charged": {
+                    "description": "Whether this wither skull is blue/charged. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "WOLF": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "canEquip": {
+                    "description": "Whether the entity can pick up items. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "equipment": {
+                    "description": "The equipment(s) the entity has. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentData",
+                    "default": "{}"
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "angry": {
+                    "description": "Whether this wolf is angry. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "HUSK": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "ZOMBIE_VILLAGER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "DONKEY": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "MULE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "ZOMBIE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "ZOMBIFIED_PIGLIN": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "PIG": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "SHEEP": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "color": {
+                    "description": "The color of the entity. Works for shulkers and sheep",
+                    "$ref": "#/types/dyeColor"
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [
+                "color"
+            ]
+        },
+        "COW": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "CHICKEN": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "MOOSHROOM": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "OCELOT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "POLAR_BEAR": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "PARROT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "VILLAGER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "TURTLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "DROWNED": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "CAT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "PANDA": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "TRADER_LLAMA": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "WANDERING_TRADER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "FOX": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "BEE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "HOGLIN": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isZombifiable": {
+                    "description": "Whether the entity is immune to zombification. Works for hoglins, piglins, and piglin brutes. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "PIGLIN": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isZombifiable": {
+                    "description": "Whether the entity is immune to zombification. Works for hoglins, piglins, and piglin brutes. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "STRIDER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "ZOGLIN": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "PIGLIN_BRUTE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isZombifiable": {
+                    "description": "Whether the entity is immune to zombification. Works for hoglins, piglins, and piglin brutes. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "GOAT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "FROG": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "CAMEL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "SNIFFER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "ARMADILLO": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "isBaby": {
+                    "description": "Whether the entity is a baby. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "SHULKER": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "color": {
+                    "description": "The color of the entity. Works for shulkers and sheep",
+                    "$ref": "#/types/dyeColor"
+                }
+            },
+            "required": [
+                "color"
+            ]
+        },
+        "FIREBALL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "yield": {
+                    "description": "The radius affected by this explosive's explosion. \nDefaults to 2.5",
+                    "type": "number",
+                    "default": 2.5
+                },
+                "isIncendiary": {
+                    "description": "Whether this explosive's explosion will cause fire. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "SMALL_FIREBALL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "yield": {
+                    "description": "The radius affected by this explosive's explosion. \nDefaults to 2.5",
+                    "type": "number",
+                    "default": 2.5
+                },
+                "isIncendiary": {
+                    "description": "Whether this explosive's explosion will cause fire. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "TNT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "yield": {
+                    "description": "The radius affected by this explosive's explosion. \nDefaults to 2.5",
+                    "type": "number",
+                    "default": 2.5
+                },
+                "isIncendiary": {
+                    "description": "Whether this explosive's explosion will cause fire. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "DRAGON_FIREBALL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "yield": {
+                    "description": "The radius affected by this explosive's explosion. \nDefaults to 2.5",
+                    "type": "number",
+                    "default": 2.5
+                },
+                "isIncendiary": {
+                    "description": "Whether this explosive's explosion will cause fire. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "WIND_CHARGE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "yield": {
+                    "description": "The radius affected by this explosive's explosion. \nDefaults to 2.5",
+                    "type": "number",
+                    "default": 2.5
+                },
+                "isIncendiary": {
+                    "description": "Whether this explosive's explosion will cause fire. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "BREEZE_WIND_CHARGE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "yield": {
+                    "description": "The radius affected by this explosive's explosion. \nDefaults to 2.5",
+                    "type": "number",
+                    "default": 2.5
+                },
+                "isIncendiary": {
+                    "description": "Whether this explosive's explosion will cause fire. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "SLIME": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "size": {
+                    "description": "The size of this entity. Works for slimes, magma cubes, and phantoms. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                }
+            },
+            "required": [
+                "size"
+            ]
+        },
+        "MAGMA_CUBE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "size": {
+                    "description": "The size of this entity. Works for slimes, magma cubes, and phantoms. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                }
+            },
+            "required": [
+                "size"
+            ]
+        },
+        "PHANTOM": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "size": {
+                    "description": "The size of this entity. Works for slimes, magma cubes, and phantoms. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
+                }
+            },
+            "required": [
+                "size"
+            ]
+        },
+        "EGG": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "item": {
+                    "description": "The display ItemStack for the thrown projectile. \nDefaults to \"{}\"",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                }
+            }
+        },
+        "SNOWBALL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "item": {
+                    "description": "The display ItemStack for the thrown projectile. \nDefaults to \"{}\"",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                }
+            }
+        },
+        "ENDER_PEARL": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "item": {
+                    "description": "The display ItemStack for the thrown projectile. \nDefaults to \"{}\"",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                }
+            }
+        },
+        "POTION": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "item": {
+                    "description": "The display ItemStack for the thrown projectile. \nDefaults to \"{}\"",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                }
+            }
+        },
+        "EXPERIENCE_BOTTLE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "shouldDespawn": true,
+                "nametag": true,
+                "customNameVisible": true,
+                "silent": true,
+                "visualFire": true,
+                "attributes": true,
+                "passenger": true,
+                "item": {
+                    "description": "The display ItemStack for the thrown projectile. \nDefaults to \"{}\"",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
+                }
+            }
         }
     },
     "particleShapes": {
@@ -9135,6 +11964,9 @@
                         "FLINT_AND_STEEL": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "BOWL": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "APPLE": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -9280,9 +12112,6 @@
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "STICK": {
-                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
-                        },
-                        "BOWL": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "MUSHROOM_STEW": {
@@ -10254,6 +13083,12 @@
                         "MUSIC_DISC_CHIRP": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
+                        "MUSIC_DISC_CREATOR": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "MUSIC_DISC_CREATOR_MUSIC_BOX": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
                         "MUSIC_DISC_FAR": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
@@ -10288,6 +13123,9 @@
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "MUSIC_DISC_PIGSTEP": {
+                            "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
+                        },
+                        "MUSIC_DISC_PRECIPICE": {
                             "$ref": "#/skills/BLOCKDROPS/properties/convertMap/propertyContent"
                         },
                         "DISC_FRAGMENT_5": {
@@ -11784,6 +14622,11 @@
                 },
                 "recipeKeys": {
                     "description": "The list of keys to the material that the key is representing. \nDefaults to {}",
+                    "if": {
+                        "isShaped": {
+                            "const": true
+                        }
+                    },
                     "type": "object",
                     "default": {},
                     "additionalProperties": false,
@@ -11796,6 +14639,11 @@
                 },
                 "recipe": {
                     "description": "The shape of the recipe. \nDefaults to [\"\",\"\",\"\"]",
+                    "if": {
+                        "isShaped": {
+                            "const": true
+                        }
+                    },
                     "type": "array",
                     "required": [
                         "items"
@@ -11814,6 +14662,11 @@
                 },
                 "ingredients": {
                     "description": "The map of ingredients to count of that ingredients that's needed for the recipe. \nDefaults to {}",
+                    "if": {
+                        "isShaped": {
+                            "const": false
+                        }
+                    },
                     "type": "object",
                     "default": {},
                     "additionalProperties": true,
@@ -14225,6 +17078,9 @@
                         "FLINT_AND_STEEL": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "BOWL": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "APPLE": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -14370,9 +17226,6 @@
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "STICK": {
-                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
-                        },
-                        "BOWL": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "MUSHROOM_STEW": {
@@ -15344,6 +18197,12 @@
                         "MUSIC_DISC_CHIRP": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
+                        "MUSIC_DISC_CREATOR": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "MUSIC_DISC_CREATOR_MUSIC_BOX": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
                         "MUSIC_DISC_FAR": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
@@ -15378,6 +18237,9 @@
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "MUSIC_DISC_PIGSTEP": {
+                            "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
+                        },
+                        "MUSIC_DISC_PRECIPICE": {
                             "$ref": "#/skills/CRAFTING/properties/ingredients/propertyContent"
                         },
                         "DISC_FRAGMENT_5": {
@@ -19113,6 +21975,9 @@
                         "FLINT_AND_STEEL": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "BOWL": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "APPLE": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -19258,9 +22123,6 @@
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "STICK": {
-                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
-                        },
-                        "BOWL": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "MUSHROOM_STEW": {
@@ -20232,6 +23094,12 @@
                         "MUSIC_DISC_CHIRP": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
+                        "MUSIC_DISC_CREATOR": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "MUSIC_DISC_CREATOR_MUSIC_BOX": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
                         "MUSIC_DISC_FAR": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
@@ -20266,6 +23134,9 @@
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "MUSIC_DISC_PIGSTEP": {
+                            "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
+                        },
+                        "MUSIC_DISC_PRECIPICE": {
                             "$ref": "#/skills/CONVERTDROPS/properties/convertMap/propertyContent"
                         },
                         "DISC_FRAGMENT_5": {
@@ -21712,58 +24583,73 @@
                 }
             },
             "properties": {
-                "MAX_HEALTH": {
+                "GENERIC_MAX_HEALTH": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "FOLLOW_RANGE": {
+                "GENERIC_FOLLOW_RANGE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "KNOCKBACK_RESISTANCE": {
+                "GENERIC_KNOCKBACK_RESISTANCE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "MOVEMENT_SPEED": {
+                "GENERIC_MOVEMENT_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "FLYING_SPEED": {
+                "GENERIC_FLYING_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ATTACK_DAMAGE": {
+                "GENERIC_ATTACK_DAMAGE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ATTACK_KNOCKBACK": {
+                "GENERIC_ATTACK_KNOCKBACK": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ATTACK_SPEED": {
+                "GENERIC_ATTACK_SPEED": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ARMOR": {
+                "GENERIC_ARMOR": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "ARMOR_TOUGHNESS": {
+                "GENERIC_ARMOR_TOUGHNESS": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "FALL_DAMAGE_MULTIPLIER": {
+                "GENERIC_FALL_DAMAGE_MULTIPLIER": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "LUCK": {
+                "GENERIC_LUCK": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "MAX_ABSORPTION": {
+                "GENERIC_MAX_ABSORPTION": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "SAFE_FALL_DISTANCE": {
+                "GENERIC_SAFE_FALL_DISTANCE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "SCALE": {
+                "GENERIC_SCALE": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "STEP_HEIGHT": {
+                "GENERIC_STEP_HEIGHT": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "GRAVITY": {
+                "GENERIC_GRAVITY": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
-                "JUMP_STRENGTH": {
+                "GENERIC_JUMP_STRENGTH": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_BURNING_TIME": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_EXPLOSION_KNOCKBACK_RESISTANCE": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_MOVEMENT_EFFICIENCY": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_OXYGEN_BONUS": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "GENERIC_WATER_MOVEMENT_EFFICIENCY": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
                 "PLAYER_BLOCK_INTERACTION_RANGE": {
@@ -21773,6 +24659,18 @@
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
                 "PLAYER_BLOCK_BREAK_SPEED": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "PLAYER_MINING_EFFICIENCY": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "PLAYER_SNEAKING_SPEED": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "PLAYER_SUBMERGED_MINING_SPEED": {
+                    "$ref": "#/types/ItemAttributeData/propertyContent"
+                },
+                "PLAYER_SWEEPING_DAMAGE_RATIO": {
                     "$ref": "#/types/ItemAttributeData/propertyContent"
                 },
                 "ZOMBIE_SPAWN_REINFORCEMENTS": {
@@ -21980,6 +24878,16 @@
                 },
                 "color": {
                     "description": "For leather armors. This contains the color metadata of the item. \nDefaults to {\"red\":200,\"green\":0,\"blue\":255}",
+                    "if": {
+                        "type": {
+                            "const": [
+                                "POTION",
+                                "SPLASH_POTION",
+                                "LINGERING_POTION",
+                                "TIPPED_ARROW"
+                            ]
+                        }
+                    },
                     "type": "object",
                     "default": {
                         "red": 200,
@@ -22036,6 +24944,16 @@
                 },
                 "potion": {
                     "description": "For potions, splash potions, lingering potions, or tipped arrows. This contains the potion metadata of the item. \nDefaults to {}",
+                    "if": {
+                        "type": {
+                            "const": [
+                                "POTION",
+                                "SPLASH_POTION",
+                                "LINGERING_POTION",
+                                "TIPPED_ARROW"
+                            ]
+                        }
+                    },
                     "type": "object",
                     "default": {},
                     "additionalProperties": false,
@@ -22079,6 +24997,70 @@
                 }
             }
         },
+        "EquipmentData": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "helmet": {
+                    "description": "The item data for the helmet slot. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentItemStackData",
+                    "default": "{}"
+                },
+                "chestplate": {
+                    "description": "The item data for the chestplate slot. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentItemStackData",
+                    "default": "{}"
+                },
+                "leggings": {
+                    "description": "The item data for the leggings slot. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentItemStackData",
+                    "default": "{}"
+                },
+                "boots": {
+                    "description": "The item data for the boots slot. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentItemStackData",
+                    "default": "{}"
+                },
+                "mainhand": {
+                    "description": "The item data for the mainhand slot. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentItemStackData",
+                    "default": "{}"
+                },
+                "offhand": {
+                    "description": "The item data for the offhand slot. \nDefaults to \"{}\"",
+                    "$ref": "#/types/EquipmentItemStackData",
+                    "default": "{}"
+                }
+            }
+        },
+        "EquipmentItemStackData": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "The type of item. \nDefaults to \"STONE\"",
+                    "$ref": "#/types/material",
+                    "default": "STONE"
+                },
+                "amount": {
+                    "description": "The amount of item to give. \nDefaults to 1",
+                    "type": "integer",
+                    "default": 1
+                },
+                "metadata": {
+                    "description": "The metadata of the item. \nDefaults to \"{}\"",
+                    "$ref": "#/types/ItemMetaData",
+                    "default": "{}"
+                },
+                "droprate": {
+                    "description": "The chance to drop the item. \nDefaults to 0",
+                    "type": "number",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
         "AttributeData": {
             "additionalProperties": true,
             "type": "object",
@@ -22091,58 +25073,73 @@
                 "type": "number"
             },
             "properties": {
-                "MAX_HEALTH": {
+                "GENERIC_MAX_HEALTH": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "FOLLOW_RANGE": {
+                "GENERIC_FOLLOW_RANGE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "KNOCKBACK_RESISTANCE": {
+                "GENERIC_KNOCKBACK_RESISTANCE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "MOVEMENT_SPEED": {
+                "GENERIC_MOVEMENT_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "FLYING_SPEED": {
+                "GENERIC_FLYING_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ATTACK_DAMAGE": {
+                "GENERIC_ATTACK_DAMAGE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ATTACK_KNOCKBACK": {
+                "GENERIC_ATTACK_KNOCKBACK": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ATTACK_SPEED": {
+                "GENERIC_ATTACK_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ARMOR": {
+                "GENERIC_ARMOR": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "ARMOR_TOUGHNESS": {
+                "GENERIC_ARMOR_TOUGHNESS": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "FALL_DAMAGE_MULTIPLIER": {
+                "GENERIC_FALL_DAMAGE_MULTIPLIER": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "LUCK": {
+                "GENERIC_LUCK": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "MAX_ABSORPTION": {
+                "GENERIC_MAX_ABSORPTION": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "SAFE_FALL_DISTANCE": {
+                "GENERIC_SAFE_FALL_DISTANCE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "SCALE": {
+                "GENERIC_SCALE": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "STEP_HEIGHT": {
+                "GENERIC_STEP_HEIGHT": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "GRAVITY": {
+                "GENERIC_GRAVITY": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
-                "JUMP_STRENGTH": {
+                "GENERIC_JUMP_STRENGTH": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_BURNING_TIME": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_EXPLOSION_KNOCKBACK_RESISTANCE": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_MOVEMENT_EFFICIENCY": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_OXYGEN_BONUS": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "GENERIC_WATER_MOVEMENT_EFFICIENCY": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
                 "PLAYER_BLOCK_INTERACTION_RANGE": {
@@ -22154,161 +25151,20 @@
                 "PLAYER_BLOCK_BREAK_SPEED": {
                     "$ref": "#/types/AttributeData/propertyContent"
                 },
+                "PLAYER_MINING_EFFICIENCY": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "PLAYER_SNEAKING_SPEED": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "PLAYER_SUBMERGED_MINING_SPEED": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
+                "PLAYER_SWEEPING_DAMAGE_RATIO": {
+                    "$ref": "#/types/AttributeData/propertyContent"
+                },
                 "ZOMBIE_SPAWN_REINFORCEMENTS": {
                     "$ref": "#/types/AttributeData/propertyContent"
-                }
-            }
-        },
-        "EntityData": {
-            "additionalProperties": false,
-            "type": "object",
-            "properties": {
-                "type": {
-                    "description": "The entity type. \nDefaults to \"ZOMBIE\"",
-                    "$ref": "#/types/entity",
-                    "default": "ZOMBIE"
-                },
-                "nametag": {
-                    "description": "The nametag of the spawned entity. Defaults to no nametag",
-                    "type": "string",
-                    "default": ""
-                },
-                "shouldDespawn": {
-                    "description": "If true, the entity can despawn. \nDefaults to true",
-                    "type": "boolean",
-                    "default": true
-                },
-                "passenger": {
-                    "description": "The passenger of the entity. \nDefaults to {}",
-                    "$ref": "#/types/EntityData",
-                    "default": {}
-                },
-                "attributes": {
-                    "description": "The attributes of the entity. \nDefaults to {}",
-                    "$ref": "#/types/AttributeData",
-                    "default": {}
-                },
-                "extra": {
-                    "description": "The extra data for entities. \nDefaults to {}",
-                    "type": "object",
-                    "default": {},
-                    "additionalProperties": false,
-                    "properties": {
-                        "canEquip": {
-                            "description": "For living entities. Whether the entity can pick up items. \nDefaults to false",
-                            "type": "boolean",
-                            "default": false
-                        },
-                        "isZombifiable": {
-                            "description": "For piglins, piglin brutes, and hoglins. Whether the entity can be zombified into their zombie couterparts. \nDefaults to true",
-                            "type": "boolean",
-                            "default": true
-                        },
-                        "color": {
-                            "description": "For colorable entities. The color for the entity",
-                            "$ref": "#/types/dyeColor"
-                        },
-                        "armorSection": {
-                            "description": "For horses. The armor for the horse. \nDefaults to {}",
-                            "$ref": "#/types/ItemStackData",
-                            "default": {}
-                        },
-                        "hasSaddle": {
-                            "description": "For horses___. Whether the entity has a saddle attached. \nDefaults to false",
-                            "type": "boolean",
-                            "default": false
-                        },
-                        "style": {
-                            "description": "For horses. The style/markings that the horse has. \nDefaults to \"NONE\"",
-                            "$ref": "#/types/horseStyle",
-                            "default": "NONE"
-                        },
-                        "tamingDifficulty": {
-                            "description": "For horses___. The difficulty of taming the entity (ie the amount of domesticating (feeding, riding, ect.) necessary in order to tame it). \nDefaults to 1",
-                            "type": "integer",
-                            "default": 1
-                        },
-                        "jumpStrength": {
-                            "description": "For horses___. The strength of jump for the entity. \nDefaults to 0.7",
-                            "type": "number",
-                            "default": 0.7
-                        },
-                        "hasChest": {
-                            "description": "For chestedHorses___. Whether the entity is carrying a chest. \nDefaults to false",
-                            "type": "boolean",
-                            "default": false
-                        },
-                        "tamed": {
-                            "description": "For horses. Whether the horse is tamed. \nDefaults to false",
-                            "type": "boolean",
-                            "default": false
-                        },
-                        "angry": {
-                            "description": "For wolfs. Whether the wolf is angry. \nDefaults to false",
-                            "type": "boolean",
-                            "default": false
-                        },
-                        "size": {
-                            "description": "For slimes, magmacubes, and phantoms. The size of the entity. \nDefaults to 0",
-                            "type": "integer",
-                            "default": 0
-                        },
-                        "potion": {
-                            "description": "For thrown potions. The item data for the thrown potion. \nDefaults to {}",
-                            "$ref": "#/types/ItemStackData",
-                            "default": {}
-                        },
-                        "fuse": {
-                            "description": "For creepers. The time a creeper is allowed to be primed before exploding (in ticks). \nDefaults to 30",
-                            "type": "integer",
-                            "default": 30
-                        },
-                        "ignited": {
-                            "description": "For creepers. Whether the creeper is primed/ignited. \nDefaults to false",
-                            "type": "boolean",
-                            "default": false
-                        },
-                        "explosionRadius": {
-                            "description": "For creepers. The explosion radius when exploded. \nDefaults to 3",
-                            "type": "integer",
-                            "default": 3
-                        },
-                        "powered": {
-                            "description": "For creepers. Whether the creeper is powered/charged/electrecuted. \nDefaults to 3",
-                            "type": "integer",
-                            "default": 3
-                        },
-                        "variant": {
-                            "description": "For axolotls. The variant of the entity. Defaults to a random variant (probably, not sure)",
-                            "$ref": "#/types/axolotlVariant",
-                            "default": ""
-                        },
-                        "isBaby": {
-                            "description": "For ageable entities. Whether the entity is a baby. \nDefaults to false",
-                            "type": "boolean",
-                            "default": false
-                        },
-                        "type": {
-                            "description": "For dropped item. The type of item. \nDefaults to \"STONE\"",
-                            "$ref": "#/types/material",
-                            "default": "STONE"
-                        },
-                        "amount": {
-                            "description": "For dropped item. The amount of item to give. \nDefaults to 1",
-                            "type": "integer",
-                            "default": 1
-                        },
-                        "metadata": {
-                            "description": "For dropped item. The metadata of the item. \nDefaults to {}",
-                            "$ref": "#/types/ItemMetaData",
-                            "default": {}
-                        },
-                        "charged": {
-                            "description": "For whither skulls. Whether to make the skull blue or not. \nDefaults to false",
-                            "type": "boolean",
-                            "default": false
-                        }
-                    }
                 }
             }
         },
@@ -22381,6 +25237,27 @@
                     "description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks). \nDefaults to 10",
                     "type": "number",
                     "default": 10
+                }
+            }
+        },
+        "PotionItemData": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "The potion type. \nDefaults to \"UNCRAFTABLE\"",
+                    "$ref": "#/types/potionItemType",
+                    "default": "UNCRAFTABLE"
+                },
+                "extended": {
+                    "description": "Whether the potion duration is extended (like when redstone is added when brewing). \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "upgraded": {
+                    "description": "Whether the potion is upgraded (level 2) (like when glowstone is added when brewing). \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
@@ -22781,7 +25658,7 @@
                 "WITHER_SKULL",
                 "TNT",
                 "FALLING_BLOCK",
-                "FIREWORK_ROCKET",
+                "FIREWORK_ROCK ET",
                 "HUSK",
                 "SPECTRAL_ARROW",
                 "SHULKER_BULLET",
@@ -22926,9 +25803,11 @@
                 "TIDE",
                 "DUNE",
                 "SILENCE",
+                "FLOW",
                 "SNOUT",
                 "EYE",
                 "WARD",
+                "BOLT",
                 "COAST",
                 "HOST",
                 "SENTRY",
@@ -23165,6 +26044,38 @@
                 "WHITEFIELD"
             ]
         },
+        "llamaColor": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "CREAMY",
+                "WHITE",
+                "BROWN",
+                "GRAY"
+            ]
+        },
+        "rabbitType": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "BROWN",
+                "WHITE",
+                "BLACK",
+                "BLACK_AND_WHITE",
+                "GOLD",
+                "SALT_AND_PEPPER",
+                "THE_KILLER_BUNNY"
+            ]
+        },
+        "arrowPickupStatus": {
+            "additionalProperties": false,
+            "type": "string",
+            "enum": [
+                "DISALLOWED",
+                "ALLOWED",
+                "CREATIVE_ONLY"
+            ]
+        },
         "damageCause": {
             "additionalProperties": false,
             "type": "string",
@@ -23197,6 +26108,7 @@
                 "CUSTOM",
                 "FLY_INTO_WALL",
                 "HOT_FLOOR",
+                "CAMPFIRE",
                 "CRAMMING",
                 "DRYOUT",
                 "FREEZE",
@@ -23570,27 +26482,36 @@
             "additionalProperties": false,
             "type": "string",
             "enum": [
-                "MAX_HEALTH",
-                "FOLLOW_RANGE",
-                "KNOCKBACK_RESISTANCE",
-                "MOVEMENT_SPEED",
-                "FLYING_SPEED",
-                "ATTACK_DAMAGE",
-                "ATTACK_KNOCKBACK",
-                "ATTACK_SPEED",
-                "ARMOR",
-                "ARMOR_TOUGHNESS",
-                "FALL_DAMAGE_MULTIPLIER",
-                "LUCK",
-                "MAX_ABSORPTION",
-                "SAFE_FALL_DISTANCE",
-                "SCALE",
-                "STEP_HEIGHT",
-                "GRAVITY",
-                "JUMP_STRENGTH",
+                "GENERIC_MAX_HEALTH",
+                "GENERIC_FOLLOW_RANGE",
+                "GENERIC_KNOCKBACK_RESISTANCE",
+                "GENERIC_MOVEMENT_SPEED",
+                "GENERIC_FLYING_SPEED",
+                "GENERIC_ATTACK_DAMAGE",
+                "GENERIC_ATTACK_KNOCKBACK",
+                "GENERIC_ATTACK_SPEED",
+                "GENERIC_ARMOR",
+                "GENERIC_ARMOR_TOUGHNESS",
+                "GENERIC_FALL_DAMAGE_MULTIPLIER",
+                "GENERIC_LUCK",
+                "GENERIC_MAX_ABSORPTION",
+                "GENERIC_SAFE_FALL_DISTANCE",
+                "GENERIC_SCALE",
+                "GENERIC_STEP_HEIGHT",
+                "GENERIC_GRAVITY",
+                "GENERIC_JUMP_STRENGTH",
+                "GENERIC_BURNING_TIME",
+                "GENERIC_EXPLOSION_KNOCKBACK_RESISTANCE",
+                "GENERIC_MOVEMENT_EFFICIENCY",
+                "GENERIC_OXYGEN_BONUS",
+                "GENERIC_WATER_MOVEMENT_EFFICIENCY",
                 "PLAYER_BLOCK_INTERACTION_RANGE",
                 "PLAYER_ENTITY_INTERACTION_RANGE",
                 "PLAYER_BLOCK_BREAK_SPEED",
+                "PLAYER_MINING_EFFICIENCY",
+                "PLAYER_SNEAKING_SPEED",
+                "PLAYER_SUBMERGED_MINING_SPEED",
+                "PLAYER_SWEEPING_DAMAGE_RATIO",
                 "ZOMBIE_SPAWN_REINFORCEMENTS"
             ]
         },
@@ -24269,14 +27190,14 @@
                 "BLOCK_SWEET_BERRY_BUSH_PLACE",
                 "BLOCK_TRIAL_SPAWNER_ABOUT_TO_SPAWN_ITEM",
                 "BLOCK_TRIAL_SPAWNER_AMBIENT",
-                "BLOCK_TRIAL_SPAWNER_AMBIENT_CHARGED",
+                "BLOCK_TRIAL_SPAWNER_AMBIENT_OMINOUS",
                 "BLOCK_TRIAL_SPAWNER_BREAK",
-                "BLOCK_TRIAL_SPAWNER_CHARGE_ACTIVATE",
                 "BLOCK_TRIAL_SPAWNER_CLOSE_SHUTTER",
                 "BLOCK_TRIAL_SPAWNER_DETECT_PLAYER",
                 "BLOCK_TRIAL_SPAWNER_EJECT_ITEM",
                 "BLOCK_TRIAL_SPAWNER_FALL",
                 "BLOCK_TRIAL_SPAWNER_HIT",
+                "BLOCK_TRIAL_SPAWNER_OMINOUS_ACTIVATE",
                 "BLOCK_TRIAL_SPAWNER_OPEN_SHUTTER",
                 "BLOCK_TRIAL_SPAWNER_PLACE",
                 "BLOCK_TRIAL_SPAWNER_SPAWN_ITEM",
@@ -24309,6 +27230,7 @@
                 "BLOCK_VAULT_INSERT_ITEM_FAIL",
                 "BLOCK_VAULT_OPEN_SHUTTER",
                 "BLOCK_VAULT_PLACE",
+                "BLOCK_VAULT_REJECT_REWARDED_PLAYER",
                 "BLOCK_VAULT_STEP",
                 "BLOCK_VINE_BREAK",
                 "BLOCK_VINE_FALL",
@@ -25163,11 +28085,14 @@
                 "MUSIC_DISC_BLOCKS",
                 "MUSIC_DISC_CAT",
                 "MUSIC_DISC_CHIRP",
+                "MUSIC_DISC_CREATOR",
+                "MUSIC_DISC_CREATOR_MUSIC_BOX",
                 "MUSIC_DISC_FAR",
                 "MUSIC_DISC_MALL",
                 "MUSIC_DISC_MELLOHI",
                 "MUSIC_DISC_OTHERSIDE",
                 "MUSIC_DISC_PIGSTEP",
+                "MUSIC_DISC_PRECIPICE",
                 "MUSIC_DISC_RELIC",
                 "MUSIC_DISC_STAL",
                 "MUSIC_DISC_STRAD",
@@ -26134,6 +29059,7 @@
                 "ARMADILLO_SCUTE",
                 "WOLF_ARMOR",
                 "FLINT_AND_STEEL",
+                "BOWL",
                 "APPLE",
                 "BOW",
                 "ARROW",
@@ -26183,7 +29109,6 @@
                 "NETHERITE_AXE",
                 "NETHERITE_HOE",
                 "STICK",
-                "BOWL",
                 "MUSHROOM_STEW",
                 "STRING",
                 "FEATHER",
@@ -26507,6 +29432,8 @@
                 "MUSIC_DISC_CAT",
                 "MUSIC_DISC_BLOCKS",
                 "MUSIC_DISC_CHIRP",
+                "MUSIC_DISC_CREATOR",
+                "MUSIC_DISC_CREATOR_MUSIC_BOX",
                 "MUSIC_DISC_FAR",
                 "MUSIC_DISC_MALL",
                 "MUSIC_DISC_MELLOHI",
@@ -26519,6 +29446,7 @@
                 "MUSIC_DISC_RELIC",
                 "MUSIC_DISC_5",
                 "MUSIC_DISC_PIGSTEP",
+                "MUSIC_DISC_PRECIPICE",
                 "DISC_FRAGMENT_5",
                 "TRIDENT",
                 "PHANTOM_MEMBRANE",
@@ -26829,6 +29757,10 @@
         "particleShape": {
             "type": "object",
             "$ref": "#/definitions/particleShape"
+        },
+        "EntityData": {
+            "type": "object",
+            "$ref": "#/definitions/EntityData"
         },
         "skill": {
             "type": "object",

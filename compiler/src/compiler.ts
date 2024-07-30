@@ -15,11 +15,13 @@ export class Compiler {
 	constructor(preprocessed: Preprocessed.Schema) {
 		this.preprocessed = preprocessed
 		this.schema = new Compiled.FullSchema()
+		// TODO: fix this, too error prone
 		this.definitionExtraProperties = {
 			triggers: { type: true, conditions: true },
 			conditions: { type: true, else: true },
 			effects: { type: true },
 			particleShapes: { type: true },
+			entityData: { type: true, shouldDespawn: true, nametag: true, customNameVisible: true, silent: true, visualFire: true, attributes: true, passenger: true},
 			skills: { skill: true, conditions: true },
 			damagemodifiers: { type: true },
 			rewards: { type: true },
@@ -202,9 +204,6 @@ export class Compiler {
 			compilingProperty.setPropertyContent(valueProperty)
 			let propertyContentPath = `${compilingProperty.path.asString()}/propertyContent`
 			enumValues.forEach(value => compilingProperty.addProperty(value, {$ref: propertyContentPath}))
-		},
-		if: (property, compilingProperty) => {
-			
 		},
 		description: (description, compilingProperty) => {
 			compilingProperty.setDescription(description)

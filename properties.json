@@ -4817,6 +4817,7 @@
 		},
 		"EquipmentData": {
 			"description": "The equipment data for entities",
+			"type": "object",
 			"properties": {
 				"helmet": {
 					"description": "The item data for the helmet slot",
@@ -4858,6 +4859,7 @@
 		},
 		"EquipmentItemStackData": {
 			"description": "The item stack data for an equipment (ie. ItemStackData + droprate)",
+			"type": "object",
 			"properties": {
 				"type": {
 					"description": "The type of item",
@@ -4903,7 +4905,9 @@
 			}
 		},
 		"EntityData": {
+			"internal": true,
 			"description": "The data of an entity",
+			"type": "object",
 			"properties": {
 				"type": {
 					"description": "The entity type", 
@@ -5041,6 +5045,7 @@
 		},
 		"PotionItemData": {
 			"description": "The data of a potion item",
+			"type": "object",
 			"properties": {
 				"type": {
 					"description": "The potion type",

@@ -14,6 +14,9 @@ interface Schema {
 	conditions: StringRecord<Item>
 	effects: StringRecord<Item>
 
+	particleShapes: StringRecord<Item>
+	entityData: StringRecord<Item>
+
 	skills: StringRecord<Item>
 
 	damagemodifiers: StringRecord<Item>
@@ -60,13 +63,7 @@ interface Property extends Descriptable {
 	properties?: PropertyMap
 	patternProperties?: PropertyMap
 	propertiesMap?: PropertiesMap
-	if?: IfPath
 	requireEnum?: boolean
 	enum?: any[]
 	pattern?: string
-}
-
-interface IfPath {
-	[key: string]: IfPath
-	const?: any
 }
