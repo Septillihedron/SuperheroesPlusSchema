@@ -31,7 +31,7 @@ const pluralToUnpluralCategories: Record<Category, NonPluralCategory> = {
 
 class FullSchema {
 
-	readonly $schema = "http://json-schema.org/schema";
+	readonly $schema = "http://json-schema.org/draft-07/schema#";
 	readonly type = "object"
 	readonly additionalProperties = false
 	readonly minProperties = 1

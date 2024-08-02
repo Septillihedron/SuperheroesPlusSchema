@@ -11,10 +11,10 @@ class PartialSchemaBuilder {
 
     initialize(root: string): void {
         this.partialSchema = {
-            $schema: "http://json-schema.org/schema",
-            type: "object",
-            additionalProperties: false,
-            minProperties: 1,
+            $schema: this.fullSchema.$schema,
+            type: this.fullSchema.type,
+            additionalProperties: this.fullSchema.additionalProperties,
+            minProperties: this.fullSchema.minProperties,
             patternProperties: { ".*": { $ref: `#/definitions/${root}` } },
             definitions: {},
         }
