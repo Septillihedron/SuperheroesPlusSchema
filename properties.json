@@ -4443,7 +4443,7 @@
 	"types": {
 		"range": {
 			"description": "A range of value",
-			"type": ["string", "number"],
+			"type": ["string", "number"], 
 			"pattern": "^(([0-9]+)|([0-9]*\\.[0-9]+))( *- +(([0-9]+)|([0-9]*\\.[0-9]+)))?$"
 			// a decimal number = (([0-9]+)|([0-9]*\\.[0-9]+))
 		},

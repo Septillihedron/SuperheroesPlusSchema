@@ -406,6 +406,7 @@ class PropertyClass implements Property {
 	required?: string[]
 	enum?: any[]
 	allOf?: Property[]
+	oneOf?: Property[]
 	anyOf?: Property[]
 	propertyNames?: Property
 	pattern?: string
@@ -441,14 +442,14 @@ class PropertyClass implements Property {
 	setRecordItem(recordItem: PropertyTypes) {
 		this.recordItem = this.parseType(recordItem)
 	}
-	addType(types: PropertyTypes[]): void {
+	setTypes(types: PropertyTypes[]): void {
 		if (types.length === 0) return
 		if (types.length === 1) {
 			const parsedType = this.parseType(types[0])
 			Object.assign(this, parsedType)
 			return
 		}
-		types.map(this.parseType).forEach(p => this.addAnyOf(p))
+		types.map(this.parseType).forEach(p => this.addOneOf(p))
 	}
 	private static readonly typesArray = ["array", "object", "string", "number", "integer", "boolean"]
 	private parseType(type: PropertyTypes): Property {
@@ -518,9 +519,9 @@ class PropertyClass implements Property {
 		if (this.allOf === undefined) this.allOf = []
 		this.allOf.push(property)
 	}
-	addAnyOf(property: Property): void {
-		if (this.anyOf === undefined) this.anyOf = []
-		this.anyOf.push(property)
+	addOneOf(property: Property): void {
+		if (this.oneOf === undefined) this.oneOf = []
+		this.oneOf.push(property)
 	}
 	setPropertyNames(property: Property): void {
 		this.propertyNames = property
