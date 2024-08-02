@@ -179,7 +179,7 @@ EnchantedBosses:
               type: POTIONEFFECT
               mode: OTHER
               duration: 2 - 100
-              potency: 
+              potency: 3
         potion:
           type: POTION
           mode: OTHER
