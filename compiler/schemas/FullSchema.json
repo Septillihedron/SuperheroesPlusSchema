@@ -6164,11 +6164,6 @@
                 },
                 "damage": {
                     "description": "If projectile entity is an arrow, the damage that the arrow will do. \nDefaults to 4",
-                    "if": {
-                        "entity": {
-                            "const": "arrow"
-                        }
-                    },
                     "type": "integer",
                     "default": 4
                 },
@@ -14701,11 +14696,6 @@
                 },
                 "recipeKeys": {
                     "description": "The list of keys to the material that the key is representing. \nDefaults to {}",
-                    "if": {
-                        "isShaped": {
-                            "const": true
-                        }
-                    },
                     "type": "object",
                     "default": {},
                     "additionalProperties": false,
@@ -14718,11 +14708,6 @@
                 },
                 "recipe": {
                     "description": "The shape of the recipe. \nDefaults to [\"\",\"\",\"\"]",
-                    "if": {
-                        "isShaped": {
-                            "const": true
-                        }
-                    },
                     "type": "array",
                     "required": [
                         "items"
@@ -14741,11 +14726,6 @@
                 },
                 "ingredients": {
                     "description": "The map of ingredients to count of that ingredients that's needed for the recipe. \nDefaults to {}",
-                    "if": {
-                        "isShaped": {
-                            "const": false
-                        }
-                    },
                     "type": "object",
                     "default": {},
                     "additionalProperties": true,
@@ -24957,16 +24937,6 @@
                 },
                 "color": {
                     "description": "For leather armors. This contains the color metadata of the item. \nDefaults to {\"red\":200,\"green\":0,\"blue\":255}",
-                    "if": {
-                        "type": {
-                            "const": [
-                                "POTION",
-                                "SPLASH_POTION",
-                                "LINGERING_POTION",
-                                "TIPPED_ARROW"
-                            ]
-                        }
-                    },
                     "type": "object",
                     "default": {
                         "red": 200,
@@ -25023,16 +24993,6 @@
                 },
                 "potion": {
                     "description": "For potions, splash potions, lingering potions, or tipped arrows. This contains the potion metadata of the item. \nDefaults to {}",
-                    "if": {
-                        "type": {
-                            "const": [
-                                "POTION",
-                                "SPLASH_POTION",
-                                "LINGERING_POTION",
-                                "TIPPED_ARROW"
-                            ]
-                        }
-                    },
                     "type": "object",
                     "default": {},
                     "additionalProperties": false,

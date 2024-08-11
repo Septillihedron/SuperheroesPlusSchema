@@ -901,7 +901,7 @@
 				},
 				"damage": {
 					"description": "If projectile entity is an arrow, the damage that the arrow will do",
-					"if": {"entity": {"const": "arrow"}},
+					// "if": {"entity": {"const": "arrow"}},
 					"required": false,
 					"type": "integer",
 					"default": 4
@@ -2744,7 +2744,7 @@
 				},
 				"recipeKeys": {
 					"description": "The list of keys to the material that the key is representing",
-					"if": {"isShaped": {"const": true}},
+					// "if": {"isShaped": {"const": true}},
 					"required": false,
 					"type": "object",
 					"default": {},
@@ -2758,7 +2758,7 @@
 				},
 				"recipe": {
 					"description": "The shape of the recipe",
-					"if": {"isShaped": {"const": true}},
+					// "if": {"isShaped": {"const": true}},
 					"required": false,
 					"type": "array",
 					"items": {
@@ -2772,7 +2772,7 @@
 				},
 				"ingredients": {
 					"description": "The map of ingredients to count of that ingredients that's needed for the recipe",
-					"if": {"isShaped": {"const": false}},
+					// "if": {"isShaped": {"const": false}},
 					"required": false,
 					"type": "object",
 					"default": {},
@@ -4775,7 +4775,7 @@
 				},
 				"color": {
 					"description": "For leather armors. This contains the color metadata of the item",
-					"if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
+					// "if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
 					"required": false,
 					"type": "object",
 					"default": { "red": 200, "green": 0, "blue": 255},
@@ -4832,7 +4832,7 @@
 				},
 				"potion": {
 					"description": "For potions, splash potions, lingering potions, or tipped arrows. This contains the potion metadata of the item",
-					"if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
+					// "if": {"type": {"const": ["POTION", "SPLASH_POTION", "LINGERING_POTION", "TIPPED_ARROW"]}},
 					"required": false,
 					"type": "object",
 					"default": {},
