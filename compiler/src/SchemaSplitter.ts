@@ -23,6 +23,7 @@ class PartialSchemaBuilder {
             condition: this.fullSchema.definitions.condition,
             effect: this.fullSchema.definitions.effect,
             particleShape: this.fullSchema.definitions.particleShape,
+            EntityData: this.fullSchema.definitions.EntityData,
         }
         this.partialSchema.definitions[root] = (this.fullSchema.definitions as any)[root]
 
@@ -30,6 +31,7 @@ class PartialSchemaBuilder {
         this.partialSchema.conditions = this.fullSchema.conditions
         this.partialSchema.effects = this.fullSchema.effects
         this.partialSchema.particleShapes = this.fullSchema.particleShapes
+        this.partialSchema.entityData = this.fullSchema.entityData
         this.partialSchema.types = this.fullSchema.types
     }
 

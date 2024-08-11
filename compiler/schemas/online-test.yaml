@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://septillihedron.github.io/SuperheroesPlusSchema/FullSchema.json
+# yaml-language-server: $schema=Superheroes.json
 Superheroes:
   colouredName: "hero blobs"
   description: it blobs around
@@ -33,4 +33,6 @@ Superheroes:
             duration: 2.5
             amount: 1
             extra: 0
+            shape:
+              type: HALO
             
