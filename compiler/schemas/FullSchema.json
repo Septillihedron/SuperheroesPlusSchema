@@ -14624,6 +14624,11 @@
                             "default": 0
                         }
                     },
+                    "required": [
+                        "red",
+                        "green",
+                        "blue"
+                    ],
                     "default": {
                         "red": 0,
                         "green": 0,
@@ -24933,7 +24938,11 @@
                             "description": "The trim material",
                             "$ref": "#/types/trimMaterial"
                         }
-                    }
+                    },
+                    "required": [
+                        "pattern",
+                        "material"
+                    ]
                 },
                 "color": {
                     "description": "For leather armors. This contains the color metadata of the item. \nDefaults to {\"red\":200,\"green\":0,\"blue\":255}",
@@ -24963,7 +24972,12 @@
                             "minimum": 0,
                             "maximum": 255
                         }
-                    }
+                    },
+                    "required": [
+                        "red",
+                        "green",
+                        "blue"
+                    ]
                 },
                 "book": {
                     "description": "For writable/written books. This contains the book metadata of the item. \nDefaults to {}",
@@ -25011,7 +25025,10 @@
                             "type": "boolean",
                             "default": false
                         }
-                    }
+                    },
+                    "required": [
+                        "type"
+                    ]
                 }
             }
         },
@@ -25098,7 +25115,10 @@
                     "minimum": 0,
                     "maximum": 1
                 }
-            }
+            },
+            "required": [
+                "type"
+            ]
         },
         "AttributeData": {
             "additionalProperties": true,
@@ -25277,7 +25297,10 @@
                     "type": "number",
                     "default": 10
                 }
-            }
+            },
+            "required": [
+                "type"
+            ]
         },
         "PotionItemData": {
             "additionalProperties": false,
@@ -25298,7 +25321,10 @@
                     "type": "boolean",
                     "default": false
                 }
-            }
+            },
+            "required": [
+                "type"
+            ]
         },
         "ConfigurationDataParticleData": {
             "additionalProperties": false,
@@ -25627,7 +25653,10 @@
                     "$ref": "#/types/ParticleOptionsData",
                     "default": "0"
                 }
-            }
+            },
+            "required": [
+                "shape"
+            ]
         },
         "ParticleOptionsData": {
             "additionalProperties": false,

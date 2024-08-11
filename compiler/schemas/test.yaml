@@ -192,6 +192,7 @@ EnchantedBosses:
           type: POTION
           mode: OTHER
           potion:
+            type: CONDUIT_POWER
             potency: 1
             ambient: true
             hasParticles: true
@@ -206,9 +207,6 @@ EnchantedBosses:
             extra: 0
             shape:
               type: FAIRY_WINGS
-              frequency: 0.05
-              height: 1
-              size: 1
     effectTrig:
       trigger:
         type: POTIONEFFECT

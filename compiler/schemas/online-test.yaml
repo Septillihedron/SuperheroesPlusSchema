@@ -25,3 +25,12 @@ Superheroes:
           mode: SELF
           verticalVelocity: 10
           horizontalVelocity: 1
+        particle:
+          type: PARTICLE
+          mode: SELF
+          particle:
+            type: ITEM_SLIME
+            duration: 2.5
+            amount: 1
+            extra: 0
+            

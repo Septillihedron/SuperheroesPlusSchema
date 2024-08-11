@@ -158,7 +158,7 @@ export class Compiler {
 			forEachEntry(properties, (name, property) => {
 				let propertyPath = `${compilingProperty.path.asString()}/properties/${name}`
 				let compiledProperty = this.compileProperty(property, 
-					new Compiled.PropertyClass(compilingProperty.properties!, name as string, propertyPath))
+					new Compiled.PropertyClass(compilingProperty, name as string, propertyPath))
 				
 				compilingProperty.addProperty(name as string, compiledProperty)
 			})
