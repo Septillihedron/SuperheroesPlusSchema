@@ -5,6 +5,9 @@ Superheroes:
   icon:
     type: STONE
   skills:
+    jdsdsdgasd:
+      skill: CONVERTBLOCK
+      cooldownMessage: There are <s> seconds before you can transmutate the block again!
     damageThingi:
       skill: DAMAGEMODIFIER
       outgoing: false
@@ -139,6 +142,8 @@ EnchantedBosses:
   description: Blue Boss
   reward:
     type: BASIC
+    commands:
+      - jdsadiud
     items: 
       sword: 
         type: DIAMOND_SWORD

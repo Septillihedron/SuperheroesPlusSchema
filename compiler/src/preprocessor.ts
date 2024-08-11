@@ -12,6 +12,7 @@ export function preprocess(unprocessed: any): Schema {
 			addExclusiveToDescription(item)
 			walkItemProperties(item, addDefaultToDescription)
 			walkItemProperties(item, addRangeTypeDescription)
+			walkItemProperties(item, escapeHTMLForDescription)
 		})
 		forEachEntry(items, (name, item) => {
 			if (item.available === false) {
@@ -77,4 +78,10 @@ function addDefaultToDescription(property: Property): void {
 function addRangeTypeDescription(property: Property): void {
 	if (property.type !== "range") return
 	property.description += "\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`"
+}
+
+function escapeHTMLForDescription(property: Property): void {
+	property.description = property.description
+		.replace("<", "&lt;")
+		.replace(">", "&gt;")
 }

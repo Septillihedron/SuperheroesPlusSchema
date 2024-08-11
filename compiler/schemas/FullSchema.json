@@ -6246,7 +6246,7 @@
                     ]
                 },
                 "message": {
-                    "description": "The message to send. \nIn mode SELF, \"<player>\" and \"<self>\" will be replaced by the user's name. \nIn mode OTHER, \"<self>\" will be replaced by the user's name; \"<player>\" and \"<target>\" will be replaced by the target's name",
+                    "description": "The message to send. \nIn mode SELF, \"&lt;player&gt;\" and \"<self>\" will be replaced by the user's name. \nIn mode OTHER, \"<self>\" will be replaced by the user's name; \"<player>\" and \"<target>\" will be replaced by the target's name",
                     "type": "string"
                 }
             },
@@ -7262,7 +7262,7 @@
                     ]
                 },
                 "message": {
-                    "description": "The message to send, instances of the text \"<player>\" will be changed to the name of the player that this is sent",
+                    "description": "The message to send, instances of the text \"&lt;player&gt;\" will be changed to the name of the player that this is sent",
                     "type": "string"
                 }
             },
@@ -9553,7 +9553,7 @@
                     "default": 0
                 },
                 "cooldownMessage": {
-                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"There are <s> seconds before you can transmutate the block again!\"",
+                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"There are &lt;s&gt; seconds before you can transmutate the block again!\"",
                     "type": "string",
                     "default": "There are <s> seconds before you can transmutate the block again!"
                 },
@@ -9583,7 +9583,7 @@
                     "default": 10
                 },
                 "cooldownMessage": {
-                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"You have <s> seconds remaining before you can remote detonate again\"",
+                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"You have &lt;s&gt; seconds remaining before you can remote detonate again\"",
                     "type": "string",
                     "default": "You have <s> seconds remaining before you can remote detonate again"
                 },
@@ -14102,7 +14102,7 @@
                     "default": 10
                 },
                 "cooldownMessage": {
-                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"<dark_green><bold>Creeper <white>Cooldown: <s> seconds\"",
+                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"&lt;dark_green&gt;<bold>Creeper <white>Cooldown: <s> seconds\"",
                     "type": "string",
                     "default": "<dark_green><bold>Creeper <white>Cooldown: <s> seconds"
                 },
@@ -14178,7 +14178,7 @@
                     "default": 2
                 },
                 "cooldownMessage": {
-                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"<dark_grey><bold>Gun <grey>has <s> seconds left until it can be used again!\"",
+                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"&lt;dark_grey&gt;<bold>Gun <grey>has <s> seconds left until it can be used again!\"",
                     "type": "string",
                     "default": "<dark_grey><bold>Gun <grey>has <s> seconds left until it can be used again!"
                 },
@@ -14294,17 +14294,17 @@
                     "default": ""
                 },
                 "cooldownMessage": {
-                    "description": "The message that will be displayed when the spell is on cooldown. \n%spellName% will be replaced with the spell name\n%cooldown% with the cooldown in seconds\n\n%fuel% with the name of the fuel material\n%cost% with the amount of fuel used. \nDefaults to \"<spellName> has <currentcooldown> seconds remaining.\"",
+                    "description": "The message that will be displayed when the spell is on cooldown. \n%spellName% will be replaced with the spell name\n%cooldown% with the cooldown in seconds\n\n%fuel% with the name of the fuel material\n%cost% with the amount of fuel used. \nDefaults to \"&lt;spellName&gt; has <currentcooldown> seconds remaining.\"",
                     "type": "string",
                     "default": "<spellName> has <currentcooldown> seconds remaining."
                 },
                 "moreFuelMessage": {
-                    "description": ". \nDefaults to \"This spell needs <fuelneeded> more <fuel>\"",
+                    "description": ". \nDefaults to \"This spell needs &lt;fuelneeded&gt; more <fuel>\"",
                     "type": "string",
                     "default": "This spell needs <fuelneeded> more <fuel>"
                 },
                 "displayNameFormat": {
-                    "description": ". \nDefaults to \"<purple><spellName>\"",
+                    "description": ". \nDefaults to \"&lt;purple&gt;<spellName>\"",
                     "type": "string",
                     "default": "<purple><spellName>"
                 },
@@ -14482,12 +14482,12 @@
                     "default": 10
                 },
                 "receiverMessage": {
-                    "description": ". \nDefaults to \"<grey><i>You have received a potion effect.\"",
+                    "description": ". \nDefaults to \"&lt;grey&gt;<i>You have received a potion effect.\"",
                     "type": "string",
                     "default": "<grey><i>You have received a potion effect."
                 },
                 "giverMessage": {
-                    "description": ". \nDefaults to \"<grey><i>You have received a potion effect.\"",
+                    "description": ". \nDefaults to \"&lt;grey&gt;<i>You have received a potion effect.\"",
                     "type": "string",
                     "default": "<grey><i>You have received a potion effect."
                 },
@@ -14497,7 +14497,7 @@
                     "default": 10
                 },
                 "cooldownMessage": {
-                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"<grey><i>You have <currentcooldown> seconds left until it can be used again!\"",
+                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"&lt;grey&gt;<i>You have <currentcooldown> seconds left until it can be used again!\"",
                     "type": "string",
                     "default": "<grey><i>You have <currentcooldown> seconds left until it can be used again!"
                 }
@@ -14589,7 +14589,7 @@
                     "default": 10
                 },
                 "cooldownMessage": {
-                    "description": ". \nDefaults to \"<yellow><bold>Zeus <white>Cooldown: <s> seconds\"",
+                    "description": ". \nDefaults to \"&lt;yellow&gt;<bold>Zeus <white>Cooldown: <s> seconds\"",
                     "type": "string",
                     "default": "<yellow><bold>Zeus <white>Cooldown: <s> seconds"
                 }
@@ -14665,7 +14665,7 @@
                     "default": 1
                 },
                 "tooMuscularMessage": {
-                    "description": ". \nDefaults to \"<player> <white> is too strong to sit in a vehicle!\"",
+                    "description": ". \nDefaults to \"&lt;player&gt; <white> is too strong to sit in a vehicle!\"",
                     "type": "string",
                     "default": "<player> <white> is too strong to sit in a vehicle!"
                 },
@@ -19195,7 +19195,7 @@
                     "default": 10
                 },
                 "cooldownMessage": {
-                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"<dark_gray><bold>Slam <white>Cooldown: <currentcooldown> seconds\"",
+                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"&lt;dark_gray&gt;<bold>Slam <white>Cooldown: <currentcooldown> seconds\"",
                     "type": "string",
                     "default": "<dark_gray><bold>Slam <white>Cooldown: <currentcooldown> seconds"
                 },
@@ -19244,17 +19244,17 @@
                     "default": 10
                 },
                 "cooldownMessage": {
-                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"You need to wait <currentcooldown> seconds before you can erase their power again!\"",
+                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"You need to wait &lt;currentcooldown&gt; seconds before you can erase their power again!\"",
                     "type": "string",
                     "default": "You need to wait <currentcooldown> seconds before you can erase their power again!"
                 },
                 "removedMessage": {
-                    "description": "The message to send to the user and erased player when their powers are removed. \nDefaults to \"<player> has had their power erased temporarily!\"",
+                    "description": "The message to send to the user and erased player when their powers are removed. \nDefaults to \"&lt;player&gt; has had their power erased temporarily!\"",
                     "type": "string",
                     "default": "<player> has had their power erased temporarily!"
                 },
                 "returnedMessage": {
-                    "description": "The message to send to the user and erased player when their powers are reinstated. \nDefaults to \"<player> has had their power reinstated!\"",
+                    "description": "The message to send to the user and erased player when their powers are reinstated. \nDefaults to \"&lt;player&gt; has had their power reinstated!\"",
                     "type": "string",
                     "default": "<player> has had their power reinstated!"
                 },
@@ -19311,7 +19311,7 @@
                     "default": 10
                 },
                 "cooldownMessage": {
-                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"<purple><bold>Teleport <grey>has <s> seconds until it can be used again!\"",
+                    "description": "The message to display when the skill is on cooldown. \nDefaults to \"&lt;purple&gt;<bold>Teleport <grey>has <s> seconds until it can be used again!\"",
                     "type": "string",
                     "default": "<purple><bold>Teleport <grey>has <s> seconds until it can be used again!"
                 }
@@ -24330,7 +24330,7 @@
             "properties": {
                 "type": true,
                 "commands": {
-                    "description": "The list of commands to execute. \nAll instances of \"<player>\" will be replaced by the player name. \nDefaults to []",
+                    "description": "The list of commands to execute. \nAll instances of \"&lt;player&gt;\" will be replaced by the player name. \nDefaults to []",
                     "type": "array",
                     "items": {
                         "type": "string"
