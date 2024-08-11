@@ -11,6 +11,7 @@ export function preprocess(unprocessed: any): Schema {
 			item.requireMode ??= true
 			addExclusiveToDescription(item)
 			walkItemProperties(item, addDefaultToDescription)
+			walkItemProperties(item, addRangeTypeDescription)
 		})
 		forEachEntry(items, (name, item) => {
 			if (item.available === false) {
@@ -63,8 +64,7 @@ function walkProperty(property: Property | undefined, func: (property: Property)
 	walkProperty(property.propertiesMap?.value, func)
 }
 
-function addDefaultToDescription(property: Property | undefined): void {
-	if (property == undefined) return
+function addDefaultToDescription(property: Property): void {
 	var defaultVal = property.default
 	if (defaultVal === undefined) return
 	var description = property.description
@@ -72,4 +72,9 @@ function addDefaultToDescription(property: Property | undefined): void {
 
 	property.description = `${description}. \nDefaults to ${JSON.stringify(defaultVal)}`
 
+}
+
+function addRangeTypeDescription(property: Property): void {
+	if (property.type !== "range") return
+	property.description += "\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`"
 }

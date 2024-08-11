@@ -129,9 +129,9 @@ export class Compiler {
 		},
 		type: (type: Preprocessed.PropertyTypes | Preprocessed.PropertyTypes[], compilingProperty) => {
 			if (type instanceof Array) {
-				compilingProperty.addType(type)
+				compilingProperty.setTypes(type)
 			} else {
-				compilingProperty.addType([type])
+				compilingProperty.setTypes([type])
 			}
 		},
 		min: (min, compilingProperty) => {

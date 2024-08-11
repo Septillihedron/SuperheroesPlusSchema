@@ -5029,7 +5029,7 @@
                     ]
                 },
                 "healthPercentange": {
-                    "description": "The health percentage range to check againts. \nDefaults to \"0 - 100\"",
+                    "description": "The health percentage range to check againts. \nDefaults to \"0 - 100\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "0 - 100"
                 },
@@ -5061,7 +5061,7 @@
                     "enum": []
                 },
                 "slot": {
-                    "description": "The range of slots it could be in. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The range of slots it could be in. \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
@@ -5238,7 +5238,7 @@
                     "default": 24000
                 },
                 "time": {
-                    "description": "A range for time. \nDefaults to \"0 - 24000\"",
+                    "description": "A range for time. \nDefaults to \"0 - 24000\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "0 - 24000"
                 }
@@ -5510,7 +5510,7 @@
                     ]
                 },
                 "height": {
-                    "description": "The range in blocks. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The range in blocks. \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
@@ -5558,7 +5558,7 @@
                 },
                 "slot": {
                     "description": "The slot to check. \nDefaults to \"HAND\"",
-                    "anyOf": [
+                    "oneOf": [
                         {
                             "$ref": "#/types/equipmentSlot"
                         },
@@ -5634,7 +5634,7 @@
                     ]
                 },
                 "temperature": {
-                    "description": "The range of tempreture from -1 to 1. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The range of tempreture from -1 to 1. \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
@@ -5656,7 +5656,7 @@
                     ]
                 },
                 "distance": {
-                    "description": "The distance range in blocks. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The distance range in blocks. \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
@@ -5700,7 +5700,7 @@
                 },
                 "slot": {
                     "description": "The slot for the item. \nDefaults to \"HAND\"",
-                    "anyOf": [
+                    "oneOf": [
                         {
                             "$ref": "#/types/equipmentSlot"
                         },
@@ -5742,7 +5742,7 @@
                     ]
                 },
                 "speed": {
-                    "description": "The speed range to check againts",
+                    "description": "The speed range to check againts\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range"
                 }
             },
@@ -5802,12 +5802,12 @@
                     "default": null
                 },
                 "potency": {
-                    "description": "The range of potion potency to check against. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The range of potion potency to check against. \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 },
                 "duration": {
-                    "description": "The range of potion duration to check against (in seconds). \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The range of potion duration to check against (in seconds). \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
@@ -5901,7 +5901,7 @@
                     ]
                 },
                 "itemLevel": {
-                    "description": "The range of item levels. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The range of item levels. \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
@@ -7052,7 +7052,7 @@
                 },
                 "slot": {
                     "description": "The slot of the item. \nDefaults to \"HAND\"",
-                    "anyOf": [
+                    "oneOf": [
                         {
                             "$ref": "#/types/equipmentSlot"
                         },
@@ -24431,7 +24431,7 @@
                     "patternProperties": {
                         "^.$": {
                             "description": "The material or skill item",
-                            "anyOf": [
+                            "oneOf": [
                                 {
                                     "$ref": "#/types/material"
                                 },
@@ -24452,7 +24452,7 @@
     "types": {
         "range": {
             "additionalProperties": false,
-            "anyOf": [
+            "oneOf": [
                 {
                     "type": "string"
                 },
@@ -25428,12 +25428,12 @@
                     "default": "STONE"
                 },
                 "level": {
-                    "description": "The range of fluid levels. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The range of fluid levels. \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 },
                 "age": {
-                    "description": "The range of block age. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The range of block age. \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 }
@@ -25623,7 +25623,7 @@
                     "default": "STONE"
                 },
                 "amount": {
-                    "description": "The range of item amount. \nDefaults to \"-Infinity - Infinity\"",
+                    "description": "The range of item amount. \nDefaults to \"-Infinity - Infinity\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "-Infinity - Infinity"
                 },

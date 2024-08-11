@@ -96,7 +96,7 @@ Superheroes:
             amount: 8
             metadata:
               enchants:
-                aqua_affsinity: 0
+                aqua_affinity: 0
               attributes:
                 ATTACK_DAMAGE:
                   value: 0
@@ -182,7 +182,7 @@ EnchantedBosses:
               type: POTIONEFFECT
               mode: OTHER
               duration: 2 - 100
-              potency: 0 - 3
+              potency: 3
         potion:
           type: POTION
           mode: OTHER
