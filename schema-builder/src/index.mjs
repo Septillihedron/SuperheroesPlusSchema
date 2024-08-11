@@ -2,6 +2,20 @@ import { deepMerge, parseItem } from "./tools.mjs";
 
 
 const schema = {
+    skills: {
+        DAMAGEMODIFIER: parseItem({
+            expectedMaxDamage: "number? 30.0 # The maximum damage used in the easing calculation", 
+            maxDamage: "number? 15.0 # The maximum resulting damage (after calculation)", 
+            minDamage: "number? 0.0 # The minimum damage (before calculation)", 
+            causes: "damageCause[]? [] # The list of damage causes that is/is not effected",
+            entities: "entity[]? [] # The list of entities that is/is not effected",
+            whitelist: "boolean? false # Whether to use the `causes` and `entities` list as whitelist",
+            incoming: "boolean? false # Whether to apply this for incoming damage", 
+            outgoing: "boolean? false # Whether to apply this for outgoing damage / attacks", 
+            eased: "boolean? false # Whether to ease out the damage quadratically", 
+            priority: "integer? 0 # The priority of the skill. Only the highest priority between the skills of the two players will be applied", 
+        }, "Constrains damage, with optional easing out")
+    },
     entityData: {
         LIVING_ENTITY: parseItem({
             canEquip: "boolean? false # Whether the entity can pick up items",

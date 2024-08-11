@@ -5,6 +5,9 @@ Superheroes:
   icon:
     type: STONE
   skills:
+    damageThingi:
+      skill: DAMAGEMODIFIER
+      outgoing: false
     sunny_saturation:
       skill: CRAFTING
       isShaped: false
@@ -251,7 +254,7 @@ Exampleboss:
           conditions0: 
             type: HEALTH
             mode: SELF
-            maximumHealthPercentage: 100
+            healthPercentange: 0 - 100
 EnchantedCombat:
   item:
     type: WOODEN_HOE

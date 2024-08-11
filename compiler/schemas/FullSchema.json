@@ -3738,6 +3738,10 @@
                             "description": "A custom skill, used in combination with the SkillsLibrary"
                         },
                         {
+                            "const": "DAMAGEMODIFIER",
+                            "description": "Constrains damage, with optional easing out. \nDoes not support conditions currently"
+                        },
+                        {
                             "const": "ATTRIBUTE",
                             "description": "Applies attributes to the player"
                         },
@@ -3951,6 +3955,18 @@
                         },
                         "then": {
                             "$ref": "#/skills/CUSTOM"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "skill": {
+                                    "const": "DAMAGEMODIFIER"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/skills/DAMAGEMODIFIER"
                         }
                     },
                     {
@@ -9326,6 +9342,69 @@
                     },
                     "type": "object",
                     "description": "The list of effetcs"
+                }
+            }
+        },
+        "DAMAGEMODIFIER": {
+            "additionalProperties": false,
+            "properties": {
+                "skill": true,
+                "conditions": true,
+                "expectedMaxDamage": {
+                    "description": "The maximum damage used in the easing calculation. \nDefaults to 30",
+                    "type": "number",
+                    "default": 30
+                },
+                "maxDamage": {
+                    "description": "The maximum resulting damage (after calculation). \nDefaults to 15",
+                    "type": "number",
+                    "default": 15
+                },
+                "minDamage": {
+                    "description": "The minimum damage (before calculation). \nDefaults to 0",
+                    "type": "number",
+                    "default": 0
+                },
+                "causes": {
+                    "description": "The list of damage causes that is/is not effected. \nDefaults to []",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/damageCause"
+                    },
+                    "default": []
+                },
+                "entities": {
+                    "description": "The list of entities that is/is not effected. \nDefaults to []",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/entity"
+                    },
+                    "default": []
+                },
+                "whitelist": {
+                    "description": "Whether to use the `causes` and `entities` list as whitelist. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "incoming": {
+                    "description": "Whether to apply this for incoming damage. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "outgoing": {
+                    "description": "Whether to apply this for outgoing damage / attacks. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "eased": {
+                    "description": "Whether to ease out the damage quadratically. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
+                },
+                "priority": {
+                    "description": "The priority of the skill. Only the highest priority between the skills of the two players will be applied. \nDefaults to 0",
+                    "type": "integer",
+                    "default": 0
                 }
             }
         },

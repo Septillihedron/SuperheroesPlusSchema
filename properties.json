@@ -1904,6 +1904,73 @@
 	},
 	// Superheroes
 	"skills": {
+		"DAMAGEMODIFIER": { // done
+            "description": "Constrains damage, with optional easing out. \nDoes not support conditions currently",
+            "properties": {
+                "expectedMaxDamage": {
+                    "description": "The maximum damage used in the easing calculation",
+                    "type": "number",
+                    "required": false,
+                    "default": 30
+                },
+                "maxDamage": {
+                    "description": "The maximum resulting damage (after calculation)",
+                    "type": "number",
+                    "required": false,
+                    "default": 15
+                },
+                "minDamage": {
+                    "description": "The minimum damage (before calculation)",
+                    "type": "number",
+                    "required": false,
+                    "default": 0
+                },
+                "causes": {
+                    "description": "The list of damage causes that is/is not effected",
+                    "type": "array",
+                    "items": "damageCause",
+                    "required": false,
+                    "default": []
+                },
+                "entities": {
+                    "description": "The list of entities that is/is not effected",
+                    "type": "array",
+                    "items": "entity",
+                    "required": false,
+                    "default": []
+                },
+                "whitelist": {
+                    "description": "Whether to use the `causes` and `entities` list as whitelist",
+                    "type": "boolean",
+                    "required": false,
+                    "default": false
+                },
+                "incoming": {
+                    "description": "Whether to apply this for incoming damage",
+                    "type": "boolean",
+                    "required": false,
+                    "default": false
+                },
+                "outgoing": {
+                    "description": "Whether to apply this for outgoing damage / attacks",
+                    "type": "boolean",
+                    "required": false,
+                    "default": false
+                },
+                "eased": {
+                    "description": "Whether to ease out the damage quadratically",
+                    "type": "boolean",
+                    "required": false,
+                    "default": false
+                },
+                "priority": {
+                    "description": "The priority of the skill. Only the highest priority between the skills of the two players will be applied",
+                    "type": "integer",
+                    "required": false,
+                    "default": 0
+                }
+            }
+        },
 		"ATTRIBUTE": { // done
 			"description": "Applies attributes to the player",
 			"properties": {
