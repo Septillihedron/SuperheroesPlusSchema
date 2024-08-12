@@ -10,7 +10,7 @@ A documentation and schema for Xemor's minecraft plugins:
 ## Installation
 ### Prerequisites
 Before you use this schema, you should [download VSCode](https://code.visualstudio.com/) and [download the YAML plugin](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) for it
-### New: Online Schema
+### New: Online Schema (auto updates)
 * Open up VSCode on the powers/bosses/items folder by right-clicking in or on the folder and selecting `Open with VSCode` or open up VSCode then open the folder from there
   (if you're on windows, you might have to press `Show more options` first)
 * Open up the file that you're going to edit in VSCode, then add `# yaml-language-server: $schema=https://septillihedron.github.io/SuperheroesPlusSchema/<nameOfSchemaFile>` at the top of the file
