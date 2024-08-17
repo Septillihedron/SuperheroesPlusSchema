@@ -223,7 +223,10 @@ class EntityData implements UnionType {
 	readonly description = "An entity data"
 	readonly type = "object"
 	readonly properties = {
-		type: new Types("The entity type. \nDefaults to \"ZOMBIE\""),
+		type: {
+			description: "The entity type. \nDefaults to \"ZOMBIE\"",
+			$ref: "#/types/entity", 
+		},
 		shouldDespawn: {
 			description: "Whether the entity can despawn. TODO. \nDefaults to true",
 			type: "boolean",
@@ -264,8 +267,7 @@ class EntityData implements UnionType {
 	readonly if = {"properties": {"type": false}}
 	readonly else: {allOf: IfThenReference[]} = {allOf: []}
 
-	addType(name: string, description: string): void {
-		this.properties.type.addType(name, description)
+	addType(name: string, _description: string): void {
 		this.else.allOf.push(new IfThenReference("entityData", name))
 	}
 }

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=Superheroes.json
+# yaml-language-server: $schema=https://septillihedron.github.io/SuperheroesPlusSchema/Superheroes.json
 Superheroes:
   colouredName: "hero blobs"
   description: it blobs around

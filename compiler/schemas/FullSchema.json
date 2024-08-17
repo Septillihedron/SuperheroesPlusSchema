@@ -2600,278 +2600,8 @@
             "type": "object",
             "properties": {
                 "type": {
-                    "type": "string",
-                    "oneOf": [
-                        {
-                            "const": "LIVING_ENTITY",
-                            "description": "The data for a living entity"
-                        },
-                        {
-                            "const": "AXOLOTL",
-                            "description": "The data for a axolotl"
-                        },
-                        {
-                            "const": "ABSTRACT_ARROW",
-                            "description": "The data for a abstract arrow"
-                        },
-                        {
-                            "const": "ARROW",
-                            "description": "The data for a arrow"
-                        },
-                        {
-                            "const": "CREEPER",
-                            "description": "The data for a creeper"
-                        },
-                        {
-                            "const": "DROPPED_ITEM",
-                            "description": "The data for a dropped item"
-                        },
-                        {
-                            "const": "EXPERIENCE_ORB",
-                            "description": "The data for a experience orb"
-                        },
-                        {
-                            "const": "FALLING_BLOCK",
-                            "description": "The data for a falling block"
-                        },
-                        {
-                            "const": "HORSE",
-                            "description": "The data for a horse"
-                        },
-                        {
-                            "const": "SKELETON_HORSE",
-                            "description": "The data for a skeleton horse"
-                        },
-                        {
-                            "const": "ZOMBIE_HORSE",
-                            "description": "The data for a zombie horse"
-                        },
-                        {
-                            "const": "LLAMA",
-                            "description": "The data for a llama"
-                        },
-                        {
-                            "const": "PRIMED_TNT",
-                            "description": "The data for a primed tnt"
-                        },
-                        {
-                            "const": "SPECTRAL_ARROW",
-                            "description": "The data for a spectral arrow"
-                        },
-                        {
-                            "const": "SPLASH_POTION",
-                            "description": "The data for a splash potion"
-                        },
-                        {
-                            "const": "RABBIT",
-                            "description": "The data for a rabbit"
-                        },
-                        {
-                            "const": "TRIDENT",
-                            "description": "The data for a trident"
-                        },
-                        {
-                            "const": "WITHER_SKULL",
-                            "description": "The data for a wither skull"
-                        },
-                        {
-                            "const": "WOLF",
-                            "description": "The data for a wolf"
-                        },
-                        {
-                            "const": "HUSK",
-                            "description": "The data for a husk"
-                        },
-                        {
-                            "const": "ZOMBIE_VILLAGER",
-                            "description": "The data for a zombie villager"
-                        },
-                        {
-                            "const": "DONKEY",
-                            "description": "The data for a donkey"
-                        },
-                        {
-                            "const": "MULE",
-                            "description": "The data for a mule"
-                        },
-                        {
-                            "const": "ZOMBIE",
-                            "description": "The data for a zombie"
-                        },
-                        {
-                            "const": "ZOMBIFIED_PIGLIN",
-                            "description": "The data for a zombified piglin"
-                        },
-                        {
-                            "const": "PIG",
-                            "description": "The data for a pig"
-                        },
-                        {
-                            "const": "SHEEP",
-                            "description": "The data for a sheep"
-                        },
-                        {
-                            "const": "COW",
-                            "description": "The data for a cow"
-                        },
-                        {
-                            "const": "CHICKEN",
-                            "description": "The data for a chicken"
-                        },
-                        {
-                            "const": "MOOSHROOM",
-                            "description": "The data for a mooshroom"
-                        },
-                        {
-                            "const": "OCELOT",
-                            "description": "The data for a ocelot"
-                        },
-                        {
-                            "const": "POLAR_BEAR",
-                            "description": "The data for a polar bear"
-                        },
-                        {
-                            "const": "PARROT",
-                            "description": "The data for a parrot"
-                        },
-                        {
-                            "const": "VILLAGER",
-                            "description": "The data for a villager"
-                        },
-                        {
-                            "const": "TURTLE",
-                            "description": "The data for a turtle"
-                        },
-                        {
-                            "const": "DROWNED",
-                            "description": "The data for a drowned"
-                        },
-                        {
-                            "const": "CAT",
-                            "description": "The data for a cat"
-                        },
-                        {
-                            "const": "PANDA",
-                            "description": "The data for a panda"
-                        },
-                        {
-                            "const": "TRADER_LLAMA",
-                            "description": "The data for a trader llama"
-                        },
-                        {
-                            "const": "WANDERING_TRADER",
-                            "description": "The data for a wandering trader"
-                        },
-                        {
-                            "const": "FOX",
-                            "description": "The data for a fox"
-                        },
-                        {
-                            "const": "BEE",
-                            "description": "The data for a bee"
-                        },
-                        {
-                            "const": "HOGLIN",
-                            "description": "The data for a hoglin"
-                        },
-                        {
-                            "const": "PIGLIN",
-                            "description": "The data for a piglin"
-                        },
-                        {
-                            "const": "STRIDER",
-                            "description": "The data for a strider"
-                        },
-                        {
-                            "const": "ZOGLIN",
-                            "description": "The data for a zoglin"
-                        },
-                        {
-                            "const": "PIGLIN_BRUTE",
-                            "description": "The data for a piglin brute"
-                        },
-                        {
-                            "const": "GOAT",
-                            "description": "The data for a goat"
-                        },
-                        {
-                            "const": "FROG",
-                            "description": "The data for a frog"
-                        },
-                        {
-                            "const": "CAMEL",
-                            "description": "The data for a camel"
-                        },
-                        {
-                            "const": "SNIFFER",
-                            "description": "The data for a sniffer"
-                        },
-                        {
-                            "const": "ARMADILLO",
-                            "description": "The data for a armadillo"
-                        },
-                        {
-                            "const": "SHULKER",
-                            "description": "The data for a shulker"
-                        },
-                        {
-                            "const": "FIREBALL",
-                            "description": "The data for a fireball"
-                        },
-                        {
-                            "const": "SMALL_FIREBALL",
-                            "description": "The data for a small fireball"
-                        },
-                        {
-                            "const": "TNT",
-                            "description": "The data for a tnt"
-                        },
-                        {
-                            "const": "DRAGON_FIREBALL",
-                            "description": "The data for a dragon fireball"
-                        },
-                        {
-                            "const": "WIND_CHARGE",
-                            "description": "The data for a wind charge"
-                        },
-                        {
-                            "const": "BREEZE_WIND_CHARGE",
-                            "description": "The data for a breeze wind_charge"
-                        },
-                        {
-                            "const": "SLIME",
-                            "description": "The data for a slime"
-                        },
-                        {
-                            "const": "MAGMA_CUBE",
-                            "description": "The data for a magma cube"
-                        },
-                        {
-                            "const": "PHANTOM",
-                            "description": "The data for a phantom"
-                        },
-                        {
-                            "const": "EGG",
-                            "description": "The data for a egg"
-                        },
-                        {
-                            "const": "SNOWBALL",
-                            "description": "The data for a snowball"
-                        },
-                        {
-                            "const": "ENDER_PEARL",
-                            "description": "The data for a ender pearl"
-                        },
-                        {
-                            "const": "POTION",
-                            "description": "The data for a potion"
-                        },
-                        {
-                            "const": "EXPERIENCE_BOTTLE",
-                            "description": "The data for a experience bottle"
-                        }
-                    ],
-                    "description": "The entity type. \nDefaults to \"ZOMBIE\""
+                    "description": "The entity type. \nDefaults to \"ZOMBIE\"",
+                    "$ref": "#/types/entity"
                 },
                 "shouldDespawn": {
                     "description": "Whether the entity can despawn. TODO. \nDefaults to true",
@@ -2983,12 +2713,12 @@
                         "if": {
                             "properties": {
                                 "type": {
-                                    "const": "DROPPED_ITEM"
+                                    "const": "ITEM"
                                 }
                             }
                         },
                         "then": {
-                            "$ref": "#/entityData/DROPPED_ITEM"
+                            "$ref": "#/entityData/ITEM"
                         }
                     },
                     {
@@ -3067,12 +2797,12 @@
                         "if": {
                             "properties": {
                                 "type": {
-                                    "const": "PRIMED_TNT"
+                                    "const": "TNT"
                                 }
                             }
                         },
                         "then": {
-                            "$ref": "#/entityData/PRIMED_TNT"
+                            "$ref": "#/entityData/TNT"
                         }
                     },
                     {
@@ -3091,12 +2821,12 @@
                         "if": {
                             "properties": {
                                 "type": {
-                                    "const": "SPLASH_POTION"
+                                    "const": "POTION"
                                 }
                             }
                         },
                         "then": {
-                            "$ref": "#/entityData/SPLASH_POTION"
+                            "$ref": "#/entityData/POTION"
                         }
                     },
                     {
@@ -3583,18 +3313,6 @@
                         "if": {
                             "properties": {
                                 "type": {
-                                    "const": "TNT"
-                                }
-                            }
-                        },
-                        "then": {
-                            "$ref": "#/entityData/TNT"
-                        }
-                    },
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
                                     "const": "DRAGON_FIREBALL"
                                 }
                             }
@@ -3697,18 +3415,6 @@
                         },
                         "then": {
                             "$ref": "#/entityData/ENDER_PEARL"
-                        }
-                    },
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
-                                    "const": "POTION"
-                                }
-                            }
-                        },
-                        "then": {
-                            "$ref": "#/entityData/POTION"
                         }
                     },
                     {
@@ -7648,7 +7354,7 @@
                 }
             }
         },
-        "DROPPED_ITEM": {
+        "ITEM": {
             "additionalProperties": false,
             "properties": {
                 "type": true,
@@ -8016,7 +7722,7 @@
                 }
             }
         },
-        "PRIMED_TNT": {
+        "TNT": {
             "additionalProperties": false,
             "properties": {
                 "type": true,
@@ -8031,6 +7737,16 @@
                     "description": "The number of ticks until this TNT blows up (in ticks). \nDefaults to 100",
                     "type": "integer",
                     "default": 100
+                },
+                "yield": {
+                    "description": "The radius affected by this explosive's explosion. \nDefaults to 2.5",
+                    "type": "number",
+                    "default": 2.5
+                },
+                "isIncendiary": {
+                    "description": "Whether this explosive's explosion will cause fire. \nDefaults to false",
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
@@ -8079,7 +7795,7 @@
                 }
             }
         },
-        "SPLASH_POTION": {
+        "POTION": {
             "additionalProperties": false,
             "properties": {
                 "type": true,
@@ -8093,6 +7809,11 @@
                 "potion": {
                     "description": "The item that this splash potion represent",
                     "$ref": "#/types/ItemStackData"
+                },
+                "item": {
+                    "description": "The display ItemStack for the thrown projectile. \nDefaults to \"{}\"",
+                    "$ref": "#/types/ItemStackData",
+                    "default": "{}"
                 }
             },
             "required": [
@@ -8910,29 +8631,6 @@
                 }
             }
         },
-        "TNT": {
-            "additionalProperties": false,
-            "properties": {
-                "type": true,
-                "shouldDespawn": true,
-                "nametag": true,
-                "customNameVisible": true,
-                "silent": true,
-                "visualFire": true,
-                "attributes": true,
-                "passenger": true,
-                "yield": {
-                    "description": "The radius affected by this explosive's explosion. \nDefaults to 2.5",
-                    "type": "number",
-                    "default": 2.5
-                },
-                "isIncendiary": {
-                    "description": "Whether this explosive's explosion will cause fire. \nDefaults to false",
-                    "type": "boolean",
-                    "default": false
-                }
-            }
-        },
         "DRAGON_FIREBALL": {
             "additionalProperties": false,
             "properties": {
@@ -9102,24 +8800,6 @@
             }
         },
         "ENDER_PEARL": {
-            "additionalProperties": false,
-            "properties": {
-                "type": true,
-                "shouldDespawn": true,
-                "nametag": true,
-                "customNameVisible": true,
-                "silent": true,
-                "visualFire": true,
-                "attributes": true,
-                "passenger": true,
-                "item": {
-                    "description": "The display ItemStack for the thrown projectile. \nDefaults to \"{}\"",
-                    "$ref": "#/types/ItemStackData",
-                    "default": "{}"
-                }
-            }
-        },
-        "POTION": {
             "additionalProperties": false,
             "properties": {
                 "type": true,

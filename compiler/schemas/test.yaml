@@ -31,12 +31,14 @@ Superheroes:
           type: SPAWNENTITY
           mode: SELF
           entity:
-            type: CREEPER
+            type: TNT
             shouldDespawn: true
             customNameVisible: false
             silent: false
             visualFire: false
-            explosionRadius: 5
+            fuseTicks: 100
+            isIncendiary: false
+            yield: 100
     custom:
       skill: CUSTOM
       conditions:
@@ -221,14 +223,13 @@ EnchantedBosses:
           type: MINION
           mode: OTHER
           spawn: EB_Minnio
-
 Exampleboss: 
   colouredName: <red>Exampleboss
   description: A description fit for an example
   damagemodifier: 
     type: BLANK
   entity: 
-    type: DROPPED_ITEM
+    type: ENDER_DRAGON
     item:
       type: STONE
       amount: 1

@@ -3646,7 +3646,7 @@
 				}
 			}
 		},
-		"DROPPED_ITEM": {
+		"ITEM": {
 			"description": "The data for a dropped item",
 			"properties": {
 				"item": {
@@ -3817,7 +3817,7 @@
 				}
 			}
 		},
-		"PRIMED_TNT": {
+		"TNT": {
 			"description": "The data for a primed tnt",
 			"properties": {
 				"fuseTicks": {
@@ -3825,6 +3825,18 @@
 					"type": "integer",
 					"required": false,
 					"default": 100
+				},
+				"yield": {
+					"description": "The radius affected by this explosive's explosion",
+					"type": "number",
+					"required": false,
+					"default": 2.5
+				},
+				"isIncendiary": {
+					"description": "Whether this explosive's explosion will cause fire",
+					"type": "boolean",
+					"required": false,
+					"default": false
 				}
 			}
 		},
@@ -3840,13 +3852,19 @@
 				}
 			}
 		},
-		"SPLASH_POTION": {
+		"POTION": {
 			"description": "The data for a splash potion",
 			"properties": {
 				"potion": {
 					"description": "The item that this splash potion represent",
 					"type": "ItemStackData",
 					"required": true
+				},
+				"item": {
+					"description": "The display ItemStack for the thrown projectile",
+					"type": "ItemStackData",
+					"required": false,
+					"default": "{}"
 				}
 			}
 		},
@@ -4350,23 +4368,6 @@
 				}
 			}
 		},
-		"TNT": {
-			"description": "The data for a tnt",
-			"properties": {
-				"yield": {
-					"description": "The radius affected by this explosive's explosion",
-					"type": "number",
-					"required": false,
-					"default": 2.5
-				},
-				"isIncendiary": {
-					"description": "Whether this explosive's explosion will cause fire",
-					"type": "boolean",
-					"required": false,
-					"default": false
-				}
-			}
-		},
 		"DRAGON_FIREBALL": {
 			"description": "The data for a dragon fireball",
 			"properties": {
@@ -4475,17 +4476,6 @@
 		},
 		"ENDER_PEARL": {
 			"description": "The data for a ender pearl",
-			"properties": {
-				"item": {
-					"description": "The display ItemStack for the thrown projectile",
-					"type": "ItemStackData",
-					"required": false,
-					"default": "{}"
-				}
-			}
-		},
-		"POTION": {
-			"description": "The data for a potion",
 			"properties": {
 				"item": {
 					"description": "The display ItemStack for the thrown projectile",
