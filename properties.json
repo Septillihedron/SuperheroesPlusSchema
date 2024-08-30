@@ -2774,16 +2774,23 @@
 					}
 				},
 				"recipeKeys": {
-					"description": "The list of keys to the material that the key is representing",
+					"description": "The list of material to the key",
 					// "if": {"isShaped": {"const": true}},
 					"required": false,
 					"type": "object",
 					"default": {},
-					"patternProperties": {
-						"^.$": {
-							"description": "The material that the key is representing",
-							"required": true,
+					"propertiesMap": {
+						"key": {
+							"description": "The material",
 							"type": "material"
+						},
+						"value": {
+							"description": "",
+							"required": false,
+							"type": "string",
+							"minLength": 1,
+							"maxLength": 1,
+							"default": ""
 						}
 					}
 				},

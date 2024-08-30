@@ -5,6 +5,20 @@ Superheroes:
   icon:
     type: STONE
   skills:
+    bow:
+      skill: CRAFTING
+      isShaped: true
+      result:
+        type: BOW
+        amount: 1
+        metadata:
+          displayName: <gold>Scavenger's Bow
+      recipe:
+      - ' SS'
+      - S S
+      - ' SS'
+      recipeKeys:
+        STICK: S
     jdsdsdgasd:
       skill: CONVERTBLOCK
       cooldownMessage: There are <s> seconds before you can transmutate the block again!
