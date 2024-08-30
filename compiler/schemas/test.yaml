@@ -5,6 +5,20 @@ Superheroes:
   icon:
     type: STONE
   skills:
+    teleport:
+      skill: TELEPORT
+      leftClick: true
+      distance: 30
+      yAxisDistanceMultiplier: 0.75
+      teleportCause: ENDER_PEARL
+      cooldown: 10
+      cooldownMessage: <bold><dark_purple>Teleport </dark_purple></bold><gray>has
+        <currentcooldown> seconds until it can be used again!
+      particle:
+        type: PORTAL
+        shape:
+          type: HELIX
+        duration: 2.5
     bow:
       skill: CRAFTING
       isShaped: true

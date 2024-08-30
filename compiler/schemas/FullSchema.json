@@ -23454,7 +23454,7 @@
                 },
                 "particle": {
                     "description": ". \nDefaults to {}",
-                    "$ref": "#/types/SuperheroesParticleData",
+                    "$ref": "#/types/ParticleData",
                     "default": {}
                 },
                 "teleportItem": {

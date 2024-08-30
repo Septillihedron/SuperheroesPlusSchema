@@ -2958,7 +2958,7 @@
 				"particle": {
 					"description": "",
 					"required": false,
-					"type": "SuperheroesParticleData",
+					"type": "ParticleData",
 					"default": {}
 				},
 				"teleportItem": {
