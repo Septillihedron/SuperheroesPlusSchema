@@ -3001,8 +3001,9 @@
 				},
 				"type": {
 					"description": "The type of the potion",
-					"required": true,
-					"type": "potion"
+					"required": false,
+					"type": "potion",
+					"default": null
 				},
 				"ambient": {
 					"description": "Whether to make the particles more translucent or not",

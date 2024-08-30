@@ -19094,8 +19094,9 @@
                     "default": 1
                 },
                 "type": {
-                    "description": "The type of the potion",
-                    "$ref": "#/types/potion"
+                    "description": "The type of the potion. \nDefaults to null",
+                    "$ref": "#/types/potion",
+                    "default": null
                 },
                 "ambient": {
                     "description": "Whether to make the particles more translucent or not. \nDefaults to true",
@@ -19112,10 +19113,7 @@
                     "type": "number",
                     "default": 10
                 }
-            },
-            "required": [
-                "type"
-            ]
+            }
         },
         "SLIME": {
             "additionalProperties": false,
