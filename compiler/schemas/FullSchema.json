@@ -14200,6 +14200,31 @@
                     "description": ". \nDefaults to 0",
                     "type": "integer",
                     "default": 0
+                },
+                "potency": {
+                    "description": "The potency or amplifier of the potion. \nDefaults to 1",
+                    "type": "integer",
+                    "default": 1
+                },
+                "type": {
+                    "description": "The type of the potion. \nDefaults to null",
+                    "$ref": "#/types/potion",
+                    "default": null
+                },
+                "ambient": {
+                    "description": "Whether to make the particles more translucent or not. \nDefaults to true",
+                    "type": "boolean",
+                    "default": true
+                },
+                "hasParticles": {
+                    "description": "Whether to make this potion effect has particles or not. \nDefaults to true",
+                    "type": "boolean",
+                    "default": true
+                },
+                "duration": {
+                    "description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks). \nDefaults to 10",
+                    "type": "number",
+                    "default": 10
                 }
             }
         },

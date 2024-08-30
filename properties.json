@@ -2591,6 +2591,37 @@
 					"required": false,
 					"type": "integer",
 					"default": 0
+				},
+				// inline PotionEffectData
+				"potency": {
+					"description": "The potency or amplifier of the potion",
+					"required": false,
+					"type": "integer",
+					"default": 1
+				},
+				"type": {
+					"description": "The type of the potion",
+					"required": false,
+					"type": "potion",
+					"default": null
+				},
+				"ambient": {
+					"description": "Whether to make the particles more translucent or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"hasParticles": {
+					"description": "Whether to make this potion effect has particles or not",
+					"required": false,
+					"type": "boolean",
+					"default": true
+				},
+				"duration": {
+					"description": "The duration of the potion in seconds (1 is 20 ticks). 0 is for infinite duration (Integer maximum ticks)",
+					"required": false,
+					"type": "number",
+					"default": 10
 				}
 			}
 		},
