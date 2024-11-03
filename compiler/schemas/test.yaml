@@ -84,7 +84,15 @@ Superheroes:
             A:
               type: BIOME
               mode: ALL
+        LIGHT:
+          type: LIGHT
+          mode: SELF
+          lightRange: 10 - 11
       effects:
+        DISGUISE:
+          type: DISGUISE
+          mode: SELF
+          enable: true
         WRAPPER:
           type: AOE
           conditions: 

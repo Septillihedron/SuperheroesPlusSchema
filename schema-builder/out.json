@@ -1,4 +1,59 @@
 {
+    "conditions": {
+        "LIGHT": {
+            "description": "Checks the light level",
+            "properties": {
+                "supportedModes": [
+                    "ALL",
+                    "SELF",
+                    "OTHER",
+                    "LOCATION"
+                ],
+                "lightRange": {
+                    "description": "The range of light levels to compare against",
+                    "type": "range",
+                    "required": false,
+                    "default": "-INFINITY - INFINITY"
+                },
+                "checkNaturalLight": {
+                    "description": "Whether to check for natural/sky light",
+                    "type": "boolean",
+                    "required": false,
+                    "default": true
+                },
+                "checkBlockLight": {
+                    "description": "Whether to check for block light",
+                    "type": "boolean",
+                    "required": false,
+                    "default": true
+                }
+            }
+        }
+    },
+    "effects": {
+        "DISGUISE": {
+            "description": "Enables or disables disguising as other mobs",
+            "properties": {
+                "supportedModes": [
+                    "ALL",
+                    "SELF",
+                    "OTHER"
+                ],
+                "entity": {
+                    "description": "The entity to disguise as",
+                    "type": "entity",
+                    "required": false,
+                    "default": "null"
+                },
+                "enable": {
+                    "description": "Whether this enables or disables the mob disguise",
+                    "type": "boolean",
+                    "required": false,
+                    "default": true
+                }
+            }
+        }
+    },
     "skills": {
         "DAMAGEMODIFIER": {
             "description": "Constrains damage, with optional easing out",
@@ -64,6 +119,29 @@
                     "type": "integer",
                     "required": false,
                     "default": 0
+                }
+            }
+        },
+        "BEASTCONTROL": {
+            "description": "Exclusive to SuperheroesPlusUltra. \nControls mobs, tells the mob to walk to a place you're looking by sneaking or to attack the mob you're looking",
+            "properties": {
+                "maxDistance": {
+                    "description": "The maximum distance where you can control the entity",
+                    "type": "integer",
+                    "required": false,
+                    "default": 32
+                },
+                "targetMobs": {
+                    "description": "Whether you can tell the controlled mob to attack another mob",
+                    "type": "boolean",
+                    "required": false,
+                    "default": true
+                },
+                "glowDuration": {
+                    "description": "How long the controlled entity will glow (in seconds)",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
                 }
             }
         }

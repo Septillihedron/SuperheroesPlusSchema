@@ -555,6 +555,30 @@
 				}
 			}
 		},
+		"LIGHT": {
+            "description": "Checks the light level",
+			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
+            "properties": {
+                "lightRange": {
+                    "description": "The range of light levels to compare against",
+                    "type": "range",
+                    "required": false,
+                    "default": "-INFINITY - INFINITY"
+                },
+                "checkNaturalLight": {
+                    "description": "Whether to check for natural/sky light",
+                    "type": "boolean",
+                    "required": false,
+                    "default": true
+                },
+                "checkBlockLight": {
+                    "description": "Whether to check for block light",
+                    "type": "boolean",
+                    "required": false,
+                    "default": true
+                }
+            }
+        },
 		"TEMPERATURE": {
 			"description": "Checks if the location or the location of the user or target entity is in the range",
 			"supportedModes": ["ALL", "SELF", "OTHER", "LOCATION"],
@@ -1683,6 +1707,26 @@
 				}
 			}
 		},
+		// Superheroes Plus Ultra exclusives
+		"DISGUISE": {
+            "description": "Enables or disables disguising as other mobs",
+			"exclusiveTo": "SuperheroesPlusUltra",
+			"supportedModes": ["ALL", "SELF", "OTHER"],
+            "properties": {
+                "entity": {
+                    "description": "The entity to disguise as",
+                    "type": "entity",
+                    "required": false,
+                    "default": "null"
+                },
+                "enable": {
+                    "description": "Whether this enables or disables the mob disguise",
+                    "type": "boolean",
+                    "required": false,
+                    "default": true
+                }
+            }
+        },
 		// EB exclusives
 		"MINION": {
 			"description": "Spawns bosses on the location of the user or target entity",
@@ -3430,7 +3474,32 @@
 					"default": true
 				}
 			}
-		}
+		},
+		// SuperheroesPlusUltra exclusives
+		"BEASTCONTROL": {
+            "description": "Exclusive to SuperheroesPlusUltra. \nControls mobs, tells the mob to walk to a place you're looking by sneaking or to attack the mob you're looking",
+            "exclusiveTo": "SuperheroesPlusUltra",
+			"properties": {
+                "maxDistance": {
+                    "description": "The maximum distance where you can control the entity",
+                    "type": "integer",
+                    "required": false,
+                    "default": 32
+                },
+                "targetMobs": {
+                    "description": "Whether you can tell the controlled mob to attack another mob",
+                    "type": "boolean",
+                    "required": false,
+                    "default": true
+                },
+                "glowDuration": {
+                    "description": "How long the controlled entity will glow (in seconds)",
+                    "type": "number",
+                    "required": false,
+                    "default": 1
+                }
+            }
+        }
 	},
 	// EB
 	"damagemodifiers": {

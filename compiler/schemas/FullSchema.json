@@ -950,6 +950,10 @@
                             "description": "Checks if the user has a direct line of sight to the target entity"
                         },
                         {
+                            "const": "LIGHT",
+                            "description": "Checks the light level"
+                        },
+                        {
                             "const": "TEMPERATURE",
                             "description": "Checks if the location or the location of the user or target entity is in the range"
                         },
@@ -1326,6 +1330,18 @@
                         },
                         "then": {
                             "$ref": "#/conditions/VISIBILITY"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "LIGHT"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/conditions/LIGHT"
                         }
                     },
                     {
@@ -1721,6 +1737,10 @@
                         {
                             "const": "PARTICLE",
                             "description": "Spawns particles"
+                        },
+                        {
+                            "const": "DISGUISE",
+                            "description": "Enables or disables disguising as other mobs\n\nOnly available if you have the SuperheroesPlusUltra plugin"
                         },
                         {
                             "const": "MINION",
@@ -2430,6 +2450,18 @@
                         },
                         "then": {
                             "$ref": "#/effects/PARTICLE"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "DISGUISE"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/effects/DISGUISE"
                         }
                     },
                     {
@@ -3626,6 +3658,10 @@
                         {
                             "const": "CLIMB",
                             "description": ""
+                        },
+                        {
+                            "const": "BEASTCONTROL",
+                            "description": "Exclusive to SuperheroesPlusUltra. \nControls mobs, tells the mob to walk to a place you're looking by sneaking or to attack the mob you're looking\n\nOnly available if you have the SuperheroesPlusUltra plugin"
                         }
                     ],
                     "description": "The type of the skill"
@@ -4213,6 +4249,18 @@
                         },
                         "then": {
                             "$ref": "#/skills/CLIMB"
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "skill": {
+                                    "const": "BEASTCONTROL"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/skills/BEASTCONTROL"
                         }
                     }
                 ]
@@ -5320,6 +5368,39 @@
                     "description": "The maximum distance to the target entity. \nDefaults to 16",
                     "type": "number",
                     "default": 16
+                }
+            },
+            "required": [
+                "mode"
+            ]
+        },
+        "LIGHT": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "else": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER",
+                        "LOCATION"
+                    ]
+                },
+                "lightRange": {
+                    "description": "The range of light levels to compare against. \nDefaults to \"-INFINITY - INFINITY\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
+                    "$ref": "#/types/range",
+                    "default": "-INFINITY - INFINITY"
+                },
+                "checkNaturalLight": {
+                    "description": "Whether to check for natural/sky light. \nDefaults to true",
+                    "type": "boolean",
+                    "default": true
+                },
+                "checkBlockLight": {
+                    "description": "Whether to check for block light. \nDefaults to true",
+                    "type": "boolean",
+                    "default": true
                 }
             },
             "required": [
@@ -7115,6 +7196,32 @@
             "required": [
                 "mode",
                 "particle"
+            ]
+        },
+        "DISGUISE": {
+            "additionalProperties": false,
+            "properties": {
+                "type": true,
+                "mode": {
+                    "enum": [
+                        "ALL",
+                        "SELF",
+                        "OTHER"
+                    ]
+                },
+                "entity": {
+                    "description": "The entity to disguise as. \nDefaults to \"null\"",
+                    "$ref": "#/types/entity",
+                    "default": "null"
+                },
+                "enable": {
+                    "description": "Whether this enables or disables the mob disguise. \nDefaults to true",
+                    "type": "boolean",
+                    "default": true
+                }
+            },
+            "required": [
+                "mode"
             ]
         },
         "MINION": {
@@ -28419,6 +28526,28 @@
                     "description": ". \nDefaults to true",
                     "type": "boolean",
                     "default": true
+                }
+            }
+        },
+        "BEASTCONTROL": {
+            "additionalProperties": false,
+            "properties": {
+                "skill": true,
+                "conditions": true,
+                "maxDistance": {
+                    "description": "The maximum distance where you can control the entity. \nDefaults to 32",
+                    "type": "integer",
+                    "default": 32
+                },
+                "targetMobs": {
+                    "description": "Whether you can tell the controlled mob to attack another mob. \nDefaults to true",
+                    "type": "boolean",
+                    "default": true
+                },
+                "glowDuration": {
+                    "description": "How long the controlled entity will glow (in seconds). \nDefaults to 1",
+                    "type": "number",
+                    "default": 1
                 }
             }
         }

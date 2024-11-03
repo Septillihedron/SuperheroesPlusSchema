@@ -2,6 +2,21 @@ import { deepMerge, parseItem } from "./tools.mjs";
 
 
 const schema = {
+    conditions: {
+        LIGHT: parseItem({
+            supportedModes: ["ALL", "SELF", "OTHER", "LOCATION"],
+            lightRange: "range? -INFINITY - INFINITY # The range of light levels to compare against",
+            checkNaturalLight: "boolean? true # Whether to check for natural/sky light",
+            checkBlockLight: "boolean? true # Whether to check for block light"
+        }, "Checks the light level")
+    },
+    effects: {
+        DISGUISE: parseItem({
+            supportedModes: ["ALL", "SELF", "OTHER"],
+            entity: "entity? null # The entity to disguise as", // TODO: use the actual enum
+            enable: "boolean? true # Whether this enables or disables the mob disguise"
+        }, "Enables or disables disguising as other mobs")
+    },
     skills: {
         DAMAGEMODIFIER: parseItem({
             expectedMaxDamage: "number? 30.0 # The maximum damage used in the easing calculation", 
@@ -14,7 +29,12 @@ const schema = {
             outgoing: "boolean? false # Whether to apply this for outgoing damage / attacks", 
             eased: "boolean? false # Whether to ease out the damage quadratically", 
             priority: "integer? 0 # The priority of the skill. Only the highest priority between the skills of the two players will be applied", 
-        }, "Constrains damage, with optional easing out")
+        }, "Constrains damage, with optional easing out"),
+        BEASTCONTROL: parseItem({
+            maxDistance: "integer? 32 # The maximum distance where you can control the entity",
+            targetMobs: "boolean? true # Whether you can tell the controlled mob to attack another mob",
+            glowDuration: "number? 1.0 # How long the controlled entity will glow (in seconds)"
+        }, "Exclusive to SuperheroesPlusUltra. \nControls mobs, tells the mob to walk to a place you're looking by sneaking or to attack the mob you're looking")
     },
     entityData: {
         LIVING_ENTITY: parseItem({

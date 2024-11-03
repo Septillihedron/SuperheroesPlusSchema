@@ -33,7 +33,7 @@ interface Descriptable {
 
 type PropertyMap = StringRecord<Property>
 
-type Plugins = "Superheroes" | "EnchantedBosses" | "EnchantedCombat"
+type Plugins = "Superheroes" | "SuperheroesPlusUltra" | "EnchantedBosses" | "EnchantedCombat"
 
 type Mode = "SELF" | "OTHER" | "LOCATION" | "ITEM" | "ALL"
 interface Item extends Descriptable {

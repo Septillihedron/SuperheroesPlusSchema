@@ -131,7 +131,10 @@
 							"type": "boolean",
 							"description": "If true, this skill is managed internally"
 						},
-						"extends": true
+						"extends": true,
+						"exclusiveTo": {
+							"const": "SuperheroesPlusUltra"
+						}
 					},
 					"allOf": [{ "$ref": "#/definitions/type" }],
 					"additionalProperties": false
@@ -287,7 +290,7 @@
 				"exclusiveTo": {
 					"type": "string",
 					"description": "To which plugin this item is exclusive to",
-					"enum": ["Superheroes", "EnchantedBosses", "EnchantedCombat"]
+					"enum": ["Superheroes", "SuperheroesPlusUltra", "EnchantedBosses", "EnchantedCombat"]
 				}
 			},
 			"required": ["description"],
