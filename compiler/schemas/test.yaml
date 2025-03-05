@@ -294,7 +294,7 @@ Exampleboss:
           conditions0: 
             type: HEALTH
             mode: SELF
-            healthPercentange: 0 - 100
+            healthPercentage: 0 - 100
 EnchantedCombat:
   item:
     type: WOODEN_HOE
