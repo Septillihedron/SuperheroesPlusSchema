@@ -195,7 +195,7 @@
 			"description": "Checks if the hp percentage of the user or target entity is in the range",
 			"supportedModes": ["ALL", "SELF", "OTHER"],
 			"properties": {
-				"healthPercentange": {
+				"healthPercentage": {
 					"description": "The health percentage range to check againts",
 					"required": false,
 					"type": "range",
@@ -5346,6 +5346,7 @@
 			"items": "string" //regex type
 		},
 		"EnchantComparisonData": {
+			"description": "A comparison for an item's enchantment",
 			"type": "object",
 			"default": {},
 			"propertiesMap": {

@@ -4782,7 +4782,7 @@
                         "OTHER"
                     ]
                 },
-                "healthPercentange": {
+                "healthPercentage": {
                     "description": "The health percentage range to check againts. \nDefaults to \"0 - 100\"\n\nType information: A range in the form of `&lt;number&gt; - &lt;number&gt;` or `&lt;number&gt;`",
                     "$ref": "#/types/range",
                     "default": "0 - 100"

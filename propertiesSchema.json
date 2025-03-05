@@ -484,10 +484,7 @@
 		"types": {
 			"anyOf": [
 				{
-					"enum": [
-						"array", "object", "record", 
-						"string", "number", "integer", "boolean"
-					]
+					"$ref": "#/definitions/primitiveTypes"
 				},
 				{
 					"$ref": "#/definitions/stringTypes"
@@ -495,6 +492,13 @@
 				{
 					"$ref": "#/definitions/objectTypes"
 				}
+			]
+		},
+		"primitiveTypes": {
+			"type": "string",
+			"enum": [
+				"array", "object", "record", 
+				"string", "number", "integer", "boolean"
 			]
 		},
 		"stringTypes": {
