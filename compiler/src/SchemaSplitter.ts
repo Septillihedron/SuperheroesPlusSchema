@@ -6,16 +6,12 @@ class PartialSchemaBuilder {
 
     constructor(fullSchema: FullSchema) {
         this.fullSchema = fullSchema
-        
     }
 
     initialize(root: string): void {
         this.partialSchema = {
             $schema: this.fullSchema.$schema,
-            type: this.fullSchema.type,
-            additionalProperties: this.fullSchema.additionalProperties,
-            minProperties: this.fullSchema.minProperties,
-            patternProperties: { ".*": { $ref: `#/definitions/${root}` } },
+            $ref: `#/definitions/${root}`,
             definitions: {},
         }
         this.partialSchema.definitions = {
@@ -53,6 +49,7 @@ class PartialSchemaBuilder {
 
 export type SplittedSchemas = {
     Superheroes: any
+    "Superheroes8+": any
     EnchantedBosses: any
     EnchantedCombat: any
 }
@@ -62,18 +59,22 @@ export function splitFullSchema(fullSchema: FullSchema): SplittedSchemas {
 
     builder.initialize("hero")
     builder.addItemCollection("skill")
-    const Superheroes = builder.build();
+    const Superheroes = builder.build()
+
+    builder.initialize("hero8+")
+    builder.addItemCollection("skill")
+    const Superheroes8 = builder.build()
 
     builder.initialize("boss")
     builder.addItemCollection("SLSkill")
     builder.addItemCollection("damagemodifier")
     builder.addItemCollection("reward")
-    const EnchantedBosses = builder.build();
+    const EnchantedBosses = builder.build()
 
     builder.initialize("item")
     builder.addItemCollection("SLSkill")
     builder.addItemCollection("distribution")
-    const EnchantedCombat = builder.build();
+    const EnchantedCombat = builder.build()
 
-    return { Superheroes, EnchantedBosses, EnchantedCombat }
+    return { Superheroes, "Superheroes8+": Superheroes8, EnchantedBosses, EnchantedCombat }
 }

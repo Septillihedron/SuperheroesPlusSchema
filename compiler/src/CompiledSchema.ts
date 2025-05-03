@@ -1,5 +1,5 @@
 import { PropertyTypes } from "./PreprocessedSchema";
-import { Boss, Hero, Item } from "./SchemaRoots";
+import { Boss, Hero, Hero8, Item } from "./SchemaRoots";
 import { StringRecord } from "./utils";
 
 export {
@@ -30,24 +30,18 @@ const pluralToUnpluralCategories: Record<Category, NonPluralCategory> = {
 
 
 class FullSchema {
-
 	readonly $schema = "http://json-schema.org/draft-07/schema#";
-	readonly type = "object"
-	readonly additionalProperties = false
-	readonly minProperties = 1
-	readonly patternProperties = {
-		".*": {
-			oneOf: [
-				{ $ref: "#/definitions/hero" },
-				{ $ref: "#/definitions/boss" },
-				{ $ref: "#/definitions/item" },
-			]
-		}
-	}
+	readonly oneOf = [
+		{ $ref: "#/definitions/hero" },
+		{ $ref: "#/definitions/hero8+" },
+		{ $ref: "#/definitions/boss" },
+		{ $ref: "#/definitions/item" },
+	]
 	readonly definitions = {
-		hero: new Hero(),
-		boss: new Boss(),
-		item: new Item(),
+		hero: Hero,
+		"hero8+": Hero8,
+		boss: Boss,
+		item: Item,
 
 		SLSkill: new SLSkill(),
 		trigger: new Trigger(),
