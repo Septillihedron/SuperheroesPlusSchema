@@ -13,12 +13,24 @@ Before you use this schema, you should [download VSCode](https://code.visualstud
 ### Instructions
 * Open up VSCode on the powers/bosses/items folder by right-clicking in or on the folder and selecting `Open with VSCode` or open up VSCode then open the folder from there
   (if you're on windows, you might have to press `Show more options` first)
-* Open up the file that you're going to edit in VSCode, then add `# yaml-language-server: $schema=https://septillihedron.github.io/SuperheroesPlusSchema/<nameOfSchemaFile>` at the top of the file
-* `<nameOfSchemaFile>` can be one of the following: 
-  - Superheroes8+.json for Superheroes version 8 and up
-  - Superheroes.json for before Superheroes version 8
-  - EnchantedCombat.json
-  - EnchantedBosses.json
+* Open up the file that you're going to edit in VSCode,
+* Add one of the following at the top of the file
+  - Superheroes version 8 and up:
+    ```
+    # yaml-language-server: $schema=https://septillihedron.github.io/SuperheroesPlusSchema/Superheroes8+.json
+    ```
+  - Superheroes below version 8:
+    ```
+    # yaml-language-server: $schema=https://septillihedron.github.io/SuperheroesPlusSchema/Superheroes.json
+    ```
+  - EnchantedCombat:
+    ```
+    # yaml-language-server: $schema=https://septillihedron.github.io/SuperheroesPlusSchema/EnchantedCombat.json
+    ```
+  - EnchantedBosses:
+    ```
+    # yaml-language-server: $schema=https://septillihedron.github.io/SuperheroesPlusSchema/EnchantedBosses.json
+    ```
 * You can now see if there is any errors in your file and use control+space to auto-complete
 
 ## (not so) FAQ
