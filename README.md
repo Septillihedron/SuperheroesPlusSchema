@@ -1,11 +1,4 @@
-# [Download](https://github.com/Septillihedron/SuperheroesPlusSchema/releases/latest)
 # SuperheroesPlusSchema
-
-## Uses
-A documentation and schema for Xemor's minecraft plugins:
-* Superheroes and their extensions (skills are incomplete)
-* EnchantedBosses
-* EnchantedCombat
 
 ## Installation
 ### Prerequisites
