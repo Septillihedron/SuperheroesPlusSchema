@@ -1,0 +1,380 @@
+EntityComponent: union(unionIdentifier = type)! 
+    unions: 
+        /LivingEntity/: LivingEntityComponent! 
+        /Hoglin/: ZombifiableComponent! 
+        /PiglinAbstract/: ZombifiableComponent! 
+        /ThrowableProjectile/: ThrowableProjectileComponent! 
+        /Phantom/: SizeComponent! 
+        /Slime/: SizeComponent! 
+        /Explosive/: ExplosiveComponent! 
+        /Colorable/: ColorableComponent! 
+        /Ageable/: AgeableComponent! 
+        /Wolf/: WolfComponent! 
+        /WitherSkull/: WitherSkullComponent! 
+        /Trident/: AbstractArrowComponent! 
+        /Rabbit/: RabbitComponent! 
+        /ThrownPotion/: PotionEntityComponent! 
+        /SpectralArrow/: SpectralArrowComponent! 
+        /TNTPrimed/: PrimedTntComponent! 
+        /Llama/: LlamaComponent! 
+        /AbstractHorse/: HorseComponent! 
+        /FallingBlock/: FallingBlockComponent! 
+        /ExperienceOrb/: ExperienceOrbComponent! 
+        /Item/: DroppedItemComponent! 
+        /Creeper/: CreeperComponent! 
+        /Axolotl/: AxolotlComponent! 
+        /Arrow/: ArrowComponent!
+Shape: union(unionIdentifier = type)? 
+AbstractArrowComponent: object(ignoreUnknowns)? 
+    properties: 
+        knockbackStrength: integer? 0
+        damage: number? 2.0
+        pierceLevel: integer? 0
+        critical: boolean? false
+        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED
+AgeableComponent: object(ignoreUnknowns)? 
+    properties: 
+        isBaby: boolean? false
+ArrowComponent: object(ignoreUnknowns)? 
+    properties: 
+        potionType: PotionType? 
+        knockbackStrength: integer? 0
+        damage: number? 2.0
+        pierceLevel: integer? 0
+        critical: boolean? false
+        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED
+AttributesData: object? 
+    properties: 
+        attributes: {Attribute: number}? {}
+        uniqueKey: string? 
+        equipmentSlot: EquipmentSlotGroup? ANY
+        operation: AttributesData.Operation? MULTIPLY_SCALAR
+        unique_key: string?
+AxolotlComponent: object(ignoreUnknowns)? 
+    properties: 
+        variant: Axolotl.Variant?
+BlockDataComparisonData: object? 
+    properties: 
+        types: Material[]? []
+        level: RangeData? -Infinity - Infinity
+        age: RangeData? -Infinity - Infinity
+BlockDataData: object? 
+    properties: 
+        material: Material? STONE
+        level: integer? -1
+        age: integer? -1
+        type: Material? STONE
+BookData: object? 
+    properties: 
+        title: string! 
+        author: string! 
+        pages: string[]!
+ColorableComponent: object(ignoreUnknowns)? 
+    properties: 
+        dyeColor: DyeColor?
+CreeperComponent: object(ignoreUnknowns)? 
+    properties: 
+        fuse: integer? 30
+        ignite: boolean? false
+        explosionRadius: integer? 3
+        powered: boolean? false
+DroppedItemComponent: object(ignoreUnknowns)? 
+    properties: 
+        stackData: ItemStackData?
+Duration: object? 
+    properties: 
+        duration: number!
+Ears: object? 
+    properties: 
+        height: number? 0.2
+        frequency: number? 0.05
+        size: number? 1
+        spread: number? 0.2
+EffectData: object? 
+    properties: 
+        particles: ParticleData[]? []
+        name: string?
+EnchantComparisonData: object? 
+    properties: 
+        enchantMap: {Enchantment: RangeData}? {}
+EquipableData: object? 
+    properties: 
+        droprate: number? 0.1
+        type: Material? STONE
+        amount: integer? 1
+        metadata: ItemMetaData? 
+        quantity: integer? 1
+EquipmentData: object? 
+    properties: 
+        head: EquipableData? 
+        chest: EquipableData? 
+        legs: EquipableData? 
+        feet: EquipableData? 
+        mainhand: EquipableData? 
+        offhand: EquipableData? 
+        helmet: EquipableData? 
+        chestplate: EquipableData? 
+        leggings: EquipableData? 
+        boots: EquipableData? 
+        hand: EquipableData?
+ExperienceOrbComponent: object(ignoreUnknowns)? 
+    properties: 
+        experience: integer? 1
+ExplosiveComponent: object(ignoreUnknowns)? 
+    properties: 
+        yield: number? 
+        isIncendiary: boolean? false
+FairyWings: object? 
+    properties: 
+        height: number? 1
+        frequency: number? 0.05
+        size: number? 1
+FallingBlockComponent: object(ignoreUnknowns)? 
+    properties: 
+        blockData: BlockData? #undocumented#
+        dropItem: boolean? true
+        cancelDrop: boolean? false
+        hurtEntities: boolean? false
+        damagePerBlock: number? 2
+        maxDamage: integer? 40
+Halo: object? 
+    properties: 
+        radius: number? 0.3
+        height: number? 0.3
+        resolution: number? 32
+Heart: object? 
+    properties: 
+        height: number? 2
+        frequency: number? 0.05
+        size: number? 1
+Helix: object? 
+    properties: 
+        radius: number? 0.5
+        interval: number? 0.05
+        speed: number? 1
+        waveFrequency: number? 1
+        height: number? 2
+        wave_frequency: number? 1
+HorseComponent: object(ignoreUnknowns)? 
+    properties: 
+        tamingDifficulty: integer? 1
+        jumpStrength: number? 0.7
+        hasChest: boolean? false
+        tamed: boolean? false
+        armor: ItemStack? 
+        hasSaddle: boolean? false
+        color: Horse.Color? CHESTNUT
+        style: Horse.Style? NONE
+ItemComparisonData: object? 
+    properties: 
+        types: Material[]? []
+        type: Material? 
+        amount: RangeData? -Infinity - Infinity
+        metadata: ItemMetaComparisonData?
+ItemMetaComparisonData: object? 
+    properties: 
+        displayName: string! 
+        lore: LoreData! 
+        enchants: EnchantComparisonData!
+ItemMetaData: object? 
+    properties: 
+        displayName: string? 
+        lore: string[]? 
+        isUnbreakable: boolean? false
+        durability: integer? 0
+        customModelData: integer? 0
+        attributes: AttributesData? 
+        trim: TrimData? 
+        flags: ItemFlag[]? []
+        book: BookData? 
+        color: LeatherArmorColor? 
+        enchantments: {Enchantment: integer}? {}
+ItemStackData: object? 
+    properties: 
+        type: Material? STONE
+        amount: integer? 1
+        metadata: ItemMetaData? 
+        quantity: integer? 1
+LeatherArmorColor: object? 
+    properties: 
+        red: integer? -1
+        green: integer? -1
+        blue: integer? -1
+LivingEntityComponent: object(ignoreUnknowns)? 
+    properties: 
+        canEquip: boolean? false
+        equipment: EquipmentData?
+LlamaComponent: object(ignoreUnknowns)? 
+    properties: 
+        color: Llama.Color? 
+        strength: integer? 1
+OptionsData: object? 
+    properties: 
+        colours: Color[]? []
+        scale: number? 1.0
+ParticleData: object? 
+    properties: 
+        duration: number? 2.5
+        particle: Particle? PORTAL
+        amount: integer? 1
+        shape: Shape? #undocumented#
+        extra: number? 0
+        options: OptionsData? 
+        numberOfParticles: integer? 1
+Point: object? 
+    properties: 
+        spread: number? 0
+        yOffset: number? 0
+        offset: number? 0
+PotionEffectData: object? 
+    properties: 
+        type: PotionEffectType! 
+        duration: number? 5
+        potency: integer? 0
+        ambient: boolean? true
+        hasParticles: boolean? true
+PotionEntityComponent: object(ignoreUnknowns)? 
+    properties: 
+        potion: ItemStack? SPLASH_POTION
+PotionMetaData: object? 
+    properties: 
+        type: PotionType? SWIFTNESS
+        extended: boolean? false
+        upgraded: boolean? false
+PrimedTntComponent: object(ignoreUnknowns)? 
+    properties: 
+        fuseTicks: integer? 100
+RabbitComponent: object(ignoreUnknowns)? 
+    properties: 
+        variant: Rabbit.Type?
+SetData: object? 
+    properties: 
+        set: Set!
+ShapedRecipeData: object? 
+    properties: 
+        recipe: string[]! []
+        recipeKeys: {Material: string}! {}
+        result: ItemStack! 
+        uniqueKey: string! 
+        unique_key: string!
+ShapelessRecipeData: object? 
+    properties: 
+        result: ItemStack! 
+        ingredients: {Material: integer}! {}
+        uniqueKey: string! 
+        unique_key: string!
+SizeComponent: object(ignoreUnknowns)? 
+    properties: 
+        size: integer?
+SoundData: object? 
+    properties: 
+        sound: Sound? ENTITY_GENERIC_EXPLODE
+        volume: number? 1.0
+        pitch: number? 1.0
+SpectralArrowComponent: object(ignoreUnknowns)? 
+    properties: 
+        glowingTicks: integer? 200
+        knockbackStrength: integer? 0
+        damage: number? 2.0
+        pierceLevel: integer? 0
+        critical: boolean? false
+        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED
+ThrowableProjectileComponent: object(ignoreUnknowns)? 
+    properties: 
+        itemStackData: ItemStackData?
+Wisp: object? 
+    properties: 
+        radius: number? 0.5
+        speed: number? 1
+        waveFrequency: number? 1
+        height: number? 2
+        wave_frequency: number? 1
+WitherSkullComponent: object(ignoreUnknowns)? 
+    properties: 
+        isCharged: boolean? false
+WolfComponent: object(ignoreUnknowns)? 
+    properties: 
+        angry: boolean? false
+ZombifiableComponent: object(ignoreUnknowns)? 
+    properties: 
+        immuneToZombification: boolean? false
+AbstractArrow.PickupStatus: enum? 
+    values: 
+      - ALLOWED
+      - CREATIVE_ONLY
+      - DISALLOWED
+AttributesData.Operation: enum? 
+    values: 
+      - ADD_NUMBER
+      - ADD_SCALAR
+      - MULTIPLY_SCALAR
+      - MULTIPLY_SCALAR_1
+Axolotl.Variant: enum? 
+    values: 
+      - BLUE
+      - CYAN
+      - GOLD
+      - LUCY
+      - WILD
+DyeColor: enum? 
+    values: 
+      - BLACK
+      - BLUE
+      - BROWN
+      - CYAN
+      - GRAY
+      - GREEN
+      - LIGHT_BLUE
+      - LIGHT_GRAY
+      - LIME
+      - MAGENTA
+      - ORANGE
+      - PINK
+      - PURPLE
+      - RED
+      - WHITE
+      - YELLOW
+Horse.Color: enum? 
+    values: 
+      - BLACK
+      - BROWN
+      - CHESTNUT
+      - CREAMY
+      - DARK_BROWN
+      - GRAY
+      - WHITE
+Horse.Style: enum? 
+    values: 
+      - BLACK_DOTS
+      - NONE
+      - WHITE
+      - WHITEFIELD
+      - WHITE_DOTS
+ItemFlag: enum? 
+    values: 
+      - HIDE_ADDITIONAL_TOOLTIP
+      - HIDE_ARMOR_TRIM
+      - HIDE_ATTRIBUTES
+      - HIDE_DESTROYS
+      - HIDE_DYE
+      - HIDE_ENCHANTS
+      - HIDE_PLACED_ON
+      - HIDE_UNBREAKABLE
+Llama.Color: enum? 
+    values: 
+      - BROWN
+      - CREAMY
+      - GRAY
+      - WHITE
+Rabbit.Type: enum? 
+    values: 
+      - BLACK
+      - BLACK_AND_WHITE
+      - BROWN
+      - GOLD
+      - SALT_AND_PEPPER
+      - THE_KILLER_BUNNY
+      - WHITE
+InventorySlot: EquipmentSlot | integer! 
+LoreData: string[]! 
+RangeData: string! 

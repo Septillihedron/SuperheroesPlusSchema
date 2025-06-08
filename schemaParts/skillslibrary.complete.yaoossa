@@ -1,0 +1,994 @@
+Condition: union(unionIdentifier = type)! 
+    properties: 
+        otherwise: EffectList? 
+        else: EffectList?
+    unions: 
+        POTIONEFFECT: PotionEffectCondition! 
+        SPRINTING: SprintingCondition! 
+        SHOOTER: ShooterCondition! 
+        SPEED: SpeedCondition! 
+        SWIMMING: SwimmingCondition! 
+        DISTANCE: DistanceCondition! 
+        ITEMWRAPPER: ItemWrapperCondition! 
+        SHIELDED: ShieldedCondition! 
+        TEMPERATURE: TemperatureCondition! 
+        LIGHT: LightCondition! 
+        VISIBILITY: VisibilityCondition! 
+        OR: ORCondition! 
+        ITEM: ItemCondition! 
+        BLOCK: BlockCondition! 
+        HEIGHT: HeightCondition! 
+        FLYING: FlyingCondition! 
+        FLY: FlyingCondition! 
+        TAMED: TamedCondition! 
+        WORLD: WorldCondition! 
+        INBLOCK: InBlockCondition! 
+        WEATHER: WeatherCondition! 
+        NPC: NPCCondition! 
+        METADATA: MetadataCondition! 
+        BIOME: BiomeCondition! 
+        GLIDING: GlidingCondition! 
+        ONGROUND: OnGroundCondition! 
+        TIME: TimeCondition! 
+        SNEAK: SneakCondition! 
+        NOT: NOTCondition! 
+        SIZE: SizeCondition! 
+        ENTITY: EntityWhitelistCondition! 
+        COOLDOWN: CooldownCondition! 
+        CHANCE: ChanceCondition! 
+        HOTBARSLOT: HotbarSlotCondition! 
+        HEALTH: HealthCondition!
+Effect: union(unionIdentifier = type)! 
+    unions: 
+        PARTICLE: ParticleEffect! 
+        FURNACEBURNTIME: FurnaceBurnTimeEffect! 
+        FLYING: FlyEffect! 
+        FLY: FlyEffect! 
+        HEALTH: HealthEffect! 
+        FREEZE: FreezeEffect! 
+        ACTIONBAR: ActionBarEffect! 
+        VEINMINER: VeinMinerEffect! 
+        HUNGER: HungerEffect! 
+        BONEMEAL: BonemealEffect! 
+        LOCATIONOFFSET: LocationOffsetEffect! 
+        SWITCHEROO: SwitcherooWrapperEffect! 
+        ITEMMATERIAL: ItemMaterialEffect! 
+        ITEMAMOUNT: ItemAmountEffect! 
+        ITEMSTACK: ItemStackWrapperEffect! 
+        REMOVEENTITY: RemoveEntityEffect! 
+        TIMER: TimerEffect! 
+        RAYTRACE: RaytraceEffect! 
+        TELEPORT: TeleportEffect! 
+        REMOVEPOTION: RemovePotionEffect! 
+        SPAWNENTITY: SpawnEffect! 
+        PLACEBLOCK: PlaceBlockEffect! 
+        LOCATIONCUBE: LocationCubeEffect! 
+        SWAP: SwapEffect! 
+        TARGET: TargetEntityEffect! 
+        LOSETARGET: LoseTargetEffect! 
+        FIRE: IgniteEffect! 
+        IGNITE: IgniteEffect! 
+        KNOCKBACK: KnockbackEffect! 
+        SHOOTER: ShooterEffect! 
+        NEAREST: NearestEffect! 
+        LUNGE: LungeEffect! 
+        COMMAND: CommandEffect! 
+        SOUND: SoundEffect! 
+        PROJECTILE: ProjectileEffect! 
+        RANDOMTELEPORT: RandomTeleportEffect! 
+        SCRAMBLEINVENTORY: ScrambleInventoryEffect! 
+        GIVEITEM: GiveItemEffect! 
+        METADATA: MetadataEffect! 
+        FLING: VelocityEffect! 
+        LIGHTNING: LightningEffect! 
+        SMITE: LightningEffect! 
+        RESIZE: ResizeEffect! 
+        REPULSE: RepulseEffect! 
+        PICKUP: Pickup! 
+        MESSAGE: MessageEffect! 
+        LAUNCH: LaunchEffect! 
+        ATTRIBUTE: AttributeEffect! 
+        ARROW: ArrowEffect! 
+        BLOCKENTITY: BlockEntityEffect! 
+        WEB: BlockEntityEffect! 
+        POTION: Potion! 
+        WAIT: WaitEffect! 
+        GLIDING: GlidingEffect! 
+        CANCEL: CancelEffect! 
+        VELOCITY: VelocityEffect! 
+        AOE: AOE! 
+        DAMAGE: DamageEffect!
+TriggerData: union(unionIdentifier = type)! 
+    properties: 
+        type: string! 
+        conditions: ConditionList? {}
+    unions: 
+        SWAPHANDS: TriggerData! 
+        MOVE: TriggerData! 
+        CONSUME: TriggerData! 
+        TOTEM: TriggerData! 
+        BLOCKBREAK: TriggerData! 
+        SPRINT: TriggerData! 
+        EQUIPARMOR: TriggerData! 
+        CHANGEMAINHAND: TriggerData! 
+        TOGGLESPRINT: TriggerData! 
+        RIPTIDE: TriggerData! 
+        INTERACTENTITY: TriggerData! 
+        POTIONEFFECT: PotionEffectTriggerData! 
+        KILL: TriggerData! 
+        INTERACT: InteractData! 
+        TAME: TriggerData! 
+        PROJECTILECOMBAT: ProjectileData! 
+        PLAYERQUIT: TriggerData! 
+        PLAYERJOIN: TriggerData! 
+        EXITVEHICLE: TriggerData! 
+        BECOMEVEHICLE: TriggerData! 
+        ENTERVEHICLE: TriggerData! 
+        VEHICLE: TriggerData! 
+        TARGETED: TriggerData! 
+        TARGET: TriggerData! 
+        SPAWN: TriggerData! 
+        DEATH: TriggerData! 
+        COMBAT: TriggerData! 
+        LOOP: LoopData! 
+        PLAYERJUMP: TriggerData! 
+        TOGGLEGLIDE: TriggerData! 
+        SNEAK: TriggerData! 
+        DAMAGED: DamageData! 
+        PROJECTILEHIT: TriggerData! 
+        LAUNCHPROJECTILE: TriggerData! 
+        DAMAGEDENTITYWITHPROJECTILE: ProjectileData! 
+        DAMAGEDBYPROJECTILE: ProjectileData! 
+        DAMAGEDBYENTITY: TriggerData! 
+        DAMAGEDENTITY: TriggerData!
+ActionBarEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        message: ExpressiveMessage?
+AOE: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        radius: Expression? 5
+        conditions: ConditionList? {}
+        effects: EffectList? {}
+ArrowEffect: object? 
+    properties: 
+        mode: enum! OTHER
+            values: 
+              - ALL
+              - OTHER
+        velocity: Expression? 1.0
+        damage: Expression? 4
+        entityData: EntityData? { type: "ARROW"}
+        fireTicks: Expression? 0
+        entity: EntityData? { type: "ARROW"}
+AttributeEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        attribute: Attribute? 
+        operation: ModifyEffect.Operation? SET
+        value: Expression? 1
+BiomeCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        biomes: Biome[]? []
+        otherwise: EffectList? 
+        else: EffectList?
+BlockCondition: object? 
+    properties: 
+        mode: enum! LOCATION
+            values: 
+              - ALL
+              - LOCATION
+        allowedMaterials: Material[]? []
+        materials: Material[]? []
+        otherwise: EffectList? 
+        else: EffectList?
+BlockEntityEffect: object? 
+    properties: 
+        mode: enum! OTHER
+            values: 
+              - ALL
+              - OTHER
+        durationInTicks: Expression? -1
+        blockToPlace: Material? COBWEB
+        duration: Expression!
+BonemealEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        blockFaces: BlockFace[]? []
+ChanceCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        chance: Expression? 1.0
+        otherwise: EffectList? 
+        else: EffectList?
+CommandEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        executor: CommandEffect.Executor? CONSOLE
+        commands: ExpressiveMessage[]? []
+ConditionList: object? 
+    properties: 
+        /string/: Condition!
+CooldownCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        cooldown: Expression? 10
+        otherwise: EffectList? 
+        else: EffectList?
+DamageData: object? 
+    properties: 
+        damageCauses: EntityDamageEvent.DamageCause[]? 
+        causes: EntityDamageEvent.DamageCause[]? 
+        type: string! 
+        conditions: ConditionList? {}
+DamageEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        damage: Expression? 5
+        damageCause: EntityDamageEvent.DamageCause? CUSTOM
+        shouldTriggerEvents: boolean? false
+DistanceCondition: object? 
+    properties: 
+        mode: enum! OTHER
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+        distance: RangeData? -Infinity - Infinity
+        otherwise: EffectList? 
+        else: EffectList?
+EffectList: object? 
+    properties: 
+        /string/: Effect!
+EntityWhitelistCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        whitelist: boolean? true
+        entities: Set? []
+        otherwise: EffectList? 
+        else: EffectList?
+ExpressiveMessage: object? 
+    properties: 
+        message: string!
+FlyEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        fly: boolean? true
+GiveItemEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        item: ItemStack! 
+        dropIfFull: boolean? true
+GlidingCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        shouldGlide: boolean? true
+        glide: boolean? true
+        otherwise: EffectList? 
+        else: EffectList?
+GlidingEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        glide: boolean? true
+HealthCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        healthPercentage: RangeData? -Infinity - Infinity
+        otherwise: EffectList? 
+        else: EffectList?
+HeightCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        height: RangeData? -Infinity - Infinity
+        otherwise: EffectList? 
+        else: EffectList?
+HotbarSlotCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - SELF
+        slot: RangeData? 
+        otherwise: EffectList? 
+        else: EffectList?
+IgniteEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        fireTicks: Expression?
+InBlockCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        blocks: Material[]? []
+        otherwise: EffectList? 
+        else: EffectList?
+InteractData: object? 
+    properties: 
+        actions: Action[]? 
+        type: string! 
+        conditions: ConditionList? {}
+ItemCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - ITEM
+              - OTHER
+              - SELF
+        itemComparison: ItemComparisonData! 
+        slot: InventorySlot? HAND
+        item: ItemComparisonData! 
+        otherwise: EffectList? 
+        else: EffectList?
+ItemMaterialEffect: object? 
+    properties: 
+        mode: enum! ITEM
+            values: 
+              - ALL
+              - ITEM
+        material: Material?
+ItemStackWrapperEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        slot: InventorySlot? HAND
+        equipmentSlot: InventorySlot? HAND
+        conditions: ConditionList? {}
+        effects: EffectList? {}
+ItemWrapperCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        slot: InventorySlot? HAND
+        conditions: ConditionList? {}
+        otherwise: EffectList? 
+        else: EffectList?
+KnockbackEffect: object? 
+    properties: 
+        mode: enum! OTHER
+            values: 
+              - ALL
+              - OTHER
+        multiplier: Expression? 1.0
+        overwriteCurrentVelocity: boolean? true
+LaunchEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        entity: EntityData? { type: "FIREBALL"}
+        velocity: Expression? 1.0
+LightCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        checkNatural: boolean? true
+        checkBlocks: boolean? true
+        lightRange: RangeData? -Infinity - Infinity
+        checkNaturalLight: boolean? true
+        checkBlockLight: boolean? true
+        light: RangeData? -Infinity - Infinity
+        otherwise: EffectList? 
+        else: EffectList?
+LightningEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        fake: boolean? false
+LocationCubeEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        verticalRadius: integer? 0
+        horizontalRadius: integer? 0
+        offset: Vector? { x: 0, y: 0, z: 0 }
+        conditions: ConditionList? {}
+        effects: EffectList? {}
+LocationOffsetEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        offset: Vector? { x: 0, y: 0, z: 0 }
+        conditions: ConditionList? {}
+        effects: EffectList? {}
+LoopData: object? 
+    properties: 
+        period: Duration? 1.0
+        type: string! 
+        conditions: ConditionList? {}
+LungeEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        horizontalVelocity: Expression? 0
+        verticalVelocity: Expression? 0
+        overwrite: boolean? true
+MessageEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        message: ExpressiveMessage?
+MetadataCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        variable: string! 
+        value: Expression! 
+        comparison: ComparisonCondition.Comparison? EQUAL
+        otherwise: EffectList? 
+        else: EffectList?
+MetadataEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        variable: string! 
+        operation: ModifyEffect.Operation? SET
+        value: Expression? 1
+NearestEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        radius: number? 5
+        conditions: ConditionList? {}
+        effects: EffectList? {}
+NOTCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - ITEM
+              - LOCATION
+              - OTHER
+              - SELF
+        condition: Condition? 
+        otherwise: EffectList? 
+        else: EffectList?
+NPCCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        npc: boolean? true
+        isNPC: boolean? true
+        otherwise: EffectList? 
+        else: EffectList?
+OnGroundCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        grounded: boolean? true
+        isGrounded: boolean? true
+        otherwise: EffectList? 
+        else: EffectList?
+ORCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - ITEM
+              - LOCATION
+              - OTHER
+              - SELF
+        conditions: ConditionList? 
+        otherwise: EffectList? 
+        else: EffectList?
+ParticleEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        particleData: ParticleData!
+PlaceBlockEffect: object? 
+    properties: 
+        mode: enum! LOCATION
+            values: 
+              - ALL
+              - LOCATION
+        blockData: BlockData! 
+        updatePhysics: boolean? true
+        isPacket: boolean? false
+        revertConditions: ConditionList? {}
+        revertsAfter: Expression? -1
+        block: BlockData!
+Potion: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        potionEffect: PotionEffectData? 
+        potion: PotionEffectData?
+PotionEffectCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        effect: PotionEffectType! 
+        potency: RangeData? -Infinity - Infinity
+        duration: RangeData? -Infinity - Infinity
+        otherwise: EffectList? 
+        else: EffectList?
+PotionEffectTriggerData: object? 
+    properties: 
+        types: PotionEffectType[]? []
+        causes: EntityPotionEffectEvent.Cause[]? 
+        actions: EntityPotionEffectEvent.Action[]? 
+        type: string! 
+        conditions: ConditionList? {}
+ProjectileData: object? 
+    properties: 
+        onlyProjectiles: boolean? false
+        type: string! 
+        conditions: ConditionList? {}
+ProjectileEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        projectile: EntityData? { type: "SNOWBALL"}
+        velocity: number? 1.0
+RandomTeleportEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        maxDistance: number? 10
+        minDistance: number? 5
+RaytraceEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        maxDistance: number? 10
+        collisionMode: FluidCollisionMode? NEVER
+        ignorePassables: boolean? true
+        alwaysHit: boolean? true
+        raySize: number? 1.0
+        raysize: number? 1.0
+        conditions: ConditionList? {}
+        effects: EffectList? {}
+RemovePotionEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        types: PotionEffectType[]? []
+RepulseEffect: object? 
+    properties: 
+        mode: enum! OTHER
+            values: 
+              - ALL
+              - OTHER
+        velocity: number? 1.0
+        add: boolean? false
+ResizeEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        retainHealth: boolean? true
+        operation: ModifyEffect.Operation? SET
+        value: Expression? 1
+ShooterEffect: object? 
+    properties: 
+        mode: enum! OTHER
+            values: 
+              - ALL
+              - OTHER
+        onlyProjectiles: boolean? true
+        conditions: ConditionList? {}
+        effects: EffectList? {}
+SizeCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        size: RangeData? -Infinity - Infinity
+        otherwise: EffectList? 
+        else: EffectList?
+Skill: object? 
+    properties: 
+        trigger: TriggerData! 
+        effects: EffectList! 
+        conditions: ConditionList!
+SneakCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        sneak: boolean? true
+        otherwise: EffectList? 
+        else: EffectList?
+SoundEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        sound: SoundData?
+SpawnEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        entity: EntityData? { type: "ZOMBIE"}
+SpeedCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        speedRange: RangeData? 
+        speed: RangeData? 
+        otherwise: EffectList? 
+        else: EffectList?
+TamedCondition: object? 
+    properties: 
+        mode: enum! OTHER
+            values: 
+              - ALL
+              - OTHER
+        checkOwner: boolean? true
+        otherwise: EffectList? 
+        else: EffectList?
+TemperatureCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        temperatureRange: RangeData? 
+        temperature: RangeData? 
+        otherwise: EffectList? 
+        else: EffectList?
+TimeCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - SELF
+        time: RangeData? -Infinity - Infinity
+        otherwise: EffectList? 
+        else: EffectList?
+TimerEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - ITEM
+              - LOCATION
+              - OTHER
+              - SELF
+        ticksDelay: Duration? 1.0
+        period: Duration? 1.0
+        repeats: integer? 1
+        delay: Duration? 1.0
+        numberOfRepeats: integer? 1
+        conditions: ConditionList? {}
+        effects: EffectList? {}
+VeinMinerEffect: object? 
+    properties: 
+        mode: enum! LOCATION
+            values: 
+              - ALL
+              - LOCATION
+        materials: Material[]? []
+        delay: Duration? 0.05
+        limit: integer? 10
+        allowMultiTypeVein: boolean? false
+        types: Material[]? []
+VelocityEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        component: string? Y
+        operation: ModifyEffect.Operation? SET
+        value: Expression? 1
+VisibilityCondition: object? 
+    properties: 
+        mode: enum! OTHER
+            values: 
+              - ALL
+              - OTHER
+        maxDistance: number? 16
+        distance: number? 16
+        otherwise: EffectList? 
+        else: EffectList?
+WaitEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - ITEM
+              - LOCATION
+              - OTHER
+              - SELF
+        ticksDelay: Duration? 20.0
+        delay: Duration? 20.0
+        conditions: ConditionList? {}
+        effects: EffectList? {}
+WorldCondition: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - LOCATION
+              - OTHER
+              - SELF
+        worlds: string[]? []
+        otherwise: EffectList? 
+        else: EffectList?
+Action: enum? 
+    values: 
+      - LEFT_CLICK_AIR
+      - LEFT_CLICK_BLOCK
+      - PHYSICAL
+      - RIGHT_CLICK_AIR
+      - RIGHT_CLICK_BLOCK
+BlockFace: enum? 
+    values: 
+      - DOWN
+      - EAST
+      - EAST_NORTH_EAST
+      - EAST_SOUTH_EAST
+      - NORTH
+      - NORTH_EAST
+      - NORTH_NORTH_EAST
+      - NORTH_NORTH_WEST
+      - NORTH_WEST
+      - SELF
+      - SOUTH
+      - SOUTH_EAST
+      - SOUTH_SOUTH_EAST
+      - SOUTH_SOUTH_WEST
+      - SOUTH_WEST
+      - UP
+      - WEST
+      - WEST_NORTH_WEST
+      - WEST_SOUTH_WEST
+CommandEffect.Executor: enum? 
+    values: 
+      - CONSOLE
+      - PLAYER
+ComparisonCondition.Comparison: enum! 
+    values: 
+      - EQUAL
+      - GREATER
+      - GREATEREQUAL
+      - LESS
+      - LESSEQUAL
+EntityDamageEvent.DamageCause: enum? 
+    values: 
+      - BLOCK_EXPLOSION
+      - CAMPFIRE
+      - CONTACT
+      - CRAMMING
+      - CUSTOM
+      - DRAGON_BREATH
+      - DROWNING
+      - DRYOUT
+      - ENTITY_ATTACK
+      - ENTITY_EXPLOSION
+      - ENTITY_SWEEP_ATTACK
+      - FALL
+      - FALLING_BLOCK
+      - FIRE
+      - FIRE_TICK
+      - FLY_INTO_WALL
+      - FREEZE
+      - HOT_FLOOR
+      - KILL
+      - LAVA
+      - LIGHTNING
+      - MAGIC
+      - MELTING
+      - POISON
+      - PROJECTILE
+      - SONIC_BOOM
+      - STARVATION
+      - SUFFOCATION
+      - SUICIDE
+      - THORNS
+      - VOID
+      - WITHER
+      - WORLD_BORDER
+EntityPotionEffectEvent.Action: enum? 
+    values: 
+      - ADDED
+      - CHANGED
+      - CLEARED
+      - REMOVED
+EntityPotionEffectEvent.Cause: enum? 
+    values: 
+      - AREA_EFFECT_CLOUD
+      - ARROW
+      - ATTACK
+      - AXOLOTL
+      - BEACON
+      - COMMAND
+      - CONDUIT
+      - CONVERSION
+      - DEATH
+      - DOLPHIN
+      - EXPIRATION
+      - FOOD
+      - ILLUSION
+      - MILK
+      - PATROL_CAPTAIN
+      - PLUGIN
+      - POTION_DRINK
+      - POTION_SPLASH
+      - SPIDER_SPAWN
+      - TOTEM
+      - TURTLE_HELMET
+      - UNKNOWN
+      - VILLAGER_TRADE
+      - WARDEN
+      - WITHER_ROSE
+FluidCollisionMode: enum? 
+    values: 
+      - ALWAYS
+      - NEVER
+      - SOURCE_ONLY
+ModifyEffect.Operation: enum? 
+    values: 
+      - ADD
+      - DIVIDE
+      - MULTIPLY
+      - SET
+      - SUBTRACT
+ConditionId: null! 
+EffectId: null! 
+Expression: string! 

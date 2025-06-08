@@ -1,0 +1,58 @@
+Effect: union! 
+    unions: 
+        PLAYTRACK: PlayTrackEffect! 
+        DISGUISE: DisguiseEffect! 
+        CHANGEHERO: ChangeHeroEffect!
+SkillData: union! 
+    unions: 
+        CUSTOM: CustomData! 
+        BEASTCONTROL: BeastControlData!
+TriggerData: union! 
+    unions: 
+        LOSTHERO: TriggerData! 
+        GAINEDHERO: TriggerData!
+BeastControlData: object? 
+    properties: 
+        maxDistance: number? 32.0
+        targetMobs: boolean? true
+        glowDuration: number? 3.0
+        attackItself: boolean? false
+ChangeHeroEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        permanent: boolean? true
+        heroName: string? erased
+        description: string? 
+        broadcast: boolean? true
+        duration: Duration? 0.0
+CustomData: object? 
+    properties: 
+        trigger: TriggerData! 
+        effects: EffectList! 
+        conditions: ConditionList!
+CustomSpell: object? 
+    properties: 
+        effects: EffectList!
+DisguiseEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        enable: boolean? 
+        entityType: EntityType! 
+        entity: EntityType!
+PlayTrackEffect: object? 
+    properties: 
+        mode: enum! SELF
+            values: 
+              - ALL
+              - OTHER
+              - SELF
+        song: Song? 
+        track: Song?
