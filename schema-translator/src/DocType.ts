@@ -27,9 +27,9 @@ export class DocType {
         this.required = required
         this.defaultValue = defaultValue
         this.description = description
-        this.properties = properties
-        this.enumValues = enumValues
-        this.unions = unionTypes
+        this.properties = DocType.sortProperties(properties)
+        this.enumValues = DocType.sortEnum(enumValues)
+        this.unions = DocType.sortProperties(unionTypes)
     }
     
     static parse(view: StringView, indent: string): DocType {
@@ -213,7 +213,75 @@ export class DocType {
         return combined
     }
 
+    static sortProperties(map: Map<string, DocType>): Map<string, DocType>
+    static sortProperties(map: Map<string, DocType | true>): Map<string, DocType | true>
+    static sortProperties(map: Map<string, DocType | true>) {
+        return new Map([...map.entries()].sort((a, b) => {
+            const [aKey, aDoc] = a
+            const [bKey, bDoc] = b
+            const typeDifference = DocType.docTypeToOrdinal(bDoc) - DocType.docTypeToOrdinal(aDoc);
+            if (typeDifference != 0) return typeDifference;
+            return aKey.toLocaleLowerCase().localeCompare(bKey.toLocaleLowerCase())
+        }))
+    }
+    private static docTypeToOrdinal(doc: DocType | true): number {
+        if (doc === true) return 3;
+        switch (doc.type) {
+            case "union": return 2;
+            case "object": return 1;
+            case "enum": return 0;
+            default: return -1;
+        };
+    }
 
+    static sortEnum(set: Set<string>) {
+        return new Set([...set.values()].sort())
+    }
+
+    lower(types: Map<string, DocType>) {
+
+    }
+
+    toString(): string {
+        let extraData = this.extraDataToString()
+        const requiredStr = this.required? "!" : "?"
+        const descriptionStr = " # " + this.description
+
+        let fields = ""
+        const indent = " ".repeat(4)
+        if (this.properties.size !== 0) {
+            fields += indent + "properties: \n"
+            for (const [key, value] of this.properties) {
+                fields += indent + indent + key + ": " + value.toString() + "\n"
+            }
+        }
+        if (this.enumValues.size !== 0 && this.enumValues.size < 100) {
+            fields += indent + "values: \n"
+            for (const value of this.enumValues) {
+                fields += indent + "  - " + value + "\n"
+            }
+        }
+        if (this.unions.size !== 0) {
+            fields += indent + "unions: \n"
+            for (const [key, value] of this.unions) {
+                fields += indent + indent + key + ": " + value.toString() + "\n"
+            }
+        }
+        if (fields.length != 0) fields = "\n" + fields
+
+        return this.type + extraData + requiredStr + this.defaultValue + descriptionStr + fields
+    }
+
+    private extraDataToString() {
+        let extraData = ""
+        for (const [key, value] of this.extraData) {
+            if (extraData.length != 0) extraData += ", "
+            extraData += key
+            if (value !== true) extraData += " = " + value
+        }
+        if (extraData.length != 0) extraData = "(" + extraData + ")"
+        return extraData
+    }
 }
 
 

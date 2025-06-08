@@ -1,19 +1,12 @@
-import { readdirSync } from "fs";
+import { readdirSync, writeFileSync } from "fs";
 import { DocPart } from "./DocPart";
 
 
 const combinedDocs = readdirSync("../schemaParts")
     .map(x => "../schemaParts/"+x)
     .filter(path => path.endsWith(".complete.yaoossa"))
-    .map(path => {
-        const part = DocPart.loadFile(path)
-        // console.log(path)
-        // console.dir(part, {depth: 100})
-        return part
-    })
+    .map(DocPart.loadFile)
     .reduce(DocPart.combine)
 
-console.dir(combinedDocs, {
-    depth: 1000
-})
-    
+writeFileSync("./combined.yaoossa", combinedDocs.toString())
+

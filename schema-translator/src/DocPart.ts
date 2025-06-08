@@ -8,7 +8,7 @@ export class DocPart {
     types: Map<string, DocType>
 
     constructor(types: Map<string, DocType>) {
-        this.types = types
+        this.types = DocType.sortProperties(types)
     }
 
     static parse(view: StringView): DocPart {
@@ -34,6 +34,14 @@ export class DocPart {
         })
 
         return new DocPart(combinedTypes)
+    }
+    
+    toString(): string {
+        let str = ""
+        for (const [name, doc] of this.types) {
+            str += name + ": " + doc
+        }
+        return str
     }
 
 }
