@@ -1,0 +1,14 @@
+{
+  "name": "schema-translator",
+  "version": "1.0.0",
+  "main": "out/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sepdron",
+  "license": "UNLICENSED",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.15.30"
+  }
+}
