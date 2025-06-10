@@ -6,18 +6,22 @@ Effect: union!
 SkillData: union! 
     unions: 
         CUSTOM: CustomData! 
-        BEASTCONTROL: BeastControlData!
+        BEASTCONTROL: BeastControlData! 
+        CUSTOM_SPELL: CustomSpell!
+SpellData: union! 
+    unions: 
+        CUSTOM_SPELL: CustomSpell!
 TriggerData: union! 
     unions: 
         LOSTHERO: TriggerData! 
         GAINEDHERO: TriggerData!
-BeastControlData: object? 
+BeastControlData: object(superdoc = SkillData)? 
     properties: 
         maxDistance: number? 32.0
         targetMobs: boolean? true
         glowDuration: number? 3.0
         attackItself: boolean? false
-ChangeHeroEffect: object? 
+ChangeHeroEffect: object(superdoc = Effect)? 
     properties: 
         mode: enum! SELF
             values: 
@@ -29,15 +33,15 @@ ChangeHeroEffect: object?
         description: string? 
         broadcast: boolean? true
         duration: Duration? 0.0
-CustomData: object? 
+CustomData: object(superdoc = SkillData)? 
     properties: 
         trigger: TriggerData! 
         effects: EffectList! 
         conditions: ConditionList!
-CustomSpell: object? 
+CustomSpell: object(superdoc = SpellData, superdoc = SkillData)? 
     properties: 
         effects: EffectList!
-DisguiseEffect: object? 
+DisguiseEffect: object(superdoc = Effect)? 
     properties: 
         mode: enum! SELF
             values: 
@@ -47,7 +51,7 @@ DisguiseEffect: object?
         enable: boolean? 
         entityType: EntityType! 
         entity: EntityType!
-PlayTrackEffect: object? 
+PlayTrackEffect: object(superdoc = Effect)? 
     properties: 
         mode: enum! SELF
             values: 

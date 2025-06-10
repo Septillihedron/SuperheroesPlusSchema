@@ -1,29 +1,35 @@
-Arrow: enum! 
+SpectralArrow: enum! 
     values: 
-      - ARROW
+      - SPECTRAL_ARROW
 
-Explosive: enum! 
+Trident: enum! 
     values: 
-      - BREEZE_WIND_CHARGE
-      - DRAGON_FIREBALL
-      - FIREBALL
-      - SMALL_FIREBALL
-      - TNT
-      - TNT_MINECART
-      - WIND_CHARGE
-      - WITHER_SKULL
+      - TRIDENT
+
+ChestedHorse: enum! 
+    values: 
+      - DONKEY
+      - LLAMA
+      - MULE
+      - TRADER_LLAMA
+
+Rabbit: enum! 
+    values: 
+      - RABBIT
 
 Wolf: enum! 
     values: 
       - WOLF
 
-Hoglin: enum! 
+ThrowableProjectile: enum! 
     values: 
-      - HOGLIN
-
-Creeper: enum! 
-    values: 
-      - CREEPER
+      - EGG
+      - ENDER_PEARL
+      - EXPERIENCE_BOTTLE
+      - LINGERING_POTION
+      - SNOWBALL
+      - SPLASH_POTION
+      - TRIDENT
 
 AbstractHorse: enum! 
     values: 
@@ -36,15 +42,117 @@ AbstractHorse: enum!
       - TRADER_LLAMA
       - ZOMBIE_HORSE
 
+ExperienceOrb: enum! 
+    values: 
+      - EXPERIENCE_ORB
+
+Axolotl: enum! 
+    values: 
+      - AXOLOTL
+
 ThrownPotion: enum! 
     values: 
       - LINGERING_POTION
       - SPLASH_POTION
 
+Phantom: enum! 
+    values: 
+      - PHANTOM
+
+Item: enum! 
+    values: 
+      - ITEM
+
+FallingBlock: enum! 
+    values: 
+      - FALLING_BLOCK
+
+Horse: enum! 
+    values: 
+      - HORSE
+
+WitherSkull: enum! 
+    values: 
+      - WITHER_SKULL
+
 Colorable: enum! 
     values: 
       - SHEEP
       - SHULKER
+
+Explosive: enum! 
+    values: 
+      - BREEZE_WIND_CHARGE
+      - DRAGON_FIREBALL
+      - FIREBALL
+      - SMALL_FIREBALL
+      - TNT
+      - TNT_MINECART
+      - WIND_CHARGE
+      - WITHER_SKULL
+
+Hoglin: enum! 
+    values: 
+      - HOGLIN
+
+Creeper: enum! 
+    values: 
+      - CREEPER
+
+Ageable: enum! 
+    values: 
+      - ARMADILLO
+      - AXOLOTL
+      - BEE
+      - CAMEL
+      - CAT
+      - CHICKEN
+      - COW
+      - DOLPHIN
+      - DONKEY
+      - DROWNED
+      - FOX
+      - FROG
+      - GLOW_SQUID
+      - GOAT
+      - HOGLIN
+      - HORSE
+      - HUSK
+      - LLAMA
+      - MOOSHROOM
+      - MULE
+      - OCELOT
+      - PANDA
+      - PARROT
+      - PIG
+      - PIGLIN
+      - PIGLIN_BRUTE
+      - POLAR_BEAR
+      - RABBIT
+      - SHEEP
+      - SKELETON_HORSE
+      - SNIFFER
+      - SQUID
+      - STRIDER
+      - TRADER_LLAMA
+      - TURTLE
+      - VILLAGER
+      - WANDERING_TRADER
+      - WOLF
+      - ZOGLIN
+      - ZOMBIE
+      - ZOMBIE_HORSE
+      - ZOMBIE_VILLAGER
+      - ZOMBIFIED_PIGLIN
+
+PiglinAbstract: enum! 
+    values: 
+      - PIGLIN
+      - PIGLIN_BRUTE
+
+TNTPrimed: enum! 
+    values: 
+      - TNT
 
 LivingEntity: enum! 
     values: 
@@ -134,116 +242,19 @@ LivingEntity: enum!
       - ZOMBIE_VILLAGER
       - ZOMBIFIED_PIGLIN
 
-Rabbit: enum! 
-    values: 
-      - RABBIT
-
-WitherSkull: enum! 
-    values: 
-      - WITHER_SKULL
-
-ThrowableProjectile: enum! 
-    values: 
-      - EGG
-      - ENDER_PEARL
-      - EXPERIENCE_BOTTLE
-      - LINGERING_POTION
-      - SNOWBALL
-      - SPLASH_POTION
-      - TRIDENT
-
 Slime: enum! 
     values: 
       - MAGMA_CUBE
       - SLIME
 
-FallingBlock: enum! 
+Arrow: enum! 
     values: 
-      - FALLING_BLOCK
-
-SpectralArrow: enum! 
-    values: 
-      - SPECTRAL_ARROW
-
-PiglinAbstract: enum! 
-    values: 
-      - PIGLIN
-      - PIGLIN_BRUTE
-
-Item: enum! 
-    values: 
-      - ITEM
-
-Ageable: enum! 
-    values: 
-      - ARMADILLO
-      - AXOLOTL
-      - BEE
-      - CAMEL
-      - CAT
-      - CHICKEN
-      - COW
-      - DOLPHIN
-      - DONKEY
-      - DROWNED
-      - FOX
-      - FROG
-      - GLOW_SQUID
-      - GOAT
-      - HOGLIN
-      - HORSE
-      - HUSK
-      - LLAMA
-      - MOOSHROOM
-      - MULE
-      - OCELOT
-      - PANDA
-      - PARROT
-      - PIG
-      - PIGLIN
-      - PIGLIN_BRUTE
-      - POLAR_BEAR
-      - RABBIT
-      - SHEEP
-      - SKELETON_HORSE
-      - SNIFFER
-      - SQUID
-      - STRIDER
-      - TRADER_LLAMA
-      - TURTLE
-      - VILLAGER
-      - WANDERING_TRADER
-      - WOLF
-      - ZOGLIN
-      - ZOMBIE
-      - ZOMBIE_HORSE
-      - ZOMBIE_VILLAGER
-      - ZOMBIFIED_PIGLIN
-
-ExperienceOrb: enum! 
-    values: 
-      - EXPERIENCE_ORB
+      - ARROW
 
 Llama: enum! 
     values: 
       - LLAMA
       - TRADER_LLAMA
-
-Axolotl: enum! 
-    values: 
-      - AXOLOTL
-
-Trident: enum! 
-    values: 
-      - TRIDENT
-
-TNTPrimed: enum! 
-    values: 
-      - TNT
-
-Phantom: enum! 
-    values: 
-      - PHANTOM
 
 Particle: enum! 
     values: 

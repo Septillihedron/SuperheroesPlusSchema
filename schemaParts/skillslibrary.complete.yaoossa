@@ -220,6 +220,7 @@ BonemealEffect: object?
               - OTHER
               - SELF
         blockFaces: BlockFace[]? []
+CancelEffect: object? 
 ChanceCondition: object? 
     properties: 
         mode: enum! SELF
@@ -239,9 +240,6 @@ CommandEffect: object?
               - SELF
         executor: CommandEffect.Executor? CONSOLE
         commands: ExpressiveMessage[]? []
-ConditionList: object? 
-    properties: 
-        /string/: Condition!
 CooldownCondition: object? 
     properties: 
         mode: enum! SELF
@@ -278,9 +276,6 @@ DistanceCondition: object?
         distance: RangeData? -Infinity - Infinity
         otherwise: EffectList? 
         else: EffectList?
-EffectList: object? 
-    properties: 
-        /string/: Effect!
 EntityWhitelistCondition: object? 
     properties: 
         mode: enum! SELF
@@ -289,12 +284,9 @@ EntityWhitelistCondition: object?
               - OTHER
               - SELF
         whitelist: boolean? true
-        entities: Set? []
+        entities: EntityType[]? []
         otherwise: EffectList? 
         else: EffectList?
-ExpressiveMessage: object? 
-    properties: 
-        message: string!
 FlyEffect: object? 
     properties: 
         mode: enum! SELF
@@ -303,6 +295,9 @@ FlyEffect: object?
               - OTHER
               - SELF
         fly: boolean? true
+FlyingCondition: object? 
+FreezeEffect: object? 
+FurnaceBurnTimeEffect: object? 
 GiveItemEffect: object? 
     properties: 
         mode: enum! SELF
@@ -341,6 +336,7 @@ HealthCondition: object?
         healthPercentage: RangeData? -Infinity - Infinity
         otherwise: EffectList? 
         else: EffectList?
+HealthEffect: object? 
 HeightCondition: object? 
     properties: 
         mode: enum! SELF
@@ -360,6 +356,7 @@ HotbarSlotCondition: object?
         slot: RangeData? 
         otherwise: EffectList? 
         else: EffectList?
+HungerEffect: object? 
 IgniteEffect: object? 
     properties: 
         mode: enum! SELF
@@ -383,6 +380,7 @@ InteractData: object?
         actions: Action[]? 
         type: string! 
         conditions: ConditionList? {}
+ItemAmountEffect: object? 
 ItemCondition: object? 
     properties: 
         mode: enum! SELF
@@ -495,6 +493,7 @@ LoopData: object?
         period: Duration? 1.0
         type: string! 
         conditions: ConditionList? {}
+LoseTargetEffect: object? 
 LungeEffect: object? 
     properties: 
         mode: enum! SELF
@@ -601,6 +600,7 @@ ParticleEffect: object?
               - OTHER
               - SELF
         particleData: ParticleData!
+Pickup: object? 
 PlaceBlockEffect: object? 
     properties: 
         mode: enum! LOCATION
@@ -680,6 +680,7 @@ RaytraceEffect: object?
         raysize: number? 1.0
         conditions: ConditionList? {}
         effects: EffectList? {}
+RemoveEntityEffect: object? 
 RemovePotionEffect: object? 
     properties: 
         mode: enum! SELF
@@ -706,6 +707,9 @@ ResizeEffect: object?
         retainHealth: boolean? true
         operation: ModifyEffect.Operation? SET
         value: Expression? 1
+ScrambleInventoryEffect: object? 
+ShieldedCondition: object? 
+ShooterCondition: object? 
 ShooterEffect: object? 
     properties: 
         mode: enum! OTHER
@@ -769,6 +773,10 @@ SpeedCondition: object?
         speed: RangeData? 
         otherwise: EffectList? 
         else: EffectList?
+SprintingCondition: object? 
+SwapEffect: object? 
+SwimmingCondition: object? 
+SwitcherooWrapperEffect: object? 
 TamedCondition: object? 
     properties: 
         mode: enum! OTHER
@@ -778,6 +786,8 @@ TamedCondition: object?
         checkOwner: boolean? true
         otherwise: EffectList? 
         else: EffectList?
+TargetEntityEffect: object? 
+TeleportEffect: object? 
 TemperatureCondition: object? 
     properties: 
         mode: enum! SELF
@@ -859,6 +869,7 @@ WaitEffect: object?
         delay: Duration? 20.0
         conditions: ConditionList? {}
         effects: EffectList? {}
+WeatherCondition: object? 
 WorldCondition: object? 
     properties: 
         mode: enum! SELF
@@ -989,6 +1000,9 @@ ModifyEffect.Operation: enum?
       - MULTIPLY
       - SET
       - SUBTRACT
-ConditionId: null! 
-EffectId: null! 
+ConditionId: #null! 
+ConditionList: Condition{}? 
+EffectId: #null! 
+EffectList: Effect{}? 
 Expression: string! 
+ExpressiveMessage: string! 

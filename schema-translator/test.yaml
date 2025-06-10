@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=Superheroes8+.json
+icon:
+  amount: 1
+  quantity: 1
+  type: acacia_fence_gate
+heroGainedSound:
+  pitch: 1.0
+  sound: ambient.warped_forest.additions
+  volume: 1.0
+skills: 
+  name:
+    skill: CUSTOM
+    trigger:
+      type: CONSUME
+    conditions: 
+      condition:
+        type: BIOME
+        biomes:
+          - FOREST
+    effects: 
+      particle:
+        type: PARTICLE
+        mode: SELF
+        particleData:
+          amount: 1
+          duration: 2.5
+          extra: 0
+          numberOfParticles: 1
+          particle: ash
+          shape:
+            type: EARS
+            height: 0.2
+  spell:
+    skill: CUSTOM_SPELL
+    fuel: acacia_button
+    
+
+    

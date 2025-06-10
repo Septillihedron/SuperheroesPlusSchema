@@ -1,0 +1,72 @@
+
+EntityData: union(unionIdentifier = type)! {type: "ZOMBIE"} # 
+    properties:
+        nameTag: string? # 
+        shouldDespawn: boolean? true # 
+        customNameVisible: boolean? false # 
+        silent: boolean? false # 
+        visualFire: boolean? false # 
+        attributes: {Attribute: number}? {} # 
+        passenger: EntityData? {} # 
+    unions:
+        /LivingEntity/: LivingEntityComponent! 
+        /Hoglin/: ZombifiableComponent! 
+        /PiglinAbstract/: ZombifiableComponent! 
+        /ThrowableProjectile/: ThrowableProjectileComponent! 
+        /Phantom/: SizeComponent! 
+        /Slime/: SizeComponent! 
+        /Explosive/: ExplosiveComponent! 
+        /Colorable/: ColorableComponent! 
+        /Ageable/: AgeableComponent! 
+        /Wolf/: WolfComponent! 
+        /WitherSkull/: WitherSkullComponent! 
+        /Trident/: AbstractArrowComponent! 
+        /Rabbit/: RabbitComponent! 
+        /ThrownPotion/: PotionEntityComponent! 
+        /SpectralArrow/: SpectralArrowComponent! 
+        /TNTPrimed/: PrimedTntComponent! 
+        /Llama/: LlamaComponent! 
+        /Horse/: HorseComponent! 
+        /AbstractHorse/: AbstractHorseComponent! 
+        /FallingBlock/: FallingBlockComponent! 
+        /ExperienceOrb/: ExperienceOrbComponent! 
+        /Item/: DroppedItemComponent! 
+        /Creeper/: CreeperComponent! 
+        /Axolotl/: AxolotlComponent! 
+        /Arrow/: ArrowComponent!
+
+EquipmentSlotGroup: enum? ANY
+	values:
+	  - ANY
+	  - MAINHAND
+	  - OFFHAND
+	  - HAND
+	  - FEET
+	  - LEGS
+	  - CHEST
+	  - HEAD
+	  - ARMOR
+EquipmentSlot: enum? HAND
+    values: 
+      - HAND
+      - OFF_HAND
+      - FEET
+      - LEGS
+      - CHEST
+      - HEAD
+      - BODY
+
+Vector: object! {x: 0, y: 0, z: 0}
+    properties:
+        x: number!
+        y: number!
+        z: number!
+Color: object! {red: 100, green: 0, blue: 200}
+    properties:
+        red: integer!
+        green: integer!
+        blue: integer!
+BlockData: BlockDataData! 
+ItemStack: ItemStackData! 
+Component: string!
+Song: string! 

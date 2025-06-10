@@ -35,7 +35,6 @@ SkillData: union(unionIdentifier = skill)!
         POTIONGIFTER: PotionGifterSkillData! 
         BLOCKRAY: BlockRayData! 
         THROWER: ThrowerData! 
-        SPELL: SpellData! 
         SHIELD: ShieldData! 
         SNEAK: SneakData! 
         GUN: GunData! 
@@ -50,7 +49,34 @@ SkillData: union(unionIdentifier = skill)!
         POTIONEFFECT: PotionEffectSkillData! 
         FLIGHT: BlankData! 
         ATTRIBUTE: AttributeSkillData! 
-        DAMAGEMODIFIER: DamageModifierData!
+        DAMAGEMODIFIER: DamageModifierData! 
+        PROJECTILE_SPELL: LaunchProjectileSpell! 
+        BLOCK_SPELL: PlaceBlockSpell! 
+        EXPLOSION_SPELL: ExplosionSpell! 
+        LIGHTNING_SPELL: LightningSpell! 
+        TRANSMUTATION_SPELL: TransmutationSpell! 
+        FANGS_SPELL: FangsSpell!
+SpellData: union(unionIdentifier = skill)! 
+    properties: 
+        fuel: Material? REDSTONE
+        spellName: string? #undocumented#
+        displayName: string? <purple><spellName>
+        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining.
+        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel>
+        cooldown: number? 1
+        cost: integer? 1
+        lore: string[]? []
+        displayNameFormat: string? <purple><spellName>
+        loreFormat: string[]? []
+        conditions: ConditionListWrapper? {}
+        skill: string?
+    unions: 
+        PROJECTILE_SPELL: LaunchProjectileSpell! 
+        BLOCK_SPELL: PlaceBlockSpell! 
+        EXPLOSION_SPELL: ExplosionSpell! 
+        LIGHTNING_SPELL: LightningSpell! 
+        TRANSMUTATION_SPELL: TransmutationSpell! 
+        FANGS_SPELL: FangsSpell!
 AttributeSkillData: object? 
     properties: 
         attributes: {Attribute: number}! 
@@ -66,11 +92,12 @@ AuraData: object?
         radius: number? 5
         conditions: ConditionListWrapper? {}
         skill: string?
+BlankData: object? 
 BlockDropsData: object? 
     properties: 
-        dropToNewDrop: Multimap? {}
+        dropToNewDrop: {Material: ItemStack}? {}
         replaceDrops: boolean? false
-        convertMap: Multimap? {}
+        convertMap: {Material: ItemStack}? {}
         conditions: ConditionListWrapper? {}
         skill: string?
 BlockRayData: object? 
@@ -222,6 +249,8 @@ EraserData: object?
         cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
         conditions: ConditionListWrapper? {}
         skill: string?
+ExplosionSpell: object? 
+FangsSpell: object? 
 GiveItemData: object? 
     properties: 
         item: ItemStack? 
@@ -314,6 +343,8 @@ LifestealData: object?
         lifestealpercentage: number? 5
         conditions: ConditionListWrapper? {}
         skill: string?
+LightningSpell: object? 
+LightSkillData: object? 
 NoHungerData: object? 
     properties: 
         minimumHunger: number? 19
@@ -354,6 +385,7 @@ PlaceBlockSpell: object?
         loreFormat: string[]? []
         conditions: ConditionListWrapper? {}
         skill: string?
+PotionEffectSkillData: object? 
 PotionGifterSkillData: object? 
     properties: 
         cooldown: number? 10
@@ -383,8 +415,8 @@ RepulsionData: object?
     properties: 
         multiplier: number? 1
         radius: number? 5.0
-        blacklist: Set? []
-        entityBlacklist: Set? []
+        blacklist: EntityType[]? []
+        entityBlacklist: EntityType[]? []
         conditions: ConditionListWrapper? {}
         skill: string?
 RerollConfig: object? 
@@ -410,12 +442,10 @@ ShieldData: object?
         cooldown: Duration? 100.0
         conditions: ConditionListWrapper? {}
         skill: string?
-Skill: object? 
+Skin: object? 
     properties: 
-        counter: integer? 0
-SkillsContainer: object? 
-    properties: 
-        /string/: SkillData!
+        value: string? 
+        signature: string?
 SlamData: object? 
     properties: 
         hand: ItemStack? AIR
@@ -442,6 +472,7 @@ SneakData: object?
         sneak: boolean? 
         conditions: ConditionListWrapper? {}
         skill: string?
+SneakingPotionData: object? 
 StrongmanData: object? 
     properties: 
         velocity: number? 2.5
@@ -459,7 +490,7 @@ SummonSkillData: object?
         repel: boolean? false
         mustSneak: boolean? true
         entity: EntityType? LIGHTNING_BOLT
-        action: Set? #undocumented#
+        action: Action[]? #undocumented#
         cooldown: number? 10.0
         cooldownMessage: string? <yellow><bold>Zeus <white>Cooldown: <s> seconds
         sneak: boolean? true
@@ -487,13 +518,13 @@ SuperheroCondition: object?
         heroes: string[]? []
 TeleportData: object? 
     properties: 
-        actions: Set? #undocumented#
+        actions: Action[]? #undocumented#
         distance: integer? 30
         yAxisMultiplier: number? 1
         teleportCause: PlayerTeleportEvent.TeleportCause? ENDER_PEARL
         particle: ParticleData? 
         teleportItem: ItemComparisonData? #undocumented#
-        action: Set? #undocumented#
+        action: Action[]? #undocumented#
         cooldown: number? 0
         cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
         conditions: ConditionListWrapper? {}
@@ -532,7 +563,7 @@ TransmutationSpell: object?
 WalkerData: object? 
     properties: 
         blocksToPlace: Material[]? []
-        blocksToReplace: Set? []
+        blocksToReplace: Material[]? []
         blocksToPlaceOn: Material[]? []
         isSneaking: boolean? false
         blocksDrop: boolean? true
@@ -618,3 +649,4 @@ PlayerTeleportEvent.TeleportCause: enum?
       - UNKNOWN
 ConditionListWrapper: ConditionList! 
 PlusUltraSkillsContainer: SkillsContainer! 
+SkillsContainer: SkillData{}? 

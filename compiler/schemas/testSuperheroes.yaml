@@ -3,7 +3,7 @@ Superheroes:
   colouredName: "templateSkillToggle"
   description: "template"
   icon:
-    type: STONE
+    type: ACACIA_FENCE
     amount: 1
   skills:
     teleport:

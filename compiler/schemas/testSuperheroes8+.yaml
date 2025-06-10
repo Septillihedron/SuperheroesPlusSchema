@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=Superheroes8+.json
-name: "template"
+
 colouredName: "templateSkillToggle"
 description: "template"
 icon:
-  type: STONE
+  type: acacia_chest_boat
   amount: 1
 skills:
   teleport:
@@ -52,7 +52,7 @@ skills:
     skill: KILLPOTION
     type: BLINDNESS
     entities:
-      - AREA_EFFECT_CLOUD
+      - area_effect_cloud
   sdhhdsajdioashidsids:
     skill: CUSTOM
     effects:
@@ -110,14 +110,14 @@ skills:
             type: SOUND
             mode: OTHER
             sound:
-              sound: ENTITY_GENERIC_EXPLODE
+              sound: entity.generic.explode
               volume: 1
               pitch: 1
       A:
         type: GIVEITEM
         mode: ALL
         item:
-          type: STONE
+          type: stone
           amount: 1
           metadata:
             displayName: s
@@ -175,4 +175,4 @@ plusUltraSkills:
             type: PLACEBLOCK
             mode: LOCATION
             block:
-              type: COBWEB
+              type: cobweb
