@@ -37,6 +37,13 @@ export class DocType {
         this.unions = DocType.sortUnions(unionTypes)
     }
 
+    static createRefDoc(type: string, required: boolean, defaultValue: string, description: string): DocType {
+        return new DocType(
+            type, [], required, defaultValue, description,
+            new Map(), new Set(), new Map()
+        )
+    }
+
     static sortUnions(map: Unions): Unions {
         return this.sortProperties(map) as Unions
     }
@@ -65,26 +72,16 @@ export class DocType {
 
 
     lower(types: Map<string, DocType>): DocType {
-
         let propertiesToLower = new Map(this.properties)
         let type = this.type
-        if (this.type.startsWith("{") && this.type.endsWith("}")) {
-            const [keyType, valueType] = this.type.substring(1, this.type.length-1).split(":")
+        if (this.isMappingType(type)) {
             type = "object"
-            const valueDoc = new DocType(
-                valueType.trim(), [], true, "", "", 
-                new Map(), new Set(), new Map()
-            )
+            const [keyType, valueType] = this.type.substring(1, this.type.length-1).split(":")
+            const valueDoc = DocType.createRefDoc(valueType.trim(), true, "", "")
             propertiesToLower.set("/"+keyType.trim()+"/", valueDoc)
         }
 
-        this.extraData
-            .filter(({key}) => key === "superdoc")
-            .map(({value}) => types.get(value as string))
-            .reverse()
-            .forEach((superdoc) => {
-                propertiesToLower = DocType.combineMapOverride(superdoc!.properties, propertiesToLower)
-            })
+        propertiesToLower = this.handleSuperDocs(types, propertiesToLower)
 
         const loweredProperties = this.lowerProperties(propertiesToLower, types)
         const loweredUnion = this.lowerProperties(this.unions, types) as Unions
@@ -93,6 +90,21 @@ export class DocType {
             type, this.extraData, this.required, this.defaultValue, this.description,
             loweredProperties, this.enumValues, loweredUnion
         )
+    }
+
+    private handleSuperDocs(types: Map<string, DocType>, propertiesToLower: Map<string, Property>) {
+        this.extraData
+            .filter(({ key }) => key === "superdoc")
+            .map(({ value }) => types.get(value as string))
+            .reverse()
+            .forEach((superdoc) => {
+                propertiesToLower = DocType.combineMapOverride(superdoc!.properties, propertiesToLower)
+            })
+        return propertiesToLower
+    }
+
+    private isMappingType(type: string) {
+        return type.startsWith("{") && type.endsWith("}")
     }
 
     private static combineMapOverride<K, V>(map1: Map<K, V>, map2: Map<K, V>): Map<K, V> {
