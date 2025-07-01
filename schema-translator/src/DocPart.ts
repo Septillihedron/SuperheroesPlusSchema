@@ -49,29 +49,6 @@ export class DocPart {
         return str
     }
 
-    toJsonSchema() {
-        const typesEntries = [...this.types].map(([name, doc]) => [name, doc.toJsonSchema(this.types)])
-        return {
-            $schema: "http://json-schema.org/draft-07/schema#",
-            $ref: "#/definitions/Superhero",
-            definitions: {
-                ...Object.fromEntries(typesEntries),
-                boolean: {
-                    type: "boolean"
-                },
-                integer: {
-                    type: "integer"
-                },
-                number: {
-                    type: "number"
-                },
-                string: {
-                    type: "string"
-                },
-            }
-        }
-    }
-
     lowerAll() {
         const loweredTypes = new Map<string, DocType>()
         this.types.forEach((doc, key) => {

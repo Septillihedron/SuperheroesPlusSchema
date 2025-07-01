@@ -1,5 +1,6 @@
 import { readdirSync, writeFileSync } from "fs";
 import { DocPart } from "./DocPart";
+import { compileToJsonSchema } from "./DocTypeToJsonSchemaCompiler";
 
 
 const combinedDocs = readdirSync("../schemaParts")
@@ -10,9 +11,8 @@ const combinedDocs = readdirSync("../schemaParts")
 writeFileSync("./combined.yaoossa", combinedDocs.toString())
 const lowered = combinedDocs.lowerAll()
 writeFileSync("./lowered.yaoossa", lowered.toString())
-const jsonSchema = JSON.stringify(lowered.toJsonSchema(), null, 4)
-writeFileSync("./schema.json", jsonSchema)
-const jsonSchemaCompact = JSON.stringify(lowered.toJsonSchema())
-writeFileSync("../compiler/schemas/Superheroes8+.json", jsonSchemaCompact)
+const jsonSchema = compileToJsonSchema(lowered)
+writeFileSync("./schema.json", JSON.stringify(jsonSchema, null, 4))
+writeFileSync("../compiler/schemas/Superheroes8+.json", JSON.stringify(jsonSchema)) // compact version
 
 
