@@ -1,6 +1,7 @@
 import { readFileSync } from "fs";
 import { DocType } from "./DocType";
 import { StringView } from "./StringView";
+import { parseProperties } from "./DocTypeLoader";
 
 
 export class DocPart {
@@ -8,11 +9,11 @@ export class DocPart {
     types: Map<string, DocType>
 
     constructor(types: Map<string, DocType>) {
-        this.types = DocType.sortProperties(types)
+        this.types = DocType.sortProperties(types) as Map<string, DocType>
     }
 
     static parse(view: StringView): DocPart {
-        const types = DocType.parseProperties(view, "", false) as Map<string, DocType>
+        const types = parseProperties(view, "", false) as Map<string, DocType>
         return new DocPart(types)
     }
 

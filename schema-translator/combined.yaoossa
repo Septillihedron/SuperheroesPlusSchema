@@ -1,7 +1,7 @@
 Condition: union(unionIdentifier = type)!  # 
     properties: 
-        else: EffectList?  #
         otherwise: EffectList?  #
+        else: EffectList?  #
     unions: 
         BIOME: BiomeCondition!  #
         BLOCK: BlockCondition!  #
@@ -132,13 +132,13 @@ EntityComponent: union(unionIdentifier = type)!  #
         /Wolf/: WolfComponent!  #
 EntityData: union(unionIdentifier = type)! {type: "ZOMBIE"} #  
     properties: 
-        attributes: {Attribute: number}? {} #
-        customNameVisible: boolean? false #
         nameTag: string?  #
-        passenger: EntityData? {} #
         shouldDespawn: boolean? true #
+        customNameVisible: boolean? false #
         silent: boolean? false #
         visualFire: boolean? false #
+        attributes: {Attribute: number}? {} #
+        passenger: EntityData? {} #
     unions: 
         /AbstractHorse/: AbstractHorseComponent!  #
         /Ageable/: AgeableComponent!  #
@@ -235,18 +235,18 @@ SkillData: union(unionIdentifier = skill)!  #
         WEATHERDAMAGE: WeatherDamageData!  #
 SpellData: union(unionIdentifier = skill)!  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        cooldown: number? 1 #
-        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
-        cost: integer? 1 #
-        displayName: string? <purple><spellName> #
-        displayNameFormat: string? <purple><spellName> #
         fuel: Material? REDSTONE #
-        lore: string[]? [] #
-        loreFormat: string[]? [] #
-        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
-        skill: string?  #
         spellName: string?  # undocumented#
+        displayName: string? <purple><spellName> #
+        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
+        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
+        cooldown: number? 1 #
+        cost: integer? 1 #
+        lore: string[]? [] #
+        displayNameFormat: string? <purple><spellName> #
+        loreFormat: string[]? [] #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
     unions: 
         BLOCK_SPELL: PlaceBlockSpell!  #
         CUSTOM_SPELL: CustomSpell!  #
@@ -257,8 +257,8 @@ SpellData: union(unionIdentifier = skill)!  #
         TRANSMUTATION_SPELL: TransmutationSpell!  #
 TriggerData: union(unionIdentifier = type)!  # 
     properties: 
-        conditions: ConditionList? {} #
         type: string!  #
+        conditions: ConditionList? {} #
     unions: 
         BECOMEVEHICLE: TriggerData!  #
         BLOCKBREAK: TriggerData!  #
@@ -302,17 +302,17 @@ TriggerData: union(unionIdentifier = type)!  #
         VEHICLE: TriggerData!  #
 AbstractArrowComponent: object(ignoreUnknowns)?  # 
     properties: 
-        critical: boolean? false #
-        damage: number? 2.0 #
         knockbackStrength: integer? 0 #
-        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED #
+        damage: number? 2.0 #
         pierceLevel: integer? 0 #
+        critical: boolean? false #
+        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED #
 AbstractHorseComponent: object(ignoreUnknowns)?  # 
     properties: 
-        hasSaddle: boolean? false #
+        tamingDifficulty: integer? 1 #
         jumpStrength: number? 0.7 #
         tamed: boolean? false #
-        tamingDifficulty: integer? 1 #
+        hasSaddle: boolean? false #
 ActionBarEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -332,28 +332,28 @@ AOE: object?  #
               - LOCATION
               - OTHER
               - SELF
+        radius: Expression? 5 #
         conditions: ConditionList? {} #
         effects: EffectList? {} #
-        radius: Expression? 5 #
 ArrowComponent: object(ignoreUnknowns)?  # 
     properties: 
-        critical: boolean? false #
-        damage: number? 2.0 #
-        knockbackStrength: integer? 0 #
-        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED #
-        pierceLevel: integer? 0 #
         potionType: PotionType?  #
+        knockbackStrength: integer? 0 #
+        damage: number? 2.0 #
+        pierceLevel: integer? 0 #
+        critical: boolean? false #
+        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED #
 ArrowEffect: object?  # 
     properties: 
         mode: enum! OTHER # 
             values: 
               - ALL
               - OTHER
+        velocity: Expression? 1.0 #
         damage: Expression? 4 #
-        entity: EntityData? { type: "ARROW"} #
         entityData: EntityData? { type: "ARROW"} #
         fireTicks: Expression? 0 #
-        velocity: Expression? 1.0 #
+        entity: EntityData? { type: "ARROW"} #
 AttributeEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -367,34 +367,34 @@ AttributeEffect: object?  #
 AttributesData: object?  # 
     properties: 
         attributes: {Attribute: number}? {} #
+        uniqueKey: string?  #
         equipmentSlot: EquipmentSlotGroup? ANY #
         operation: AttributesData.Operation? MULTIPLY_SCALAR #
         unique_key: string?  #
-        uniqueKey: string?  #
 AttributeSkillData: object?  # 
     properties: 
         attributes: {Attribute: number}!  #
-        conditions: ConditionListWrapper? {} #
-        equipment_slot: EquipmentSlotGroup!  #
         equipmentSlot: EquipmentSlotGroup!  #
         operation: AttributesData.Operation!  #
-        skill: string?  #
-        unique_key: string!  #
         uniqueKey: string!  #
+        equipment_slot: EquipmentSlotGroup!  #
+        unique_key: string!  #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 AuraData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
         radius: number? 5 #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 AxolotlComponent: object(ignoreUnknowns)?  # 
     properties: 
         variant: Axolotl.Variant?  #
 BeastControlData: object(superdoc = SkillData)?  # 
     properties: 
-        attackItself: boolean? false #
-        glowDuration: number? 3.0 #
         maxDistance: number? 32.0 #
         targetMobs: boolean? true #
+        glowDuration: number? 3.0 #
+        attackItself: boolean? false #
 BiomeCondition: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -404,8 +404,8 @@ BiomeCondition: object?  #
               - OTHER
               - SELF
         biomes: Biome[]? [] #
-        else: EffectList?  #
         otherwise: EffectList?  #
+        else: EffectList?  #
 BlankData: object?  # 
 BlockCondition: object?  # 
     properties: 
@@ -414,26 +414,26 @@ BlockCondition: object?  #
               - ALL
               - LOCATION
         allowedMaterials: Material[]? [] #
-        else: EffectList?  #
         materials: Material[]? [] #
         otherwise: EffectList?  #
+        else: EffectList?  #
 BlockDataComparisonData: object?  # 
     properties: 
-        age: RangeData? -Infinity - Infinity #
-        level: RangeData? -Infinity - Infinity #
         types: Material[]? [] #
+        level: RangeData? -Infinity - Infinity #
+        age: RangeData? -Infinity - Infinity #
 BlockDataData: object?  # 
     properties: 
-        age: integer? -1 #
-        level: integer? -1 #
         material: Material? STONE #
+        level: integer? -1 #
+        age: integer? -1 #
         type: Material? STONE #
 BlockDropsData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        convertMap: {Material: ItemStack}? {} #
         dropToNewDrop: {Material: ItemStack}? {} #
         replaceDrops: boolean? false #
+        convertMap: {Material: ItemStack}? {} #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 BlockEntityEffect: object?  # 
     properties: 
@@ -441,18 +441,18 @@ BlockEntityEffect: object?  #
             values: 
               - ALL
               - OTHER
+        durationInTicks: Expression? -1 #
         blockToPlace: Material? COBWEB #
         duration: Expression!  #
-        durationInTicks: Expression? -1 #
 BlockRayData: object?  # 
     properties: 
-        blockRayMode: BlockRayMode?  #
+        maxDistance: integer? 20 #
+        shouldRevert: boolean? false #
         blocksToPlace: Material[]? [] #
         blocksToReplace: Material[]? [] #
-        conditions: ConditionListWrapper? {} #
-        maxDistance: integer? 20 #
+        blockRayMode: BlockRayMode?  #
         revertsAfter: Duration? 15.0 #
-        shouldRevert: boolean? false #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 BonemealEffect: object?  # 
     properties: 
@@ -465,9 +465,9 @@ BonemealEffect: object?  #
         blockFaces: BlockFace[]? [] #
 BookData: object?  # 
     properties: 
+        title: string!  #
         author: string!  #
         pages: string[]!  #
-        title: string!  #
 CancelEffect: object?  # 
 ChanceCondition: object?  # 
     properties: 
@@ -477,8 +477,8 @@ ChanceCondition: object?  #
               - OTHER
               - SELF
         chance: Expression? 1.0 #
-        else: EffectList?  #
         otherwise: EffectList?  #
+        else: EffectList?  #
 ChangeHeroEffect: object(superdoc = Effect)?  # 
     properties: 
         mode: enum! SELF # 
@@ -486,39 +486,39 @@ ChangeHeroEffect: object(superdoc = Effect)?  #
               - ALL
               - OTHER
               - SELF
-        broadcast: boolean? true #
-        description: string?  #
-        duration: Duration? 0.0 #
-        heroName: string? erased #
         permanent: boolean? true #
+        heroName: string? erased #
+        description: string?  #
+        broadcast: boolean? true #
+        duration: Duration? 0.0 #
 ChatLanguageSettings: object?  # 
     properties: 
-        currentHero: string?  #
         gainedHero: string?  #
+        noPermission: string?  #
+        currentHero: string?  #
         heroCommandCooldown: string?  #
-        invalidCommandMessage: string?  #
         invalidHeroMessage: string?  #
         invalidPlayerMessage: string?  #
+        invalidCommandMessage: string?  #
         invalidRerollGroupMessage: string?  #
-        noPermission: string?  #
 ChestedHorseComponent: object(ignoreUnknowns)?  # 
     properties: 
         hasChest: boolean? false #
 ClimbData: object?  # 
     properties: 
-        blocks: Material[]? [] #
-        climbSpeed: number? 0.2 #
-        conditions: ConditionListWrapper? {} #
-        debug: boolean? false #
         proximity: number? 0.2 #
-        skill: string?  #
-        speed: number? 0.2 #
+        climbSpeed: number? 0.2 #
+        debug: boolean? false #
+        blocks: Material[]? [] #
         whitelist: boolean? true #
+        speed: number? 0.2 #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 Color: object! {red: 100, green: 0, blue: 200} # 
     properties: 
-        blue: integer!  #
-        green: integer!  #
         red: integer!  #
+        green: integer!  #
+        blue: integer!  #
 ColorableComponent: object(ignoreUnknowns)?  # 
     properties: 
         dyeColor: DyeColor?  #
@@ -529,44 +529,44 @@ CommandEffect: object?  #
               - ALL
               - OTHER
               - SELF
-        commands: ExpressiveMessage[]? [] #
         executor: CommandEffect.Executor? CONSOLE #
+        commands: ExpressiveMessage[]? [] #
 ConfigYaml: object?  # 
     properties: 
         config_version: string?  #
-        defaultHero: Superhero?  #
-        disabledWorlds: string[]?  #
+        powerOnStart: PowerOnStartSettings?  #
         gui: GUISettings?  #
         heroCommand: HeroCommandSettings?  #
-        powerOnStart: PowerOnStartSettings?  #
+        defaultHero: Superhero?  #
+        disabledWorlds: string[]?  #
 ConsumeSkillData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        hunger: integer? 0 #
         material: Material? DIRT #
+        hunger: integer? 0 #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 ConvertBlockData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        cooldown: number? 0 #
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
         inputBlocks: Material[]? [] #
         outputBlock: Material? GOLD_BLOCK #
+        cooldown: number? 0 #
+        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 ConvertDropsData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        convertMap: {Material: ItemStack}? {} #
         dropToNewDrop: {Material: ItemStack}? {} #
         ignoredBlocks: Material[]? [] #
         ignoreSilkTouch: boolean? false #
+        convertMap: {Material: ItemStack}? {} #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 ConvertItemData: object?  # 
     properties: 
-        chance: number? 1 #
-        conditions: ConditionListWrapper? {} #
         inputItem: ItemStack?  #
         outputItem: ItemStack?  #
+        chance: number? 1 #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 CooldownCondition: object?  # 
     properties: 
@@ -576,48 +576,48 @@ CooldownCondition: object?  #
               - OTHER
               - SELF
         cooldown: Expression? 10 #
-        else: EffectList?  #
         otherwise: EffectList?  #
+        else: EffectList?  #
 CraftingData: object?  # 
     properties: 
+        shapeless: ShapelessRecipeData!  #
+        shaped: ShapedRecipeData!  #
         isShaped: true
         conditions: ConditionListWrapper? {} #
-        shaped: ShapedRecipeData!  #
-        shapeless: ShapelessRecipeData!  #
         skill: string?  #
 CreeperComponent: object(ignoreUnknowns)?  # 
     properties: 
-        explosionRadius: integer? 3 #
         fuse: integer? 30 #
         ignite: boolean? false #
+        explosionRadius: integer? 3 #
         powered: boolean? false #
 CreeperData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
+        fuse: Duration? 2.0 #
+        creeperPower: number? 1 #
+        upwardsVelocity: number? 2.5 #
+        slowfallDuration: Duration? 7.0 #
+        creeper_power: number? 1 #
+        upwards_velocity: number? 2.5 #
+        slowfall_duration: Duration? 7.0 #
         cooldown: number? 0 #
         cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
-        creeper_power: number? 1 #
-        creeperPower: number? 1 #
-        fuse: Duration? 2.0 #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
-        slowfall_duration: Duration? 7.0 #
-        slowfallDuration: Duration? 7.0 #
-        upwards_velocity: number? 2.5 #
-        upwardsVelocity: number? 2.5 #
 CustomData: object(superdoc = SkillData)?  # 
     properties: 
-        conditions: ConditionList!  #
-        effects: EffectList!  #
         trigger: TriggerData!  #
+        effects: EffectList!  #
+        conditions: ConditionList!  #
 CustomSpell: object(superdoc = SpellData, superdoc = SkillData)?  # 
     properties: 
         effects: EffectList!  #
 DamageData: object?  # 
     properties: 
-        causes: EntityDamageEvent.DamageCause[]?  #
-        conditions: ConditionList? {} #
         damageCauses: EntityDamageEvent.DamageCause[]?  #
+        causes: EntityDamageEvent.DamageCause[]?  #
         type: string!  #
+        conditions: ConditionList? {} #
 DamageEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -630,49 +630,49 @@ DamageEffect: object?  #
         shouldTriggerEvents: boolean? false #
 DamageModifierData: object?  # 
     properties: 
-        causes: EntityDamageEvent.DamageCause[]? [] #
-        conditions: ConditionListWrapper? {} #
-        eased: boolean? false #
         entities: EntityType[]? [] #
+        causes: EntityDamageEvent.DamageCause[]? [] #
+        whitelist: boolean? false #
         expectedMaxDamage: number? 30 #
-        incoming: boolean? false #
-        limitProjectiles: boolean? true #
         maxDamage: number? 15 #
         minDamage: number? 0 #
-        outgoing: boolean? false #
         priority: integer? 0 #
+        incoming: boolean? false #
+        outgoing: boolean? false #
+        eased: boolean? false #
+        limitProjectiles: boolean? true #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
-        whitelist: boolean? false #
 DamagePotionData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        damageCause: EntityDamageEvent.DamageCause[]? [] #
         damageCauses: EntityDamageEvent.DamageCause[]? [] #
+        damageCause: EntityDamageEvent.DamageCause[]? [] #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 DamageResistanceData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        damageCause: EntityDamageEvent.DamageCause[]?  #
-        damageCauses: EntityDamageEvent.DamageCause[]?  #
         damageMultiplier: number? 0 #
+        damageCauses: EntityDamageEvent.DamageCause[]?  #
+        damageCause: EntityDamageEvent.DamageCause[]?  #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 DatabaseSettings: object?  # 
     properties: 
-        host: string? this needs filling with your host name if using mysql #
-        name: string? this needs filling with the database name if using mysql #
-        password: string? this needs filling with the password being used to connect #
-        port: integer? 3306 #
         type: string? YAML #
+        host: string? this needs filling with your host name if using mysql #
+        port: integer? 3306 #
+        name: string? this needs filling with the database name if using mysql #
         username: string? this needs filling with the username of the account being used to connect #
+        password: string? this needs filling with the password being used to connect #
 DatabaseYaml: object?  # 
     properties: 
-        config_version: string?  #
         database: DatabaseSettings?  #
+        config_version: string?  #
 DecoyData: object?  # 
     properties: 
+        color: Color?  #
         base64Skin: string? SELF #
         base64skin: string? SELF #
-        color: Color?  #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
 DisguiseEffect: object(superdoc = Effect)?  # 
@@ -683,8 +683,8 @@ DisguiseEffect: object(superdoc = Effect)?  #
               - OTHER
               - SELF
         enable: boolean?  #
-        entity: EntityType!  #
         entityType: EntityType!  #
+        entity: EntityType!  #
 DistanceCondition: object?  # 
     properties: 
         mode: enum! OTHER # 
@@ -693,26 +693,26 @@ DistanceCondition: object?  #
               - LOCATION
               - OTHER
         distance: RangeData? -Infinity - Infinity #
-        else: EffectList?  #
         otherwise: EffectList?  #
+        else: EffectList?  #
 DroppedItemComponent: object(ignoreUnknowns)?  # 
     properties: 
         stackData: ItemStackData?  #
 Ears: object?  # 
     properties: 
-        frequency: number? 0.05 #
         height: number? 0.2 #
+        frequency: number? 0.05 #
         size: number? 1 #
         spread: number? 0.2 #
 EffectData: object?  # 
     properties: 
-        name: string?  #
         particles: ParticleData[]? [] #
+        name: string?  #
 EggLayerData: object?  # 
     properties: 
+        tickDelay: Duration? 15.0 #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
-        tickDelay: Duration? 15.0 #
 EnchantComparisonData: object?  # 
     properties: 
         enchantMap: {Enchantment: RangeData}? {} #
@@ -723,39 +723,39 @@ EntityWhitelistCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        else: EffectList?  #
+        whitelist: boolean? true #
         entities: EntityType[]? [] #
         otherwise: EffectList?  #
-        whitelist: boolean? true #
+        else: EffectList?  #
 EquipableData: object?  # 
     properties: 
-        amount: integer? 1 #
         droprate: number? 0.1 #
+        type: Material? STONE #
+        amount: integer? 1 #
         metadata: ItemMetaData?  #
         quantity: integer? 1 #
-        type: Material? STONE #
 EquipmentData: object?  # 
     properties: 
-        boots: EquipableData?  #
-        chest: EquipableData?  #
-        chestplate: EquipableData?  #
-        feet: EquipableData?  #
-        hand: EquipableData?  #
         head: EquipableData?  #
-        helmet: EquipableData?  #
-        leggings: EquipableData?  #
+        chest: EquipableData?  #
         legs: EquipableData?  #
+        feet: EquipableData?  #
         mainhand: EquipableData?  #
         offhand: EquipableData?  #
+        helmet: EquipableData?  #
+        chestplate: EquipableData?  #
+        leggings: EquipableData?  #
+        boots: EquipableData?  #
+        hand: EquipableData?  #
 EraserData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        cooldown: number? 0 #
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
-        duration: Duration? 7.5 #
         range: number? 30 #
         removedMessage: string? <player> has had their power erased temporarily! #
         returnedMessage: string? <player> has had their power reinstated! #
+        duration: Duration? 7.5 #
+        cooldown: number? 0 #
+        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 ExperienceOrbComponent: object(ignoreUnknowns)?  # 
     properties: 
@@ -763,20 +763,20 @@ ExperienceOrbComponent: object(ignoreUnknowns)?  #
 ExplosionSpell: object?  # 
 ExplosiveComponent: object(ignoreUnknowns)?  # 
     properties: 
-        isIncendiary: boolean? false #
         yield: number?  #
+        isIncendiary: boolean? false #
 FairyWings: object?  # 
     properties: 
-        frequency: number? 0.05 #
         height: number? 1 #
+        frequency: number? 0.05 #
         size: number? 1 #
 FallingBlockComponent: object(ignoreUnknowns)?  # 
     properties: 
         blockData: BlockData?  # undocumented#
-        cancelDrop: boolean? false #
-        damagePerBlock: number? 2 #
         dropItem: boolean? true #
+        cancelDrop: boolean? false #
         hurtEntities: boolean? false #
+        damagePerBlock: number? 2 #
         maxDamage: integer? 40 #
 FangsSpell: object?  # 
 FlyEffect: object?  # 
@@ -792,14 +792,14 @@ FreezeEffect: object?  #
 FurnaceBurnTimeEffect: object?  # 
 GiveItemData: object?  # 
     properties: 
-        canDrop: boolean? true #
-        canDropOnDeath: boolean? true #
-        canLoseOnDeath: boolean? true #
-        canStore: boolean? true #
-        conditions: ConditionListWrapper? {} #
-        dropsOnDeath: boolean? true #
         item: ItemStack?  #
+        canStore: boolean? true #
+        canDrop: boolean? true #
+        canLoseOnDeath: boolean? true #
         loseItemOnHeroLoss: boolean? true #
+        dropsOnDeath: boolean? true #
+        canDropOnDeath: boolean? true #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 GiveItemEffect: object?  # 
     properties: 
@@ -808,8 +808,8 @@ GiveItemEffect: object?  #
               - ALL
               - OTHER
               - SELF
-        dropIfFull: boolean? true #
         item: ItemStack!  #
+        dropIfFull: boolean? true #
 GlidingCondition: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -817,10 +817,10 @@ GlidingCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        else: EffectList?  #
+        shouldGlide: boolean? true #
         glide: boolean? true #
         otherwise: EffectList?  #
-        shouldGlide: boolean? true #
+        else: EffectList?  #
 GlidingEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -831,35 +831,35 @@ GlidingEffect: object?  #
         glide: boolean? true #
 GlobalRerollSettings: object?  # 
     properties: 
+        itemEnabled: boolean? true #
         eachHeroRequiresPermission: boolean?  #
         itemCooldown: number?  #
-        itemEnabled: boolean? true #
 GUILanguageSettings: object?  # 
     properties: 
         name: string? Pick your hero! #
 GUISettings: object?  # 
     properties: 
-        canClose: boolean!  #
-        closeable: boolean!  #
-        onStart: boolean!  #
         startsOpen: boolean!  #
+        onStart: boolean!  #
+        closeable: boolean!  #
+        canClose: boolean!  #
 GunData: object?  # 
     properties: 
+        damage: number? 5.0 #
+        maxDistance: number? 64 #
         bulletSize: number? 1.0 #
-        conditions: ConditionListWrapper? {} #
+        item: ItemComparisonData? {} #
+        shootSound: SoundData?  #
+        trailParticle: ParticleData?  #
+        hitParticle: ParticleData?  #
         cooldown: number? 0 #
         cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
-        damage: number? 5.0 #
-        hitParticle: ParticleData?  #
-        item: ItemComparisonData? {} #
-        maxDistance: number? 64 #
-        shootSound: SoundData?  #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
-        trailParticle: ParticleData?  #
 Halo: object?  # 
     properties: 
-        height: number? 0.3 #
         radius: number? 0.3 #
+        height: number? 0.3 #
         resolution: number? 32 #
 HealthCondition: object?  # 
     properties: 
@@ -868,23 +868,23 @@ HealthCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        else: EffectList?  #
         healthPercentage: RangeData? -Infinity - Infinity #
         otherwise: EffectList?  #
+        else: EffectList?  #
 HealthEffect: object?  # 
 Heart: object?  # 
     properties: 
-        frequency: number? 0.05 #
         height: number? 2 #
+        frequency: number? 0.05 #
         size: number? 1 #
 HeartStealData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        entities: EntityType[]? [] #
         heartsGained: integer? 2 #
-        heartsgained: integer? 2 #
+        entities: EntityType[]? [] #
         maxHearts: integer? 24 #
+        heartsgained: integer? 2 #
         maxhearts: integer? 24 #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 HeightCondition: object?  # 
     properties: 
@@ -893,21 +893,21 @@ HeightCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        else: EffectList?  #
         height: RangeData? -Infinity - Infinity #
         otherwise: EffectList?  #
+        else: EffectList?  #
 Helix: object?  # 
     properties: 
-        height: number? 2 #
-        interval: number? 0.05 #
         radius: number? 0.5 #
+        interval: number? 0.05 #
         speed: number? 1 #
-        wave_frequency: number? 1 #
         waveFrequency: number? 1 #
+        height: number? 2 #
+        wave_frequency: number? 1 #
 HeroCommandSettings: object?  # 
     properties: 
-        aliases: string[]?  #
         cooldown: number?  #
+        aliases: string[]?  #
 HorseComponent: object(ignoreUnknowns)?  # 
     properties: 
         armor: ItemStack?  #
@@ -919,9 +919,9 @@ HotbarSlotCondition: object?  #
             values: 
               - ALL
               - SELF
-        else: EffectList?  #
-        otherwise: EffectList?  #
         slot: RangeData?  #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 HungerEffect: object?  # 
 IgniteEffect: object?  # 
     properties: 
@@ -939,28 +939,28 @@ InBlockCondition: object?  #
               - OTHER
               - SELF
         blocks: Material[]? [] #
-        else: EffectList?  #
         otherwise: EffectList?  #
+        else: EffectList?  #
 InstantBreakData: object?  # 
     properties: 
-        blocks: Material[]? [] #
+        instantBreakable: Material[]? [] #
         breakUsing: Material?  #
+        blocks: Material[]? [] #
         breakusing: Material?  #
         conditions: ConditionListWrapper? {} #
-        instantBreakable: Material[]? [] #
         skill: string?  #
 InteractData: object?  # 
     properties: 
         actions: Action[]?  #
-        conditions: ConditionList? {} #
         type: string!  #
+        conditions: ConditionList? {} #
 ItemAmountEffect: object?  # 
 ItemComparisonData: object?  # 
     properties: 
+        types: Material[]? [] #
+        type: Material?  #
         amount: RangeData? -Infinity - Infinity #
         metadata: ItemMetaComparisonData?  #
-        type: Material?  #
-        types: Material[]? [] #
 ItemCondition: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -969,11 +969,11 @@ ItemCondition: object?  #
               - ITEM
               - OTHER
               - SELF
-        else: EffectList?  #
-        item: ItemComparisonData!  #
         itemComparison: ItemComparisonData!  #
-        otherwise: EffectList?  #
         slot: InventorySlot? HAND #
+        item: ItemComparisonData!  #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 ItemMaterialEffect: object?  # 
     properties: 
         mode: enum! ITEM # 
@@ -984,27 +984,27 @@ ItemMaterialEffect: object?  #
 ItemMetaComparisonData: object?  # 
     properties: 
         displayName: string!  #
-        enchants: EnchantComparisonData!  #
         lore: LoreData!  #
+        enchants: EnchantComparisonData!  #
 ItemMetaData: object?  # 
     properties: 
+        displayName: string?  #
+        lore: string[]?  #
+        isUnbreakable: boolean? false #
+        durability: integer? 0 #
+        customModelData: integer? 0 #
         attributes: AttributesData?  #
+        trim: TrimData?  #
+        flags: ItemFlag[]? [] #
         book: BookData?  #
         color: LeatherArmorColor?  #
-        customModelData: integer? 0 #
-        displayName: string?  #
-        durability: integer? 0 #
         enchantments: {Enchantment: integer}? {} #
-        flags: ItemFlag[]? [] #
-        isUnbreakable: boolean? false #
-        lore: string[]?  #
-        trim: TrimData?  #
 ItemStackData: object?  # 
     properties: 
+        type: Material? STONE #
         amount: integer? 1 #
         metadata: ItemMetaData?  #
         quantity: integer? 1 #
-        type: Material? STONE #
 ItemStackWrapperEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1012,10 +1012,10 @@ ItemStackWrapperEffect: object?  #
               - ALL
               - OTHER
               - SELF
+        slot: InventorySlot? HAND #
+        equipmentSlot: InventorySlot? HAND #
         conditions: ConditionList? {} #
         effects: EffectList? {} #
-        equipmentSlot: InventorySlot? HAND #
-        slot: InventorySlot? HAND #
 ItemWrapperCondition: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1023,14 +1023,14 @@ ItemWrapperCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        conditions: ConditionList? {} #
-        else: EffectList?  #
-        otherwise: EffectList?  #
         slot: InventorySlot? HAND #
+        conditions: ConditionList? {} #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 KillPotionData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
         entities: EntityType[]?  #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 KnockbackEffect: object?  # 
     properties: 
@@ -1042,11 +1042,11 @@ KnockbackEffect: object?  #
         overwriteCurrentVelocity: boolean? true #
 LanguageYaml: object?  # 
     properties: 
-        Chat: ChatLanguageSettings?  #
-        chatLanguageSettings: ChatLanguageSettings?  #
         config_version: string?  #
-        GUI: GUILanguageSettings?  #
+        chatLanguageSettings: ChatLanguageSettings?  #
         guiLanguageSettings: GUILanguageSettings?  #
+        Chat: ChatLanguageSettings?  #
+        GUI: GUILanguageSettings?  #
 LaunchEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1058,29 +1058,29 @@ LaunchEffect: object?  #
         velocity: Expression? 1.0 #
 LaunchProjectileSpell: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        cooldown: number? 1 #
-        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
-        cost: integer? 1 #
-        displayName: string? <purple><spellName> #
-        displayNameFormat: string? <purple><spellName> #
-        fuel: Material? REDSTONE #
-        lore: string[]? [] #
-        loreFormat: string[]? [] #
-        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
         projectile: EntityData? {} #
-        skill: string?  #
+        fuel: Material? REDSTONE #
         spellName: string?  # undocumented#
+        displayName: string? <purple><spellName> #
+        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
+        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
+        cooldown: number? 1 #
+        cost: integer? 1 #
+        lore: string[]? [] #
+        displayNameFormat: string? <purple><spellName> #
+        loreFormat: string[]? [] #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 LeatherArmorColor: object?  # 
     properties: 
-        blue: integer? -1 #
-        green: integer? -1 #
         red: integer? -1 #
+        green: integer? -1 #
+        blue: integer? -1 #
 LifestealData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
         lifestealPercentage: number? 5 #
         lifestealpercentage: number? 5 #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 LightCondition: object?  # 
     properties: 
@@ -1090,14 +1090,14 @@ LightCondition: object?  #
               - LOCATION
               - OTHER
               - SELF
-        checkBlockLight: boolean? true #
-        checkBlocks: boolean? true #
         checkNatural: boolean? true #
-        checkNaturalLight: boolean? true #
-        else: EffectList?  #
-        light: RangeData? -Infinity - Infinity #
+        checkBlocks: boolean? true #
         lightRange: RangeData? -Infinity - Infinity #
+        checkNaturalLight: boolean? true #
+        checkBlockLight: boolean? true #
+        light: RangeData? -Infinity - Infinity #
         otherwise: EffectList?  #
+        else: EffectList?  #
 LightningEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1124,11 +1124,11 @@ LocationCubeEffect: object?  #
               - LOCATION
               - OTHER
               - SELF
-        conditions: ConditionList? {} #
-        effects: EffectList? {} #
+        verticalRadius: integer? 0 #
         horizontalRadius: integer? 0 #
         offset: Vector? { x: 0, y: 0, z: 0 } #
-        verticalRadius: integer? 0 #
+        conditions: ConditionList? {} #
+        effects: EffectList? {} #
 LocationOffsetEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1137,14 +1137,14 @@ LocationOffsetEffect: object?  #
               - LOCATION
               - OTHER
               - SELF
+        offset: Vector? { x: 0, y: 0, z: 0 } #
         conditions: ConditionList? {} #
         effects: EffectList? {} #
-        offset: Vector? { x: 0, y: 0, z: 0 } #
 LoopData: object?  # 
     properties: 
-        conditions: ConditionList? {} #
         period: Duration? 1.0 #
         type: string!  #
+        conditions: ConditionList? {} #
 LoseTargetEffect: object?  # 
 LungeEffect: object?  # 
     properties: 
@@ -1154,8 +1154,8 @@ LungeEffect: object?  #
               - OTHER
               - SELF
         horizontalVelocity: Expression? 0 #
-        overwrite: boolean? true #
         verticalVelocity: Expression? 0 #
+        overwrite: boolean? true #
 MessageEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1171,11 +1171,11 @@ MetadataCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        comparison: ComparisonCondition.Comparison? EQUAL #
-        else: EffectList?  #
-        otherwise: EffectList?  #
-        value: Expression!  #
         variable: string!  #
+        value: Expression!  #
+        comparison: ComparisonCondition.Comparison? EQUAL #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 MetadataEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1183,9 +1183,9 @@ MetadataEffect: object?  #
               - ALL
               - OTHER
               - SELF
+        variable: string!  #
         operation: ModifyEffect.Operation? SET #
         value: Expression? 1 #
-        variable: string!  #
 NearestEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1194,13 +1194,13 @@ NearestEffect: object?  #
               - LOCATION
               - OTHER
               - SELF
+        radius: number? 5 #
         conditions: ConditionList? {} #
         effects: EffectList? {} #
-        radius: number? 5 #
 NoHungerData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
         minimumHunger: number? 19 #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 NOTCondition: object?  # 
     properties: 
@@ -1212,8 +1212,8 @@ NOTCondition: object?  #
               - OTHER
               - SELF
         condition: Condition?  #
-        else: EffectList?  #
         otherwise: EffectList?  #
+        else: EffectList?  #
 NPCCondition: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1221,17 +1221,17 @@ NPCCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        else: EffectList?  #
-        isNPC: boolean? true #
         npc: boolean? true #
+        isNPC: boolean? true #
         otherwise: EffectList?  #
+        else: EffectList?  #
 OHKOData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        displayName: string?  #
-        displayname: string?  #
         entityTypes: EntityType[]?  #
+        displayName: string?  #
         entitytypes: EntityType[]?  #
+        displayname: string?  #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 OnGroundCondition: object?  # 
     properties: 
@@ -1240,10 +1240,10 @@ OnGroundCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        else: EffectList?  #
         grounded: boolean? true #
         isGrounded: boolean? true #
         otherwise: EffectList?  #
+        else: EffectList?  #
 OptionsData: object?  # 
     properties: 
         colours: Color[]? [] #
@@ -1258,17 +1258,17 @@ ORCondition: object?  #
               - OTHER
               - SELF
         conditions: ConditionList?  #
-        else: EffectList?  #
         otherwise: EffectList?  #
+        else: EffectList?  #
 ParticleData: object?  # 
     properties: 
-        amount: integer? 1 #
         duration: number? 2.5 #
-        extra: number? 0 #
-        numberOfParticles: integer? 1 #
-        options: OptionsData?  #
         particle: Particle? PORTAL #
+        amount: integer? 1 #
         shape: Shape?  # undocumented#
+        extra: number? 0 #
+        options: OptionsData?  #
+        numberOfParticles: integer? 1 #
 ParticleEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1280,16 +1280,16 @@ ParticleEffect: object?  #
         particleData: ParticleData!  #
 PhaseData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
         minimumPhaseYAxis: number? 5 #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 PickpocketData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        isSneaking: boolean? true #
         range: number? 3 #
-        skill: string?  #
+        isSneaking: boolean? true #
         sneaking: boolean? true #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 Pickup: object?  # 
 PlaceBlockEffect: object?  # 
     properties: 
@@ -1297,27 +1297,27 @@ PlaceBlockEffect: object?  #
             values: 
               - ALL
               - LOCATION
-        block: BlockData!  #
         blockData: BlockData!  #
+        updatePhysics: boolean? true #
         isPacket: boolean? false #
         revertConditions: ConditionList? {} #
         revertsAfter: Expression? -1 #
-        updatePhysics: boolean? true #
+        block: BlockData!  #
 PlaceBlockSpell: object?  # 
     properties: 
         block: BlockData?  #
-        conditions: ConditionListWrapper? {} #
-        cooldown: number? 1 #
-        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
-        cost: integer? 1 #
-        displayName: string? <purple><spellName> #
-        displayNameFormat: string? <purple><spellName> #
         fuel: Material? REDSTONE #
-        lore: string[]? [] #
-        loreFormat: string[]? [] #
-        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
-        skill: string?  #
         spellName: string?  # undocumented#
+        displayName: string? <purple><spellName> #
+        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
+        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
+        cooldown: number? 1 #
+        cost: integer? 1 #
+        lore: string[]? [] #
+        displayNameFormat: string? <purple><spellName> #
+        loreFormat: string[]? [] #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 PlayTrackEffect: object(superdoc = Effect)?  # 
     properties: 
         mode: enum! SELF # 
@@ -1329,9 +1329,9 @@ PlayTrackEffect: object(superdoc = Effect)?  #
         track: Song?  #
 Point: object?  # 
     properties: 
-        offset: number? 0 #
         spread: number? 0 #
         yOffset: number? 0 #
+        offset: number? 0 #
 Potion: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1339,8 +1339,8 @@ Potion: object?  #
               - ALL
               - OTHER
               - SELF
-        potion: PotionEffectData?  #
         potionEffect: PotionEffectData?  #
+        potion: PotionEffectData?  #
 PotionEffectCondition: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1348,56 +1348,56 @@ PotionEffectCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        duration: RangeData? -Infinity - Infinity #
         effect: PotionEffectType!  #
-        else: EffectList?  #
-        otherwise: EffectList?  #
         potency: RangeData? -Infinity - Infinity #
+        duration: RangeData? -Infinity - Infinity #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 PotionEffectData: object?  # 
     properties: 
-        ambient: boolean? true #
-        duration: number? 5 #
-        hasParticles: boolean? true #
-        potency: integer? 0 #
         type: PotionEffectType!  #
+        duration: number? 5 #
+        potency: integer? 0 #
+        ambient: boolean? true #
+        hasParticles: boolean? true #
 PotionEffectSkillData: object?  # 
 PotionEffectTriggerData: object?  # 
     properties: 
-        actions: EntityPotionEffectEvent.Action[]?  #
-        causes: EntityPotionEffectEvent.Cause[]?  #
-        conditions: ConditionList? {} #
-        type: string!  #
         types: PotionEffectType[]? [] #
+        causes: EntityPotionEffectEvent.Cause[]?  #
+        actions: EntityPotionEffectEvent.Action[]?  #
+        type: string!  #
+        conditions: ConditionList? {} #
 PotionEntityComponent: object(ignoreUnknowns)?  # 
     properties: 
         potion: ItemStack? SPLASH_POTION #
 PotionGifterSkillData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
         cooldown: number? 10 #
-        cooldownMessage: string? <grey><i>You have <currentcooldown> seconds left until it can be used again! #
-        giverMessage: string? <grey><i>You gave them a potion effect. #
         receiverMessage: string? <grey><i>You have received a potion effect. #
+        giverMessage: string? <grey><i>You gave them a potion effect. #
+        cooldownMessage: string? <grey><i>You have <currentcooldown> seconds left until it can be used again! #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 PotionMetaData: object?  # 
     properties: 
-        extended: boolean? false #
         type: PotionType? SWIFTNESS #
+        extended: boolean? false #
         upgraded: boolean? false #
 PowerOnStartSettings: object?  # 
     properties: 
         enabled: boolean!  #
-        firstJoinTitle: boolean!  #
         isEnabled: boolean!  #
+        firstJoinTitle: boolean!  #
         showHero: boolean!  #
 PrimedTntComponent: object(ignoreUnknowns)?  # 
     properties: 
         fuseTicks: integer? 100 #
 ProjectileData: object?  # 
     properties: 
-        conditions: ConditionList? {} #
         onlyProjectiles: boolean? false #
         type: string!  #
+        conditions: ConditionList? {} #
 ProjectileEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1427,25 +1427,25 @@ RaytraceEffect: object?  #
               - ALL
               - OTHER
               - SELF
-        alwaysHit: boolean? true #
-        collisionMode: FluidCollisionMode? NEVER #
-        conditions: ConditionList? {} #
-        effects: EffectList? {} #
-        ignorePassables: boolean? true #
         maxDistance: number? 10 #
+        collisionMode: FluidCollisionMode? NEVER #
+        ignorePassables: boolean? true #
+        alwaysHit: boolean? true #
         raySize: number? 1.0 #
         raysize: number? 1.0 #
+        conditions: ConditionList? {} #
+        effects: EffectList? {} #
 RemoteDetonationData: object?  # 
     properties: 
+        spawnsFire: boolean? false #
         breakBlocks: boolean? true #
-        conditions: ConditionListWrapper? {} #
+        removeDetonatedEntity: boolean? true #
+        explosionStrength: number? 1 #
+        explodable: EntityType[]? [] #
         cooldown: number? 0 #
         cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
-        explodable: EntityType[]? [] #
-        explosionStrength: number? 1 #
-        removeDetonatedEntity: boolean? true #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
-        spawnsFire: boolean? false #
 RemoveEntityEffect: object?  # 
 RemovePotionEffect: object?  # 
     properties: 
@@ -1461,30 +1461,30 @@ RepulseEffect: object?  #
             values: 
               - ALL
               - OTHER
-        add: boolean? false #
         velocity: number? 1.0 #
+        add: boolean? false #
 RepulsionData: object?  # 
     properties: 
-        blacklist: EntityType[]? [] #
-        conditions: ConditionListWrapper? {} #
-        entityBlacklist: EntityType[]? [] #
         multiplier: number? 1 #
         radius: number? 5.0 #
+        blacklist: EntityType[]? [] #
+        entityBlacklist: EntityType[]? [] #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 RerollConfig: object?  # 
     properties: 
-        config_version: string?  #
         configVersion: string?  #
-        global_reroll_settings: GlobalRerollSettings?  # default#
         globalRerollSettings: GlobalRerollSettings?  # default#
-        reroll_groups: RerollGroup{}? {} #
         rerollGroups: RerollGroup{}? {} #
+        config_version: string?  #
+        global_reroll_settings: GlobalRerollSettings?  # default#
+        reroll_groups: RerollGroup{}? {} #
 RerollGroup: object?  # 
     properties: 
+        weightedHeroes: RerollGroup.WeightedHero[]? [] #
+        itemComparator: ItemComparisonData?  #
         heroes: RerollGroup.WeightedHero[]? [] #
         item: ItemComparisonData?  #
-        itemComparator: ItemComparisonData?  #
-        weightedHeroes: RerollGroup.WeightedHero[]? [] #
 RerollGroup.WeightedHero: object?  # 
     properties: 
         hero: string!  #
@@ -1496,8 +1496,8 @@ ResizeEffect: object?  #
               - ALL
               - OTHER
               - SELF
-        operation: ModifyEffect.Operation? SET #
         retainHealth: boolean? true #
+        operation: ModifyEffect.Operation? SET #
         value: Expression? 1 #
 ScrambleInventoryEffect: object?  # 
 ShapedRecipeData: object?  # 
@@ -1505,18 +1505,18 @@ ShapedRecipeData: object?  #
         recipe: string[]! [] #
         recipeKeys: {Material: string}! {} #
         result: ItemStack!  #
-        unique_key: string!  #
         uniqueKey: string!  #
+        unique_key: string!  #
 ShapelessRecipeData: object?  # 
     properties: 
-        ingredients: {Material: integer}! {} #
         result: ItemStack!  #
-        unique_key: string!  #
+        ingredients: {Material: integer}! {} #
         uniqueKey: string!  #
+        unique_key: string!  #
 ShieldData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
         cooldown: Duration? 100.0 #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 ShieldedCondition: object?  # 
 ShooterCondition: object?  # 
@@ -1526,9 +1526,9 @@ ShooterEffect: object?  #
             values: 
               - ALL
               - OTHER
+        onlyProjectiles: boolean? true #
         conditions: ConditionList? {} #
         effects: EffectList? {} #
-        onlyProjectiles: boolean? true #
 SizeComponent: object(ignoreUnknowns)?  # 
     properties: 
         size: integer?  #
@@ -1539,37 +1539,37 @@ SizeCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        else: EffectList?  #
-        otherwise: EffectList?  #
         size: RangeData? -Infinity - Infinity #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 Skill: object?  # 
     properties: 
-        conditions: ConditionList!  #
-        effects: EffectList!  #
         trigger: TriggerData!  #
+        effects: EffectList!  #
+        conditions: ConditionList!  #
 Skin: object?  # 
     properties: 
-        signature: string?  #
         value: string?  #
+        signature: string?  #
 SlamData: object?  # 
     properties: 
-        airCooldown: number? 1 #
-        conditions: ConditionListWrapper? {} #
-        cooldown: number? 0 #
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
-        damage: number? 0 #
-        diameterRadius: number? 5 #
-        foodCost: integer? 0 #
         hand: ItemStack? AIR #
-        item: ItemStack? AIR #
+        airCooldown: number? 1 #
+        foodCost: integer? 0 #
         minimumFood: integer? 0 #
         radius: number? 5 #
+        damage: number? 0 #
+        item: ItemStack? AIR #
+        diameterRadius: number? 5 #
+        cooldown: number? 0 #
+        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
 SlimeData: object?  # 
     properties: 
+        speedMultiplier: number? 1 #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
-        speedMultiplier: number? 1 #
 SneakCondition: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1577,22 +1577,22 @@ SneakCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        else: EffectList?  #
-        otherwise: EffectList?  #
         sneak: boolean? true #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 SneakData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
         mustSneak: boolean?  #
         needsInvisibility: boolean?  #
-        skill: string?  #
         sneak: boolean?  #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 SneakingPotionData: object?  # 
 SoundData: object?  # 
     properties: 
-        pitch: number? 1.0 #
         sound: Sound? ENTITY_GENERIC_EXPLODE #
         volume: number? 1.0 #
+        pitch: number? 1.0 #
 SoundEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1613,12 +1613,12 @@ SpawnEffect: object?  #
         entity: EntityData? { type: "ZOMBIE"} #
 SpectralArrowComponent: object(ignoreUnknowns)?  # 
     properties: 
-        critical: boolean? false #
-        damage: number? 2.0 #
         glowingTicks: integer? 200 #
         knockbackStrength: integer? 0 #
-        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED #
+        damage: number? 2.0 #
         pierceLevel: integer? 0 #
+        critical: boolean? false #
+        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED #
 SpeedCondition: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1626,46 +1626,46 @@ SpeedCondition: object?  #
               - ALL
               - OTHER
               - SELF
-        else: EffectList?  #
-        otherwise: EffectList?  #
-        speed: RangeData?  #
         speedRange: RangeData?  #
+        speed: RangeData?  #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 SprintingCondition: object?  # 
 StrongmanData: object?  # 
     properties: 
-        conditions: ConditionListWrapper? {} #
-        maxPassengers: integer? 10 #
-        maxpassengers: integer? 10 #
-        skill: string?  #
-        tooMuscularMessage: string? <player> <white> is too strong to sit in a vehicle! #
-        toomuscularmessage: string? <player> <white> is too strong to sit in a vehicle! #
-        upwardsVelocity: number? 1 #
-        upwardsvelocity: number? 1 #
         velocity: number? 2.5 #
+        upwardsVelocity: number? 1 #
+        tooMuscularMessage: string? <player> <white> is too strong to sit in a vehicle! #
+        maxPassengers: integer? 10 #
+        upwardsvelocity: number? 1 #
+        toomuscularmessage: string? <player> <white> is too strong to sit in a vehicle! #
+        maxpassengers: integer? 10 #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 SummonSkillData: object?  # 
     properties: 
-        action: Action[]?  # undocumented#
-        conditions: ConditionListWrapper? {} #
-        cooldown: number? 10.0 #
-        cooldownMessage: string? <yellow><bold>Zeus <white>Cooldown: <s> seconds #
-        entity: EntityType? LIGHTNING_BOLT #
-        entityType: EntityType? LIGHTNING_BOLT #
-        mustSneak: boolean? true #
-        mustsneak: boolean? true #
         range: integer? 10 #
         repel: boolean? false #
-        skill: string?  #
+        mustSneak: boolean? true #
+        entity: EntityType? LIGHTNING_BOLT #
+        action: Action[]?  # undocumented#
+        cooldown: number? 10.0 #
+        cooldownMessage: string? <yellow><bold>Zeus <white>Cooldown: <s> seconds #
         sneak: boolean? true #
+        mustsneak: boolean? true #
+        entityType: EntityType? LIGHTNING_BOLT #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 Superhero: object(ignoreUnknowns)?  # 
     properties: 
+        name: string?  #
         colouredName: string?  #
         description: string?  #
         heroGainedSound: SoundData?  #
-        icon: ItemStack?  #
-        name: string?  #
-        plusUltraSkills: PlusUltraSkillsContainer? {} #
-        skills: SkillsContainer? {} #
         skin: Skin?  #
+        icon: ItemStack?  #
+        skills: SkillsContainer? {} #
+        plusUltraSkills: PlusUltraSkillsContainer? {} #
 SuperheroCondition: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1684,22 +1684,22 @@ TamedCondition: object?  #
               - ALL
               - OTHER
         checkOwner: boolean? true #
-        else: EffectList?  #
         otherwise: EffectList?  #
+        else: EffectList?  #
 TargetEntityEffect: object?  # 
 TeleportData: object?  # 
     properties: 
-        action: Action[]?  # undocumented#
         actions: Action[]?  # undocumented#
-        conditions: ConditionListWrapper? {} #
+        distance: integer? 30 #
+        yAxisMultiplier: number? 1 #
+        teleportCause: PlayerTeleportEvent.TeleportCause? ENDER_PEARL #
+        particle: ParticleData?  #
+        teleportItem: ItemComparisonData?  # undocumented#
+        action: Action[]?  # undocumented#
         cooldown: number? 0 #
         cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
-        distance: integer? 30 #
-        particle: ParticleData?  #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
-        teleportCause: PlayerTeleportEvent.TeleportCause? ENDER_PEARL #
-        teleportItem: ItemComparisonData?  # undocumented#
-        yAxisMultiplier: number? 1 #
 TeleportEffect: object?  # 
 TemperatureCondition: object?  # 
     properties: 
@@ -1709,36 +1709,36 @@ TemperatureCondition: object?  #
               - LOCATION
               - OTHER
               - SELF
-        else: EffectList?  #
-        otherwise: EffectList?  #
-        temperature: RangeData?  #
         temperatureRange: RangeData?  #
+        temperature: RangeData?  #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 ThrowableProjectileComponent: object(ignoreUnknowns)?  # 
     properties: 
         itemStackData: ItemStackData?  #
 ThrowerData: object?  # 
     properties: 
-        actions: Action[]?  # undocumented#
-        ammo: ItemComparisonData? {} #
         ammoCost: integer? 1 #
+        ammo: ItemComparisonData? {} #
+        projectile: EntityType? SNOWBALL #
+        actions: Action[]?  # undocumented#
         canPickUp: boolean? false #
-        conditions: ConditionListWrapper? {} #
-        cooldown: number? 0 #
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
+        velocity: number? 1.4 #
         damage: number? 3 #
         item: ItemComparisonData? {} #
-        projectile: EntityType? SNOWBALL #
+        cooldown: number? 0 #
+        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
+        conditions: ConditionListWrapper? {} #
         skill: string?  #
-        velocity: number? 1.4 #
 TimeCondition: object?  # 
     properties: 
         mode: enum! SELF # 
             values: 
               - ALL
               - SELF
-        else: EffectList?  #
-        otherwise: EffectList?  #
         time: RangeData? -Infinity - Infinity #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 TimerEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1748,34 +1748,34 @@ TimerEffect: object?  #
               - LOCATION
               - OTHER
               - SELF
-        conditions: ConditionList? {} #
-        delay: Duration? 1.0 #
-        effects: EffectList? {} #
-        numberOfRepeats: integer? 1 #
+        ticksDelay: Duration? 1.0 #
         period: Duration? 1.0 #
         repeats: integer? 1 #
-        ticksDelay: Duration? 1.0 #
+        delay: Duration? 1.0 #
+        numberOfRepeats: integer? 1 #
+        conditions: ConditionList? {} #
+        effects: EffectList? {} #
 TransmutationSpell: object?  # 
     properties: 
-        block: BlockData?  # undocumented#
-        conditions: ConditionListWrapper? {} #
-        cooldown: number? 1 #
-        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
-        cost: integer? 1 #
-        displayName: string? <purple><spellName> #
-        displayNameFormat: string? <purple><spellName> #
-        fuel: Material? REDSTONE #
-        lore: string[]? [] #
-        loreFormat: string[]? [] #
-        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
-        resultantBlock: BlockData?  # undocumented#
-        skill: string?  #
-        spellName: string?  # undocumented#
         transmutableBlocks: Material[]? [] #
+        block: BlockData?  # undocumented#
+        resultantBlock: BlockData?  # undocumented#
+        fuel: Material? REDSTONE #
+        spellName: string?  # undocumented#
+        displayName: string? <purple><spellName> #
+        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
+        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
+        cooldown: number? 1 #
+        cost: integer? 1 #
+        lore: string[]? [] #
+        displayNameFormat: string? <purple><spellName> #
+        loreFormat: string[]? [] #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 TrimData: object?  # 
     properties: 
-        material: TrimMaterial?  #
         pattern: TrimPattern?  #
+        material: TrimMaterial?  #
 Vector: object! {x: 0, y: 0, z: 0} # 
     properties: 
         x: number!  #
@@ -1787,10 +1787,10 @@ VeinMinerEffect: object?  #
             values: 
               - ALL
               - LOCATION
-        allowMultiTypeVein: boolean? false #
+        materials: Material[]? [] #
         delay: Duration? 0.05 #
         limit: integer? 10 #
-        materials: Material[]? [] #
+        allowMultiTypeVein: boolean? false #
         types: Material[]? [] #
 VelocityEffect: object?  # 
     properties: 
@@ -1808,10 +1808,10 @@ VisibilityCondition: object?  #
             values: 
               - ALL
               - OTHER
-        distance: number? 16 #
-        else: EffectList?  #
         maxDistance: number? 16 #
+        distance: number? 16 #
         otherwise: EffectList?  #
+        else: EffectList?  #
 WaitEffect: object?  # 
     properties: 
         mode: enum! SELF # 
@@ -1821,40 +1821,40 @@ WaitEffect: object?  #
               - LOCATION
               - OTHER
               - SELF
-        conditions: ConditionList? {} #
-        delay: Duration? 20.0 #
-        effects: EffectList? {} #
         ticksDelay: Duration? 20.0 #
+        delay: Duration? 20.0 #
+        conditions: ConditionList? {} #
+        effects: EffectList? {} #
 WalkerData: object?  # 
     properties: 
-        aboveFloor: boolean? false #
-        blocksDrop: boolean? true #
         blocksToPlace: Material[]? [] #
-        blocksToPlaceOn: Material[]? [] #
         blocksToReplace: Material[]? [] #
-        canPlaceFloating: boolean? true #
-        conditions: ConditionListWrapper? {} #
+        blocksToPlaceOn: Material[]? [] #
         isSneaking: boolean? false #
-        issneaking: boolean? false #
-        revertsAfter: Duration? 15.0 #
+        blocksDrop: boolean? true #
         shouldRevert: boolean? false #
-        skill: string?  #
+        aboveFloor: boolean? false #
+        canPlaceFloating: boolean? true #
+        revertsAfter: Duration? 15.0 #
         sneaking: boolean? false #
+        issneaking: boolean? false #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 WeatherCondition: object?  # 
 WeatherDamageData: object?  # 
     properties: 
+        damage: number? 1.0 #
         checkShelter: boolean? true #
         conditions: ConditionListWrapper? {} #
-        damage: number? 1.0 #
         skill: string?  #
 Wings: object?  # 
 Wisp: object?  # 
     properties: 
-        height: number? 2 #
         radius: number? 0.5 #
         speed: number? 1 #
-        wave_frequency: number? 1 #
         waveFrequency: number? 1 #
+        height: number? 2 #
+        wave_frequency: number? 1 #
 WitherSkullComponent: object(ignoreUnknowns)?  # 
     properties: 
         isCharged: boolean? false #
@@ -1869,9 +1869,9 @@ WorldCondition: object?  #
               - LOCATION
               - OTHER
               - SELF
-        else: EffectList?  #
-        otherwise: EffectList?  #
         worlds: string[]? [] #
+        otherwise: EffectList?  #
+        else: EffectList?  #
 ZombifiableComponent: object(ignoreUnknowns)?  # 
     properties: 
         immuneToZombification: boolean? false #

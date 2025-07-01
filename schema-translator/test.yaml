@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=Superheroes8+.json
+# yaml-language-server: $schema=../compiler/schemas/Superheroes8+.json
 icon:
   amount: 1
   quantity: 1

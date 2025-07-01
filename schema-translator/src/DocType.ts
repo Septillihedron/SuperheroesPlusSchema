@@ -1,8 +1,9 @@
-import { CharPredicate, is, isAny, isEndline, isEOF, isLetter, isWhitespace, not, StringView } from "./StringView"
 
-type PropertiesMap = Map<string, DocType | true>
-type Unions = Map<string, DocType>
-type ExtraData = {key: string, value: string | true}[]
+export type Property = DocType | true
+export type PropertyEntry = [string, Property]
+export type PropertiesMap = Map<string, Property>
+export type Unions = Map<string, DocType>
+export type ExtraData = {key: string, value: string | true}[]
 
 export class DocType {
 
@@ -31,204 +32,15 @@ export class DocType {
         this.required = required
         this.defaultValue = defaultValue
         this.description = description
-        this.properties = DocType.sortProperties(properties)
+        this.properties = properties
         this.enumValues = DocType.sortEnum(enumValues)
-        this.unions = DocType.sortProperties(unionTypes)
-    }
-    
-    static parse(view: StringView, indent: string): DocType {
-        const type = DocType.parseType(view)
-        const extraData = DocType.parseExtraData(view)
-        const required = DocType.parseRequired(view)
-        const defaults = DocType.parseDefaults(view)
-        const description = DocType.parseDescription(view)
-        view.skipEndline()
-        const {properties, enumValues, unions} = DocType.parseFields(view, indent)
-
-
-        const docType = new DocType(
-            type, extraData, required, defaults, description,
-            properties, 
-            enumValues,
-            unions
-        )
-
-        return docType
+        this.unions = DocType.sortUnions(unionTypes)
     }
 
-    static parseType(view: StringView) {
-        return view.takeWhile(not(isAny("?!()")).or(isEndline))
+    static sortUnions(map: Unions): Unions {
+        return this.sortProperties(map) as Unions
     }
-
-    static parseExtraData(view: StringView): ExtraData {
-        if (!view.consume("(")) return []
-        const extraData: ExtraData = []
-        do {
-            view.skipWhitespace()
-            const key = view.takeWhile(isLetter)
-            view.skipWhitespace()
-            let value: string | true = true
-            if (view.consume("=")) {
-                view.skipWhitespace()
-                value = view.takeWhile(isLetter)
-            }
-            view.skipWhitespace()
-            extraData.push({key, value})
-        } while (view.consume(","))
-        view.consumeOrThrow(")")
-        return extraData
-    }
-
-    static parseRequired(view: StringView): boolean {
-        if (view.consume("?")) return false
-        if (view.consume("!")) return true
-        view.throw(
-            "Unexpected: \""+view.peek(1)+"\"\n"
-            + "Expected: \"?\" or \"!\""
-        )
-    }
-
-    static parseDefaults(view: StringView) {
-        return view.takeWhile(not(is("#").or(isEndline))).trim()
-    }
-
-    static parseDescription(view: StringView): string {
-        if (!view.consume("#")) return ""
-        return view.takeWhile(not(isEndline))
-    }
-
-    static parseFields(view: StringView, indent: string): {properties: DocType['properties'], enumValues: DocType['enumValues'], unions: DocType['unions']} {
-        const fields = {
-            properties: new Map<string, DocType | true>(), 
-            enumValues: new Set<string>(), 
-            unions: new Map<string, DocType>()
-        }
-        const outerIndent = view.takeWhile(isWhitespace)
-        if (outerIndent.length < indent.length) {
-            view.undo(outerIndent.length)
-            return fields
-        }
-        if (outerIndent.length == 0) return fields
-        
-        let hasNoFields = true
-        do {
-            if (view.consume("properties:")) {
-                fields.properties = DocType.parsePropertiesField(view, outerIndent)
-                hasNoFields = false
-            } else if (view.consume("values:")) {
-                fields.enumValues = DocType.parseEnumField(view, outerIndent)
-                hasNoFields = false
-            } else if (view.consume("unions:")) {
-                fields.unions = DocType.parseUnionsField(view, outerIndent)
-                hasNoFields = false
-            }
-        } while (view.consume(outerIndent))
-
-        if (hasNoFields) {
-            view.undo(outerIndent.length)
-        }
-
-        return fields
-    }
-
-    static parsePropertiesField(view: StringView, outerIndent: string): PropertiesMap {
-        view.skipWhitespace()
-        view.skipEndline()
-        const innerIndent = view.takeWhile(isWhitespace)
-        if (innerIndent.length <= outerIndent.length) view.throw("Empty properties")
-
-        return DocType.parseProperties(view, innerIndent, true)
-    }
-
-    static parseProperties(view: StringView, innerIndent: string, allowTrueProperty = true): PropertiesMap {
-        const properties = new Map<string, DocType | true>()
-        do {
-            if (view.consumeEndline()) continue
-            const [name, docType] = DocType.parseProperty(view, innerIndent, allowTrueProperty)
-            view.consumeEndline()
-            properties.set(name, docType)
-        } while (view.consume(innerIndent) && !isEOF(view.peek()))
-        return properties
-    }
-
-    static parseProperty(view: StringView, indent: string, allowTrueProperty = true): [string, DocType | true] {
-        const name = view.takeWhile(not(is(":")))
-        view.skipWhitespace()
-        view.consumeOrThrow(":")
-        view.skipWhitespace()
-        if (allowTrueProperty && view.consume("true")) return [name, true]
-        return [name, DocType.parse(view, indent)]
-    }
-
-    static parseEnumField(view: StringView, outerIndent: string): Set<string> {
-        view.skipWhitespace()
-        view.skipEndline()
-        const innerIndent = view.takeWhile(isWhitespace)
-        if (innerIndent.length < outerIndent.length) view.throw("Empty enum values")
-        const values = new Set<string>()
-        do {
-            if (view.consumeEndline()) continue
-            view.consumeOrThrow("-")
-            view.skipWhitespace()
-            const value = view.takeWhile(not(isEndline))
-            view.consumeEndline()
-            values.add(value)
-        } while (view.consume(innerIndent))
-        return values
-    }
-
-    static parseUnionsField(view: StringView, outerIndent: string): Unions {
-        view.skipWhitespace()
-        view.skipEndline()
-        const innerIndent = view.takeWhile(isWhitespace)
-        if (innerIndent.length <= outerIndent.length) view.throw("Empty unions")
-
-        return DocType.parseProperties(view, innerIndent, false) as Unions
-    }
-
-    static combine(doc1: DocType, doc2: DocType): DocType {
-        
-        return new DocType(
-            DocType.combineType(doc1.type, doc2.type), 
-            [...doc1.extraData, ...doc2.extraData], 
-            doc1.required || doc2.required, 
-            doc1.defaultValue, 
-            doc1.description, 
-            DocType.combineMap(doc1.properties, doc2.properties),
-            DocType.combineSet(doc1.enumValues, doc2.enumValues), 
-            DocType.combineMap(doc1.unions, doc2.unions)
-        )
-    }
-
-    static combineType(type1: string, type2: string): string {
-        if (DocType.isInvalidType(type1)) return type2
-        if (DocType.isInvalidType(type2)) return type1
-        if (type1 != type2) throw new Error("Can't combine docs because their type differs");
-        return type1
-    }
-    static isInvalidType(type: string): boolean {
-        return type.startsWith("#")
-    }
-
-    private static combineMap<K, V>(map1: Map<K, V>, map2: Map<K, V>): Map<K, V> {
-        const combined = new Map<K, V>()
-        map1.forEach((value, key) => combined.set(key, value))
-        map2.forEach((value, key) => {
-            if (combined.has(key) && combined.get(key) !== value) throw new Error("Can't combine maps because key \"" + key + "\" has 2 possible values")
-            combined.set(key, value)
-        })
-        return combined
-    }
-    private static combineSet<T>(set1: Set<T>, set2: Set<T>): Set<T> {
-        const combined = new Set<T>()
-        set1.forEach(value => combined.add(value))
-        set2.forEach(value => combined.add(value))
-        return combined
-    }
-
-    static sortProperties(map: Unions): Unions
-    static sortProperties(map: PropertiesMap): PropertiesMap
-    static sortProperties(map: PropertiesMap) {
+    static sortProperties(map: PropertiesMap): PropertiesMap {
         return new Map([...map.entries()].sort((a, b) => {
             const [aKey, aDoc] = a
             const [bKey, bDoc] = b
@@ -237,7 +49,11 @@ export class DocType {
             return aKey.toLocaleLowerCase().localeCompare(bKey.toLocaleLowerCase())
         }))
     }
-    private static docTypeToOrdinal(doc: DocType | true): number {
+    static sortEnum(set: Set<string>) {
+        return new Set([...set.values()].sort())
+    }
+
+    static docTypeToOrdinal(doc: DocType | true): number {
         if (doc === true) return 3;
         switch (doc.type) {
             case "union": return 2;
@@ -247,9 +63,6 @@ export class DocType {
         };
     }
 
-    static sortEnum(set: Set<string>) {
-        return new Set([...set.values()].sort())
-    }
 
     lower(types: Map<string, DocType>): DocType {
 
@@ -319,6 +132,45 @@ export class DocType {
             })
 
         return loweredProperties
+    }
+
+    static combine(doc1: DocType, doc2: DocType): DocType {
+        return new DocType(
+            DocType.combineType(doc1.type, doc2.type),
+            [...doc1.extraData, ...doc2.extraData],
+            doc1.required || doc2.required,
+            doc1.defaultValue,
+            doc1.description,
+            DocType.combineMap(doc1.properties, doc2.properties),
+            DocType.combineSet(doc1.enumValues, doc2.enumValues),
+            DocType.combineMap(doc1.unions, doc2.unions)
+        )
+    }
+
+    static combineType(type1: string, type2: string): string {
+        if (DocType.isInvalidType(type1)) return type2
+        if (DocType.isInvalidType(type2)) return type1
+        if (type1 != type2) throw new Error("Can't combine docs because their type differs");
+        return type1
+    }
+    static isInvalidType(type: string): boolean {
+        return type.startsWith("#")
+    }
+
+    static combineMap<K, V>(map1: Map<K, V>, map2: Map<K, V>): Map<K, V> {
+        const combined = new Map<K, V>()
+        map1.forEach((value, key) => combined.set(key, value))
+        map2.forEach((value, key) => {
+            if (combined.has(key) && combined.get(key) !== value) throw new Error("Can't combine maps because key \"" + key + "\" has 2 possible values")
+            combined.set(key, value)
+        })
+        return combined
+    }
+    static combineSet<T>(set1: Set<T>, set2: Set<T>): Set<T> {
+        const combined = new Set<T>()
+        set1.forEach(value => combined.add(value))
+        set2.forEach(value => combined.add(value))
+        return combined
     }
 
     static getSourceObjectDoc(doc: DocType | undefined, types: Map<string, DocType>): DocType {
