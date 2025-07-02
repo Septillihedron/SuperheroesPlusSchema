@@ -8,7 +8,7 @@
 
 
 
-### cooldown - Optional number
+### cooldown - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 0
 
 
 
-### cooldownMessage - Optional string
+### cooldownMessage - Optional [string](string)
 
 
 

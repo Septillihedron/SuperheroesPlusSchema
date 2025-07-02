@@ -8,7 +8,7 @@
 
 
 
-### enchantMap - Optional {Enchantment: RangeData}
+### enchantMap - Optional [{Enchantment: RangeData}]({Enchantment: RangeData})
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-### conditions - Optional ConditionList
+### conditions - Optional [ConditionList](ConditionList)
 
 
 
@@ -20,7 +20,7 @@ Defaults to {}
 
 
 
-### effects - Optional EffectList
+### effects - Optional [EffectList](EffectList)
 
 
 

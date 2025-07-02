@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### damage - Optional Expression
+### damage - Optional [Expression](Expression)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 5
 
 
 
-### damageCause - Optional EntityDamageEvent.DamageCause
+### damageCause - Optional [EntityDamageEvent.DamageCause](EntityDamageEvent.DamageCause)
 
 
 
@@ -44,7 +44,7 @@ Defaults to CUSTOM
 
 
 
-### shouldTriggerEvents - Optional boolean
+### shouldTriggerEvents - Optional [boolean](boolean)
 
 
 

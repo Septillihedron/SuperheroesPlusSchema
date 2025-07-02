@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### checkNatural - Optional boolean
+### checkNatural - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to true
 
 
 
-### checkBlocks - Optional boolean
+### checkBlocks - Optional [boolean](boolean)
 
 
 
@@ -44,7 +44,7 @@ Defaults to true
 
 
 
-### lightRange - Optional RangeData
+### lightRange - Optional [RangeData](RangeData)
 
 
 
@@ -56,7 +56,7 @@ Defaults to -Infinity - Infinity
 
 
 
-### checkNaturalLight - Optional boolean
+### checkNaturalLight - Optional [boolean](boolean)
 
 
 
@@ -68,7 +68,7 @@ Defaults to true
 
 
 
-### checkBlockLight - Optional boolean
+### checkBlockLight - Optional [boolean](boolean)
 
 
 
@@ -80,7 +80,7 @@ Defaults to true
 
 
 
-### light - Optional RangeData
+### light - Optional [RangeData](RangeData)
 
 
 

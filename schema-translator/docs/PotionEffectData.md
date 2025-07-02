@@ -8,11 +8,11 @@
 
 
 
-### type - Required PotionEffectType
+### type - Required [PotionEffectType](PotionEffectType)
 
 
 
-### duration - Optional number
+### duration - Optional [number](number)
 
 
 
@@ -20,7 +20,7 @@ Defaults to 5
 
 
 
-### potency - Optional integer
+### potency - Optional [integer](integer)
 
 
 
@@ -28,7 +28,7 @@ Defaults to 0
 
 
 
-### ambient - Optional boolean
+### ambient - Optional [boolean](boolean)
 
 
 
@@ -36,7 +36,7 @@ Defaults to true
 
 
 
-### hasParticles - Optional boolean
+### hasParticles - Optional [boolean](boolean)
 
 
 

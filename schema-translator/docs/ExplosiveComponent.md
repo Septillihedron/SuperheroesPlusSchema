@@ -8,11 +8,11 @@
 
 
 
-### yield - Optional number
+### yield - Optional [number](number)
 
 
 
-### isIncendiary - Optional boolean
+### isIncendiary - Optional [boolean](boolean)
 
 
 

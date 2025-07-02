@@ -8,7 +8,7 @@
 
 
 
-### damageMultiplier - Optional number
+### damageMultiplier - Optional [number](number)
 
 
 
@@ -16,9 +16,9 @@ Defaults to 0
 
 
 
-### damageCauses - Optional EntityDamageEvent.DamageCause[]
+### damageCauses - Optional [EntityDamageEvent.DamageCause[]](EntityDamageEvent.DamageCause[])
 
 
 
-### damageCause - Optional EntityDamageEvent.DamageCause[]
+### damageCause - Optional [EntityDamageEvent.DamageCause[]](EntityDamageEvent.DamageCause[])
 

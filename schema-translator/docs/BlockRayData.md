@@ -8,7 +8,7 @@
 
 
 
-### maxDistance - Optional integer
+### maxDistance - Optional [integer](integer)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 20
 
 
 
-### shouldRevert - Optional boolean
+### shouldRevert - Optional [boolean](boolean)
 
 
 
@@ -24,7 +24,7 @@ Defaults to false
 
 
 
-### blocksToPlace - Optional Material[]
+### blocksToPlace - Optional [Material[]](Material[])
 
 
 
@@ -32,7 +32,7 @@ Defaults to []
 
 
 
-### blocksToReplace - Optional Material[]
+### blocksToReplace - Optional [Material[]](Material[])
 
 
 
@@ -40,11 +40,11 @@ Defaults to []
 
 
 
-### blockRayMode - Optional BlockRayMode
+### blockRayMode - Optional [BlockRayMode](BlockRayMode)
 
 
 
-### revertsAfter - Optional Duration
+### revertsAfter - Optional [Duration](Duration)
 
 
 

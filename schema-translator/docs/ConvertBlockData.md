@@ -8,7 +8,7 @@
 
 
 
-### inputBlocks - Optional Material[]
+### inputBlocks - Optional [Material[]](Material[])
 
 
 
@@ -16,7 +16,7 @@ Defaults to []
 
 
 
-### outputBlock - Optional Material
+### outputBlock - Optional [Material](Material)
 
 
 

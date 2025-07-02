@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to LOCATION
 
 
 
-### allowedMaterials - Optional Material[]
+### allowedMaterials - Optional [Material[]](Material[])
 
 
 
@@ -32,7 +32,7 @@ Defaults to []
 
 
 
-### materials - Optional Material[]
+### materials - Optional [Material[]](Material[])
 
 
 

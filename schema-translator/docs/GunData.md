@@ -8,7 +8,7 @@
 
 
 
-### damage - Optional number
+### damage - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 5.0
 
 
 
-### maxDistance - Optional number
+### maxDistance - Optional [number](number)
 
 
 
@@ -24,7 +24,7 @@ Defaults to 64
 
 
 
-### bulletSize - Optional number
+### bulletSize - Optional [number](number)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 1.0
 
 
 
-### item - Optional ItemComparisonData
+### item - Optional [ItemComparisonData](ItemComparisonData)
 
 
 
@@ -40,13 +40,13 @@ Defaults to {}
 
 
 
-### shootSound - Optional SoundData
+### shootSound - Optional [SoundData](SoundData)
 
 
 
-### trailParticle - Optional ParticleData
+### trailParticle - Optional [ParticleData](ParticleData)
 
 
 
-### hitParticle - Optional ParticleData
+### hitParticle - Optional [ParticleData](ParticleData)
 

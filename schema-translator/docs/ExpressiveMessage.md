@@ -1,6 +1,6 @@
 
 
-# ExpressiveMessage - Type: [string](string.md)
+# ExpressiveMessage - Type: [string](string)
 
 
 

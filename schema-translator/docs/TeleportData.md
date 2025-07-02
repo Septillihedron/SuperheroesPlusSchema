@@ -8,7 +8,7 @@
 
 
 
-### actions - Optional Action[]
+### actions - Optional [Action[]](Action[])
 
 
 
@@ -16,7 +16,7 @@ undocumented#
 
 
 
-### distance - Optional integer
+### distance - Optional [integer](integer)
 
 
 
@@ -24,7 +24,7 @@ Defaults to 30
 
 
 
-### yAxisMultiplier - Optional number
+### yAxisMultiplier - Optional [number](number)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 1
 
 
 
-### teleportCause - Optional PlayerTeleportEvent.TeleportCause
+### teleportCause - Optional [PlayerTeleportEvent.TeleportCause](PlayerTeleportEvent.TeleportCause)
 
 
 
@@ -40,11 +40,11 @@ Defaults to ENDER_PEARL
 
 
 
-### particle - Optional ParticleData
+### particle - Optional [ParticleData](ParticleData)
 
 
 
-### teleportItem - Optional ItemComparisonData
+### teleportItem - Optional [ItemComparisonData](ItemComparisonData)
 
 
 
@@ -52,7 +52,7 @@ undocumented#
 
 
 
-### action - Optional Action[]
+### action - Optional [Action[]](Action[])
 
 
 

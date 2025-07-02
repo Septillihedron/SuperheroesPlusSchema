@@ -1,4 +1,4 @@
 
 
-# ConditionListWrapper - Type: [ConditionList](ConditionList.md)
+# ConditionListWrapper - Type: [ConditionList](ConditionList)
 

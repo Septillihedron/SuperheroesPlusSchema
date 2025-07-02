@@ -8,7 +8,7 @@
 
 
 
-### material - Optional Material
+### material - Optional [Material](Material)
 
 
 
@@ -16,7 +16,7 @@ Defaults to DIRT
 
 
 
-### hunger - Optional integer
+### hunger - Optional [integer](integer)
 
 
 

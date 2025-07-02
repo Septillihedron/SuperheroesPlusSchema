@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### slot - Optional InventorySlot
+### slot - Optional [InventorySlot](InventorySlot)
 
 
 

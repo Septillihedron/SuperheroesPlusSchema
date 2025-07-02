@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### verticalRadius - Optional integer
+### verticalRadius - Optional [integer](integer)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 0
 
 
 
-### horizontalRadius - Optional integer
+### horizontalRadius - Optional [integer](integer)
 
 
 
@@ -44,7 +44,7 @@ Defaults to 0
 
 
 
-### offset - Optional Vector
+### offset - Optional [Vector](Vector)
 
 
 

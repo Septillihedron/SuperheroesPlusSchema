@@ -8,7 +8,7 @@
 
 
 
-### red - Optional integer
+### red - Optional [integer](integer)
 
 
 
@@ -16,7 +16,7 @@ Defaults to -1
 
 
 
-### green - Optional integer
+### green - Optional [integer](integer)
 
 
 
@@ -24,7 +24,7 @@ Defaults to -1
 
 
 
-### blue - Optional integer
+### blue - Optional [integer](integer)
 
 
 

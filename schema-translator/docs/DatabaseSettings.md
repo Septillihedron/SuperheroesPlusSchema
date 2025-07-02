@@ -8,7 +8,7 @@
 
 
 
-### type - Optional string
+### type - Optional [string](string)
 
 
 
@@ -16,7 +16,7 @@ Defaults to YAML
 
 
 
-### host - Optional string
+### host - Optional [string](string)
 
 
 
@@ -24,7 +24,7 @@ Defaults to this needs filling with your host name if using mysql
 
 
 
-### port - Optional integer
+### port - Optional [integer](integer)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 3306
 
 
 
-### name - Optional string
+### name - Optional [string](string)
 
 
 
@@ -40,7 +40,7 @@ Defaults to this needs filling with the database name if using mysql
 
 
 
-### username - Optional string
+### username - Optional [string](string)
 
 
 
@@ -48,7 +48,7 @@ Defaults to this needs filling with the username of the account being used to co
 
 
 
-### password - Optional string
+### password - Optional [string](string)
 
 
 

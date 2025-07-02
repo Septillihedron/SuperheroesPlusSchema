@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### temperatureRange - Optional RangeData
+### temperatureRange - Optional [RangeData](RangeData)
 
 
 
@@ -28,7 +28,7 @@ Defaults to SELF
 
 
 
-### temperature - Optional RangeData
+### temperature - Optional [RangeData](RangeData)
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-### operation - Optional ModifyEffect.Operation
+### operation - Optional [ModifyEffect.Operation](ModifyEffect.Operation)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SET
 
 
 
-### value - Optional Expression
+### value - Optional [Expression](Expression)
 
 
 

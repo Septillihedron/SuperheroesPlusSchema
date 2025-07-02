@@ -8,5 +8,5 @@
 
 
 
-### variant - Optional Axolotl.Variant
+### variant - Optional [Axolotl.Variant](Axolotl.Variant)
 

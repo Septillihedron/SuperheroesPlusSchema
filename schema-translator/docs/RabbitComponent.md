@@ -8,5 +8,5 @@
 
 
 
-### variant - Optional Rabbit.Type
+### variant - Optional [Rabbit.Type](Rabbit.Type)
 

@@ -8,7 +8,7 @@
 
 
 
-### instantBreakable - Optional Material[]
+### instantBreakable - Optional [Material[]](Material[])
 
 
 
@@ -16,11 +16,11 @@ Defaults to []
 
 
 
-### breakUsing - Optional Material
+### breakUsing - Optional [Material](Material)
 
 
 
-### blocks - Optional Material[]
+### blocks - Optional [Material[]](Material[])
 
 
 
@@ -28,5 +28,5 @@ Defaults to []
 
 
 
-### breakusing - Optional Material
+### breakusing - Optional [Material](Material)
 

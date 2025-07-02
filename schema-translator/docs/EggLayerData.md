@@ -8,7 +8,7 @@
 
 
 
-### tickDelay - Optional Duration
+### tickDelay - Optional [Duration](Duration)
 
 
 

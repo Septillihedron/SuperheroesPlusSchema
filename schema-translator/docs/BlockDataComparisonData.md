@@ -8,7 +8,7 @@
 
 
 
-### types - Optional Material[]
+### types - Optional [Material[]](Material[])
 
 
 
@@ -16,7 +16,7 @@ Defaults to []
 
 
 
-### level - Optional RangeData
+### level - Optional [RangeData](RangeData)
 
 
 
@@ -24,7 +24,7 @@ Defaults to -Infinity - Infinity
 
 
 
-### age - Optional RangeData
+### age - Optional [RangeData](RangeData)
 
 
 

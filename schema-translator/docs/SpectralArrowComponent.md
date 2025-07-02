@@ -8,7 +8,7 @@
 
 
 
-### glowingTicks - Optional integer
+### glowingTicks - Optional [integer](integer)
 
 
 

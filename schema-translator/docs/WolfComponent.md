@@ -8,7 +8,7 @@
 
 
 
-### angry - Optional boolean
+### angry - Optional [boolean](boolean)
 
 
 

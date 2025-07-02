@@ -8,7 +8,7 @@
 
 
 
-### blocksToPlace - Optional Material[]
+### blocksToPlace - Optional [Material[]](Material[])
 
 
 
@@ -16,7 +16,7 @@ Defaults to []
 
 
 
-### blocksToReplace - Optional Material[]
+### blocksToReplace - Optional [Material[]](Material[])
 
 
 
@@ -24,7 +24,7 @@ Defaults to []
 
 
 
-### blocksToPlaceOn - Optional Material[]
+### blocksToPlaceOn - Optional [Material[]](Material[])
 
 
 
@@ -32,7 +32,7 @@ Defaults to []
 
 
 
-### isSneaking - Optional boolean
+### isSneaking - Optional [boolean](boolean)
 
 
 
@@ -40,7 +40,7 @@ Defaults to false
 
 
 
-### blocksDrop - Optional boolean
+### blocksDrop - Optional [boolean](boolean)
 
 
 
@@ -48,7 +48,7 @@ Defaults to true
 
 
 
-### shouldRevert - Optional boolean
+### shouldRevert - Optional [boolean](boolean)
 
 
 
@@ -56,7 +56,7 @@ Defaults to false
 
 
 
-### aboveFloor - Optional boolean
+### aboveFloor - Optional [boolean](boolean)
 
 
 
@@ -64,7 +64,7 @@ Defaults to false
 
 
 
-### canPlaceFloating - Optional boolean
+### canPlaceFloating - Optional [boolean](boolean)
 
 
 
@@ -72,7 +72,7 @@ Defaults to true
 
 
 
-### revertsAfter - Optional Duration
+### revertsAfter - Optional [Duration](Duration)
 
 
 
@@ -80,7 +80,7 @@ Defaults to 15.0
 
 
 
-### sneaking - Optional boolean
+### sneaking - Optional [boolean](boolean)
 
 
 
@@ -88,7 +88,7 @@ Defaults to false
 
 
 
-### issneaking - Optional boolean
+### issneaking - Optional [boolean](boolean)
 
 
 

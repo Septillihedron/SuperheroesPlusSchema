@@ -1,13 +1,13 @@
 
 
-# LoreData - An array of[string](string.md)
+# LoreData - An array of[string](string)
 
 
 
 ## Structure
 
 ```yaml
-- A value of [string](string.md)
-- A value of [string](string.md)
+- A value of [string](string)
+- A value of [string](string)
 ...
 ```

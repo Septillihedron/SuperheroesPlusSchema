@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -16,7 +16,7 @@ Defaults to SELF
 
 
 
-### permanent - Optional boolean
+### permanent - Optional [boolean](boolean)
 
 
 
@@ -24,7 +24,7 @@ Defaults to true
 
 
 
-### heroName - Optional string
+### heroName - Optional [string](string)
 
 
 
@@ -32,11 +32,11 @@ Defaults to erased
 
 
 
-### description - Optional string
+### description - Optional [string](string)
 
 
 
-### broadcast - Optional boolean
+### broadcast - Optional [boolean](boolean)
 
 
 
@@ -44,7 +44,7 @@ Defaults to true
 
 
 
-### duration - Optional Duration
+### duration - Optional [Duration](Duration)
 
 
 

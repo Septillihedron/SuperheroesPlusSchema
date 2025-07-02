@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### item - Required ItemStack
+### item - Required [ItemStack](ItemStack)
 
 
 
@@ -28,7 +28,7 @@ Defaults to SELF
 
 
 
-### dropIfFull - Optional boolean
+### dropIfFull - Optional [boolean](boolean)
 
 
 

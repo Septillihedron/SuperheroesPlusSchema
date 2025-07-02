@@ -8,7 +8,7 @@
 
 
 
-### dropToNewDrop - Optional {Material: ItemStack}
+### dropToNewDrop - Optional [{Material: ItemStack}]({Material: ItemStack})
 
 
 
@@ -16,7 +16,7 @@ Defaults to {}
 
 
 
-### replaceDrops - Optional boolean
+### replaceDrops - Optional [boolean](boolean)
 
 
 
@@ -24,7 +24,7 @@ Defaults to false
 
 
 
-### convertMap - Optional {Material: ItemStack}
+### convertMap - Optional [{Material: ItemStack}]({Material: ItemStack})
 
 
 

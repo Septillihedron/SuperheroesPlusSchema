@@ -8,7 +8,7 @@
 
 
 
-### transmutableBlocks - Optional Material[]
+### transmutableBlocks - Optional [Material[]](Material[])
 
 
 
@@ -16,7 +16,7 @@ Defaults to []
 
 
 
-### block - Optional BlockData
+### block - Optional [BlockData](BlockData)
 
 
 
@@ -24,7 +24,7 @@ undocumented#
 
 
 
-### resultantBlock - Optional BlockData
+### resultantBlock - Optional [BlockData](BlockData)
 
 
 

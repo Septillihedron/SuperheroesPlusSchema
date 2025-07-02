@@ -8,33 +8,33 @@
 
 
 
-### gainedHero - Optional string
+### gainedHero - Optional [string](string)
 
 
 
-### noPermission - Optional string
+### noPermission - Optional [string](string)
 
 
 
-### currentHero - Optional string
+### currentHero - Optional [string](string)
 
 
 
-### heroCommandCooldown - Optional string
+### heroCommandCooldown - Optional [string](string)
 
 
 
-### invalidHeroMessage - Optional string
+### invalidHeroMessage - Optional [string](string)
 
 
 
-### invalidPlayerMessage - Optional string
+### invalidPlayerMessage - Optional [string](string)
 
 
 
-### invalidCommandMessage - Optional string
+### invalidCommandMessage - Optional [string](string)
 
 
 
-### invalidRerollGroupMessage - Optional string
+### invalidRerollGroupMessage - Optional [string](string)
 

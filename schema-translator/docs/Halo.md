@@ -8,7 +8,7 @@
 
 
 
-### radius - Optional number
+### radius - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 0.3
 
 
 
-### height - Optional number
+### height - Optional [number](number)
 
 
 
@@ -24,7 +24,7 @@ Defaults to 0.3
 
 
 
-### resolution - Optional number
+### resolution - Optional [number](number)
 
 
 

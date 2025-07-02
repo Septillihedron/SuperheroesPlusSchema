@@ -8,7 +8,7 @@
 
 
 
-### potion - Optional ItemStack
+### potion - Optional [ItemStack](ItemStack)
 
 
 

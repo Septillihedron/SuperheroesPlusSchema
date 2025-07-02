@@ -8,31 +8,31 @@
 
 
 
-### name - Optional string
+### name - Optional [string](string)
 
 
 
-### colouredName - Optional string
+### colouredName - Optional [string](string)
 
 
 
-### description - Optional string
+### description - Optional [string](string)
 
 
 
-### heroGainedSound - Optional SoundData
+### heroGainedSound - Optional [SoundData](SoundData)
 
 
 
-### skin - Optional Skin
+### skin - Optional [Skin](Skin)
 
 
 
-### icon - Optional ItemStack
+### icon - Optional [ItemStack](ItemStack)
 
 
 
-### skills - Optional SkillsContainer
+### skills - Optional [SkillsContainer](SkillsContainer)
 
 
 
@@ -40,7 +40,7 @@ Defaults to {}
 
 
 
-### plusUltraSkills - Optional PlusUltraSkillsContainer
+### plusUltraSkills - Optional [PlusUltraSkillsContainer](PlusUltraSkillsContainer)
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-### type - Optional Material
+### type - Optional [Material](Material)
 
 
 
@@ -16,7 +16,7 @@ Defaults to STONE
 
 
 
-### amount - Optional integer
+### amount - Optional [integer](integer)
 
 
 
@@ -24,11 +24,11 @@ Defaults to 1
 
 
 
-### metadata - Optional ItemMetaData
+### metadata - Optional [ItemMetaData](ItemMetaData)
 
 
 
-### quantity - Optional integer
+### quantity - Optional [integer](integer)
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-### particles - Optional ParticleData[]
+### particles - Optional [ParticleData[]](ParticleData[])
 
 
 
@@ -16,5 +16,5 @@ Defaults to []
 
 
 
-### name - Optional string
+### name - Optional [string](string)
 

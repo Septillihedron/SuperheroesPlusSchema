@@ -8,11 +8,11 @@
 
 
 
-### armor - Optional ItemStack
+### armor - Optional [ItemStack](ItemStack)
 
 
 
-### color - Optional Horse.Color
+### color - Optional [Horse.Color](Horse.Color)
 
 
 
@@ -20,7 +20,7 @@ Defaults to CHESTNUT
 
 
 
-### style - Optional Horse.Style
+### style - Optional [Horse.Style](Horse.Style)
 
 
 

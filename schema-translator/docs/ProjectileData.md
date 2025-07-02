@@ -8,7 +8,7 @@
 
 
 
-### onlyProjectiles - Optional boolean
+### onlyProjectiles - Optional [boolean](boolean)
 
 
 

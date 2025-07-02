@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to OTHER
 
 
 
-### multiplier - Optional Expression
+### multiplier - Optional [Expression](Expression)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 1.0
 
 
 
-### overwriteCurrentVelocity - Optional boolean
+### overwriteCurrentVelocity - Optional [boolean](boolean)
 
 
 

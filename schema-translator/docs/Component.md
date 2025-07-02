@@ -1,4 +1,4 @@
 
 
-# Component - Type: [string](string.md)
+# Component - Type: [string](string)
 

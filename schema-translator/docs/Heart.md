@@ -8,7 +8,7 @@
 
 
 
-### height - Optional number
+### height - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 2
 
 
 
-### frequency - Optional number
+### frequency - Optional [number](number)
 
 
 
@@ -24,7 +24,7 @@ Defaults to 0.05
 
 
 
-### size - Optional number
+### size - Optional [number](number)
 
 
 

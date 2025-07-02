@@ -8,7 +8,7 @@
 
 
 
-### minimumHunger - Optional number
+### minimumHunger - Optional [number](number)
 
 
 

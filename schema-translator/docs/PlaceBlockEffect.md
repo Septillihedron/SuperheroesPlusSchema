@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,11 +20,11 @@ Defaults to LOCATION
 
 
 
-### blockData - Required BlockData
+### blockData - Required [BlockData](BlockData)
 
 
 
-### updatePhysics - Optional boolean
+### updatePhysics - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to true
 
 
 
-### isPacket - Optional boolean
+### isPacket - Optional [boolean](boolean)
 
 
 
@@ -40,7 +40,7 @@ Defaults to false
 
 
 
-### revertConditions - Optional ConditionList
+### revertConditions - Optional [ConditionList](ConditionList)
 
 
 
@@ -48,7 +48,7 @@ Defaults to {}
 
 
 
-### revertsAfter - Optional Expression
+### revertsAfter - Optional [Expression](Expression)
 
 
 
@@ -56,5 +56,5 @@ Defaults to -1
 
 
 
-### block - Required BlockData
+### block - Required [BlockData](BlockData)
 

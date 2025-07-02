@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to OTHER
 
 
 
-### maxDistance - Optional number
+### maxDistance - Optional [number](number)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 16
 
 
 
-### distance - Optional number
+### distance - Optional [number](number)
 
 
 

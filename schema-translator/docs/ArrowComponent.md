@@ -8,5 +8,5 @@
 
 
 
-### potionType - Optional PotionType
+### potionType - Optional [PotionType](PotionType)
 

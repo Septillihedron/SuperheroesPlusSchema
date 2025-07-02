@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### maxDistance - Optional number
+### maxDistance - Optional [number](number)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 10
 
 
 
-### collisionMode - Optional FluidCollisionMode
+### collisionMode - Optional [FluidCollisionMode](FluidCollisionMode)
 
 
 
@@ -44,7 +44,7 @@ Defaults to NEVER
 
 
 
-### ignorePassables - Optional boolean
+### ignorePassables - Optional [boolean](boolean)
 
 
 
@@ -56,7 +56,7 @@ Defaults to true
 
 
 
-### alwaysHit - Optional boolean
+### alwaysHit - Optional [boolean](boolean)
 
 
 
@@ -68,7 +68,7 @@ Defaults to true
 
 
 
-### raySize - Optional number
+### raySize - Optional [number](number)
 
 
 
@@ -80,7 +80,7 @@ Defaults to 1.0
 
 
 
-### raysize - Optional number
+### raysize - Optional [number](number)
 
 
 

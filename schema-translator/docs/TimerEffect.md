@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### ticksDelay - Optional Duration
+### ticksDelay - Optional [Duration](Duration)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 1.0
 
 
 
-### period - Optional Duration
+### period - Optional [Duration](Duration)
 
 
 
@@ -44,7 +44,7 @@ Defaults to 1.0
 
 
 
-### repeats - Optional integer
+### repeats - Optional [integer](integer)
 
 
 
@@ -56,7 +56,7 @@ Defaults to 1
 
 
 
-### delay - Optional Duration
+### delay - Optional [Duration](Duration)
 
 
 
@@ -68,7 +68,7 @@ Defaults to 1.0
 
 
 
-### numberOfRepeats - Optional integer
+### numberOfRepeats - Optional [integer](integer)
 
 
 

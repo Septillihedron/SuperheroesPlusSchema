@@ -8,21 +8,21 @@
 
 
 
-### config_version - Optional string
+### config_version - Optional [string](string)
 
 
 
-### chatLanguageSettings - Optional ChatLanguageSettings
+### chatLanguageSettings - Optional [ChatLanguageSettings](ChatLanguageSettings)
 
 
 
-### guiLanguageSettings - Optional GUILanguageSettings
+### guiLanguageSettings - Optional [GUILanguageSettings](GUILanguageSettings)
 
 
 
-### Chat - Optional ChatLanguageSettings
+### Chat - Optional [ChatLanguageSettings](ChatLanguageSettings)
 
 
 
-### GUI - Optional GUILanguageSettings
+### GUI - Optional [GUILanguageSettings](GUILanguageSettings)
 

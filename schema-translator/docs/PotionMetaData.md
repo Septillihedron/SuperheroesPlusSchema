@@ -8,7 +8,7 @@
 
 
 
-### type - Optional PotionType
+### type - Optional [PotionType](PotionType)
 
 
 
@@ -16,7 +16,7 @@ Defaults to SWIFTNESS
 
 
 
-### extended - Optional boolean
+### extended - Optional [boolean](boolean)
 
 
 
@@ -24,7 +24,7 @@ Defaults to false
 
 
 
-### upgraded - Optional boolean
+### upgraded - Optional [boolean](boolean)
 
 
 

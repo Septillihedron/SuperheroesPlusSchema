@@ -8,45 +8,45 @@
 
 
 
-### head - Optional EquipableData
+### head - Optional [EquipableData](EquipableData)
 
 
 
-### chest - Optional EquipableData
+### chest - Optional [EquipableData](EquipableData)
 
 
 
-### legs - Optional EquipableData
+### legs - Optional [EquipableData](EquipableData)
 
 
 
-### feet - Optional EquipableData
+### feet - Optional [EquipableData](EquipableData)
 
 
 
-### mainhand - Optional EquipableData
+### mainhand - Optional [EquipableData](EquipableData)
 
 
 
-### offhand - Optional EquipableData
+### offhand - Optional [EquipableData](EquipableData)
 
 
 
-### helmet - Optional EquipableData
+### helmet - Optional [EquipableData](EquipableData)
 
 
 
-### chestplate - Optional EquipableData
+### chestplate - Optional [EquipableData](EquipableData)
 
 
 
-### leggings - Optional EquipableData
+### leggings - Optional [EquipableData](EquipableData)
 
 
 
-### boots - Optional EquipableData
+### boots - Optional [EquipableData](EquipableData)
 
 
 
-### hand - Optional EquipableData
+### hand - Optional [EquipableData](EquipableData)
 

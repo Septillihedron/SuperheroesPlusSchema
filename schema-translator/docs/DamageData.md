@@ -8,7 +8,7 @@
 
 
 
-### damageCauses - Optional EntityDamageEvent.DamageCause[]
+### damageCauses - Optional [EntityDamageEvent.DamageCause[]](EntityDamageEvent.DamageCause[])
 
 
 
@@ -16,7 +16,7 @@
 
 
 
-### causes - Optional EntityDamageEvent.DamageCause[]
+### causes - Optional [EntityDamageEvent.DamageCause[]](EntityDamageEvent.DamageCause[])
 
 
 

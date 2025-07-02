@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### whitelist - Optional boolean
+### whitelist - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to true
 
 
 
-### entities - Optional EntityType[]
+### entities - Optional [EntityType[]](EntityType[])
 
 
 

@@ -8,11 +8,11 @@
 
 
 
-### color - Optional Llama.Color
+### color - Optional [Llama.Color](Llama.Color)
 
 
 
-### strength - Optional integer
+### strength - Optional [integer](integer)
 
 
 

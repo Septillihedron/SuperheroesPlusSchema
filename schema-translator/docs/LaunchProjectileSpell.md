@@ -8,7 +8,7 @@
 
 
 
-### projectile - Optional EntityData
+### projectile - Optional [EntityData](EntityData)
 
 
 

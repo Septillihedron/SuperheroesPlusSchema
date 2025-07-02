@@ -12,13 +12,13 @@ Defaults to {x: 0, y: 0, z: 0}
 
 
 
-### x - Required number
+### x - Required [number](number)
 
 
 
-### y - Required number
+### y - Required [number](number)
 
 
 
-### z - Required number
+### z - Required [number](number)
 

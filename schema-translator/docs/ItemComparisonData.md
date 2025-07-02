@@ -8,7 +8,7 @@
 
 
 
-### types - Optional Material[]
+### types - Optional [Material[]](Material[])
 
 
 
@@ -16,11 +16,11 @@ Defaults to []
 
 
 
-### type - Optional Material
+### type - Optional [Material](Material)
 
 
 
-### amount - Optional RangeData
+### amount - Optional [RangeData](RangeData)
 
 
 
@@ -28,5 +28,5 @@ Defaults to -Infinity - Infinity
 
 
 
-### metadata - Optional ItemMetaComparisonData
+### metadata - Optional [ItemMetaComparisonData](ItemMetaComparisonData)
 

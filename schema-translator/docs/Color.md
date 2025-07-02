@@ -12,13 +12,13 @@ Defaults to {red: 100, green: 0, blue: 200}
 
 
 
-### red - Required integer
+### red - Required [integer](integer)
 
 
 
-### green - Required integer
+### green - Required [integer](integer)
 
 
 
-### blue - Required integer
+### blue - Required [integer](integer)
 

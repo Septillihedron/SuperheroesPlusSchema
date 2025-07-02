@@ -8,9 +8,9 @@
 
 
 
-### value - Optional string
+### value - Optional [string](string)
 
 
 
-### signature - Optional string
+### signature - Optional [string](string)
 

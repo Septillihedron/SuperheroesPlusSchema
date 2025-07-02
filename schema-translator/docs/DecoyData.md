@@ -8,11 +8,11 @@
 
 
 
-### color - Optional Color
+### color - Optional [Color](Color)
 
 
 
-### base64Skin - Optional string
+### base64Skin - Optional [string](string)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### base64skin - Optional string
+### base64skin - Optional [string](string)
 
 
 

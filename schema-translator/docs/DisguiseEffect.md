@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -16,13 +16,13 @@ Defaults to SELF
 
 
 
-### enable - Optional boolean
+### enable - Optional [boolean](boolean)
 
 
 
-### entityType - Required EntityType
+### entityType - Required [EntityType](EntityType)
 
 
 
-### entity - Required EntityType
+### entity - Required [EntityType](EntityType)
 

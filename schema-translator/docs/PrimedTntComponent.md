@@ -8,7 +8,7 @@
 
 
 
-### fuseTicks - Optional integer
+### fuseTicks - Optional [integer](integer)
 
 
 

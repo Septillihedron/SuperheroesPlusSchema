@@ -8,7 +8,7 @@
 
 
 
-### blockData - Optional BlockData
+### blockData - Optional [BlockData](BlockData)
 
 
 
@@ -16,7 +16,7 @@ undocumented#
 
 
 
-### dropItem - Optional boolean
+### dropItem - Optional [boolean](boolean)
 
 
 
@@ -24,7 +24,7 @@ Defaults to true
 
 
 
-### cancelDrop - Optional boolean
+### cancelDrop - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to false
 
 
 
-### hurtEntities - Optional boolean
+### hurtEntities - Optional [boolean](boolean)
 
 
 
@@ -40,7 +40,7 @@ Defaults to false
 
 
 
-### damagePerBlock - Optional number
+### damagePerBlock - Optional [number](number)
 
 
 
@@ -48,7 +48,7 @@ Defaults to 2
 
 
 
-### maxDamage - Optional integer
+### maxDamage - Optional [integer](integer)
 
 
 

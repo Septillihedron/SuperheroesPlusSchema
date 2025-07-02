@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### itemComparison - Required ItemComparisonData
+### itemComparison - Required [ItemComparisonData](ItemComparisonData)
 
 
 
@@ -28,7 +28,7 @@ Defaults to SELF
 
 
 
-### slot - Optional InventorySlot
+### slot - Optional [InventorySlot](InventorySlot)
 
 
 
@@ -40,7 +40,7 @@ Defaults to HAND
 
 
 
-### item - Required ItemComparisonData
+### item - Required [ItemComparisonData](ItemComparisonData)
 
 
 

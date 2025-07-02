@@ -12,7 +12,7 @@ Defaults to {}
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 

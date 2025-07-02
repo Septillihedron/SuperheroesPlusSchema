@@ -8,7 +8,7 @@
 
 
 
-### velocity - Optional number
+### velocity - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 2.5
 
 
 
-### upwardsVelocity - Optional number
+### upwardsVelocity - Optional [number](number)
 
 
 
@@ -24,7 +24,7 @@ Defaults to 1
 
 
 
-### tooMuscularMessage - Optional string
+### tooMuscularMessage - Optional [string](string)
 
 
 
@@ -32,7 +32,7 @@ Defaults to <player> <white> is too strong to sit in a vehicle!
 
 
 
-### maxPassengers - Optional integer
+### maxPassengers - Optional [integer](integer)
 
 
 
@@ -40,7 +40,7 @@ Defaults to 10
 
 
 
-### upwardsvelocity - Optional number
+### upwardsvelocity - Optional [number](number)
 
 
 
@@ -48,7 +48,7 @@ Defaults to 1
 
 
 
-### toomuscularmessage - Optional string
+### toomuscularmessage - Optional [string](string)
 
 
 
@@ -56,7 +56,7 @@ Defaults to <player> <white> is too strong to sit in a vehicle!
 
 
 
-### maxpassengers - Optional integer
+### maxpassengers - Optional [integer](integer)
 
 
 

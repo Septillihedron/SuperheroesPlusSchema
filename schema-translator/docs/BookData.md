@@ -8,13 +8,13 @@
 
 
 
-### title - Required string
+### title - Required [string](string)
 
 
 
-### author - Required string
+### author - Required [string](string)
 
 
 
-### pages - Required string[]
+### pages - Required [string[]](string[])
 

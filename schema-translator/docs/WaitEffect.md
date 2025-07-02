@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### ticksDelay - Optional Duration
+### ticksDelay - Optional [Duration](Duration)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 20.0
 
 
 
-### delay - Optional Duration
+### delay - Optional [Duration](Duration)
 
 
 

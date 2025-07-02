@@ -8,17 +8,17 @@
 
 
 
-### entityTypes - Optional EntityType[]
+### entityTypes - Optional [EntityType[]](EntityType[])
 
 
 
-### displayName - Optional string
+### displayName - Optional [string](string)
 
 
 
-### entitytypes - Optional EntityType[]
+### entitytypes - Optional [EntityType[]](EntityType[])
 
 
 
-### displayname - Optional string
+### displayname - Optional [string](string)
 

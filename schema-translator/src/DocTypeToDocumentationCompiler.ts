@@ -80,7 +80,7 @@ class DocTypeToDocumentationCompiler {
             }
             const required = property.required? "Required" : "Optional"
             const type = property.type
-            md.subSubHeading(`${name} - ${required} ${type}`)
+            md.subSubHeading(`${name} - ${required} ${this.link(type)}`)
             const description = property.description
             md.paragraph(`${description}`)
             const def = property.defaultValue
@@ -127,7 +127,7 @@ class DocTypeToDocumentationCompiler {
     }
 
     link(type: string) {
-        return Markdown.link(type, type+".md")
+        return Markdown.link(type, type)
     }
 }
 

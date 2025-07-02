@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### speedRange - Optional RangeData
+### speedRange - Optional [RangeData](RangeData)
 
 
 
@@ -28,7 +28,7 @@ Defaults to SELF
 
 
 
-### speed - Optional RangeData
+### speed - Optional [RangeData](RangeData)
 
 
 

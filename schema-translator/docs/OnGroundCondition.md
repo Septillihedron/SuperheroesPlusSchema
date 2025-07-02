@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### grounded - Optional boolean
+### grounded - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to true
 
 
 
-### isGrounded - Optional boolean
+### isGrounded - Optional [boolean](boolean)
 
 
 

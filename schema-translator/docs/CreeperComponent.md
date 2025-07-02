@@ -8,7 +8,7 @@
 
 
 
-### fuse - Optional integer
+### fuse - Optional [integer](integer)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 30
 
 
 
-### ignite - Optional boolean
+### ignite - Optional [boolean](boolean)
 
 
 
@@ -24,7 +24,7 @@ Defaults to false
 
 
 
-### explosionRadius - Optional integer
+### explosionRadius - Optional [integer](integer)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 3
 
 
 
-### powered - Optional boolean
+### powered - Optional [boolean](boolean)
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-### canEquip - Optional boolean
+### canEquip - Optional [boolean](boolean)
 
 
 
@@ -16,5 +16,5 @@ Defaults to false
 
 
 
-### equipment - Optional EquipmentData
+### equipment - Optional [EquipmentData](EquipmentData)
 

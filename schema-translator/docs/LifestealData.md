@@ -8,7 +8,7 @@
 
 
 
-### lifestealPercentage - Optional number
+### lifestealPercentage - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 5
 
 
 
-### lifestealpercentage - Optional number
+### lifestealpercentage - Optional [number](number)
 
 
 

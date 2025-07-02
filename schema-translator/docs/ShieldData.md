@@ -8,7 +8,7 @@
 
 
 
-### cooldown - Optional Duration
+### cooldown - Optional [Duration](Duration)
 
 
 

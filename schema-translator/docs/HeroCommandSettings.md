@@ -8,9 +8,9 @@
 
 
 
-### cooldown - Optional number
+### cooldown - Optional [number](number)
 
 
 
-### aliases - Optional string[]
+### aliases - Optional [string[]](string[])
 

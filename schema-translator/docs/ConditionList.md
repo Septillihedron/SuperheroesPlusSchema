@@ -1,6 +1,6 @@
 
 
-# ConditionList - A mapping from name (any string) to [Condition](Condition.md)
+# ConditionList - A mapping from name (any string) to [Condition](Condition)
 
 
 
@@ -11,7 +11,7 @@
 ## Structure
 
 ```yaml
-name1: A value of [Condition](Condition.md)
-name2: A value of [Condition](Condition.md)
+name1: A value of [Condition](Condition)
+name2: A value of [Condition](Condition)
 ...
 ```

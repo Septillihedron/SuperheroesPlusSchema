@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### projectile - Optional EntityData
+### projectile - Optional [EntityData](EntityData)
 
 
 
@@ -32,7 +32,7 @@ Defaults to { type: \"SNOWBALL\"}
 
 
 
-### velocity - Optional number
+### velocity - Optional [number](number)
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### executor - Optional CommandEffect.Executor
+### executor - Optional [CommandEffect.Executor](CommandEffect.Executor)
 
 
 
@@ -32,7 +32,7 @@ Defaults to CONSOLE
 
 
 
-### commands - Optional ExpressiveMessage[]
+### commands - Optional [ExpressiveMessage[]](ExpressiveMessage[])
 
 
 

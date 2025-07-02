@@ -8,11 +8,11 @@
 
 
 
-### result - Required ItemStack
+### result - Required [ItemStack](ItemStack)
 
 
 
-### ingredients - Required {Material: integer}
+### ingredients - Required [{Material: integer}]({Material: integer})
 
 
 
@@ -20,9 +20,9 @@ Defaults to {}
 
 
 
-### uniqueKey - Required string
+### uniqueKey - Required [string](string)
 
 
 
-### unique_key - Required string
+### unique_key - Required [string](string)
 

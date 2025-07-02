@@ -8,25 +8,25 @@
 
 
 
-### attributes - Required {Attribute: number}
+### attributes - Required [{Attribute: number}]({Attribute: number})
 
 
 
-### equipmentSlot - Required EquipmentSlotGroup
+### equipmentSlot - Required [EquipmentSlotGroup](EquipmentSlotGroup)
 
 
 
-### operation - Required AttributesData.Operation
+### operation - Required [AttributesData.Operation](AttributesData.Operation)
 
 
 
-### uniqueKey - Required string
+### uniqueKey - Required [string](string)
 
 
 
-### equipment_slot - Required EquipmentSlotGroup
+### equipment_slot - Required [EquipmentSlotGroup](EquipmentSlotGroup)
 
 
 
-### unique_key - Required string
+### unique_key - Required [string](string)
 

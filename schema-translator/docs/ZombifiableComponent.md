@@ -8,7 +8,7 @@
 
 
 
-### immuneToZombification - Optional boolean
+### immuneToZombification - Optional [boolean](boolean)
 
 
 

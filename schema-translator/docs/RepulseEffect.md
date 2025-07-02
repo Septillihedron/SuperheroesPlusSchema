@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to OTHER
 
 
 
-### velocity - Optional number
+### velocity - Optional [number](number)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 1.0
 
 
 
-### add - Optional boolean
+### add - Optional [boolean](boolean)
 
 
 

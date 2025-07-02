@@ -8,9 +8,9 @@
 
 
 
-### database - Optional DatabaseSettings
+### database - Optional [DatabaseSettings](DatabaseSettings)
 
 
 
-### config_version - Optional string
+### config_version - Optional [string](string)
 

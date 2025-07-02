@@ -8,7 +8,7 @@
 
 
 
-### heartsGained - Optional integer
+### heartsGained - Optional [integer](integer)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 2
 
 
 
-### entities - Optional EntityType[]
+### entities - Optional [EntityType[]](EntityType[])
 
 
 
@@ -24,7 +24,7 @@ Defaults to []
 
 
 
-### maxHearts - Optional integer
+### maxHearts - Optional [integer](integer)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 24
 
 
 
-### heartsgained - Optional integer
+### heartsgained - Optional [integer](integer)
 
 
 
@@ -40,7 +40,7 @@ Defaults to 2
 
 
 
-### maxhearts - Optional integer
+### maxhearts - Optional [integer](integer)
 
 
 

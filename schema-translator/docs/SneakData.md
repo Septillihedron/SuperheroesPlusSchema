@@ -8,13 +8,13 @@
 
 
 
-### mustSneak - Optional boolean
+### mustSneak - Optional [boolean](boolean)
 
 
 
-### needsInvisibility - Optional boolean
+### needsInvisibility - Optional [boolean](boolean)
 
 
 
-### sneak - Optional boolean
+### sneak - Optional [boolean](boolean)
 

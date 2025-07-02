@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### message - Optional ExpressiveMessage
+### message - Optional [ExpressiveMessage](ExpressiveMessage)
 
 
 

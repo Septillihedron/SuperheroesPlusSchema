@@ -8,7 +8,7 @@
 
 
 
-### isBaby - Optional boolean
+### isBaby - Optional [boolean](boolean)
 
 
 

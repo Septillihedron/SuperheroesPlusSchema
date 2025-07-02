@@ -1,6 +1,6 @@
 
 
-# Expression - Type: [string | number](string | number.md)
+# Expression - Type: [string | number](string | number)
 
 
 

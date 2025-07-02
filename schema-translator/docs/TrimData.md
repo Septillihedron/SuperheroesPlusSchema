@@ -8,9 +8,9 @@
 
 
 
-### pattern - Required TrimPattern
+### pattern - Required [TrimPattern](TrimPattern)
 
 
 
-### material - Required TrimMaterial
+### material - Required [TrimMaterial](TrimMaterial)
 

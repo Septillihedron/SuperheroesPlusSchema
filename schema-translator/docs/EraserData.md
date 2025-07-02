@@ -8,7 +8,7 @@
 
 
 
-### range - Optional number
+### range - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 30
 
 
 
-### removedMessage - Optional string
+### removedMessage - Optional [string](string)
 
 
 
@@ -24,7 +24,7 @@ Defaults to <player> has had their power erased temporarily!
 
 
 
-### returnedMessage - Optional string
+### returnedMessage - Optional [string](string)
 
 
 
@@ -32,7 +32,7 @@ Defaults to <player> has had their power reinstated!
 
 
 
-### duration - Optional Duration
+### duration - Optional [Duration](Duration)
 
 
 

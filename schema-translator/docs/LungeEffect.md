@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### horizontalVelocity - Optional Expression
+### horizontalVelocity - Optional [Expression](Expression)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 0
 
 
 
-### verticalVelocity - Optional Expression
+### verticalVelocity - Optional [Expression](Expression)
 
 
 
@@ -44,7 +44,7 @@ Defaults to 0
 
 
 
-### overwrite - Optional boolean
+### overwrite - Optional [boolean](boolean)
 
 
 

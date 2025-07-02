@@ -8,5 +8,5 @@
 
 
 
-### effects - Required EffectList
+### effects - Required [EffectList](EffectList)
 

@@ -8,7 +8,7 @@
 
 
 
-### itemEnabled - Optional boolean
+### itemEnabled - Optional [boolean](boolean)
 
 
 
@@ -16,9 +16,9 @@ Defaults to true
 
 
 
-### eachHeroRequiresPermission - Optional boolean
+### eachHeroRequiresPermission - Optional [boolean](boolean)
 
 
 
-### itemCooldown - Optional number
+### itemCooldown - Optional [number](number)
 

@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,5 +20,5 @@ Defaults to SELF
 
 
 
-### fireTicks - Optional Expression
+### fireTicks - Optional [Expression](Expression)
 

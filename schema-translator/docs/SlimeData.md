@@ -8,7 +8,7 @@
 
 
 
-### speedMultiplier - Optional number
+### speedMultiplier - Optional [number](number)
 
 
 

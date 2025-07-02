@@ -8,7 +8,7 @@
 
 
 
-### name - Optional string
+### name - Optional [string](string)
 
 
 

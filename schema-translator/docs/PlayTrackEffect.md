@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -16,9 +16,9 @@ Defaults to SELF
 
 
 
-### song - Optional Song
+### song - Optional [Song](Song)
 
 
 
-### track - Optional Song
+### track - Optional [Song](Song)
 

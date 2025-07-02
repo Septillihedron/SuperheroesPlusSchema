@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### potionEffect - Required PotionEffectData
+### potionEffect - Required [PotionEffectData](PotionEffectData)
 
 
 
@@ -28,7 +28,7 @@ Defaults to SELF
 
 
 
-### potion - Required PotionEffectData
+### potion - Required [PotionEffectData](PotionEffectData)
 
 
 

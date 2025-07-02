@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to OTHER
 
 
 
-### durationInTicks - Optional Expression
+### durationInTicks - Optional [Expression](Expression)
 
 
 
@@ -32,7 +32,7 @@ Defaults to -1
 
 
 
-### blockToPlace - Optional Material
+### blockToPlace - Optional [Material](Material)
 
 
 
@@ -44,7 +44,7 @@ Defaults to COBWEB
 
 
 
-### duration - Required Expression
+### duration - Required [Expression](Expression)
 
 
 

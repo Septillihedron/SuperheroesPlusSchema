@@ -8,7 +8,7 @@
 
 
 
-### isCharged - Optional boolean
+### isCharged - Optional [boolean](boolean)
 
 
 

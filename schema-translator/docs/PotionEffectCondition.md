@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### effect - Required PotionEffectType
+### effect - Required [PotionEffectType](PotionEffectType)
 
 
 
@@ -28,7 +28,7 @@ Defaults to SELF
 
 
 
-### potency - Optional RangeData
+### potency - Optional [RangeData](RangeData)
 
 
 
@@ -40,7 +40,7 @@ Defaults to -Infinity - Infinity
 
 
 
-### duration - Optional RangeData
+### duration - Optional [RangeData](RangeData)
 
 
 

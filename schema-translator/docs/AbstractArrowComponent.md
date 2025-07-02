@@ -8,7 +8,7 @@
 
 
 
-### knockbackStrength - Optional integer
+### knockbackStrength - Optional [integer](integer)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 0
 
 
 
-### damage - Optional number
+### damage - Optional [number](number)
 
 
 
@@ -24,7 +24,7 @@ Defaults to 2.0
 
 
 
-### pierceLevel - Optional integer
+### pierceLevel - Optional [integer](integer)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 0
 
 
 
-### critical - Optional boolean
+### critical - Optional [boolean](boolean)
 
 
 
@@ -40,7 +40,7 @@ Defaults to false
 
 
 
-### pickupStatus - Optional AbstractArrow.PickupStatus
+### pickupStatus - Optional [AbstractArrow.PickupStatus](AbstractArrow.PickupStatus)
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-### weightedHeroes - Optional RerollGroup.WeightedHero[]
+### weightedHeroes - Optional [RerollGroup.WeightedHero[]](RerollGroup.WeightedHero[])
 
 
 
@@ -16,11 +16,11 @@ Defaults to []
 
 
 
-### itemComparator - Optional ItemComparisonData
+### itemComparator - Optional [ItemComparisonData](ItemComparisonData)
 
 
 
-### heroes - Optional RerollGroup.WeightedHero[]
+### heroes - Optional [RerollGroup.WeightedHero[]](RerollGroup.WeightedHero[])
 
 
 
@@ -28,5 +28,5 @@ Defaults to []
 
 
 
-### item - Optional ItemComparisonData
+### item - Optional [ItemComparisonData](ItemComparisonData)
 

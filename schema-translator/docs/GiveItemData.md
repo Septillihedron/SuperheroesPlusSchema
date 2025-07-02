@@ -8,19 +8,11 @@
 
 
 
-### item - Optional ItemStack
+### item - Optional [ItemStack](ItemStack)
 
 
 
-### canStore - Optional boolean
-
-
-
-Defaults to true
-
-
-
-### canDrop - Optional boolean
+### canStore - Optional [boolean](boolean)
 
 
 
@@ -28,7 +20,7 @@ Defaults to true
 
 
 
-### canLoseOnDeath - Optional boolean
+### canDrop - Optional [boolean](boolean)
 
 
 
@@ -36,7 +28,7 @@ Defaults to true
 
 
 
-### loseItemOnHeroLoss - Optional boolean
+### canLoseOnDeath - Optional [boolean](boolean)
 
 
 
@@ -44,7 +36,7 @@ Defaults to true
 
 
 
-### dropsOnDeath - Optional boolean
+### loseItemOnHeroLoss - Optional [boolean](boolean)
 
 
 
@@ -52,7 +44,15 @@ Defaults to true
 
 
 
-### canDropOnDeath - Optional boolean
+### dropsOnDeath - Optional [boolean](boolean)
+
+
+
+Defaults to true
+
+
+
+### canDropOnDeath - Optional [boolean](boolean)
 
 
 

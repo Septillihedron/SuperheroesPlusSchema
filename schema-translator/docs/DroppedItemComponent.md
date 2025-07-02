@@ -8,5 +8,5 @@
 
 
 
-### stackData - Optional ItemStackData
+### stackData - Optional [ItemStackData](ItemStackData)
 

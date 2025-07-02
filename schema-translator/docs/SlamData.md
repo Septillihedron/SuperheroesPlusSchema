@@ -8,7 +8,7 @@
 
 
 
-### hand - Optional ItemStack
+### hand - Optional [ItemStack](ItemStack)
 
 
 
@@ -16,7 +16,7 @@ Defaults to AIR
 
 
 
-### airCooldown - Optional number
+### airCooldown - Optional [number](number)
 
 
 
@@ -24,7 +24,7 @@ Defaults to 1
 
 
 
-### foodCost - Optional integer
+### foodCost - Optional [integer](integer)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 0
 
 
 
-### minimumFood - Optional integer
+### minimumFood - Optional [integer](integer)
 
 
 
@@ -40,7 +40,7 @@ Defaults to 0
 
 
 
-### radius - Optional number
+### radius - Optional [number](number)
 
 
 
@@ -48,7 +48,7 @@ Defaults to 5
 
 
 
-### damage - Optional number
+### damage - Optional [number](number)
 
 
 
@@ -56,7 +56,7 @@ Defaults to 0
 
 
 
-### item - Optional ItemStack
+### item - Optional [ItemStack](ItemStack)
 
 
 
@@ -64,7 +64,7 @@ Defaults to AIR
 
 
 
-### diameterRadius - Optional number
+### diameterRadius - Optional [number](number)
 
 
 

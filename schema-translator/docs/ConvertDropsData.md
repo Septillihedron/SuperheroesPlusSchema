@@ -8,7 +8,7 @@
 
 
 
-### dropToNewDrop - Optional {Material: ItemStack}
+### dropToNewDrop - Optional [{Material: ItemStack}]({Material: ItemStack})
 
 
 
@@ -16,7 +16,7 @@ Defaults to {}
 
 
 
-### ignoredBlocks - Optional Material[]
+### ignoredBlocks - Optional [Material[]](Material[])
 
 
 
@@ -24,7 +24,7 @@ Defaults to []
 
 
 
-### ignoreSilkTouch - Optional boolean
+### ignoreSilkTouch - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to false
 
 
 
-### convertMap - Optional {Material: ItemStack}
+### convertMap - Optional [{Material: ItemStack}]({Material: ItemStack})
 
 
 

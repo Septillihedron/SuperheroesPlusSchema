@@ -1,6 +1,6 @@
 
 
-# EffectList - A mapping from name (any string) to [Effect](Effect.md)
+# EffectList - A mapping from name (any string) to [Effect](Effect)
 
 
 
@@ -11,7 +11,7 @@
 ## Structure
 
 ```yaml
-name1: A value of [Effect](Effect.md)
-name2: A value of [Effect](Effect.md)
+name1: A value of [Effect](Effect)
+name2: A value of [Effect](Effect)
 ...
 ```

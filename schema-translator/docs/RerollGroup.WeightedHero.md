@@ -8,9 +8,9 @@
 
 
 
-### hero - Required string
+### hero - Required [string](string)
 
 
 
-### weight - Required integer
+### weight - Required [integer](integer)
 

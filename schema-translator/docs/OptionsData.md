@@ -8,7 +8,7 @@
 
 
 
-### colours - Optional Color[]
+### colours - Optional [Color[]](Color[])
 
 
 
@@ -16,7 +16,7 @@ Defaults to []
 
 
 
-### scale - Optional number
+### scale - Optional [number](number)
 
 
 

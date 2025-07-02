@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to SELF
 
 
 
-### particleData - Required ParticleData
+### particleData - Required [ParticleData](ParticleData)
 
 
 

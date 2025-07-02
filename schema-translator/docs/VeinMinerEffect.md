@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to LOCATION
 
 
 
-### materials - Optional Material[]
+### materials - Optional [Material[]](Material[])
 
 
 
@@ -32,7 +32,7 @@ Defaults to []
 
 
 
-### delay - Optional Duration
+### delay - Optional [Duration](Duration)
 
 
 
@@ -44,7 +44,7 @@ Defaults to 0.05
 
 
 
-### limit - Optional integer
+### limit - Optional [integer](integer)
 
 
 
@@ -56,7 +56,7 @@ Defaults to 10
 
 
 
-### allowMultiTypeVein - Optional boolean
+### allowMultiTypeVein - Optional [boolean](boolean)
 
 
 
@@ -68,7 +68,7 @@ Defaults to false
 
 
 
-### types - Optional Material[]
+### types - Optional [Material[]](Material[])
 
 
 

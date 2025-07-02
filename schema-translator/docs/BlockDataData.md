@@ -8,7 +8,7 @@
 
 
 
-### material - Optional Material
+### material - Optional [Material](Material)
 
 
 
@@ -16,7 +16,7 @@ Defaults to STONE
 
 
 
-### level - Optional integer
+### level - Optional [integer](integer)
 
 
 
@@ -24,7 +24,7 @@ Defaults to -1
 
 
 
-### age - Optional integer
+### age - Optional [integer](integer)
 
 
 
@@ -32,7 +32,7 @@ Defaults to -1
 
 
 
-### type - Optional Material
+### type - Optional [Material](Material)
 
 
 

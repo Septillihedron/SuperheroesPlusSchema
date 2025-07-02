@@ -8,7 +8,7 @@
 
 
 
-### range - Optional integer
+### range - Optional [integer](integer)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 10
 
 
 
-### repel - Optional boolean
+### repel - Optional [boolean](boolean)
 
 
 
@@ -24,7 +24,7 @@ Defaults to false
 
 
 
-### mustSneak - Optional boolean
+### mustSneak - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to true
 
 
 
-### entity - Optional EntityType
+### entity - Optional [EntityType](EntityType)
 
 
 
@@ -40,7 +40,7 @@ Defaults to LIGHTNING_BOLT
 
 
 
-### action - Optional Action[]
+### action - Optional [Action[]](Action[])
 
 
 
@@ -48,7 +48,7 @@ undocumented#
 
 
 
-### cooldown - Optional number
+### cooldown - Optional [number](number)
 
 
 
@@ -56,7 +56,7 @@ Defaults to 10.0
 
 
 
-### cooldownMessage - Optional string
+### cooldownMessage - Optional [string](string)
 
 
 
@@ -64,7 +64,7 @@ Defaults to <yellow><bold>Zeus <white>Cooldown: <s> seconds
 
 
 
-### sneak - Optional boolean
+### sneak - Optional [boolean](boolean)
 
 
 
@@ -72,7 +72,7 @@ Defaults to true
 
 
 
-### mustsneak - Optional boolean
+### mustsneak - Optional [boolean](boolean)
 
 
 
@@ -80,7 +80,7 @@ Defaults to true
 
 
 
-### entityType - Optional EntityType
+### entityType - Optional [EntityType](EntityType)
 
 
 

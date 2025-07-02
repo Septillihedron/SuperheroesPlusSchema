@@ -8,7 +8,7 @@
 
 
 
-### tamingDifficulty - Optional integer
+### tamingDifficulty - Optional [integer](integer)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 1
 
 
 
-### jumpStrength - Optional number
+### jumpStrength - Optional [number](number)
 
 
 
@@ -24,7 +24,7 @@ Defaults to 0.7
 
 
 
-### tamed - Optional boolean
+### tamed - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to false
 
 
 
-### hasSaddle - Optional boolean
+### hasSaddle - Optional [boolean](boolean)
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-### mode - Required enum
+### mode - Required [enum](enum)
 
 
 
@@ -20,7 +20,7 @@ Defaults to OTHER
 
 
 
-### velocity - Optional Expression
+### velocity - Optional [Expression](Expression)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 1.0
 
 
 
-### damage - Optional Expression
+### damage - Optional [Expression](Expression)
 
 
 
@@ -44,7 +44,7 @@ Defaults to 4
 
 
 
-### entityData - Optional EntityData
+### entityData - Optional [EntityData](EntityData)
 
 
 
@@ -56,7 +56,7 @@ Defaults to { type: \"ARROW\"}
 
 
 
-### fireTicks - Optional Expression
+### fireTicks - Optional [Expression](Expression)
 
 
 
@@ -68,7 +68,7 @@ Defaults to 0
 
 
 
-### entity - Optional EntityData
+### entity - Optional [EntityData](EntityData)
 
 
 

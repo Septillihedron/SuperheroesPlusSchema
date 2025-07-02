@@ -8,25 +8,25 @@
 
 
 
-### config_version - Optional string
+### config_version - Optional [string](string)
 
 
 
-### powerOnStart - Optional PowerOnStartSettings
+### powerOnStart - Optional [PowerOnStartSettings](PowerOnStartSettings)
 
 
 
-### gui - Optional GUISettings
+### gui - Optional [GUISettings](GUISettings)
 
 
 
-### heroCommand - Optional HeroCommandSettings
+### heroCommand - Optional [HeroCommandSettings](HeroCommandSettings)
 
 
 
-### defaultHero - Optional Superhero
+### defaultHero - Optional [Superhero](Superhero)
 
 
 
-### disabledWorlds - Optional string[]
+### disabledWorlds - Optional [string[]](string[])
 

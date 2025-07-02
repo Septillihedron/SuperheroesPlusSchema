@@ -8,9 +8,9 @@
 
 
 
-### shapeless - Required ShapelessRecipeData
+### shapeless - Required [ShapelessRecipeData](ShapelessRecipeData)
 
 
 
-### shaped - Required ShapedRecipeData
+### shaped - Required [ShapedRecipeData](ShapedRecipeData)
 

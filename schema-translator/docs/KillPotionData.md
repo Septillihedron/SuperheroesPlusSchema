@@ -8,5 +8,5 @@
 
 
 
-### entities - Optional EntityType[]
+### entities - Optional [EntityType[]](EntityType[])
 

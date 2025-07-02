@@ -8,7 +8,7 @@
 
 
 
-### minimumPhaseYAxis - Optional number
+### minimumPhaseYAxis - Optional [number](number)
 
 
 

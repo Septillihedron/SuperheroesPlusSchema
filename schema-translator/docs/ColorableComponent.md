@@ -8,5 +8,5 @@
 
 
 
-### dyeColor - Optional DyeColor
+### dyeColor - Optional [DyeColor](DyeColor)
 

@@ -8,7 +8,7 @@
 
 
 
-### types - Optional PotionEffectType[]
+### types - Optional [PotionEffectType[]](PotionEffectType[])
 
 
 
@@ -20,7 +20,7 @@ Defaults to []
 
 
 
-### causes - Optional EntityPotionEffectEvent.Cause[]
+### causes - Optional [EntityPotionEffectEvent.Cause[]](EntityPotionEffectEvent.Cause[])
 
 
 
@@ -28,7 +28,7 @@ Defaults to []
 
 
 
-### actions - Optional EntityPotionEffectEvent.Action[]
+### actions - Optional [EntityPotionEffectEvent.Action[]](EntityPotionEffectEvent.Action[])
 
 
 

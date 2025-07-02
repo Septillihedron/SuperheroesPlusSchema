@@ -8,17 +8,17 @@
 
 
 
-### startsOpen - Required boolean
+### startsOpen - Required [boolean](boolean)
 
 
 
-### onStart - Required boolean
+### onStart - Required [boolean](boolean)
 
 
 
-### closeable - Required boolean
+### closeable - Required [boolean](boolean)
 
 
 
-### canClose - Required boolean
+### canClose - Required [boolean](boolean)
 

@@ -8,7 +8,7 @@
 
 
 
-### entities - Optional EntityType[]
+### entities - Optional [EntityType[]](EntityType[])
 
 
 
@@ -16,7 +16,7 @@ Defaults to []
 
 
 
-### causes - Optional EntityDamageEvent.DamageCause[]
+### causes - Optional [EntityDamageEvent.DamageCause[]](EntityDamageEvent.DamageCause[])
 
 
 
@@ -24,7 +24,7 @@ Defaults to []
 
 
 
-### whitelist - Optional boolean
+### whitelist - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to false
 
 
 
-### expectedMaxDamage - Optional number
+### expectedMaxDamage - Optional [number](number)
 
 
 
@@ -40,7 +40,7 @@ Defaults to 30
 
 
 
-### maxDamage - Optional number
+### maxDamage - Optional [number](number)
 
 
 
@@ -48,7 +48,7 @@ Defaults to 15
 
 
 
-### minDamage - Optional number
+### minDamage - Optional [number](number)
 
 
 
@@ -56,7 +56,7 @@ Defaults to 0
 
 
 
-### priority - Optional integer
+### priority - Optional [integer](integer)
 
 
 
@@ -64,7 +64,7 @@ Defaults to 0
 
 
 
-### incoming - Optional boolean
+### incoming - Optional [boolean](boolean)
 
 
 
@@ -72,7 +72,7 @@ Defaults to false
 
 
 
-### outgoing - Optional boolean
+### outgoing - Optional [boolean](boolean)
 
 
 
@@ -80,7 +80,7 @@ Defaults to false
 
 
 
-### eased - Optional boolean
+### eased - Optional [boolean](boolean)
 
 
 
@@ -88,7 +88,7 @@ Defaults to false
 
 
 
-### limitProjectiles - Optional boolean
+### limitProjectiles - Optional [boolean](boolean)
 
 
 

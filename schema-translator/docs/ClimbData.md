@@ -8,7 +8,7 @@
 
 
 
-### proximity - Optional number
+### proximity - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 0.2
 
 
 
-### climbSpeed - Optional number
+### climbSpeed - Optional [number](number)
 
 
 
@@ -24,7 +24,7 @@ Defaults to 0.2
 
 
 
-### debug - Optional boolean
+### debug - Optional [boolean](boolean)
 
 
 
@@ -32,7 +32,7 @@ Defaults to false
 
 
 
-### blocks - Optional Material[]
+### blocks - Optional [Material[]](Material[])
 
 
 
@@ -40,7 +40,7 @@ Defaults to []
 
 
 
-### whitelist - Optional boolean
+### whitelist - Optional [boolean](boolean)
 
 
 
@@ -48,7 +48,7 @@ Defaults to true
 
 
 
-### speed - Optional number
+### speed - Optional [number](number)
 
 
 

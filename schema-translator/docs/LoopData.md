@@ -8,7 +8,7 @@
 
 
 
-### period - Optional Duration
+### period - Optional [Duration](Duration)
 
 
 

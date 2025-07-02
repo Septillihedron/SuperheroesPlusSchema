@@ -12,7 +12,7 @@
 
 
 
-### trigger - Required TriggerData
+### trigger - Required [TriggerData](TriggerData)
 
 
 
@@ -20,7 +20,7 @@
 
 
 
-### effects - Required EffectList
+### effects - Required [EffectList](EffectList)
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-### conditions - Required ConditionList
+### conditions - Required [ConditionList](ConditionList)
 
 
 

@@ -1,4 +1,4 @@
 
 
-# BlockData - Type: [BlockDataData](BlockDataData.md)
+# BlockData - Type: [BlockDataData](BlockDataData)
 

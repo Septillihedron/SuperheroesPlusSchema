@@ -1,4 +1,4 @@
 
 
-# PlusUltraSkillsContainer - Type: [SkillsContainer](SkillsContainer.md)
+# PlusUltraSkillsContainer - Type: [SkillsContainer](SkillsContainer)
 

@@ -8,13 +8,13 @@
 
 
 
-### displayName - Required string
+### displayName - Required [string](string)
 
 
 
-### lore - Required LoreData
+### lore - Required [LoreData](LoreData)
 
 
 
-### enchants - Required EnchantComparisonData
+### enchants - Required [EnchantComparisonData](EnchantComparisonData)
 

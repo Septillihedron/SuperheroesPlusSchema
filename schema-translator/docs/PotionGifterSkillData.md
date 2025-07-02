@@ -8,7 +8,7 @@
 
 
 
-### cooldown - Optional number
+### cooldown - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 10
 
 
 
-### receiverMessage - Optional string
+### receiverMessage - Optional [string](string)
 
 
 
@@ -24,7 +24,7 @@ Defaults to <grey><i>You have received a potion effect.
 
 
 
-### giverMessage - Optional string
+### giverMessage - Optional [string](string)
 
 
 
@@ -32,7 +32,7 @@ Defaults to <grey><i>You gave them a potion effect.
 
 
 
-### cooldownMessage - Optional string
+### cooldownMessage - Optional [string](string)
 
 
 

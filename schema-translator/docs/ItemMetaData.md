@@ -8,15 +8,15 @@
 
 
 
-### displayName - Optional string
+### displayName - Optional [string](string)
 
 
 
-### lore - Optional string[]
+### lore - Optional [string[]](string[])
 
 
 
-### isUnbreakable - Optional boolean
+### isUnbreakable - Optional [boolean](boolean)
 
 
 
@@ -24,7 +24,7 @@ Defaults to false
 
 
 
-### durability - Optional integer
+### durability - Optional [integer](integer)
 
 
 
@@ -32,7 +32,7 @@ Defaults to 0
 
 
 
-### customModelData - Optional integer
+### customModelData - Optional [integer](integer)
 
 
 
@@ -40,15 +40,15 @@ Defaults to 0
 
 
 
-### attributes - Optional AttributesData
+### attributes - Optional [AttributesData](AttributesData)
 
 
 
-### trim - Optional TrimData
+### trim - Optional [TrimData](TrimData)
 
 
 
-### flags - Optional ItemFlag[]
+### flags - Optional [ItemFlag[]](ItemFlag[])
 
 
 
@@ -56,15 +56,15 @@ Defaults to []
 
 
 
-### book - Optional BookData
+### book - Optional [BookData](BookData)
 
 
 
-### color - Optional LeatherArmorColor
+### color - Optional [LeatherArmorColor](LeatherArmorColor)
 
 
 
-### enchantments - Optional {Enchantment: integer}
+### enchantments - Optional [{Enchantment: integer}]({Enchantment: integer})
 
 
 

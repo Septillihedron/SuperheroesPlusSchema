@@ -8,7 +8,7 @@
 
 
 
-### hasChest - Optional boolean
+### hasChest - Optional [boolean](boolean)
 
 
 

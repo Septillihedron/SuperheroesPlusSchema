@@ -8,15 +8,15 @@
 
 
 
-### inputItem - Optional ItemStack
+### inputItem - Optional [ItemStack](ItemStack)
 
 
 
-### outputItem - Optional ItemStack
+### outputItem - Optional [ItemStack](ItemStack)
 
 
 
-### chance - Optional number
+### chance - Optional [number](number)
 
 
 

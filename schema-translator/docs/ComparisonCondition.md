@@ -8,7 +8,7 @@
 
 
 
-### value - Required Expression
+### value - Required [Expression](Expression)
 
 
 
@@ -16,7 +16,7 @@
 
 
 
-### comparison - Optional ComparisonCondition.Comparison
+### comparison - Optional [ComparisonCondition.Comparison](ComparisonCondition.Comparison)
 
 
 

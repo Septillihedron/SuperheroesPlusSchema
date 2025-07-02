@@ -8,7 +8,7 @@
 
 
 
-### damage - Optional number
+### damage - Optional [number](number)
 
 
 
@@ -16,7 +16,7 @@ Defaults to 1.0
 
 
 
-### checkShelter - Optional boolean
+### checkShelter - Optional [boolean](boolean)
 
 
 
