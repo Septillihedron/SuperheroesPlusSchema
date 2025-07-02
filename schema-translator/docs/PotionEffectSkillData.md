@@ -1,0 +1,8 @@
+
+
+# PotionEffectSkillData - An object
+
+
+
+## Properties
+

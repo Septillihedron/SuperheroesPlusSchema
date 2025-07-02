@@ -1,0 +1,40 @@
+
+
+# GiveItemEffect - An object
+
+
+
+## Properties
+
+
+
+### mode - Required enum
+
+
+
+ The mode of operation
+
+
+
+Defaults to SELF
+
+
+
+### item - Required ItemStack
+
+
+
+ The item to give
+
+
+
+### dropIfFull - Optional boolean
+
+
+
+ If true, drops the items that did not fit into the inventory
+
+
+
+Defaults to true
+

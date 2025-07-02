@@ -1,0 +1,16 @@
+
+
+# Explosive - Enum
+
+
+
+## Allowed values
+
+* BREEZE_WIND_CHARGE
+* DRAGON_FIREBALL
+* FIREBALL
+* SMALL_FIREBALL
+* TNT
+* TNT_MINECART
+* WIND_CHARGE
+* WITHER_SKULL

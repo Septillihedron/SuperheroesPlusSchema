@@ -1,0 +1,8 @@
+
+
+# LightSkillData - An object
+
+
+
+## Properties
+

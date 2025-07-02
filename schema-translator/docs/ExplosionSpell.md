@@ -1,0 +1,8 @@
+
+
+# ExplosionSpell - An object
+
+
+
+## Properties
+

@@ -1,0 +1,26 @@
+
+
+# TrimPattern - Enum
+
+
+
+## Allowed values
+
+* bolt
+* coast
+* dune
+* eye
+* flow
+* host
+* raiser
+* rib
+* sentry
+* shaper
+* silence
+* snout
+* spire
+* tide
+* vex
+* ward
+* wayfinder
+* wild

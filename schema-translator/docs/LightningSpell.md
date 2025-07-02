@@ -1,0 +1,8 @@
+
+
+# LightningSpell - An object
+
+
+
+## Properties
+

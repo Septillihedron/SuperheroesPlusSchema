@@ -1,0 +1,8 @@
+
+
+# SneakingPotionData - An object
+
+
+
+## Properties
+

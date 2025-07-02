@@ -1,0 +1,15 @@
+
+
+# ThrowableProjectile - Enum
+
+
+
+## Allowed values
+
+* EGG
+* ENDER_PEARL
+* EXPERIENCE_BOTTLE
+* LINGERING_POTION
+* SNOWBALL
+* SPLASH_POTION
+* TRIDENT
