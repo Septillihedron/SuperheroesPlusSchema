@@ -1,6 +1,3 @@
-Condition: union! 
-    unions: 
-        HERO: SuperheroCondition!
 SkillData: union(unionIdentifier = skill)! 
     properties: 
         conditions: ConditionListWrapper? {}
@@ -56,7 +53,7 @@ SkillData: union(unionIdentifier = skill)!
         LIGHTNING_SPELL: LightningSpell! 
         TRANSMUTATION_SPELL: TransmutationSpell! 
         FANGS_SPELL: FangsSpell!
-SpellData: union(unionIdentifier = skill)! 
+SpellData: union(unionIdentifier = skill, superdoc = SkillData)! 
     properties: 
         fuel: Material? REDSTONE
         spellName: string? #undocumented#
@@ -68,8 +65,6 @@ SpellData: union(unionIdentifier = skill)!
         lore: string[]? []
         displayNameFormat: string? <purple><spellName>
         loreFormat: string[]? []
-        conditions: ConditionListWrapper? {}
-        skill: string?
     unions: 
         PROJECTILE_SPELL: LaunchProjectileSpell! 
         BLOCK_SPELL: PlaceBlockSpell! 
@@ -77,30 +72,24 @@ SpellData: union(unionIdentifier = skill)!
         LIGHTNING_SPELL: LightningSpell! 
         TRANSMUTATION_SPELL: TransmutationSpell! 
         FANGS_SPELL: FangsSpell!
-AttributeSkillData: object? 
+AttributeSkillData: object(superdoc = SkillData)? 
     properties: 
         attributes: {Attribute: number}! 
         equipmentSlot: EquipmentSlotGroup! 
         operation: AttributesData.Operation! 
         uniqueKey: string! 
         equipment_slot: EquipmentSlotGroup! 
-        unique_key: string! 
-        conditions: ConditionListWrapper? {}
-        skill: string?
-AuraData: object? 
+        unique_key: string!
+AuraData: object(superdoc = SkillData)? 
     properties: 
         radius: number? 5
-        conditions: ConditionListWrapper? {}
-        skill: string?
 BlankData: object? 
-BlockDropsData: object? 
+BlockDropsData: object(superdoc = SkillData)? 
     properties: 
         dropToNewDrop: {Material: ItemStack}? {}
         replaceDrops: boolean? false
         convertMap: {Material: ItemStack}? {}
-        conditions: ConditionListWrapper? {}
-        skill: string?
-BlockRayData: object? 
+BlockRayData: object(superdoc = SkillData)? 
     properties: 
         maxDistance: integer? 20
         shouldRevert: boolean? false
@@ -108,8 +97,6 @@ BlockRayData: object?
         blocksToReplace: Material[]? []
         blockRayMode: BlockRayMode? 
         revertsAfter: Duration? 15.0
-        conditions: ConditionListWrapper? {}
-        skill: string?
 ChatLanguageSettings: object? 
     properties: 
         gainedHero: string? 
@@ -120,7 +107,7 @@ ChatLanguageSettings: object?
         invalidPlayerMessage: string? 
         invalidCommandMessage: string? 
         invalidRerollGroupMessage: string?
-ClimbData: object? 
+ClimbData: object(superdoc = SkillData)? 
     properties: 
         proximity: number? 0.2
         climbSpeed: number? 0.2
@@ -128,8 +115,6 @@ ClimbData: object?
         blocks: Material[]? []
         whitelist: boolean? true
         speed: number? 0.2
-        conditions: ConditionListWrapper? {}
-        skill: string?
 ConfigYaml: object? 
     properties: 
         config_version: string? 
@@ -138,43 +123,34 @@ ConfigYaml: object?
         heroCommand: HeroCommandSettings? 
         defaultHero: Superhero? 
         disabledWorlds: string[]?
-ConsumeSkillData: object? 
+ConsumeSkillData: object(superdoc = SkillData)? 
     properties: 
         material: Material? DIRT
         hunger: integer? 0
-        conditions: ConditionListWrapper? {}
-        skill: string?
-ConvertBlockData: object? 
+ConvertBlockData: object(superdoc = CooldownData, superdoc = SkillData)? 
     properties: 
         inputBlocks: Material[]? []
         outputBlock: Material? GOLD_BLOCK
-        cooldown: number? 0
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
-        conditions: ConditionListWrapper? {}
-        skill: string?
-ConvertDropsData: object? 
+ConvertDropsData: object(superdoc = SkillData)? 
     properties: 
         dropToNewDrop: {Material: ItemStack}? {}
         ignoredBlocks: Material[]? []
         ignoreSilkTouch: boolean? false
         convertMap: {Material: ItemStack}? {}
-        conditions: ConditionListWrapper? {}
-        skill: string?
-ConvertItemData: object? 
+ConvertItemData: object(superdoc = SkillData)? 
     properties: 
         inputItem: ItemStack? 
         outputItem: ItemStack? 
         chance: number? 1
-        conditions: ConditionListWrapper? {}
-        skill: string?
-CraftingData: object? 
+CooldownData: object(superdoc = SkillData)? 
+    properties: 
+        cooldown: number? 0
+        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
+CraftingData: object(superdoc = SkillData)? 
     properties: 
         shapeless: ShapelessRecipeData! 
-        shaped: ShapedRecipeData! 
-        isShaped: true
-        conditions: ConditionListWrapper? {}
-        skill: string?
-CreeperData: object? 
+        shaped: ShapedRecipeData!
+CreeperData: object(superdoc = CooldownData, superdoc = SkillData)? 
     properties: 
         fuse: Duration? 2.0
         creeperPower: number? 1
@@ -183,11 +159,7 @@ CreeperData: object?
         creeper_power: number? 1
         upwards_velocity: number? 2.5
         slowfall_duration: Duration? 7.0
-        cooldown: number? 0
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
-        conditions: ConditionListWrapper? {}
-        skill: string?
-DamageModifierData: object? 
+DamageModifierData: object(superdoc = SkillData)? 
     properties: 
         entities: EntityType[]? []
         causes: EntityDamageEvent.DamageCause[]? []
@@ -200,21 +172,15 @@ DamageModifierData: object?
         outgoing: boolean? false
         eased: boolean? false
         limitProjectiles: boolean? true
-        conditions: ConditionListWrapper? {}
-        skill: string?
-DamagePotionData: object? 
+DamagePotionData: object(superdoc = SkillData)? 
     properties: 
         damageCauses: EntityDamageEvent.DamageCause[]? []
         damageCause: EntityDamageEvent.DamageCause[]? []
-        conditions: ConditionListWrapper? {}
-        skill: string?
-DamageResistanceData: object? 
+DamageResistanceData: object(superdoc = SkillData)? 
     properties: 
         damageMultiplier: number? 0
         damageCauses: EntityDamageEvent.DamageCause[]? 
-        damageCause: EntityDamageEvent.DamageCause[]? 
-        conditions: ConditionListWrapper? {}
-        skill: string?
+        damageCause: EntityDamageEvent.DamageCause[]?
 DatabaseSettings: object? 
     properties: 
         type: string? YAML
@@ -227,31 +193,23 @@ DatabaseYaml: object?
     properties: 
         database: DatabaseSettings? 
         config_version: string?
-DecoyData: object? 
+DecoyData: object(superdoc = SkillData)? 
     properties: 
         color: Color? 
         base64Skin: string? SELF
         base64skin: string? SELF
-        conditions: ConditionListWrapper? {}
-        skill: string?
-EggLayerData: object? 
+EggLayerData: object(superdoc = SkillData)? 
     properties: 
         tickDelay: Duration? 15.0
-        conditions: ConditionListWrapper? {}
-        skill: string?
-EraserData: object? 
+EraserData: object(superdoc = CooldownData, superdoc = SkillData)? 
     properties: 
         range: number? 30
         removedMessage: string? <player> has had their power erased temporarily!
         returnedMessage: string? <player> has had their power reinstated!
         duration: Duration? 7.5
-        cooldown: number? 0
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
-        conditions: ConditionListWrapper? {}
-        skill: string?
 ExplosionSpell: object? 
 FangsSpell: object? 
-GiveItemData: object? 
+GiveItemData: object(superdoc = SkillData)? 
     properties: 
         item: ItemStack? 
         canStore: boolean? true
@@ -260,8 +218,6 @@ GiveItemData: object?
         loseItemOnHeroLoss: boolean? true
         dropsOnDeath: boolean? true
         canDropOnDeath: boolean? true
-        conditions: ConditionListWrapper? {}
-        skill: string?
 GlobalRerollSettings: object? 
     properties: 
         itemEnabled: boolean? true
@@ -276,7 +232,7 @@ GUISettings: object?
         onStart: boolean! 
         closeable: boolean! 
         canClose: boolean!
-GunData: object? 
+GunData: object(superdoc = CooldownData, superdoc = SkillData)? 
     properties: 
         damage: number? 5.0
         maxDistance: number? 64
@@ -284,37 +240,27 @@ GunData: object?
         item: ItemComparisonData? {}
         shootSound: SoundData? 
         trailParticle: ParticleData? 
-        hitParticle: ParticleData? 
-        cooldown: number? 0
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
-        conditions: ConditionListWrapper? {}
-        skill: string?
-HeartStealData: object? 
+        hitParticle: ParticleData?
+HeartStealData: object(superdoc = SkillData)? 
     properties: 
         heartsGained: integer? 2
         entities: EntityType[]? []
         maxHearts: integer? 24
         heartsgained: integer? 2
         maxhearts: integer? 24
-        conditions: ConditionListWrapper? {}
-        skill: string?
 HeroCommandSettings: object? 
     properties: 
         cooldown: number? 
         aliases: string[]?
-InstantBreakData: object? 
+InstantBreakData: object(superdoc = SkillData)? 
     properties: 
         instantBreakable: Material[]? []
         breakUsing: Material? 
         blocks: Material[]? []
-        breakusing: Material? 
-        conditions: ConditionListWrapper? {}
-        skill: string?
-KillPotionData: object? 
+        breakusing: Material?
+KillPotionData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)? 
     properties: 
-        entities: EntityType[]? 
-        conditions: ConditionListWrapper? {}
-        skill: string?
+        entities: EntityType[]?
 LanguageYaml: object? 
     properties: 
         config_version: string? 
@@ -322,103 +268,61 @@ LanguageYaml: object?
         guiLanguageSettings: GUILanguageSettings? 
         Chat: ChatLanguageSettings? 
         GUI: GUILanguageSettings?
-LaunchProjectileSpell: object? 
+LaunchProjectileSpell: object(superdoc = SpellData, superdoc = SkillData)? 
     properties: 
         projectile: EntityData? {}
-        fuel: Material? REDSTONE
-        spellName: string? #undocumented#
-        displayName: string? <purple><spellName>
-        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining.
-        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel>
-        cooldown: number? 1
-        cost: integer? 1
-        lore: string[]? []
-        displayNameFormat: string? <purple><spellName>
-        loreFormat: string[]? []
-        conditions: ConditionListWrapper? {}
-        skill: string?
-LifestealData: object? 
+LifestealData: object(superdoc = SkillData)? 
     properties: 
         lifestealPercentage: number? 5
         lifestealpercentage: number? 5
-        conditions: ConditionListWrapper? {}
-        skill: string?
 LightningSpell: object? 
 LightSkillData: object? 
-NoHungerData: object? 
+NoHungerData: object(superdoc = SkillData)? 
     properties: 
         minimumHunger: number? 19
-        conditions: ConditionListWrapper? {}
-        skill: string?
-OHKOData: object? 
+OHKOData: object(superdoc = SkillData)? 
     properties: 
         entityTypes: EntityType[]? 
         displayName: string? 
         entitytypes: EntityType[]? 
-        displayname: string? 
-        conditions: ConditionListWrapper? {}
-        skill: string?
-PhaseData: object? 
+        displayname: string?
+PhaseData: object(superdoc = SkillData)? 
     properties: 
         minimumPhaseYAxis: number? 5
-        conditions: ConditionListWrapper? {}
-        skill: string?
-PickpocketData: object? 
+PickpocketData: object(superdoc = SkillData)? 
     properties: 
         range: number? 3
         isSneaking: boolean? true
         sneaking: boolean? true
-        conditions: ConditionListWrapper? {}
-        skill: string?
-PlaceBlockSpell: object? 
+PlaceBlockSpell: object(superdoc = SpellData, superdoc = SkillData)? 
     properties: 
-        block: BlockData? 
-        fuel: Material? REDSTONE
-        spellName: string? #undocumented#
-        displayName: string? <purple><spellName>
-        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining.
-        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel>
-        cooldown: number? 1
-        cost: integer? 1
-        lore: string[]? []
-        displayNameFormat: string? <purple><spellName>
-        loreFormat: string[]? []
-        conditions: ConditionListWrapper? {}
-        skill: string?
+        block: BlockData?
 PotionEffectSkillData: object? 
-PotionGifterSkillData: object? 
+PotionGifterSkillData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)? 
     properties: 
         cooldown: number? 10
         receiverMessage: string? <grey><i>You have received a potion effect.
         giverMessage: string? <grey><i>You gave them a potion effect.
         cooldownMessage: string? <grey><i>You have <currentcooldown> seconds left until it can be used again!
-        conditions: ConditionListWrapper? {}
-        skill: string?
 PowerOnStartSettings: object? 
     properties: 
         enabled: boolean! 
         isEnabled: boolean! 
         firstJoinTitle: boolean! 
         showHero: boolean!
-RemoteDetonationData: object? 
+RemoteDetonationData: object(superdoc = CooldownData, superdoc = SkillData)? 
     properties: 
         spawnsFire: boolean? false
         breakBlocks: boolean? true
         removeDetonatedEntity: boolean? true
         explosionStrength: number? 1
         explodable: EntityType[]? []
-        cooldown: number? 0
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
-        conditions: ConditionListWrapper? {}
-        skill: string?
-RepulsionData: object? 
+RepulsionData: object(superdoc = SkillData)? 
     properties: 
         multiplier: number? 1
         radius: number? 5.0
         blacklist: EntityType[]? []
         entityBlacklist: EntityType[]? []
-        conditions: ConditionListWrapper? {}
-        skill: string?
 RerollConfig: object? 
     properties: 
         configVersion: string? 
@@ -437,16 +341,14 @@ RerollGroup.WeightedHero: object?
     properties: 
         hero: string! 
         weight: integer!
-ShieldData: object? 
+ShieldData: object(superdoc = SkillData)? 
     properties: 
         cooldown: Duration? 100.0
-        conditions: ConditionListWrapper? {}
-        skill: string?
 Skin: object? 
     properties: 
         value: string? 
         signature: string?
-SlamData: object? 
+SlamData: object(superdoc = CooldownData, superdoc = SkillData)? 
     properties: 
         hand: ItemStack? AIR
         airCooldown: number? 1
@@ -456,24 +358,16 @@ SlamData: object?
         damage: number? 0
         item: ItemStack? AIR
         diameterRadius: number? 5
-        cooldown: number? 0
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
-        conditions: ConditionListWrapper? {}
-        skill: string?
-SlimeData: object? 
+SlimeData: object(superdoc = SkillData)? 
     properties: 
         speedMultiplier: number? 1
-        conditions: ConditionListWrapper? {}
-        skill: string?
-SneakData: object? 
+SneakData: object(superdoc = SkillData)? 
     properties: 
         mustSneak: boolean? 
         needsInvisibility: boolean? 
-        sneak: boolean? 
-        conditions: ConditionListWrapper? {}
-        skill: string?
+        sneak: boolean?
 SneakingPotionData: object? 
-StrongmanData: object? 
+StrongmanData: object(superdoc = SkillData)? 
     properties: 
         velocity: number? 2.5
         upwardsVelocity: number? 1
@@ -482,9 +376,7 @@ StrongmanData: object?
         upwardsvelocity: number? 1
         toomuscularmessage: string? <player> <white> is too strong to sit in a vehicle!
         maxpassengers: integer? 10
-        conditions: ConditionListWrapper? {}
-        skill: string?
-SummonSkillData: object? 
+SummonSkillData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)? 
     properties: 
         range: integer? 10
         repel: boolean? false
@@ -496,9 +388,7 @@ SummonSkillData: object?
         sneak: boolean? true
         mustsneak: boolean? true
         entityType: EntityType? LIGHTNING_BOLT
-        conditions: ConditionListWrapper? {}
-        skill: string?
-Superhero: object(ignoreUnknowns)? 
+Superhero: object(additionalProperties)? 
     properties: 
         name: string? 
         colouredName: string? 
@@ -508,15 +398,15 @@ Superhero: object(ignoreUnknowns)?
         icon: ItemStack? 
         skills: SkillsContainer? {}
         plusUltraSkills: PlusUltraSkillsContainer? {}
-SuperheroCondition: object? 
+SuperheroCondition: object(superdoc = Condition)? 
     properties: 
-        mode: enum! SELF
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
         heroes: string[]? []
-TeleportData: object? 
+TeleportData: object(superdoc = CooldownData, superdoc = SkillData)? 
     properties: 
         actions: Action[]? #undocumented#
         distance: integer? 30
@@ -525,11 +415,7 @@ TeleportData: object?
         particle: ParticleData? 
         teleportItem: ItemComparisonData? #undocumented#
         action: Action[]? #undocumented#
-        cooldown: number? 0
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
-        conditions: ConditionListWrapper? {}
-        skill: string?
-ThrowerData: object? 
+ThrowerData: object(superdoc = CooldownData, superdoc = SkillData)? 
     properties: 
         ammoCost: integer? 1
         ammo: ItemComparisonData? {}
@@ -539,28 +425,12 @@ ThrowerData: object?
         velocity: number? 1.4
         damage: number? 3
         item: ItemComparisonData? {}
-        cooldown: number? 0
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
-        conditions: ConditionListWrapper? {}
-        skill: string?
-TransmutationSpell: object? 
+TransmutationSpell: object(superdoc = SpellData, superdoc = SkillData)? 
     properties: 
         transmutableBlocks: Material[]? []
         block: BlockData? #undocumented#
         resultantBlock: BlockData? #undocumented#
-        fuel: Material? REDSTONE
-        spellName: string? #undocumented#
-        displayName: string? <purple><spellName>
-        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining.
-        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel>
-        cooldown: number? 1
-        cost: integer? 1
-        lore: string[]? []
-        displayNameFormat: string? <purple><spellName>
-        loreFormat: string[]? []
-        conditions: ConditionListWrapper? {}
-        skill: string?
-WalkerData: object? 
+WalkerData: object(superdoc = SkillData)? 
     properties: 
         blocksToPlace: Material[]? []
         blocksToReplace: Material[]? []
@@ -573,14 +443,10 @@ WalkerData: object?
         revertsAfter: Duration? 15.0
         sneaking: boolean? false
         issneaking: boolean? false
-        conditions: ConditionListWrapper? {}
-        skill: string?
-WeatherDamageData: object? 
+WeatherDamageData: object(superdoc = SkillData)? 
     properties: 
         damage: number? 1.0
         checkShelter: boolean? true
-        conditions: ConditionListWrapper? {}
-        skill: string?
 Action: enum? 
     values: 
       - LEFT_CLICK_AIR

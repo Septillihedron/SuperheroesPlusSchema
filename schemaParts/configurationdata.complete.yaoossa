@@ -28,38 +28,33 @@ EntityComponent: union(unionIdentifier = type)!
         /Arrow/: ArrowComponent!
 Shape: union(unionIdentifier = type)! 
     unions: 
-        HEART: Heart! 
-        WINGS: Wings! 
-        WISP: Wisp! 
         HELIX: Helix! 
-        FAIRY_WINGS: FairyWings! 
+        WINGS: Wings! 
         POINT: Point! 
         HALO: Halo! 
+        WISP: Wisp! 
+        HEART: Heart! 
+        FAIRY_WINGS: FairyWings! 
         EARS: Ears!
-AbstractArrowComponent: object(ignoreUnknowns)? 
+AbstractArrowComponent: object(additionalProperties)? 
     properties: 
         knockbackStrength: integer? 0
         damage: number? 2.0
         pierceLevel: integer? 0
         critical: boolean? false
         pickupStatus: AbstractArrow.PickupStatus? DISALLOWED
-AbstractHorseComponent: object(ignoreUnknowns)? 
+AbstractHorseComponent: object(additionalProperties)? 
     properties: 
         tamingDifficulty: integer? 1
         jumpStrength: number? 0.7
         tamed: boolean? false
         hasSaddle: boolean? false
-AgeableComponent: object(ignoreUnknowns)? 
+AgeableComponent: object(additionalProperties)? 
     properties: 
         isBaby: boolean? false
-ArrowComponent: object(ignoreUnknowns)? 
+ArrowComponent: object(additionalProperties, superdoc = AbstractArrowComponent)? 
     properties: 
-        potionType: PotionType? 
-        knockbackStrength: integer? 0
-        damage: number? 2.0
-        pierceLevel: integer? 0
-        critical: boolean? false
-        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED
+        potionType: PotionType?
 AttributesData: object? 
     properties: 
         attributes: {Attribute: number}? {}
@@ -67,7 +62,7 @@ AttributesData: object?
         equipmentSlot: EquipmentSlotGroup? ANY
         operation: AttributesData.Operation? MULTIPLY_SCALAR
         unique_key: string?
-AxolotlComponent: object(ignoreUnknowns)? 
+AxolotlComponent: object(additionalProperties)? 
     properties: 
         variant: Axolotl.Variant?
 BlockDataComparisonData: object? 
@@ -86,22 +81,22 @@ BookData: object?
         title: string! 
         author: string! 
         pages: string[]!
-ChestedHorseComponent: object(ignoreUnknowns)? 
+ChestedHorseComponent: object(additionalProperties)? 
     properties: 
         hasChest: boolean? false
-ColorableComponent: object(ignoreUnknowns)? 
+ColorableComponent: object(additionalProperties)? 
     properties: 
         dyeColor: DyeColor?
-CreeperComponent: object(ignoreUnknowns)? 
+CreeperComponent: object(additionalProperties)? 
     properties: 
         fuse: integer? 30
         ignite: boolean? false
         explosionRadius: integer? 3
         powered: boolean? false
-DroppedItemComponent: object(ignoreUnknowns)? 
+DroppedItemComponent: object(additionalProperties)? 
     properties: 
         stackData: ItemStackData?
-Ears: object? 
+Ears: object(superdoc = Shape)? 
     properties: 
         height: number? 0.2
         frequency: number? 0.05
@@ -116,11 +111,7 @@ EnchantComparisonData: object?
         enchantMap: {Enchantment: RangeData}? {}
 EquipableData: object? 
     properties: 
-        droprate: number? 0.1
-        type: Material? STONE
-        amount: integer? 1
-        metadata: ItemMetaData? 
-        quantity: integer? 1
+        droprate: number?
 EquipmentData: object? 
     properties: 
         head: EquipableData? 
@@ -134,19 +125,19 @@ EquipmentData: object?
         leggings: EquipableData? 
         boots: EquipableData? 
         hand: EquipableData?
-ExperienceOrbComponent: object(ignoreUnknowns)? 
+ExperienceOrbComponent: object(additionalProperties)? 
     properties: 
         experience: integer? 1
-ExplosiveComponent: object(ignoreUnknowns)? 
+ExplosiveComponent: object(additionalProperties)? 
     properties: 
         yield: number? 
         isIncendiary: boolean? false
-FairyWings: object? 
+FairyWings: object(superdoc = Shape)? 
     properties: 
         height: number? 1
         frequency: number? 0.05
         size: number? 1
-FallingBlockComponent: object(ignoreUnknowns)? 
+FallingBlockComponent: object(additionalProperties)? 
     properties: 
         blockData: BlockData? #undocumented#
         dropItem: boolean? true
@@ -154,17 +145,17 @@ FallingBlockComponent: object(ignoreUnknowns)?
         hurtEntities: boolean? false
         damagePerBlock: number? 2
         maxDamage: integer? 40
-Halo: object? 
+Halo: object(superdoc = Shape)? 
     properties: 
         radius: number? 0.3
         height: number? 0.3
         resolution: number? 32
-Heart: object? 
+Heart: object(superdoc = Shape)? 
     properties: 
         height: number? 2
         frequency: number? 0.05
         size: number? 1
-Helix: object? 
+Helix: object(superdoc = Shape)? 
     properties: 
         radius: number? 0.5
         interval: number? 0.05
@@ -172,7 +163,7 @@ Helix: object?
         waveFrequency: number? 1
         height: number? 2
         wave_frequency: number? 1
-HorseComponent: object(ignoreUnknowns)? 
+HorseComponent: object(additionalProperties)? 
     properties: 
         armor: ItemStack? 
         color: Horse.Color? CHESTNUT
@@ -212,11 +203,11 @@ LeatherArmorColor: object?
         red: integer? -1
         green: integer? -1
         blue: integer? -1
-LivingEntityComponent: object(ignoreUnknowns)? 
+LivingEntityComponent: object(additionalProperties)? 
     properties: 
         canEquip: boolean? false
         equipment: EquipmentData?
-LlamaComponent: object(ignoreUnknowns)? 
+LlamaComponent: object(additionalProperties)? 
     properties: 
         color: Llama.Color? 
         strength: integer? 1
@@ -233,7 +224,7 @@ ParticleData: object?
         extra: number? 0
         options: OptionsData? 
         numberOfParticles: integer? 1
-Point: object? 
+Point: object(superdoc = Shape)? 
     properties: 
         spread: number? 0
         yOffset: number? 0
@@ -245,7 +236,7 @@ PotionEffectData: object?
         potency: integer? 0
         ambient: boolean? true
         hasParticles: boolean? true
-PotionEntityComponent: object(ignoreUnknowns)? 
+PotionEntityComponent: object(additionalProperties)? 
     properties: 
         potion: ItemStack? SPLASH_POTION
 PotionMetaData: object? 
@@ -253,10 +244,10 @@ PotionMetaData: object?
         type: PotionType? SWIFTNESS
         extended: boolean? false
         upgraded: boolean? false
-PrimedTntComponent: object(ignoreUnknowns)? 
+PrimedTntComponent: object(additionalProperties)? 
     properties: 
         fuseTicks: integer? 100
-RabbitComponent: object(ignoreUnknowns)? 
+RabbitComponent: object(additionalProperties)? 
     properties: 
         variant: Rabbit.Type?
 ShapedRecipeData: object? 
@@ -272,7 +263,7 @@ ShapelessRecipeData: object?
         ingredients: {Material: integer}! {}
         uniqueKey: string! 
         unique_key: string!
-SizeComponent: object(ignoreUnknowns)? 
+SizeComponent: object(additionalProperties)? 
     properties: 
         size: integer?
 SoundData: object? 
@@ -280,36 +271,31 @@ SoundData: object?
         sound: Sound? ENTITY_GENERIC_EXPLODE
         volume: number? 1.0
         pitch: number? 1.0
-SpectralArrowComponent: object(ignoreUnknowns)? 
+SpectralArrowComponent: object(additionalProperties, superdoc = AbstractArrowComponent)? 
     properties: 
         glowingTicks: integer? 200
-        knockbackStrength: integer? 0
-        damage: number? 2.0
-        pierceLevel: integer? 0
-        critical: boolean? false
-        pickupStatus: AbstractArrow.PickupStatus? DISALLOWED
-ThrowableProjectileComponent: object(ignoreUnknowns)? 
+ThrowableProjectileComponent: object(additionalProperties)? 
     properties: 
         itemStackData: ItemStackData?
 TrimData: object? 
     properties: 
-        pattern: TrimPattern? 
-        material: TrimMaterial?
+        pattern: TrimPattern! 
+        material: TrimMaterial!
 Wings: object? 
-Wisp: object? 
+Wisp: object(superdoc = Shape)? 
     properties: 
         radius: number? 0.5
         speed: number? 1
         waveFrequency: number? 1
         height: number? 2
         wave_frequency: number? 1
-WitherSkullComponent: object(ignoreUnknowns)? 
+WitherSkullComponent: object(additionalProperties)? 
     properties: 
         isCharged: boolean? false
-WolfComponent: object(ignoreUnknowns)? 
+WolfComponent: object(additionalProperties)? 
     properties: 
         angry: boolean? false
-ZombifiableComponent: object(ignoreUnknowns)? 
+ZombifiableComponent: object(additionalProperties)? 
     properties: 
         immuneToZombification: boolean? false
 AbstractArrow.PickupStatus: enum? 
@@ -390,7 +376,7 @@ Rabbit.Type: enum?
       - THE_KILLER_BUNNY
       - WHITE
 Duration: number! 
-InventorySlot: EquipmentSlot! 
+InventorySlot: EquipmentSlot | integer! 
 LoreData: string[]! 
 RangeData: string! 
 SetData: #undocumented#[]! 
