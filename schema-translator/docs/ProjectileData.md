@@ -8,6 +8,10 @@
 
 
 
+### type - Required [string](string)
+
+
+
 ### onlyProjectiles - Optional [boolean](boolean)
 
 

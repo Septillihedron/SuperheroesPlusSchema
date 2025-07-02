@@ -8,6 +8,18 @@
 
 
 
+### conditions - Optional [ConditionListWrapper](ConditionListWrapper)
+
+
+
+Defaults to {}
+
+
+
+### skill - Optional [string](string)
+
+
+
 ### maxDistance - Optional [integer](integer)
 
 

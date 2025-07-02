@@ -8,6 +8,10 @@
 
 
 
+### type - Required [string](string)
+
+
+
 ### actions - Optional [Action[]](Action[])
 
 

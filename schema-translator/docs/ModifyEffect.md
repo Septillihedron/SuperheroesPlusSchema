@@ -8,6 +8,18 @@
 
 
 
+### mode - Optional [Mode](Mode)
+
+
+
+ The mode of operation
+
+
+
+Defaults to ALL
+
+
+
 ### operation - Optional [ModifyEffect.Operation](ModifyEffect.Operation)
 
 

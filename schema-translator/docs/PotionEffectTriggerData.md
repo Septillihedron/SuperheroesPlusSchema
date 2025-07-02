@@ -8,6 +8,10 @@
 
 
 
+### type - Required [string](string)
+
+
+
 ### types - Optional [PotionEffectType[]](PotionEffectType[])
 
 

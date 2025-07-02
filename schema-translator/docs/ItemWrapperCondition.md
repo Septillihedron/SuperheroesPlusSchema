@@ -8,6 +8,18 @@
 
 
 
+### conditions - Optional [ConditionList](ConditionList)
+
+
+
+ The conditions to check
+
+
+
+Defaults to {}
+
+
+
 ### mode - Required [enum](enum)
 
 
@@ -17,6 +29,22 @@
 
 
 Defaults to SELF
+
+
+
+### otherwise - Optional [EffectList](EffectList)
+
+
+
+ A list of effects that will run if this condition is false
+
+
+
+### else - Optional [EffectList](EffectList)
+
+
+
+ A list of effects that will run if this condition is false
 
 
 

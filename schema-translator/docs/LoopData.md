@@ -8,6 +8,10 @@
 
 
 
+### type - Required [string](string)
+
+
+
 ### period - Optional [Duration](Duration)
 
 

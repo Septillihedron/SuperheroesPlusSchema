@@ -8,6 +8,10 @@
 
 
 
+### type - Required [string](string)
+
+
+
 ### damageCauses - Optional [EntityDamageEvent.DamageCause[]](EntityDamageEvent.DamageCause[])
 
 

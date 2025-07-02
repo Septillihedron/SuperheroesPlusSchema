@@ -20,6 +20,22 @@ Defaults to OTHER
 
 
 
+### otherwise - Optional [EffectList](EffectList)
+
+
+
+ A list of effects that will run if this condition is false
+
+
+
+### else - Optional [EffectList](EffectList)
+
+
+
+ A list of effects that will run if this condition is false
+
+
+
 ### distance - Optional [RangeData](RangeData)
 
 

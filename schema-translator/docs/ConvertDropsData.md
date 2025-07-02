@@ -8,6 +8,18 @@
 
 
 
+### conditions - Optional [ConditionListWrapper](ConditionListWrapper)
+
+
+
+Defaults to {}
+
+
+
+### skill - Optional [string](string)
+
+
+
 ### dropToNewDrop - Optional [{Material: ItemStack}]({Material: ItemStack})
 
 
