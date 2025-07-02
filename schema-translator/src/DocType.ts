@@ -92,7 +92,7 @@ export class DocType {
         )
     }
 
-    private handleSuperDocs(types: Map<string, DocType>, propertiesToLower: Map<string, Property>) {
+    handleSuperDocs(types: Map<string, DocType>, propertiesToLower: Map<string, Property>) {
         this.extraData
             .filter(({ key }) => key === "superdoc")
             .map(({ value }) => {
@@ -108,7 +108,7 @@ export class DocType {
         return propertiesToLower
     }
 
-    private isMappingType(type: string) {
+    isMappingType(type: string) {
         return type.startsWith("{") && type.endsWith("}")
     }
 

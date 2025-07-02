@@ -33,6 +33,9 @@ class DocTypeToDocumentationCompiler {
         if (doc.type.endsWith("{}")) {
             return this.toRecordDocumentation(name, doc)
         }
+        if (doc.isMappingType(doc.type)) {
+            return this.toMappingDocumentation(name, doc)
+        }
         switch (doc.type) {
             case "object": return this.toObjectDocumentation(name, doc)
             case "enum": return this.toEnumDocumentation(name, doc)
@@ -67,13 +70,28 @@ class DocTypeToDocumentationCompiler {
                 + `...`
             )
     }
+    toMappingDocumentation(name: string, doc: DocType) {
+        const [keyType, valueType] = doc.type.substring(1, doc.type.length-1).split(":")
+        return new Markdown()
+            .heading(name + " - A mapping from " + this.link(keyType.trim()) + " to " + this.link(valueType.trim()))
+            .paragraph(doc.description)
+            .paragraph(doc.defaultValue == ""? "" : "Defaults to " + doc.defaultValue)
+            .subHeading("Structure")
+            .codeBlock("yaml", ""
+                + `A value of ${this.link(keyType)}: A value of ${this.link(valueType)}\n`
+                + `A value of ${this.link(keyType)}: A value of ${this.link(valueType)}\n`
+                + `...`
+            )
+    }
     toObjectDocumentation(name: string, doc: DocType) {
+        const properties = doc.handleSuperDocs(this.types, new Map(doc.properties))
+
         const md = new Markdown()
             .heading(name + " - An object")
             .paragraph(doc.description)
             .paragraph(doc.defaultValue == ""? "" : "Defaults to " + doc.defaultValue)
             .subHeading("Properties")
-        doc.properties.forEach((property, name) => {
+        properties.forEach((property, name) => {
             if (property == true) return
             if (name.startsWith("/") && name.endsWith("/")) {
                 name = "/"+this.link(name.substring(1, name.length-1))+"/"
