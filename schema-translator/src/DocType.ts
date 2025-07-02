@@ -95,7 +95,11 @@ export class DocType {
     private handleSuperDocs(types: Map<string, DocType>, propertiesToLower: Map<string, Property>) {
         this.extraData
             .filter(({ key }) => key === "superdoc")
-            .map(({ value }) => types.get(value as string))
+            .map(({ value }) => {
+                const superdoc = types.get(value as string)
+                if (superdoc == null) console.error("Superdoc " + value + " is missing")
+                return superdoc
+            })
             .reverse()
             .forEach((superdoc) => {
                 propertiesToLower = DocType.combineMapOverride(superdoc!.properties, propertiesToLower)

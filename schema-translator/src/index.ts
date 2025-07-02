@@ -1,6 +1,7 @@
 import { readdirSync, writeFileSync } from "fs";
 import { DocPart } from "./DocPart";
 import { compileToJsonSchema } from "./DocTypeToJsonSchemaCompiler";
+import { compileToDocumentation } from "./DocTypeToDocumentationCompiler";
 
 
 const combinedDocs = readdirSync("../schemaParts")
@@ -9,6 +10,8 @@ const combinedDocs = readdirSync("../schemaParts")
     .map(DocPart.loadFile)
     .reduce(DocPart.combine)
 writeFileSync("./combined.yaoossa", combinedDocs.toString())
+const documentation = compileToDocumentation(combinedDocs)
+documentation.forEach(([file, markdown]) => markdown.save("./docs", file))
 const lowered = combinedDocs.lowerAll()
 writeFileSync("./lowered.yaoossa", lowered.toString())
 const jsonSchema = compileToJsonSchema(lowered)
