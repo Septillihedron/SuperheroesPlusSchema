@@ -80,7 +80,7 @@ AttributeSkillData: object(superdoc = SkillData)?
         uniqueKey: string! 
         equipment_slot: EquipmentSlotGroup! 
         unique_key: string!
-AuraData: object(superdoc = SkillData)? 
+AuraData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
     properties: 
         radius: number? 5
 BlankData: object? 
@@ -123,7 +123,7 @@ ConfigYaml: object?
         heroCommand: HeroCommandSettings? 
         defaultHero: Superhero? 
         disabledWorlds: string[]?
-ConsumeSkillData: object(superdoc = SkillData)? 
+ConsumeSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
     properties: 
         material: Material? DIRT
         hunger: integer? 0
@@ -172,11 +172,11 @@ DamageModifierData: object(superdoc = SkillData)?
         outgoing: boolean? false
         eased: boolean? false
         limitProjectiles: boolean? true
-DamagePotionData: object(superdoc = SkillData)? 
+DamagePotionData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
     properties: 
         damageCauses: EntityDamageEvent.DamageCause[]? []
         damageCause: EntityDamageEvent.DamageCause[]? []
-DamageResistanceData: object(superdoc = SkillData)? 
+DamageResistanceData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
     properties: 
         damageMultiplier: number? 0
         damageCauses: EntityDamageEvent.DamageCause[]? 
@@ -198,7 +198,7 @@ DecoyData: object(superdoc = SkillData)?
         color: Color? 
         base64Skin: string? SELF
         base64skin: string? SELF
-EggLayerData: object(superdoc = SkillData)? 
+EggLayerData: object(superdoc = ItemStackData, superdoc = SkillData)? 
     properties: 
         tickDelay: Duration? 15.0
 EraserData: object(superdoc = CooldownData, superdoc = SkillData)? 
@@ -297,7 +297,7 @@ PickpocketData: object(superdoc = SkillData)?
 PlaceBlockSpell: object(superdoc = SpellData, superdoc = SkillData)? 
     properties: 
         block: BlockData?
-PotionEffectSkillData: object? 
+PotionEffectSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
 PotionGifterSkillData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)? 
     properties: 
         cooldown: number? 10
@@ -366,7 +366,7 @@ SneakData: object(superdoc = SkillData)?
         mustSneak: boolean? 
         needsInvisibility: boolean? 
         sneak: boolean?
-SneakingPotionData: object? 
+SneakingPotionData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
 StrongmanData: object(superdoc = SkillData)? 
     properties: 
         velocity: number? 2.5

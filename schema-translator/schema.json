@@ -11701,12 +11701,41 @@
         "AuraData": {
             "0": {
                 "key": "superdoc",
+                "value": "PotionEffectData"
+            },
+            "1": {
+                "key": "superdoc",
                 "value": "SkillData"
             },
             "type": "object",
             "description": "",
             "default": "",
             "properties": {
+                "type": {
+                    "$ref": "#/definitions/PotionEffectType",
+                    "description": "",
+                    "default": ""
+                },
+                "duration": {
+                    "$ref": "#/definitions/number",
+                    "description": "",
+                    "default": "5"
+                },
+                "potency": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "0"
+                },
+                "ambient": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
+                "hasParticles": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
                 "conditions": {
                     "$ref": "#/definitions/ConditionListWrapper",
                     "description": "",
@@ -27973,12 +28002,41 @@
         "ConsumeSkillData": {
             "0": {
                 "key": "superdoc",
+                "value": "PotionEffectData"
+            },
+            "1": {
+                "key": "superdoc",
                 "value": "SkillData"
             },
             "type": "object",
             "description": "",
             "default": "",
             "properties": {
+                "type": {
+                    "$ref": "#/definitions/PotionEffectType",
+                    "description": "",
+                    "default": ""
+                },
+                "duration": {
+                    "$ref": "#/definitions/number",
+                    "description": "",
+                    "default": "5"
+                },
+                "potency": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "0"
+                },
+                "ambient": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
+                "hasParticles": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
                 "conditions": {
                     "$ref": "#/definitions/ConditionListWrapper",
                     "description": "",
@@ -44090,12 +44148,41 @@
         "DamagePotionData": {
             "0": {
                 "key": "superdoc",
+                "value": "PotionEffectData"
+            },
+            "1": {
+                "key": "superdoc",
                 "value": "SkillData"
             },
             "type": "object",
             "description": "",
             "default": "",
             "properties": {
+                "type": {
+                    "$ref": "#/definitions/PotionEffectType",
+                    "description": "",
+                    "default": ""
+                },
+                "duration": {
+                    "$ref": "#/definitions/number",
+                    "description": "",
+                    "default": "5"
+                },
+                "potency": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "0"
+                },
+                "ambient": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
+                "hasParticles": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
                 "conditions": {
                     "$ref": "#/definitions/ConditionListWrapper",
                     "description": "",
@@ -44129,12 +44216,41 @@
         "DamageResistanceData": {
             "0": {
                 "key": "superdoc",
+                "value": "PotionEffectData"
+            },
+            "1": {
+                "key": "superdoc",
                 "value": "SkillData"
             },
             "type": "object",
             "description": "",
             "default": "",
             "properties": {
+                "type": {
+                    "$ref": "#/definitions/PotionEffectType",
+                    "description": "",
+                    "default": ""
+                },
+                "duration": {
+                    "$ref": "#/definitions/number",
+                    "description": "",
+                    "default": "5"
+                },
+                "potency": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "0"
+                },
+                "ambient": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
+                "hasParticles": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
                 "conditions": {
                     "$ref": "#/definitions/ConditionListWrapper",
                     "description": "",
@@ -44403,12 +44519,36 @@
         "EggLayerData": {
             "0": {
                 "key": "superdoc",
+                "value": "ItemStackData"
+            },
+            "1": {
+                "key": "superdoc",
                 "value": "SkillData"
             },
             "type": "object",
             "description": "",
             "default": "",
             "properties": {
+                "type": {
+                    "$ref": "#/definitions/Material",
+                    "description": "",
+                    "default": "STONE"
+                },
+                "amount": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "1"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/ItemMetaData",
+                    "description": "",
+                    "default": ""
+                },
+                "quantity": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "1"
+                },
                 "conditions": {
                     "$ref": "#/definitions/ConditionListWrapper",
                     "description": "",
@@ -44696,14 +44836,38 @@
             }
         },
         "EquipableData": {
+            "0": {
+                "key": "superdoc",
+                "value": "ItemStack"
+            },
             "type": "object",
             "description": "",
             "default": "",
             "properties": {
+                "type": {
+                    "$ref": "#/definitions/Material",
+                    "description": "",
+                    "default": "STONE"
+                },
+                "amount": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "1"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/ItemMetaData",
+                    "description": "",
+                    "default": ""
+                },
+                "quantity": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "1"
+                },
                 "droprate": {
                     "$ref": "#/definitions/number",
                     "description": "",
-                    "default": ""
+                    "default": "0.1"
                 }
             }
         },
@@ -47920,10 +48084,54 @@
             }
         },
         "PotionEffectSkillData": {
+            "0": {
+                "key": "superdoc",
+                "value": "PotionEffectData"
+            },
+            "1": {
+                "key": "superdoc",
+                "value": "SkillData"
+            },
             "type": "object",
             "description": "",
             "default": "",
-            "properties": {}
+            "properties": {
+                "type": {
+                    "$ref": "#/definitions/PotionEffectType",
+                    "description": "",
+                    "default": ""
+                },
+                "duration": {
+                    "$ref": "#/definitions/number",
+                    "description": "",
+                    "default": "5"
+                },
+                "potency": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "0"
+                },
+                "ambient": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
+                "hasParticles": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
+                "conditions": {
+                    "$ref": "#/definitions/ConditionListWrapper",
+                    "description": "",
+                    "default": "{}"
+                },
+                "skill": {
+                    "$ref": "#/definitions/string",
+                    "description": "",
+                    "default": ""
+                }
+            }
         },
         "PotionEffectTriggerData": {
             "0": {
@@ -64552,10 +64760,54 @@
             }
         },
         "SneakingPotionData": {
+            "0": {
+                "key": "superdoc",
+                "value": "PotionEffectData"
+            },
+            "1": {
+                "key": "superdoc",
+                "value": "SkillData"
+            },
             "type": "object",
             "description": "",
             "default": "",
-            "properties": {}
+            "properties": {
+                "type": {
+                    "$ref": "#/definitions/PotionEffectType",
+                    "description": "",
+                    "default": ""
+                },
+                "duration": {
+                    "$ref": "#/definitions/number",
+                    "description": "",
+                    "default": "5"
+                },
+                "potency": {
+                    "$ref": "#/definitions/integer",
+                    "description": "",
+                    "default": "0"
+                },
+                "ambient": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
+                "hasParticles": {
+                    "$ref": "#/definitions/boolean",
+                    "description": "",
+                    "default": "true"
+                },
+                "conditions": {
+                    "$ref": "#/definitions/ConditionListWrapper",
+                    "description": "",
+                    "default": "{}"
+                },
+                "skill": {
+                    "$ref": "#/definitions/string",
+                    "description": "",
+                    "default": ""
+                }
+            }
         },
         "SoundData": {
             "type": "object",

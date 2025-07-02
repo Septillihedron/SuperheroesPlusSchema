@@ -372,7 +372,7 @@ AttributeSkillData: object(superdoc = SkillData)?  #
         uniqueKey: string!  #
         equipment_slot: EquipmentSlotGroup!  #
         unique_key: string!  #
-AuraData: object(superdoc = SkillData)?  # 
+AuraData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
     properties: 
         radius: number? 5 #
 AxolotlComponent: object(additionalProperties)?  # 
@@ -525,7 +525,7 @@ ConfigYaml: object?  #
         heroCommand: HeroCommandSettings?  #
         defaultHero: Superhero?  #
         disabledWorlds: string[]?  #
-ConsumeSkillData: object(superdoc = SkillData)?  # 
+ConsumeSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
     properties: 
         material: Material? DIRT #
         hunger: integer? 0 #
@@ -610,11 +610,11 @@ DamageModifierData: object(superdoc = SkillData)?  #
         outgoing: boolean? false #
         eased: boolean? false #
         limitProjectiles: boolean? true #
-DamagePotionData: object(superdoc = SkillData)?  # 
+DamagePotionData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
     properties: 
         damageCauses: EntityDamageEvent.DamageCause[]? [] #
         damageCause: EntityDamageEvent.DamageCause[]? [] #
-DamageResistanceData: object(superdoc = SkillData)?  # 
+DamageResistanceData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
     properties: 
         damageMultiplier: number? 0 #
         damageCauses: EntityDamageEvent.DamageCause[]?  #
@@ -667,7 +667,7 @@ EffectData: object?  #
     properties: 
         particles: ParticleData[]? [] #
         name: string?  #
-EggLayerData: object(superdoc = SkillData)?  # 
+EggLayerData: object(superdoc = ItemStackData, superdoc = SkillData)?  # 
     properties: 
         tickDelay: Duration? 15.0 #
 EnchantComparisonData: object?  # 
@@ -682,9 +682,9 @@ EntityWhitelistCondition: object(superdoc = Condition)?  #
               - SELF
         whitelist: boolean? true #  If true, the entities property will whitelist. If false, the entities property will blacklist
         entities: EntityType[]? [] #  If true, the entities property will whitelist. If false, the entities property will blacklist
-EquipableData: object?  # 
+EquipableData: object(superdoc = ItemStack)?  # 
     properties: 
-        droprate: number?  #
+        droprate: number? 0.1 #
 EquipmentData: object?  # 
     properties: 
         head: EquipableData?  #
@@ -1272,7 +1272,7 @@ PotionEffectData: object?  #
         potency: integer? 0 #
         ambient: boolean? true #
         hasParticles: boolean? true #
-PotionEffectSkillData: object?  # 
+PotionEffectSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
 PotionEffectTriggerData: object(superdoc = TriggerData)?  # 
     properties: 
         types: PotionEffectType[]? [] #  The potion effects that will trigger this trigger
@@ -1489,7 +1489,7 @@ SneakData: object(superdoc = SkillData)?  #
         mustSneak: boolean?  #
         needsInvisibility: boolean?  #
         sneak: boolean?  #
-SneakingPotionData: object?  # 
+SneakingPotionData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
 SoundData: object?  # 
     properties: 
         sound: Sound? ENTITY_GENERIC_EXPLODE #

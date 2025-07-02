@@ -109,9 +109,9 @@ EffectData: object?
 EnchantComparisonData: object? 
     properties: 
         enchantMap: {Enchantment: RangeData}? {}
-EquipableData: object? 
+EquipableData: object(superdoc = ItemStack)? 
     properties: 
-        droprate: number?
+        droprate: number? 0.1
 EquipmentData: object? 
     properties: 
         head: EquipableData? 

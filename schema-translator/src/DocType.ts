@@ -97,12 +97,13 @@ export class DocType {
             .filter(({ key }) => key === "superdoc")
             .map(({ value }) => {
                 const superdoc = types.get(value as string)
-                if (superdoc == null) console.error("Superdoc " + value + " is missing")
+                if (superdoc == null) throw new Error("Superdoc " + value + " is missing")
                 return superdoc
             })
             .reverse()
             .forEach((superdoc) => {
-                propertiesToLower = DocType.combineMapOverride(superdoc!.properties, propertiesToLower)
+                superdoc = DocType.getSourceObjectDoc(superdoc, types)
+                propertiesToLower = DocType.combineMapOverride(superdoc.properties, propertiesToLower)
             })
         return propertiesToLower
     }
@@ -198,8 +199,8 @@ export class DocType {
         ) return doc
 
         if (doc === undefined) throw new Error("Undefined doc")
-        return doc.type == "object" ? doc 
-            : DocType.getSourceObjectDoc(types.get(doc.type), types)
+        if (doc.type == "object" || doc.type == "union") return doc
+        return DocType.getSourceObjectDoc(types.get(doc.type), types)
     }
 
     toString(baseIndent = ""): string {

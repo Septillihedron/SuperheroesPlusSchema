@@ -1171,8 +1171,13 @@ AttributeSkillData: object(superdoc = SkillData)?  #
         uniqueKey: string!  #
         equipment_slot: EquipmentSlotGroup!  #
         unique_key: string!  #
-AuraData: object(superdoc = SkillData)?  # 
+AuraData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
     properties: 
+        type: PotionEffectType!  #
+        duration: number? 5 #
+        potency: integer? 0 #
+        ambient: boolean? true #
+        hasParticles: boolean? true #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
         radius: number? 5 #
@@ -4441,8 +4446,13 @@ ConfigYaml: object?  #
         heroCommand: HeroCommandSettings?  #
         defaultHero: Superhero?  #
         disabledWorlds: string[]?  #
-ConsumeSkillData: object(superdoc = SkillData)?  # 
+ConsumeSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
     properties: 
+        type: PotionEffectType!  #
+        duration: number? 5 #
+        potency: integer? 0 #
+        ambient: boolean? true #
+        hasParticles: boolean? true #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
         material: Material? DIRT #
@@ -7660,14 +7670,24 @@ DamageModifierData: object(superdoc = SkillData)?  #
         outgoing: boolean? false #
         eased: boolean? false #
         limitProjectiles: boolean? true #
-DamagePotionData: object(superdoc = SkillData)?  # 
+DamagePotionData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
     properties: 
+        type: PotionEffectType!  #
+        duration: number? 5 #
+        potency: integer? 0 #
+        ambient: boolean? true #
+        hasParticles: boolean? true #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
         damageCauses: EntityDamageEvent.DamageCause[]? [] #
         damageCause: EntityDamageEvent.DamageCause[]? [] #
-DamageResistanceData: object(superdoc = SkillData)?  # 
+DamageResistanceData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
     properties: 
+        type: PotionEffectType!  #
+        duration: number? 5 #
+        potency: integer? 0 #
+        ambient: boolean? true #
+        hasParticles: boolean? true #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
         damageMultiplier: number? 0 #
@@ -7725,8 +7745,12 @@ EffectData: object?  #
     properties: 
         particles: ParticleData[]? [] #
         name: string?  #
-EggLayerData: object(superdoc = SkillData)?  # 
+EggLayerData: object(superdoc = ItemStackData, superdoc = SkillData)?  # 
     properties: 
+        type: Material? STONE #
+        amount: integer? 1 #
+        metadata: ItemMetaData?  #
+        quantity: integer? 1 #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
         tickDelay: Duration? 15.0 #
@@ -7787,9 +7811,13 @@ EntityWhitelistCondition: object(superdoc = Condition)?  #
         else: EffectList?  #  A list of effects that will run if this condition is false
         whitelist: boolean? true #  If true, the entities property will whitelist. If false, the entities property will blacklist
         entities: EntityType[]? [] #  If true, the entities property will whitelist. If false, the entities property will blacklist
-EquipableData: object?  # 
+EquipableData: object(superdoc = ItemStack)?  # 
     properties: 
-        droprate: number?  #
+        type: Material? STONE #
+        amount: integer? 1 #
+        metadata: ItemMetaData?  #
+        quantity: integer? 1 #
+        droprate: number? 0.1 #
 EquipmentData: object?  # 
     properties: 
         head: EquipableData?  #
@@ -8528,7 +8556,15 @@ PotionEffectData: object?  #
         potency: integer? 0 #
         ambient: boolean? true #
         hasParticles: boolean? true #
-PotionEffectSkillData: object?  # 
+PotionEffectSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
+    properties: 
+        type: PotionEffectType!  #
+        duration: number? 5 #
+        potency: integer? 0 #
+        ambient: boolean? true #
+        hasParticles: boolean? true #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 PotionEffectTriggerData: object(superdoc = TriggerData)?  # 
     properties: 
         type: string!  #
@@ -11877,7 +11913,15 @@ SneakData: object(superdoc = SkillData)?  #
         mustSneak: boolean?  #
         needsInvisibility: boolean?  #
         sneak: boolean?  #
-SneakingPotionData: object?  # 
+SneakingPotionData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # 
+    properties: 
+        type: PotionEffectType!  #
+        duration: number? 5 #
+        potency: integer? 0 #
+        ambient: boolean? true #
+        hasParticles: boolean? true #
+        conditions: ConditionListWrapper? {} #
+        skill: string?  #
 SoundData: object?  # 
     properties: 
         sound: Sound? ENTITY_GENERIC_EXPLODE #
