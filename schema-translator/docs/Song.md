@@ -1,4 +1,4 @@
 
 
-# Song - Type: [string](string)
+# Song - Type: [string](string.md)
 

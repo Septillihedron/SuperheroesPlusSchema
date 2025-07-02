@@ -1,4 +1,4 @@
 
 
-# ItemStack - Type: [ItemStackData](ItemStackData)
+# ItemStack - Type: [ItemStackData](ItemStackData.md)
 

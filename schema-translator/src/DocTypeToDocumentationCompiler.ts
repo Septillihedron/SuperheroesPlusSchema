@@ -127,7 +127,7 @@ class DocTypeToDocumentationCompiler {
     }
 
     link(type: string) {
-        return Markdown.link(type, type)
+        return Markdown.link(type, type+".md")
     }
 }
 

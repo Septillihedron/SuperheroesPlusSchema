@@ -12,10 +12,10 @@ Differentiator: unionIdentifier
 
 | unionIdentifier | Description | Subtype |
 | - | - | - |
-| BLOCK_SPELL |  | [PlaceBlockSpell](PlaceBlockSpell) |
-| CUSTOM_SPELL |  | [CustomSpell](CustomSpell) |
-| EXPLOSION_SPELL |  | [ExplosionSpell](ExplosionSpell) |
-| FANGS_SPELL |  | [FangsSpell](FangsSpell) |
-| LIGHTNING_SPELL |  | [LightningSpell](LightningSpell) |
-| PROJECTILE_SPELL |  | [LaunchProjectileSpell](LaunchProjectileSpell) |
-| TRANSMUTATION_SPELL |  | [TransmutationSpell](TransmutationSpell) |
+| BLOCK_SPELL |  | [PlaceBlockSpell](PlaceBlockSpell.md) |
+| CUSTOM_SPELL |  | [CustomSpell](CustomSpell.md) |
+| EXPLOSION_SPELL |  | [ExplosionSpell](ExplosionSpell.md) |
+| FANGS_SPELL |  | [FangsSpell](FangsSpell.md) |
+| LIGHTNING_SPELL |  | [LightningSpell](LightningSpell.md) |
+| PROJECTILE_SPELL |  | [LaunchProjectileSpell](LaunchProjectileSpell.md) |
+| TRANSMUTATION_SPELL |  | [TransmutationSpell](TransmutationSpell.md) |

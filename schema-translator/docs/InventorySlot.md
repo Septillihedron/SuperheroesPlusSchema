@@ -1,4 +1,4 @@
 
 
-# InventorySlot - Type: [EquipmentSlot | integer](EquipmentSlot | integer)
+# InventorySlot - Type: [EquipmentSlot | integer](EquipmentSlot | integer.md)
 

@@ -1,4 +1,4 @@
 
 
-# Duration - Type: [number](number)
+# Duration - Type: [number](number.md)
 

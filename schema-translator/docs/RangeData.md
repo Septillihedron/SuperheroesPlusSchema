@@ -1,4 +1,4 @@
 
 
-# RangeData - Type: [string](string)
+# RangeData - Type: [string](string.md)
 

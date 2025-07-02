@@ -12,11 +12,11 @@ Differentiator: unionIdentifier
 
 | unionIdentifier | Description | Subtype |
 | - | - | - |
-| EARS |  | [Ears](Ears) |
-| FAIRY_WINGS |  | [FairyWings](FairyWings) |
-| HALO |  | [Halo](Halo) |
-| HEART |  | [Heart](Heart) |
-| HELIX |  | [Helix](Helix) |
-| POINT |  | [Point](Point) |
-| WINGS |  | [Wings](Wings) |
-| WISP |  | [Wisp](Wisp) |
+| EARS |  | [Ears](Ears.md) |
+| FAIRY_WINGS |  | [FairyWings](FairyWings.md) |
+| HALO |  | [Halo](Halo.md) |
+| HEART |  | [Heart](Heart.md) |
+| HELIX |  | [Helix](Helix.md) |
+| POINT |  | [Point](Point.md) |
+| WINGS |  | [Wings](Wings.md) |
+| WISP |  | [Wisp](Wisp.md) |
