@@ -22,7 +22,7 @@ export function parse(view: StringView, indent: string): DocType {
 }
 
 function parseType(view: StringView) {
-    return view.takeWhile(not(isAny("?!()")).or(isEndline))
+    return view.takeWhile(not(isAny("?!()")).or(isEndline)).trim()
 }
 
 function parseExtraData(view: StringView): ExtraData {
@@ -59,7 +59,7 @@ function parseDefaults(view: StringView) {
 
 function parseDescription(view: StringView): string {
     if (!view.consume("#")) return ""
-    return view.takeWhile(not(isEndline))
+    return view.takeWhile(not(isEndline)).trim()
 }
 
 function parseFields(view: StringView, indent: string): { properties: DocType['properties'], enumValues: DocType['enumValues'], unions: DocType['unions'] } {

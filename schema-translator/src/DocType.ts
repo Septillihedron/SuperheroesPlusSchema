@@ -74,11 +74,11 @@ export class DocType {
     lower(types: Map<string, DocType>): DocType {
         let propertiesToLower = new Map(this.properties)
         let type = this.type
-        if (this.isMappingType(type)) {
-            type = "object"
-            const [keyType, valueType] = this.type.substring(1, this.type.length-1).split(":")
+        if (DocType.isMappingType(type)) {
+            const [keyType, valueType] = DocType.getMappingTypes(type)
             const valueDoc = DocType.createRefDoc(valueType.trim(), true, "", "")
             propertiesToLower.set("/"+keyType.trim()+"/", valueDoc)
+            type = "object"
         }
 
         propertiesToLower = this.handleSuperDocs(types, propertiesToLower)
@@ -108,8 +108,12 @@ export class DocType {
         return propertiesToLower
     }
 
-    isMappingType(type: string) {
+    static isMappingType(type: string) {
         return type.startsWith("{") && type.endsWith("}")
+    }
+    static getMappingTypes(type: string) {
+        const [keyType, valueType] = type.substring(1, type.length-1).split(":")
+        return [keyType.trim(), valueType.trim()]
     }
 
     private static combineMapOverride<K, V>(map1: Map<K, V>, map2: Map<K, V>): Map<K, V> {
