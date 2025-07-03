@@ -145,7 +145,13 @@ class DocTypeToDocumentationCompiler {
     }
 
     link(type: string) {
-        return Markdown.link(type, type)
+        switch (type) {
+            case "boolean": return type
+            case "integer": return type
+            case "number": return type
+            case "string": return type
+            default: return Markdown.link(type, type)
+        }
     }
 }
 
