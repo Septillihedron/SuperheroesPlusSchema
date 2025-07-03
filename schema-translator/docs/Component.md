@@ -1,4 +1,0 @@
-
-
-# Component - Type: [string](string)
-

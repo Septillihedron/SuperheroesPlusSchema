@@ -1,8 +1,0 @@
-
-
-# LightSkillData - An object
-
-
-
-## Properties
-

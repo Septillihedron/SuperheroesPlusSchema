@@ -1,4 +1,0 @@
-
-
-# RangeData - Type: [string](string)
-

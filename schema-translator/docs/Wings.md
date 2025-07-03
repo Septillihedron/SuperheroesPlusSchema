@@ -1,8 +1,0 @@
-
-
-# Wings - An object
-
-
-
-## Properties
-

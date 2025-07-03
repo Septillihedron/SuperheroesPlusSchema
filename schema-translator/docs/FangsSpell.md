@@ -1,8 +1,0 @@
-
-
-# FangsSpell - An object
-
-
-
-## Properties
-

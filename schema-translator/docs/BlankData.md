@@ -1,8 +1,0 @@
-
-
-# BlankData - An object
-
-
-
-## Properties
-

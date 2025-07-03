@@ -7,3 +7,4 @@ DocTools/DocTools.iml
 schema-translator/node_modules
 schema-translator/out
 schema-translator/package-lock.json
+/schema-translator/docs

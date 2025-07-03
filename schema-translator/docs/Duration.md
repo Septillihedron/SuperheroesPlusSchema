@@ -1,4 +1,0 @@
-
-
-# Duration - Type: [number](number)
-
