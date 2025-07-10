@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../compiler/schemas/Superheroes8+.json
+# yaml-language-server: $schema=schema.json
 icon:
   amount: 1
   quantity: 1
@@ -30,6 +30,9 @@ skills:
           shape:
             type: EARS
             height: 0.2
+      metadata:
+        type: METADATA
+        value: 1
   spell:
     skill: CUSTOM_SPELL
     fuel: acacia_button

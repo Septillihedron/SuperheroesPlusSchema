@@ -10,5 +10,8 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^22.15.30"
+  },
+  "dependencies": {
+    "slashes": "^3.0.12"
   }
 }

@@ -34,6 +34,9 @@ class DocTypeToJsonSchemaCompiler {
     }
 
     toJsonSchema(doc: DocType) {
+        if (doc.type.includes("|")) {
+            return this.toMultiTypeJsonShema(doc)
+        }
         if (doc.type.endsWith("[]")) {
             return this.toArrayJsonSchema(doc)
         }
@@ -45,6 +48,17 @@ class DocTypeToJsonSchemaCompiler {
             case "enum": return this.toEnumJsonSchema(doc)
             case "union": return this.toUnionJsonSchema(doc)
             default: return this.toRefJsonSchema(doc)
+        }
+    }
+
+    toMultiTypeJsonShema(doc: DocType) {
+        const types = doc.type.split("|")
+            .map(type => type.trim())
+            .map(type => DocType.createRefDoc(type, true, doc.defaultValue, ""))
+            .map(this.toRefJsonSchema)
+        return {
+            description: doc.description,
+            anyOf: types
         }
     }
 

@@ -1,3 +1,4 @@
+import { removeSlashes } from "slashes"
 import { DocType, ExtraData, PropertiesMap, Unions } from "./DocType"
 import { is, isAny, isEndline, isEOF, isLetter, isWhitespace, not, StringView } from "./StringView"
 
@@ -59,7 +60,10 @@ function parseDefaults(view: StringView) {
 
 function parseDescription(view: StringView): string {
     if (!view.consume("#")) return ""
-    return view.takeWhile(not(isEndline)).trim()
+    let description = view.takeWhile(not(isEndline))
+    description = description.trim()
+    description = removeSlashes(description) // decode escape sequences
+    return "\n" + description
 }
 
 function parseFields(view: StringView, indent: string): { properties: DocType['properties'], enumValues: DocType['enumValues'], unions: DocType['unions'] } {
