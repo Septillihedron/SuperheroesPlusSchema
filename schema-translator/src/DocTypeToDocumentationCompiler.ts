@@ -140,10 +140,10 @@ class DocTypeToDocumentationCompiler {
             if (name.startsWith("/") && name.endsWith("/")) {
                 name = "/"+this.link(name.substring(1, name.length-1))+"/"
             }
-            const subtypeDescription = subtype.type == "object"? 
+            const extraData = subtype.type == "object"? 
                 "No extra data"
                 : this.link(subtype.type)
-            unionsData.push([name, subtype.description, subtypeDescription])
+            unionsData.push([name, subtype.description, extraData])
         })
         const md = new Markdown()
             .heading0(name + " - A union of types with a differentiator")
@@ -151,6 +151,10 @@ class DocTypeToDocumentationCompiler {
             .paragraph("Differentiator: "+differentiator)
             .heading1("Possible Types")
             .table([differentiator, "Description", "Subtype"], unionsData)
+        
+        this.sidebar
+            .heading0(name)
+            .list(unionsData.map(data => `${data[0]}: ${data[2]}`))
 
         return md
     }
