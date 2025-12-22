@@ -1,78 +1,80 @@
 SkillData: union(unionIdentifier = skill)! 
     properties: 
-        conditions: ConditionListWrapper? {}
-        skill: string?
+        conditions: ConditionListWrapper? {} # The conditions to check before running the skill. Requires SkillsLibrary
+        skill: string?  # The type of skill
+        respectProtectionPlugins: boolean? true # Whether to respect protection plugins
+        respect_protection_plugins: boolean? true # Whether to respect protection plugins
     unions: 
-        CLIMB: ClimbData! 
-        KILLPOTION: KillPotionData! 
-        HEARTSTEAL: HeartStealData! 
-        WEATHERDAMAGE: WeatherDamageData! 
-        DAMAGEPOTION: DamagePotionData! 
-        LIFESTEAL: LifestealData! 
-        CONVERTDROPS: ConvertDropsData! 
-        PICKPOCKET: PickpocketData! 
-        WALKER: WalkerData! 
-        EGGLAYER: EggLayerData! 
-        AURA: AuraData! 
-        SNEAKINGPOTION: SneakingPotionData! 
-        SLIME: SlimeData! 
-        DAMAGERESISTANCE: DamageResistanceData! 
-        NOHUNGER: NoHungerData! 
-        LIGHT: LightSkillData! 
-        INSTANTBREAK: InstantBreakData! 
-        TELEPORT: TeleportData! 
-        ERASER: EraserData! 
-        SLAM: SlamData! 
-        CRAFTING: CraftingData! 
-        STRONGMAN: StrongmanData! 
-        PHASE: PhaseData! 
-        DECOY: DecoyData! 
-        SUMMON: SummonSkillData! 
-        CONSUME: ConsumeSkillData! 
-        POTIONGIFTER: PotionGifterSkillData! 
-        BLOCKRAY: BlockRayData! 
-        THROWER: ThrowerData! 
-        SHIELD: ShieldData! 
-        SNEAK: SneakData! 
-        GUN: GunData! 
-        GIVEITEM: GiveItemData! 
-        CREEPER: CreeperData! 
-        BLOCKDROPS: BlockDropsData! 
-        REMOTEDETONATION: RemoteDetonationData! 
-        CONVERTBLOCK: ConvertBlockData! 
-        CONVERTITEM: ConvertItemData! 
-        REPULSION: RepulsionData! 
-        OHKO: OHKOData! 
-        POTIONEFFECT: PotionEffectSkillData! 
-        FLIGHT: BlankData! 
-        ATTRIBUTE: AttributeSkillData! 
-        DAMAGEMODIFIER: DamageModifierData! 
-        PROJECTILE_SPELL: LaunchProjectileSpell! 
-        BLOCK_SPELL: PlaceBlockSpell! 
-        EXPLOSION_SPELL: ExplosionSpell! 
-        LIGHTNING_SPELL: LightningSpell! 
-        TRANSMUTATION_SPELL: TransmutationSpell! 
-        FANGS_SPELL: FangsSpell!
-SpellData: union(unionIdentifier = skill, superdoc = SkillData)! 
+        ATTRIBUTE: AttributeSkillData? { skill: ATTRIBUTE } # Modifies an attribute owned by the user or target entity. Does not support conditions
+        AURA: AuraData? { skill: AURA } # Gives every entity in the radius a potion effect
+        FLIGHT: BlankData? { skill: FLIGHT } # Let's the hero use creative flight
+        BLOCKDROPS: BlockDropsData? { skill: BLOCKDROPS } # Changes the block drops of a block
+        BLOCKRAY: BlockRayData? { skill: BLOCKRAY } # Changes the block the player is looking at
+        CLIMB: ClimbData? { skill: CLIMB } # Lets the player climb walls
+        CONSUME: ConsumeSkillData? { skill: CONSUME } # Gives the player a potion effect and food points/hunger when the player eats a certain item
+        CONVERTBLOCK: ConvertBlockData? { skill: CONVERTBLOCK } # Adds the ability to convert a block when right clicking a block
+        CONVERTDROPS: ConvertDropsData? { skill: CONVERTDROPS } # Converts item drops from breaking blocks
+        CONVERTITEM: ConvertItemData? { skill: CONVERTITEM } # Converts the input item into the output item when the user picks up an item
+        CRAFTING: CraftingData? { skill: CRAFTING } # Enables the hero to use this recipe
+        CREEPER: CreeperData? { skill: CREEPER } # Creates an explosion when the user sneaks on the ground until the explosion
+        DAMAGEMODIFIER: DamageModifierData? { skill: DAMAGEMODIFIER } # Constrains damage, with optional easing out. \nDoes not support conditions currently
+        DAMAGEPOTION: DamagePotionData? { skill: DAMAGEPOTION } # Gives the player a potion effect when damaged
+        DAMAGERESISTANCE: DamageResistanceData? { skill: DAMAGERESISTANCE } # Multiplies damages taken, and optionally gives a potion effect
+        DECOY: DecoyData? { skill: DECOY } # Creates an armour stand in the place of the player when sneaking. The armour stand will be wearing a leather armour and a player head
+        EGGLAYER: EggLayerData? { skill: EGGLAYER } # Creates drops of a specific item
+        ERASER: EraserData? { skill: ERASER } # Removes another player's power temporarily
+        GIVEITEM: GiveItemData? { skill: GIVEITEM } # Gives the user an item
+        GUN: GunData? { skill: GUN } # Shoots the gun in the direction that the user is looking at when the user right clicks if the user holds the gun item
+        HEARTSTEAL: HeartStealData? { skill: HEARTSTEAL } # Gives max hearts on kill
+        INSTANTBREAK: InstantBreakData? { skill: INSTANTBREAK } # Allows the player to break certain blocks instantly. This will use a custom tool with enchantments of the item in hand
+        KILLPOTION: KillPotionData? { skill: KILLPOTION } # Applies a potion effect everytime the hero kills an entity
+        LIFESTEAL: LifestealData? { skill: LIFESTEAL } # Gives a percentage of the damage dealt to an entity as health to the user, cannot exceed maximum hp
+        LIGHT: LightSkillData? { skill: LIGHT } # Applies a potion effect when the user is at a light level above 10
+        NOHUNGER: NoHungerData? { skill: NOHUNGER } # Makes the hero's hunger not go down after a certain level
+        OHKO: OHKOData? { skill: OHKO } # Kills entities in one hit
+        PHASE: PhaseData? { skill: PHASE } # Allows the player to phase through the ground
+        PICKPOCKET: PickpocketData? { skill: PICKPOCKET } # Allows the hero to look at another player's inventory or drop a villager's inventory with right click
+        POTIONEFFECT: PotionEffectSkillData? { skill: POTIONEFFECT } # Applies a potion effect continuously to the hero
+        POTIONGIFTER: PotionGifterSkillData? { skill: POTIONGIFTER } # Gives a potion effect to right clicked entities
+        REMOTEDETONATION: RemoteDetonationData? { skill: REMOTEDETONATION } # Creates an explosion at the entity the user is looking at when the user sneaks
+        REPULSION: RepulsionData? { skill: REPULSION } # Repulses all nearby entities when the user sneaks
+        SHIELD: ShieldData? { skill: SHIELD } # Sets the shields cooldown when the user take damage
+        SLAM: SlamData? { skill: SLAM } # Allows the player to jump high up in the air and do a slam, damaging entities near the impact\nTriggered with punch
+        SLIME: SlimeData? { skill: SLIME } # Let's the hero bounce around like a slime, also adds horizontal velocity in the direction the player is facing
+        SNEAK: SneakData? { skill: SNEAK } # Prevents being targeted by entities
+        SNEAKINGPOTION: SneakingPotionData? { skill: SNEAKINGPOTION } # Gives the hero a potion effect when sneaking
+        EXPLOSION_SPELL: ExplosionSpell? { skill: EXPLOSION_SPELL } # A spell that spawns tnt
+        FANGS_SPELL: FangsSpell? { skill: FANGS_SPELL } # A spell that spawns Evoker fangs
+        PROJECTILE_SPELL: LaunchProjectileSpell? { skill: PROJECTILE_SPELL } # A spell that launches an entity in the direction the player is looking
+        LIGHTNING_SPELL: LightningSpell? { skill: LIGHTNING_SPELL } # A spell that summons lightning where the player is looking
+        BLOCK_SPELL: PlaceBlockSpell? { skill: BLOCK_SPELL } # A spell that places a block
+        TRANSMUTATION_SPELL: TransmutationSpell? { skill: TRANSMUTATION_SPELL } # A spell that replaces blocks
+        STRONGMAN: StrongmanData? { skill: STRONGMAN } # Allows the player to pick up entities with right click\nand throw them in the direction that the player is looking by sneaking\nThis skill also prevents sitting in a vehicle\n
+        SUMMON: SummonSkillData? { skill: SUMMON } # On punch with an empty hand, summons an entity where the player is looking
+        TELEPORT: TeleportData? { skill: TELEPORT } # Teleports the player in the direction that they are looking at
+        THROWER: ThrowerData? { skill: THROWER } # Throws an entity in the direction the player is looking
+        WALKER: WalkerData? { skill: WALKER } # Places blocks below the player
+        WEATHERDAMAGE: WeatherDamageData? { skill: WEATHERDAMAGE } # Makes the player take damage every  when it's raining
+SpellData: union(unionIdentifier = skill, superdoc = SkillData)?  # TODO
     properties: 
-        fuel: Material? REDSTONE
-        spellName: string? #undocumented#
-        displayName: string? <purple><spellName>
-        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining.
-        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel>
-        cooldown: number? 1
-        cost: integer? 1
-        lore: string[]? []
-        displayNameFormat: string? <purple><spellName>
-        loreFormat: string[]? []
+        fuel: Material? REDSTONE # The fuel that will be used to cast the spell
+        spellName: string? #undocumented# # The name of the spell.\n \nDefaults to the type of spell
+        displayName: string? <purple><spellName> # The display name of the book to cast the spell\n \n\"<spellName>\" will be replaced with the spell name\n\"<cooldown>\" will be replaced with the cooldown time\n\"<fuel>\" will be replaced with the fuel item\n\"<cost>\" will be replaced with the fuel cost\n
+        cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #     The message to display when the spell is on cooldown\n     \n    \"<currentcooldown>\" will be replaced to the current cooldown in seconds\n    \"<spellName>\" will be replaced to the spell name\n
+        moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> # The message to display when the spell needs more fuel\n \n\"<fuelneeded>\" will be replaced to the amount of fuel needed\n\"<fuel>\" will be replaced to the fuel material\n
+        cooldown: number? 1 # The cooldown of the spell in seconds
+        cost: integer? 1 # How much fuel is needed to cast the spell
+        lore: string[]? [] # The lore of the book to cast the spell\n \n\"<spellName>\" will be replaced with the spell name\n\"<cooldown>\" will be replaced with the cooldown time\n\"<fuel>\" will be replaced with the fuel item\n\"<cost>\" will be replaced with the fuel cost\n
+        displayNameFormat: string? <purple><spellName> # The display name of the book to cast the spell\n \n\"<spellName>\" will be replaced with the spell name\n\"<cooldown>\" will be replaced with the cooldown time\n\"<fuel>\" will be replaced with the fuel item\n\"<cost>\" will be replaced with the fuel cost\n
+        loreFormat: string[]? [] # The lore of the book to cast the spell\n \n\"<spellName>\" will be replaced with the spell name\n\"<cooldown>\" will be replaced with the cooldown time\n\"<fuel>\" will be replaced with the fuel item\n\"<cost>\" will be replaced with the fuel cost\n
     unions: 
-        PROJECTILE_SPELL: LaunchProjectileSpell! 
-        BLOCK_SPELL: PlaceBlockSpell! 
-        EXPLOSION_SPELL: ExplosionSpell! 
-        LIGHTNING_SPELL: LightningSpell! 
-        TRANSMUTATION_SPELL: TransmutationSpell! 
-        FANGS_SPELL: FangsSpell!
-AttributeSkillData: object(superdoc = SkillData)? 
+        EXPLOSION_SPELL: ExplosionSpell? { skill: EXPLOSION_SPELL } # A spell that spawns tnt
+        FANGS_SPELL: FangsSpell? { skill: FANGS_SPELL } # A spell that spawns Evoker fangs
+        PROJECTILE_SPELL: LaunchProjectileSpell? { skill: PROJECTILE_SPELL } # A spell that launches an entity in the direction the player is looking
+        LIGHTNING_SPELL: LightningSpell? { skill: LIGHTNING_SPELL } # A spell that summons lightning where the player is looking
+        BLOCK_SPELL: PlaceBlockSpell? { skill: BLOCK_SPELL } # A spell that places a block
+        TRANSMUTATION_SPELL: TransmutationSpell? { skill: TRANSMUTATION_SPELL } # A spell that replaces blocks
+AttributeSkillData: object(superdoc = SkillData)?  # Modifies an attribute owned by the user or target entity. Does not support conditions
     properties: 
         attributes: {Attribute: number}! 
         equipmentSlot: EquipmentSlotGroup! 
@@ -82,32 +84,32 @@ AttributeSkillData: object(superdoc = SkillData)?
         unique_key: string!
 AuraData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
     properties: 
-        radius: number? 5
-BlankData: object? 
-BlockDropsData: object(superdoc = SkillData)? 
+        radius: number? 5 # The radius of the aura
+BlankData: object(superdoc = SkillData)! {} # Let's the hero use creative flight
+BlockDropsData: object(superdoc = SkillData)?  # Changes the block drops of a block
     properties: 
-        dropToNewDrop: {Material: ItemStack}? {}
-        replaceDrops: boolean? false
-        convertMap: {Material: ItemStack}? {}
-BlockRayData: object(superdoc = SkillData)? 
+        dropToNewDrop: {Material: ItemStack}? {} # The map of block to items to drops
+        replaceDrops: boolean? false # If true, the original block drop will be replaced instead of dropping like usual
+        convertMap: {Material: ItemStack}? {} # The map of block to items to drops
+BlockRayData: object(superdoc = SkillData)?  # Changes the block the player is looking at
     properties: 
-        maxDistance: integer? 20
-        shouldRevert: boolean? false
-        blocksToPlace: Material[]? []
-        blocksToReplace: Material[]? []
-        blockRayMode: BlockRayMode? 
-        revertsAfter: Duration? 15.0
-ChatLanguageSettings: object? 
+        maxDistance: integer? 20 # The max distance to the block to change
+        shouldRevert: boolean? false # Whether to revert the block after it changes
+        blocksToPlace: Material[]? [] # The list of blocks to change to, it will randomly pick one from the list
+        blocksToReplace: Material[]? [] # The list of blocks that can be replaced
+        blockRayMode: BlockRayMode?  # The mode of operation
+        revertsAfter: Duration? 15.0 # How long it takes for the block to revert in seconds. Only works if `shouldRevert` is true
+ChatLanguageSettings: object?  # TODO
     properties: 
-        gainedHero: string? 
-        noPermission: string? 
-        currentHero: string? 
-        heroCommandCooldown: string? 
-        invalidHeroMessage: string? 
-        invalidPlayerMessage: string? 
-        invalidCommandMessage: string? 
-        invalidRerollGroupMessage: string?
-ClimbData: object(superdoc = SkillData)? 
+        gainedHero: string?  # TODO
+        noPermission: string?  # TODO
+        currentHero: string?  # TODO
+        heroCommandCooldown: string?  # TODO
+        invalidHeroMessage: string?  # TODO
+        invalidPlayerMessage: string?  # TODO
+        invalidCommandMessage: string?  # TODO
+        invalidRerollGroupMessage: string?  # TODO
+ClimbData: object(superdoc = SkillData)?  # Lets the player climb walls
     properties: 
         proximity: number? 0.2
         climbSpeed: number? 0.2
@@ -125,41 +127,41 @@ ConfigYaml: object?
         disabledWorlds: string[]?
 ConsumeSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
     properties: 
-        material: Material? DIRT
-        hunger: integer? 0
-ConvertBlockData: object(superdoc = CooldownData, superdoc = SkillData)? 
+        material: Material? DIRT # The item that can be consumed
+        hunger: integer? 0 # The food points/hunger that the player will get after easting
+ConvertBlockData: object(superdoc = CooldownData, superdoc = SkillData)?  # Adds the ability to convert a block when right clicking a block
     properties: 
-        inputBlocks: Material[]? []
-        outputBlock: Material? GOLD_BLOCK
-ConvertDropsData: object(superdoc = SkillData)? 
+        inputBlocks: Material[]? [] # The list of blocks that can be converted
+        outputBlock: Material? GOLD_BLOCK # The result of the conversion
+ConvertDropsData: object(superdoc = SkillData)?  # Converts item drops from breaking blocks
     properties: 
-        dropToNewDrop: {Material: ItemStack}? {}
-        ignoredBlocks: Material[]? []
-        ignoreSilkTouch: boolean? false
-        convertMap: {Material: ItemStack}? {}
-ConvertItemData: object(superdoc = SkillData)? 
+        dropToNewDrop: {Material: ItemStack}? {} # The mapping from drop to new drop
+        ignoredBlocks: Material[]? [] # The list of blocks to not convert drops from
+        ignoreSilkTouch: boolean? false # Whether to still do the conversion if the block is mined with silk touch
+        convertMap: {Material: ItemStack}? {} # The mapping from drop to new drop
+ConvertItemData: object(superdoc = SkillData)?  # Converts the input item into the output item when the user picks up an item
     properties: 
-        inputItem: ItemStack? 
-        outputItem: ItemStack? 
-        chance: number? 1
-CooldownData: object(superdoc = SkillData)? 
+        inputItem: ItemStack?  # The input item to convert
+        outputItem: ItemStack?  # The item to convert to
+        chance: number? 1 # The chance of the conversion
+CooldownData: object(superdoc = SkillData)?  # TODO
     properties: 
-        cooldown: number? 0
-        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again!
-CraftingData: object(superdoc = SkillData)? 
+        cooldown: number? 0 # The cooldown in seconds
+        cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! # The message for when the cooldown is not over\n\n\"<currentcooldown>\" will be replaced by the remaining cooldown in seconds
+CraftingData: object(superdoc = SkillData)?  # Enables the hero to use this recipe
     properties: 
-        shapeless: ShapelessRecipeData! 
-        shaped: ShapedRecipeData!
-CreeperData: object(superdoc = CooldownData, superdoc = SkillData)? 
+        shapeless: ShapelessRecipeData!  # TODO
+        shaped: ShapedRecipeData!  # TODO
+CreeperData: object(superdoc = CooldownData, superdoc = SkillData)?  # Creates an explosion when the user sneaks on the ground until the explosion
     properties: 
-        fuse: Duration? 2.0
-        creeperPower: number? 1
-        upwardsVelocity: number? 2.5
-        slowfallDuration: Duration? 7.0
-        creeper_power: number? 1
-        upwards_velocity: number? 2.5
-        slowfall_duration: Duration? 7.0
-DamageModifierData: object(superdoc = SkillData)? 
+        fuse: Duration? 2.0 # The time to wait until the explosion in seconds (1 is 20 ticks)
+        creeperPower: number? 1 # The power of the explosion
+        upwardsVelocity: number? 2.5 # The upwards velocity to apply to the user
+        slowfallDuration: Duration? 7.0 # The duration of the slowfall potion in seconds (1 is 20 ticks)
+        creeper_power: number? 1 # The power of the explosion
+        upwards_velocity: number? 2.5 # The upwards velocity to apply to the user
+        slowfall_duration: Duration? 7.0 # The duration of the slowfall potion in seconds (1 is 20 ticks)
+DamageModifierData: object(superdoc = SkillData)?  # Constrains damage, with optional easing out. \nDoes not support conditions currently
     properties: 
         entities: EntityType[]? []
         causes: EntityDamageEvent.DamageCause[]? []
@@ -178,10 +180,10 @@ DamagePotionData: object(superdoc = PotionEffectData, superdoc = SkillData)?
         damageCause: EntityDamageEvent.DamageCause[]? []
 DamageResistanceData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
     properties: 
-        damageMultiplier: number? 0
-        damageCauses: EntityDamageEvent.DamageCause[]? 
-        damageCause: EntityDamageEvent.DamageCause[]?
-DatabaseSettings: object? 
+        damageMultiplier: number? 0 # The multiplier on the damage
+        damageCauses: EntityDamageEvent.DamageCause[]?  # The causes of damage that will be effected
+        damageCause: EntityDamageEvent.DamageCause[]?  # The causes of damage that will be effected
+DatabaseSettings: object?  # TODO
     properties: 
         type: string? YAML
         host: string? this needs filling with your host name if using mysql
@@ -191,57 +193,57 @@ DatabaseSettings: object?
         password: string? this needs filling with the password being used to connect
 DatabaseYaml: object? 
     properties: 
-        database: DatabaseSettings? 
-        config_version: string?
-DecoyData: object(superdoc = SkillData)? 
+        database: DatabaseSettings?  # TODO
+        config_version: string?  # TODO
+DecoyData: object(superdoc = SkillData)?  # Creates an armour stand in the place of the player when sneaking. The armour stand will be wearing a leather armour and a player head
     properties: 
         color: Color? 
         base64Skin: string? SELF
         base64skin: string? SELF
 EggLayerData: object(superdoc = ItemStackData, superdoc = SkillData)? 
     properties: 
-        tickDelay: Duration? 15.0
-EraserData: object(superdoc = CooldownData, superdoc = SkillData)? 
+        tickDelay: Duration? 15.0 # The delay between item drops
+EraserData: object(superdoc = CooldownData, superdoc = SkillData)?  # Removes another player's power temporarily
     properties: 
-        range: number? 30
-        removedMessage: string? <player> has had their power erased temporarily!
-        returnedMessage: string? <player> has had their power reinstated!
-        duration: Duration? 7.5
-ExplosionSpell: object? 
-FangsSpell: object? 
-GiveItemData: object(superdoc = SkillData)? 
+        range: number? 30 # The maximum distance to the target player to be erased
+        removedMessage: string? <player> has had their power erased temporarily! # The message to send to the user and erased player when their powers are removed
+        returnedMessage: string? <player> has had their power reinstated! # The message to send to the user and erased player when their powers are reinstated
+        duration: Duration? 7.5 # How long the powers are erased in seconds
+ExplosionSpell: object(superdoc = SpellData, superdoc = SkillData)! {} # A spell that spawns tnt
+FangsSpell: object(superdoc = SpellData, superdoc = SkillData)! {} # A spell that spawns Evoker fangs
+GiveItemData: object(superdoc = SkillData)?  # Gives the user an item
     properties: 
-        item: ItemStack? 
-        canStore: boolean? true
-        canDrop: boolean? true
-        canLoseOnDeath: boolean? true
-        loseItemOnHeroLoss: boolean? true
-        dropsOnDeath: boolean? true
-        canDropOnDeath: boolean? true
-GlobalRerollSettings: object? 
+        item: ItemStack?  # The item to give
+        canStore: boolean? true # If true, the item can be stored outside of the player inventory
+        canDrop: boolean? true # If true, the item can be dropped
+        canLoseOnDeath: boolean? true # If true, the item can be lost on death
+        loseItemOnHeroLoss: boolean? true # If true, the item will be lost on if the user changes hero
+        dropsOnDeath: boolean? true # If true, the item will be dropped on death
+        canDropOnDeath: boolean? true # If true, the item will be dropped on death
+GlobalRerollSettings: object?  # TODO
     properties: 
-        itemEnabled: boolean? true
-        eachHeroRequiresPermission: boolean? 
-        itemCooldown: number?
-GUILanguageSettings: object? 
+        itemEnabled: boolean? true # TODO
+        eachHeroRequiresPermission: boolean?  # TODO
+        itemCooldown: number?  # TODO
+GUILanguageSettings: object?  # TODO
     properties: 
         name: string? Pick your hero!
 GUISettings: object? 
     properties: 
-        startsOpen: boolean! 
-        onStart: boolean! 
-        closeable: boolean! 
-        canClose: boolean!
-GunData: object(superdoc = CooldownData, superdoc = SkillData)? 
+        startsOpen: boolean!  # TODO
+        onStart: boolean!  # TODO
+        closeable: boolean!  # TODO
+        canClose: boolean!  # TODO
+GunData: object(superdoc = CooldownData, superdoc = SkillData)?  # Shoots the gun in the direction that the user is looking at when the user right clicks if the user holds the gun item
     properties: 
-        damage: number? 5.0
-        maxDistance: number? 64
-        bulletSize: number? 1.0
-        item: ItemComparisonData? {}
-        shootSound: SoundData? 
-        trailParticle: ParticleData? 
-        hitParticle: ParticleData?
-HeartStealData: object(superdoc = SkillData)? 
+        damage: number? 5.0 # The damage that will be dealt by the bullet
+        maxDistance: number? 64 # The max distance the bullet can travel
+        bulletSize: number? 1.0 # The size of the bullet
+        item: ItemComparisonData? {} # The item that will be used as the gun
+        shootSound: SoundData?  # The sound that will be played when the gun shoots
+        trailParticle: ParticleData?  # The particle that will be used for the trail
+        hitParticle: ParticleData?  # The particle that will be spawned at the hit location
+HeartStealData: object(superdoc = SkillData)?  # Gives max hearts on kill
     properties: 
         heartsGained: integer? 2
         entities: EntityType[]? []
@@ -250,51 +252,52 @@ HeartStealData: object(superdoc = SkillData)?
         maxhearts: integer? 24
 HeroCommandSettings: object? 
     properties: 
-        cooldown: number? 
-        aliases: string[]?
-InstantBreakData: object(superdoc = SkillData)? 
+        cooldown: number?  # TODO
+        aliases: string[]?  # TODO
+InstantBreakData: object(superdoc = SkillData)?  # Allows the player to break certain blocks instantly. This will use a custom tool with enchantments of the item in hand
     properties: 
-        instantBreakable: Material[]? []
-        breakUsing: Material? 
-        blocks: Material[]? []
-        breakusing: Material?
-KillPotionData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)? 
+        instantBreakable: Material[]? [] # The list of blocks that can be broken instantly
+        breakUsing: Material?  # The tool that will be used instead of what's in hand
+        blocks: Material[]? [] # The list of blocks that can be broken instantly
+        breakusing: Material?  # The tool that will be used instead of what's in hand
+KillPotionData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)?  # Applies a potion effect everytime the hero kills an entity
     properties: 
         entities: EntityType[]?
 LanguageYaml: object? 
     properties: 
-        config_version: string? 
-        chatLanguageSettings: ChatLanguageSettings? 
-        guiLanguageSettings: GUILanguageSettings? 
-        Chat: ChatLanguageSettings? 
-        GUI: GUILanguageSettings?
-LaunchProjectileSpell: object(superdoc = SpellData, superdoc = SkillData)? 
+        config_version: string?  # TODO
+        chatLanguageSettings: ChatLanguageSettings?  # TODO
+        guiLanguageSettings: GUILanguageSettings?  # TODO
+        Chat: ChatLanguageSettings?  # TODO
+        GUI: GUILanguageSettings?  # TODO
+LaunchProjectileSpell: object(superdoc = SpellData, superdoc = SkillData)?  # A spell that launches an entity in the direction the player is looking
     properties: 
-        projectile: EntityData? {}
-LifestealData: object(superdoc = SkillData)? 
+        projectile: EntityData? {} # The entity to launch
+LifestealData: object(superdoc = SkillData)?  # Gives a percentage of the damage dealt to an entity as health to the user, cannot exceed maximum hp
     properties: 
-        lifestealPercentage: number? 5
-        lifestealpercentage: number? 5
-LightningSpell: object? 
-LightSkillData: object? 
-NoHungerData: object(superdoc = SkillData)? 
+        lifestealPercentage: number? 5 # The percentage of damage that is given to the user as health
+        lifestealpercentage: number? 5 # The percentage of damage that is given to the user as health
+LightningSpell: object(superdoc = SpellData, superdoc = SkillData)! {} # A spell that summons lightning where the player is looking
+LightSkillData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)! {} # Applies a potion effect when the user is at a light level above 10
+NoHungerData: object(superdoc = SkillData)?  # Makes the hero's hunger not go down after a certain level
     properties: 
-        minimumHunger: number? 19
-OHKOData: object(superdoc = SkillData)? 
+        minimumHunger: number? 19 # TODO
+OHKOData: object(superdoc = SkillData)?  # Kills entities in one hit
     properties: 
-        entityTypes: EntityType[]? 
-        displayName: string? 
-        entitytypes: EntityType[]? 
-        displayname: string?
-PhaseData: object(superdoc = SkillData)? 
+        entityTypes: EntityType[]?  # The list of entities that can be killed in one hit
+        displayName: string?  # The display name of the entity that can be killed in one hit. Any name will be killed in one hit if this is empty
+        entitytypes: EntityType[]?  # The list of entities that can be killed in one hit
+        displayname: string?  # The display name of the entity that can be killed in one hit. Any name will be killed in one hit if this is empty
+PhaseData: object(superdoc = SkillData)?  # Allows the player to phase through the ground
     properties: 
-        minimumPhaseYAxis: number? 5
-PickpocketData: object(superdoc = SkillData)? 
+        numberOfBlocksPhasingAboveWorldMinHeight: number? 5 # TODO
+        minimumPhaseYAxis: number? 5 # TODO
+PickpocketData: object(superdoc = SkillData)?  # Allows the hero to look at another player's inventory or drop a villager's inventory with right click
     properties: 
-        range: number? 3
-        isSneaking: boolean? true
-        sneaking: boolean? true
-PlaceBlockSpell: object(superdoc = SpellData, superdoc = SkillData)? 
+        range: number? 3 # The max distance to the other entity
+        isSneaking: boolean? true # Whether the hero needs to be sneaking
+        sneaking: boolean? true # Whether the hero needs to be sneaking
+PlaceBlockSpell: object(superdoc = SpellData, superdoc = SkillData)?  # A spell that places a block
     properties: 
         block: BlockData?
 PotionEffectSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
@@ -306,32 +309,34 @@ PotionGifterSkillData: object(superdoc = PotionEffectSkillData, superdoc = Skill
         cooldownMessage: string? <grey><i>You have <currentcooldown> seconds left until it can be used again!
 PowerOnStartSettings: object? 
     properties: 
-        enabled: boolean! 
-        isEnabled: boolean! 
-        firstJoinTitle: boolean! 
-        showHero: boolean!
-RemoteDetonationData: object(superdoc = CooldownData, superdoc = SkillData)? 
+        enabled: boolean!  # TODO
+        isEnabled: boolean!  # TODO
+        firstJoinTitle: boolean!  # TODO
+        showHero: boolean!  # TODO
+RemoteDetonationData: object(superdoc = CooldownData, superdoc = SkillData)?  # Creates an explosion at the entity the user is looking at when the user sneaks
     properties: 
-        spawnsFire: boolean? false
-        breakBlocks: boolean? true
-        removeDetonatedEntity: boolean? true
-        explosionStrength: number? 1
-        explodable: EntityType[]? []
-RepulsionData: object(superdoc = SkillData)? 
+        spawnsFire: boolean? false # If true, explosion will spawn fire
+        breakBlocks: boolean? true # If true, the explosion will break blocks
+        removeDetonatedEntity: boolean? true # If true, the entity that was detonated will be removed
+        explosionStrength: number? 1 # The strength of the explosion
+        explodable: EntityType[]? [] # The types of entities that can be exploded
+RepulsionData: object(superdoc = SkillData)?  # Repulses all nearby entities when the user sneaks
     properties: 
-        multiplier: number? 1
-        radius: number? 5.0
-        blacklist: EntityType[]? []
-        entityBlacklist: EntityType[]? []
-RerollConfig: object? 
+        multiplier: number? 1 # The multiplier for the repulsion
+        radius: number? 5.0 # The radius where inside entities are effected
+        entities: EntityType[]? [] # The list of entities to blacklist/whitelist
+        whitelist: boolean? false # Whether entities is a whitelist or a blacklist
+        entityBlacklist: EntityType[]? [] # The list of entities to blacklist/whitelist
+        blacklist: EntityType[]? [] # The list of entities to blacklist/whitelist
+RerollConfig: object?  # TODO
     properties: 
-        configVersion: string? 
-        globalRerollSettings: GlobalRerollSettings? #default#
-        rerollGroups: RerollGroup{}? {}
-        config_version: string? 
-        global_reroll_settings: GlobalRerollSettings? #default#
-        reroll_groups: RerollGroup{}? {}
-RerollGroup: object? 
+        configVersion: string?  # TODO
+        globalRerollSettings: GlobalRerollSettings? #default# # TODO
+        rerollGroups: RerollGroup{}? {} # TODO
+        config_version: string?  # TODO
+        global_reroll_settings: GlobalRerollSettings? #default# # TODO
+        reroll_groups: RerollGroup{}? {} # TODO
+RerollGroup: object?  # TODO
     properties: 
         weightedHeroes: RerollGroup.WeightedHero[]? []
         itemComparator: ItemComparisonData? 
@@ -339,29 +344,29 @@ RerollGroup: object?
         item: ItemComparisonData?
 RerollGroup.WeightedHero: object? 
     properties: 
-        hero: string! 
-        weight: integer!
-ShieldData: object(superdoc = SkillData)? 
+        hero: string!  # TODO
+        weight: integer!  # TODO
+ShieldData: object(superdoc = SkillData)?  # Sets the shields cooldown when the user take damage
     properties: 
         cooldown: Duration? 100.0
 Skin: object? 
     properties: 
-        value: string? 
-        signature: string?
-SlamData: object(superdoc = CooldownData, superdoc = SkillData)? 
+        value: string?  # TODO
+        signature: string?  # TODO
+SlamData: object(superdoc = CooldownData, superdoc = SkillData)?  # Allows the player to jump high up in the air and do a slam, damaging entities near the impact\nTriggered with punch
     properties: 
-        hand: ItemStack? AIR
-        airCooldown: number? 1
-        foodCost: integer? 0
-        minimumFood: integer? 0
-        radius: number? 5
-        damage: number? 0
-        item: ItemStack? AIR
-        diameterRadius: number? 5
-SlimeData: object(superdoc = SkillData)? 
+        hand: ItemStack? AIR # The item that has to be in hand to perform this skill
+        airCooldown: number? 1 # Cooldown from the start of the slam
+        foodCost: integer? 0 # How much food points/hunger this takes
+        minimumFood: integer? 0 # The minimum food points needed to perform this skill
+        radius: number? 5 # The horizontal radius where entities inside the radius will be damaged
+        damage: number? 0 # The amount of damage this skill will do
+        item: ItemStack? AIR # The item that has to be in hand to perform this skill
+        diameterRadius: number? 5 # The horizontal radius where entities inside the radius will be damaged
+SlimeData: object(superdoc = SkillData)?  # Let's the hero bounce around like a slime, also adds horizontal velocity in the direction the player is facing
     properties: 
-        speedMultiplier: number? 1
-SneakData: object(superdoc = SkillData)? 
+        speedMultiplier: number? 1 # The horizontal speed
+SneakData: object(superdoc = SkillData)?  # Prevents being targeted by entities
     properties: 
         mustSneak: boolean? 
         needsInvisibility: boolean? 
@@ -369,103 +374,104 @@ SneakData: object(superdoc = SkillData)?
 SneakingPotionData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
 StrongmanData: object(superdoc = SkillData)? 
     properties: 
-        velocity: number? 2.5
-        upwardsVelocity: number? 1
-        tooMuscularMessage: string? <player> <white> is too strong to sit in a vehicle!
-        maxPassengers: integer? 10
-        upwardsvelocity: number? 1
-        toomuscularmessage: string? <player> <white> is too strong to sit in a vehicle!
-        maxpassengers: integer? 10
-SummonSkillData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)? 
+        velocity: number? 2.5 # The horizontal speed to throw the entity
+        upwardsVelocity: number? 1 # The upward velocity to throw the entity
+        tooMuscularMessage: string? <player> <white> is too strong to sit in a vehicle! # The message to give to the player when the player attempts to sit in a vehicle\n\n\"<player>\" will be replaced by the name of the player\n
+        maxPassengers: integer? 10 # The maximum number of entities that can be picked up at once
+        upwardsvelocity: number? 1 # The upward velocity to throw the entity
+        toomuscularmessage: string? <player> <white> is too strong to sit in a vehicle! # The message to give to the player when the player attempts to sit in a vehicle\n\n\"<player>\" will be replaced by the name of the player\n
+        maxpassengers: integer? 10 # The maximum number of entities that can be picked up at once
+SummonSkillData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)?  # On punch with an empty hand, summons an entity where the player is looking
     properties: 
-        range: integer? 10
-        repel: boolean? false
-        mustSneak: boolean? true
-        entity: EntityType? LIGHTNING_BOLT
-        action: Action[]? #undocumented#
-        cooldown: number? 10.0
-        cooldownMessage: string? <yellow><bold>Zeus <white>Cooldown: <s> seconds
-        sneak: boolean? true
-        mustsneak: boolean? true
-        entityType: EntityType? LIGHTNING_BOLT
-Superhero: object(additionalProperties)? 
+        range: integer? 10 # The max distance in blocks the entity will be summoned\nIf the player is looking at something out of range, it will summon this many blocks away
+        repel: boolean? false # Whether to repel the player when summoning
+        mustSneak: boolean? true # Whether the player must be sneaking
+        entity: EntityType? LIGHTNING_BOLT # The entity to spawn
+        action: Action[]? #undocumented# # The actions that will trigger the summoning
+        cooldown: number? 10.0 # The cooldown in seconds
+        cooldownMessage: string? <white>Cooldown: <currentcooldown> seconds # The cooldown message to the player when the cooldown isn't over yet\n\n\"<currentcooldown>\" will be replaced with the current cooldown in seconds\n
+        sneak: boolean? true # Whether the player must be sneaking
+        mustsneak: boolean? true # Whether the player must be sneaking
+        entityType: EntityType? LIGHTNING_BOLT # The entity to spawn
+Superhero: object(additionalProperties)?  # TODO
     properties: 
-        name: string? 
-        colouredName: string? 
-        description: string? 
-        heroGainedSound: SoundData? 
-        skin: Skin? 
-        icon: ItemStack? 
-        skills: SkillsContainer? {}
-        plusUltraSkills: PlusUltraSkillsContainer? {}
-SuperheroCondition: object(superdoc = Condition)? 
+        name: string?  # TODO
+        colouredName: string?  # TODO
+        description: string?  # TODO
+        heroGainedSound: SoundData?  # TODO
+        skin: Skin?  # TODO
+        icon: ItemStack?  # TODO
+        skills: SkillsContainer? {} # TODO
+        plusUltraSkills: PlusUltraSkillsContainer? {} # TODO
+SuperheroCondition: object(superdoc = Condition)?  # Checks the hero against a list of heroes
     properties: 
+        mode: enum! SELF # The mode of operation
         mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        heroes: string[]? []
-TeleportData: object(superdoc = CooldownData, superdoc = SkillData)? 
+        heroes: string[]!  # TODO
+TeleportData: object(superdoc = CooldownData, superdoc = SkillData)?  # Teleports the player in the direction that they are looking at
     properties: 
-        actions: Action[]? #undocumented#
-        distance: integer? 30
-        yAxisMultiplier: number? 1
-        teleportCause: PlayerTeleportEvent.TeleportCause? ENDER_PEARL
-        particle: ParticleData? 
-        teleportItem: ItemComparisonData? #undocumented#
-        action: Action[]? #undocumented#
-ThrowerData: object(superdoc = CooldownData, superdoc = SkillData)? 
+        actions: Action[]? #undocumented# # The set of actions that trigger this skill
+        distance: integer? 30 # The max distance to teleport
+        yAxisMultiplier: number? 1 # 
+        teleportCause: PlayerTeleportEvent.TeleportCause? ENDER_PEARL # The cause of this teleport will be set to this value
+        particle: ParticleData?  # The particles to add after teleportation
+        teleportItem: ItemComparisonData? #undocumented# # The item that has to be in hand to teleport
+        action: Action[]? #undocumented# # The set of actions that trigger this skill
+ThrowerData: object(superdoc = CooldownData, superdoc = SkillData)?  # Throws an entity in the direction the player is looking
     properties: 
-        ammoCost: integer? 1
-        ammo: ItemComparisonData? {}
-        projectile: EntityType? SNOWBALL
-        actions: Action[]? #undocumented#
-        canPickUp: boolean? false
-        velocity: number? 1.4
-        damage: number? 3
-        item: ItemComparisonData? {}
-TransmutationSpell: object(superdoc = SpellData, superdoc = SkillData)? 
+        ammoCost: integer? 1 # How much ammo is consumed per throw
+        ammo: ItemComparisonData? {} # The item that is consumed as ammo per throw
+        projectile: EntityType? SNOWBALL # The entity that is thrown
+        actions: Action[]? #undocumented# # The actions that trigger the throw
+        canPickUp: boolean? false # Whether the projectile can be picked up by the player. Only for arrows and tridents
+        velocity: number? 1.4 # The speed of the projectile
+        damage: number? 3 # The damage of the projectile. Only for arrows and tridents
+        item: ItemComparisonData? {} # The item that is consumed as ammo per throw
+TransmutationSpell: object(superdoc = SpellData, superdoc = SkillData)?  # A spell that replaces blocks
     properties: 
-        transmutableBlocks: Material[]? []
-        block: BlockData? #undocumented#
-        resultantBlock: BlockData? #undocumented#
-WalkerData: object(superdoc = SkillData)? 
+        transmutableBlocks: Material[]? [] # The list of blocks that can be replaced
+        block: BlockData? #undocumented# # The resulting block
+        resultantBlock: BlockData? #undocumented# # The resulting block
+WalkerData: object(superdoc = SkillData)?  # Places blocks below the player
     properties: 
-        blocksToPlace: Material[]? []
-        blocksToReplace: Material[]? []
-        blocksToPlaceOn: Material[]? []
-        isSneaking: boolean? false
-        blocksDrop: boolean? true
-        shouldRevert: boolean? false
-        aboveFloor: boolean? false
-        canPlaceFloating: boolean? true
-        revertsAfter: Duration? 15.0
-        sneaking: boolean? false
-        issneaking: boolean? false
-WeatherDamageData: object(superdoc = SkillData)? 
+        blocksToPlace: Material[]? [] # The blocks to place
+        blocksToReplace: Material[]? [] # The blocks that can be replaced
+        blocksToPlaceOn: Material[]? [] # The blocks that has to be below the block this skill places
+        isSneaking: boolean? false # Whether the player must be sneaking for this skill to work
+        blocksDrop: boolean? true # Whether the blocks placed by this skill can drop block drops
+        shouldRevert: boolean? false # Whether the blocks placed by this skill revert to the original block
+        aboveFloor: boolean? false # Whether the blocks will be placed on the player or below them
+        canPlaceFloating: boolean? true # Whether the block can be placed if it is air below
+        revertsAfter: Duration? 15.0 # The time it takes for the blocks to revert in seconds
+        sneaking: boolean? false # Whether the player must be sneaking for this skill to work
+        issneaking: boolean? false # Whether the player must be sneaking for this skill to work
+WeatherDamageData: object(superdoc = SkillData)?  # Makes the player take damage every  when it's raining
     properties: 
-        damage: number? 1.0
-        checkShelter: boolean? true
-Action: enum? 
+        damage: number? 1.0 # The damage that is dealt
+        checkShelter: boolean? true # Whether to check if there's a block above and not deal the damage if there is
+Action: enum?  # TODO
     values: 
       - LEFT_CLICK_AIR
       - LEFT_CLICK_BLOCK
       - PHYSICAL
       - RIGHT_CLICK_AIR
       - RIGHT_CLICK_BLOCK
-AttributesData.Operation: enum? 
+AttributesData.Operation: enum?  # TODO
     values: 
       - ADD_NUMBER
       - ADD_SCALAR
       - MULTIPLY_SCALAR
       - MULTIPLY_SCALAR_1
-BlockRayMode: enum? 
+BlockRayMode: enum?  # TODO
     values: 
       - ABOVEBLOCK
       - CLOSERBLOCK
       - THEBLOCK
-EntityDamageEvent.DamageCause: enum? 
+EntityDamageEvent.DamageCause: enum?  # TODO
     values: 
       - BLOCK_EXPLOSION
       - CAMPFIRE
@@ -500,7 +506,7 @@ EntityDamageEvent.DamageCause: enum?
       - VOID
       - WITHER
       - WORLD_BORDER
-PlayerTeleportEvent.TeleportCause: enum? 
+PlayerTeleportEvent.TeleportCause: enum?  # TODO
     values: 
       - CHORUS_FRUIT
       - COMMAND
@@ -513,6 +519,6 @@ PlayerTeleportEvent.TeleportCause: enum?
       - PLUGIN
       - SPECTATE
       - UNKNOWN
-ConditionListWrapper: ConditionList! 
-PlusUltraSkillsContainer: SkillsContainer! 
-SkillsContainer: SkillData{}? 
+ConditionListWrapper: ConditionList!  # TODO
+PlusUltraSkillsContainer: SkillsContainer!  # TODO
+SkillsContainer: SkillData{}?  # TODO

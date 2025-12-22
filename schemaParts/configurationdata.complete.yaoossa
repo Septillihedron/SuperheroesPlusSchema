@@ -1,32 +1,32 @@
-EntityComponent: union(unionIdentifier = type)! 
+EntityComponent: union(unionIdentifier = type)!  # TODO
     unions: 
-        /LivingEntity/: LivingEntityComponent! 
-        /Hoglin/: ZombifiableComponent! 
-        /PiglinAbstract/: ZombifiableComponent! 
-        /ThrowableProjectile/: ThrowableProjectileComponent! 
-        /Phantom/: SizeComponent! 
-        /Slime/: SizeComponent! 
-        /Explosive/: ExplosiveComponent! 
-        /Colorable/: ColorableComponent! 
-        /Ageable/: AgeableComponent! 
-        /Wolf/: WolfComponent! 
-        /WitherSkull/: WitherSkullComponent! 
-        /Trident/: AbstractArrowComponent! 
-        /Rabbit/: RabbitComponent! 
-        /ThrownPotion/: PotionEntityComponent! 
-        /SpectralArrow/: SpectralArrowComponent! 
-        /TNTPrimed/: PrimedTntComponent! 
-        /Llama/: LlamaComponent! 
-        /ChestedHorse/: ChestedHorseComponent! 
-        /Horse/: HorseComponent! 
-        /AbstractHorse/: AbstractHorseComponent! 
-        /FallingBlock/: FallingBlockComponent! 
-        /ExperienceOrb/: ExperienceOrbComponent! 
-        /Item/: DroppedItemComponent! 
-        /Creeper/: CreeperComponent! 
-        /Axolotl/: AxolotlComponent! 
-        /Arrow/: ArrowComponent!
-Shape: union(unionIdentifier = type)! 
+        /LivingEntity/: LivingEntityComponent!  # TODO
+        /Hoglin/: ZombifiableComponent!  # TODO
+        /PiglinAbstract/: ZombifiableComponent!  # TODO
+        /ThrowableProjectile/: ThrowableProjectileComponent!  # TODO
+        /Phantom/: SizeComponent!  # TODO
+        /Slime/: SizeComponent!  # TODO
+        /Explosive/: ExplosiveComponent!  # TODO
+        /Colorable/: ColorableComponent!  # TODO
+        /Ageable/: AgeableComponent!  # TODO
+        /Wolf/: WolfComponent!  # TODO
+        /WitherSkull/: WitherSkullComponent!  # TODO
+        /Trident/: AbstractArrowComponent!  # TODO
+        /Rabbit/: RabbitComponent!  # TODO
+        /ThrownPotion/: PotionEntityComponent!  # TODO
+        /SpectralArrow/: SpectralArrowComponent!  # TODO
+        /TNTPrimed/: PrimedTntComponent!  # TODO
+        /Llama/: LlamaComponent!  # TODO
+        /ChestedHorse/: ChestedHorseComponent!  # TODO
+        /Horse/: HorseComponent!  # TODO
+        /AbstractHorse/: AbstractHorseComponent!  # TODO
+        /FallingBlock/: FallingBlockComponent!  # TODO
+        /ExperienceOrb/: ExperienceOrbComponent!  # TODO
+        /Item/: DroppedItemComponent!  # TODO
+        /Creeper/: CreeperComponent!  # TODO
+        /Axolotl/: AxolotlComponent!  # TODO
+        /Arrow/: ArrowComponent!  # TODO
+Shape: union(unionIdentifier = type)!  # TODO
     unions: 
         HELIX: Helix! 
         WINGS: Wings! 
@@ -64,19 +64,19 @@ AttributesData: object?
         unique_key: string?
 AxolotlComponent: object(additionalProperties)? 
     properties: 
-        variant: Axolotl.Variant?
-BlockDataComparisonData: object? 
+        variant: Axolotl.Variant?  # TODO
+BlockDataComparisonData: object?  # TODO
     properties: 
-        types: Material[]? []
-        level: RangeData? -Infinity - Infinity
-        age: RangeData? -Infinity - Infinity
-BlockDataData: object? 
+        types: Material[]? [] # TODO
+        level: RangeData? -Infinity - Infinity # TODO
+        age: RangeData? -Infinity - Infinity # TODO
+BlockDataData: object?  # TODO
     properties: 
-        material: Material? STONE
-        level: integer? -1
-        age: integer? -1
-        type: Material? STONE
-BookData: object? 
+        material: Material? STONE # TODO
+        level: integer? -1 # TODO
+        age: integer? -1 # TODO
+        type: Material? STONE # TODO
+BookData: object?  # TODO
     properties: 
         title: string! 
         author: string! 
@@ -98,15 +98,15 @@ DroppedItemComponent: object(additionalProperties)?
         stackData: ItemStackData?
 Ears: object(superdoc = Shape)? 
     properties: 
-        height: number? 0.2
-        frequency: number? 0.05
-        size: number? 1
-        spread: number? 0.2
-EffectData: object? 
+        height: number? 0.2 # TODO
+        frequency: number? 0.05 # TODO
+        size: number? 1 # TODO
+        spread: number? 0.2 # TODO
+EffectData: object?  # TODO
     properties: 
-        particles: ParticleData[]? []
-        name: string?
-EnchantComparisonData: object? 
+        particles: ParticleData[]? [] # TODO
+        name: string?  # TODO
+EnchantComparisonData: object?  # TODO
     properties: 
         enchantMap: {Enchantment: RangeData}? {}
 EquipableData: object(superdoc = ItemStack)? 
@@ -165,40 +165,40 @@ Helix: object(superdoc = Shape)?
         wave_frequency: number? 1
 HorseComponent: object(additionalProperties)? 
     properties: 
-        armor: ItemStack? 
-        color: Horse.Color? CHESTNUT
-        style: Horse.Style? NONE
-ItemComparisonData: object? 
+        armor: ItemStack?  # TODO
+        color: Horse.Color? CHESTNUT # TODO
+        style: Horse.Style? NONE # TODO
+ItemComparisonData: object?  # TODO
     properties: 
-        types: Material[]? []
-        type: Material? 
-        amount: RangeData? -Infinity - Infinity
-        metadata: ItemMetaComparisonData?
-ItemMetaComparisonData: object? 
+        types: Material[]? [] # TODO
+        type: Material?  # TODO
+        amount: RangeData? -Infinity - Infinity # TODO
+        metadata: ItemMetaComparisonData?  # TODO
+ItemMetaComparisonData: object?  # TODO
     properties: 
-        displayName: string! 
-        lore: LoreData! 
-        enchants: EnchantComparisonData!
-ItemMetaData: object? 
+        displayName: string!  # TODO
+        lore: LoreData!  # TODO
+        enchants: EnchantComparisonData!  # TODO
+ItemMetaData: object?  # TODO
     properties: 
-        displayName: string? 
-        lore: string[]? 
-        isUnbreakable: boolean? false
-        durability: integer? 0
-        customModelData: integer? 0
-        attributes: AttributesData? 
-        trim: TrimData? 
-        flags: ItemFlag[]? []
-        book: BookData? 
-        color: LeatherArmorColor? 
-        enchantments: {Enchantment: integer}? {}
-ItemStackData: object? 
+        displayName: string?  # TODO
+        lore: string[]?  # TODO
+        isUnbreakable: boolean? false # TODO
+        durability: integer? 0 # TODO
+        customModelData: integer? 0 # TODO
+        attributes: AttributesData?  # TODO
+        trim: TrimData?  # TODO
+        flags: ItemFlag[]? [] # TODO
+        book: BookData?  # TODO
+        color: LeatherArmorColor?  # TODO
+        enchantments: {Enchantment: integer}? {} # TODO
+ItemStackData: object?  # TODO
     properties: 
-        type: Material? STONE
-        amount: integer? 1
-        metadata: ItemMetaData? 
-        quantity: integer? 1
-LeatherArmorColor: object? 
+        type: Material? STONE # TODO
+        amount: integer? 1 # TODO
+        metadata: ItemMetaData?  # TODO
+        quantity: integer? 1 # TODO
+LeatherArmorColor: object?  # TODO
     properties: 
         red: integer? -1
         green: integer? -1
@@ -209,13 +209,13 @@ LivingEntityComponent: object(additionalProperties)?
         equipment: EquipmentData?
 LlamaComponent: object(additionalProperties)? 
     properties: 
-        color: Llama.Color? 
-        strength: integer? 1
-OptionsData: object? 
+        color: Llama.Color?  # TODO
+        strength: integer? 1 # TODO
+OptionsData: object?  # TODO
     properties: 
-        colours: Color[]? []
-        scale: number? 1.0
-ParticleData: object? 
+        colours: Color[]? [] # TODO
+        scale: number? 1.0 # TODO
+ParticleData: object?  # TODO
     properties: 
         duration: number? 2.5
         particle: Particle? PORTAL
@@ -226,10 +226,10 @@ ParticleData: object?
         numberOfParticles: integer? 1
 Point: object(superdoc = Shape)? 
     properties: 
-        spread: number? 0
-        yOffset: number? 0
-        offset: number? 0
-PotionEffectData: object? 
+        spread: number? 0 # TODO
+        yOffset: number? 0 # TODO
+        offset: number? 0 # TODO
+PotionEffectData: object?  # TODO
     properties: 
         type: PotionEffectType! 
         duration: number? 5
@@ -238,8 +238,8 @@ PotionEffectData: object?
         hasParticles: boolean? true
 PotionEntityComponent: object(additionalProperties)? 
     properties: 
-        potion: ItemStack? SPLASH_POTION
-PotionMetaData: object? 
+        potion: ItemStack? SPLASH_POTION # TODO
+PotionMetaData: object?  # TODO
     properties: 
         type: PotionType? SWIFTNESS
         extended: boolean? false
@@ -249,15 +249,15 @@ PrimedTntComponent: object(additionalProperties)?
         fuseTicks: integer? 100
 RabbitComponent: object(additionalProperties)? 
     properties: 
-        variant: Rabbit.Type?
-ShapedRecipeData: object? 
+        variant: Rabbit.Type?  # TODO
+ShapedRecipeData: object?  # TODO
     properties: 
-        recipe: string[]! []
-        recipeKeys: {Material: string}! {}
-        result: ItemStack! 
-        uniqueKey: string! 
-        unique_key: string!
-ShapelessRecipeData: object? 
+        recipe: string[]! [] # TODO
+        recipeKeys: {Material: string}! {} # TODO
+        result: ItemStack!  # TODO
+        uniqueKey: string!  # TODO
+        unique_key: string!  # TODO
+ShapelessRecipeData: object?  # TODO
     properties: 
         result: ItemStack! 
         ingredients: {Material: integer}! {}
@@ -265,8 +265,8 @@ ShapelessRecipeData: object?
         unique_key: string!
 SizeComponent: object(additionalProperties)? 
     properties: 
-        size: integer?
-SoundData: object? 
+        size: integer?  # TODO
+SoundData: object?  # TODO
     properties: 
         sound: Sound? ENTITY_GENERIC_EXPLODE
         volume: number? 1.0
@@ -276,8 +276,8 @@ SpectralArrowComponent: object(additionalProperties, superdoc = AbstractArrowCom
         glowingTicks: integer? 200
 ThrowableProjectileComponent: object(additionalProperties)? 
     properties: 
-        itemStackData: ItemStackData?
-TrimData: object? 
+        itemStackData: ItemStackData?  # TODO
+TrimData: object?  # TODO
     properties: 
         pattern: TrimPattern! 
         material: TrimMaterial!
@@ -297,26 +297,26 @@ WolfComponent: object(additionalProperties)?
         angry: boolean? false
 ZombifiableComponent: object(additionalProperties)? 
     properties: 
-        immuneToZombification: boolean? false
-AbstractArrow.PickupStatus: enum? 
+        immuneToZombification: boolean? false # TODO
+AbstractArrow.PickupStatus: enum?  # TODO
     values: 
       - ALLOWED
       - CREATIVE_ONLY
       - DISALLOWED
-AttributesData.Operation: enum? 
+AttributesData.Operation: enum?  # TODO
     values: 
       - ADD_NUMBER
       - ADD_SCALAR
       - MULTIPLY_SCALAR
       - MULTIPLY_SCALAR_1
-Axolotl.Variant: enum? 
+Axolotl.Variant: enum?  # TODO
     values: 
       - BLUE
       - CYAN
       - GOLD
       - LUCY
       - WILD
-DyeColor: enum? 
+DyeColor: enum?  # TODO
     values: 
       - BLACK
       - BLUE
@@ -334,7 +334,7 @@ DyeColor: enum?
       - RED
       - WHITE
       - YELLOW
-Horse.Color: enum? 
+Horse.Color: enum?  # TODO
     values: 
       - BLACK
       - BROWN
@@ -343,14 +343,14 @@ Horse.Color: enum?
       - DARK_BROWN
       - GRAY
       - WHITE
-Horse.Style: enum? 
+Horse.Style: enum?  # TODO
     values: 
       - BLACK_DOTS
       - NONE
       - WHITE
       - WHITEFIELD
       - WHITE_DOTS
-ItemFlag: enum? 
+ItemFlag: enum?  # TODO
     values: 
       - HIDE_ADDITIONAL_TOOLTIP
       - HIDE_ARMOR_TRIM
@@ -360,13 +360,13 @@ ItemFlag: enum?
       - HIDE_ENCHANTS
       - HIDE_PLACED_ON
       - HIDE_UNBREAKABLE
-Llama.Color: enum? 
+Llama.Color: enum?  # TODO
     values: 
       - BROWN
       - CREAMY
       - GRAY
       - WHITE
-Rabbit.Type: enum? 
+Rabbit.Type: enum?  # TODO
     values: 
       - BLACK
       - BLACK_AND_WHITE
