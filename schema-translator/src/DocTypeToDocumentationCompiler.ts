@@ -14,11 +14,11 @@ export function compileToDocumentation(part: DocPart): [string, Markdown][] {
 class DocTypeToDocumentationCompiler {
 
     types: Map<string, DocType>
-    sidebar: Markdown
+    unionsSidebars: Map<string, (sidebar: Markdown) => void>
 
     constructor(types: Map<string, DocType>) {
         this.types = types
-        this.sidebar = new Markdown()
+        this.unionsSidebars = new Map()
     }
 
     compile(name: string, doc: DocType): [string, Markdown] {
@@ -29,7 +29,35 @@ class DocTypeToDocumentationCompiler {
     }
 
     getSidebar(): [string, Markdown] {
-        return ["_Sidebar", this.sidebar]
+        const order = [
+            "SkillData",
+            "SpellData",
+            "TriggerData",
+            "Condition",
+            "Effect",
+            "ParticleShape",
+            "EntityData"
+        ]
+
+        // rename Shape to ParticleShape for better naming
+        const particleShape = this.unionsSidebars.get("Shape")
+        this.unionsSidebars.delete("Shape")
+        this.unionsSidebars.set("ParticleShape", particleShape!)
+
+        const sidebar = new Markdown()
+        order.forEach(unionName => {
+            const generator = this.unionsSidebars.get(unionName)
+            this.unionsSidebars.delete(unionName)
+            if (generator == null) {
+                throw new Error("Invalid name in order: " + unionName + "\nValid names: "+iterToString(this.unionsSidebars.keys()))
+            }
+            generator(sidebar)
+        })
+        this.unionsSidebars.delete("EntityComponent")
+        if (this.unionsSidebars.size > 0) {
+            throw new Error("Leftover union sidebars: " + iterToString(this.unionsSidebars.keys()))
+        }
+        return ["_Sidebar", sidebar]
     }
 
     toPath(name: string, doc: DocType): string {
@@ -152,9 +180,13 @@ class DocTypeToDocumentationCompiler {
             .heading1("Possible Types")
             .table([differentiator, "Description", "Subtype"], unionsData)
         
-        this.sidebar
-            .heading0(name)
-            .list(unionsData.map(data => `${data[0]}: ${data[2]}`))
+        this.unionsSidebars.set(name, 
+            (sidebar) => {
+                sidebar
+                    .heading0(this.link(name))
+                    .list(unionsData.map(data => `${data[0]}: ${data[2]}`))
+            }
+        )
 
         return md
     }
@@ -253,4 +285,8 @@ class Markdown {
     }
 
 
+}
+
+function iterToString(iter: Iterable<any>) {
+    return [...iter].join(", ")
 }

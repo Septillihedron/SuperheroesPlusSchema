@@ -3,11 +3,54 @@ import { DocType } from "./DocType"
 
 export function compileToJsonAISchema(part: DocPart): {} {
     const compiler = new DocTypeToJsonSchemaCompiler(part.types)
-    const typesEntries = [...part.types].map(([name, doc]) => [name, compiler.toJsonSchema(doc)])
+    const typesEntries = [...part.types]
+        .flatMap(([name, doc]) => {
+            const compiled = compiler.toJsonSchema(doc)
+            const N = 2
+            const schemas = []
+            if (!hasRef(compiled)) {
+                for (let i=0; i<N+1; i++) {
+                    schemas.push([name+i, {$ref: "#/$defs/"+"_"+name}])
+                }
+                return [["_"+name, compiled], ...schemas]
+            }
+            for (let i=0; i<N; i++) {
+                schemas.push([name+i, addRefIndex(jsonClone(compiled), i+1)])
+            }
+            schemas.push([name+N, {type: "null", description: "You have hit the recursion limit"}])
+            return schemas
+        })
     return {
-        $ref: "#/$defs/Superhero",
+        $ref: "#/$defs/Superhero0",
         $defs: Object.fromEntries(typesEntries)
     }
+}
+
+function jsonClone(x: any) {
+    return JSON.parse(JSON.stringify(x));
+}
+
+function addRefIndex(schema: unknown, index: number) {
+    if (schema == null) return
+    if (typeof schema != "object") return
+    if ("$ref" in schema) {
+        if (typeof schema.$ref != "string") throw new Error("$ref should be a string, got: "+schema.$ref)
+        schema.$ref = schema.$ref + index
+    }
+    Object.values(schema)
+        .forEach(value => addRefIndex(value, index))
+    return schema
+}
+
+function hasRef(schema: unknown): boolean {
+    if (schema == null) return false
+    if (typeof schema != "object") return false
+    if ("$ref" in schema) {
+        if (typeof schema.$ref != "string") throw new Error("$ref should be a string, got: "+schema.$ref)
+        return true
+    }
+    return Object.values(schema)
+        .some(value => hasRef(value))
 }
 
 class DocTypeToJsonSchemaCompiler {
@@ -44,7 +87,7 @@ class DocTypeToJsonSchemaCompiler {
         const types = doc.type.split("|")
             .map(type => type.trim())
             .map(type => DocType.createRefDoc(type, true, doc.defaultValue, ""))
-            .map(this.toRefJsonSchema)
+            .map(doc => this.toJsonSchema(doc))
         return {
             description: doc.description,
             anyOf: types
@@ -53,12 +96,10 @@ class DocTypeToJsonSchemaCompiler {
 
     toArrayJsonSchema(doc: DocType) {
         const innerType = doc.type.substring(0, doc.type.length - 2)
+        const innerDoc = DocType.createRefDoc(innerType, true, "", doc.description)
         return {
             type: "array",
-            items: {
-                $ref: "#/$defs/" + innerType,
-                description: doc.description
-            },
+            items: this.toJsonSchema(innerDoc),
             description: doc.description,
             default: doc.defaultValue,
         }
@@ -66,16 +107,16 @@ class DocTypeToJsonSchemaCompiler {
 
     toRecordJsonSchema(doc: DocType) {
         const innerType = doc.type.substring(0, doc.type.length - 2)
+        const innerDoc = DocType.createRefDoc(innerType, true, "", doc.description)
         return {
             type: "array",
             items: {
-                $ref: "#/$defs/" + innerType,
+                ...this.toJsonSchema(innerDoc),
                 properties: {
                     _name: {
                         type: "string"
                     }
-                },
-                description: doc.description
+                }
             },
             description: doc.description,
             default: doc.defaultValue,
@@ -83,16 +124,22 @@ class DocTypeToJsonSchemaCompiler {
     }
 
     toObjectJsonSchema(doc: DocType) {
-        const properties: Record<string, any> = {}
+        let properties: Record<string, any> = {}
         doc.properties.forEach((prop, key) => {
             if (prop === true) properties[key] = true
             else properties[key] = this.toJsonSchema(prop)
         })
+        if (Object.values(properties).length == 0) {
+            return {
+                type: "null",
+                description: "No extra data"
+            }
+        }
         return {
             type: "object",
             description: doc.description,
             default: doc.defaultValue,
-            properties
+            properties: properties
         }
     }
 

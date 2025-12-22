@@ -1,4 +1,6 @@
 
+import { addSlashes } from "slashes"
+
 export type Property = DocType | true
 export type PropertyEntry = [string, Property]
 export type PropertiesMap = Map<string, Property>
@@ -194,23 +196,25 @@ export class DocType {
         return combined
     }
 
-    static getSourceObjectDoc(doc: DocType | undefined, types: Map<string, DocType>): DocType {
+    static getSourceObjectDoc(doc: DocType, types: Map<string, DocType>): DocType {
         if (
-            doc?.type === "boolean" ||
-            doc?.type === "integer" ||
-            doc?.type === "number" ||
-            doc?.type === "string"
+            doc.type === "boolean" ||
+            doc.type === "integer" ||
+            doc.type === "number" ||
+            doc.type === "string"
         ) return doc
 
-        if (doc === undefined) throw new Error("Undefined doc")
         if (doc.type == "object" || doc.type == "union") return doc
-        return DocType.getSourceObjectDoc(types.get(doc.type), types)
+        const source = types.get(doc.type)
+        if (source == undefined) return doc
+        return DocType.getSourceObjectDoc(source, types)
     }
 
     toString(baseIndent = ""): string {
         let extraData = this.extraDataToString()
         const requiredStr = this.required? "! " : "? "
-        const descriptionStr = " # " + this.description
+        
+        const descriptionStr = " # " + addSlashes(this.description)
 
         let fields = ""
         const indent = " ".repeat(4)
@@ -246,6 +250,19 @@ export class DocType {
         }
         if (extraData.length != 0) extraData = "(" + extraData + ")"
         return extraData
+    }
+
+    clone(): DocType {
+        return new DocType(
+            this.type, 
+            [...this.extraData], 
+            this.required, 
+            this.defaultValue, 
+            this.description,
+            new Map(this.properties), 
+            new Set(this.enumValues), 
+            new Map(this.unions)
+        )
     }
 
 }

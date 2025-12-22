@@ -63,7 +63,7 @@ function parseDescription(view: StringView): string {
     let description = view.takeWhile(not(isEndline))
     description = description.trim()
     description = removeSlashes(description) // decode escape sequences
-    return "\n" + description
+    return description
 }
 
 function parseFields(view: StringView, indent: string): { properties: DocType['properties'], enumValues: DocType['enumValues'], unions: DocType['unions'] } {

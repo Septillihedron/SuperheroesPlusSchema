@@ -1,250 +1,114 @@
 Condition: union(unionIdentifier = type)?  # 
     properties: 
-        mode: Mode? ALL # 
-The mode of operation
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        mode: Mode? ALL # The mode of operation
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
     unions: 
-        BIOME: BiomeCondition? { type: BIOME } # 
-Checks if the biome that the user, target entity, or location is in is one of the listed biomes
-        BLOCK: BlockCondition? { type: BLOCK } # 
-Checks if the location has one of the listed blocks
-        CHANCE: ChanceCondition? { type: CHANCE } # 
-A chance for this condition to be true
-        COMPARISON: ComparisonCondition? { type: COMPARISON } # 
-Compares a variable
-        COOLDOWN: CooldownCondition? { type: COOLDOWN } # 
-Checks if the time since the get last effect triggered is after the cooldown
-        DISTANCE: DistanceCondition? { type: DISTANCE } # 
-Checks if the distance between the user and target entity is in the range
-        ENTITY: EntityWhitelistCondition? { type: ENTITY } # 
-Checks the target entity against this whitelist/blacklist
-        FLY: FlyingCondition? { type: FLY } # 
-Checks if the user or target entity is flying
-        FLYING: FlyingCondition? { type: FLYING } # 
-Checks if the user or target entity is flying
-        GLIDING: GlidingCondition? { type: GLIDING } # 
-Checks if the user gliding
-        HEALTH: HealthCondition? { type: HEALTH } # 
-Checks if the hp percentage of the user or target entity is in the range
-        HEIGHT: HeightCondition? { type: HEIGHT } # 
-Checks if the user or target entity y coordinate is in the range
-        HOTBARSLOT: HotbarSlotCondition? { type: HOTBARSLOT } # 
-Checks if the held item/main hand in in a range of hotbar slots
-        INBLOCK: InBlockCondition? { type: INBLOCK } # 
-Checks if the user or target entity is in one of the listed blocks
-        ININVENTORY: InInventoryCondition? { type: ININVENTORY } # 
-Checks if the user have their inventory GUI opened
-        ITEM: ItemCondition? { type: ITEM } # 
-Checks the item or the item in the declared slot against the declared item
-        ITEMWRAPPER: ItemWrapperCondition? { type: ITEMWRAPPER } # 
-Checks if all inside conditions are true. 
-The item will be set as the item in the specified slot of the user or target entity
-        LIGHT: LightCondition? { type: LIGHT } # 
-Checks the light level
-        METADATA: MetadataCondition? { type: METADATA } # 
-Compares a user defined variable
-        NOT: NOTCondition? { type: NOT } # 
-Inverts the inside condition
-        NPC: NPCCondition? { type: NPC } # 
-Checks if the user or target entity is an npc
-        ONGROUND: OnGroundCondition? { type: ONGROUND } # 
-Checks if the user or target entity is on the ground
-        OR: ORCondition? { type: OR } # 
-ORs all the conditions inside
-        POTIONEFFECT: PotionEffectCondition? { type: POTIONEFFECT } # 
-Checks whether the user or target entity has the potion effect
-        SHIELDED: ShieldedCondition? { type: SHIELDED } # 
-Checks if the user is blocking
-        SHOOTER: ShooterCondition? { type: SHOOTER } # 
-Checks whether the shooter of the `OTHER` entity is the `SELF` entity
-        SIZE: SizeCondition? { type: SIZE } # 
-Checks if the size of the user or target entity is in the range (for slimes, magma cubes, and phantoms)
-        SNEAK: SneakCondition? { type: SNEAK } # 
-Checks if the player or entity is shifting
-        SPEED: SpeedCondition? { type: SPEED } # 
-Checks whether the speed of the user or target entity is in the range
-        SPRINTING: SprintingCondition? { type: SPRINTING } # 
-Checks if the user or target entity is sprinting
-        SWIMMING: SwimmingCondition? { type: SWIMMING } # 
-Checks if the user or target entity is swimming
-        TAMED: TamedCondition? { type: TAMED } # 
-Checks if the target entity is tamed
-        TEMPERATURE: TemperatureCondition? { type: TEMPERATURE } # 
-Checks if the location or the location of the user or target entity is in the range
-        TIME: TimeCondition? { type: TIME } # 
-Checks the relative in-game time (time of day) of the world that the player is in against the range. Measured in milli-hours or hours*1000
-        VISIBILITY: VisibilityCondition? { type: VISIBILITY } # 
-Checks if the user has a direct line of sight to the target entity
-        WEATHER: WeatherCondition? { type: WEATHER } # 
-Checks if the world that the user is in has a storm
-        WORLD: WorldCondition? { type: WORLD } # 
-Checks if the world that the user, target entity, or location is in is one of the listed worlds
-        WRAPPER: WrapperCondition? { type: WRAPPER } # 
-Checks if all inside conditions are true
+        BIOME: BiomeCondition? { type: BIOME } # Checks if the biome that the user, target entity, or location is in is one of the listed biomes
+        BLOCK: BlockCondition? { type: BLOCK } # Checks if the location has one of the listed blocks
+        CHANCE: ChanceCondition? { type: CHANCE } # A chance for this condition to be true
+        COMPARISON: ComparisonCondition? { type: COMPARISON } # Compares a variable
+        COOLDOWN: CooldownCondition? { type: COOLDOWN } # Checks if the time since the get last effect triggered is after the cooldown
+        DISTANCE: DistanceCondition? { type: DISTANCE } # Checks if the distance between the user and target entity is in the range
+        ENTITY: EntityWhitelistCondition? { type: ENTITY } # Checks the target entity against this whitelist/blacklist
+        FLY: FlyingCondition? { type: FLY } # Checks if the user or target entity is flying
+        FLYING: FlyingCondition? { type: FLYING } # Checks if the user or target entity is flying
+        GLIDING: GlidingCondition? { type: GLIDING } # Checks if the user gliding
+        HEALTH: HealthCondition? { type: HEALTH } # Checks if the hp percentage of the user or target entity is in the range
+        HEIGHT: HeightCondition? { type: HEIGHT } # Checks if the user or target entity y coordinate is in the range
+        HOTBARSLOT: HotbarSlotCondition? { type: HOTBARSLOT } # Checks if the held item/main hand in in a range of hotbar slots
+        INBLOCK: InBlockCondition? { type: INBLOCK } # Checks if the user or target entity is in one of the listed blocks
+        ININVENTORY: InInventoryCondition? { type: ININVENTORY } # Checks if the user have their inventory GUI opened
+        ITEM: ItemCondition? { type: ITEM } # Checks the item or the item in the declared slot against the declared item
+        ITEMWRAPPER: ItemWrapperCondition? { type: ITEMWRAPPER } # Checks if all inside conditions are true. \nThe item will be set as the item in the specified slot of the user or target entity
+        LIGHT: LightCondition? { type: LIGHT } # Checks the light level
+        METADATA: MetadataCondition? { type: METADATA } # Compares a user defined variable
+        NOT: NOTCondition? { type: NOT } # Inverts the inside condition
+        NPC: NPCCondition? { type: NPC } # Checks if the user or target entity is an npc
+        ONGROUND: OnGroundCondition? { type: ONGROUND } # Checks if the user or target entity is on the ground
+        OR: ORCondition? { type: OR } # ORs all the conditions inside
+        POTIONEFFECT: PotionEffectCondition? { type: POTIONEFFECT } # Checks whether the user or target entity has the potion effect
+        SHIELDED: ShieldedCondition? { type: SHIELDED } # Checks if the user is blocking
+        SHOOTER: ShooterCondition? { type: SHOOTER } # Checks whether the shooter of the `OTHER` entity is the `SELF` entity
+        SIZE: SizeCondition? { type: SIZE } # Checks if the size of the user or target entity is in the range (for slimes, magma cubes, and phantoms)
+        SNEAK: SneakCondition? { type: SNEAK } # Checks if the player or entity is shifting
+        SPEED: SpeedCondition? { type: SPEED } # Checks whether the speed of the user or target entity is in the range
+        SPRINTING: SprintingCondition? { type: SPRINTING } # Checks if the user or target entity is sprinting
+        SWIMMING: SwimmingCondition? { type: SWIMMING } # Checks if the user or target entity is swimming
+        TAMED: TamedCondition? { type: TAMED } # Checks if the target entity is tamed
+        TEMPERATURE: TemperatureCondition? { type: TEMPERATURE } # Checks if the location or the location of the user or target entity is in the range
+        TIME: TimeCondition? { type: TIME } # Checks the relative in-game time (time of day) of the world that the player is in against the range. Measured in milli-hours or hours*1000
+        VISIBILITY: VisibilityCondition? { type: VISIBILITY } # Checks if the user has a direct line of sight to the target entity
+        WEATHER: WeatherCondition? { type: WEATHER } # Checks if the world that the user is in has a storm
+        WORLD: WorldCondition? { type: WORLD } # Checks if the world that the user, target entity, or location is in is one of the listed worlds
+        WRAPPER: WrapperCondition? { type: WRAPPER } # Checks if all inside conditions are true
 Effect: union(unionIdentifier = type)!  # 
     properties: 
-        mode: Mode? ALL # 
-The mode of operation
+        mode: Mode? ALL # The mode of operation
     unions: 
-        ACTIONBAR: ActionBarEffect? { type: ACTIONBAR } # 
-Sends an action bar to the user or target entity
-        AOE: AOE? { type: AOE } # 
-Acts like a trigger. 
-Triggers for every entity in the range. 
-The target entity will be set to the entity this trigger triggers for
-        ARROW: ArrowEffect? { type: ARROW } # 
-Shoot an arrow to the location of the target entity
-        ATTRIBUTE: AttributeEffect? { type: ATTRIBUTE } # 
-Modifies an attribute owned by the user or target entity
-        BLOCKENTITY: BlockEntityEffect? { type: BLOCKENTITY } # 
-Change the block at target entity for a duration of time, then change it back. Same as WEB
-        BONEMEAL: BonemealEffect? { type: BONEMEAL } # 
-Applies bonemeal to the location or location of the user or target entity
-        CANCEL: CancelEffect? { type: CANCEL } # 
-Cancels the event that triggered this effect
+        ACTIONBAR: ActionBarEffect? { type: ACTIONBAR } # Sends an action bar to the user or target entity
+        AOE: AOE? { type: AOE } # Acts like a trigger. \nTriggers for every entity in the range. \nThe target entity will be set to the entity this trigger triggers for
+        ARROW: ArrowEffect? { type: ARROW } # Shoot an arrow to the location of the target entity
+        ATTRIBUTE: AttributeEffect? { type: ATTRIBUTE } # Modifies an attribute owned by the user or target entity
+        BLOCKENTITY: BlockEntityEffect? { type: BLOCKENTITY } # Change the block at target entity for a duration of time, then change it back. Same as WEB
+        BONEMEAL: BonemealEffect? { type: BONEMEAL } # Applies bonemeal to the location or location of the user or target entity
+        CANCEL: CancelEffect? { type: CANCEL } # Cancels the event that triggered this effect
         CHANGEHERO: ChangeHeroEffect!  #
-        COMMAND: CommandEffect? { type: COMMAND } # 
-Excecutes a list of commands
-        DAMAGE: DamageEffect? { type: DAMAGE } # 
-Damages the user or the target entity
+        COMMAND: CommandEffect? { type: COMMAND } # Excecutes a list of commands
+        DAMAGE: DamageEffect? { type: DAMAGE } # Damages the user or the target entity
         DISGUISE: DisguiseEffect!  #
-        FIRE: IgniteEffect? { type: FIRE } # 
-Sets the user or target entity on fire. Same as FIRE
-        FLING: VelocityEffect? { type: FLING } # 
-Modifies the velocity of the user or target entity. Same as FLING
-        FLY: FlyEffect? { type: FLY } # 
-Sets the ability for the creative flight. Alias for FLYING 
-
-Modes: 
-SELF: For the user;
-OTHER: For the target entity.
-        FLYING: FlyEffect? { type: FLYING } # 
-Sets the ability for the creative flight. Alias for FLYING 
-
-Modes: 
-SELF: For the user;
-OTHER: For the target entity.
-        FREEZE: FreezeEffect? { type: FREEZE } # 
-Modifies the user or target entity freezing ticks (ie. powdered snow effect)
-        FURNACEBURNTIME: FurnaceBurnTimeEffect? { type: FURNACEBURNTIME } # 
-Modifies a furnace's burn time
-        GIVEITEM: GiveItemEffect? { type: GIVEITEM } # 
-Gives the user or target entity an item
-        GLIDING: GlidingEffect? { type: GLIDING } # 
-Sets the gliding mode of the user or target entity (works even if an Elytra is not equipped)
-        HEALTH: HealthEffect? { type: HEALTH } # 
-Modifies the health of the user or target entity. Also rounds down to the nearest hitpoint/half a heart
-        HUNGER: HungerEffect? { type: HUNGER } # 
-Modifies the hunger value of the user or target entity
-        IGNITE: IgniteEffect? { type: IGNITE } # 
-Sets the user or target entity on fire. Same as FIRE
-        ITEMAMOUNT: ItemAmountEffect? { type: ITEMAMOUNT } # 
-Modifies the item amount
-        ITEMMATERIAL: ItemMaterialEffect? { type: ITEMMATERIAL } # 
-Changes the item type in a slot
-        ITEMSTACK: ItemStackWrapperEffect? { type: ITEMSTACK } # 
-Acts like a trigger. 
-Triggers for the item in the slot. 
-The item will be set to the item in the slot
-        KNOCKBACK: KnockbackEffect? { type: KNOCKBACK } # 
-Applies a velocity to the target entity in the direction that the user is looking as the direction
-        LAUNCH: LaunchEffect? { type: LAUNCH } # 
-Launches an entity. 
-Mode `OTHER`: Launched in the direction of the target entity. 
-Mode `SELF`: Launched in the direction the user is facing
-        LIGHTNING: LightningEffect? { type: LIGHTNING } # 
-Summons lightning on the user or target entity.
-        LOCATIONCUBE: LocationCubeEffect? { type: LOCATIONCUBE } # 
-Acts like a trigger. 
-Triggers for every location in the cube around the user or target entity. 
-The location will be set as the location the trigger triggers for
-        LOCATIONOFFSET: LocationOffsetEffect? { type: LOCATIONOFFSET } # 
-Acts like a trigger. 
-Triggers the location of the user or target entity after being offseted. 
-The location will be set as the location the trigger triggers for
-        LOSETARGET: LoseTargetEffect? { type: LOSETARGET } # 
-Make the user lose interest in the current target
-        LUNGE: LungeEffect? { type: LUNGE } # 
-Applies an acceleration to the user or the target entity based on the direction the entity is looking
-        MESSAGE: MessageEffect? { type: MESSAGE } # 
-Sends a chat message to the user or target player
-        METADATA: MetadataEffect? { type: METADATA } # 
-Modifies a user defined variable
-        MODIFY: ModifyEffect? { type: MODIFY } # 
-Modifies a variable, either user defined or not
-        NEAREST: NearestEffect? { type: NEAREST } # 
-Acts like a trigger. 
-Triggers for the nearest entity in the radius. 
-The target entity will be set as the nearest entity
-        PARTICLE: ParticleEffect? { type: PARTICLE } # 
-Spawns particles
-        PICKUP: Pickup? { type: PICKUP } # 
-Pick up the target entity and places it on the user's head
-        PLACEBLOCK: PlaceBlockEffect? { type: PLACEBLOCK } # 
-Replaces a block at the location for an amount of time. Retains the original block data
+        FIRE: IgniteEffect? { type: FIRE } # Sets the user or target entity on fire. Same as FIRE
+        FLING: VelocityEffect? { type: FLING } # Modifies the velocity of the user or target entity. Same as FLING
+        FLY: FlyEffect? { type: FLY } # Sets the ability for the creative flight. Alias for FLYING \n\nModes: \nSELF: For the user;\nOTHER: For the target entity.
+        FLYING: FlyEffect? { type: FLYING } # Sets the ability for the creative flight. Alias for FLYING \n\nModes: \nSELF: For the user;\nOTHER: For the target entity.
+        FREEZE: FreezeEffect? { type: FREEZE } # Modifies the user or target entity freezing ticks (ie. powdered snow effect)
+        FURNACEBURNTIME: FurnaceBurnTimeEffect? { type: FURNACEBURNTIME } # Modifies a furnace's burn time
+        GIVEITEM: GiveItemEffect? { type: GIVEITEM } # Gives the user or target entity an item
+        GLIDING: GlidingEffect? { type: GLIDING } # Sets the gliding mode of the user or target entity (works even if an Elytra is not equipped)
+        HEALTH: HealthEffect? { type: HEALTH } # Modifies the health of the user or target entity. Also rounds down to the nearest hitpoint/half a heart
+        HUNGER: HungerEffect? { type: HUNGER } # Modifies the hunger value of the user or target entity
+        IGNITE: IgniteEffect? { type: IGNITE } # Sets the user or target entity on fire. Same as FIRE
+        ITEMAMOUNT: ItemAmountEffect? { type: ITEMAMOUNT } # Modifies the item amount
+        ITEMMATERIAL: ItemMaterialEffect? { type: ITEMMATERIAL } # Changes the item type in a slot
+        ITEMSTACK: ItemStackWrapperEffect? { type: ITEMSTACK } # Acts like a trigger. \nTriggers for the item in the slot. \nThe item will be set to the item in the slot
+        KNOCKBACK: KnockbackEffect? { type: KNOCKBACK } # Applies a velocity to the target entity in the direction that the user is looking as the direction
+        LAUNCH: LaunchEffect? { type: LAUNCH } # Launches an entity. \nMode `OTHER`: Launched in the direction of the target entity. \nMode `SELF`: Launched in the direction the user is facing
+        LIGHTNING: LightningEffect? { type: LIGHTNING } # Summons lightning on the user or target entity.
+        LOCATIONCUBE: LocationCubeEffect? { type: LOCATIONCUBE } # Acts like a trigger. \nTriggers for every location in the cube around the user or target entity. \nThe location will be set as the location the trigger triggers for
+        LOCATIONOFFSET: LocationOffsetEffect? { type: LOCATIONOFFSET } # Acts like a trigger. \nTriggers the location of the user or target entity after being offseted. \nThe location will be set as the location the trigger triggers for
+        LOSETARGET: LoseTargetEffect? { type: LOSETARGET } # Make the user lose interest in the current target
+        LUNGE: LungeEffect? { type: LUNGE } # Applies an acceleration to the user or the target entity based on the direction the entity is looking
+        MESSAGE: MessageEffect? { type: MESSAGE } # Sends a chat message to the user or target player
+        METADATA: MetadataEffect? { type: METADATA } # Modifies a user defined variable
+        MODIFY: ModifyEffect? { type: MODIFY } # Modifies a variable, either user defined or not
+        NEAREST: NearestEffect? { type: NEAREST } # Acts like a trigger. \nTriggers for the nearest entity in the radius. \nThe target entity will be set as the nearest entity
+        PARTICLE: ParticleEffect? { type: PARTICLE } # Spawns particles
+        PICKUP: Pickup? { type: PICKUP } # Pick up the target entity and places it on the user's head
+        PLACEBLOCK: PlaceBlockEffect? { type: PLACEBLOCK } # Replaces a block at the location for an amount of time. Retains the original block data
         PLAYTRACK: PlayTrackEffect!  #
-        POTION: Potion? { type: POTION } # 
-Applies the potion effect to the user or target entity
-        PROJECTILE: ProjectileEffect? { type: PROJECTILE } # 
-Shoots an entity from the user. 
-Mode `SELF`: Shoots in the direction that the user is looking. 
-Mode `OTHER`: Shoots at the target entity. 
-Mode `LOCATION`: Shoots at the location
-        RANDOMTELEPORT: RandomTeleportEffect? { type: RANDOMTELEPORT } # 
-Teleports the user or target entity a random distance
-        RAYTRACE: RaytraceEffect? { type: RAYTRACE } # 
-Acts like a trigger. 
-Sends out a raytrace that collides with entities or blocks in the direction that the user or target entity is looking. 
-The target entity will be set as the collided entity. 
-The location will be set as the location of the collided block
-        REMOVEENTITY: RemoveEntityEffect? { type: REMOVEENTITY } # 
-Removes the user or target entity
-        REMOVEPOTION: RemovePotionEffect? { type: REMOVEPOTION } # 
-Removes potion effects from the user or target entity
-        REPULSE: RepulseEffect? { type: REPULSE } # 
-Repulse the target entity
-        RESIZE: ResizeEffect? { type: RESIZE } # 
-Resizes the user or target entity (for slimes, magma cubes, and phantoms)
-        SCRAMBLEINVENTORY: ScrambleInventoryEffect? { type: SCRAMBLEINVENTORY } # 
-Scrambles the inventory of the user or target entity
-        SHOOTER: ShooterEffect? { type: SHOOTER } # 
-Acts like a trigger. 
-Triggers for the target entity. 
-The new target entity will be set as the source of the projectile if the old target entity is a projectile, otherwise the target entity will remain the same
-        SMITE: LightningEffect? { type: SMITE } # 
-Summons lightning on the user or target entity.
-        SOUND: SoundEffect? { type: SOUND } # 
-Plays a sound at the location or at the location of the user or target entity
-        SPAWNENTITY: SpawnEffect? { type: SPAWNENTITY } # 
-Spawns an entity at the location or the location of the user or target entity
-        SWAP: SwapEffect? { type: SWAP } # 
-Swaps the position of the user and target entity
-        SWITCHEROO: SwitcherooWrapperEffect? { type: SWITCHEROO } # 
-Acts like a trigger. 
-The target entity will be set as the original user.
- the user will be set as the original target entity
-        TARGET: TargetEntityEffect? { type: TARGET } # 
-If the user is a mob, sets the target of the user to the target entity
-        TELEPORT: TeleportEffect? { type: TELEPORT } # 
-Teleports the user to the location or the location of the target entity
-        TIMER: TimerEffect? { type: TIMER } # 
-Acts like a trigger. 
-Triggers for a number of times with a period and initial delay. 
-Target items will be forwarded
-        VEINMINER: VeinMinerEffect? { type: VEINMINER } # 
-Breaks surrounding blocks around a location recursively
-        VELOCITY: VelocityEffect? { type: VELOCITY } # 
-Modifies the velocity of the user or target entity. Same as FLING
-        WAIT: WaitEffect? { type: WAIT } # 
-Acts like a trigger. 
-Waits a duration of time before it triggers
-        WEB: BlockEntityEffect? { type: WEB } # 
-Change the block at target entity for a duration of time, then change it back. Same as WEB
-        WRAPPER: WrapperEffect? { type: WRAPPER } # 
-Acts like a trigger
+        POTION: Potion? { type: POTION } # Applies the potion effect to the user or target entity
+        PROJECTILE: ProjectileEffect? { type: PROJECTILE } # Shoots an entity from the user. \nMode `SELF`: Shoots in the direction that the user is looking. \nMode `OTHER`: Shoots at the target entity. \nMode `LOCATION`: Shoots at the location
+        RANDOMTELEPORT: RandomTeleportEffect? { type: RANDOMTELEPORT } # Teleports the user or target entity a random distance
+        RAYTRACE: RaytraceEffect? { type: RAYTRACE } # Acts like a trigger. \nSends out a raytrace that collides with entities or blocks in the direction that the user or target entity is looking. \nThe target entity will be set as the collided entity. \nThe location will be set as the location of the collided block
+        REMOVEENTITY: RemoveEntityEffect? { type: REMOVEENTITY } # Removes the user or target entity
+        REMOVEPOTION: RemovePotionEffect? { type: REMOVEPOTION } # Removes potion effects from the user or target entity
+        REPULSE: RepulseEffect? { type: REPULSE } # Repulse the target entity
+        RESIZE: ResizeEffect? { type: RESIZE } # Resizes the user or target entity (for slimes, magma cubes, and phantoms)
+        SCRAMBLEINVENTORY: ScrambleInventoryEffect? { type: SCRAMBLEINVENTORY } # Scrambles the inventory of the user or target entity
+        SHOOTER: ShooterEffect? { type: SHOOTER } # Acts like a trigger. \nTriggers for the target entity. \nThe new target entity will be set as the source of the projectile if the old target entity is a projectile, otherwise the target entity will remain the same
+        SMITE: LightningEffect? { type: SMITE } # Summons lightning on the user or target entity.
+        SOUND: SoundEffect? { type: SOUND } # Plays a sound at the location or at the location of the user or target entity
+        SPAWNENTITY: SpawnEffect? { type: SPAWNENTITY } # Spawns an entity at the location or the location of the user or target entity
+        SWAP: SwapEffect? { type: SWAP } # Swaps the position of the user and target entity
+        SWITCHEROO: SwitcherooWrapperEffect? { type: SWITCHEROO } # Acts like a trigger. \nThe target entity will be set as the original user.\n the user will be set as the original target entity
+        TARGET: TargetEntityEffect? { type: TARGET } # If the user is a mob, sets the target of the user to the target entity
+        TELEPORT: TeleportEffect? { type: TELEPORT } # Teleports the user to the location or the location of the target entity
+        TIMER: TimerEffect? { type: TIMER } # Acts like a trigger. \nTriggers for a number of times with a period and initial delay. \nTarget items will be forwarded
+        VEINMINER: VeinMinerEffect? { type: VEINMINER } # Breaks surrounding blocks around a location recursively
+        VELOCITY: VelocityEffect? { type: VELOCITY } # Modifies the velocity of the user or target entity. Same as FLING
+        WAIT: WaitEffect? { type: WAIT } # Acts like a trigger. \nWaits a duration of time before it triggers
+        WEB: BlockEntityEffect? { type: WEB } # Change the block at target entity for a duration of time, then change it back. Same as WEB
+        WRAPPER: WrapperEffect? { type: WRAPPER } # Acts like a trigger
 EntityComponent: union(unionIdentifier = type)!  # 
     unions: 
         ARMADILLO: object(additionalProperties, additionalProperties)?  # 
@@ -619,7 +483,6 @@ EntityComponent: union(unionIdentifier = type)!  #
         WITHER: LivingEntityComponent!  #
         WITHER_SKELETON: LivingEntityComponent!  #
 EntityData: union(unionIdentifier = type)! {type: "ZOMBIE"} # 
-
     properties: 
         nameTag: string?  #
         shouldDespawn: boolean? true #
@@ -627,7 +490,6 @@ EntityData: union(unionIdentifier = type)! {type: "ZOMBIE"} #
         silent: boolean? false #
         visualFire: boolean? false #
         attributes: object? {} # 
-
             properties: 
                 armor: number!  #
                 armor_toughness: number!  #
@@ -1103,8 +965,7 @@ SpellData: union(unionIdentifier = skill, superdoc = SkillData)!  #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
         fuel: Material? REDSTONE #
-        spellName: string?  # 
-undocumented#
+        spellName: string?  # undocumented#
         displayName: string? <purple><spellName> #
         cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
         moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
@@ -1125,102 +986,44 @@ TriggerData: union(unionIdentifier = type)!  #
     properties: 
         type: string!  #
     unions: 
-        BECOMEVEHICLE: object? { type: BECOMEVEHICLE } # 
-Triggers when an entity enters the user, thus using the user as a vehicle. 
-The target entity will be set as the entering entity
-        BLOCKBREAK: object? { type: BLOCKBREAK } # 
-Triggers when the user breaks a block. 
-The location will be set as the location of the broken block
-        CHANGEMAINHAND: object? { type: CHANGEMAINHAND } # 
-Triggers when the user changes where the main hand slot is (i.e. scrolls or hits a number). 
-The item will be set as the item in the new slot
-        COMBAT: object? { type: COMBAT } # 
-Triggers when the user damages an entity or gets damaged by an entity. 
-The target entity will be set as the damaged entity or the damaging entity respectively
-        CONSUME: object? { type: CONSUME } # 
-Triggers when the user consumed an item
-        DAMAGEDBYENTITY: object? { type: DAMAGEDBYENTITY } # 
-Triggers when an entity damages the user. 
-The target entity will be set as the damaging entity
-        DAMAGEDENTITY: object? { type: DAMAGEDENTITY } # 
-Triggers when the user damage an entity. 
-The target entity will be set as the damaged entity
-        DEATH: object? { type: DEATH } # 
-Triggers when the user is killed. 
-The target entity will be set as the killer if it exist
-        ENTERVEHICLE: object? { type: ENTERVEHICLE } # 
-Triggers when the user enters a vehicle. 
-The target entity will be set as the vehicle
-        EQUIPARMOR: object? { type: EQUIPARMOR } # 
-Triggers when the user equips an armour. 
-The item will be set as the equiped item
-        EXITVEHICLE: object? { type: EXITVEHICLE } # 
-Triggers when the user exits a vehicle. 
-The target entity will be set as the vehicle
-        INTERACTENTITY: object? { type: INTERACTENTITY } # 
-Triggers when the user right clicks an entity. 
-The target entity will be set as the interacted entity
-        KILL: object? { type: KILL } # 
-Triggers when the user kills an entity. 
-The target entity will be set as the killed entity
-        LAUNCHPROJECTILE: object? { type: LAUNCHPROJECTILE } # 
-Triggers when the user launched a projectile. 
-The target entity will be set as the launched projectile
-        MOVE: object? { type: MOVE } # 
-Triggers when the user moves. 
-The location will be set as the location the user moves to
-        PLAYERJOIN: object? { type: PLAYERJOIN } # 
-Triggers when the user joins the server
-        PLAYERJUMP: object? { type: PLAYERJUMP } # 
-Triggers when the user jumps
-        PLAYERQUIT: object? { type: PLAYERQUIT } # 
-Triggers when the user exits the server
-        PROJECTILEHIT: object? { type: PROJECTILEHIT } # 
-Triggers when a projectile shot by the user landed and/or hits an entity. 
-The target entity will be set as the projectile
-        RIPTIDE: object? { type: RIPTIDE } # 
-Triggers when the user activates the riptide enchantment
-        SNEAK: object? { type: SNEAK } # 
-Triggers when the user sneaks
-        SPAWN: object? { type: SPAWN } # 
-Triggers when the user spawns
-        SPRINT: object? { type: SPRINT } # 
-Triggers when the user starts or stops sprinting
-        SWAPHANDS: object? { type: SWAPHANDS } # 
-Triggers when the user swaps hands
-        TAME: object? { type: TAME } # 
-Triggers when the user tames an entity. 
-The target entity will be set as the tamed entity
-        TARGET: object? { type: TARGET } # 
-Triggers when the user targets an entity. 
-The target entity will be set as the target
-        TARGETED: object? { type: TARGETED } # 
-Triggers when the user is targeted by an entity. 
-The target entity will be set as the entity that targeted the user
-        TOGGLEGLIDE: object? { type: TOGGLEGLIDE } # 
-Triggers when the user glides or unglides
-        TOTEM: object? { type: TOTEM } # 
-Triggers when the user activates a totem. 
-The target entity will be set as the killer of the user
-        DAMAGED: DamageData? { type: DAMAGED } # 
-Triggers when the user gets damaged
-        DAMAGEDBYPROJECTILE: ProjectileData? { type: DAMAGEDBYPROJECTILE } # 
-Triggers when an entity damages the user. 
-If the damaging entity is a projectile, the target entity will be set as the source of the projectile. 
-Otherwise, The target entity will be set as the damaging entity
-        DAMAGEDENTITYWITHPROJECTILE: ProjectileData? { type: DAMAGEDENTITYWITHPROJECTILE } # 
-Triggers when the user damages an entity directly or with a projectile. 
-The target entity will be set as the damaged entity
+        BECOMEVEHICLE: object? { type: BECOMEVEHICLE } # Triggers when an entity enters the user, thus using the user as a vehicle. \nThe target entity will be set as the entering entity
+        BLOCKBREAK: object? { type: BLOCKBREAK } # Triggers when the user breaks a block. \nThe location will be set as the location of the broken block
+        CHANGEMAINHAND: object? { type: CHANGEMAINHAND } # Triggers when the user changes where the main hand slot is (i.e. scrolls or hits a number). \nThe item will be set as the item in the new slot
+        COMBAT: object? { type: COMBAT } # Triggers when the user damages an entity or gets damaged by an entity. \nThe target entity will be set as the damaged entity or the damaging entity respectively
+        CONSUME: object? { type: CONSUME } # Triggers when the user consumed an item
+        DAMAGEDBYENTITY: object? { type: DAMAGEDBYENTITY } # Triggers when an entity damages the user. \nThe target entity will be set as the damaging entity
+        DAMAGEDENTITY: object? { type: DAMAGEDENTITY } # Triggers when the user damage an entity. \nThe target entity will be set as the damaged entity
+        DEATH: object? { type: DEATH } # Triggers when the user is killed. \nThe target entity will be set as the killer if it exist
+        ENTERVEHICLE: object? { type: ENTERVEHICLE } # Triggers when the user enters a vehicle. \nThe target entity will be set as the vehicle
+        EQUIPARMOR: object? { type: EQUIPARMOR } # Triggers when the user equips an armour. \nThe item will be set as the equiped item
+        EXITVEHICLE: object? { type: EXITVEHICLE } # Triggers when the user exits a vehicle. \nThe target entity will be set as the vehicle
+        INTERACTENTITY: object? { type: INTERACTENTITY } # Triggers when the user right clicks an entity. \nThe target entity will be set as the interacted entity
+        KILL: object? { type: KILL } # Triggers when the user kills an entity. \nThe target entity will be set as the killed entity
+        LAUNCHPROJECTILE: object? { type: LAUNCHPROJECTILE } # Triggers when the user launched a projectile. \nThe target entity will be set as the launched projectile
+        MOVE: object? { type: MOVE } # Triggers when the user moves. \nThe location will be set as the location the user moves to
+        PLAYERJOIN: object? { type: PLAYERJOIN } # Triggers when the user joins the server
+        PLAYERJUMP: object? { type: PLAYERJUMP } # Triggers when the user jumps
+        PLAYERQUIT: object? { type: PLAYERQUIT } # Triggers when the user exits the server
+        PROJECTILEHIT: object? { type: PROJECTILEHIT } # Triggers when a projectile shot by the user landed and/or hits an entity. \nThe target entity will be set as the projectile
+        RIPTIDE: object? { type: RIPTIDE } # Triggers when the user activates the riptide enchantment
+        SNEAK: object? { type: SNEAK } # Triggers when the user sneaks
+        SPAWN: object? { type: SPAWN } # Triggers when the user spawns
+        SPRINT: object? { type: SPRINT } # Triggers when the user starts or stops sprinting
+        SWAPHANDS: object? { type: SWAPHANDS } # Triggers when the user swaps hands
+        TAME: object? { type: TAME } # Triggers when the user tames an entity. \nThe target entity will be set as the tamed entity
+        TARGET: object? { type: TARGET } # Triggers when the user targets an entity. \nThe target entity will be set as the target
+        TARGETED: object? { type: TARGETED } # Triggers when the user is targeted by an entity. \nThe target entity will be set as the entity that targeted the user
+        TOGGLEGLIDE: object? { type: TOGGLEGLIDE } # Triggers when the user glides or unglides
+        TOTEM: object? { type: TOTEM } # Triggers when the user activates a totem. \nThe target entity will be set as the killer of the user
+        DAMAGED: DamageData? { type: DAMAGED } # Triggers when the user gets damaged
+        DAMAGEDBYPROJECTILE: ProjectileData? { type: DAMAGEDBYPROJECTILE } # Triggers when an entity damages the user. \nIf the damaging entity is a projectile, the target entity will be set as the source of the projectile. \nOtherwise, The target entity will be set as the damaging entity
+        DAMAGEDENTITYWITHPROJECTILE: ProjectileData? { type: DAMAGEDENTITYWITHPROJECTILE } # Triggers when the user damages an entity directly or with a projectile. \nThe target entity will be set as the damaged entity
         GAINEDHERO: TriggerData!  #
-        INTERACT: InteractData? { type: INTERACT } # 
-Triggers when the user interacts with a block or air
-        LOOP: LoopData? { type: LOOP } # 
-Triggers periodically every couple of ticks
+        INTERACT: InteractData? { type: INTERACT } # Triggers when the user interacts with a block or air
+        LOOP: LoopData? { type: LOOP } # Triggers periodically every couple of ticks
         LOSTHERO: TriggerData!  #
-        POTIONEFFECT: PotionEffectTriggerData? { type: POTIONEFFECT } # 
-Triggers when a potion effect is applied to the user
-        PROJECTILECOMBAT: ProjectileData? { type: PROJECTILECOMBAT } # 
-Acts like the DAMAGEDBYPROJECTILE and DAMAGEDENTITYWITHPROJECTILE triggers combined
+        POTIONEFFECT: PotionEffectTriggerData? { type: POTIONEFFECT } # Triggers when a potion effect is applied to the user
+        PROJECTILECOMBAT: ProjectileData? { type: PROJECTILECOMBAT } # Acts like the DAMAGEDBYPROJECTILE and DAMAGEDENTITYWITHPROJECTILE triggers combined
 AbstractArrowComponent: object(additionalProperties)?  # 
     properties: 
         knockbackStrength: integer? 0 #
@@ -1236,32 +1039,26 @@ AbstractHorseComponent: object(additionalProperties)?  #
         hasSaddle: boolean? false #
 ActionBarEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        message: ExpressiveMessage?  # 
-The message to send
+        message: ExpressiveMessage?  # The message to send
 AgeableComponent: object(additionalProperties)?  # 
     properties: 
         isBaby: boolean? false #
 AOE: object(superdoc = WrapperEffect, superdoc = Effect)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! SELF # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        radius: Expression? 5 # 
-Half the side length of the box
+        radius: Expression? 5 # Half the side length of the box
 ArrowComponent: object(additionalProperties, superdoc = AbstractArrowComponent)?  # 
     properties: 
         knockbackStrength: integer? 0 #
@@ -1272,35 +1069,25 @@ ArrowComponent: object(additionalProperties, superdoc = AbstractArrowComponent)?
         potionType: PotionType?  #
 ArrowEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
-        velocity: Expression? 1.0 # 
-Used to determine the time that it takes to hit by (pythagoras distance)/velocity
-        damage: Expression? 4 # 
-If projectile entity is an arrow, the damage that the arrow will do
-        entityData: EntityData? { type: \"ARROW\"} # 
-The entity launch
-        fireTicks: Expression? 0 # 
-The amount of ticks the projectile will be on fire
-        entity: EntityData? { type: \"ARROW\"} # 
-The entity launch
+        velocity: Expression? 1.0 # Used to determine the time that it takes to hit by (pythagoras distance)/velocity
+        damage: Expression? 4 # If projectile entity is an arrow, the damage that the arrow will do
+        entityData: EntityData? { type: \"ARROW\"} # The entity launch
+        fireTicks: Expression? 0 # The amount of ticks the projectile will be on fire
+        entity: EntityData? { type: \"ARROW\"} # The entity launch
 AttributeEffect: object(superdoc = ModifyEffect, superdoc = Effect)?  # 
     properties: 
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
-        mode: enum! SELF # 
-The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        attribute: Attribute?  # 
-The attribute to modify. The name of the attribute should exclude the "GENERIC_" prefix
+        attribute: Attribute?  # The attribute to modify. The name of the attribute should exclude the \"GENERIC_\" prefix
 AttributesData: object?  # 
     properties: 
         attributes: object? {} # 
@@ -1407,35 +1194,26 @@ BeastControlData: object(superdoc = SkillData)?  #
         attackItself: boolean? false #
 BiomeCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        biomes: Biome[]? [] # 
-The list of biomes
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        biomes: Biome[]? [] # The list of biomes
 BlankData: object?  # 
 BlockCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! LOCATION # 
-The mode of operation
+        mode: enum! LOCATION # The mode of operation
             values: 
               - ALL
               - LOCATION
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        allowedMaterials: Material[]? [] # 
-The list of blocks
-        materials: Material[]? [] # 
-The list of blocks
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        allowedMaterials: Material[]? [] # The list of blocks
+        materials: Material[]? [] # The list of blocks
 BlockDataComparisonData: object?  # 
     properties: 
         types: Material[]? [] #
@@ -4554,17 +4332,13 @@ BlockDropsData: object(superdoc = SkillData)?  #
                 zombified_piglin_spawn_egg: ItemStack!  #
 BlockEntityEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
-        durationInTicks: Expression? -1 # 
-The duration of time that the block will be there in ticks. If less than 0, the block will not change back
-        blockToPlace: Material? COBWEB # 
-The block to change to
-        duration: Expression!  # 
-The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back
+        durationInTicks: Expression? -1 # The duration of time that the block will be there in ticks. If less than 0, the block will not change back
+        blockToPlace: Material? COBWEB # The block to change to
+        duration: Expression!  # The duration of time that the block will be there in seconds (1 is 20 ticks). If less than 0, the block will not change back
 BlockRayData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -4577,15 +4351,13 @@ BlockRayData: object(superdoc = SkillData)?  #
         revertsAfter: Duration? 15.0 #
 BonemealEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        blockFaces: BlockFace[]? [] # 
-The list of faces to apply bonemeal from
+        blockFaces: BlockFace[]? [] # The list of faces to apply bonemeal from
 BookData: object?  # 
     properties: 
         title: string!  #
@@ -4593,25 +4365,20 @@ BookData: object?  #
         pages: string[]!  #
 CancelEffect: object(superdoc = Effect)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - SELF
 ChanceCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        chance: Expression? 1.0 # 
-The chance that is used
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        chance: Expression? 1.0 # The chance that is used
 ChangeHeroEffect: object(superdoc = Effect)?  # 
     properties: 
         mode: enum! SELF # 
@@ -4657,28 +4424,20 @@ ColorableComponent: object(additionalProperties)?  #
         dyeColor: DyeColor?  #
 CommandEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        executor: CommandEffect.Executor? CONSOLE # 
-The executor that will execute the command
-        commands: ExpressiveMessage[]? [] # 
-The list of commands to execute
+        executor: CommandEffect.Executor? CONSOLE # The executor that will execute the command
+        commands: ExpressiveMessage[]? [] # The list of commands to execute
 ComparisonCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: Mode? ALL # 
-The mode of operation
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        value: Expression!  # 
-The value to compare against
-        comparison: ComparisonCondition.Comparison? EQUAL # 
-The comparison to use
+        mode: Mode? ALL # The mode of operation
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        value: Expression!  # The value to compare against
+        comparison: ComparisonCondition.Comparison? EQUAL # The comparison to use
 ConfigYaml: object?  # 
     properties: 
         config_version: string?  #
@@ -7821,18 +7580,14 @@ ConvertItemData: object(superdoc = SkillData)?  #
         chance: number? 1 #
 CooldownCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        cooldown: Expression? 10 # 
-The cooldown time that is used in seconds
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        cooldown: Expression? 10 # The cooldown time that is used in seconds
 CooldownData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -7873,8 +7628,7 @@ CustomData: object(superdoc = SkillData)?  #
 CustomSpell: object(superdoc = SpellData, superdoc = SkillData)?  # 
     properties: 
         fuel: Material? REDSTONE #
-        spellName: string?  # 
-undocumented#
+        spellName: string?  # undocumented#
         displayName: string? <purple><spellName> #
         cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
         moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
@@ -7889,24 +7643,18 @@ undocumented#
 DamageData: object(superdoc = TriggerData)?  # 
     properties: 
         type: string!  #
-        damageCauses: EntityDamageEvent.DamageCause[]?  # 
-The causes of damage. Defaults to all damage causes
-        causes: EntityDamageEvent.DamageCause[]?  # 
-The causes of damage. Defaults to all damage causes
+        damageCauses: EntityDamageEvent.DamageCause[]?  # The causes of damage. Defaults to all damage causes
+        causes: EntityDamageEvent.DamageCause[]?  # The causes of damage. Defaults to all damage causes
 DamageEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        damage: Expression? 5 # 
-The amount damage that will be dealt
-        damageCause: EntityDamageEvent.DamageCause? CUSTOM # 
-The type of damage that will be dealt
-        shouldTriggerEvents: boolean? false # 
-Whether to make the damage come from the user, thus triggering things like thorns
+        damage: Expression? 5 # The amount damage that will be dealt
+        damageCause: EntityDamageEvent.DamageCause? CUSTOM # The type of damage that will be dealt
+        shouldTriggerEvents: boolean? false # Whether to make the damage come from the user, thus triggering things like thorns
 DamageModifierData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -7976,18 +7724,14 @@ DisguiseEffect: object(superdoc = Effect)?  #
         entity: EntityType!  #
 DistanceCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        distance: RangeData? -Infinity - Infinity # 
-The distance range in blocks
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        distance: RangeData? -Infinity - Infinity # The distance range in blocks
 DroppedItemComponent: object(additionalProperties)?  # 
     properties: 
         stackData: ItemStackData?  #
@@ -8058,20 +7802,15 @@ EnchantComparisonData: object?  #
                 wind_burst: RangeData!  #
 EntityWhitelistCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        whitelist: boolean? true # 
-If true, the entities property will whitelist. If false, the entities property will blacklist
-        entities: EntityType[]? [] # 
-If true, the entities property will whitelist. If false, the entities property will blacklist
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        whitelist: boolean? true # If true, the entities property will whitelist. If false, the entities property will blacklist
+        entities: EntityType[]? [] # If true, the entities property will whitelist. If false, the entities property will blacklist
 EquipableData: object(superdoc = ItemStack)?  # 
     properties: 
         type: Material? STONE #
@@ -8117,8 +7856,7 @@ FairyWings: object(superdoc = Shape)?  #
         size: number? 1 #
 FallingBlockComponent: object(additionalProperties)?  # 
     properties: 
-        blockData: BlockData?  # 
-undocumented#
+        blockData: BlockData?  # undocumented#
         dropItem: boolean? true #
         cancelDrop: boolean? false #
         hurtEntities: boolean? false #
@@ -8127,46 +7865,35 @@ undocumented#
 FangsSpell: object?  # 
 FlyEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        fly: boolean? true # 
-Whether to set it to enable or disable creative flight
+        fly: boolean? true # Whether to set it to enable or disable creative flight
 FlyingCondition: object(superdoc = Condition)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
 FreezeEffect: object(superdoc = ModifyEffect, superdoc = Effect)! {} # 
     properties: 
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
-        mode: enum! SELF # 
-The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
 FurnaceBurnTimeEffect: object(superdoc = ModifyEffect, superdoc = Effect)! {} # 
     properties: 
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
-        mode: enum! LOCATION # 
-The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
+        mode: enum! LOCATION # The mode of operation
             values: 
               - ALL
               - LOCATION
@@ -8183,42 +7910,32 @@ GiveItemData: object(superdoc = SkillData)?  #
         canDropOnDeath: boolean? true #
 GiveItemEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        item: ItemStack!  # 
-The item to give
-        dropIfFull: boolean? true # 
-If true, drops the items that did not fit into the inventory
+        item: ItemStack!  # The item to give
+        dropIfFull: boolean? true # If true, drops the items that did not fit into the inventory
 GlidingCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        shouldGlide: boolean? true # 
-If true, checks if the entity is gliding. If false, it checks the opposite
-        glide: boolean? true # 
-If true, checks if the entity is gliding. If false, it checks the opposite
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        shouldGlide: boolean? true # If true, checks if the entity is gliding. If false, it checks the opposite
+        glide: boolean? true # If true, checks if the entity is gliding. If false, it checks the opposite
 GlidingEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        glide: boolean? true # 
-Whether to start or stop the gliding
+        glide: boolean? true # Whether to start or stop the gliding
 GlobalRerollSettings: object?  # 
     properties: 
         itemEnabled: boolean? true #
@@ -8253,26 +7970,19 @@ Halo: object(superdoc = Shape)?  #
         resolution: number? 32 #
 HealthCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        healthPercentage: RangeData? -Infinity - Infinity # 
-The health percentage range to check againts
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        healthPercentage: RangeData? -Infinity - Infinity # The health percentage range to check againts
 HealthEffect: object(superdoc = ModifyEffect, superdoc = Effect)! {} # 
     properties: 
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
-        mode: enum! SELF # 
-The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
@@ -8293,18 +8003,14 @@ HeartStealData: object(superdoc = SkillData)?  #
         maxhearts: integer? 24 #
 HeightCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        height: RangeData? -Infinity - Infinity # 
-The range in blocks
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        height: RangeData? -Infinity - Infinity # The range in blocks
 Helix: object(superdoc = Shape)?  # 
     properties: 
         radius: number? 0.5 #
@@ -8324,33 +8030,25 @@ HorseComponent: object(additionalProperties)?  #
         style: Horse.Style? NONE #
 HotbarSlotCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        slot: RangeData?  # 
-The range of slots it could be in
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        slot: RangeData?  # The range of slots it could be in
 HungerEffect: object(superdoc = ModifyEffect, superdoc = Effect)! {} # 
     properties: 
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
-        mode: enum! SELF # 
-The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
 IgniteEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
@@ -8358,30 +8056,23 @@ The mode of operation
         fireTicks: Expression?  #
 InBlockCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        blocks: Material[]? [] # 
-The list of blocks
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        blocks: Material[]? [] # The list of blocks
 InInventoryCondition: object(superdoc = Condition)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
 InstantBreakData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -8393,16 +8084,12 @@ InstantBreakData: object(superdoc = SkillData)?  #
 InteractData: object(superdoc = TriggerData)?  # 
     properties: 
         type: string!  #
-        actions: Action[]?  # 
-The interactions that will trigger this trigger
+        actions: Action[]?  # The interactions that will trigger this trigger
 ItemAmountEffect: object(superdoc = ModifyEffect, superdoc = Effect)! {} # 
     properties: 
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
-        mode: enum! ITEM # 
-The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
+        mode: enum! ITEM # The mode of operation
             values: 
               - ALL
               - ITEM
@@ -8414,32 +8101,24 @@ ItemComparisonData: object?  #
         metadata: ItemMetaComparisonData?  #
 ItemCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - ITEM
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        itemComparison: ItemComparisonData!  # 
-The item to check against
-        slot: InventorySlot? HAND # 
-The slot to check
-        item: ItemComparisonData!  # 
-The item to check against
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        itemComparison: ItemComparisonData!  # The item to check against
+        slot: InventorySlot? HAND # The slot to check
+        item: ItemComparisonData!  # The item to check against
 ItemMaterialEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! ITEM # 
-The mode of operation
+        mode: enum! ITEM # The mode of operation
             values: 
               - ALL
               - ITEM
-        material: Material?  # 
-The material to change it to
+        material: Material?  # The material to change it to
 ItemMetaComparisonData: object?  # 
     properties: 
         displayName: string!  #
@@ -8509,36 +8188,26 @@ ItemStackData: object?  #
         quantity: integer? 1 #
 ItemStackWrapperEffect: object(superdoc = WrapperEffect, superdoc = Effect)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! SELF # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        slot: InventorySlot? HAND # 
-The slot of the item
-        equipmentSlot: InventorySlot? HAND # 
-The slot of the item
+        slot: InventorySlot? HAND # The slot of the item
+        equipmentSlot: InventorySlot? HAND # The slot of the item
 ItemWrapperCondition: object(superdoc = WrapperCondition, superdoc = Condition)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The conditions to check
-        mode: enum! SELF # 
-The mode of operation
+        conditions: ConditionList? {} # The conditions to check
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        slot: InventorySlot? HAND # 
-The slot for the item
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        slot: InventorySlot? HAND # The slot for the item
 KillPotionData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -8546,15 +8215,12 @@ KillPotionData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)? 
         entities: EntityType[]?  #
 KnockbackEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
-        multiplier: Expression? 1.0 # 
-The number to multiply the velocity by or set the velocity to. See `overwriteCurrentVelocity`
-        overwriteCurrentVelocity: boolean? true # 
-If true, sets the velocity. If false, multiplies original velocity
+        multiplier: Expression? 1.0 # The number to multiply the velocity by or set the velocity to. See `overwriteCurrentVelocity`
+        overwriteCurrentVelocity: boolean? true # If true, sets the velocity. If false, multiplies original velocity
 LanguageYaml: object?  # 
     properties: 
         config_version: string?  #
@@ -8564,21 +8230,17 @@ LanguageYaml: object?  #
         GUI: GUILanguageSettings?  #
 LaunchEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        entity: EntityData? { type: \"FIREBALL\"} # 
-The entity to launch
-        velocity: Expression? 1.0 # 
-The speed to launch at
+        entity: EntityData? { type: \"FIREBALL\"} # The entity to launch
+        velocity: Expression? 1.0 # The speed to launch at
 LaunchProjectileSpell: object(superdoc = SpellData, superdoc = SkillData)?  # 
     properties: 
         fuel: Material? REDSTONE #
-        spellName: string?  # 
-undocumented#
+        spellName: string?  # undocumented#
         displayName: string? <purple><spellName> #
         cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
         moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
@@ -8603,39 +8265,28 @@ LifestealData: object(superdoc = SkillData)?  #
         lifestealpercentage: number? 5 #
 LightCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        checkNatural: boolean? true # 
-Whether to check for natural/sky light
-        checkBlocks: boolean? true # 
-Whether to check for block light
-        lightRange: RangeData? -Infinity - Infinity # 
-The range of light levels to compare against
-        checkNaturalLight: boolean? true # 
-Whether to check for natural/sky light
-        checkBlockLight: boolean? true # 
-Whether to check for block light
-        light: RangeData? -Infinity - Infinity # 
-The range of light levels to compare against
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        checkNatural: boolean? true # Whether to check for natural/sky light
+        checkBlocks: boolean? true # Whether to check for block light
+        lightRange: RangeData? -Infinity - Infinity # The range of light levels to compare against
+        checkNaturalLight: boolean? true # Whether to check for natural/sky light
+        checkBlockLight: boolean? true # Whether to check for block light
+        light: RangeData? -Infinity - Infinity # The range of light levels to compare against
 LightningEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        fake: boolean? false # 
-If true, it only makes the effect of lightning, not summoning an actual lightning
+        fake: boolean? false # If true, it only makes the effect of lightning, not summoning an actual lightning
 LightningSpell: object?  # 
 LightSkillData: object?  # 
 LivingEntityComponent: object(additionalProperties)?  # 
@@ -8648,129 +8299,95 @@ LlamaComponent: object(additionalProperties)?  #
         strength: integer? 1 #
 LocationCubeEffect: object(superdoc = WrapperEffect, superdoc = Effect)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! SELF # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        verticalRadius: integer? 0 # 
-Distance from the center to the vertical size of the cube
-        horizontalRadius: integer? 0 # 
-Distance from the center to the horizontal size of the cube
-        offset: Vector? { x: 0, y: 0, z: 0 } # 
-The offset from the original location
+        verticalRadius: integer? 0 # Distance from the center to the vertical size of the cube
+        horizontalRadius: integer? 0 # Distance from the center to the horizontal size of the cube
+        offset: Vector? { x: 0, y: 0, z: 0 } # The offset from the original location
 LocationOffsetEffect: object(superdoc = WrapperEffect, superdoc = Effect)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! SELF # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        offset: Vector? { x: 0, y: 0, z: 0 } # 
-The offset from the original location
+        offset: Vector? { x: 0, y: 0, z: 0 } # The offset from the original location
 LoopData: object(superdoc = TriggerData)?  # 
     properties: 
         type: string!  #
         period: Duration? 1.0 #
 LoseTargetEffect: object(superdoc = Effect)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
 LungeEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        horizontalVelocity: Expression? 0 # 
-The scale to scale the horizontal components of the velocity vector
-        verticalVelocity: Expression? 0 # 
-The scale to scale the vertical components of the velocity vector
-        overwrite: boolean? true # 
-If true, sets the velocity vector. If false, adds to the velocity vector
+        horizontalVelocity: Expression? 0 # The scale to scale the horizontal components of the velocity vector
+        verticalVelocity: Expression? 0 # The scale to scale the vertical components of the velocity vector
+        overwrite: boolean? true # If true, sets the velocity vector. If false, adds to the velocity vector
 MessageEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        message: ExpressiveMessage?  # 
-The message to send
+        message: ExpressiveMessage?  # The message to send
 MetadataCondition: object(superdoc = ComparisonCondition, superdoc = Condition)?  # 
     properties: 
-        value: Expression!  # 
-The value to compare against
-        comparison: ComparisonCondition.Comparison? EQUAL # 
-The comparison to use
-        mode: enum! SELF # 
-The mode of operation
+        value: Expression!  # The value to compare against
+        comparison: ComparisonCondition.Comparison? EQUAL # The comparison to use
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        variable: string!  # 
-The variable to compare
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        variable: string!  # The variable to compare
 MetadataEffect: object(superdoc = ModifyEffect, superdoc = Effect)?  # 
     properties: 
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
-        mode: enum! SELF # 
-The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        variable: string!  # 
-The name of the variable
+        variable: string!  # The name of the variable
 ModifyEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: Mode? ALL # 
-The mode of operation
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
+        mode: Mode? ALL # The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
 NearestEffect: object(superdoc = WrapperEffect, superdoc = Effect)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! SELF # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        radius: number? 5 # 
-The maximum distance to the entity
+        radius: number? 5 # The maximum distance to the entity
 NoHungerData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -8778,36 +8395,27 @@ NoHungerData: object(superdoc = SkillData)?  #
         minimumHunger: number? 19 #
 NOTCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - ITEM
               - LOCATION
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        condition: Condition?  # 
-The condition to invert
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        condition: Condition?  # The condition to invert
 NPCCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        npc: boolean? true # 
-If true, checks if the entity is an npc. If false, it checks the opposite
-        isNPC: boolean? true # 
-If true, checks if the entity is an npc. If false, it checks the opposite
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        npc: boolean? true # If true, checks if the entity is an npc. If false, it checks the opposite
+        isNPC: boolean? true # If true, checks if the entity is an npc. If false, it checks the opposite
 OHKOData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -8818,61 +8426,49 @@ OHKOData: object(superdoc = SkillData)?  #
         displayname: string?  #
 OnGroundCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        grounded: boolean? true # 
-If true, checks if the entity is on the ground. If false, it checks the opposite
-        isGrounded: boolean? true # 
-If true, checks if the entity is on the ground. If false, it checks the opposite
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        grounded: boolean? true # If true, checks if the entity is on the ground. If false, it checks the opposite
+        isGrounded: boolean? true # If true, checks if the entity is on the ground. If false, it checks the opposite
 OptionsData: object?  # 
     properties: 
         colours: Color[]? [] #
         scale: number? 1.0 #
 ORCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - ITEM
               - LOCATION
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        conditions: ConditionList?  # 
-The conditions to OR
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        conditions: ConditionList?  # The conditions to OR
 ParticleData: object?  # 
     properties: 
         duration: number? 2.5 #
         particle: Particle? PORTAL #
         amount: integer? 1 #
-        shape: Shape?  # 
-undocumented#
+        shape: Shape?  # undocumented#
         extra: number? 0 #
         options: OptionsData?  #
         numberOfParticles: integer? 1 #
 ParticleEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        particleData: ParticleData!  # 
-The data of the particles to spawn
+        particleData: ParticleData!  # The data of the particles to spawn
 PhaseData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -8887,15 +8483,13 @@ PickpocketData: object(superdoc = SkillData)?  #
         sneaking: boolean? true #
 Pickup: object(superdoc = Effect)! {} # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
 PlaceBlockEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! LOCATION # 
-The mode of operation
+        mode: enum! LOCATION # The mode of operation
             values: 
               - ALL
               - LOCATION
@@ -8908,8 +8502,7 @@ The mode of operation
 PlaceBlockSpell: object(superdoc = SpellData, superdoc = SkillData)?  # 
     properties: 
         fuel: Material? REDSTONE #
-        spellName: string?  # 
-undocumented#
+        spellName: string?  # undocumented#
         displayName: string? <purple><spellName> #
         cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
         moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
@@ -8937,34 +8530,25 @@ Point: object(superdoc = Shape)?  #
         offset: number? 0 #
 Potion: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        potionEffect: PotionEffectData!  # 
-The potion effect
-        potion: PotionEffectData!  # 
-The potion effect
+        potionEffect: PotionEffectData!  # The potion effect
+        potion: PotionEffectData!  # The potion effect
 PotionEffectCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        effect: PotionEffectType!  # 
-The type of potion to check. If not specified, it will check for any type of potion
-        potency: RangeData? -Infinity - Infinity # 
-The range of potion potency to check against
-        duration: RangeData? -Infinity - Infinity # 
-The range of potion duration to check against (in seconds)
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        effect: PotionEffectType!  # The type of potion to check. If not specified, it will check for any type of potion
+        potency: RangeData? -Infinity - Infinity # The range of potion potency to check against
+        duration: RangeData? -Infinity - Infinity # The range of potion duration to check against (in seconds)
 PotionEffectData: object?  # 
     properties: 
         type: PotionEffectType!  #
@@ -8984,12 +8568,9 @@ PotionEffectSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)
 PotionEffectTriggerData: object(superdoc = TriggerData)?  # 
     properties: 
         type: string!  #
-        types: PotionEffectType[]? [] # 
-The potion effects that will trigger this trigger
-        causes: EntityPotionEffectEvent.Cause[]?  # 
-The list of potion effect causes to check (ex. ARROW, BEACON)
-        actions: EntityPotionEffectEvent.Action[]?  # 
-The list of potion effect actions to check (ex. ADDED, CHANGED)
+        types: PotionEffectType[]? [] # The potion effects that will trigger this trigger
+        causes: EntityPotionEffectEvent.Cause[]?  # The list of potion effect causes to check (ex. ARROW, BEACON)
+        actions: EntityPotionEffectEvent.Action[]?  # The list of potion effect actions to check (ex. ADDED, CHANGED)
 PotionEntityComponent: object(additionalProperties)?  # 
     properties: 
         potion: ItemStack? SPLASH_POTION #
@@ -9018,60 +8599,44 @@ PrimedTntComponent: object(additionalProperties)?  #
 ProjectileData: object(superdoc = TriggerData)?  # 
     properties: 
         type: string!  #
-        onlyProjectiles: boolean? false # 
-If true, will only trigger if the damaging entity is a projectile
+        onlyProjectiles: boolean? false # If true, will only trigger if the damaging entity is a projectile
 ProjectileEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        projectile: EntityData? { type: \"SNOWBALL\"} # 
-The entity to shoot
-        velocity: number? 1.0 # 
-The shooting velocity
+        projectile: EntityData? { type: \"SNOWBALL\"} # The entity to shoot
+        velocity: number? 1.0 # The shooting velocity
 RabbitComponent: object(additionalProperties)?  # 
     properties: 
         variant: Rabbit.Type?  #
 RandomTeleportEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        maxDistance: number? 10 # 
-The maximum distance
-        minDistance: number? 5 # 
-The minimum distance
+        maxDistance: number? 10 # The maximum distance
+        minDistance: number? 5 # The minimum distance
 RaytraceEffect: object(superdoc = WrapperEffect, superdoc = Effect)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! SELF # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        maxDistance: number? 10 # 
-The maximum distance the raytrace can collide
-        collisionMode: FluidCollisionMode? NEVER # 
-The collision behavior when a fluid gets hit by the raytrace
-        ignorePassables: boolean? true # 
-Whether to ignore passable blocks (ex. tall grass, signs, fluids)
-        alwaysHit: boolean? true # 
-If true, if the raytrace does not hit anything, the location will be set as the maxDistance in the direction the user is looking
-        raySize: number? 1.0 # 
-The collision size of the ray
-        raysize: number? 1.0 # 
-The collision size of the ray
+        maxDistance: number? 10 # The maximum distance the raytrace can collide
+        collisionMode: FluidCollisionMode? NEVER # The collision behavior when a fluid gets hit by the raytrace
+        ignorePassables: boolean? true # Whether to ignore passable blocks (ex. tall grass, signs, fluids)
+        alwaysHit: boolean? true # If true, if the raytrace does not hit anything, the location will be set as the maxDistance in the direction the user is looking
+        raySize: number? 1.0 # The collision size of the ray
+        raysize: number? 1.0 # The collision size of the ray
 RemoteDetonationData: object(superdoc = CooldownData, superdoc = SkillData)?  # 
     properties: 
         cooldown: number? 0 #
@@ -9085,33 +8650,27 @@ RemoteDetonationData: object(superdoc = CooldownData, superdoc = SkillData)?  #
         explodable: EntityType[]? [] #
 RemoveEntityEffect: object(superdoc = Effect)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
 RemovePotionEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        types: PotionEffectType[]? [] # 
-The list of potion types. If empty, removes all potion effect
+        types: PotionEffectType[]? [] # The list of potion types. If empty, removes all potion effect
 RepulseEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
-        velocity: number? 1.0 # 
-The speed to repulse the target entity. Positive value means away from the user. Negative value means into the user
-        add: boolean? false # 
-Whether to add velocity or set it
+        velocity: number? 1.0 # The speed to repulse the target entity. Positive value means away from the user. Negative value means into the user
+        add: boolean? false # Whether to add velocity or set it
 RepulsionData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -9123,12 +8682,10 @@ RepulsionData: object(superdoc = SkillData)?  #
 RerollConfig: object?  # 
     properties: 
         configVersion: string?  #
-        globalRerollSettings: GlobalRerollSettings?  # 
-default#
+        globalRerollSettings: GlobalRerollSettings?  # default#
         rerollGroups: RerollGroup{}? {} #
         config_version: string?  #
-        global_reroll_settings: GlobalRerollSettings?  # 
-default#
+        global_reroll_settings: GlobalRerollSettings?  # default#
         reroll_groups: RerollGroup{}? {} #
 RerollGroup: object?  # 
     properties: 
@@ -9142,22 +8699,17 @@ RerollGroup.WeightedHero: object?  #
         weight: integer!  #
 ResizeEffect: object(superdoc = ModifyEffect, superdoc = Effect)?  # 
     properties: 
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
-        mode: enum! SELF # 
-The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        retainHealth: boolean? true # 
-For slimes and magma cubes. If true, make the entity retain the previous health, if more than the new max health, it sets it to the new max health
+        retainHealth: boolean? true # For slimes and magma cubes. If true, make the entity retain the previous health, if more than the new max health, it sets it to the new max health
 ScrambleInventoryEffect: object(superdoc = Effect)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
@@ -12280,65 +11832,47 @@ ShieldData: object(superdoc = SkillData)?  #
         cooldown: Duration? 100.0 #
 ShieldedCondition: object(superdoc = Condition)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
 ShooterCondition: object(superdoc = Condition)! {} # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
 ShooterEffect: object(superdoc = WrapperEffect, superdoc = Effect)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! OTHER # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
-        onlyProjectiles: boolean? true # 
-If true, only triggers if the original target entity is a projectile. If false, keep the target entity the same
+        onlyProjectiles: boolean? true # If true, only triggers if the original target entity is a projectile. If false, keep the target entity the same
 SizeComponent: object(additionalProperties)?  # 
     properties: 
         size: integer?  #
 SizeCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        size: RangeData? -Infinity - Infinity # 
-The range of sizes
-Skill: object?  # 
-A skill
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        size: RangeData? -Infinity - Infinity # The range of sizes
+Skill: object?  # A skill
     properties: 
-        trigger: TriggerData!  # 
-What triggers this skill
-        effects: EffectList!  # 
-The list of effects to run
-        conditions: ConditionList!  # 
-The condition that the effects will run
+        trigger: TriggerData!  # What triggers this skill
+        effects: EffectList!  # The list of effects to run
+        conditions: ConditionList!  # The condition that the effects will run
 Skin: object?  # 
     properties: 
         value: string?  #
@@ -12364,18 +11898,14 @@ SlimeData: object(superdoc = SkillData)?  #
         speedMultiplier: number? 1 #
 SneakCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        sneak: boolean? true # 
-If true, checks if the entity is shifting. If false, it checks the opposite
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        sneak: boolean? true # If true, checks if the entity is shifting. If false, it checks the opposite
 SneakData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -12399,26 +11929,22 @@ SoundData: object?  #
         pitch: number? 1.0 #
 SoundEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        sound: SoundData?  # 
-The sound data
+        sound: SoundData?  # The sound data
 SpawnEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        entity: EntityData? { type: \"ZOMBIE\"} # 
-The entity to spawn
+        entity: EntityData? { type: \"ZOMBIE\"} # The entity to spawn
 SpectralArrowComponent: object(additionalProperties, superdoc = AbstractArrowComponent)?  # 
     properties: 
         knockbackStrength: integer? 0 #
@@ -12429,32 +11955,24 @@ SpectralArrowComponent: object(additionalProperties, superdoc = AbstractArrowCom
         glowingTicks: integer? 200 #
 SpeedCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        speedRange: RangeData?  # 
-The speed range to check againts
-        speed: RangeData?  # 
-The speed range to check againts
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        speedRange: RangeData?  # The speed range to check againts
+        speed: RangeData?  # The speed range to check againts
 SprintingCondition: object(superdoc = Condition)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
 StrongmanData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -12474,8 +11992,7 @@ SummonSkillData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)?
         repel: boolean? false #
         mustSneak: boolean? true #
         entity: EntityType? LIGHTNING_BOLT #
-        action: Action[]?  # 
-undocumented#
+        action: Action[]?  # undocumented#
         cooldown: number? 10.0 #
         cooldownMessage: string? <yellow><bold>Zeus <white>Cooldown: <s> seconds #
         sneak: boolean? true #
@@ -12493,64 +12010,49 @@ Superhero: object(additionalProperties)?  #
         plusUltraSkills: PlusUltraSkillsContainer? {} #
 SuperheroCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
         heroes: string[]? [] #
 SwapEffect: object(superdoc = Effect)! {} # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
 SwimmingCondition: object(superdoc = Condition)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
 SwitcherooWrapperEffect: object(superdoc = WrapperEffect, superdoc = Effect)! {} # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! OTHER # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
 TamedCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        checkOwner: boolean? true # 
-If true, also checks if the user is the owner
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        checkOwner: boolean? true # If true, also checks if the user is the owner
 TargetEntityEffect: object(superdoc = Effect)! {} # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
@@ -12560,41 +12062,32 @@ TeleportData: object(superdoc = CooldownData, superdoc = SkillData)?  #
         cooldownMessage: string? You have <currentcooldown> seconds remaining before you can use the ability again! #
         conditions: ConditionListWrapper? {} #
         skill: string?  #
-        actions: Action[]?  # 
-undocumented#
+        actions: Action[]?  # undocumented#
         distance: integer? 30 #
         yAxisMultiplier: number? 1 #
         teleportCause: PlayerTeleportEvent.TeleportCause? ENDER_PEARL #
         particle: ParticleData?  #
-        teleportItem: ItemComparisonData?  # 
-undocumented#
-        action: Action[]?  # 
-undocumented#
+        teleportItem: ItemComparisonData?  # undocumented#
+        action: Action[]?  # undocumented#
 TeleportEffect: object(superdoc = Effect)! {} # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
 TemperatureCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        temperatureRange: RangeData?  # 
-The range of temperature, from -1 to 1
-        temperature: RangeData?  # 
-The range of temperature, from -1 to 1
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        temperatureRange: RangeData?  # The range of temperature, from -1 to 1
+        temperature: RangeData?  # The range of temperature, from -1 to 1
 ThrowableProjectileComponent: object(additionalProperties)?  # 
     properties: 
         itemStackData: ItemStackData?  #
@@ -12607,54 +12100,40 @@ ThrowerData: object(superdoc = CooldownData, superdoc = SkillData)?  #
         ammoCost: integer? 1 #
         ammo: ItemComparisonData? {} #
         projectile: EntityType? SNOWBALL #
-        actions: Action[]?  # 
-undocumented#
+        actions: Action[]?  # undocumented#
         canPickUp: boolean? false #
         velocity: number? 1.4 #
         damage: number? 3 #
         item: ItemComparisonData? {} #
 TimeCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        time: RangeData? -Infinity - Infinity # 
-A range for time
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        time: RangeData? -Infinity - Infinity # A range for time
 TimerEffect: object(superdoc = WrapperEffect, superdoc = Effect)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! SELF # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - ITEM
               - LOCATION
               - OTHER
               - SELF
-        ticksDelay: Duration? 1.0 # 
-The initial delay in seconds (1 is 20 ticks)
-        period: Duration? 1.0 # 
-The delay between triggers in seconds (1 is 20 ticks)
-        repeats: integer? 1 # 
-The number of times this trigger will trigger
-        delay: Duration? 1.0 # 
-The initial delay in seconds (1 is 20 ticks)
-        numberOfRepeats: integer? 1 # 
-The number of times this trigger will trigger
+        ticksDelay: Duration? 1.0 # The initial delay in seconds (1 is 20 ticks)
+        period: Duration? 1.0 # The delay between triggers in seconds (1 is 20 ticks)
+        repeats: integer? 1 # The number of times this trigger will trigger
+        delay: Duration? 1.0 # The initial delay in seconds (1 is 20 ticks)
+        numberOfRepeats: integer? 1 # The number of times this trigger will trigger
 TransmutationSpell: object(superdoc = SpellData, superdoc = SkillData)?  # 
     properties: 
         fuel: Material? REDSTONE #
-        spellName: string?  # 
-undocumented#
+        spellName: string?  # undocumented#
         displayName: string? <purple><spellName> #
         cooldownMessage: string? <spellName> has <currentcooldown> seconds remaining. #
         moreFuelMessage: string? This spell needs <fuelneeded> more <fuel> #
@@ -12666,10 +12145,8 @@ undocumented#
         conditions: ConditionListWrapper? {} #
         skill: string?  #
         transmutableBlocks: Material[]? [] #
-        block: BlockData?  # 
-undocumented#
-        resultantBlock: BlockData?  # 
-undocumented#
+        block: BlockData?  # undocumented#
+        resultantBlock: BlockData?  # undocumented#
 TrimData: object?  # 
     properties: 
         pattern: TrimPattern!  #
@@ -12681,68 +12158,48 @@ Vector: object! {x: 0, y: 0, z: 0} #
         z: number!  #
 VeinMinerEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: enum! LOCATION # 
-The mode of operation
+        mode: enum! LOCATION # The mode of operation
             values: 
               - ALL
               - LOCATION
-        materials: Material[]? [] # 
-The list of types that can be broken
-        delay: Duration? 0.05 # 
-The delay between each break in seconds (1 is 20 ticks)
-        limit: integer? 10 # 
-The max recursion depth ie. the radius from the start
-        allowMultiTypeVein: boolean? false # 
-If true, the vein will break all types in the list instead of only breaking the same type of block as the one in original location
-        types: Material[]? [] # 
-The list of types that can be broken
+        materials: Material[]? [] # The list of types that can be broken
+        delay: Duration? 0.05 # The delay between each break in seconds (1 is 20 ticks)
+        limit: integer? 10 # The max recursion depth ie. the radius from the start
+        allowMultiTypeVein: boolean? false # If true, the vein will break all types in the list instead of only breaking the same type of block as the one in original location
+        types: Material[]? [] # The list of types that can be broken
 VelocityEffect: object(superdoc = ModifyEffect, superdoc = Effect)?  # 
     properties: 
-        operation: ModifyEffect.Operation? SET # 
-The operation to do
-        value: Expression? 1 # 
-The number on the right side of the operation
-        mode: enum! SELF # 
-The mode of operation
+        operation: ModifyEffect.Operation? SET # The operation to do
+        value: Expression? 1 # The number on the right side of the operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - OTHER
               - SELF
-        component: string? Y # 
-The component(s) to modify, `ALL` means all components (ex. `XZ` would only modify the X and Z velocities and leave Y unmodified)
+        component: string? Y # The component(s) to modify, `ALL` means all components (ex. `XZ` would only modify the X and Z velocities and leave Y unmodified)
 VisibilityCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! OTHER # 
-The mode of operation
+        mode: enum! OTHER # The mode of operation
             values: 
               - ALL
               - OTHER
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        maxDistance: number? 16 # 
-The maximum distance to the target entity
-        distance: number? 16 # 
-The maximum distance to the target entity
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        maxDistance: number? 16 # The maximum distance to the target entity
+        distance: number? 16 # The maximum distance to the target entity
 WaitEffect: object(superdoc = WrapperEffect, superdoc = Effect)?  # 
     properties: 
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
-        mode: enum! SELF # 
-The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - ITEM
               - LOCATION
               - OTHER
               - SELF
-        ticksDelay: Duration? 20.0 # 
-The delay time in seconds (1 is 20 ticks)
-        delay: Duration? 20.0 # 
-The delay time in seconds (1 is 20 ticks)
+        ticksDelay: Duration? 20.0 # The delay time in seconds (1 is 20 ticks)
+        delay: Duration? 20.0 # The delay time in seconds (1 is 20 ticks)
 WalkerData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -12760,16 +12217,13 @@ WalkerData: object(superdoc = SkillData)?  #
         issneaking: boolean? false #
 WeatherCondition: object(superdoc = Condition)! {} # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
 WeatherDamageData: object(superdoc = SkillData)?  # 
     properties: 
         conditions: ConditionListWrapper? {} #
@@ -12792,36 +12246,26 @@ WolfComponent: object(additionalProperties)?  #
         angry: boolean? false #
 WorldCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: enum! SELF # 
-The mode of operation
+        mode: enum! SELF # The mode of operation
             values: 
               - ALL
               - LOCATION
               - OTHER
               - SELF
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
         worlds: string[]? [] #
 WrapperCondition: object(superdoc = Condition)?  # 
     properties: 
-        mode: Mode? ALL # 
-The mode of operation
-        otherwise: EffectList?  # 
-A list of effects that will run if this condition is false
-        else: EffectList?  # 
-A list of effects that will run if this condition is false
-        conditions: ConditionList? {} # 
-The conditions to check
+        mode: Mode? ALL # The mode of operation
+        otherwise: EffectList?  # A list of effects that will run if this condition is false
+        else: EffectList?  # A list of effects that will run if this condition is false
+        conditions: ConditionList? {} # The conditions to check
 WrapperEffect: object(superdoc = Effect)?  # 
     properties: 
-        mode: Mode? ALL # 
-The mode of operation
-        conditions: ConditionList? {} # 
-The list of conditions
-        effects: EffectList? {} # 
-The list of effects
+        mode: Mode? ALL # The mode of operation
+        conditions: ConditionList? {} # The list of conditions
+        effects: EffectList? {} # The list of effects
 ZombifiableComponent: object(additionalProperties)?  # 
     properties: 
         immuneToZombification: boolean? false #
@@ -13367,8 +12811,7 @@ Llama.Color: enum?  #
       - GRAY
       - WHITE
 Material: enum!  # 
-Mode: enum?  # 
-A mode of operation for conditions and effects
+Mode: enum?  # A mode of operation for conditions and effects
     values: 
       - ALL
       - ITEM
@@ -13572,18 +13015,12 @@ Wolf: enum!  #
       - WOLF
 BlockData: BlockDataData!  # 
 Component: string!  # 
-ConditionList: Condition{}?  # 
-A list of conditions
+ConditionList: Condition{}?  # A list of conditions
 ConditionListWrapper: ConditionList!  # 
 Duration: number!  # 
-EffectList: Effect{}?  # 
-A list of effects
-Expression: string | number!  # 
-A mathematical expression or a number
-self_metadataName will evaluate to that metadata stored in the user
-other_metadataName will evaluate to that metadata stored in the user
-ExpressiveMessage: string!  # 
-Text that can have an expression in it with ${expression}
+EffectList: Effect{}?  # A list of effects
+Expression: string | number!  # A mathematical expression or a number\nself_metadataName will evaluate to that metadata stored in the user\nother_metadataName will evaluate to that metadata stored in the user
+ExpressiveMessage: string!  # Text that can have an expression in it with ${expression}
 InventorySlot: EquipmentSlot | integer!  # 
 ItemStack: ItemStackData!  # 
 LoreData: string[]!  # 
