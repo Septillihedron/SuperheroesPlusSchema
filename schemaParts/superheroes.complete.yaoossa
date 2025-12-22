@@ -1,4 +1,7 @@
-SkillData: union(unionIdentifier = skill)! 
+Condition: union(unionIdentifier = type)?  # TODO
+    unions: 
+        HERO: SuperheroCondition? { type: HERO } # Checks the hero against a list of heroes
+SkillData: union(unionIdentifier = skill)?  # TODO
     properties: 
         conditions: ConditionListWrapper? {} # The conditions to check before running the skill. Requires SkillsLibrary
         skill: string?  # The type of skill
@@ -76,13 +79,13 @@ SpellData: union(unionIdentifier = skill, superdoc = SkillData)?  # TODO
         TRANSMUTATION_SPELL: TransmutationSpell? { skill: TRANSMUTATION_SPELL } # A spell that replaces blocks
 AttributeSkillData: object(superdoc = SkillData)?  # Modifies an attribute owned by the user or target entity. Does not support conditions
     properties: 
-        attributes: {Attribute: number}! 
-        equipmentSlot: EquipmentSlotGroup! 
-        operation: AttributesData.Operation! 
-        uniqueKey: string! 
-        equipment_slot: EquipmentSlotGroup! 
-        unique_key: string!
-AuraData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
+        attributes: {Attribute: number}!  # A mapping from attributes to the value
+        equipmentSlot: EquipmentSlotGroup!  # TODO
+        operation: AttributesData.Operation!  # The operation to do to the previous attribute and the attributes listed
+        uniqueKey: string!  # The unique key to identify this attributes with
+        equipment_slot: EquipmentSlotGroup!  # TODO
+        unique_key: string!  # The unique key to identify this attributes with
+AuraData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # Gives every entity in the radius a potion effect
     properties: 
         radius: number? 5 # The radius of the aura
 BlankData: object(superdoc = SkillData)! {} # Let's the hero use creative flight
@@ -111,21 +114,21 @@ ChatLanguageSettings: object?  # TODO
         invalidRerollGroupMessage: string?  # TODO
 ClimbData: object(superdoc = SkillData)?  # Lets the player climb walls
     properties: 
-        proximity: number? 0.2
-        climbSpeed: number? 0.2
-        debug: boolean? false
-        blocks: Material[]? []
-        whitelist: boolean? true
-        speed: number? 0.2
-ConfigYaml: object? 
+        proximity: number? 0.2 # The distance in blocks the player needs to be to climb
+        climbSpeed: number? 0.2 # The speed the player will climb the wall in blocks/second
+        debug: boolean? false # Whether to show debug particles showing how close blocks need to be for the player to climb
+        blocks: Material[]? [] # The list of blocks the player is allowed/disallowed from climbing. See `whitelist` property
+        whitelist: boolean? true # Whether to use the list of blocks as a whitelist or as a blacklist
+        speed: number? 0.2 # The speed the player will climb the wall in blocks/second
+ConfigYaml: object?  # TODO
     properties: 
-        config_version: string? 
-        powerOnStart: PowerOnStartSettings? 
-        gui: GUISettings? 
-        heroCommand: HeroCommandSettings? 
-        defaultHero: Superhero? 
-        disabledWorlds: string[]?
-ConsumeSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
+        config_version: string?  # TODO
+        powerOnStart: PowerOnStartSettings?  # TODO
+        gui: GUISettings?  # TODO
+        heroCommand: HeroCommandSettings?  # TODO
+        defaultHero: Superhero?  # TODO
+        disabledWorlds: string[]?  # TODO
+ConsumeSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # Gives the player a potion effect and food points/hunger when the player eats a certain item
     properties: 
         material: Material? DIRT # The item that can be consumed
         hunger: integer? 0 # The food points/hunger that the player will get after easting
@@ -163,44 +166,44 @@ CreeperData: object(superdoc = CooldownData, superdoc = SkillData)?  # Creates a
         slowfall_duration: Duration? 7.0 # The duration of the slowfall potion in seconds (1 is 20 ticks)
 DamageModifierData: object(superdoc = SkillData)?  # Constrains damage, with optional easing out. \nDoes not support conditions currently
     properties: 
-        entities: EntityType[]? []
-        causes: EntityDamageEvent.DamageCause[]? []
-        whitelist: boolean? false
-        expectedMaxDamage: number? 30
-        maxDamage: number? 15
-        minDamage: number? 0
-        priority: integer? 0
-        incoming: boolean? false
-        outgoing: boolean? false
-        eased: boolean? false
-        limitProjectiles: boolean? true
-DamagePotionData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
+        entities: EntityType[]? [] # The list of entities that is/is not effected
+        causes: EntityDamageEvent.DamageCause[]? [] # The list of damage causes that is/is not effected
+        whitelist: boolean? false # Whether to use the `causes` and `entities` list as whitelist
+        expectedMaxDamage: number? 30 # The maximum damage used in the easing calculation
+        maxDamage: number? 15 # The maximum resulting damage (after calculation)
+        minDamage: number? 0 # The minimum damage (before calculation)
+        priority: integer? 0 # The priority of the skill. Only the highest priority between the skills of the two players will be applied
+        incoming: boolean? false # Whether to apply this for incoming damage
+        outgoing: boolean? false # Whether to apply this for outgoing damage / attacks
+        eased: boolean? false # Whether to ease out the damage quadratically
+        limitProjectiles: boolean? true # Whether to also limit damage from projectiles
+DamagePotionData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # Gives the player a potion effect when damaged
     properties: 
-        damageCauses: EntityDamageEvent.DamageCause[]? []
-        damageCause: EntityDamageEvent.DamageCause[]? []
-DamageResistanceData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
+        damageCauses: EntityDamageEvent.DamageCause[]? [] # The list of causes of damage to detect
+        damageCause: EntityDamageEvent.DamageCause[]? [] # The list of causes of damage to detect
+DamageResistanceData: object(superdoc = PotionEffectData, superdoc = SkillData)?  # Multiplies damages taken, and optionally gives a potion effect
     properties: 
         damageMultiplier: number? 0 # The multiplier on the damage
         damageCauses: EntityDamageEvent.DamageCause[]?  # The causes of damage that will be effected
         damageCause: EntityDamageEvent.DamageCause[]?  # The causes of damage that will be effected
 DatabaseSettings: object?  # TODO
     properties: 
-        type: string? YAML
-        host: string? this needs filling with your host name if using mysql
-        port: integer? 3306
-        name: string? this needs filling with the database name if using mysql
-        username: string? this needs filling with the username of the account being used to connect
-        password: string? this needs filling with the password being used to connect
-DatabaseYaml: object? 
+        type: string? YAML # TODO
+        host: string? this needs filling with your host name if using mysql # TODO
+        port: integer? 3306 # TODO
+        name: string? this needs filling with the database name if using mysql # TODO
+        username: string? this needs filling with the username of the account being used to connect # TODO
+        password: string? this needs filling with the password being used to connect # TODO
+DatabaseYaml: object?  # TODO
     properties: 
         database: DatabaseSettings?  # TODO
         config_version: string?  # TODO
 DecoyData: object(superdoc = SkillData)?  # Creates an armour stand in the place of the player when sneaking. The armour stand will be wearing a leather armour and a player head
     properties: 
-        color: Color? 
-        base64Skin: string? SELF
-        base64skin: string? SELF
-EggLayerData: object(superdoc = ItemStackData, superdoc = SkillData)? 
+        color: Color?  # The colour of the leather armour
+        base64Skin: string? SELF # The skin of the player head. \nIf the value is \"SELF\" (default) then the skin will be the skin of the player\n
+        base64skin: string? SELF # The skin of the player head. \nIf the value is \"SELF\" (default) then the skin will be the skin of the player\n
+EggLayerData: object(superdoc = ItemStackData, superdoc = SkillData)?  # Creates drops of a specific item
     properties: 
         tickDelay: Duration? 15.0 # The delay between item drops
 EraserData: object(superdoc = CooldownData, superdoc = SkillData)?  # Removes another player's power temporarily
@@ -227,8 +230,8 @@ GlobalRerollSettings: object?  # TODO
         itemCooldown: number?  # TODO
 GUILanguageSettings: object?  # TODO
     properties: 
-        name: string? Pick your hero!
-GUISettings: object? 
+        name: string? Pick your hero! # TODO
+GUISettings: object?  # TODO
     properties: 
         startsOpen: boolean!  # TODO
         onStart: boolean!  # TODO
@@ -245,12 +248,12 @@ GunData: object(superdoc = CooldownData, superdoc = SkillData)?  # Shoots the gu
         hitParticle: ParticleData?  # The particle that will be spawned at the hit location
 HeartStealData: object(superdoc = SkillData)?  # Gives max hearts on kill
     properties: 
-        heartsGained: integer? 2
-        entities: EntityType[]? []
-        maxHearts: integer? 24
-        heartsgained: integer? 2
-        maxhearts: integer? 24
-HeroCommandSettings: object? 
+        heartsGained: integer? 2 # The amount of additional max health (in half hearts) to give on kill
+        entities: EntityType[]? [] # The list of entities that will give additional max health
+        maxHearts: integer? 24 # The maximum max health (in half hearts) that the player can have
+        heartsgained: integer? 2 # The amount of additional max health (in half hearts) to give on kill
+        maxhearts: integer? 24 # The maximum max health (in half hearts) that the player can have
+HeroCommandSettings: object?  # TODO
     properties: 
         cooldown: number?  # TODO
         aliases: string[]?  # TODO
@@ -262,8 +265,8 @@ InstantBreakData: object(superdoc = SkillData)?  # Allows the player to break ce
         breakusing: Material?  # The tool that will be used instead of what's in hand
 KillPotionData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)?  # Applies a potion effect everytime the hero kills an entity
     properties: 
-        entities: EntityType[]?
-LanguageYaml: object? 
+        entities: EntityType[]?  # The list entities that will trigger this skill. An empty list means all entities
+LanguageYaml: object?  # TODO
     properties: 
         config_version: string?  # TODO
         chatLanguageSettings: ChatLanguageSettings?  # TODO
@@ -299,15 +302,15 @@ PickpocketData: object(superdoc = SkillData)?  # Allows the hero to look at anot
         sneaking: boolean? true # Whether the hero needs to be sneaking
 PlaceBlockSpell: object(superdoc = SpellData, superdoc = SkillData)?  # A spell that places a block
     properties: 
-        block: BlockData?
-PotionEffectSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
-PotionGifterSkillData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)? 
+        block: BlockData?  # The block to place
+PotionEffectSkillData: object(superdoc = PotionEffectData, superdoc = SkillData)! {} # Applies a potion effect continuously to the hero
+PotionGifterSkillData: object(superdoc = PotionEffectSkillData, superdoc = SkillData)?  # Gives a potion effect to right clicked entities
     properties: 
-        cooldown: number? 10
-        receiverMessage: string? <grey><i>You have received a potion effect.
-        giverMessage: string? <grey><i>You gave them a potion effect.
-        cooldownMessage: string? <grey><i>You have <currentcooldown> seconds left until it can be used again!
-PowerOnStartSettings: object? 
+        cooldown: number? 10 # The cooldown in seconds
+        receiverMessage: string? <grey><i>You have received a potion effect. # The message for the receiving player\n\n\"<player>\" will be replaced by the receiving player\n\"<gifter>\" will be replaced by the gifter (this hero)\n
+        giverMessage: string? <grey><i>You gave them a potion effect. # The message for the gifter (this hero)\n\n\"<player>\" will be replaced by the gifter\n
+        cooldownMessage: string? <grey><i>You have <currentcooldown> seconds left until it can be used again! # The message given to the gifter (this hero) when the cooldown is active\n\n\"<currentcooldown>\" will be replaced with the current cooldown is seconds\n
+PowerOnStartSettings: object?  # TODO
     properties: 
         enabled: boolean!  # TODO
         isEnabled: boolean!  # TODO
@@ -338,18 +341,18 @@ RerollConfig: object?  # TODO
         reroll_groups: RerollGroup{}? {} # TODO
 RerollGroup: object?  # TODO
     properties: 
-        weightedHeroes: RerollGroup.WeightedHero[]? []
-        itemComparator: ItemComparisonData? 
-        heroes: RerollGroup.WeightedHero[]? []
-        item: ItemComparisonData?
-RerollGroup.WeightedHero: object? 
+        weightedHeroes: RerollGroup.WeightedHero[]? [] # TODO
+        itemComparator: ItemComparisonData?  # TODO
+        heroes: RerollGroup.WeightedHero[]? [] # TODO
+        item: ItemComparisonData?  # TODO
+RerollGroup.WeightedHero: object?  # TODO
     properties: 
         hero: string!  # TODO
         weight: integer!  # TODO
 ShieldData: object(superdoc = SkillData)?  # Sets the shields cooldown when the user take damage
     properties: 
-        cooldown: Duration? 100.0
-Skin: object? 
+        cooldown: Duration? 100.0 # The shield cooldown in seconds (1 is 20 ticks)
+Skin: object?  # TODO
     properties: 
         value: string?  # TODO
         signature: string?  # TODO
@@ -368,11 +371,11 @@ SlimeData: object(superdoc = SkillData)?  # Let's the hero bounce around like a 
         speedMultiplier: number? 1 # The horizontal speed
 SneakData: object(superdoc = SkillData)?  # Prevents being targeted by entities
     properties: 
-        mustSneak: boolean? 
-        needsInvisibility: boolean? 
-        sneak: boolean?
-SneakingPotionData: object(superdoc = PotionEffectData, superdoc = SkillData)? 
-StrongmanData: object(superdoc = SkillData)? 
+        mustSneak: boolean?  # Whether the player must be sneaking to prevent targeting
+        needsInvisibility: boolean?  # Whether the player must have invisibility to prevent targeting
+        sneak: boolean?  # Whether the player must be sneaking to prevent targeting
+SneakingPotionData: object(superdoc = PotionEffectData, superdoc = SkillData)! {} # Gives the hero a potion effect when sneaking
+StrongmanData: object(superdoc = SkillData)?  # Allows the player to pick up entities with right click\nand throw them in the direction that the player is looking by sneaking\nThis skill also prevents sitting in a vehicle\n
     properties: 
         velocity: number? 2.5 # The horizontal speed to throw the entity
         upwardsVelocity: number? 1 # The upward velocity to throw the entity
@@ -405,7 +408,6 @@ Superhero: object(additionalProperties)?  # TODO
         plusUltraSkills: PlusUltraSkillsContainer? {} # TODO
 SuperheroCondition: object(superdoc = Condition)?  # Checks the hero against a list of heroes
     properties: 
-        mode: enum! SELF # The mode of operation
         mode: enum! SELF # The mode of operation
             values: 
               - ALL

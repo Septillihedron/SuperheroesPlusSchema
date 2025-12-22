@@ -640,7 +640,7 @@ Potion: object(superdoc = Effect)?  # Applies the potion effect to the user or t
               - SELF
         potionEffect: PotionEffectData!  # The potion effect
         potion: PotionEffectData!  # The potion effect
-PotionEffectCondition: object(superdoc = Condition)? 
+PotionEffectCondition: object(superdoc = Condition)?  # Checks whether the user or target entity has the potion effect
     properties: 
         mode: enum! SELF # The mode of operation
             values: 
