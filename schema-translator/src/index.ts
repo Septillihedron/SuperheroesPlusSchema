@@ -30,5 +30,5 @@ writeFileSync(outputDir+"/lowered.yaoossa", lowered.toString())
 const jsonSchema = compileToJsonSchema(lowered)
 writeFileSync(outputDir+"/schema.json", JSON.stringify(jsonSchema, null, 4))
 // compact version
-writeFileSync("../compiler/schemas/Superheroes8+.json", JSON.stringify(jsonSchema))
-
+mkdirSync("../schemas", { recursive: true })
+writeFileSync("../schemas/Superheroes8+.json", JSON.stringify(jsonSchema))

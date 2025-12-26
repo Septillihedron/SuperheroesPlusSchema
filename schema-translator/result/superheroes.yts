@@ -66,6 +66,10 @@ type Condition = ({
      */
     ({type: "HEIGHT"} & HeightCondition) | 
     /**
+     * Checks the hero against a list of heroes
+     */
+    ({type: "HERO"} & SuperheroCondition) | 
+    /**
      * Checks if the held item/main hand in in a range of hotbar slots
      */
     ({type: "HOTBARSLOT"} & HotbarSlotCondition) | 
@@ -722,35 +726,35 @@ type EntityData = ({
  */
 type Shape = ({}) & (
     /**
-     * 
+     * TODO
      */
     ({type: "EARS"} & Ears) | 
     /**
-     * 
+     * TODO
      */
     ({type: "FAIRY_WINGS"} & FairyWings) | 
     /**
-     * 
+     * TODO
      */
     ({type: "HALO"} & Halo) | 
     /**
-     * 
+     * TODO
      */
     ({type: "HEART"} & Heart) | 
     /**
-     * 
+     * TODO
      */
     ({type: "HELIX"} & Helix) | 
     /**
-     * 
+     * TODO
      */
     ({type: "POINT"} & Point) | 
     /**
-     * 
+     * TODO
      */
     ({type: "WINGS"} & Wings) | 
     /**
-     * 
+     * TODO
      */
     ({type: "WISP"} & Wisp)
 )
@@ -1290,49 +1294,49 @@ type TriggerData = ({
 )
 
 /**
- * 
+ * TODO
  */
 type AbstractArrowComponent = {
     /**
-     * 
+     * TODO
      */
     knockbackStrength?: number;
     /**
-     * 
+     * TODO
      */
     damage?: number;
     /**
-     * 
+     * TODO
      */
     pierceLevel?: number;
     /**
-     * 
+     * TODO
      */
     critical?: boolean;
     /**
-     * 
+     * TODO
      */
     pickupStatus?: AbstractArrow_PickupStatus;
 }
 
 /**
- * 
+ * TODO
  */
 type AbstractHorseComponent = {
     /**
-     * 
+     * TODO
      */
     tamingDifficulty?: number;
     /**
-     * 
+     * TODO
      */
     jumpStrength?: number;
     /**
-     * 
+     * TODO
      */
     tamed?: boolean;
     /**
-     * 
+     * TODO
      */
     hasSaddle?: boolean;
 }
@@ -1352,11 +1356,11 @@ type ActionBarEffect = {
 }
 
 /**
- * 
+ * TODO
  */
 type AgeableComponent = {
     /**
-     * 
+     * TODO
      */
     isBaby?: boolean;
 }
@@ -1376,11 +1380,11 @@ type AOE = {
 }
 
 /**
- * 
+ * TODO
  */
 type ArrowComponent = {
     /**
-     * 
+     * TODO
      */
     potionType?: PotionType;
 }
@@ -1430,27 +1434,27 @@ type AttributeEffect = {
 }
 
 /**
- * 
+ * TODO
  */
 type AttributesData = {
     /**
-     * 
+     * TODO
      */
     attributes?: Record<Attribute, number>;
     /**
-     * 
+     * TODO
      */
     uniqueKey?: string;
     /**
-     * 
+     * TODO
      */
     equipmentSlot?: EquipmentSlotGroup;
     /**
-     * 
+     * TODO
      */
     operation?: AttributesData_Operation;
     /**
-     * 
+     * TODO
      */
     unique_key?: string;
 }
@@ -1460,33 +1464,33 @@ type AttributesData = {
  */
 type AttributeSkillData = {
     /**
-     * 
+     * A mapping from attributes to the value
      */
     attributes: Record<Attribute, number>;
     /**
-     * 
+     * TODO
      */
     equipmentSlot: EquipmentSlotGroup;
     /**
-     * 
+     * The operation to do to the previous attribute and the attributes listed
      */
     operation: AttributesData_Operation;
     /**
-     * 
+     * The unique key to identify this attributes with
      */
     uniqueKey: string;
     /**
-     * 
+     * TODO
      */
     equipment_slot: EquipmentSlotGroup;
     /**
-     * 
+     * The unique key to identify this attributes with
      */
     unique_key: string;
 }
 
 /**
- * 
+ * Gives every entity in the radius a potion effect
  */
 type AuraData = {
     /**
@@ -1496,7 +1500,7 @@ type AuraData = {
 }
 
 /**
- * 
+ * TODO
  */
 type AxolotlComponent = {
     /**
@@ -1693,15 +1697,15 @@ type BonemealEffect = {
  */
 type BookData = {
     /**
-     * 
+     * TODO
      */
     title: string;
     /**
-     * 
+     * TODO
      */
     author: string;
     /**
-     * 
+     * TODO
      */
     pages: string[];
 }
@@ -1799,11 +1803,11 @@ type ChatLanguageSettings = {
 }
 
 /**
- * 
+ * TODO
  */
 type ChestedHorseComponent = {
     /**
-     * 
+     * TODO
      */
     hasChest?: boolean;
 }
@@ -1813,27 +1817,27 @@ type ChestedHorseComponent = {
  */
 type ClimbData = {
     /**
-     * 
+     * The distance in blocks the player needs to be to climb
      */
     proximity?: number;
     /**
-     * 
+     * The speed the player will climb the wall in blocks/second
      */
     climbSpeed?: number;
     /**
-     * 
+     * Whether to show debug particles showing how close blocks need to be for the player to climb
      */
     debug?: boolean;
     /**
-     * 
+     * The list of blocks the player is allowed/disallowed from climbing. See `whitelist` property
      */
     blocks?: Material[];
     /**
-     * 
+     * Whether to use the list of blocks as a whitelist or as a blacklist
      */
     whitelist?: boolean;
     /**
-     * 
+     * The speed the player will climb the wall in blocks/second
      */
     speed?: number;
 }
@@ -1857,11 +1861,11 @@ type Color = {
 }
 
 /**
- * 
+ * TODO
  */
 type ColorableComponent = {
     /**
-     * 
+     * TODO
      */
     dyeColor?: DyeColor;
 }
@@ -1899,37 +1903,37 @@ type ComparisonCondition = {
 }
 
 /**
- * 
+ * TODO
  */
 type ConfigYaml = {
     /**
-     * 
+     * TODO
      */
     config_version?: string;
     /**
-     * 
+     * TODO
      */
     powerOnStart?: PowerOnStartSettings;
     /**
-     * 
+     * TODO
      */
     gui?: GUISettings;
     /**
-     * 
+     * TODO
      */
     heroCommand?: HeroCommandSettings;
     /**
-     * 
+     * TODO
      */
     defaultHero?: Superhero;
     /**
-     * 
+     * TODO
      */
     disabledWorlds?: string[];
 }
 
 /**
- * 
+ * Gives the player a potion effect and food points/hunger when the player eats a certain item
  */
 type ConsumeSkillData = {
     /**
@@ -2041,23 +2045,23 @@ type CraftingData = {
 }
 
 /**
- * 
+ * TODO
  */
 type CreeperComponent = {
     /**
-     * 
+     * TODO
      */
     fuse?: number;
     /**
-     * 
+     * TODO
      */
     ignite?: boolean;
     /**
-     * 
+     * TODO
      */
     explosionRadius?: number;
     /**
-     * 
+     * TODO
      */
     powered?: boolean;
 }
@@ -2165,67 +2169,67 @@ type DamageEffect = {
  */
 type DamageModifierData = {
     /**
-     * 
+     * The list of entities that is/is not effected
      */
     entities?: EntityType[];
     /**
-     * 
+     * The list of damage causes that is/is not effected
      */
     causes?: EntityDamageEvent_DamageCause[];
     /**
-     * 
+     * Whether to use the `causes` and `entities` list as whitelist
      */
     whitelist?: boolean;
     /**
-     * 
+     * The maximum damage used in the easing calculation
      */
     expectedMaxDamage?: number;
     /**
-     * 
+     * The maximum resulting damage (after calculation)
      */
     maxDamage?: number;
     /**
-     * 
+     * The minimum damage (before calculation)
      */
     minDamage?: number;
     /**
-     * 
+     * The priority of the skill. Only the highest priority between the skills of the two players will be applied
      */
     priority?: number;
     /**
-     * 
+     * Whether to apply this for incoming damage
      */
     incoming?: boolean;
     /**
-     * 
+     * Whether to apply this for outgoing damage / attacks
      */
     outgoing?: boolean;
     /**
-     * 
+     * Whether to ease out the damage quadratically
      */
     eased?: boolean;
     /**
-     * 
+     * Whether to also limit damage from projectiles
      */
     limitProjectiles?: boolean;
 }
 
 /**
- * 
+ * Gives the player a potion effect when damaged
  */
 type DamagePotionData = {
     /**
-     * 
+     * The list of causes of damage to detect
      */
     damageCauses?: EntityDamageEvent_DamageCause[];
     /**
-     * 
+     * The list of causes of damage to detect
      */
     damageCause?: EntityDamageEvent_DamageCause[];
 }
 
 /**
- * 
+ * Multiplies damages taken, and optionally gives a potion effect
  */
 type DamageResistanceData = {
     /**
@@ -2247,33 +2251,33 @@ type DamageResistanceData = {
  */
 type DatabaseSettings = {
     /**
-     * 
+     * TODO
      */
     type?: string;
     /**
-     * 
+     * TODO
      */
     host?: string;
     /**
-     * 
+     * TODO
      */
     port?: number;
     /**
-     * 
+     * TODO
      */
     name?: string;
     /**
-     * 
+     * TODO
      */
     username?: string;
     /**
-     * 
+     * TODO
      */
     password?: string;
 }
 
 /**
- * 
+ * TODO
  */
 type DatabaseYaml = {
     /**
@@ -2291,14 +2295,18 @@ type DatabaseYaml = {
  */
 type DecoyData = {
     /**
-     * 
+     * The colour of the leather armour
      */
     color?: Color;
     /**
+     * The skin of the player head. 
+     * If the value is "SELF" (default) then the skin will be the skin of the player
      * 
      */
     base64Skin?: string;
     /**
+     * The skin of the player head. 
+     * If the value is "SELF" (default) then the skin will be the skin of the player
      * 
      */
     base64skin?: string;
@@ -2341,17 +2349,17 @@ type DistanceCondition = {
 }
 
 /**
- * 
+ * TODO
  */
 type DroppedItemComponent = {
     /**
-     * 
+     * TODO
      */
     stackData?: ItemStackData;
 }
 
 /**
- * 
+ * TODO
  */
 type Ears = {
     /**
@@ -2387,7 +2395,7 @@ type EffectData = {
 }
 
 /**
- * 
+ * Creates drops of a specific item
  */
 type EggLayerData = {
     /**
@@ -2401,7 +2409,7 @@ type EggLayerData = {
  */
 type EnchantComparisonData = {
     /**
-     * 
+     * TODO
      */
     enchantMap?: Record<Enchantment, RangeData>;
 }
@@ -2425,61 +2433,61 @@ type EntityWhitelistCondition = {
 }
 
 /**
- * 
+ * TODO
  */
 type EquipableData = {
     /**
-     * 
+     * TODO
      */
     droprate?: number;
 }
 
 /**
- * 
+ * TODO
  */
 type EquipmentData = {
     /**
-     * 
+     * TODO
      */
     head?: EquipableData;
     /**
-     * 
+     * TODO
      */
     chest?: EquipableData;
     /**
-     * 
+     * TODO
      */
     legs?: EquipableData;
     /**
-     * 
+     * TODO
      */
     feet?: EquipableData;
     /**
-     * 
+     * TODO
      */
     mainhand?: EquipableData;
     /**
-     * 
+     * TODO
      */
     offhand?: EquipableData;
     /**
-     * 
+     * TODO
      */
     helmet?: EquipableData;
     /**
-     * 
+     * TODO
      */
     chestplate?: EquipableData;
     /**
-     * 
+     * TODO
      */
     leggings?: EquipableData;
     /**
-     * 
+     * TODO
      */
     boots?: EquipableData;
     /**
-     * 
+     * TODO
      */
     hand?: EquipableData;
 }
@@ -2507,11 +2515,11 @@ type EraserData = {
 }
 
 /**
- * 
+ * TODO
  */
 type ExperienceOrbComponent = {
     /**
-     * 
+     * TODO
      */
     experience?: number;
 }
@@ -2522,63 +2530,63 @@ type ExperienceOrbComponent = {
 type ExplosionSpell = {}
 
 /**
- * 
+ * TODO
  */
 type ExplosiveComponent = {
     /**
-     * 
+     * TODO
      */
     yield?: number;
     /**
-     * 
+     * TODO
      */
     isIncendiary?: boolean;
 }
 
 /**
- * 
+ * TODO
  */
 type FairyWings = {
     /**
-     * 
+     * TODO
      */
     height?: number;
     /**
-     * 
+     * TODO
      */
     frequency?: number;
     /**
-     * 
+     * TODO
      */
     size?: number;
 }
 
 /**
- * 
+ * TODO
  */
 type FallingBlockComponent = {
     /**
-     * undocumented#
+     * undocumented# # TODO
      */
     blockData?: BlockData;
     /**
-     * 
+     * TODO
      */
     dropItem?: boolean;
     /**
-     * 
+     * TODO
      */
     cancelDrop?: boolean;
     /**
-     * 
+     * TODO
      */
     hurtEntities?: boolean;
     /**
-     * 
+     * TODO
      */
     damagePerBlock?: number;
     /**
-     * 
+     * TODO
      */
     maxDamage?: number;
 }
@@ -2739,13 +2747,13 @@ type GlobalRerollSettings = {
  */
 type GUILanguageSettings = {
     /**
-     * 
+     * TODO
      */
     name?: string;
 }
 
 /**
- * 
+ * TODO
  */
 type GUISettings = {
     /**
@@ -2801,19 +2809,19 @@ type GunData = {
 }
 
 /**
- * 
+ * TODO
  */
 type Halo = {
     /**
-     * 
+     * TODO
      */
     radius?: number;
     /**
-     * 
+     * TODO
      */
     height?: number;
     /**
-     * 
+     * TODO
      */
     resolution?: number;
 }
@@ -2843,19 +2851,19 @@ type HealthEffect = {
 }
 
 /**
- * 
+ * TODO
  */
 type Heart = {
     /**
-     * 
+     * TODO
      */
     height?: number;
     /**
-     * 
+     * TODO
      */
     frequency?: number;
     /**
-     * 
+     * TODO
      */
     size?: number;
 }
@@ -2865,23 +2873,23 @@ type Heart = {
  */
 type HeartStealData = {
     /**
-     * 
+     * The amount of additional max health (in half hearts) to give on kill
      */
     heartsGained?: number;
     /**
-     * 
+     * The list of entities that will give additional max health
      */
     entities?: EntityType[];
     /**
-     * 
+     * The maximum max health (in half hearts) that the player can have
      */
     maxHearts?: number;
     /**
-     * 
+     * The amount of additional max health (in half hearts) to give on kill
      */
     heartsgained?: number;
     /**
-     * 
+     * The maximum max health (in half hearts) that the player can have
      */
     maxhearts?: number;
 }
@@ -2901,37 +2909,37 @@ type HeightCondition = {
 }
 
 /**
- * 
+ * TODO
  */
 type Helix = {
     /**
-     * 
+     * TODO
      */
     radius?: number;
     /**
-     * 
+     * TODO
      */
     interval?: number;
     /**
-     * 
+     * TODO
      */
     speed?: number;
     /**
-     * 
+     * TODO
      */
     waveFrequency?: number;
     /**
-     * 
+     * TODO
      */
     height?: number;
     /**
-     * 
+     * TODO
      */
     wave_frequency?: number;
 }
 
 /**
- * 
+ * TODO
  */
 type HeroCommandSettings = {
     /**
@@ -2945,7 +2953,7 @@ type HeroCommandSettings = {
 }
 
 /**
- * 
+ * TODO
  */
 type HorseComponent = {
     /**
@@ -3251,7 +3259,7 @@ type ItemWrapperCondition = {
  */
 type KillPotionData = {
     /**
-     * 
+     * The list entities that will trigger this skill. An empty list means all entities
      */
     entities?: EntityType[];
 }
@@ -3275,7 +3283,7 @@ type KnockbackEffect = {
 }
 
 /**
- * 
+ * TODO
  */
 type LanguageYaml = {
     /**
@@ -3333,15 +3341,15 @@ type LaunchProjectileSpell = {
  */
 type LeatherArmorColor = {
     /**
-     * 
+     * TODO
      */
     red?: number;
     /**
-     * 
+     * TODO
      */
     green?: number;
     /**
-     * 
+     * TODO
      */
     blue?: number;
 }
@@ -3419,21 +3427,21 @@ type LightningSpell = {}
 type LightSkillData = {}
 
 /**
- * 
+ * TODO
  */
 type LivingEntityComponent = {
     /**
-     * 
+     * TODO
      */
     canEquip?: boolean;
     /**
-     * 
+     * TODO
      */
     equipment?: EquipmentData;
 }
 
 /**
- * 
+ * TODO
  */
 type LlamaComponent = {
     /**
@@ -3709,31 +3717,31 @@ type ORCondition = {
  */
 type ParticleData = {
     /**
-     * 
+     * TODO
      */
     duration?: number;
     /**
-     * 
+     * TODO
      */
     particle?: Particle;
     /**
-     * 
+     * TODO
      */
     amount?: number;
     /**
-     * undocumented#
+     * undocumented# # TODO
      */
     shape?: Shape;
     /**
-     * 
+     * TODO
      */
     extra?: number;
     /**
-     * 
+     * TODO
      */
     options?: OptionsData;
     /**
-     * 
+     * TODO
      */
     numberOfParticles?: number;
 }
@@ -3847,7 +3855,7 @@ type PlaceBlockEffect = {
  */
 type PlaceBlockSpell = {
     /**
-     * 
+     * The block to place
      */
     block?: BlockData;
 }
@@ -3871,7 +3879,7 @@ type PlayTrackEffect = {
 }
 
 /**
- * 
+ * TODO
  */
 type Point = {
     /**
@@ -3907,7 +3915,7 @@ type Potion = {
 }
 
 /**
- * 
+ * Checks whether the user or target entity has the potion effect
  */
 type PotionEffectCondition = {
     /**
@@ -3933,29 +3941,29 @@ type PotionEffectCondition = {
  */
 type PotionEffectData = {
     /**
-     * 
+     * TODO
      */
     type: PotionEffectType;
     /**
-     * 
+     * TODO
      */
     duration?: number;
     /**
-     * 
+     * TODO
      */
     potency?: number;
     /**
-     * 
+     * TODO
      */
     ambient?: boolean;
     /**
-     * 
+     * TODO
      */
     hasParticles?: boolean;
 }
 
 /**
- * 
+ * Applies a potion effect continuously to the hero
  */
 type PotionEffectSkillData = {}
 
@@ -3978,7 +3986,7 @@ type PotionEffectTriggerData = {
 }
 
 /**
- * 
+ * TODO
  */
 type PotionEntityComponent = {
     /**
@@ -3988,22 +3996,32 @@ type PotionEntityComponent = {
 }
 
 /**
- * 
+ * Gives a potion effect to right clicked entities
  */
 type PotionGifterSkillData = {
     /**
-     * 
+     * The cooldown in seconds
      */
     cooldown?: number;
     /**
+     * The message for the receiving player
+     * 
+     * "<player>" will be replaced by the receiving player
+     * "<gifter>" will be replaced by the gifter (this hero)
      * 
      */
     receiverMessage?: string;
     /**
+     * The message for the gifter (this hero)
+     * 
+     * "<player>" will be replaced by the gifter
      * 
      */
     giverMessage?: string;
     /**
+     * The message given to the gifter (this hero) when the cooldown is active
+     * 
+     * "<currentcooldown>" will be replaced with the current cooldown is seconds
      * 
      */
     cooldownMessage?: string;
@@ -4014,21 +4032,21 @@ type PotionGifterSkillData = {
  */
 type PotionMetaData = {
     /**
-     * 
+     * TODO
      */
     type?: PotionType;
     /**
-     * 
+     * TODO
      */
     extended?: boolean;
     /**
-     * 
+     * TODO
      */
     upgraded?: boolean;
 }
 
 /**
- * 
+ * TODO
  */
 type PowerOnStartSettings = {
     /**
@@ -4050,11 +4068,11 @@ type PowerOnStartSettings = {
 }
 
 /**
- * 
+ * TODO
  */
 type PrimedTntComponent = {
     /**
-     * 
+     * TODO
      */
     fuseTicks?: number;
 }
@@ -4088,7 +4106,7 @@ type ProjectileEffect = {
 }
 
 /**
- * 
+ * TODO
  */
 type RabbitComponent = {
     /**
@@ -4282,25 +4300,25 @@ type RerollConfig = {
  */
 type RerollGroup = {
     /**
-     * 
+     * TODO
      */
     weightedHeroes?: RerollGroup_WeightedHero[];
     /**
-     * 
+     * TODO
      */
     itemComparator?: ItemComparisonData;
     /**
-     * 
+     * TODO
      */
     heroes?: RerollGroup_WeightedHero[];
     /**
-     * 
+     * TODO
      */
     item?: ItemComparisonData;
 }
 
 /**
- * 
+ * TODO
  */
 type RerollGroup_WeightedHero = {
     /**
@@ -4368,19 +4386,19 @@ type ShapedRecipeData = {
  */
 type ShapelessRecipeData = {
     /**
-     * 
+     * TODO
      */
     result: ItemStack;
     /**
-     * 
+     * TODO
      */
     ingredients: Record<Material, number>;
     /**
-     * 
+     * TODO
      */
     uniqueKey: string;
     /**
-     * 
+     * TODO
      */
     unique_key: string;
 }
@@ -4390,7 +4408,7 @@ type ShapelessRecipeData = {
  */
 type ShieldData = {
     /**
-     * 
+     * The shield cooldown in seconds (1 is 20 ticks)
      */
     cooldown?: Duration;
 }
@@ -4430,7 +4448,7 @@ type ShooterEffect = {
 }
 
 /**
- * 
+ * TODO
  */
 type SizeComponent = {
     /**
@@ -4472,7 +4490,7 @@ type Skill = {
 }
 
 /**
- * 
+ * TODO
  */
 type Skin = {
     /**
@@ -4552,21 +4570,21 @@ type SneakCondition = {
  */
 type SneakData = {
     /**
-     * 
+     * Whether the player must be sneaking to prevent targeting
      */
     mustSneak?: boolean;
     /**
-     * 
+     * Whether the player must have invisibility to prevent targeting
      */
     needsInvisibility?: boolean;
     /**
-     * 
+     * Whether the player must be sneaking to prevent targeting
      */
     sneak?: boolean;
 }
 
 /**
- * 
+ * Gives the hero a potion effect when sneaking
  */
 type SneakingPotionData = {}
 
@@ -4575,15 +4593,15 @@ type SneakingPotionData = {}
  */
 type SoundData = {
     /**
-     * 
+     * TODO
      */
     sound?: Sound;
     /**
-     * 
+     * TODO
      */
     volume?: number;
     /**
-     * 
+     * TODO
      */
     pitch?: number;
 }
@@ -4617,11 +4635,11 @@ type SpawnEffect = {
 }
 
 /**
- * 
+ * TODO
  */
 type SpectralArrowComponent = {
     /**
-     * 
+     * TODO
      */
     glowingTicks?: number;
 }
@@ -4655,7 +4673,7 @@ type SprintingCondition = {
 }
 
 /**
- * 
+ * Allows the player to pick up entities with right click, * and throw them in the direction that the player is looking by sneaking, * This skill also prevents sitting in a vehicle, * 
  */
 type StrongmanData = {
     /**
@@ -4913,7 +4931,7 @@ type TemperatureCondition = {
 }
 
 /**
- * 
+ * TODO
  */
 type ThrowableProjectileComponent = {
     /**
@@ -5027,11 +5045,11 @@ type TransmutationSpell = {
  */
 type TrimData = {
     /**
-     * 
+     * TODO
      */
     pattern: TrimPattern;
     /**
-     * 
+     * TODO
      */
     material: TrimMaterial;
 }
@@ -5209,52 +5227,52 @@ type WeatherDamageData = {
 }
 
 /**
- * 
+ * TODO
  */
 type Wings = {}
 
 /**
- * 
+ * TODO
  */
 type Wisp = {
     /**
-     * 
+     * TODO
      */
     radius?: number;
     /**
-     * 
+     * TODO
      */
     speed?: number;
     /**
-     * 
+     * TODO
      */
     waveFrequency?: number;
     /**
-     * 
+     * TODO
      */
     height?: number;
     /**
-     * 
+     * TODO
      */
     wave_frequency?: number;
 }
 
 /**
- * 
+ * TODO
  */
 type WitherSkullComponent = {
     /**
-     * 
+     * TODO
      */
     isCharged?: boolean;
 }
 
 /**
- * 
+ * TODO
  */
 type WolfComponent = {
     /**
-     * 
+     * TODO
      */
     angry?: boolean;
 }
@@ -5298,7 +5316,7 @@ type WrapperEffect = {
 }
 
 /**
- * 
+ * TODO
  */
 type ZombifiableComponent = {
     /**
@@ -5628,7 +5646,7 @@ type ConditionList = Record<string, Condition>
 type ConditionListWrapper = ConditionList
 
 /**
- * 
+ * TODO
  */
 type Duration = number
 
@@ -5648,7 +5666,7 @@ type Expression = (string) | (number)
 type ExpressiveMessage = string
 
 /**
- * 
+ * TODO
  */
 type InventorySlot = (EquipmentSlot) | (number)
 
@@ -5658,7 +5676,7 @@ type InventorySlot = (EquipmentSlot) | (number)
 type ItemStack = ItemStackData
 
 /**
- * 
+ * TODO
  */
 type LoreData = string[]
 
@@ -5668,7 +5686,7 @@ type LoreData = string[]
 type PlusUltraSkillsContainer = SkillsContainer
 
 /**
- * 
+ * TODO
  */
 type RangeData = string
 

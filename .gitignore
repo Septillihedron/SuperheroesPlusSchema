@@ -1,10 +1,5 @@
 
-compiler/node_modules/*
-compiler/out/*
-DocTools/target/*
-DocTools/.idea
-DocTools/DocTools.iml
 schema-translator/node_modules
 schema-translator/out
 schema-translator/package-lock.json
-/schema-translator/docs
+schema-translator/result/docs
