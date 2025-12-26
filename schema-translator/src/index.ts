@@ -2,9 +2,6 @@ import { mkdir, mkdirSync, readdirSync, rm, writeFileSync } from "fs";
 import { DocPart } from "./DocPart";
 import { compileToJsonSchema } from "./DocTypeToJsonSchemaCompiler";
 import { compileToDocumentation } from "./DocTypeToDocumentationCompiler";
-import { compileToJsonAISchema } from "./DocTypeToJsonAISchemaCompiler";
-import { compileToJsonAISchema2 } from "./DocTypeToJsonAISchemaCompiler2";
-import { compileToJsonAISchema3 } from "./DocTypeToJsonAISchemaCompiler3";
 import { compileToTsTypes } from "./DocTypeToTsTypes";
 
 const outputDir = "./result";
@@ -35,12 +32,3 @@ writeFileSync(outputDir+"/schema.json", JSON.stringify(jsonSchema, null, 4))
 // compact version
 writeFileSync("../compiler/schemas/Superheroes8+.json", JSON.stringify(jsonSchema))
 
-const jsonAISchema = compileToJsonAISchema(lowered)
-writeFileSync(outputDir+"/ai-schema.json", JSON.stringify(jsonAISchema, null, 4))
-writeFileSync("D:\\AI\\geminiAITest\\ai-schema.json", JSON.stringify(jsonAISchema, null, 4))
-const jsonAISchema2 = compileToJsonAISchema2(lowered)
-writeFileSync(outputDir+"/ai-schema2.json", JSON.stringify(jsonAISchema2, null, 4))
-writeFileSync("D:\\AI\\geminiAITest\\ai-schema2.json", JSON.stringify(jsonAISchema2, null, 4))
-const jsonAISchema3 = compileToJsonAISchema3(lowered)
-writeFileSync(outputDir+"/ai-schema3.json", JSON.stringify(jsonAISchema3, null, 4))
-writeFileSync("D:\\AI\\geminiAITest\\ai-schema3.json", JSON.stringify(jsonAISchema3, null, 4))
